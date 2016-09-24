@@ -20,17 +20,18 @@ namespace AutoMask
     {
         private HaarObjectDetector detector;
 
-        private Bitmap mask = null;
-        private Bitmap photo = null;
+        private Image mask = null;
+        private Image photo = null;
         private Image photo_mask = null;
 
         private string[] PhotoExts = { ".jpg", ".jpeg", ".tif",".tiff", ".bmp", ".png", ".gif" };
 
-        ListViewItem[] files = null;
-        ObjectDetectorSearchMode SearchMode = ObjectDetectorSearchMode.NoOverlap;
-        ObjectDetectorScalingMode ScalingMode = ObjectDetectorScalingMode.SmallerToGreater;
-        int faceSize = 25;
-        int OutSize = 1200;
+        private ListViewItem[] files = null;
+        private ObjectDetectorSearchMode SearchMode = ObjectDetectorSearchMode.NoOverlap;
+        private ObjectDetectorScalingMode ScalingMode = ObjectDetectorScalingMode.SmallerToGreater;
+        private int faceSize = 25;
+        private int OutSize = 1200;
+        private bool GrayFirst = false;
 
         /// <summary>
         /// 
@@ -156,6 +157,7 @@ namespace AutoMask
         {
             if ( image == null ) return image;
 
+            #region Setting Face Detector
             detector.MinSize = new Size( faceSize, faceSize );
             detector.UseParallelProcessing = true;
             detector.Suppression = 4;
@@ -166,27 +168,55 @@ namespace AutoMask
                 detector.SearchMode = ObjectDetectorSearchMode.Average;
             }
             detector.ScalingFactor = 1.2f;
+            #endregion
 
+            #region Detecting face(s)
             // Process frame to detect objects
-            Rectangle[] faces = detector.ProcessFrame(image as Bitmap);
+            Image dst = image.Clone() as Image;
+            if ( GrayFirst &&
+                dst.PixelFormat != PixelFormat.Format1bppIndexed &&
+                dst.PixelFormat != PixelFormat.Format4bppIndexed &&
+                dst.PixelFormat != PixelFormat.Format8bppIndexed)
+            {
+                dst = new Grayscale( 0.2125, 0.7154, 0.0721 ).Apply( dst as Bitmap ) as Image; 
+            }
+            Rectangle[] faces = detector.ProcessFrame(dst as Bitmap);
+            if(faces.Length<=0)
+            {
+                detector.SearchMode = ObjectDetectorSearchMode.Average;
+                //faces = detector.ProcessFrame( image as Bitmap );
+                faces = detector.ProcessFrame( dst as Bitmap );
+            }
+            #endregion
 
+            #region Draw mask to photo
             if ( faces.Length > 0 )
             {
-                RectanglesMarker marker = new RectanglesMarker(faces, Color.Fuchsia);
-                photo_mask = image.Clone() as Image;
+                //RectanglesMarker marker = new RectanglesMarker(faces, Color.Fuchsia);
+                if( image.PixelFormat == PixelFormat.Format1bppIndexed || 
+                    image.PixelFormat == PixelFormat.Format4bppIndexed || 
+                    image.PixelFormat == PixelFormat.Format8bppIndexed )
+                {
+                    photo_mask = new GrayscaleToRGB().Apply( image.Clone() as Bitmap );
+                }
+                else photo_mask = image.Clone() as Image;
                 using ( Graphics g = Graphics.FromImage( photo_mask ) )
                 {
-                    foreach ( Rectangle r in marker.Rectangles )
+                    float factorX = 1.5f;
+                    float factorY = 1.75f;
+                    //foreach ( Rectangle r in marker.Rectangles )
+                    foreach ( Rectangle r in faces )
                     {
                         g.DrawImage( mask,
-                            r.Left - (float) ( r.Width / 2.0 ),
-                            r.Top - (float) ( r.Height / 2.0 ),
-                            r.Width * 2,
-                            r.Height * 2 );
+                            r.Left + (float) ( r.Width * ( 1 - factorX ) / 2.0f ),
+                            r.Top + (float) ( r.Height * ( 1 - factorY ) / 2.0f ),
+                            r.Width * factorX,
+                            r.Height * factorY );
                     }
                 }
                 return ( photo_mask );
             }
+            #endregion
             return ( image );
         }
 
@@ -248,6 +278,8 @@ namespace AutoMask
             OutSize = (int) numOutSize.Value;
             faceSize = (int) numFaceSize.Value;
 
+            GrayFirst = chkGrayDetect.Checked;
+
             HaarCascade cascade = new FaceHaarCascade();
             detector = new HaarObjectDetector( cascade );
         }
@@ -290,6 +322,16 @@ namespace AutoMask
         private void numOutSize_ValueChanged( object sender, EventArgs e )
         {
             OutSize = (int) numOutSize.Value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chkGrayDetect_CheckedChanged( object sender, EventArgs e )
+        {
+            GrayFirst = chkGrayDetect.Checked;
         }
 
         /// <summary>
@@ -410,6 +452,85 @@ namespace AutoMask
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        private void tsmiFileListAdd_Click( object sender, EventArgs e )
+        {
+            OpenFileDialog dlgOpen = new OpenFileDialog();
+            dlgOpen.Filter = "PNG Image(*.png)|*.png|Bitmap Image(*.bmp)|*.bmp|GIF Image(*.gif)|*.gif|All Supported Image(*.png;*.bmp;*.gif)|*.png;*.bmp;*.gif";
+            dlgOpen.FilterIndex = 4;
+            dlgOpen.DefaultExt = ".jpg";
+            dlgOpen.Multiselect = true;
+            dlgOpen.CheckFileExists = true;
+            dlgOpen.CheckPathExists = true;
+            if ( dlgOpen.ShowDialog( this ) == DialogResult.OK )
+            {
+                foreach ( string f in dlgOpen.FileNames )
+                {
+                    if ( PhotoExts.Contains( Path.GetExtension( f ), StringComparer.CurrentCultureIgnoreCase ) )
+                    {
+                        if ( lvFiles.Items.Count == 0 || lvFiles.FindItemWithText( f, true, 0 ) == null )
+                        {
+                            ListViewItem fItem = new ListViewItem( new string[] { Path.GetFileName( f ), f } );
+                            lvFiles.Items.Add( fItem );
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmiFileListRemove_Click( object sender, EventArgs e )
+        {
+            foreach ( ListViewItem l in lvFiles.SelectedItems )
+            {
+                l.Remove();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmiFileListClear_Click( object sender, EventArgs e )
+        {
+            lvFiles.Items.Clear();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmiFileListMaskSelected_Click( object sender, EventArgs e )
+        {
+            btnMask.Enabled = false;
+            files = new ListViewItem[lvFiles.SelectedItems.Count];
+            for ( int i = 0; i < files.Length; i++ )
+            {
+                files[i] = lvFiles.SelectedItems[i];
+            }
+            bgwMask.RunWorkerAsync();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmiFileListMaskAll_Click( object sender, EventArgs e )
+        {
+            btnMask.PerformClick();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bgwMask_DoWork( object sender, DoWorkEventArgs e )
         {
             btnMask.Enabled = false;
@@ -451,83 +572,5 @@ namespace AutoMask
             btnMask.Enabled = true;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tsmiFileListAdd_Click( object sender, EventArgs e )
-        {
-            OpenFileDialog dlgOpen = new OpenFileDialog();
-            dlgOpen.Filter = "PNG Image(*.png)|*.png|Bitmap Image(*.bmp)|*.bmp|GIF Image(*.gif)|*.gif|All Supported Image(*.png;*.bmp;*.gif)|*.png;*.bmp;*.gif";
-            dlgOpen.FilterIndex = 4;
-            dlgOpen.DefaultExt = ".jpg";
-            dlgOpen.Multiselect = true;
-            dlgOpen.CheckFileExists = true;
-            dlgOpen.CheckPathExists = true;
-            if ( dlgOpen.ShowDialog( this ) == DialogResult.OK )
-            {
-                foreach ( string f in dlgOpen.FileNames )
-                {
-                    if ( PhotoExts.Contains( Path.GetExtension( f ), StringComparer.CurrentCultureIgnoreCase ) )
-                    {
-                        if ( lvFiles.Items.Count == 0 || lvFiles.FindItemWithText( f, true, 0 ) == null )
-                        {
-                            ListViewItem fItem = new ListViewItem( new string[] { Path.GetFileName( f ), f } );
-                            lvFiles.Items.Add( fItem );
-                        }
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tsmiFileListRemove_Click( object sender, EventArgs e )
-        {
-            foreach(ListViewItem l in lvFiles.SelectedItems )
-            {
-                l.Remove();
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tsmiFileListClear_Click( object sender, EventArgs e )
-        {
-            lvFiles.Items.Clear();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tsmiFileListMaskSelected_Click( object sender, EventArgs e )
-        {
-            btnMask.Enabled = false;
-            files = new ListViewItem[lvFiles.SelectedItems.Count];
-            for(int i=0; i<files.Length; i++)
-            {
-                files[i] = lvFiles.SelectedItems[i];
-            }
-            bgwMask.RunWorkerAsync();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tsmiFileListMaskAll_Click( object sender, EventArgs e )
-        {
-            btnMask.PerformClick();
-        }
     }
 }
