@@ -26,6 +26,12 @@ namespace AutoMask
 
         private string[] PhotoExts = { ".jpg", ".jpeg", ".tif",".tiff", ".bmp", ".png", ".gif" };
 
+        ListViewItem[] files = null;
+        ObjectDetectorSearchMode SearchMode = ObjectDetectorSearchMode.NoOverlap;
+        ObjectDetectorScalingMode ScalingMode = ObjectDetectorScalingMode.SmallerToGreater;
+        int faceSize = 25;
+        int OutSize = 1200;
+
         /// <summary>
         /// 
         /// </summary>
@@ -35,41 +41,39 @@ namespace AutoMask
         {
             if ( image.PropertyIdList.Where( id => id == 0x0112 ).Count() == 0 ) return ( image );
 
-            int flipValue = Convert.ToInt32(image.GetPropertyItem( 0x0112 ).Value[0])-1;
-            RotateFlipType flip = (RotateFlipType) flipValue;
-            if ( flipValue < 0 || flipValue > 7 ) flip = RotateFlipType.RotateNoneFlipNone;
+            int flipValue = Convert.ToInt32(image.GetPropertyItem( 0x0112 ).Value[0]);
 
-            //RotateFlipType flip = RotateFlipType.RotateNoneFlipNone;
-            //switch ( flipValue )
-            //{
-            //    case 1:
-            //        flip = RotateFlipType.RotateNoneFlipNone;
-            //        break;
-            //    case 2:
-            //        flip = RotateFlipType.RotateNoneFlipX;
-            //        break;
-            //    case 3:
-            //        flip = RotateFlipType.Rotate180FlipNone;
-            //        break;
-            //    case 4:
-            //        flip = RotateFlipType.Rotate180FlipX;
-            //        break;
-            //    case 5:
-            //        flip = RotateFlipType.Rotate90FlipX;
-            //        break;
-            //    case 6:
-            //        flip = RotateFlipType.Rotate90FlipNone;
-            //        break;
-            //    case 7:
-            //        flip = RotateFlipType.Rotate270FlipX;
-            //        break;
-            //    case 8:
-            //        flip = RotateFlipType.Rotate270FlipNone;
-            //        break;
-            //    default:
-            //        flip = RotateFlipType.RotateNoneFlipNone;
-            //        break;
-            //}
+            RotateFlipType flip = RotateFlipType.RotateNoneFlipNone;
+            switch ( flipValue )
+            {
+                case 1:
+                    flip = RotateFlipType.RotateNoneFlipNone;
+                    break;
+                case 2:
+                    flip = RotateFlipType.RotateNoneFlipX;
+                    break;
+                case 3:
+                    flip = RotateFlipType.Rotate180FlipNone;
+                    break;
+                case 4:
+                    flip = RotateFlipType.Rotate180FlipX;
+                    break;
+                case 5:
+                    flip = RotateFlipType.Rotate90FlipX;
+                    break;
+                case 6:
+                    flip = RotateFlipType.Rotate90FlipNone;
+                    break;
+                case 7:
+                    flip = RotateFlipType.Rotate270FlipX;
+                    break;
+                case 8:
+                    flip = RotateFlipType.Rotate270FlipNone;
+                    break;
+                default:
+                    flip = RotateFlipType.RotateNoneFlipNone;
+                    break;
+            }
             image.RotateFlip( flip );
             PropertyItem pi = image.GetPropertyItem(0x0112);
             pi.Value[0] = 0x01;
@@ -89,7 +93,12 @@ namespace AutoMask
             float factor = (float)newSize/largeSize;
 
             ResizeBicubic filter = new ResizeBicubic((int)Math.Round(image.Width*factor), (int)Math.Round(image.Height*factor) );
-            return ( filter.Apply( image as Bitmap ) );
+            Image dst = filter.Apply( image as Bitmap );
+            foreach(PropertyItem item in image.PropertyItems )
+            {
+                dst.SetPropertyItem(item);
+            }
+            return ( dst );
         }
 
         /// <summary>
@@ -102,8 +111,9 @@ namespace AutoMask
         {
             using ( Image image = new Bitmap( imageFile ) )
             {
-                return ( MaskFace( RotateImage( ResizeImage( image, (int) numOutSize.Value ) ), faceSize ) );
+                return ( MaskFace( ResizeImage( RotateImage( image ), OutSize ), faceSize ) );
             }
+            //return ( MaskFace( ResizeImage( RotateImage( new Bitmap( imageFile ) ), OutSize ), faceSize ) );
         }
 
         /// <summary>
@@ -113,24 +123,28 @@ namespace AutoMask
         /// <param name="faceSize"></param>
         /// <param name="Save"></param>
         /// <returns></returns>
-        private string MaskFace( string imageFile, int faceSize = 20, bool removeExif=true )
+        private string MaskFace( string imageFile, int faceSize = 20, bool removeExif = true )
         {
-            using ( Image image = new Bitmap( imageFile ) )
+            string fn = imageFile;
+
+            //using ( Image image = MaskFace( imageFile, faceSize ) )
             {
+                Image image = MaskFace( imageFile, faceSize );
+
+                string fd = Path.GetDirectoryName(imageFile);
                 string fe = Path.GetExtension(imageFile);
-                string fn = Path.ChangeExtension(imageFile, $"_masked{fe}");
-                Image img = MaskFace( image, faceSize );
+                fn = Path.Combine( fd, $"{Path.GetFileNameWithoutExtension( imageFile )}_masked{fe}" );
+
                 if ( removeExif )
                 {
-                    //img.PropertyItems.
-                    foreach ( int id in img.PropertyIdList )
+                    foreach ( int id in image.PropertyIdList )
                     {
-                        img.RemovePropertyItem( id );
+                        image.RemovePropertyItem( id );
                     }
                 }
-                img.Save( fn );
-                return ( fn );
+                image.Save( fn, ImageFormat.Jpeg );
             }
+            return ( fn );
         }
 
         /// <summary>
@@ -144,34 +158,21 @@ namespace AutoMask
 
             detector.MinSize = new Size( faceSize, faceSize );
             detector.UseParallelProcessing = true;
-            detector.Suppression = 2;
-            detector.SearchMode = (ObjectDetectorSearchMode) cbMode.SelectedValue;
-            detector.ScalingMode = (ObjectDetectorScalingMode) cbScaling.SelectedValue;
-            if ( image.Width > 1600 || image.Height> 1600)
+            detector.Suppression = 4;
+            detector.SearchMode = SearchMode;
+            detector.ScalingMode = ScalingMode;
+            if ( image.Width > 1600 || image.Height > 1600 )
             {
                 detector.SearchMode = ObjectDetectorSearchMode.Average;
-                detector.Suppression = 4;
-                //detector.ScalingFactor = 1.2f;
-            }
-            else
-            {
-                //detector.ScalingFactor = 1.5f;
             }
             detector.ScalingFactor = 1.2f;
 
-            //Stopwatch sw = Stopwatch.StartNew();
-
             // Process frame to detect objects
             Rectangle[] faces = detector.ProcessFrame(image as Bitmap);
-            //detector.
-
-            //sw.Stop();
 
             if ( faces.Length > 0 )
             {
                 RectanglesMarker marker = new RectanglesMarker(faces, Color.Fuchsia);
-                //marker.FillColor = Color.WhiteSmoke;
-                //pic.Image = marker.Apply( photo );
                 photo_mask = image.Clone() as Image;
                 using ( Graphics g = Graphics.FromImage( photo_mask ) )
                 {
@@ -201,6 +202,7 @@ namespace AutoMask
         /// <param name="e"></param>
         private void MainForm_Load( object sender, EventArgs e )
         {
+            #region extracting icon from application to this form window
             Icon = Icon.ExtractAssociatedIcon( Application.ExecutablePath );
             if (File.Exists( "mask.png" ) )
             {
@@ -210,6 +212,23 @@ namespace AutoMask
             {
                 mask = Icon.ToBitmap();
             }
+            #endregion
+
+            #region Add file(s) from command line args
+            string[] flist = Environment.GetCommandLineArgs();
+            lvFiles.Items.Clear();
+            foreach ( string f in flist )
+            {
+                if ( PhotoExts.Contains( Path.GetExtension( f ), StringComparer.CurrentCultureIgnoreCase ) )
+                {
+                    if ( lvFiles.Items.Count == 0 || lvFiles.FindItemWithText( f, true, 0 ) == null )
+                    {
+                        ListViewItem fItem = new ListViewItem( new string[] { Path.GetFileName( f ), f } );
+                        lvFiles.Items.Add( fItem );
+                    }
+                }
+            }
+            #endregion
 
             picPreview.SizeMode = PictureBoxSizeMode.Zoom;
             picPreview.Image = photo;
@@ -223,6 +242,12 @@ namespace AutoMask
             cbMode.SelectedItem = ObjectDetectorSearchMode.NoOverlap;
             cbScaling.SelectedItem = ObjectDetectorScalingMode.SmallerToGreater;
 
+            SearchMode = ObjectDetectorSearchMode.NoOverlap;
+            ScalingMode = ObjectDetectorScalingMode.SmallerToGreater;
+
+            OutSize = (int) numOutSize.Value;
+            faceSize = (int) numFaceSize.Value;
+
             HaarCascade cascade = new FaceHaarCascade();
             detector = new HaarObjectDetector( cascade );
         }
@@ -232,8 +257,85 @@ namespace AutoMask
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        private void cbMode_SelectionChangeCommitted( object sender, EventArgs e )
+        {
+            SearchMode = (ObjectDetectorSearchMode) cbMode.SelectedValue;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbScaling_SelectionChangeCommitted( object sender, EventArgs e )
+        {
+            ScalingMode = (ObjectDetectorScalingMode) cbScaling.SelectedValue;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void numFaceSize_ValueChanged( object sender, EventArgs e )
+        {
+            faceSize = (int) numFaceSize.Value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void numOutSize_ValueChanged( object sender, EventArgs e )
+        {
+            OutSize = (int) numOutSize.Value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_DragEnter( object sender, DragEventArgs e )
+        {
+            //e.Effect = DragDropEffects.Link;
+            e.Effect = DragDropEffects.Move;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_DragDrop( object sender, DragEventArgs e )
+        {
+            string[] flist = (string[])e.Data.GetData( DataFormats.FileDrop, true );
+
+            foreach ( string f in flist )
+            {
+                if ( PhotoExts.Contains( Path.GetExtension( f ), StringComparer.CurrentCultureIgnoreCase ) )
+                {
+                    if ( lvFiles.Items.Count == 0 || lvFiles.FindItemWithText( f, true, 0 ) == null )
+                    {
+                        ListViewItem fItem = new ListViewItem( new string[] { Path.GetFileName( f ), f } );
+                        lvFiles.Items.Add( fItem );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMask_Click( object sender, EventArgs e )
         {
+            btnMask.Enabled = false;
+            files = new ListViewItem[lvFiles.Items.Count];
+            lvFiles.Items.CopyTo( files, 0 );
+
             bgwMask.RunWorkerAsync();
         }
 
@@ -271,7 +373,10 @@ namespace AutoMask
             dlgOpen.Filter = "PNG Image(*.png)|*.png|Bitmap Image(*.bmp)|*.bmp|GIF Image(*.gif)|*.gif|All Supported Image(*.png;*.bmp;*.gif)|*.png;*.bmp;*.gif";
             dlgOpen.FilterIndex = 4;
             dlgOpen.DefaultExt = ".png";
-            if( dlgOpen.ShowDialog(this) == DialogResult.OK)
+            dlgOpen.Multiselect = false;
+            dlgOpen.CheckFileExists = true;
+            dlgOpen.CheckPathExists = true;
+            if ( dlgOpen.ShowDialog(this) == DialogResult.OK)
             {
                 if ( mask != null ) mask.Dispose();
                 mask = new Bitmap( dlgOpen.FileName );
@@ -293,42 +398,9 @@ namespace AutoMask
                 if(File.Exists(f))
                 {
                     if(photo != null) photo.Dispose();
-                    photo = ResizeImage( RotateImage( new Bitmap( f ) ), (int) numOutSize.Value ) as Bitmap;
-                    picPreview.Image = MaskFace( photo, 25 );
+                    photo = ResizeImage( RotateImage( new Bitmap( f ) ), OutSize ) as Bitmap;
+                    picPreview.Image = MaskFace( photo, faceSize );
                     tsInfo.Text = $"Size: {picPreview.Image.Width} x {picPreview.Image.Height}";
-                }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MainForm_DragEnter( object sender, DragEventArgs e )
-        {
-            //e.Effect = DragDropEffects.Link;
-            e.Effect = DragDropEffects.Move;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MainForm_DragDrop( object sender, DragEventArgs e )
-        {
-            string[] flist = (string[])e.Data.GetData( DataFormats.FileDrop, true );
-
-            foreach (string f in flist)
-            {
-                if( PhotoExts.Contains( Path.GetExtension( f ), StringComparer.CurrentCultureIgnoreCase ) )
-                {
-                    if ( lvFiles.Items.Count == 0 || lvFiles.FindItemWithText( f, true, 0 ) == null )
-                    {
-                        ListViewItem fItem = new ListViewItem( new string[] { Path.GetFileName( f ), f } );
-                        lvFiles.Items.Add( fItem );
-                    }
                 }
             }
         }
@@ -345,18 +417,15 @@ namespace AutoMask
             int faceSize = (int)numFaceSize.Value;
             bool removeExif = chkRemoveEXIF.Checked;
 
-            //tsProgress.Value = 0;
-
-            foreach ( ListViewItem l in lvFiles.Items )
+            for(int i=0; i< files.Length; i++ )
             {
                 if ( bgwMask.CancellationPending ) break;
 
-                //picPreview.Image = MaskFace( photo, (int) numFaceSize.Value );
-                string f = l.SubItems[0].Text;
+                string f = files[i].SubItems[1].Text;
                 if ( File.Exists( f ) )
                 {
                     MaskFace( f, faceSize, removeExif );
-                    bgwMask.ReportProgress( (int) ( l.Index *100.0 / lvFiles.Items.Count ) );
+                    bgwMask.ReportProgress( (int) ( ( i + 1 ) * 100.0 / files.Length ) );
                 }
             }
         }
@@ -380,6 +449,85 @@ namespace AutoMask
         {
             tsProgress.Value = 100;
             btnMask.Enabled = true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmiFileListAdd_Click( object sender, EventArgs e )
+        {
+            OpenFileDialog dlgOpen = new OpenFileDialog();
+            dlgOpen.Filter = "PNG Image(*.png)|*.png|Bitmap Image(*.bmp)|*.bmp|GIF Image(*.gif)|*.gif|All Supported Image(*.png;*.bmp;*.gif)|*.png;*.bmp;*.gif";
+            dlgOpen.FilterIndex = 4;
+            dlgOpen.DefaultExt = ".jpg";
+            dlgOpen.Multiselect = true;
+            dlgOpen.CheckFileExists = true;
+            dlgOpen.CheckPathExists = true;
+            if ( dlgOpen.ShowDialog( this ) == DialogResult.OK )
+            {
+                foreach ( string f in dlgOpen.FileNames )
+                {
+                    if ( PhotoExts.Contains( Path.GetExtension( f ), StringComparer.CurrentCultureIgnoreCase ) )
+                    {
+                        if ( lvFiles.Items.Count == 0 || lvFiles.FindItemWithText( f, true, 0 ) == null )
+                        {
+                            ListViewItem fItem = new ListViewItem( new string[] { Path.GetFileName( f ), f } );
+                            lvFiles.Items.Add( fItem );
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmiFileListRemove_Click( object sender, EventArgs e )
+        {
+            foreach(ListViewItem l in lvFiles.SelectedItems )
+            {
+                l.Remove();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmiFileListClear_Click( object sender, EventArgs e )
+        {
+            lvFiles.Items.Clear();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmiFileListMaskSelected_Click( object sender, EventArgs e )
+        {
+            btnMask.Enabled = false;
+            files = new ListViewItem[lvFiles.SelectedItems.Count];
+            for(int i=0; i<files.Length; i++)
+            {
+                files[i] = lvFiles.SelectedItems[i];
+            }
+            bgwMask.RunWorkerAsync();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmiFileListMaskAll_Click( object sender, EventArgs e )
+        {
+            btnMask.PerformClick();
         }
     }
 }

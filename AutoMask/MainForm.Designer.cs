@@ -47,12 +47,21 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.cmFileList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiFileListClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiFileListAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiFileListRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiFileListMaskSelected = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiFileListMaskAll = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
             this.pnlTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFaceSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOutSize)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            this.cmFileList.SuspendLayout();
             this.SuspendLayout();
             // 
             // picPreview
@@ -62,7 +71,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picPreview.Location = new System.Drawing.Point(273, 70);
             this.picPreview.Name = "picPreview";
-            this.picPreview.Size = new System.Drawing.Size(519, 501);
+            this.picPreview.Size = new System.Drawing.Size(519, 478);
             this.picPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPreview.TabIndex = 0;
             this.picPreview.TabStop = false;
@@ -74,6 +83,7 @@
             this.lvFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colName,
             this.colPath});
+            this.lvFiles.ContextMenuStrip = this.cmFileList;
             this.lvFiles.FullRowSelect = true;
             this.lvFiles.GridLines = true;
             this.lvFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -81,7 +91,7 @@
             this.lvFiles.Location = new System.Drawing.Point(0, 70);
             this.lvFiles.Name = "lvFiles";
             this.lvFiles.ShowItemToolTips = true;
-            this.lvFiles.Size = new System.Drawing.Size(267, 501);
+            this.lvFiles.Size = new System.Drawing.Size(267, 478);
             this.lvFiles.TabIndex = 3;
             this.lvFiles.UseCompatibleStateImageBehavior = false;
             this.lvFiles.View = System.Windows.Forms.View.Details;
@@ -165,10 +175,11 @@
             this.numFaceSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip.SetToolTip(this.numFaceSize, "Minimized Face Size");
             this.numFaceSize.Value = new decimal(new int[] {
-            20,
+            25,
             0,
             0,
             0});
+            this.numFaceSize.ValueChanged += new System.EventHandler(this.numFaceSize_ValueChanged);
             // 
             // chkRemoveEXIF
             // 
@@ -196,6 +207,7 @@
             this.cbMode.Name = "cbMode";
             this.cbMode.Size = new System.Drawing.Size(80, 20);
             this.cbMode.TabIndex = 9;
+            this.cbMode.SelectionChangeCommitted += new System.EventHandler(this.cbMode_SelectionChangeCommitted);
             // 
             // cbScaling
             // 
@@ -205,6 +217,7 @@
             this.cbScaling.Name = "cbScaling";
             this.cbScaling.Size = new System.Drawing.Size(101, 20);
             this.cbScaling.TabIndex = 10;
+            this.cbScaling.SelectionChangeCommitted += new System.EventHandler(this.cbScaling_SelectionChangeCommitted);
             // 
             // numOutSize
             // 
@@ -229,6 +242,7 @@
             0,
             0,
             0});
+            this.numOutSize.ValueChanged += new System.EventHandler(this.numOutSize_ValueChanged);
             // 
             // statusStrip1
             // 
@@ -245,7 +259,7 @@
             // tsInfo
             // 
             this.tsInfo.Name = "tsInfo";
-            this.tsInfo.Size = new System.Drawing.Size(644, 17);
+            this.tsInfo.Size = new System.Drawing.Size(675, 17);
             this.tsInfo.Spring = true;
             this.tsInfo.Text = "OK";
             this.tsInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -254,6 +268,64 @@
             // 
             this.tsProgress.Name = "tsProgress";
             this.tsProgress.Size = new System.Drawing.Size(100, 16);
+            // 
+            // cmFileList
+            // 
+            this.cmFileList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiFileListAdd,
+            this.toolStripMenuItem1,
+            this.tsmiFileListRemove,
+            this.tsmiFileListClear,
+            this.toolStripMenuItem2,
+            this.tsmiFileListMaskSelected,
+            this.tsmiFileListMaskAll});
+            this.cmFileList.Name = "cmFileList";
+            this.cmFileList.Size = new System.Drawing.Size(153, 148);
+            // 
+            // tsmiFileListClear
+            // 
+            this.tsmiFileListClear.Name = "tsmiFileListClear";
+            this.tsmiFileListClear.Size = new System.Drawing.Size(152, 22);
+            this.tsmiFileListClear.Text = "Clear";
+            this.tsmiFileListClear.Click += new System.EventHandler(this.tsmiFileListClear_Click);
+            // 
+            // tsmiFileListAdd
+            // 
+            this.tsmiFileListAdd.Name = "tsmiFileListAdd";
+            this.tsmiFileListAdd.Size = new System.Drawing.Size(152, 22);
+            this.tsmiFileListAdd.Text = "Add";
+            this.tsmiFileListAdd.Click += new System.EventHandler(this.tsmiFileListAdd_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // tsmiFileListRemove
+            // 
+            this.tsmiFileListRemove.Name = "tsmiFileListRemove";
+            this.tsmiFileListRemove.Size = new System.Drawing.Size(152, 22);
+            this.tsmiFileListRemove.Text = "Remove";
+            this.tsmiFileListRemove.Click += new System.EventHandler(this.tsmiFileListRemove_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // tsmiFileListMaskSelected
+            // 
+            this.tsmiFileListMaskSelected.Name = "tsmiFileListMaskSelected";
+            this.tsmiFileListMaskSelected.Size = new System.Drawing.Size(152, 22);
+            this.tsmiFileListMaskSelected.Text = "Mask Selected";
+            this.tsmiFileListMaskSelected.Click += new System.EventHandler(this.tsmiFileListMaskSelected_Click);
+            // 
+            // tsmiFileListMaskAll
+            // 
+            this.tsmiFileListMaskAll.Name = "tsmiFileListMaskAll";
+            this.tsmiFileListMaskAll.Size = new System.Drawing.Size(152, 22);
+            this.tsmiFileListMaskAll.Text = "Mask All";
+            this.tsmiFileListMaskAll.Click += new System.EventHandler(this.tsmiFileListMaskAll_Click);
             // 
             // MainForm
             // 
@@ -279,6 +351,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numOutSize)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.cmFileList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,6 +377,14 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsInfo;
         private System.Windows.Forms.ToolStripProgressBar tsProgress;
+        private System.Windows.Forms.ContextMenuStrip cmFileList;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFileListAdd;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFileListRemove;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFileListClear;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFileListMaskSelected;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFileListMaskAll;
     }
 }
 
