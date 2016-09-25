@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using Accord.Imaging;
 using Accord.Imaging.Filters;
 using Accord.Vision.Detection;
 using Accord.Vision.Detection.Cascades;
@@ -40,7 +41,7 @@ namespace AutoMask
         /// <returns></returns>
         private Image LoadMask(string maskFile)
         {
-            using ( Image m = new Bitmap( maskFile ) )
+            using ( Image m = Accord.Imaging.Image.FromFile( maskFile ) )
             {
                 int largeSize = Math.Max(m.Width, m.Height);
                 Image mc = new Bitmap( largeSize, largeSize, PixelFormat.Format32bppArgb );
@@ -134,11 +135,10 @@ namespace AutoMask
         /// <returns></returns>
         private Image MaskFace( string imageFile, int faceSize = 20 )
         {
-            using ( Image image = new Bitmap( imageFile ) )
+            using ( Image image = Accord.Imaging.Image.FromFile( imageFile ) )                
             {
                 return ( MaskFace( ResizeImage( RotateImage( image ), OutSize ), faceSize ) );
             }
-            //return ( MaskFace( ResizeImage( RotateImage( new Bitmap( imageFile ) ), OutSize ), faceSize ) );
         }
 
         /// <summary>
@@ -152,10 +152,8 @@ namespace AutoMask
         {
             string fn = imageFile;
 
-            //using ( Image image = MaskFace( imageFile, faceSize ) )
+            using ( Image image = MaskFace( imageFile, faceSize ) )
             {
-                Image image = MaskFace( imageFile, faceSize );
-
                 string fd = Path.GetDirectoryName(imageFile);
                 string fe = Path.GetExtension(imageFile);
                 fn = Path.Combine( fd, $"{Path.GetFileNameWithoutExtension( imageFile )}_masked{fe}" );
@@ -244,6 +242,9 @@ namespace AutoMask
             return ( image );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -258,9 +259,11 @@ namespace AutoMask
         {
             #region extracting icon from application to this form window
             Icon = Icon.ExtractAssociatedIcon( Application.ExecutablePath );
-            if (File.Exists( "mask.png" ) )
+            #endregion
+            
+            #region Load default Mask Image
+            if ( File.Exists( "mask.png" ) )
             {
-                //mask = new Bitmap( "mask.png" );
                 mask = LoadMask( "mask.png" );
             }
             else
@@ -446,7 +449,6 @@ namespace AutoMask
             if ( dlgOpen.ShowDialog(this) == DialogResult.OK)
             {
                 if ( mask != null ) mask.Dispose();
-                //mask = new Bitmap( dlgOpen.FileName );
                 mask = LoadMask( dlgOpen.FileName );
                 picMask.Image = mask;
             }
@@ -463,11 +465,10 @@ namespace AutoMask
             {
                 string fn = e.Item.SubItems[0].Text;
                 string ff = e.Item.SubItems[1].Text;
-                //Text = f;
                 if (File.Exists(ff))
                 {
                     if(photo != null) photo.Dispose();
-                    using ( Image of = new Bitmap( ff ) )
+                    using ( Image of = Accord.Imaging.Image.FromFile( ff ) )
                     {
                         photo = ResizeImage( RotateImage( of ), OutSize ) as Bitmap;
                         picPreview.Image = MaskFace( photo, faceSize );

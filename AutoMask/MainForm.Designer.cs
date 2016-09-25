@@ -195,9 +195,9 @@
             this.chkGrayDetect.AutoSize = true;
             this.chkGrayDetect.Location = new System.Drawing.Point(166, 6);
             this.chkGrayDetect.Name = "chkGrayDetect";
-            this.chkGrayDetect.Size = new System.Drawing.Size(114, 16);
+            this.chkGrayDetect.Size = new System.Drawing.Size(84, 16);
             this.chkGrayDetect.TabIndex = 12;
-            this.chkGrayDetect.Text = "Grayscale First";
+            this.chkGrayDetect.Text = "Gray First";
             this.toolTip.SetToolTip(this.chkGrayDetect, "Convert image to grayscale first for face detect");
             this.chkGrayDetect.UseVisualStyleBackColor = true;
             this.chkGrayDetect.CheckedChanged += new System.EventHandler(this.chkGrayDetect_CheckedChanged);
@@ -235,6 +235,7 @@
             this.cbScaling.Name = "cbScaling";
             this.cbScaling.Size = new System.Drawing.Size(101, 20);
             this.cbScaling.TabIndex = 10;
+            this.toolTip.SetToolTip(this.cbScaling, "Face Dectect Scale Mode");
             this.cbScaling.SelectionChangeCommitted += new System.EventHandler(this.cbScaling_SelectionChangeCommitted);
             // 
             // cbMode
@@ -245,6 +246,7 @@
             this.cbMode.Name = "cbMode";
             this.cbMode.Size = new System.Drawing.Size(80, 20);
             this.cbMode.TabIndex = 9;
+            this.toolTip.SetToolTip(this.cbMode, "Face Detecting Search Mode");
             this.cbMode.SelectionChangeCommitted += new System.EventHandler(this.cbMode_SelectionChangeCommitted);
             // 
             // chkRemoveEXIF
@@ -255,6 +257,7 @@
             this.chkRemoveEXIF.Size = new System.Drawing.Size(90, 16);
             this.chkRemoveEXIF.TabIndex = 7;
             this.chkRemoveEXIF.Text = "Remove EXIF";
+            this.toolTip.SetToolTip(this.chkRemoveEXIF, "Remove EXIF data from output image");
             this.chkRemoveEXIF.UseVisualStyleBackColor = true;
             // 
             // numFaceSize
@@ -295,6 +298,7 @@
             this.btnOrig.Size = new System.Drawing.Size(75, 23);
             this.btnOrig.TabIndex = 4;
             this.btnOrig.Text = "Original";
+            this.toolTip.SetToolTip(this.btnOrig, "Click to view photo without Mask");
             this.btnOrig.UseVisualStyleBackColor = true;
             this.btnOrig.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnOrig_MouseDown);
             this.btnOrig.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnOrig_MouseUp);
@@ -307,6 +311,7 @@
             this.btnMask.Size = new System.Drawing.Size(75, 56);
             this.btnMask.TabIndex = 3;
             this.btnMask.Text = "MASK !!";
+            this.toolTip.SetToolTip(this.btnMask, "Masking all files in filelist");
             this.btnMask.UseVisualStyleBackColor = true;
             this.btnMask.Click += new System.EventHandler(this.btnMask_Click);
             // 
