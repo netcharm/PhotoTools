@@ -46,6 +46,7 @@
             this.tsmiFileListMaskSelected = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiFileListMaskAll = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTools = new System.Windows.Forms.Panel();
+            this.chkGrayDetect = new System.Windows.Forms.CheckBox();
             this.numOutSize = new System.Windows.Forms.NumericUpDown();
             this.cbScaling = new System.Windows.Forms.ComboBox();
             this.cbMode = new System.Windows.Forms.ComboBox();
@@ -59,7 +60,9 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsProgress = new System.Windows.Forms.ToolStripProgressBar();
-            this.chkGrayDetect = new System.Windows.Forms.CheckBox();
+            this.tsInfoFileName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsInfoFileSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsInfoPreviewSize = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
             this.cmFileList.SuspendLayout();
             this.pnlTools.SuspendLayout();
@@ -76,7 +79,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picPreview.Location = new System.Drawing.Point(273, 70);
             this.picPreview.Name = "picPreview";
-            this.picPreview.Size = new System.Drawing.Size(519, 478);
+            this.picPreview.Size = new System.Drawing.Size(516, 478);
             this.picPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPreview.TabIndex = 0;
             this.picPreview.TabStop = false;
@@ -186,6 +189,18 @@
             this.pnlTools.Name = "pnlTools";
             this.pnlTools.Size = new System.Drawing.Size(792, 64);
             this.pnlTools.TabIndex = 4;
+            // 
+            // chkGrayDetect
+            // 
+            this.chkGrayDetect.AutoSize = true;
+            this.chkGrayDetect.Location = new System.Drawing.Point(166, 6);
+            this.chkGrayDetect.Name = "chkGrayDetect";
+            this.chkGrayDetect.Size = new System.Drawing.Size(114, 16);
+            this.chkGrayDetect.TabIndex = 12;
+            this.chkGrayDetect.Text = "Grayscale First";
+            this.toolTip.SetToolTip(this.chkGrayDetect, "Convert image to grayscale first for face detect");
+            this.chkGrayDetect.UseVisualStyleBackColor = true;
+            this.chkGrayDetect.CheckedChanged += new System.EventHandler(this.chkGrayDetect_CheckedChanged);
             // 
             // numOutSize
             // 
@@ -311,6 +326,9 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsInfoFileName,
+            this.tsInfoFileSize,
+            this.tsInfoPreviewSize,
             this.tsInfo,
             this.tsProgress});
             this.statusStrip1.Location = new System.Drawing.Point(0, 551);
@@ -322,8 +340,12 @@
             // 
             // tsInfo
             // 
+            this.tsInfo.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tsInfo.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.tsInfo.Name = "tsInfo";
-            this.tsInfo.Size = new System.Drawing.Size(675, 17);
+            this.tsInfo.Size = new System.Drawing.Size(521, 17);
             this.tsInfo.Spring = true;
             this.tsInfo.Text = "OK";
             this.tsInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -331,19 +353,47 @@
             // tsProgress
             // 
             this.tsProgress.Name = "tsProgress";
+            this.tsProgress.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
             this.tsProgress.Size = new System.Drawing.Size(100, 16);
             // 
-            // chkGrayDetect
+            // tsInfoFileName
             // 
-            this.chkGrayDetect.AutoSize = true;
-            this.chkGrayDetect.Location = new System.Drawing.Point(166, 6);
-            this.chkGrayDetect.Name = "chkGrayDetect";
-            this.chkGrayDetect.Size = new System.Drawing.Size(114, 16);
-            this.chkGrayDetect.TabIndex = 12;
-            this.chkGrayDetect.Text = "Grayscale First";
-            this.toolTip.SetToolTip(this.chkGrayDetect, "Convert image to grayscale first for face detect");
-            this.chkGrayDetect.UseVisualStyleBackColor = true;
-            this.chkGrayDetect.CheckedChanged += new System.EventHandler(this.chkGrayDetect_CheckedChanged);
+            this.tsInfoFileName.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tsInfoFileName.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tsInfoFileName.Name = "tsInfoFileName";
+            this.tsInfoFileName.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
+            this.tsInfoFileName.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.tsInfoFileName.Size = new System.Drawing.Size(41, 17);
+            this.tsInfoFileName.Text = "File";
+            this.tsInfoFileName.ToolTipText = "Current Selected Image File Name";
+            // 
+            // tsInfoFileSize
+            // 
+            this.tsInfoFileSize.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tsInfoFileSize.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tsInfoFileSize.Name = "tsInfoFileSize";
+            this.tsInfoFileSize.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
+            this.tsInfoFileSize.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.tsInfoFileSize.Size = new System.Drawing.Size(77, 17);
+            this.tsInfoFileSize.Text = "Image Size";
+            this.tsInfoFileSize.ToolTipText = "Current Selected Image Size";
+            // 
+            // tsInfoPreviewSize
+            // 
+            this.tsInfoPreviewSize.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tsInfoPreviewSize.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tsInfoPreviewSize.Name = "tsInfoPreviewSize";
+            this.tsInfoPreviewSize.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
+            this.tsInfoPreviewSize.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.tsInfoPreviewSize.Size = new System.Drawing.Size(89, 17);
+            this.tsInfoPreviewSize.Text = "Preview Size";
+            this.tsInfoPreviewSize.ToolTipText = "Current Selected Image Preview Size";
             // 
             // MainForm
             // 
@@ -404,6 +454,9 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiFileListMaskSelected;
         private System.Windows.Forms.ToolStripMenuItem tsmiFileListMaskAll;
         private System.Windows.Forms.CheckBox chkGrayDetect;
+        private System.Windows.Forms.ToolStripStatusLabel tsInfoFileName;
+        private System.Windows.Forms.ToolStripStatusLabel tsInfoFileSize;
+        private System.Windows.Forms.ToolStripStatusLabel tsInfoPreviewSize;
     }
 }
 

@@ -36,6 +36,30 @@ namespace AutoMask
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="maskFile"></param>
+        /// <returns></returns>
+        private Image LoadMask(string maskFile)
+        {
+            using ( Image m = new Bitmap( maskFile ) )
+            {
+                int largeSize = Math.Max(m.Width, m.Height);
+                Image mc = new Bitmap( largeSize, largeSize, PixelFormat.Format32bppArgb );
+                using ( Graphics g = Graphics.FromImage( mc ) )
+                {
+                    RectangleF r = new RectangleF();
+                    r.X = ( mc.Width - m.Width ) / 2.0f;
+                    r.Y = ( mc.Height - m.Height ) / 2.0f;
+                    r.Height = m.Height;
+                    r.Width = m.Width;
+                    g.DrawImage( m, r );
+                }
+                return ( mc );
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
         private Image RotateImage(Image image)
@@ -202,7 +226,7 @@ namespace AutoMask
                 else photo_mask = image.Clone() as Image;
                 using ( Graphics g = Graphics.FromImage( photo_mask ) )
                 {
-                    float factorX = 1.5f;
+                    float factorX = 1.75f;
                     float factorY = 1.75f;
                     //foreach ( Rectangle r in marker.Rectangles )
                     foreach ( Rectangle r in faces )
@@ -236,7 +260,8 @@ namespace AutoMask
             Icon = Icon.ExtractAssociatedIcon( Application.ExecutablePath );
             if (File.Exists( "mask.png" ) )
             {
-                mask = new Bitmap( "mask.png" );
+                //mask = new Bitmap( "mask.png" );
+                mask = LoadMask( "mask.png" );
             }
             else
             {
@@ -421,7 +446,8 @@ namespace AutoMask
             if ( dlgOpen.ShowDialog(this) == DialogResult.OK)
             {
                 if ( mask != null ) mask.Dispose();
-                mask = new Bitmap( dlgOpen.FileName );
+                //mask = new Bitmap( dlgOpen.FileName );
+                mask = LoadMask( dlgOpen.FileName );
                 picMask.Image = mask;
             }
         }
@@ -435,14 +461,22 @@ namespace AutoMask
         {
             if(e.ItemIndex>=0 && e.Item != null && e.IsSelected )
             {
-                string f = e.Item.SubItems[1].Text;
-                Text = f;
-                if(File.Exists(f))
+                string fn = e.Item.SubItems[0].Text;
+                string ff = e.Item.SubItems[1].Text;
+                //Text = f;
+                if (File.Exists(ff))
                 {
                     if(photo != null) photo.Dispose();
-                    photo = ResizeImage( RotateImage( new Bitmap( f ) ), OutSize ) as Bitmap;
-                    picPreview.Image = MaskFace( photo, faceSize );
-                    tsInfo.Text = $"Size: {picPreview.Image.Width} x {picPreview.Image.Height}";
+                    using ( Image of = new Bitmap( ff ) )
+                    {
+                        photo = ResizeImage( RotateImage( of ), OutSize ) as Bitmap;
+                        picPreview.Image = MaskFace( photo, faceSize );
+
+                        tsInfoFileName.Text = $"{fn}";
+                        tsInfoFileSize.Text = $"Image: {of.Width} x {of.Height}";
+                        tsInfoPreviewSize.Text = $"View: {picPreview.Image.Width} x {picPreview.Image.Height}";
+                        tsInfo.Text = "OK";
+                    }
                 }
             }
         }
