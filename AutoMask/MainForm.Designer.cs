@@ -33,7 +33,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.picPreview = new System.Windows.Forms.PictureBox();
             this.lvFiles = new System.Windows.Forms.ListView();
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -46,43 +45,35 @@
             this.tsmiFileListMaskSelected = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiFileListMaskAll = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTools = new System.Windows.Forms.Panel();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnEraseAtPreview = new System.Windows.Forms.Button();
+            this.btnMaskAtPreview = new System.Windows.Forms.Button();
             this.chkGrayDetect = new System.Windows.Forms.CheckBox();
             this.numOutSize = new System.Windows.Forms.NumericUpDown();
             this.cbScaling = new System.Windows.Forms.ComboBox();
             this.cbMode = new System.Windows.Forms.ComboBox();
             this.chkRemoveEXIF = new System.Windows.Forms.CheckBox();
             this.numFaceSize = new System.Windows.Forms.NumericUpDown();
-            this.picMask = new System.Windows.Forms.PictureBox();
             this.btnOrig = new System.Windows.Forms.Button();
-            this.btnMask = new System.Windows.Forms.Button();
+            this.btnMaskAll = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.bgwMask = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tsInfo = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.tsInfoFileName = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsInfoFileSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsInfoPreviewSize = new System.Windows.Forms.ToolStripStatusLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
+            this.tsInfo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.picMask = new System.Windows.Forms.PictureBox();
+            this.picPreview = new System.Windows.Forms.PictureBox();
             this.cmFileList.SuspendLayout();
             this.pnlTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numOutSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFaceSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMask)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMask)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picPreview
-            // 
-            this.picPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picPreview.Location = new System.Drawing.Point(273, 70);
-            this.picPreview.Name = "picPreview";
-            this.picPreview.Size = new System.Drawing.Size(516, 478);
-            this.picPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picPreview.TabIndex = 0;
-            this.picPreview.TabStop = false;
             // 
             // lvFiles
             // 
@@ -175,6 +166,9 @@
             // 
             // pnlTools
             // 
+            this.pnlTools.Controls.Add(this.btnSave);
+            this.pnlTools.Controls.Add(this.btnEraseAtPreview);
+            this.pnlTools.Controls.Add(this.btnMaskAtPreview);
             this.pnlTools.Controls.Add(this.chkGrayDetect);
             this.pnlTools.Controls.Add(this.numOutSize);
             this.pnlTools.Controls.Add(this.cbScaling);
@@ -183,19 +177,63 @@
             this.pnlTools.Controls.Add(this.numFaceSize);
             this.pnlTools.Controls.Add(this.picMask);
             this.pnlTools.Controls.Add(this.btnOrig);
-            this.pnlTools.Controls.Add(this.btnMask);
+            this.pnlTools.Controls.Add(this.btnMaskAll);
             this.pnlTools.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTools.Location = new System.Drawing.Point(0, 0);
             this.pnlTools.Name = "pnlTools";
             this.pnlTools.Size = new System.Drawing.Size(792, 64);
             this.pnlTools.TabIndex = 4;
+            this.toolTip.SetToolTip(this.pnlTools, "Face Mask Current Selected Image");
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackgroundImage = global::AutoMask.Properties.Resources.btn_save;
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.Location = new System.Drawing.Point(543, 25);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(32, 32);
+            this.btnSave.TabIndex = 15;
+            this.toolTip.SetToolTip(this.btnSave, "Save Current Preview");
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnEraseAtPreview
+            // 
+            this.btnEraseAtPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEraseAtPreview.BackgroundImage = global::AutoMask.Properties.Resources.btn_eraser;
+            this.btnEraseAtPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEraseAtPreview.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEraseAtPreview.Location = new System.Drawing.Point(591, 25);
+            this.btnEraseAtPreview.Name = "btnEraseAtPreview";
+            this.btnEraseAtPreview.Size = new System.Drawing.Size(32, 32);
+            this.btnEraseAtPreview.TabIndex = 14;
+            this.toolTip.SetToolTip(this.btnEraseAtPreview, "Erase some error mask or display required face in preview box");
+            this.btnEraseAtPreview.UseVisualStyleBackColor = true;
+            this.btnEraseAtPreview.Click += new System.EventHandler(this.btnEraseAtPreview_Click);
+            // 
+            // btnMaskAtPreview
+            // 
+            this.btnMaskAtPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaskAtPreview.BackgroundImage = global::AutoMask.Properties.Resources.btn_mosaic;
+            this.btnMaskAtPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMaskAtPreview.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMaskAtPreview.Location = new System.Drawing.Point(634, 25);
+            this.btnMaskAtPreview.Name = "btnMaskAtPreview";
+            this.btnMaskAtPreview.Size = new System.Drawing.Size(32, 32);
+            this.btnMaskAtPreview.TabIndex = 13;
+            this.toolTip.SetToolTip(this.btnMaskAtPreview, "Face Mask current selected image in preview box");
+            this.btnMaskAtPreview.UseVisualStyleBackColor = true;
+            this.btnMaskAtPreview.Click += new System.EventHandler(this.btnMaskAtPreview_Click);
             // 
             // chkGrayDetect
             // 
             this.chkGrayDetect.AutoSize = true;
+            this.chkGrayDetect.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.chkGrayDetect.Location = new System.Drawing.Point(166, 6);
             this.chkGrayDetect.Name = "chkGrayDetect";
-            this.chkGrayDetect.Size = new System.Drawing.Size(84, 16);
+            this.chkGrayDetect.Size = new System.Drawing.Size(82, 16);
             this.chkGrayDetect.TabIndex = 12;
             this.chkGrayDetect.Text = "Gray First";
             this.toolTip.SetToolTip(this.chkGrayDetect, "Convert image to grayscale first for face detect");
@@ -230,6 +268,7 @@
             // cbScaling
             // 
             this.cbScaling.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbScaling.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cbScaling.FormattingEnabled = true;
             this.cbScaling.Location = new System.Drawing.Point(166, 37);
             this.cbScaling.Name = "cbScaling";
@@ -241,6 +280,7 @@
             // cbMode
             // 
             this.cbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cbMode.FormattingEnabled = true;
             this.cbMode.Location = new System.Drawing.Point(80, 37);
             this.cbMode.Name = "cbMode";
@@ -252,9 +292,10 @@
             // chkRemoveEXIF
             // 
             this.chkRemoveEXIF.AutoSize = true;
+            this.chkRemoveEXIF.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.chkRemoveEXIF.Location = new System.Drawing.Point(279, 6);
             this.chkRemoveEXIF.Name = "chkRemoveEXIF";
-            this.chkRemoveEXIF.Size = new System.Drawing.Size(90, 16);
+            this.chkRemoveEXIF.Size = new System.Drawing.Size(88, 16);
             this.chkRemoveEXIF.TabIndex = 7;
             this.chkRemoveEXIF.Text = "Remove EXIF";
             this.toolTip.SetToolTip(this.chkRemoveEXIF, "Remove EXIF data from output image");
@@ -280,40 +321,32 @@
             0});
             this.numFaceSize.ValueChanged += new System.EventHandler(this.numFaceSize_ValueChanged);
             // 
-            // picMask
-            // 
-            this.picMask.Location = new System.Drawing.Point(4, 4);
-            this.picMask.Name = "picMask";
-            this.picMask.Size = new System.Drawing.Size(56, 56);
-            this.picMask.TabIndex = 5;
-            this.picMask.TabStop = false;
-            this.toolTip.SetToolTip(this.picMask, "Double Click to change the mask image");
-            this.picMask.DoubleClick += new System.EventHandler(this.picMask_DoubleClick);
-            // 
             // btnOrig
             // 
             this.btnOrig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOrig.Location = new System.Drawing.Point(631, 7);
+            this.btnOrig.BackgroundImage = global::AutoMask.Properties.Resources.btn_compare;
+            this.btnOrig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnOrig.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOrig.Location = new System.Drawing.Point(677, 25);
             this.btnOrig.Name = "btnOrig";
-            this.btnOrig.Size = new System.Drawing.Size(75, 23);
+            this.btnOrig.Size = new System.Drawing.Size(32, 32);
             this.btnOrig.TabIndex = 4;
-            this.btnOrig.Text = "Original";
             this.toolTip.SetToolTip(this.btnOrig, "Click to view photo without Mask");
             this.btnOrig.UseVisualStyleBackColor = true;
             this.btnOrig.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnOrig_MouseDown);
             this.btnOrig.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnOrig_MouseUp);
             // 
-            // btnMask
+            // btnMaskAll
             // 
-            this.btnMask.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMask.Location = new System.Drawing.Point(712, 4);
-            this.btnMask.Name = "btnMask";
-            this.btnMask.Size = new System.Drawing.Size(75, 56);
-            this.btnMask.TabIndex = 3;
-            this.btnMask.Text = "MASK !!";
-            this.toolTip.SetToolTip(this.btnMask, "Masking all files in filelist");
-            this.btnMask.UseVisualStyleBackColor = true;
-            this.btnMask.Click += new System.EventHandler(this.btnMask_Click);
+            this.btnMaskAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaskAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMaskAll.Location = new System.Drawing.Point(731, 4);
+            this.btnMaskAll.Name = "btnMaskAll";
+            this.btnMaskAll.Size = new System.Drawing.Size(56, 56);
+            this.btnMaskAll.TabIndex = 3;
+            this.toolTip.SetToolTip(this.btnMaskAll, "Masking all files in filelist");
+            this.btnMaskAll.UseVisualStyleBackColor = true;
+            this.btnMaskAll.Click += new System.EventHandler(this.btnMaskAll_Click);
             // 
             // toolTip
             // 
@@ -342,24 +375,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(792, 22);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // tsInfo
-            // 
-            this.tsInfo.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.tsInfo.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.tsInfo.Name = "tsInfo";
-            this.tsInfo.Size = new System.Drawing.Size(521, 17);
-            this.tsInfo.Spring = true;
-            this.tsInfo.Text = "OK";
-            this.tsInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tsProgress
-            // 
-            this.tsProgress.Name = "tsProgress";
-            this.tsProgress.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.tsProgress.Size = new System.Drawing.Size(100, 16);
             // 
             // tsInfoFileName
             // 
@@ -400,6 +415,51 @@
             this.tsInfoPreviewSize.Text = "Preview Size";
             this.tsInfoPreviewSize.ToolTipText = "Current Selected Image Preview Size";
             // 
+            // tsInfo
+            // 
+            this.tsInfo.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tsInfo.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tsInfo.Name = "tsInfo";
+            this.tsInfo.Size = new System.Drawing.Size(468, 17);
+            this.tsInfo.Spring = true;
+            this.tsInfo.Text = "OK";
+            this.tsInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tsProgress
+            // 
+            this.tsProgress.Name = "tsProgress";
+            this.tsProgress.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
+            this.tsProgress.Size = new System.Drawing.Size(100, 16);
+            // 
+            // picMask
+            // 
+            this.picMask.Location = new System.Drawing.Point(4, 4);
+            this.picMask.Name = "picMask";
+            this.picMask.Size = new System.Drawing.Size(56, 56);
+            this.picMask.TabIndex = 5;
+            this.picMask.TabStop = false;
+            this.toolTip.SetToolTip(this.picMask, "Double Click to change the mask image");
+            this.picMask.DoubleClick += new System.EventHandler(this.picMask_DoubleClick);
+            // 
+            // picPreview
+            // 
+            this.picPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.picPreview.Location = new System.Drawing.Point(273, 70);
+            this.picPreview.Name = "picPreview";
+            this.picPreview.Size = new System.Drawing.Size(516, 478);
+            this.picPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picPreview.TabIndex = 0;
+            this.picPreview.TabStop = false;
+            this.picPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.picPreview_Paint);
+            this.picPreview.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picPreview_MouseDown);
+            this.picPreview.MouseLeave += new System.EventHandler(this.picPreview_MouseLeave);
+            this.picPreview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picPreview_MouseMove);
+            this.picPreview.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picPreview_MouseUp);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -416,15 +476,15 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
-            ((System.ComponentModel.ISupportInitialize)(this.picPreview)).EndInit();
             this.cmFileList.ResumeLayout(false);
             this.pnlTools.ResumeLayout(false);
             this.pnlTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numOutSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFaceSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMask)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMask)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPreview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -436,7 +496,7 @@
         private System.Windows.Forms.ListView lvFiles;
         private System.Windows.Forms.Panel pnlTools;
         private System.Windows.Forms.Button btnOrig;
-        private System.Windows.Forms.Button btnMask;
+        private System.Windows.Forms.Button btnMaskAll;
         private System.Windows.Forms.ColumnHeader colName;
         private System.Windows.Forms.ColumnHeader colPath;
         private System.Windows.Forms.PictureBox picMask;
@@ -462,6 +522,9 @@
         private System.Windows.Forms.ToolStripStatusLabel tsInfoFileName;
         private System.Windows.Forms.ToolStripStatusLabel tsInfoFileSize;
         private System.Windows.Forms.ToolStripStatusLabel tsInfoPreviewSize;
+        private System.Windows.Forms.Button btnMaskAtPreview;
+        private System.Windows.Forms.Button btnEraseAtPreview;
+        private System.Windows.Forms.Button btnSave;
     }
 }
 

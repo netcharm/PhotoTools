@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoTool", "PhotoTool\PhotoTool.csproj", "{A9358E25-10FF-4670-AF50-9CFD2E30D1F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AE004B2E-868C-44E6-BBFE-04E6B323FB96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE004B2E-868C-44E6-BBFE-04E6B323FB96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE004B2E-868C-44E6-BBFE-04E6B323FB96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9358E25-10FF-4670-AF50-9CFD2E30D1F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9358E25-10FF-4670-AF50-9CFD2E30D1F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9358E25-10FF-4670-AF50-9CFD2E30D1F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9358E25-10FF-4670-AF50-9CFD2E30D1F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

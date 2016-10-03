@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,7 @@ using System.Windows.Forms;
 using Accord.Imaging.Filters;
 using Accord.Vision.Detection;
 using Accord.Vision.Detection.Cascades;
+using AutoMask.common;
 
 namespace AutoMask
 {
@@ -24,6 +26,7 @@ namespace AutoMask
         private Image mask = null;
         private Image photo = null;
         private Image photo_mask = null;
+        private Image erase = null;
 
         private string[] PhotoExts = { ".jpg", ".jpeg", ".tif",".tiff", ".bmp", ".png", ".gif" };
 
@@ -33,6 +36,15 @@ namespace AutoMask
         private int faceSize = 25;
         private int OutSize = 1200;
         private bool GrayFirst = false;
+
+        private Dictionary<PointF, Image> faceList = new Dictionary<PointF, Image>();
+
+        private Stopwatch watch = Stopwatch.StartNew();
+
+        private bool mouseDown = false;
+        private ActionMode action = ActionMode.None;
+
+        private float faceSizeAverage = 25.0F;
 
         /// <summary>
         /// 
@@ -135,7 +147,8 @@ namespace AutoMask
         /// <returns></returns>
         private Image MaskFace( string imageFile, int faceSize = 20 )
         {
-            using ( Image image = Accord.Imaging.Image.FromFile( imageFile ) )                
+            //using ( Image image = Accord.Imaging.Image.FromFile( imageFile ) )
+            using ( Image image = ImageFast.FromFile( imageFile ) )
             {
                 return ( MaskFace( ResizeImage( RotateImage( image ), OutSize ), faceSize ) );
             }
@@ -151,21 +164,36 @@ namespace AutoMask
         private string MaskFace( string imageFile, int faceSize = 20, bool removeExif = true )
         {
             string fn = imageFile;
+            string fd = Path.GetDirectoryName(imageFile);
+            string fe = Path.GetExtension(imageFile);
+            fn = Path.Combine( fd, $"{Path.GetFileNameWithoutExtension( imageFile )}_masked{fe}" );
 
-            using ( Image image = MaskFace( imageFile, faceSize ) )
+            using ( Image src = ResizeImage( RotateImage( Accord.Imaging.Image.FromFile( imageFile ) ), OutSize ) )
             {
-                string fd = Path.GetDirectoryName(imageFile);
-                string fe = Path.GetExtension(imageFile);
-                fn = Path.Combine( fd, $"{Path.GetFileNameWithoutExtension( imageFile )}_masked{fe}" );
-
-                if ( removeExif )
+                //using ( Image dst = src.Clone() as Image )
+                using ( Image dst = new Bitmap( src.Width, src.Height, PixelFormat.Format32bppArgb ) )
                 {
-                    foreach ( int id in image.PropertyIdList )
+                    using ( Graphics g = Graphics.FromImage( dst ) )
                     {
-                        image.RemovePropertyItem( id );
+                        g.DrawImage( src, 0, 0, src.Width, src.Height );
+                        g.DrawImage( MaskFace( src, faceSize ), 0, 0, src.Width, src.Height );
                     }
+                    if ( !removeExif )
+                    {
+                        foreach ( PropertyItem pi in src.PropertyItems )
+                        {
+                            dst.SetPropertyItem( pi );
+                        }
+                    }
+                    else
+                    {
+                        foreach ( int id in dst.PropertyIdList )
+                        {
+                            dst.RemovePropertyItem( id );
+                        }
+                    }
+                    dst.Save( fn, ImageFormat.Jpeg );
                 }
-                image.Save( fn, ImageFormat.Jpeg );
             }
             return ( fn );
         }
@@ -198,35 +226,54 @@ namespace AutoMask
             if ( GrayFirst &&
                 dst.PixelFormat != PixelFormat.Format1bppIndexed &&
                 dst.PixelFormat != PixelFormat.Format4bppIndexed &&
-                dst.PixelFormat != PixelFormat.Format8bppIndexed)
+                dst.PixelFormat != PixelFormat.Format8bppIndexed )
             {
-                dst = new Grayscale( 0.2125, 0.7154, 0.0721 ).Apply( dst as Bitmap ) as Image; 
+                dst = new Grayscale( 0.2125, 0.7154, 0.0721 ).Apply( dst as Bitmap ) as Image;
             }
             Rectangle[] faces = detector.ProcessFrame(dst as Bitmap);
-            if(faces.Length<=0)
+            if ( faces.Length <= 0 )
             {
                 detector.SearchMode = ObjectDetectorSearchMode.Average;
                 //faces = detector.ProcessFrame( image as Bitmap );
                 faces = detector.ProcessFrame( dst as Bitmap );
             }
             #endregion
+            faceSizeAverage = (float)faces.Average( o => o.Width );
+
+            #region Create detected face image list
+            faceList.Clear();
+            if ( faces.Length > 0 )
+            {
+                float factorX = 1.75f;
+                float factorY = 1.75f;
+                foreach ( Rectangle r in faces )
+                {
+                    PointF k = new PointF(
+                        r.Left + (float) ( r.Width * ( 1 - factorX ) / 2.0f ),
+                        r.Top + (float) ( r.Height * ( 1 - factorY ) / 2.0f )
+                    );
+                    Image v = new Bitmap( 
+                        (int)Math.Ceiling(r.Width*factorX), 
+                        (int)Math.Ceiling(r.Height*factorY), 
+                        PixelFormat.Format32bppArgb 
+                    );
+                    using ( Graphics g = Graphics.FromImage( v ) )
+                    {
+                        g.DrawImage( mask, 0, 0, v.Width, v.Height );
+                    }
+                    faceList.Add( k, v);
+                }
+            }
+            #endregion
 
             #region Draw mask to photo
             if ( faces.Length > 0 )
             {
-                //RectanglesMarker marker = new RectanglesMarker(faces, Color.Fuchsia);
-                if( image.PixelFormat == PixelFormat.Format1bppIndexed || 
-                    image.PixelFormat == PixelFormat.Format4bppIndexed || 
-                    image.PixelFormat == PixelFormat.Format8bppIndexed )
-                {
-                    photo_mask = new GrayscaleToRGB().Apply( image.Clone() as Bitmap );
-                }
-                else photo_mask = image.Clone() as Image;
+                photo_mask = new Bitmap( image.Width, image.Height, PixelFormat.Format32bppArgb );
                 using ( Graphics g = Graphics.FromImage( photo_mask ) )
                 {
                     float factorX = 1.75f;
                     float factorY = 1.75f;
-                    //foreach ( Rectangle r in marker.Rectangles )
                     foreach ( Rectangle r in faces )
                     {
                         g.DrawImage( mask,
@@ -257,6 +304,8 @@ namespace AutoMask
         /// <param name="e"></param>
         private void MainForm_Load( object sender, EventArgs e )
         {
+            watch.Stop();
+
             #region extracting icon from application to this form window
             Icon = Icon.ExtractAssociatedIcon( Application.ExecutablePath );
             #endregion
@@ -270,6 +319,7 @@ namespace AutoMask
             {
                 mask = Icon.ToBitmap();
             }
+            erase = new Bitmap( mask.Width, mask.Height, PixelFormat.Format32bppArgb );
             #endregion
 
             #region Add file(s) from command line args
@@ -400,9 +450,12 @@ namespace AutoMask
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnMask_Click( object sender, EventArgs e )
+        private void btnMaskAll_Click( object sender, EventArgs e )
         {
-            btnMask.Enabled = false;
+            btnMaskAll.Enabled = false;
+            //btnMaskAll.BackColor = Color.DimGray;
+            btnMaskAll.BackColor = SystemColors.GrayText;
+
             files = new ListViewItem[lvFiles.Items.Count];
             lvFiles.Items.CopyTo( files, 0 );
 
@@ -417,7 +470,7 @@ namespace AutoMask
         private void btnOrig_MouseDown( object sender, MouseEventArgs e )
         {
             if ( photo != null )
-                picPreview.Image = photo;
+                picPreview.Image = null;// photo;
         }
 
         /// <summary>
@@ -450,6 +503,7 @@ namespace AutoMask
             {
                 if ( mask != null ) mask.Dispose();
                 mask = LoadMask( dlgOpen.FileName );
+                erase = new Bitmap( mask.Width, mask.Height, PixelFormat.Format32bppArgb );
                 picMask.Image = mask;
             }
         }
@@ -467,17 +521,26 @@ namespace AutoMask
                 string ff = e.Item.SubItems[1].Text;
                 if (File.Exists(ff))
                 {
-                    if(photo != null) photo.Dispose();
+                    watch.Restart();
+                    if (photo != null) photo.Dispose();
                     using ( Image of = Accord.Imaging.Image.FromFile( ff ) )
+                    //using ( Image of = ImageFast.FromFile( ff ) )
                     {
                         photo = ResizeImage( RotateImage( of ), OutSize ) as Bitmap;
-                        picPreview.Image = MaskFace( photo, faceSize );
 
+                        picPreview.BackgroundImage = photo;
+                        picPreview.BackgroundImageLayout = ImageLayout.Zoom;
+
+                        picPreview.Image = MaskFace( photo, faceSize );
+                        picPreview.SizeMode = PictureBoxSizeMode.Zoom;
+                        
                         tsInfoFileName.Text = $"{fn}";
                         tsInfoFileSize.Text = $"Image: {of.Width} x {of.Height}";
                         tsInfoPreviewSize.Text = $"View: {picPreview.Image.Width} x {picPreview.Image.Height}";
-                        tsInfo.Text = "OK";
+                        //tsInfo.Text = "OK";
                     }
+                    watch.Stop();
+                    tsInfo.Text = $"Cost {watch.ElapsedTicks / 1000000.0:n3}s";
                 }
             }
         }
@@ -542,7 +605,7 @@ namespace AutoMask
         /// <param name="e"></param>
         private void tsmiFileListMaskSelected_Click( object sender, EventArgs e )
         {
-            btnMask.Enabled = false;
+            btnMaskAll.Enabled = false;
             files = new ListViewItem[lvFiles.SelectedItems.Count];
             for ( int i = 0; i < files.Length; i++ )
             {
@@ -558,7 +621,7 @@ namespace AutoMask
         /// <param name="e"></param>
         private void tsmiFileListMaskAll_Click( object sender, EventArgs e )
         {
-            btnMask.PerformClick();
+            btnMaskAll.PerformClick();
         }
 
         /// <summary>
@@ -568,7 +631,9 @@ namespace AutoMask
         /// <param name="e"></param>
         private void bgwMask_DoWork( object sender, DoWorkEventArgs e )
         {
-            btnMask.Enabled = false;
+            watch.Restart();
+
+            btnMaskAll.Enabled = false;
 
             int faceSize = (int)numFaceSize.Value;
             bool removeExif = chkRemoveEXIF.Checked;
@@ -604,8 +669,204 @@ namespace AutoMask
         private void bgwMask_RunWorkerCompleted( object sender, RunWorkerCompletedEventArgs e )
         {
             tsProgress.Value = 100;
-            btnMask.Enabled = true;
+            btnMaskAll.BackColor = SystemColors.Control;
+            btnMaskAll.Enabled = true;
+            watch.Stop();
+            tsInfo.Text = $"Cost {watch.ElapsedTicks / 1000000.0:n3}s";
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnMaskAtPreview_Click( object sender, EventArgs e )
+        {
+            //if()
+            //btnMaskAtPreview.FlatStyle = FlatStyle.Flat;
+            btnMaskAtPreview.BackColor = Color.DeepSkyBlue;
+            btnEraseAtPreview.BackColor = SystemColors.Control;
+            action = ActionMode.Mask;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEraseAtPreview_Click( object sender, EventArgs e )
+        {
+            btnMaskAtPreview.BackColor = SystemColors.Control;
+            btnEraseAtPreview.BackColor = Color.DeepSkyBlue;
+            action = ActionMode.Erase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSave_Click( object sender, EventArgs e )
+        {
+            //
+        }
+
+        private void picPreview_MouseDown( object sender, MouseEventArgs e )
+        {
+            if ( picPreview.Image == null )
+            {
+                mouseDown = true;
+                return;
+            }
+            mouseDown = true;
+        }
+
+        private void picPreview_MouseUp( object sender, MouseEventArgs e )
+        {
+            if ( mouseDown )
+            {
+                if ( action == ActionMode.Mask )
+                {
+
+                }
+                else if ( action == ActionMode.Erase )
+                {
+                    DrawErase( e.Location );
+                }
+                photo_mask = picPreview.Image;
+            }
+            mouseDown = false;
+        }
+
+        private void picPreview_MouseLeave( object sender, EventArgs e )
+        {
+            if(mouseDown)
+                photo_mask = picPreview.Image;
+            mouseDown = false;
+        }
+
+        /// <span class="code-SummaryComment"><summary></span>
+        /// Gets the mouse position over the image when the <span class="code-SummaryComment"><see cref="PictureBox">PictureBox's</span>
+        /// <span class="code-SummaryComment"></see> <see cref="PictureBox.SizeMode">SizeMode</see> is set to Zoom</span>
+        /// <span class="code-SummaryComment"></summary></span>
+        /// <span class="code-SummaryComment"><param name="coordinates">Point to translate</param></span>
+        /// <span class="code-SummaryComment"><returns>A point relative to the top left corner of the </span>
+        /// <span class="code-SummaryComment"><see cref="PictureBox.Image">Image</see></span>
+        /// If the Image is null, no translation is performed
+        /// <span class="code-SummaryComment"></returns></span>
+        protected Point TranslateZoomMousePosition( Point coordinates )
+        {
+            // test to make sure our image is not null
+            if ( picPreview.Image == null ) return coordinates;
+            // Make sure our control width and height are not 0 and our 
+            // image width and height are not 0
+            if ( Width == 0 || Height == 0 || picPreview.Image.Width == 0 || picPreview.Image.Height == 0 ) return coordinates;
+            // This is the one that gets a little tricky. Essentially, need to check 
+            // the aspect ratio of the image to the aspect ratio of the control
+            // to determine how it is being rendered
+            float imageAspect = (float)picPreview.Image.Width / picPreview.Image.Height;
+            float controlAspect = (float)picPreview.Width / picPreview.Height;
+            float newX = coordinates.X;
+            float newY = coordinates.Y;
+            if ( imageAspect > controlAspect )
+            {
+                // This means that we are limited by width, 
+                // meaning the image fills up the entire control from left to right
+                float ratioWidth = (float)picPreview.Image.Width / picPreview.Width;
+                newX *= ratioWidth;
+                float scale = (float)picPreview.Width / picPreview.Image.Width;
+                float displayHeight = scale * picPreview.Image.Height;
+                float diffHeight = picPreview.Height - displayHeight;
+                diffHeight /= 2;
+                newY -= diffHeight;
+                newY /= scale;
+            }
+            else
+            {
+                // This means that we are limited by height, 
+                // meaning the image fills up the entire control from top to bottom
+                float ratioHeight = (float)picPreview.Image.Height / picPreview.Height;
+                newY *= ratioHeight;
+                float scale = (float)picPreview.Height / picPreview.Image.Height;
+                float displayWidth = scale * picPreview.Image.Width;
+                float diffWidth = picPreview.Width - displayWidth;
+                diffWidth /= 2;
+                newX -= diffWidth;
+                newX /= scale;
+            }
+            return new Point( (int) newX, (int) newY );
+        }
+
+        private void DrawErase( Point coordinates )
+        {
+            using ( Graphics gd = Graphics.FromImage( picPreview.Image ) )
+            {
+                PointF pos = TranslateZoomMousePosition(coordinates);
+
+                RectangleF rd = new RectangleF();
+                rd.X = pos.X - faceSizeAverage / 2.0f;
+                rd.Y = pos.Y - faceSizeAverage / 2.0f;
+                rd.Height = faceSizeAverage;
+                rd.Width = faceSizeAverage;
+
+                Rectangle rs = new Rectangle();
+                rs.X = 0;
+                rs.Y = 0;
+                rs.Height = mask.Width;
+                rs.Width = mask.Height;
+
+                using ( Graphics g = Graphics.FromImage( erase ) )
+                {
+                    Rectangle r = new Rectangle();
+                    r.X = 0;
+                    r.Y = 0;
+                    r.Height = mask.Width;
+                    r.Width = mask.Height;
+
+                    g.DrawImage( picPreview.BackgroundImage, r, rd, GraphicsUnit.Pixel );
+                }
+
+                var bitsMask = (mask as Bitmap).LockBits(rs, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+                var bitErase = (erase as Bitmap).LockBits(rs, ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+                unsafe
+                {
+                    for ( int y = 0; y < mask.Height; y++ )
+                    {
+                        byte* ptrMask = (byte*) bitsMask.Scan0 + y * bitsMask.Stride;
+                        byte* ptrOutput = (byte*) bitErase.Scan0 + y * bitErase.Stride;
+                        for ( int x = 0; x < mask.Width; x++ )
+                        {
+                            ptrOutput[4 * x + 3] = ptrMask[4 * x + 3];        // alpha
+                        }
+                    }
+                }
+                ( mask as Bitmap ).UnlockBits( bitsMask );
+                ( erase as Bitmap ).UnlockBits( bitsMask );
+                //erase.Save( "test_01.png" );
+
+                gd.DrawImage( erase, rd, rs, GraphicsUnit.Pixel );
+            }
+            picPreview.Invalidate();
+        }
+
+        private void picPreview_MouseMove( object sender, MouseEventArgs e )
+        {
+            if ( mouseDown )
+            {
+                if ( action == ActionMode.Mask )
+                {
+
+                }
+                else if ( action == ActionMode.Erase )
+                {
+                    DrawErase( e.Location );
+                }
+            }
+        }
+
+        private void picPreview_Paint( object sender, PaintEventArgs e )
+        {
+
+        }
     }
 }
