@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Resources;
 using Mono.Addins;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 [assembly: AddinRoot( "AddinHost", "1.0" )]
 namespace NetCharm.Image.Addins
@@ -17,7 +18,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
-    public class AddinHost : Object
+    public class AddinHost : UserControl
     {
         #region addin list properties
         /// <summary>
@@ -120,6 +121,7 @@ namespace NetCharm.Image.Addins
 
             foreach ( IAddin addin in AddinManager.GetExtensionObjects<IAddin>( true ) )
             {
+                addin.Host = this;
                 switch ( addin.Type )
                 {
                     case AddinType.App: _apps.Add( addin.Name, addin ); break;

@@ -21,6 +21,15 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
+        private AddinHost _host = null;
+        public AddinHost Host
+        {
+            get { return _host; }
+            set { _host = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Location
         {
             get
@@ -119,7 +128,8 @@ namespace BatchProcess
         {
             get
             {
-                return ( null );
+                return ( Properties.Resources.Batch_32x );
+                //return ( null );
                 //throw new NotImplementedException();
             }
         }
@@ -130,7 +140,8 @@ namespace BatchProcess
         {
             get
             {
-                return ( null );
+                return ( Properties.Resources.Batch_16x );
+                //return ( null );
                 //throw new NotImplementedException();
             }
         }
@@ -152,7 +163,10 @@ namespace BatchProcess
         {
             get { return ( _params ); }
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public void Show()
         {
             MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
@@ -162,8 +176,8 @@ namespace BatchProcess
         /// </summary>
         public void Show( Form parent = null )
         {
-            Form fm = new BatchProcessForm();
-            fm.Text = "Batch Photos Processing";
+            BatchProcessForm fm = new BatchProcessForm(Host);
+            fm.Text = fv.ProductName;
             fm.MdiParent = parent;
             fm.WindowState = FormWindowState.Maximized;
             fm.Show();

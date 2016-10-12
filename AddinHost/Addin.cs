@@ -222,6 +222,7 @@ namespace NetCharm.Image.Addins
     [TypeExtensionPoint]
     public interface IAddin
     {
+        AddinHost Host { get; set; }
         /// <summary>
         /// 
         /// </summary>

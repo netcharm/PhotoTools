@@ -23,6 +23,15 @@ namespace AddinTest
         /// <summary>
         /// 
         /// </summary>
+        private AddinHost _host = null;
+        public AddinHost Host
+        {
+            get { return _host; }
+            set { _host = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Location
         {
             get
