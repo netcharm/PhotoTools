@@ -173,6 +173,26 @@ namespace PhotoTool.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Marquee_16x {
+            get {
+                object obj = ResourceManager.GetObject("Marquee_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Marquee_32x {
+            get {
+                object obj = ResourceManager.GetObject("Marquee_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap OptionsDropdown_23x16 {
             get {
                 object obj = ResourceManager.GetObject("OptionsDropdown_23x16", resourceCulture);

@@ -147,13 +147,6 @@
   <data name="RibTabMainEdit.Text" xml:space="preserve">
     <value>Edit</value>
   </data>
-  <data name="cmdEditCut.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
-        TkSuQmCC
-</value>
-  </data>
   <data name="cmdEditCut.Text" xml:space="preserve">
     <value>Cut</value>
   </data>
@@ -187,6 +180,9 @@
   <data name="cmdEditClear.Text" xml:space="preserve">
     <value>Clear</value>
   </data>
+  <data name="cmdEditClear.ToolTip" xml:space="preserve">
+    <value>Clear Content</value>
+  </data>
   <data name="RibTabEdit.Text" xml:space="preserve">
     <value>Edit</value>
   </data>
@@ -206,6 +202,107 @@
   <data name="cmdActionReScan.Text" xml:space="preserve">
     <value>Re-Scan</value>
   </data>
+  <data name="RibTabActInternal.Text" xml:space="preserve">
+    <value>Internal</value>
+  </data>
+  <data name="ribbonButtonList1.Text" xml:space="preserve">
+    <value>Internal Actions</value>
+  </data>
+  <data name="ribbonButton3.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton3.Text" xml:space="preserve">
+    <value>Text Watermark</value>
+  </data>
+  <data name="ribbonButton4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton4.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton4.Text" xml:space="preserve">
+    <value>Image Watermark</value>
+  </data>
+  <data name="ribbonButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton1.Text" xml:space="preserve">
+    <value>ribbonButton1</value>
+  </data>
+  <data name="ribbonButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton2.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton2.Text" xml:space="preserve">
+    <value>ribbonButton2</value>
+  </data>
+  <data name="ribbonButton5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton5.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton5.Text" xml:space="preserve">
+    <value>ribbonButton5</value>
+  </data>
+  <data name="ribbonButton6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton6.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton6.Text" xml:space="preserve">
+    <value>ribbonButton6</value>
+  </data>
   <data name="RibTabFilter.Text" xml:space="preserve">
     <value>Filter</value>
   </data>
@@ -222,8 +319,203 @@
   <data name="cmdFilterReScan.Text" xml:space="preserve">
     <value>Re-Scan</value>
   </data>
+  <data name="ribbonPanel1.Text" xml:space="preserve">
+    <value>Internal</value>
+  </data>
+  <data name="ribbonButtonList2.Text" xml:space="preserve">
+    <value>ribbonButtonList2</value>
+  </data>
+  <data name="ribbonButton7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton7.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton7.Text" xml:space="preserve">
+    <value>ribbonButton7</value>
+  </data>
+  <data name="ribbonButton8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton8.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton8.Text" xml:space="preserve">
+    <value>ribbonButton8</value>
+  </data>
+  <data name="ribbonButton9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton9.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton9.Text" xml:space="preserve">
+    <value>ribbonButton9</value>
+  </data>
+  <data name="ribbonButton10.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton10.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton10.Text" xml:space="preserve">
+    <value>ribbonButton10</value>
+  </data>
+  <data name="ribbonPanel2.Text" xml:space="preserve">
+    <value>External</value>
+  </data>
+  <data name="ribbonButtonList3.Text" xml:space="preserve">
+    <value>ribbonButtonList3</value>
+  </data>
+  <data name="ribbonButton11.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton11.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton11.Text" xml:space="preserve">
+    <value>ribbonButton11</value>
+  </data>
+  <data name="ribbonButton12.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton12.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton12.Text" xml:space="preserve">
+    <value>ribbonButton12</value>
+  </data>
+  <data name="ribbonButton13.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton13.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton13.Text" xml:space="preserve">
+    <value>ribbonButton13</value>
+  </data>
+  <data name="ribbonButton14.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ribbonButton14.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ribbonButton14.Text" xml:space="preserve">
+    <value>ribbonButton14</value>
+  </data>
   <data name="RibTabSetting.Text" xml:space="preserve">
     <value>Setting</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ribbonMain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="ribbonMain.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 9pt, style=Bold</value>
+  </data>
+  <data name="ribbonMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ribbonMain.OrbDropDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ribbonMain.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>527, 160</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ribbonMain.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ribbonMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>794, 140</value>
+  </data>
+  <data name="ribbonMain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ribbonMain.Text" xml:space="preserve">
+    <value>Ribbon</value>
+  </data>
+  <data name="&gt;&gt;ribbonMain.Name" xml:space="preserve">
+    <value>ribbonMain</value>
+  </data>
+  <data name="&gt;&gt;ribbonMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Ribbon, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ribbonMain.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ribOrbMiOpen.Text" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="ribOrbMiSave.Text" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="ribOptBtnExit.Text" xml:space="preserve">
     <value>Exit</value>
@@ -387,79 +679,55 @@
   <data name="cmdStyle2013.Text" xml:space="preserve">
     <value>Office 2013</value>
   </data>
-  <data name="ribbonButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ribbonOrbOptionButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
         QwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ribbonButton2.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ribbonOrbOptionButton1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
         TkSuQmCC
 </value>
   </data>
-  <data name="ribbonMain.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 9pt, style=Bold</value>
-  </data>
-  <data name="ribbonMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="ribbonMain.OrbDropDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="ribbonMain.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>527, 160</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ribbonMain.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ribbonMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>794, 140</value>
-  </data>
-  <data name="ribbonMain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ribbonMain.Text" xml:space="preserve">
-    <value>Ribbon</value>
-  </data>
-  <data name="&gt;&gt;ribbonMain.Name" xml:space="preserve">
-    <value>ribbonMain</value>
-  </data>
-  <data name="&gt;&gt;ribbonMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Ribbon, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ribbonMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ribbonMain.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ribOrbMiOpen.Text" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="ribOrbMiSave.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="ribbonOrbOptionButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
-        QwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="ribbonOrbOptionButton1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
-        TkSuQmCC
-</value>
-  </data>
   <data name="ribbonOrbOptionButton1.Text" xml:space="preserve">
     <value>ribbonOrbOptionButton1</value>
+  </data>
+  <metadata name="status.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="status.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 572</value>
+  </data>
+  <data name="status.Size" type="System.Drawing.Size, System.Drawing">
+    <value>794, 22</value>
+  </data>
+  <data name="status.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="status.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;status.Name" xml:space="preserve">
+    <value>status</value>
+  </data>
+  <data name="&gt;&gt;status.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;status.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;status.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>106, 17</value>
+  </metadata>
+  <data name="RibTabMainApp.Text" xml:space="preserve">
+    <value>Application</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -554,6 +822,54 @@
   <data name="&gt;&gt;cmdActionReScan.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="&gt;&gt;RibTabActInternal.Name" xml:space="preserve">
+    <value>RibTabActInternal</value>
+  </data>
+  <data name="&gt;&gt;RibTabActInternal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButtonList1.Name" xml:space="preserve">
+    <value>ribbonButtonList1</value>
+  </data>
+  <data name="&gt;&gt;ribbonButtonList1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButtonList, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton3.Name" xml:space="preserve">
+    <value>ribbonButton3</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton4.Name" xml:space="preserve">
+    <value>ribbonButton4</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton1.Name" xml:space="preserve">
+    <value>ribbonButton1</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton2.Name" xml:space="preserve">
+    <value>ribbonButton2</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton5.Name" xml:space="preserve">
+    <value>ribbonButton5</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton6.Name" xml:space="preserve">
+    <value>ribbonButton6</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;RibTabFilter.Name" xml:space="preserve">
     <value>RibTabFilter</value>
   </data>
@@ -572,6 +888,78 @@
   <data name="&gt;&gt;cmdFilterReScan.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="&gt;&gt;ribbonPanel1.Name" xml:space="preserve">
+    <value>ribbonPanel1</value>
+  </data>
+  <data name="&gt;&gt;ribbonPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButtonList2.Name" xml:space="preserve">
+    <value>ribbonButtonList2</value>
+  </data>
+  <data name="&gt;&gt;ribbonButtonList2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButtonList, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton7.Name" xml:space="preserve">
+    <value>ribbonButton7</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton8.Name" xml:space="preserve">
+    <value>ribbonButton8</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton9.Name" xml:space="preserve">
+    <value>ribbonButton9</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton10.Name" xml:space="preserve">
+    <value>ribbonButton10</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonPanel2.Name" xml:space="preserve">
+    <value>ribbonPanel2</value>
+  </data>
+  <data name="&gt;&gt;ribbonPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButtonList3.Name" xml:space="preserve">
+    <value>ribbonButtonList3</value>
+  </data>
+  <data name="&gt;&gt;ribbonButtonList3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButtonList, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton11.Name" xml:space="preserve">
+    <value>ribbonButton11</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton12.Name" xml:space="preserve">
+    <value>ribbonButton12</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton13.Name" xml:space="preserve">
+    <value>ribbonButton13</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton14.Name" xml:space="preserve">
+    <value>ribbonButton14</value>
+  </data>
+  <data name="&gt;&gt;ribbonButton14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;RibTabSetting.Name" xml:space="preserve">
     <value>RibTabSetting</value>
   </data>
@@ -584,6 +972,18 @@
   <data name="&gt;&gt;ribbonSeparator1.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonSeparator, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="&gt;&gt;ribOrbMiOpen.Name" xml:space="preserve">
+    <value>ribOrbMiOpen</value>
+  </data>
+  <data name="&gt;&gt;ribOrbMiOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonOrbMenuItem, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribOrbMiSave.Name" xml:space="preserve">
+    <value>ribOrbMiSave</value>
+  </data>
+  <data name="&gt;&gt;ribOrbMiSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonOrbMenuItem, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;ribOptBtnExit.Name" xml:space="preserve">
     <value>ribOptBtnExit</value>
   </data>
@@ -594,7 +994,7 @@
     <value>ribOptBtnOptions</value>
   </data>
   <data name="&gt;&gt;ribOptBtnOptions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.RibbonOrbOptionButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ribThemeSelect.Name" xml:space="preserve">
     <value>ribThemeSelect</value>
@@ -650,29 +1050,23 @@
   <data name="&gt;&gt;cmdStyle2013.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;ribbonButton2.Name" xml:space="preserve">
-    <value>ribbonButton2</value>
-  </data>
-  <data name="&gt;&gt;ribbonButton2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ribOrbMiOpen.Name" xml:space="preserve">
-    <value>ribOrbMiOpen</value>
-  </data>
-  <data name="&gt;&gt;ribOrbMiOpen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonOrbMenuItem, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ribOrbMiSave.Name" xml:space="preserve">
-    <value>ribOrbMiSave</value>
-  </data>
-  <data name="&gt;&gt;ribOrbMiSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonOrbMenuItem, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;ribbonOrbOptionButton1.Name" xml:space="preserve">
     <value>ribbonOrbOptionButton1</value>
   </data>
   <data name="&gt;&gt;ribbonOrbOptionButton1.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonOrbOptionButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RibTabMainApp.Name" xml:space="preserve">
+    <value>RibTabMainApp</value>
+  </data>
+  <data name="&gt;&gt;RibTabMainApp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

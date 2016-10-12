@@ -49,6 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>image_32x.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -97,7 +100,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="RibbonMarkup.ribbon" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -122,7 +124,6 @@
     <None Include="icons\FolderOpen_32x42_72.png" />
     <None Include="icons\btn_save.ico" />
     <None Include="icons\btn_save_32x32.png" />
-    <Content Include="RibbonMarkup.xml" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -141,14 +142,22 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\Marquee_32x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\Marquee_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="image_32x.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AddinHost\AddinHost.csproj">
+      <Project>{c2275eb5-e68a-42d5-b285-0083b1b7840c}</Project>
+      <Name>AddinHost</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\RibbonLib.2.7.9.0\build\RibbonLib.targets" Condition="Exists('..\packages\RibbonLib.2.7.9.0\build\RibbonLib.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\RibbonLib.2.7.9.0\build\RibbonLib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\RibbonLib.2.7.9.0\build\RibbonLib.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
