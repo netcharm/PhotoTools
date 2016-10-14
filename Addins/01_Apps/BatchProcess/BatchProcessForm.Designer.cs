@@ -43,6 +43,7 @@
             this.imgPreview = new Cyotek.Windows.Forms.ImageBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.cmsFileList.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -157,8 +158,7 @@
             // 
             // dlgOpen
             // 
-            this.dlgOpen.DefaultExt = "*.jpg";
-            this.dlgOpen.FileName = "*.jpg";
+            this.dlgOpen.DefaultExt = "jpg";
             this.dlgOpen.Filter = "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All File(" +
     "*.*)|*.*";
             this.dlgOpen.Multiselect = true;
@@ -199,5 +199,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiProcessAll;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.OpenFileDialog dlgOpen;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

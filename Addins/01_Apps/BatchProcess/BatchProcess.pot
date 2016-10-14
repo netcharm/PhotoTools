@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BatchProcess\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-10-13 23:20+0800\n"
-"PO-Revision-Date: 2016-10-13 23:20+0800\n"
+"POT-Creation-Date: 2016-10-15 00:38+0800\n"
+"PO-Revision-Date: 2016-10-15 00:38+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,35 +20,35 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: BatchProcessForm.Designer.cs:70
+#: BatchProcessForm.Designer.cs:71
 msgid "File"
 msgstr ""
 
-#: BatchProcessForm.Designer.cs:75
+#: BatchProcessForm.Designer.cs:76
 msgid "Full Path"
 msgstr ""
 
-#: BatchProcessForm.Designer.cs:95
+#: BatchProcessForm.Designer.cs:96
 msgid "Add Image"
 msgstr ""
 
-#: BatchProcessForm.Designer.cs:102
+#: BatchProcessForm.Designer.cs:103
 msgid "Remove Image"
 msgstr ""
 
-#: BatchProcessForm.Designer.cs:114
+#: BatchProcessForm.Designer.cs:115
 msgid "Clear"
 msgstr ""
 
-#: BatchProcessForm.Designer.cs:126
+#: BatchProcessForm.Designer.cs:127
 msgid "Process Selected"
 msgstr ""
 
-#: BatchProcessForm.Designer.cs:133
+#: BatchProcessForm.Designer.cs:134
 msgid "Process All"
 msgstr ""
 
-#: BatchProcessForm.Designer.cs:148
+#: BatchProcessForm.Designer.cs:149
 msgid "Preview"
 msgstr ""
 
@@ -57,9 +57,17 @@ msgid "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|A
 msgstr ""
 
 #: BatchProcessForm.Designer.cs:167
-msgid "Add Image(s"
+msgid "Add Image(s)"
 msgstr ""
 
 #: BatchProcessForm.Designer.cs:179
 msgid "Batch Image Processing"
+msgstr ""
+
+#: Batch.cs:109
+msgid "Batch"
+msgstr ""
+
+#: Batch.cs:118
+msgid "Batch Image Process"
 msgstr ""

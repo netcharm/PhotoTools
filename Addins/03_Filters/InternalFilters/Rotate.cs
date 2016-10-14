@@ -17,8 +17,6 @@ namespace InternalFilters
     class Rotate : AddinBase
     {
         private RotateForm fm = null;
-        //private Image ImgSrc = null;
-        //private Image ImgDst = null;
 
         /// <summary>
         /// 
@@ -67,10 +65,10 @@ namespace InternalFilters
             }
             if ( fm.ShowDialog() == DialogResult.OK )
             {
-                if ( Params.ContainsKey( "Width" ) )
-                    Params["Mode"] = fm.GetMode( "Width" );
+                if ( Params.ContainsKey( "Mode" ) )
+                    Params["Mode"] = fm.GetMode( "Mode" );
                 else
-                    Params.Add( "Mode", fm.GetMode( "Width" ) );
+                    Params.Add( "Mode", fm.GetMode( "Mode" ) );
 
                 if ( Params.ContainsKey( "Angle" ) )
                     Params["Angle"] = fm.GetAngle( "Angle" );
@@ -106,32 +104,6 @@ namespace InternalFilters
 
                 Image dst = RotateForm.RotateImage( image, flip, angle, keep );
                 return ( dst );
-
-                //if ( angle < 0 ) angle = 360 + angle;
-
-                //if ( angle == 0)
-                //{
-                //    RotateFlipType flip = (RotateFlipType)Params["Mode"].Value;
-                //    dst.RotateFlip( flip );
-                //    return ( dst );
-                //}
-                //else if ( angle % 90 == 0 )
-                //{
-                //    RotateFlipType flip = RotateFlipType.RotateNoneFlipNone;
-                //    if ( angle % 360 == 000 ) flip = RotateFlipType.RotateNoneFlipNone;
-                //    else if ( angle % 360 == 090 ) flip = RotateFlipType.Rotate90FlipNone;
-                //    else if ( angle % 360 == 180 ) flip = RotateFlipType.Rotate180FlipNone;
-                //    else if ( angle % 360 == 270 ) flip = RotateFlipType.Rotate270FlipNone;
-
-                //    dst.RotateFlip( flip );
-                //    return ( dst );
-                //}
-                //else
-                //{
-                //    bool keep = (bool)Params["KeepSize"].Value;
-                //    RotateBicubic filter = new RotateBicubic(-angle, keep);
-                //    return ( filter.Apply( dst as Bitmap ) );
-                //}
             }
             return ( image );
         }

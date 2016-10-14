@@ -256,6 +256,7 @@ namespace PhotoTool
                     addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
                     addins.CurrentFilter.Show( this );
                     addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                    tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height}";
                 }
             }
         }
@@ -266,7 +267,7 @@ namespace PhotoTool
         public MainForm()
         {
             InitializeComponent();
-            I18N i10n = new I18N( null, this );
+            I18N i10n = new I18N( null, this, toolTip, new object[] { status, dlgOpen, dlgSave } );
             TranslateRibbon( ribbonMain );
         }
 
@@ -468,9 +469,19 @@ namespace PhotoTool
             {
                 if ( dlgOpen.ShowDialog() == DialogResult.OK )
                 {
-                    addins.CurrentApp.ImageData = new Bitmap( dlgOpen.FileName );
+                    if( addins.CurrentApp.SupportMultiFile )
+                    {
+                        addins.CurrentApp.Open( dlgOpen.FileNames );
+                    }
+                    else
+                    {
+                        addins.CurrentApp.Open( dlgOpen.FileName );
+                    }
                     tssLabelImageName.Text = Path.GetFileName( dlgOpen.FileName );
-                    tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height}";
+                    if( addins.CurrentApp.ImageData is Image)
+                    {
+                        tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height}";
+                    }
                 }
             }
         }

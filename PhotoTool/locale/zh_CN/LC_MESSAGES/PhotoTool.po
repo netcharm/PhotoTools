@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PhotoTool\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-10-13 21:15+0800\n"
+"POT-Creation-Date: 2016-10-15 00:38+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -28,158 +28,188 @@ msgstr "基本功能"
 msgid "File"
 msgstr "文件"
 
-#: MainForm.resx:135 -> cmdFileOpen.Text.value MainForm.resx:317
-#: ribOrbMiOpen.Text.value
-msgid "Open"
-msgstr "打开"
-
-#: MainForm.resx:145 -> cmdFileSave.Text.value MainForm.resx:320
-#: ribOrbMiSave.Text.value
-msgid "Save"
-msgstr "保存"
-
-#: MainForm.resx:148 -> RibTabMainEdit.Text.value MainForm.resx:190
+#: MainForm.resx:127 -> RibTabMainEdit.Text.value MainForm.resx:133
 #: RibTabEdit.Text.value
 msgid "Edit"
 msgstr "编辑"
 
-#: MainForm.resx:151 -> cmdEditCut.Text.value
-msgid "Cut"
-msgstr "剪切"
-
-#: MainForm.resx:161 -> cmdEditCopy.Text.value
-msgid "Copy"
-msgstr "复制"
-
-#: MainForm.resx:171 -> cmdEditPaste.Text.value
-msgid "Paste"
-msgstr "粘贴"
-
-#: MainForm.resx:181 -> cmdEditClear.Text.value
-msgid "Clear"
-msgstr "清除"
-
-#: MainForm.resx:184 -> cmdEditClear.ToolTip.value
-msgid "Clear Content"
-msgstr "清除内容"
-
-#: MainForm.resx:187 -> RibTabMainApp.Text.value
+#: MainForm.resx:130 -> RibTabMainApp.Text.value
 msgid "Application"
 msgstr "应用"
 
-#: MainForm.resx:193 -> RibTabAction.Text.value
+#: MainForm.resx:136 -> RibTabAction.Text.value
 msgid "Action"
 msgstr "功能"
 
-#: MainForm.resx:196 -> RibTabActManager.Text.value MainForm.resx:233
+#: MainForm.resx:139 -> RibTabActManager.Text.value MainForm.resx:169
 #: RibTabFilterManager.Text.value
 msgid "Manager"
 msgstr "管理"
 
-#: MainForm.resx:206 -> cmdActionReScan.Text.value MainForm.resx:258
-#: cmdFilterReScan.Text.value
-msgid "Re-Scan"
-msgstr "重新扫描"
-
-#: MainForm.resx:209 -> RibTabActInternal.Text.value MainForm.resx:218
-#: RibTabActInternalDropList.Text.value MainForm.resx:242
-#: RibTabFilterInternal.Text.value MainForm.resx:261
+#: MainForm.resx:142 -> RibTabActInternal.Text.value MainForm.resx:151
+#: RibTabActInternalDropList.Text.value MainForm.resx:172
+#: RibTabFilterInternal.Text.value MainForm.resx:181
 #: RibTabFilterInternalDropList.Text.value
 msgid "Internal"
 msgstr "内部"
 
-#: MainForm.resx:212 -> RibTabActInternalList.Text.value MainForm.resx:215
+#: MainForm.resx:145 -> RibTabActInternalList.Text.value MainForm.resx:148
 #: RibTabActInternalList.ToolTip.value
 msgid "Internal Actions"
 msgstr "内部功能"
 
-#: MainForm.resx:221 -> RibTabActExternal.Text.value MainForm.resx:230
-#: RibTabActExternalDropList.Text.value MainForm.resx:245
-#: RibTabFilterExternal.Text.value MainForm.resx:270
+#: MainForm.resx:154 -> RibTabActExternal.Text.value MainForm.resx:163
+#: RibTabActExternalDropList.Text.value MainForm.resx:184
+#: RibTabFilterExternal.Text.value MainForm.resx:193
 #: RibTabFilterExternalDropList.Text.value
 msgid "External"
 msgstr "扩展"
 
-#: MainForm.resx:224 -> RibTabActExternalList.Text.value MainForm.resx:227
+#: MainForm.resx:157 -> RibTabActExternalList.Text.value MainForm.resx:160
 #: RibTabActExternalList.ToolTip.value
 msgid "External Actions"
 msgstr "扩展功能"
 
-#: MainForm.resx:236 -> RibTabFilterInternalList.Text.value MainForm.resx:239
+#: MainForm.resx:166 -> RibTabFilter.Text.value
+msgid "Filter"
+msgstr "滤镜"
+
+#: MainForm.resx:175 -> RibTabFilterInternalList.Text.value MainForm.resx:178
 #: RibTabFilterInternalList.ToolTip.value
 msgid "Internal Filters"
 msgstr "内部滤镜"
 
-#: MainForm.resx:248 -> RibTabFilter.Text.value
-msgid "Filter"
-msgstr "滤镜"
-
-#: MainForm.resx:264 -> RibTabFilterExternalList.Text.value MainForm.resx:267
+#: MainForm.resx:187 -> RibTabFilterExternalList.Text.value MainForm.resx:190
 #: RibTabFilterExternalList.ToolTip.value
 msgid "External Filters"
 msgstr "扩展滤镜"
 
-#: MainForm.resx:273 -> RibTabSetting.Text.value
+#: MainForm.resx:196 -> RibTabSetting.Text.value
 msgid "Setting"
 msgstr "设定"
 
-#: MainForm.resx:302 -> ribbonMain.Text.value
+#: MainForm.resx:213 -> status.Text.value
+msgid "OK"
+msgstr "确认"
+
+#: MainForm.resx:234 -> dlgOpen.Filter.value
+msgid ""
+"Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All "
+"File(*.*)|*.*"
+msgstr ""
+"图像文件(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|全部文"
+"件(*.*)|*.*"
+
+#: MainForm.resx:240 -> dlgSave.Filter.value
+msgid ""
+"JPEG File(*.jpg;*.jpeg)|*.jpg;*.jpeg|PNG File(*.png)|*.png|TIFF File(*.tif;*."
+"tiff)|*.tif;*.tiff|Bitmap File(*.png)|*.bmp|GIF File(*.gif)|*.gif|All File(*."
+"*)|*.*"
+msgstr ""
+"JPEG 文件(*.jpg;*.jpeg)|*.jpg;*.jpeg|PNG 文件(*.png)|*.png|TIFF 文件(*.tif;*."
+"tiff)|*.tif;*.tiff|位图文件(*.png)|*.bmp|GIF 文件(*.gif)|*.gif|全部文件(*."
+"*)|*.*"
+
+#: MainForm.resx:268 -> ribbonMain.Text.value
 msgid "Ribbon"
 msgstr ""
 
-#: MainForm.resx:323 -> ribOptBtnExit.Text.value
+#: MainForm.resx:290 -> cmdFileOpen.Text.value MainForm.resx:359
+#: ribOrbMiOpen.Text.value
+msgid "Open"
+msgstr "打开"
+
+#: MainForm.resx:300 -> cmdFileSave.Text.value MainForm.resx:362
+#: ribOrbMiSave.Text.value
+msgid "Save"
+msgstr "保存"
+
+#: MainForm.resx:303 -> cmdEditCut.Text.value
+msgid "Cut"
+msgstr "剪切"
+
+#: MainForm.resx:313 -> cmdEditCopy.Text.value
+msgid "Copy"
+msgstr "复制"
+
+#: MainForm.resx:323 -> cmdEditPaste.Text.value
+msgid "Paste"
+msgstr "粘贴"
+
+#: MainForm.resx:333 -> cmdEditClear.Text.value
+msgid "Clear"
+msgstr "清除"
+
+#: MainForm.resx:336 -> cmdEditClear.ToolTip.value
+msgid "Clear Content"
+msgstr "清除内容"
+
+#: MainForm.resx:346 -> cmdActionReScan.Text.value MainForm.resx:356
+#: cmdFilterReScan.Text.value
+msgid "Re-Scan"
+msgstr "重新扫描"
+
+#: MainForm.resx:365 -> ribOptBtnExit.Text.value
 msgid "Exit"
 msgstr "退出"
 
-#: MainForm.resx:326 -> ribOptBtnOptions.Text.value
+#: MainForm.resx:368 -> ribOptBtnOptions.Text.value
 msgid "Options"
 msgstr "选项"
 
-#: MainForm.resx:343 -> ribThemeSelect.Text.value
+#: MainForm.resx:385 -> ribThemeSelect.Text.value
 msgid "Theme"
 msgstr "主题颜色"
 
-#: MainForm.resx:360 -> cmdThemeBlue.Text.value
+#: MainForm.resx:402 -> cmdThemeBlue.Text.value
 msgid "Blue"
 msgstr "蓝色"
 
-#: MainForm.resx:377 -> cmdThemeBlack.Text.value
+#: MainForm.resx:419 -> cmdThemeBlack.Text.value
 msgid "Black"
 msgstr "黑色"
 
-#: MainForm.resx:394 -> cmdThemeGreen.Text.value
+#: MainForm.resx:436 -> cmdThemeGreen.Text.value
 msgid "Green"
 msgstr "绿色"
 
-#: MainForm.resx:411 -> cmdThemePurple.Text.value
+#: MainForm.resx:453 -> cmdThemePurple.Text.value
 msgid "Purple"
 msgstr "紫色"
 
-#: MainForm.resx:428 -> ribStyleSelect.Text.value MainForm.resx:431
+#: MainForm.resx:470 -> ribStyleSelect.Text.value MainForm.resx:473
 #: ribStyleSelect.ToolTip.value
 msgid "Style"
 msgstr "主题风格"
 
-#: MainForm.resx:448 -> cmdStyle2007.Text.value
+#: MainForm.resx:490 -> cmdStyle2007.Text.value
 msgid "Office 2007"
 msgstr ""
 
-#: MainForm.resx:465 -> cmdStyle2010.Text.value
+#: MainForm.resx:507 -> cmdStyle2010.Text.value
 msgid "Office 2010"
 msgstr ""
 
-#: MainForm.resx:482 -> cmdStyle2013.Text.value
+#: MainForm.resx:524 -> cmdStyle2013.Text.value
 msgid "Office 2013"
 msgstr ""
 
-#: MainForm.resx:497 -> status.Text.value
-msgid "OK"
-msgstr "确认"
+#: MainForm.resx:530 -> tssLabelImageName.Text.value
+msgid "Image File"
+msgstr "图像文件"
 
-#: MainForm.resx:539 -> $this.Text.value
+#: MainForm.resx:536 -> tssLabelImageSize.Text.value
+msgid "Image Size"
+msgstr "图像大小"
+
+#: MainForm.resx:542 -> tssLabelImageInfo.Text.value
+msgid "Ready"
+msgstr "就绪"
+
+#: MainForm.resx:560 -> $this.Text.value
 msgid "Photo Tool"
 msgstr "图像工具"
 
-#: MainForm.Designer.cs:296
+#: MainForm.Designer.cs:280
 msgid "Recent"
 msgstr "最近打开的"

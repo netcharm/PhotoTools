@@ -1,14 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using Accord.Imaging.Filters;
+using NGettext.WinForm;
 
 namespace NetCharm.Image.Addins
 {
     public static class AddinUtils
     {
+        /// <summary>
+        /// Fake function for gettext collection msgid
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public static string T(string t)
+        {
+            return ( t );
+        }
+
+        public static string _( IAddin addin, string t )
+        {
+            if ( addin is IAddin)
+            {
+                string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( addin.Location ) ), "locale" );
+                I18N i10n = new I18N( addin.Domain, addinRoot );
+                return ( I18N._( i10n.Catalog, t ) );
+            }
+            return ( t );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
+        public static void Translate( IAddin addin, Form form, ToolTip tooltip = null, object[] extra = null )
+        {
+            if(addin is IAddin && form is Form)
+            {
+                string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( addin.Location ) ), "locale" );
+
+                I18N i10n = new I18N( addin.Domain, addinRoot, form, tooltip, extra );
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>

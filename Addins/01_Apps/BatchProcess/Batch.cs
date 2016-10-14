@@ -106,23 +106,23 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
-        private string _displayName = "Batch";
+        private string _displayName = AddinUtils.T("Batch");
         public string DisplayName
         {
-            get { return ( _displayName ); }
+            get { return ( AddinUtils._( this, _displayName) ); }
             set { _displayName = value; }
         }
         /// <summary>
         /// 
         /// </summary>
-        private string _description = "";
+        private string _description = AddinUtils.T("Batch Image Process");
         public string Description
         {
             get
             {
                 if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
                 if ( string.IsNullOrEmpty( _description ) ) _description = fv.FileDescription;
-                return ( _description );
+                return ( AddinUtils._( this, _description) );
             }
             set { _description = value; }
         }
@@ -208,7 +208,8 @@ namespace BatchProcess
             //BatchProcessForm fm = new BatchProcessForm(Host);
             if ( fm == null )
             {
-                fm = new BatchProcessForm( Host );
+                //fm = new BatchProcessForm( Host );
+                fm = new BatchProcessForm( this );
                 fm.Text = fv.ProductName;
                 fm.MdiParent = parent;
                 fm.WindowState = FormWindowState.Maximized;
@@ -217,6 +218,37 @@ namespace BatchProcess
             else
             {
                 fm.Activate();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _supportMultiFile = true;
+        public bool SupportMultiFile
+        {
+            get { return ( _supportMultiFile ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename"></param>
+        public void Open( string filename )
+        {
+            if(fm is BatchProcessForm )
+            {
+                fm.AddFiles( filename );
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filenames"></param>
+        public void Open( string[] filenames )
+        {
+            if ( fm is BatchProcessForm )
+            {
+                fm.AddFiles( filenames );
             }
         }
 

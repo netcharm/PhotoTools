@@ -15,6 +15,7 @@ namespace BatchProcess
     public partial class BatchProcessForm : Form
     {
         private AddinHost Host = null;
+        private IAddin addin;
 
         public BatchProcessForm()
         {
@@ -25,6 +26,16 @@ namespace BatchProcess
         {
             Host = host;
             InitializeComponent();
+
+            AddinUtils.Translate( addin, this, toolTip, new object[] { cmsFileList, dlgOpen } );
+        }
+
+        public BatchProcessForm( IAddin addin )
+        {
+            this.addin = addin;
+            InitializeComponent();
+
+            AddinUtils.Translate( addin, this, toolTip, new object[] { cmsFileList, dlgOpen } );
         }
 
         private void BatchProcessForm_Load( object sender, EventArgs e )
@@ -32,14 +43,24 @@ namespace BatchProcess
             //
         }
 
+        protected internal void AddFiles( string file )
+        {
+            lvFiles.Items.Add( new ListViewItem( new string[] { Path.GetFileName( file ), file } ) );
+        }
+
+        protected internal void AddFiles(string[] files)
+        {
+            foreach ( string f in files )
+            {
+                lvFiles.Items.Add( new ListViewItem( new string[] { Path.GetFileName( f ), f } ) );
+            }
+        }
+
         private void tsmiAddImage_Click( object sender, EventArgs e )
         {
             if(dlgOpen.ShowDialog() == DialogResult.OK)
             {
-                foreach(string f in dlgOpen.FileNames)
-                {
-                    lvFiles.Items.Add( new ListViewItem( new string[] { Path.GetFileName( f ), f } ) );
-                }
+                AddFiles( dlgOpen.FileNames );
             }
         }
 

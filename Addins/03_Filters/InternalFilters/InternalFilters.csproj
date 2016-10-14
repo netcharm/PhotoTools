@@ -161,7 +161,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>XCOPY /Y "$(TargetPath)" "$(SolutionDir)\PhotoTool\$(OutDir)\addins\filter"</PostBuildEvent>
+    <PostBuildEvent>XCOPY /Y "$(TargetPath)" "$(SolutionDir)\PhotoTool\$(OutDir)\addins\filter"
+XCOPY /S /Y "$(ProjectDir)\locale\*" "$(SolutionDir)\PhotoTool\$(OutDir)\addins\filter\locale"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\..\..\packages\Accord.3.3.0\build\Accord.targets" Condition="Exists('..\..\..\packages\Accord.3.3.0\build\Accord.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

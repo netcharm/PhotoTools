@@ -11,8 +11,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using Accord.Imaging.Filters;
 using System.IO;
-using NGettext.WinForm;
 using NGettext;
+using NGettext.WinForm;
 
 [assembly: Addin]
 [assembly: AddinDependency( "AddinHost", "1.0" )]
@@ -214,6 +214,31 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
+        private bool _supportMultiFile = false;
+        public virtual bool SupportMultiFile
+        {
+            get { return ( _supportMultiFile ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename"></param>
+        public virtual void Open( string filename )
+        {
+            //
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filenames"></param>
+        public virtual void Open( string[] filenames )
+        {
+            //
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Show()
         {
             MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
@@ -270,20 +295,10 @@ namespace InternalFilters
             if(image != null)
             {
                 ResizeBicubic filter = new ResizeBicubic((int)Params["Width"].Value, (int)Params["Height"].Value);
-                return ( filter.Apply( image as Bitmap ) );
+                return ( AddinUtils.ProcessImage( filter, image ) );
             }
             return ( image );
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="filter"></param>
-        /// <param name="img"></param>
-        /// <returns></returns>
-        public Image ProcessImage( IFilter filter, Image img )
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -212,6 +212,31 @@ namespace AddinTest
         /// <summary>
         /// 
         /// </summary>
+        private bool _supportMultiFile = false;
+        public bool SupportMultiFile
+        {
+            get { return ( _supportMultiFile ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename"></param>
+        public void Open( string filename )
+        {
+            //
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filenames"></param>
+        public void Open( string[] filenames )
+        {
+            //
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
         public Image Apply( Image image )

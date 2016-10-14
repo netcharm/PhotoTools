@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BatchProcess\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-10-13 21:45+0800\n"
-"PO-Revision-Date: 2016-10-13 21:45+0800\n"
+"POT-Creation-Date: 2016-10-15 00:24+0800\n"
+"PO-Revision-Date: 2016-10-14 22:58+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,46 +20,60 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: BatchProcessForm.Designer.cs:70
+#: BatchProcessForm.Designer.cs:71
 msgid "File"
-msgstr ""
+msgstr "文件"
 
-#: BatchProcessForm.Designer.cs:75
+#: BatchProcessForm.Designer.cs:76
 msgid "Full Path"
-msgstr ""
+msgstr "完整路径"
 
-#: BatchProcessForm.Designer.cs:95
+#: BatchProcessForm.Designer.cs:96
 msgid "Add Image"
-msgstr ""
+msgstr "加入图像文件"
 
-#: BatchProcessForm.Designer.cs:102
+#: BatchProcessForm.Designer.cs:103
 msgid "Remove Image"
-msgstr ""
+msgstr "移除图像文件"
 
-#: BatchProcessForm.Designer.cs:114
+#: BatchProcessForm.Designer.cs:115
 msgid "Clear"
-msgstr ""
+msgstr "清除文件列表内容"
 
-#: BatchProcessForm.Designer.cs:126
+#: BatchProcessForm.Designer.cs:127
 msgid "Process Selected"
-msgstr ""
+msgstr "处理选中图像文件"
 
-#: BatchProcessForm.Designer.cs:133
+#: BatchProcessForm.Designer.cs:134
 msgid "Process All"
-msgstr ""
+msgstr "处理全部图像文件"
 
-#: BatchProcessForm.Designer.cs:148
+#: BatchProcessForm.Designer.cs:149
 msgid "Preview"
-msgstr ""
+msgstr "预览"
 
 #: BatchProcessForm.Designer.cs:163
-msgid "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All File(*.*)|*.*"
+msgid ""
+"Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All "
+"File(*.*)|*.*"
 msgstr ""
+"图像文件(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|全部文"
+"件(*.*)|*.*"
 
 #: BatchProcessForm.Designer.cs:167
-msgid "Add Image(s"
-msgstr ""
+msgid "Add Image(s)"
+msgstr "加入图像文件"
 
 #: BatchProcessForm.Designer.cs:179
 msgid "Batch Image Processing"
-msgstr ""
+msgstr "批量图像处理"
+
+#: Batch.cs:109
+msgid "Batch"
+msgstr "批量"
+
+#: Batch.cs:118
+#, fuzzy
+#| msgid "Batch Image Processing"
+msgid "Batch Image Process"
+msgstr "批量图像处理"

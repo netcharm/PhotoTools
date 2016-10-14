@@ -45,6 +45,8 @@ namespace InternalFilters
         {
             this.addin = filter;
             InitializeComponent();
+            toolTip.ToolTipTitle = addin.DisplayName;
+            AddinUtils.Translate( addin, this, toolTip );
 
             thumb = CreateThumb( addin.ImageData );
             imgPreview.Image = thumb;
@@ -87,32 +89,11 @@ namespace InternalFilters
             return ( pi );
         }
 
-        //internal protected static Image ProcessARGB( IFilter filter, Image img )
-        //{
-        //    System.Drawing.Imaging.PixelFormat[] AlphaFormat = new System.Drawing.Imaging.PixelFormat[]
-        //    {
-        //        System.Drawing.Imaging.PixelFormat.Format32bppArgb,
-        //        System.Drawing.Imaging.PixelFormat.Format16bppArgb1555,
-        //        System.Drawing.Imaging.PixelFormat.Format32bppPArgb,
-        //        System.Drawing.Imaging.PixelFormat.Format64bppArgb,
-        //        System.Drawing.Imaging.PixelFormat.Format64bppPArgb
-        //    };
-
-        //    if ( AlphaFormat.Contains( img.PixelFormat ) )
-        //    {
-        //        ExtractChannel eca = new ExtractChannel(Accord.Imaging.RGB.A);
-        //        Bitmap bmpA = filter.Apply(eca.Apply( img as Bitmap ));
-        //        ReplaceChannel rca = new ReplaceChannel(Accord.Imaging.RGB.A, bmpA);
-
-        //        Bitmap dst = Accord.Imaging.Image.Clone(img as Bitmap, System.Drawing.Imaging.PixelFormat.Format24bppRgb );
-        //        dst = Accord.Imaging.Image.Clone( filter.Apply( dst ), System.Drawing.Imaging.PixelFormat.Format32bppArgb );
-        //        rca.ApplyInPlace( dst );
-
-        //        return ( dst );
-        //    }
-        //    return ( img );
-        //}
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
         private Image CreateThumb(Image img)
         {
             double thumbSize = 160f;
@@ -126,6 +107,11 @@ namespace InternalFilters
             return ( AddinUtils.ProcessImage( filter, img ) );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="flipNew"></param>
+        /// <returns></returns>
         private RotateFlipType FlipCalc( RotateFlipType flipNew )
         {
             RotateFlipType oldFlip = RotateFlipType.RotateNoneFlipNone;
@@ -261,6 +247,14 @@ namespace InternalFilters
             return ( oldFlip );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="img"></param>
+        /// <param name="flip"></param>
+        /// <param name="angle"></param>
+        /// <param name="keep"></param>
+        /// <returns></returns>
         internal protected static Image RotateImage(Image img, RotateFlipType flip, double angle, bool keep)
         {
             if ( img != null )
@@ -322,6 +316,11 @@ namespace InternalFilters
             return ( img );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRotate90l_Click( object sender, EventArgs e )
         {
             //angle = ( angle + 270 ) % 360;
@@ -329,6 +328,11 @@ namespace InternalFilters
             imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRotate90r_Click( object sender, EventArgs e )
         {
             //angle = ( angle + 90 ) % 360;
@@ -336,18 +340,33 @@ namespace InternalFilters
             imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRotateFlipX_Click( object sender, EventArgs e )
         {
             flip = FlipCalc( RotateFlipType.RotateNoneFlipX );
             imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRotateFlipY_Click( object sender, EventArgs e )
         {
             flip = FlipCalc( RotateFlipType.RotateNoneFlipY );
             imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void numAngle_ValueChanged( object sender, EventArgs e )
         {
             angle = (double) numAngle.Value % 360;

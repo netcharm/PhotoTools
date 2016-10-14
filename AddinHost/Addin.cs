@@ -132,6 +132,21 @@ namespace NetCharm.Image.Addins
         /// <param name="image"></param>
         /// <returns></returns>
         System.Drawing.Image Apply( System.Drawing.Image image );
+
+        /// <summary>
+        /// 
+        /// </summary>
+        bool SupportMultiFile { get; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename"></param>
+        void Open( string filename );
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filenames"></param>
+        void Open( string[] filenames );
     }
 
     /// <summary>
@@ -334,11 +349,11 @@ namespace NetCharm.Image.Addins
         /// 
         /// </summary>
         /// <param name="form"></param>
-        protected internal void Translate( Form form )
+        protected internal void Translate( Form form, ToolTip tooltip=null, object[] extra=null )
         {
             string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( Location ) ), "locale" );
 
-            I18N i10n = new I18N( Domain, addinRoot, form );
+            I18N i10n = new I18N( Domain, addinRoot, form, tooltip, extra );
             catalog = i10n.Catalog;
         }
 
@@ -402,7 +417,31 @@ namespace NetCharm.Image.Addins
         {
             return ( image );
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _supportMultiFile = false;
+        public virtual bool SupportMultiFile
+        {
+            get { return ( _supportMultiFile ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename"></param>
+        public virtual void Open( string filename )
+        {
+            //
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filenames"></param>
+        public virtual void Open( string[] filenames )
+        {
+            //
+        }
+
     }
-
-
 }

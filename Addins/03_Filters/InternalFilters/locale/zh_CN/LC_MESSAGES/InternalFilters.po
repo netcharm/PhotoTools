@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-10-13 23:20+0800\n"
+"POT-Creation-Date: 2016-10-14 22:58+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: ResizeForm.resx:187 -> btnOk.Text.value
+#: ResizeForm.resx:187 -> btnOk.Text.value RotateForm.resx:364
 msgid "OK"
 msgstr "确认"
 
-#: ResizeForm.resx:211 -> btnCancel.Text.value
+#: ResizeForm.resx:211 -> btnCancel.Text.value RotateForm.resx:388
 msgid "Cancel"
 msgstr "取消"
 
@@ -36,14 +36,62 @@ msgstr "宽度:"
 msgid "Height:"
 msgstr "高度:"
 
-#: ResizeForm.resx:292 -> $this.Text.value
+#: ResizeForm.resx:292 -> $this.Text.value Resize.cs:113
 msgid "Resize"
 msgstr "缩放"
 
-#: Rotate.cs:22
+#: RotateForm.resx:142 -> btnRotateFlipY.ToolTip.value
+msgid "Flip Vertical"
+msgstr "垂直镜像"
+
+#: RotateForm.resx:172 -> btnRotateFlipX.ToolTip.value
+msgid "Flip Horizontal"
+msgstr "水平镜像"
+
+#: RotateForm.resx:202 -> btnRotate90r.ToolTip.value
+msgid "Rotate Right 90°"
+msgstr "右转90°"
+
+#: RotateForm.resx:229 -> btnRotate90l.ToolTip.value
+msgid "Rotate Left 90°"
+msgstr "左转90°"
+
+#: RotateForm.resx:253 -> groupMode.Text.value
+msgid "Orientation"
+msgstr "方向调整"
+
+#: RotateForm.resx:280 -> chkKeepSize.Text.value
+msgid "Keep Size"
+msgstr "保持原大小"
+
+#: RotateForm.resx:286 -> chkKeepSize.ToolTip.value
+msgid "Keep Image Size"
+msgstr "保持原图像大小"
+
+#: RotateForm.resx:316 -> numAngle.ToolTip.value
+msgid "Rotate Angle"
+msgstr "旋转角度"
+
+#: RotateForm.resx:340 -> groupAngle.Text.value
+msgid "Free Rotate"
+msgstr "任意角度旋转"
+
+#: RotateForm.resx:412 -> imgPreview.Text.value
+msgid "Preview"
+msgstr "预览"
+
+#: RotateForm.resx:415 -> imgPreview.ToolTip.value
+msgid "Rotate Prevew "
+msgstr "旋转预览"
+
+#: RotateForm.resx:442 -> $this.Text.value Rotate.cs:24
 msgid "Rotate"
 msgstr "旋转"
 
-#: Rotate.cs:31
+#: Resize.cs:122
+msgid "Resize Image"
+msgstr "缩放图像"
+
+#: Rotate.cs:33
 msgid "Rotate Image"
 msgstr "旋转图像"
