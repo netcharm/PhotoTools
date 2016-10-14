@@ -32,18 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.RibTabMain = new System.Windows.Forms.RibbonTab();
             this.RibTabMainFile = new System.Windows.Forms.RibbonPanel();
-            this.cmdFileOpen = new System.Windows.Forms.RibbonButton();
-            this.cmdFileSave = new System.Windows.Forms.RibbonButton();
             this.RibTabMainEdit = new System.Windows.Forms.RibbonPanel();
-            this.cmdEditCut = new System.Windows.Forms.RibbonButton();
-            this.cmdEditCopy = new System.Windows.Forms.RibbonButton();
-            this.cmdEditPaste = new System.Windows.Forms.RibbonButton();
-            this.cmdEditClear = new System.Windows.Forms.RibbonButton();
             this.RibTabMainApp = new System.Windows.Forms.RibbonPanel();
             this.RibTabEdit = new System.Windows.Forms.RibbonTab();
             this.RibTabAction = new System.Windows.Forms.RibbonTab();
             this.RibTabActManager = new System.Windows.Forms.RibbonPanel();
-            this.cmdActionReScan = new System.Windows.Forms.RibbonButton();
             this.RibTabActInternal = new System.Windows.Forms.RibbonPanel();
             this.RibTabActInternalList = new System.Windows.Forms.RibbonButtonList();
             this.RibTabActInternalDropList = new System.Windows.Forms.RibbonButtonList();
@@ -52,7 +45,6 @@
             this.RibTabActExternalDropList = new System.Windows.Forms.RibbonButtonList();
             this.RibTabFilter = new System.Windows.Forms.RibbonTab();
             this.RibTabFilterManager = new System.Windows.Forms.RibbonPanel();
-            this.cmdFilterReScan = new System.Windows.Forms.RibbonButton();
             this.RibTabFilterInternal = new System.Windows.Forms.RibbonPanel();
             this.RibTabFilterInternalList = new System.Windows.Forms.RibbonButtonList();
             this.RibTabFilterInternalDropList = new System.Windows.Forms.RibbonButtonList();
@@ -61,7 +53,19 @@
             this.RibTabFilterExternalDropList = new System.Windows.Forms.RibbonButtonList();
             this.RibTabSetting = new System.Windows.Forms.RibbonTab();
             this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
+            this.status = new System.Windows.Forms.StatusStrip();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
+            this.dlgSave = new System.Windows.Forms.SaveFileDialog();
             this.ribbonMain = new System.Windows.Forms.Ribbon();
+            this.cmdFileOpen = new System.Windows.Forms.RibbonButton();
+            this.cmdFileSave = new System.Windows.Forms.RibbonButton();
+            this.cmdEditCut = new System.Windows.Forms.RibbonButton();
+            this.cmdEditCopy = new System.Windows.Forms.RibbonButton();
+            this.cmdEditPaste = new System.Windows.Forms.RibbonButton();
+            this.cmdEditClear = new System.Windows.Forms.RibbonButton();
+            this.cmdActionReScan = new System.Windows.Forms.RibbonButton();
+            this.cmdFilterReScan = new System.Windows.Forms.RibbonButton();
             this.ribOrbMiOpen = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribOrbMiSave = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribOptBtnExit = new System.Windows.Forms.RibbonOrbOptionButton();
@@ -75,10 +79,10 @@
             this.cmdStyle2007 = new System.Windows.Forms.RibbonButton();
             this.cmdStyle2010 = new System.Windows.Forms.RibbonButton();
             this.cmdStyle2013 = new System.Windows.Forms.RibbonButton();
-            this.status = new System.Windows.Forms.StatusStrip();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
-            this.dlgSave = new System.Windows.Forms.SaveFileDialog();
+            this.tssLabelImageName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssLabelImageSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssLabelImageInfo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.status.SuspendLayout();
             this.SuspendLayout();
             // 
             // RibTabMain
@@ -94,20 +98,6 @@
             this.RibTabMainFile.Items.Add(this.cmdFileSave);
             resources.ApplyResources(this.RibTabMainFile, "RibTabMainFile");
             // 
-            // cmdFileOpen
-            // 
-            this.cmdFileOpen.Image = global::PhotoTool.Properties.Resources.ExportPerformance_32x;
-            this.cmdFileOpen.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdFileOpen.SmallImage")));
-            resources.ApplyResources(this.cmdFileOpen, "cmdFileOpen");
-            this.cmdFileOpen.Click += new System.EventHandler(this.cmdFileOpen_Click);
-            // 
-            // cmdFileSave
-            // 
-            this.cmdFileSave.Image = global::PhotoTool.Properties.Resources.Save_32x;
-            this.cmdFileSave.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdFileSave.SmallImage")));
-            resources.ApplyResources(this.cmdFileSave, "cmdFileSave");
-            this.cmdFileSave.Click += new System.EventHandler(this.cmdFileSave_Click);
-            // 
             // RibTabMainEdit
             // 
             this.RibTabMainEdit.Items.Add(this.cmdEditCut);
@@ -115,30 +105,6 @@
             this.RibTabMainEdit.Items.Add(this.cmdEditPaste);
             this.RibTabMainEdit.Items.Add(this.cmdEditClear);
             resources.ApplyResources(this.RibTabMainEdit, "RibTabMainEdit");
-            // 
-            // cmdEditCut
-            // 
-            this.cmdEditCut.Image = global::PhotoTool.Properties.Resources.Cut_32x;
-            this.cmdEditCut.SmallImage = global::PhotoTool.Properties.Resources.Marquee_16x;
-            resources.ApplyResources(this.cmdEditCut, "cmdEditCut");
-            // 
-            // cmdEditCopy
-            // 
-            this.cmdEditCopy.Image = global::PhotoTool.Properties.Resources.Copy_32x;
-            this.cmdEditCopy.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdEditCopy.SmallImage")));
-            resources.ApplyResources(this.cmdEditCopy, "cmdEditCopy");
-            // 
-            // cmdEditPaste
-            // 
-            this.cmdEditPaste.Image = global::PhotoTool.Properties.Resources.Paste_32x;
-            this.cmdEditPaste.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdEditPaste.SmallImage")));
-            resources.ApplyResources(this.cmdEditPaste, "cmdEditPaste");
-            // 
-            // cmdEditClear
-            // 
-            this.cmdEditClear.Image = global::PhotoTool.Properties.Resources.Clear_32x;
-            this.cmdEditClear.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdEditClear.SmallImage")));
-            resources.ApplyResources(this.cmdEditClear, "cmdEditClear");
             // 
             // RibTabMainApp
             // 
@@ -159,13 +125,6 @@
             // 
             this.RibTabActManager.Items.Add(this.cmdActionReScan);
             resources.ApplyResources(this.RibTabActManager, "RibTabActManager");
-            // 
-            // cmdActionReScan
-            // 
-            this.cmdActionReScan.Image = global::PhotoTool.Properties.Resources.AddIn_32x;
-            this.cmdActionReScan.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdActionReScan.SmallImage")));
-            resources.ApplyResources(this.cmdActionReScan, "cmdActionReScan");
-            this.cmdActionReScan.Click += new System.EventHandler(this.cmdActionReScan_Click);
             // 
             // RibTabActInternal
             // 
@@ -221,12 +180,6 @@
             this.RibTabFilterManager.Items.Add(this.cmdFilterReScan);
             resources.ApplyResources(this.RibTabFilterManager, "RibTabFilterManager");
             // 
-            // cmdFilterReScan
-            // 
-            this.cmdFilterReScan.Image = global::PhotoTool.Properties.Resources.AddIn_32x;
-            this.cmdFilterReScan.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdFilterReScan.SmallImage")));
-            resources.ApplyResources(this.cmdFilterReScan, "cmdFilterReScan");
-            // 
             // RibTabFilterInternal
             // 
             this.RibTabFilterInternal.FlowsTo = System.Windows.Forms.RibbonPanelFlowDirection.Right;
@@ -276,6 +229,33 @@
             // 
             resources.ApplyResources(this.RibTabSetting, "RibTabSetting");
             // 
+            // status
+            // 
+            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tssLabelImageName,
+            this.tssLabelImageSize,
+            this.tssLabelImageInfo});
+            resources.ApplyResources(this.status, "status");
+            this.status.Name = "status";
+            this.status.ShowItemToolTips = true;
+            // 
+            // toolTip
+            // 
+            this.toolTip.ShowAlways = true;
+            this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip.ToolTipTitle = "Tip:";
+            // 
+            // dlgOpen
+            // 
+            this.dlgOpen.DefaultExt = "jpg";
+            resources.ApplyResources(this.dlgOpen, "dlgOpen");
+            // 
+            // dlgSave
+            // 
+            this.dlgSave.DefaultExt = "jpg";
+            this.dlgSave.FileName = "*.jpg";
+            resources.ApplyResources(this.dlgSave, "dlgSave");
+            // 
             // ribbonMain
             // 
             resources.ApplyResources(this.ribbonMain, "ribbonMain");
@@ -311,6 +291,57 @@
             this.ribbonMain.Tabs.Add(this.RibTabSetting);
             this.ribbonMain.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbonMain.ThemeColor = System.Windows.Forms.RibbonTheme.Black;
+            // 
+            // cmdFileOpen
+            // 
+            this.cmdFileOpen.Image = global::PhotoTool.Properties.Resources.ExportPerformance_32x;
+            this.cmdFileOpen.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdFileOpen.SmallImage")));
+            resources.ApplyResources(this.cmdFileOpen, "cmdFileOpen");
+            this.cmdFileOpen.Click += new System.EventHandler(this.cmdFileOpen_Click);
+            // 
+            // cmdFileSave
+            // 
+            this.cmdFileSave.Image = global::PhotoTool.Properties.Resources.Save_32x;
+            this.cmdFileSave.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdFileSave.SmallImage")));
+            resources.ApplyResources(this.cmdFileSave, "cmdFileSave");
+            this.cmdFileSave.Click += new System.EventHandler(this.cmdFileSave_Click);
+            // 
+            // cmdEditCut
+            // 
+            this.cmdEditCut.Image = global::PhotoTool.Properties.Resources.Cut_32x;
+            this.cmdEditCut.SmallImage = global::PhotoTool.Properties.Resources.Marquee_16x;
+            resources.ApplyResources(this.cmdEditCut, "cmdEditCut");
+            // 
+            // cmdEditCopy
+            // 
+            this.cmdEditCopy.Image = global::PhotoTool.Properties.Resources.Copy_32x;
+            this.cmdEditCopy.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdEditCopy.SmallImage")));
+            resources.ApplyResources(this.cmdEditCopy, "cmdEditCopy");
+            // 
+            // cmdEditPaste
+            // 
+            this.cmdEditPaste.Image = global::PhotoTool.Properties.Resources.Paste_32x;
+            this.cmdEditPaste.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdEditPaste.SmallImage")));
+            resources.ApplyResources(this.cmdEditPaste, "cmdEditPaste");
+            // 
+            // cmdEditClear
+            // 
+            this.cmdEditClear.Image = global::PhotoTool.Properties.Resources.Clear_32x;
+            this.cmdEditClear.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdEditClear.SmallImage")));
+            resources.ApplyResources(this.cmdEditClear, "cmdEditClear");
+            // 
+            // cmdActionReScan
+            // 
+            this.cmdActionReScan.Image = global::PhotoTool.Properties.Resources.AddIn_32x;
+            this.cmdActionReScan.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdActionReScan.SmallImage")));
+            resources.ApplyResources(this.cmdActionReScan, "cmdActionReScan");
+            this.cmdActionReScan.Click += new System.EventHandler(this.cmdActionReScan_Click);
+            // 
+            // cmdFilterReScan
+            // 
+            this.cmdFilterReScan.Image = global::PhotoTool.Properties.Resources.AddIn_32x;
+            this.cmdFilterReScan.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdFilterReScan.SmallImage")));
+            resources.ApplyResources(this.cmdFilterReScan, "cmdFilterReScan");
             // 
             // ribOrbMiOpen
             // 
@@ -439,28 +470,33 @@
             this.cmdStyle2013.Value = "2";
             this.cmdStyle2013.Click += new System.EventHandler(this.cmdStyle2010_Click);
             // 
-            // status
+            // tssLabelImageName
             // 
-            resources.ApplyResources(this.status, "status");
-            this.status.Name = "status";
-            this.status.ShowItemToolTips = true;
+            this.tssLabelImageName.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tssLabelImageName.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tssLabelImageName.Name = "tssLabelImageName";
+            resources.ApplyResources(this.tssLabelImageName, "tssLabelImageName");
             // 
-            // toolTip
+            // tssLabelImageSize
             // 
-            this.toolTip.ShowAlways = true;
-            this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTip.ToolTipTitle = "Tip:";
+            this.tssLabelImageSize.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tssLabelImageSize.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tssLabelImageSize.Name = "tssLabelImageSize";
+            resources.ApplyResources(this.tssLabelImageSize, "tssLabelImageSize");
             // 
-            // dlgOpen
+            // tssLabelImageInfo
             // 
-            this.dlgOpen.DefaultExt = "jpg";
-            resources.ApplyResources(this.dlgOpen, "dlgOpen");
-            // 
-            // dlgSave
-            // 
-            this.dlgSave.DefaultExt = "jpg";
-            this.dlgSave.FileName = "*.jpg";
-            resources.ApplyResources(this.dlgSave, "dlgSave");
+            this.tssLabelImageInfo.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tssLabelImageInfo.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tssLabelImageInfo.Name = "tssLabelImageInfo";
+            resources.ApplyResources(this.tssLabelImageInfo, "tssLabelImageInfo");
+            this.tssLabelImageInfo.Spring = true;
             // 
             // MainForm
             // 
@@ -472,6 +508,8 @@
             this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.status.ResumeLayout(false);
+            this.status.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -527,6 +565,9 @@
         private System.Windows.Forms.RibbonButtonList RibTabActExternalDropList;
         private System.Windows.Forms.RibbonButtonList RibTabFilterInternalDropList;
         private System.Windows.Forms.RibbonButtonList RibTabFilterExternalDropList;
+        private System.Windows.Forms.ToolStripStatusLabel tssLabelImageName;
+        private System.Windows.Forms.ToolStripStatusLabel tssLabelImageSize;
+        private System.Windows.Forms.ToolStripStatusLabel tssLabelImageInfo;
     }
 }
 

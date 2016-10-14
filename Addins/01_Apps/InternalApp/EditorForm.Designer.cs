@@ -43,6 +43,7 @@
             this.imgEditor.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.imgEditor.TabIndex = 0;
             this.imgEditor.Text = "Image Editor";
+            this.imgEditor.TextDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.None;
             // 
             // EditorForm
             // 

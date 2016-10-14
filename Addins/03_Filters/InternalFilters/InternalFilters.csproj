@@ -57,6 +57,9 @@
       <HintPath>..\..\..\packages\Accord.Statistics.3.3.0\lib\net40\Accord.Statistics.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Cyotek.Windows.Forms.ImageBox">
+      <HintPath>..\..\..\..\..\_refs\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Addins">
       <HintPath>..\..\..\..\..\_refs\Mono.Addins.dll</HintPath>
     </Reference>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RotateForm));
             this.groupMode = new System.Windows.Forms.GroupBox();
             this.btnRotateFlipY = new System.Windows.Forms.Button();
@@ -37,8 +38,13 @@
             this.groupAngle = new System.Windows.Forms.GroupBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.toolTip = new System.Windows.Forms.ToolTip();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.numAngle = new System.Windows.Forms.NumericUpDown();
+            this.imgPreview = new Cyotek.Windows.Forms.ImageBox();
+            this.chkKeepSize = new System.Windows.Forms.CheckBox();
             this.groupMode.SuspendLayout();
+            this.groupAngle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAngle)).BeginInit();
             this.SuspendLayout();
             // 
             // groupMode
@@ -58,6 +64,7 @@
             this.btnRotateFlipY.Name = "btnRotateFlipY";
             this.toolTip.SetToolTip(this.btnRotateFlipY, resources.GetString("btnRotateFlipY.ToolTip"));
             this.btnRotateFlipY.UseVisualStyleBackColor = true;
+            this.btnRotateFlipY.Click += new System.EventHandler(this.btnRotateFlipY_Click);
             // 
             // btnRotateFlipX
             // 
@@ -66,6 +73,7 @@
             this.btnRotateFlipX.Name = "btnRotateFlipX";
             this.toolTip.SetToolTip(this.btnRotateFlipX, resources.GetString("btnRotateFlipX.ToolTip"));
             this.btnRotateFlipX.UseVisualStyleBackColor = true;
+            this.btnRotateFlipX.Click += new System.EventHandler(this.btnRotateFlipX_Click);
             // 
             // btnRotate90r
             // 
@@ -74,6 +82,7 @@
             this.btnRotate90r.Name = "btnRotate90r";
             this.toolTip.SetToolTip(this.btnRotate90r, resources.GetString("btnRotate90r.ToolTip"));
             this.btnRotate90r.UseVisualStyleBackColor = true;
+            this.btnRotate90r.Click += new System.EventHandler(this.btnRotate90r_Click);
             // 
             // btnRotate90l
             // 
@@ -82,9 +91,12 @@
             this.btnRotate90l.Name = "btnRotate90l";
             this.toolTip.SetToolTip(this.btnRotate90l, resources.GetString("btnRotate90l.ToolTip"));
             this.btnRotate90l.UseVisualStyleBackColor = true;
+            this.btnRotate90l.Click += new System.EventHandler(this.btnRotate90l_Click);
             // 
             // groupAngle
             // 
+            this.groupAngle.Controls.Add(this.chkKeepSize);
+            this.groupAngle.Controls.Add(this.numAngle);
             resources.ApplyResources(this.groupAngle, "groupAngle");
             this.groupAngle.Name = "groupAngle";
             this.groupAngle.TabStop = false;
@@ -107,12 +119,54 @@
             // 
             this.toolTip.ShowAlways = true;
             // 
+            // numAngle
+            // 
+            this.numAngle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numAngle.DecimalPlaces = 2;
+            this.numAngle.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            resources.ApplyResources(this.numAngle, "numAngle");
+            this.numAngle.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.numAngle.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.numAngle.Name = "numAngle";
+            this.toolTip.SetToolTip(this.numAngle, resources.GetString("numAngle.ToolTip"));
+            this.numAngle.ValueChanged += new System.EventHandler(this.numAngle_ValueChanged);
+            // 
+            // imgPreview
+            // 
+            this.imgPreview.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Bicubic;
+            resources.ApplyResources(this.imgPreview, "imgPreview");
+            this.imgPreview.Name = "imgPreview";
+            this.imgPreview.ShowPixelGrid = true;
+            this.imgPreview.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
+            this.imgPreview.TextDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.None;
+            this.toolTip.SetToolTip(this.imgPreview, resources.GetString("imgPreview.ToolTip"));
+            // 
+            // chkKeepSize
+            // 
+            resources.ApplyResources(this.chkKeepSize, "chkKeepSize");
+            this.chkKeepSize.Name = "chkKeepSize";
+            this.toolTip.SetToolTip(this.chkKeepSize, resources.GetString("chkKeepSize.ToolTip"));
+            this.chkKeepSize.UseVisualStyleBackColor = true;
+            // 
             // RotateForm
             // 
             this.AcceptButton = this.btnOk;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.imgPreview);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.groupAngle);
@@ -123,6 +177,8 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.groupMode.ResumeLayout(false);
+            this.groupAngle.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numAngle)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -138,5 +194,8 @@
         private System.Windows.Forms.Button btnRotateFlipY;
         private System.Windows.Forms.Button btnRotateFlipX;
         private System.Windows.Forms.Button btnRotate90r;
+        private System.Windows.Forms.NumericUpDown numAngle;
+        private Cyotek.Windows.Forms.ImageBox imgPreview;
+        private System.Windows.Forms.CheckBox chkKeepSize;
     }
 }

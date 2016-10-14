@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RibTabMain.Text" xml:space="preserve">
-    <value>Main</value>
-  </data>
-  <data name="RibTabMainFile.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdFileOpen.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -144,8 +138,8 @@
   <data name="cmdFileSave.Text" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="RibTabMainEdit.Text" xml:space="preserve">
-    <value>Edit</value>
+  <data name="RibTabMainFile.Text" xml:space="preserve">
+    <value>File</value>
   </data>
   <data name="cmdEditCut.Text" xml:space="preserve">
     <value>Cut</value>
@@ -183,17 +177,17 @@
   <data name="cmdEditClear.ToolTip" xml:space="preserve">
     <value>Clear Content</value>
   </data>
+  <data name="RibTabMainEdit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="RibTabMainApp.Text" xml:space="preserve">
     <value>Application</value>
   </data>
+  <data name="RibTabMain.Text" xml:space="preserve">
+    <value>Main</value>
+  </data>
   <data name="RibTabEdit.Text" xml:space="preserve">
     <value>Edit</value>
-  </data>
-  <data name="RibTabAction.Text" xml:space="preserve">
-    <value>Action</value>
-  </data>
-  <data name="RibTabActManager.Text" xml:space="preserve">
-    <value>Manager</value>
   </data>
   <data name="cmdActionReScan.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -205,7 +199,10 @@
   <data name="cmdActionReScan.Text" xml:space="preserve">
     <value>Re-Scan</value>
   </data>
-  <data name="RibTabActInternal.Text" xml:space="preserve">
+  <data name="RibTabActManager.Text" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="RibTabActInternalDropList.Text" xml:space="preserve">
     <value>Internal</value>
   </data>
   <data name="RibTabActInternalList.Text" xml:space="preserve">
@@ -214,10 +211,10 @@
   <data name="RibTabActInternalList.ToolTip" xml:space="preserve">
     <value>Internal Actions</value>
   </data>
-  <data name="RibTabActInternalDropList.Text" xml:space="preserve">
+  <data name="RibTabActInternal.Text" xml:space="preserve">
     <value>Internal</value>
   </data>
-  <data name="RibTabActExternal.Text" xml:space="preserve">
+  <data name="RibTabActExternalDropList.Text" xml:space="preserve">
     <value>External</value>
   </data>
   <data name="RibTabActExternalList.Text" xml:space="preserve">
@@ -226,26 +223,11 @@
   <data name="RibTabActExternalList.ToolTip" xml:space="preserve">
     <value>External Actions</value>
   </data>
-  <data name="RibTabActExternalDropList.Text" xml:space="preserve">
+  <data name="RibTabActExternal.Text" xml:space="preserve">
     <value>External</value>
   </data>
-  <data name="RibTabFilterManager.Text" xml:space="preserve">
-    <value>Manager</value>
-  </data>
-  <data name="RibTabFilterInternalList.Text" xml:space="preserve">
-    <value>Internal Filters</value>
-  </data>
-  <data name="RibTabFilterInternalList.ToolTip" xml:space="preserve">
-    <value>Internal Filters</value>
-  </data>
-  <data name="RibTabFilterInternal.Text" xml:space="preserve">
-    <value>Internal</value>
-  </data>
-  <data name="RibTabFilterExternal.Text" xml:space="preserve">
-    <value>External</value>
-  </data>
-  <data name="RibTabFilter.Text" xml:space="preserve">
-    <value>Filter</value>
+  <data name="RibTabAction.Text" xml:space="preserve">
+    <value>Action</value>
   </data>
   <data name="cmdFilterReScan.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -257,8 +239,23 @@
   <data name="cmdFilterReScan.Text" xml:space="preserve">
     <value>Re-Scan</value>
   </data>
+  <data name="RibTabFilterManager.Text" xml:space="preserve">
+    <value>Manager</value>
+  </data>
   <data name="RibTabFilterInternalDropList.Text" xml:space="preserve">
     <value>Internal</value>
+  </data>
+  <data name="RibTabFilterInternalList.Text" xml:space="preserve">
+    <value>Internal Filters</value>
+  </data>
+  <data name="RibTabFilterInternalList.ToolTip" xml:space="preserve">
+    <value>Internal Filters</value>
+  </data>
+  <data name="RibTabFilterInternal.Text" xml:space="preserve">
+    <value>Internal</value>
+  </data>
+  <data name="RibTabFilterExternalDropList.Text" xml:space="preserve">
+    <value>External</value>
   </data>
   <data name="RibTabFilterExternalList.Text" xml:space="preserve">
     <value>External Filters</value>
@@ -266,11 +263,78 @@
   <data name="RibTabFilterExternalList.ToolTip" xml:space="preserve">
     <value>External Filters</value>
   </data>
-  <data name="RibTabFilterExternalDropList.Text" xml:space="preserve">
+  <data name="RibTabFilterExternal.Text" xml:space="preserve">
     <value>External</value>
+  </data>
+  <data name="RibTabFilter.Text" xml:space="preserve">
+    <value>Filter</value>
   </data>
   <data name="RibTabSetting.Text" xml:space="preserve">
     <value>Setting</value>
+  </data>
+  <metadata name="status.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="tssLabelImageName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 17</value>
+  </data>
+  <data name="tssLabelImageName.Text" xml:space="preserve">
+    <value>Image File</value>
+  </data>
+  <data name="tssLabelImageSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 17</value>
+  </data>
+  <data name="tssLabelImageSize.Text" xml:space="preserve">
+    <value>Image Size</value>
+  </data>
+  <data name="tssLabelImageInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 17</value>
+  </data>
+  <data name="tssLabelImageInfo.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="tssLabelImageInfo.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="status.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 572</value>
+  </data>
+  <data name="status.Size" type="System.Drawing.Size, System.Drawing">
+    <value>794, 22</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="status.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="status.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;status.Name" xml:space="preserve">
+    <value>status</value>
+  </data>
+  <data name="&gt;&gt;status.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;status.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;status.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>106, 17</value>
+  </metadata>
+  <metadata name="dlgOpen.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>201, 17</value>
+  </metadata>
+  <data name="dlgOpen.Filter" xml:space="preserve">
+    <value>Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All File(*.*)|*.*</value>
+  </data>
+  <metadata name="dlgSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>296, 17</value>
+  </metadata>
+  <data name="dlgSave.Filter" xml:space="preserve">
+    <value>JPEG File(*.jpg;*.jpeg)|*.jpg;*.jpeg|PNG File(*.png)|*.png|TIFF File(*.tif;*.tiff)|*.tif;*.tiff|Bitmap File(*.png)|*.bmp|GIF File(*.gif)|*.gif|All File(*.*)|*.*</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ribbonMain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -285,34 +349,6 @@
   <data name="ribbonMain.OrbDropDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="ribbonMain.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>527, 160</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ribbonMain.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ribbonMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>794, 140</value>
-  </data>
-  <data name="ribbonMain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ribbonMain.Text" xml:space="preserve">
-    <value>Ribbon</value>
-  </data>
-  <data name="&gt;&gt;ribbonMain.Name" xml:space="preserve">
-    <value>ribbonMain</value>
-  </data>
-  <data name="&gt;&gt;ribbonMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Ribbon, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ribbonMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ribbonMain.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="ribOrbMiOpen.Text" xml:space="preserve">
     <value>Open</value>
   </data>
@@ -324,23 +360,6 @@
   </data>
   <data name="ribOptBtnOptions.Text" xml:space="preserve">
     <value>Options</value>
-  </data>
-  <data name="ribThemeSelect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
-        QwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="ribThemeSelect.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
-        TkSuQmCC
-</value>
-  </data>
-  <data name="ribThemeSelect.Text" xml:space="preserve">
-    <value>Theme</value>
   </data>
   <data name="cmdThemeBlue.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -410,25 +429,22 @@
   <data name="cmdThemePurple.Text" xml:space="preserve">
     <value>Purple</value>
   </data>
-  <data name="ribStyleSelect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ribThemeSelect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
         QwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ribStyleSelect.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ribThemeSelect.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
         TkSuQmCC
 </value>
   </data>
-  <data name="ribStyleSelect.Text" xml:space="preserve">
-    <value>Style</value>
-  </data>
-  <data name="ribStyleSelect.ToolTip" xml:space="preserve">
-    <value>Style</value>
+  <data name="ribThemeSelect.Text" xml:space="preserve">
+    <value>Theme</value>
   </data>
   <data name="cmdStyle2007.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -481,47 +497,52 @@
   <data name="cmdStyle2013.Text" xml:space="preserve">
     <value>Office 2013</value>
   </data>
-  <metadata name="status.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="status.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 572</value>
+  <data name="ribStyleSelect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAAaSURBVFhH7cEBAQAAAIIg/69uSEAAAADAuRoQIAABnXhJ
+        QwAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="status.Size" type="System.Drawing.Size, System.Drawing">
-    <value>794, 22</value>
+  <data name="ribStyleSelect.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxjAAAAAElF
+        TkSuQmCC
+</value>
   </data>
-  <data name="status.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="ribStyleSelect.Text" xml:space="preserve">
+    <value>Style</value>
   </data>
-  <data name="status.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="ribStyleSelect.ToolTip" xml:space="preserve">
+    <value>Style</value>
   </data>
-  <data name="&gt;&gt;status.Name" xml:space="preserve">
-    <value>status</value>
+  <data name="ribbonMain.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>527, 160</value>
   </data>
-  <data name="&gt;&gt;status.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;status.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;status.ZOrder" xml:space="preserve">
+  <data name="ribbonMain.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>106, 17</value>
-  </metadata>
-  <metadata name="dlgOpen.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>201, 17</value>
-  </metadata>
-  <data name="dlgOpen.Filter" xml:space="preserve">
-    <value>Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All File(*.*)|*.*</value>
+  <data name="ribbonMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>794, 140</value>
   </data>
-  <metadata name="dlgSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>296, 17</value>
-  </metadata>
-  <data name="dlgSave.Filter" xml:space="preserve">
-    <value>JPEG File(*.jpg;*.jpeg)|*.jpg;*.jpeg|PNG File(*.png)|*.png|TIFF File(*.tif;*.tiff)|*.tif;*.tiff|Bitmap File(*.png)|*.bmp|GIF File(*.gif)|*.gif|All File(*.*)|*.*</value>
+  <data name="ribbonMain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ribbonMain.Text" xml:space="preserve">
+    <value>Ribbon</value>
+  </data>
+  <data name="&gt;&gt;ribbonMain.Name" xml:space="preserve">
+    <value>ribbonMain</value>
+  </data>
+  <data name="&gt;&gt;ribbonMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Ribbon, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ribbonMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ribbonMain.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -550,47 +571,11 @@
   <data name="&gt;&gt;RibTabMainFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;cmdFileOpen.Name" xml:space="preserve">
-    <value>cmdFileOpen</value>
-  </data>
-  <data name="&gt;&gt;cmdFileOpen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdFileSave.Name" xml:space="preserve">
-    <value>cmdFileSave</value>
-  </data>
-  <data name="&gt;&gt;cmdFileSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;RibTabMainEdit.Name" xml:space="preserve">
     <value>RibTabMainEdit</value>
   </data>
   <data name="&gt;&gt;RibTabMainEdit.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdEditCut.Name" xml:space="preserve">
-    <value>cmdEditCut</value>
-  </data>
-  <data name="&gt;&gt;cmdEditCut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdEditCopy.Name" xml:space="preserve">
-    <value>cmdEditCopy</value>
-  </data>
-  <data name="&gt;&gt;cmdEditCopy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdEditPaste.Name" xml:space="preserve">
-    <value>cmdEditPaste</value>
-  </data>
-  <data name="&gt;&gt;cmdEditPaste.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdEditClear.Name" xml:space="preserve">
-    <value>cmdEditClear</value>
-  </data>
-  <data name="&gt;&gt;cmdEditClear.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RibTabMainApp.Name" xml:space="preserve">
     <value>RibTabMainApp</value>
@@ -615,12 +600,6 @@
   </data>
   <data name="&gt;&gt;RibTabActManager.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdActionReScan.Name" xml:space="preserve">
-    <value>cmdActionReScan</value>
-  </data>
-  <data name="&gt;&gt;cmdActionReScan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RibTabActInternal.Name" xml:space="preserve">
     <value>RibTabActInternal</value>
@@ -670,12 +649,6 @@
   <data name="&gt;&gt;RibTabFilterManager.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;cmdFilterReScan.Name" xml:space="preserve">
-    <value>cmdFilterReScan</value>
-  </data>
-  <data name="&gt;&gt;cmdFilterReScan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;RibTabFilterInternal.Name" xml:space="preserve">
     <value>RibTabFilterInternal</value>
   </data>
@@ -723,6 +696,72 @@
   </data>
   <data name="&gt;&gt;ribbonSeparator1.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonSeparator, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dlgOpen.Name" xml:space="preserve">
+    <value>dlgOpen</value>
+  </data>
+  <data name="&gt;&gt;dlgOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dlgSave.Name" xml:space="preserve">
+    <value>dlgSave</value>
+  </data>
+  <data name="&gt;&gt;dlgSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdFileOpen.Name" xml:space="preserve">
+    <value>cmdFileOpen</value>
+  </data>
+  <data name="&gt;&gt;cmdFileOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdFileSave.Name" xml:space="preserve">
+    <value>cmdFileSave</value>
+  </data>
+  <data name="&gt;&gt;cmdFileSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdEditCut.Name" xml:space="preserve">
+    <value>cmdEditCut</value>
+  </data>
+  <data name="&gt;&gt;cmdEditCut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdEditCopy.Name" xml:space="preserve">
+    <value>cmdEditCopy</value>
+  </data>
+  <data name="&gt;&gt;cmdEditCopy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdEditPaste.Name" xml:space="preserve">
+    <value>cmdEditPaste</value>
+  </data>
+  <data name="&gt;&gt;cmdEditPaste.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdEditClear.Name" xml:space="preserve">
+    <value>cmdEditClear</value>
+  </data>
+  <data name="&gt;&gt;cmdEditClear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdActionReScan.Name" xml:space="preserve">
+    <value>cmdActionReScan</value>
+  </data>
+  <data name="&gt;&gt;cmdActionReScan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdFilterReScan.Name" xml:space="preserve">
+    <value>cmdFilterReScan</value>
+  </data>
+  <data name="&gt;&gt;cmdFilterReScan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ribOrbMiOpen.Name" xml:space="preserve">
     <value>ribOrbMiOpen</value>
@@ -802,23 +841,23 @@
   <data name="&gt;&gt;cmdStyle2013.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
-    <value>toolTip</value>
+  <data name="&gt;&gt;tssLabelImageName.Name" xml:space="preserve">
+    <value>tssLabelImageName</value>
   </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tssLabelImageName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dlgOpen.Name" xml:space="preserve">
-    <value>dlgOpen</value>
+  <data name="&gt;&gt;tssLabelImageSize.Name" xml:space="preserve">
+    <value>tssLabelImageSize</value>
   </data>
-  <data name="&gt;&gt;dlgOpen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tssLabelImageSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dlgSave.Name" xml:space="preserve">
-    <value>dlgSave</value>
+  <data name="&gt;&gt;tssLabelImageInfo.Name" xml:space="preserve">
+    <value>tssLabelImageInfo</value>
   </data>
-  <data name="&gt;&gt;dlgSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tssLabelImageInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

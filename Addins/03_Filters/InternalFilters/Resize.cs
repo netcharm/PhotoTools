@@ -151,7 +151,11 @@ namespace InternalFilters
         /// </summary>
         public Image ImageData
         {
-            get { return ( ImgDst ); }
+            get
+            {
+                if ( ImgDst is System.Drawing.Image ) return ( ImgDst );
+                else return ( ImgSrc );
+            }
             set { ImgSrc = value; }
         }
         /// <summary>
@@ -249,7 +253,6 @@ namespace InternalFilters
 
                 ImgDst = Apply( ImgSrc );
             }
-            else ImgDst = ImgSrc;
             if ( fm != null )
             {
                 fm.Dispose();
@@ -270,6 +273,17 @@ namespace InternalFilters
                 return ( filter.Apply( image as Bitmap ) );
             }
             return ( image );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        public Image ProcessImage( IFilter filter, Image img )
+        {
+            throw new NotImplementedException();
         }
     }
 }

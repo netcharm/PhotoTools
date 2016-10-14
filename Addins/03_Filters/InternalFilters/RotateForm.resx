@@ -117,6 +117,80 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;btnRotateFlipY.Name" xml:space="preserve">
+    <value>btnRotateFlipY</value>
+  </data>
+  <data name="&gt;&gt;btnRotateFlipY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRotateFlipY.Parent" xml:space="preserve">
+    <value>groupMode</value>
+  </data>
+  <data name="&gt;&gt;btnRotateFlipY.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnRotateFlipX.Name" xml:space="preserve">
+    <value>btnRotateFlipX</value>
+  </data>
+  <data name="&gt;&gt;btnRotateFlipX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRotateFlipX.Parent" xml:space="preserve">
+    <value>groupMode</value>
+  </data>
+  <data name="&gt;&gt;btnRotateFlipX.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnRotate90r.Name" xml:space="preserve">
+    <value>btnRotate90r</value>
+  </data>
+  <data name="&gt;&gt;btnRotate90r.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRotate90r.Parent" xml:space="preserve">
+    <value>groupMode</value>
+  </data>
+  <data name="&gt;&gt;btnRotate90r.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnRotate90l.Name" xml:space="preserve">
+    <value>btnRotate90l</value>
+  </data>
+  <data name="&gt;&gt;btnRotate90l.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRotate90l.Parent" xml:space="preserve">
+    <value>groupMode</value>
+  </data>
+  <data name="&gt;&gt;btnRotate90l.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="groupMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 12</value>
+  </data>
+  <data name="groupMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 112</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupMode.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupMode.Text" xml:space="preserve">
+    <value>Orientation</value>
+  </data>
+  <data name="&gt;&gt;groupMode.Name" xml:space="preserve">
+    <value>groupMode</value>
+  </data>
+  <data name="&gt;&gt;groupMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupMode.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupMode.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnRotateFlipY.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
@@ -124,14 +198,12 @@
   <data name="btnRotateFlipY.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnRotateFlipY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 32</value>
+    <value>56, 66</value>
   </data>
   <data name="btnRotateFlipY.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 40</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnRotateFlipY.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -160,7 +232,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnRotateFlipX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 32</value>
+    <value>10, 66</value>
   </data>
   <data name="btnRotateFlipX.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 40</value>
@@ -190,7 +262,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnRotate90r.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 32</value>
+    <value>56, 20</value>
   </data>
   <data name="btnRotate90r.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 40</value>
@@ -217,7 +289,7 @@
     <value>Popup</value>
   </data>
   <data name="btnRotate90l.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 32</value>
+    <value>10, 20</value>
   </data>
   <data name="btnRotate90l.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 40</value>
@@ -240,35 +312,35 @@
   <data name="&gt;&gt;btnRotate90l.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="groupMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 12</value>
+  <data name="&gt;&gt;chkKeepSize.Name" xml:space="preserve">
+    <value>chkKeepSize</value>
   </data>
-  <data name="groupMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 94</value>
+  <data name="&gt;&gt;chkKeepSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupMode.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;chkKeepSize.Parent" xml:space="preserve">
+    <value>groupAngle</value>
+  </data>
+  <data name="&gt;&gt;chkKeepSize.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupMode.Text" xml:space="preserve">
-    <value>Adjust Orientation</value>
+  <data name="&gt;&gt;numAngle.Name" xml:space="preserve">
+    <value>numAngle</value>
   </data>
-  <data name="&gt;&gt;groupMode.Name" xml:space="preserve">
-    <value>groupMode</value>
+  <data name="&gt;&gt;numAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numAngle.Parent" xml:space="preserve">
+    <value>groupAngle</value>
   </data>
-  <data name="&gt;&gt;groupMode.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupMode.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;numAngle.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="groupAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 130</value>
+    <value>8, 130</value>
   </data>
   <data name="groupAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 100</value>
+    <value>108, 82</value>
   </data>
   <data name="groupAngle.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -286,13 +358,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupAngle.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 246</value>
+    <value>207, 187</value>
   </data>
   <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>75, 27</value>
   </data>
   <data name="btnOk.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -310,10 +382,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOk.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 246</value>
+    <value>122, 189</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -334,6 +406,96 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 22</value>
+  </data>
+  <data name="numAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 21</value>
+  </data>
+  <data name="numAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="numAngle.ThousandsSeparator" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numAngle.ToolTip" xml:space="preserve">
+    <value>Rotate Angle</value>
+  </data>
+  <data name="&gt;&gt;numAngle.Name" xml:space="preserve">
+    <value>numAngle</value>
+  </data>
+  <data name="&gt;&gt;numAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numAngle.Parent" xml:space="preserve">
+    <value>groupAngle</value>
+  </data>
+  <data name="&gt;&gt;numAngle.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="imgPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 12</value>
+  </data>
+  <data name="imgPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 160</value>
+  </data>
+  <data name="imgPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="imgPreview.Text" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="imgPreview.ToolTip" xml:space="preserve">
+    <value>Rotate Prevew </value>
+  </data>
+  <data name="&gt;&gt;imgPreview.Name" xml:space="preserve">
+    <value>imgPreview</value>
+  </data>
+  <data name="&gt;&gt;imgPreview.Type" xml:space="preserve">
+    <value>Cyotek.Windows.Forms.ImageBox, Cyotek.Windows.Forms.ImageBox, Version=1.1.5.1, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
+  </data>
+  <data name="&gt;&gt;imgPreview.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;imgPreview.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkKeepSize.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="chkKeepSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 51</value>
+  </data>
+  <data name="chkKeepSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 24</value>
+  </data>
+  <data name="chkKeepSize.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="chkKeepSize.Text" xml:space="preserve">
+    <value>Keep Size</value>
+  </data>
+  <data name="chkKeepSize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="chkKeepSize.ToolTip" xml:space="preserve">
+    <value>Keep Image Size</value>
+  </data>
+  <data name="&gt;&gt;chkKeepSize.Name" xml:space="preserve">
+    <value>chkKeepSize</value>
+  </data>
+  <data name="&gt;&gt;chkKeepSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkKeepSize.Parent" xml:space="preserve">
+    <value>groupAngle</value>
+  </data>
+  <data name="&gt;&gt;chkKeepSize.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -343,7 +505,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>292, 284</value>
+    <value>292, 221</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

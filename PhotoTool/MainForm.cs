@@ -469,6 +469,8 @@ namespace PhotoTool
                 if ( dlgOpen.ShowDialog() == DialogResult.OK )
                 {
                     addins.CurrentApp.ImageData = new Bitmap( dlgOpen.FileName );
+                    tssLabelImageName.Text = Path.GetFileName( dlgOpen.FileName );
+                    tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height}";
                 }
             }
         }

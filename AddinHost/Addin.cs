@@ -12,6 +12,7 @@ using NGettext.WinForm;
 using NGettext;
 using System.Diagnostics;
 using System.Reflection;
+using Accord.Imaging.Filters;
 
 namespace NetCharm.Image.Addins
 {
@@ -268,7 +269,11 @@ namespace NetCharm.Image.Addins
         /// </summary>
         public virtual System.Drawing.Image ImageData
         {
-            get { return ( ImgDst ); }
+            get
+            {
+                if ( ImgDst is System.Drawing.Image) return(ImgDst);
+                else return (ImgSrc);
+            }
             set { ImgSrc = value; }
         }
         /// <summary>
@@ -397,8 +402,6 @@ namespace NetCharm.Image.Addins
         {
             return ( image );
         }
-
-
     }
 
 
