@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BatchProcess\n"
+"Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
+"POT-Creation-Date: 2016-10-13 21:45+0800\n"
+"PO-Revision-Date: 2016-10-13 21:45+0800\n"
+"Last-Translator: netcharm <netcharm@163.com>\n"
+"Language-Team: netcharm <netcharm@163.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: China\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+
+#: BatchProcessForm.Designer.cs:70
+msgid "File"
+msgstr ""
+
+#: BatchProcessForm.Designer.cs:75
+msgid "Full Path"
+msgstr ""
+
+#: BatchProcessForm.Designer.cs:95
+msgid "Add Image"
+msgstr ""
+
+#: BatchProcessForm.Designer.cs:102
+msgid "Remove Image"
+msgstr ""
+
+#: BatchProcessForm.Designer.cs:114
+msgid "Clear"
+msgstr ""
+
+#: BatchProcessForm.Designer.cs:126
+msgid "Process Selected"
+msgstr ""
+
+#: BatchProcessForm.Designer.cs:133
+msgid "Process All"
+msgstr ""
+
+#: BatchProcessForm.Designer.cs:148
+msgid "Preview"
+msgstr ""
+
+#: BatchProcessForm.Designer.cs:163
+msgid "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All File(*.*)|*.*"
+msgstr ""
+
+#: BatchProcessForm.Designer.cs:167
+msgid "Add Image(s"
+msgstr ""
+
+#: BatchProcessForm.Designer.cs:179
+msgid "Batch Image Processing"
+msgstr ""

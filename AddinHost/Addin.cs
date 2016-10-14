@@ -7,6 +7,11 @@ using Mono.Addins;
 using System.Drawing;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.IO;
+using NGettext.WinForm;
+using NGettext;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace NetCharm.Image.Addins
 {
@@ -27,8 +32,8 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        private ValueType _type = null;
-        public ValueType Type
+        private Type _type = null;
+        public Type Type
         {
             get { return _type; }
             set { _type = value; }
@@ -41,178 +46,6 @@ namespace NetCharm.Image.Addins
         {
             get { return _value; }
             set { _value = value; }
-        }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public class AddinImp : object
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        private ComponentResourceManager resources = new ComponentResourceManager();
-        public ComponentResourceManager Resources
-        {
-            get { return resources; }
-            set { resources = value; }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private Guid _guid = new Guid();
-        public Guid GUID
-        {
-            get { return ( _guid ); }
-            //set { name = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private string _name = null;
-        public string Name
-        {
-            get { return ( _name ); }
-            //set { name = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private string _displayname = null;
-        public string DisplayName
-        {
-            get { return ( _displayname ); }
-            //set { displayname = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private string _description = null;
-        public string Description
-        {
-            get { return ( _description ); }
-            //set { description = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private string _path = null;
-        public string Path
-        {
-            get
-            {
-                if ( _path == null ) _path = System.IO.Path.GetFileNameWithoutExtension( GetType().Module.ToString() );
-                return ( _path );
-            }
-            //set { path = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private AddinType _type = AddinType.Unknown;
-        public AddinType Type
-        {
-            get { return ( _type ); }
-            //set { type = value; }
-        }
-        //private Image img = Properties.Resources.AddInterface_32x;
-        //private Icon _icon = new Icon( typeof(Image), "AddInterface_32x" );
-        /// <summary>
-        /// 
-        /// </summary>
-        private Icon _icon = null;
-        public Icon Icon
-        {
-            get
-            {
-                if ( _icon == null ) Icon.FromHandle( ( Properties.Resources.AddIn_32x as Bitmap ).GetHicon() );
-                return ( _icon );
-            }
-            //set { icon = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private System.Drawing.Image _image = null;
-        public System.Drawing.Image LargeImage
-        {
-            get
-            {
-                if ( _image == null ) _image = Properties.Resources.AddIn_32x as Bitmap;
-                return ( _image );
-            }
-            //set { _image = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private System.Drawing.Image _smallimage = null;
-        public System.Drawing.Image SmallImage
-        {
-            get
-            {
-                if ( _smallimage == null ) _smallimage = Properties.Resources.AddIn_16x as Bitmap;
-                return ( _smallimage );
-            }
-            //set { _smallimage = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private string _author = null;
-        public string Author
-        {
-            get { return _author; }
-            //set { _author = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private string _copyright = null;
-        public string Copyright
-        {
-            get { return _copyright; }
-            //set { _copyright = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private string _version = null;
-        public string Version
-        {
-            get { return _version; }
-            //set { _version = value; }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private Dictionary<string, ParamItem> _params = new Dictionary<string, ParamItem>();
-        public Dictionary<string, ParamItem> Params
-        {
-            get { return _params; }
-            //set { }
-        }
-
-        //public virtual override Image Apply( Image image );
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public virtual bool Show()
-        {
-            return ( true );
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="image"></param>
-        /// <returns></returns>
-        public virtual System.Drawing.Image Apply( System.Drawing.Image image )
-        {
-            return ( image );
         }
     }
 
@@ -234,11 +67,11 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        string DisplayName { get; }
+        string DisplayName { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        string Description { get; }
+        string Description { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -246,15 +79,19 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
+        string Domain { get; }
+        /// <summary>
+        /// 
+        /// </summary>
         AddinType Type { get; }
         /// <summary>
         /// 
         /// </summary>
-        System.Drawing.Image LargeImage { get; }
+        System.Drawing.Image LargeIcon { get; }
         /// <summary>
         /// 
         /// </summary>
-        System.Drawing.Image SmallImage { get; }
+        System.Drawing.Image SmallIcon { get; }
         /// <summary>
         /// 
         /// </summary>
@@ -267,6 +104,10 @@ namespace NetCharm.Image.Addins
         /// 
         /// </summary>
         string Version { get; }
+        /// <summary>
+        /// 
+        /// </summary>
+        System.Drawing.Image ImageData { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -291,5 +132,274 @@ namespace NetCharm.Image.Addins
         /// <returns></returns>
         System.Drawing.Image Apply( System.Drawing.Image image );
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class AddinBase : IAddin
+    {
+        private static ICatalog catalog = null;
+
+        private FileVersionInfo fv = null;
+        //private Form fm = null;
+
+        protected internal System.Drawing.Image ImgSrc = null;
+        protected internal System.Drawing.Image ImgDst = null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private AddinHost _host = null;
+        public AddinHost Host
+        {
+            get { return _host; }
+            set { _host = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Location
+        {
+            get
+            {
+                return ( GetType().Module.FullyQualifiedName );
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Domain
+        {
+            get
+            {
+                if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
+                return ( Path.GetFileNameWithoutExtension( fv.InternalName ) );
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual Guid GUID
+        {
+            get { return ( GetType().GUID ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual string Author
+        {
+            get
+            {
+                if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
+                return ( fv.CompanyName );
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual string Copyright
+        {
+            get
+            {
+                if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
+                return ( fv.LegalCopyright );
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual string Version
+        {
+            get
+            {
+                if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
+                return ( fv.FileVersion );
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private string _name = "AddinSample";
+        public virtual string Name
+        {
+            get { return ( _name ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private string _displayName = "AddinSample";
+        public virtual string DisplayName
+        {
+            get { return ( _( _displayName ) ); }
+            set { _displayName = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private string _description = "Addin Sample";
+        public virtual string Description
+        {
+            get { return ( _( _description ) ); }
+            set { _description = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual AddinType Type
+        {
+            get { return AddinType.Filter; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual System.Drawing.Image LargeIcon
+        {
+            get { return ( Properties.Resources.AddIn_32x ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual System.Drawing.Image SmallIcon
+        {
+            get { return ( Properties.Resources.AddIn_16x ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual System.Drawing.Image ImageData
+        {
+            get { return ( ImgDst ); }
+            set { ImgSrc = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private ComponentResourceManager resources = new ComponentResourceManager();
+        public ComponentResourceManager Resources
+        {
+            get { return resources; }
+            set { resources = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private Dictionary<string, ParamItem> _params = new Dictionary<string, ParamItem>();
+        public Dictionary<string, ParamItem> Params
+        {
+            get { return ( _params ); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private ICatalog GetCatalog()
+        {
+            string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( Location ) ), "locale" );
+            I18N i10n = new I18N( Domain, addinRoot );
+            catalog = i10n.Catalog;
+            return ( catalog );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        protected internal static string T( string t )
+        {
+            if ( catalog is ICatalog ) return ( catalog.GetString(t) );
+            return ( t );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        protected internal string _( string t )
+        {
+            if ( catalog == null )
+                catalog = GetCatalog();
+
+            if ( catalog == null )
+                return ( I18N._( t ) );
+            else
+                return ( I18N._( catalog, t ) );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
+        protected internal void Translate( Form form )
+        {
+            string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( Location ) ), "locale" );
+
+            I18N i10n = new I18N( Domain, addinRoot, form );
+            catalog = i10n.Catalog;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void Show()
+        {
+            MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void Show( Form parent = null )
+        {
+            MessageBox.Show( "Calling Show(parentForm) method", "Title", MessageBoxButtons.OK );
+            //if ( fm == null )
+            //{
+            //    fm = new Form( this );
+            //    Translate( fm );
+            //    fm.Text = DisplayName;
+
+            //    if ( Params.ContainsKey( "Width" ) )
+            //        fm.SetWidth( Params["Width"] );
+            //    else if ( ImgSrc != null )
+            //        fm.SetWidth( ImgSrc.Width );
+
+            //    if ( Params.ContainsKey( "Height" ) )
+            //        fm.SetHeight( Params["Height"] );
+            //    else if ( ImgSrc != null )
+            //        fm.SetHeight( ImgSrc.Height );
+            //}
+            //if ( fm.ShowDialog() == DialogResult.OK )
+            //{
+            //    if ( Params.ContainsKey( "Width" ) )
+            //        Params["Width"] = fm.GetWidth();
+            //    else
+            //        Params.Add( "Width", fm.GetWidth() );
+
+            //    if ( Params.ContainsKey( "Height" ) )
+            //        Params["Height"] = fm.GetHeight();
+            //    else
+            //        Params.Add( "Height", fm.GetHeight() );
+
+            //    ImgDst = Apply( ImgSrc );
+            //}
+            //else ImgDst = ImgSrc;
+            //if ( fm != null )
+            //{
+            //    fm.Dispose();
+            //    fm = null;
+            //}
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        public virtual System.Drawing.Image Apply( System.Drawing.Image image )
+        {
+            return ( image );
+        }
+
+
+    }
+
 
 }

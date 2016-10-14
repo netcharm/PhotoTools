@@ -73,26 +73,6 @@ namespace PhotoTool.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap btn_save {
-            get {
-                object obj = ResourceManager.GetObject("btn_save", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap btn_save_32x32 {
-            get {
-                object obj = ResourceManager.GetObject("btn_save_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap Clear_32x {
             get {
                 object obj = ResourceManager.GetObject("Clear_32x", resourceCulture);
@@ -216,16 +196,6 @@ namespace PhotoTool.Properties {
         internal static System.Drawing.Bitmap Save_32x {
             get {
                 object obj = ResourceManager.GetObject("Save_32x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap save_32x32 {
-            get {
-                object obj = ResourceManager.GetObject("save_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

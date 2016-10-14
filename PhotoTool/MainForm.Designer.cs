@@ -39,33 +39,26 @@
             this.cmdEditCopy = new System.Windows.Forms.RibbonButton();
             this.cmdEditPaste = new System.Windows.Forms.RibbonButton();
             this.cmdEditClear = new System.Windows.Forms.RibbonButton();
+            this.RibTabMainApp = new System.Windows.Forms.RibbonPanel();
             this.RibTabEdit = new System.Windows.Forms.RibbonTab();
             this.RibTabAction = new System.Windows.Forms.RibbonTab();
             this.RibTabActManager = new System.Windows.Forms.RibbonPanel();
             this.cmdActionReScan = new System.Windows.Forms.RibbonButton();
             this.RibTabActInternal = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButtonList1 = new System.Windows.Forms.RibbonButtonList();
-            this.ribbonButton3 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton5 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton6 = new System.Windows.Forms.RibbonButton();
+            this.RibTabActInternalList = new System.Windows.Forms.RibbonButtonList();
+            this.RibTabActInternalDropList = new System.Windows.Forms.RibbonButtonList();
+            this.RibTabActExternal = new System.Windows.Forms.RibbonPanel();
+            this.RibTabActExternalList = new System.Windows.Forms.RibbonButtonList();
+            this.RibTabActExternalDropList = new System.Windows.Forms.RibbonButtonList();
             this.RibTabFilter = new System.Windows.Forms.RibbonTab();
             this.RibTabFilterManager = new System.Windows.Forms.RibbonPanel();
             this.cmdFilterReScan = new System.Windows.Forms.RibbonButton();
-            this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButtonList2 = new System.Windows.Forms.RibbonButtonList();
-            this.ribbonButton7 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton8 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton9 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton10 = new System.Windows.Forms.RibbonButton();
-            this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButtonList3 = new System.Windows.Forms.RibbonButtonList();
-            this.ribbonButton11 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton12 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton13 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton14 = new System.Windows.Forms.RibbonButton();
+            this.RibTabFilterInternal = new System.Windows.Forms.RibbonPanel();
+            this.RibTabFilterInternalList = new System.Windows.Forms.RibbonButtonList();
+            this.RibTabFilterInternalDropList = new System.Windows.Forms.RibbonButtonList();
+            this.RibTabFilterExternal = new System.Windows.Forms.RibbonPanel();
+            this.RibTabFilterExternalList = new System.Windows.Forms.RibbonButtonList();
+            this.RibTabFilterExternalDropList = new System.Windows.Forms.RibbonButtonList();
             this.RibTabSetting = new System.Windows.Forms.RibbonTab();
             this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
             this.ribbonMain = new System.Windows.Forms.Ribbon();
@@ -82,10 +75,10 @@
             this.cmdStyle2007 = new System.Windows.Forms.RibbonButton();
             this.cmdStyle2010 = new System.Windows.Forms.RibbonButton();
             this.cmdStyle2013 = new System.Windows.Forms.RibbonButton();
-            this.ribbonOrbOptionButton1 = new System.Windows.Forms.RibbonOrbOptionButton();
             this.status = new System.Windows.Forms.StatusStrip();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.RibTabMainApp = new System.Windows.Forms.RibbonPanel();
+            this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
+            this.dlgSave = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // RibTabMain
@@ -106,12 +99,14 @@
             this.cmdFileOpen.Image = global::PhotoTool.Properties.Resources.ExportPerformance_32x;
             this.cmdFileOpen.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdFileOpen.SmallImage")));
             resources.ApplyResources(this.cmdFileOpen, "cmdFileOpen");
+            this.cmdFileOpen.Click += new System.EventHandler(this.cmdFileOpen_Click);
             // 
             // cmdFileSave
             // 
             this.cmdFileSave.Image = global::PhotoTool.Properties.Resources.Save_32x;
             this.cmdFileSave.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdFileSave.SmallImage")));
             resources.ApplyResources(this.cmdFileSave, "cmdFileSave");
+            this.cmdFileSave.Click += new System.EventHandler(this.cmdFileSave_Click);
             // 
             // RibTabMainEdit
             // 
@@ -145,6 +140,10 @@
             this.cmdEditClear.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdEditClear.SmallImage")));
             resources.ApplyResources(this.cmdEditClear, "cmdEditClear");
             // 
+            // RibTabMainApp
+            // 
+            resources.ApplyResources(this.RibTabMainApp, "RibTabMainApp");
+            // 
             // RibTabEdit
             // 
             resources.ApplyResources(this.RibTabEdit, "RibTabEdit");
@@ -153,6 +152,7 @@
             // 
             this.RibTabAction.Panels.Add(this.RibTabActManager);
             this.RibTabAction.Panels.Add(this.RibTabActInternal);
+            this.RibTabAction.Panels.Add(this.RibTabActExternal);
             resources.ApplyResources(this.RibTabAction, "RibTabAction");
             // 
             // RibTabActManager
@@ -169,63 +169,51 @@
             // 
             // RibTabActInternal
             // 
-            this.RibTabActInternal.Items.Add(this.ribbonButtonList1);
+            this.RibTabActInternal.Items.Add(this.RibTabActInternalList);
             resources.ApplyResources(this.RibTabActInternal, "RibTabActInternal");
             // 
-            // ribbonButtonList1
+            // RibTabActInternalList
             // 
-            this.ribbonButtonList1.Buttons.Add(this.ribbonButton3);
-            this.ribbonButtonList1.Buttons.Add(this.ribbonButton4);
-            this.ribbonButtonList1.Buttons.Add(this.ribbonButton1);
-            this.ribbonButtonList1.Buttons.Add(this.ribbonButton2);
-            this.ribbonButtonList1.Buttons.Add(this.ribbonButton5);
-            this.ribbonButtonList1.Buttons.Add(this.ribbonButton6);
-            this.ribbonButtonList1.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
-            this.ribbonButtonList1.FlowToBottom = false;
-            this.ribbonButtonList1.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
-            resources.ApplyResources(this.ribbonButtonList1, "ribbonButtonList1");
+            this.RibTabActInternalList.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.RibTabActInternalList.DropDownItems.Add(this.RibTabActInternalDropList);
+            this.RibTabActInternalList.FlowToBottom = false;
+            this.RibTabActInternalList.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
+            this.RibTabActInternalList.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Overflow;
+            this.RibTabActInternalList.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.DropDown;
+            resources.ApplyResources(this.RibTabActInternalList, "RibTabActInternalList");
             // 
-            // ribbonButton3
+            // RibTabActInternalDropList
             // 
-            this.ribbonButton3.Image = global::PhotoTool.Properties.Resources.Marquee_32x;
-            this.ribbonButton3.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton3.SmallImage")));
-            resources.ApplyResources(this.ribbonButton3, "ribbonButton3");
+            this.RibTabActInternalDropList.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.RibTabActInternalDropList.FlowToBottom = false;
+            this.RibTabActInternalDropList.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
+            resources.ApplyResources(this.RibTabActInternalDropList, "RibTabActInternalDropList");
             // 
-            // ribbonButton4
+            // RibTabActExternal
             // 
-            this.ribbonButton4.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.Image")));
-            this.ribbonButton4.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.SmallImage")));
-            resources.ApplyResources(this.ribbonButton4, "ribbonButton4");
+            this.RibTabActExternal.Items.Add(this.RibTabActExternalList);
+            resources.ApplyResources(this.RibTabActExternal, "RibTabActExternal");
             // 
-            // ribbonButton1
+            // RibTabActExternalList
             // 
-            this.ribbonButton1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.Image")));
-            this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
-            resources.ApplyResources(this.ribbonButton1, "ribbonButton1");
+            this.RibTabActExternalList.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.RibTabActExternalList.DropDownItems.Add(this.RibTabActExternalDropList);
+            this.RibTabActExternalList.FlowToBottom = false;
+            this.RibTabActExternalList.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
+            resources.ApplyResources(this.RibTabActExternalList, "RibTabActExternalList");
             // 
-            // ribbonButton2
+            // RibTabActExternalDropList
             // 
-            this.ribbonButton2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.Image")));
-            this.ribbonButton2.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.SmallImage")));
-            resources.ApplyResources(this.ribbonButton2, "ribbonButton2");
-            // 
-            // ribbonButton5
-            // 
-            this.ribbonButton5.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton5.Image")));
-            this.ribbonButton5.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton5.SmallImage")));
-            resources.ApplyResources(this.ribbonButton5, "ribbonButton5");
-            // 
-            // ribbonButton6
-            // 
-            this.ribbonButton6.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton6.Image")));
-            this.ribbonButton6.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton6.SmallImage")));
-            resources.ApplyResources(this.ribbonButton6, "ribbonButton6");
+            this.RibTabActExternalDropList.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.RibTabActExternalDropList.FlowToBottom = false;
+            this.RibTabActExternalDropList.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
+            resources.ApplyResources(this.RibTabActExternalDropList, "RibTabActExternalDropList");
             // 
             // RibTabFilter
             // 
             this.RibTabFilter.Panels.Add(this.RibTabFilterManager);
-            this.RibTabFilter.Panels.Add(this.ribbonPanel1);
-            this.RibTabFilter.Panels.Add(this.ribbonPanel2);
+            this.RibTabFilter.Panels.Add(this.RibTabFilterInternal);
+            this.RibTabFilter.Panels.Add(this.RibTabFilterExternal);
             resources.ApplyResources(this.RibTabFilter, "RibTabFilter");
             // 
             // RibTabFilterManager
@@ -239,85 +227,50 @@
             this.cmdFilterReScan.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdFilterReScan.SmallImage")));
             resources.ApplyResources(this.cmdFilterReScan, "cmdFilterReScan");
             // 
-            // ribbonPanel1
+            // RibTabFilterInternal
             // 
-            this.ribbonPanel1.Items.Add(this.ribbonButtonList2);
-            resources.ApplyResources(this.ribbonPanel1, "ribbonPanel1");
+            this.RibTabFilterInternal.FlowsTo = System.Windows.Forms.RibbonPanelFlowDirection.Right;
+            this.RibTabFilterInternal.Items.Add(this.RibTabFilterInternalList);
+            resources.ApplyResources(this.RibTabFilterInternal, "RibTabFilterInternal");
             // 
-            // ribbonButtonList2
+            // RibTabFilterInternalList
             // 
-            this.ribbonButtonList2.Buttons.Add(this.ribbonButton7);
-            this.ribbonButtonList2.Buttons.Add(this.ribbonButton8);
-            this.ribbonButtonList2.Buttons.Add(this.ribbonButton9);
-            this.ribbonButtonList2.Buttons.Add(this.ribbonButton10);
-            this.ribbonButtonList2.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
-            this.ribbonButtonList2.FlowToBottom = false;
-            this.ribbonButtonList2.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
-            resources.ApplyResources(this.ribbonButtonList2, "ribbonButtonList2");
+            this.RibTabFilterInternalList.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.RibTabFilterInternalList.DropDownItems.Add(this.RibTabFilterInternalDropList);
+            this.RibTabFilterInternalList.FlowToBottom = true;
+            this.RibTabFilterInternalList.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
+            this.RibTabFilterInternalList.ItemsWideInLargeMode = 10;
+            this.RibTabFilterInternalList.ItemsWideInMediumMode = 4;
+            this.RibTabFilterInternalList.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.RibTabFilterInternalList.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.DropDown;
+            resources.ApplyResources(this.RibTabFilterInternalList, "RibTabFilterInternalList");
             // 
-            // ribbonButton7
+            // RibTabFilterInternalDropList
             // 
-            this.ribbonButton7.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton7.Image")));
-            this.ribbonButton7.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton7.SmallImage")));
-            resources.ApplyResources(this.ribbonButton7, "ribbonButton7");
+            this.RibTabFilterInternalDropList.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.RibTabFilterInternalDropList.FlowToBottom = false;
+            this.RibTabFilterInternalDropList.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
+            resources.ApplyResources(this.RibTabFilterInternalDropList, "RibTabFilterInternalDropList");
             // 
-            // ribbonButton8
+            // RibTabFilterExternal
             // 
-            this.ribbonButton8.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton8.Image")));
-            this.ribbonButton8.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton8.SmallImage")));
-            resources.ApplyResources(this.ribbonButton8, "ribbonButton8");
+            this.RibTabFilterExternal.Items.Add(this.RibTabFilterExternalList);
+            resources.ApplyResources(this.RibTabFilterExternal, "RibTabFilterExternal");
             // 
-            // ribbonButton9
+            // RibTabFilterExternalList
             // 
-            this.ribbonButton9.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton9.Image")));
-            this.ribbonButton9.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton9.SmallImage")));
-            resources.ApplyResources(this.ribbonButton9, "ribbonButton9");
+            this.RibTabFilterExternalList.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.RibTabFilterExternalList.DropDownItems.Add(this.RibTabFilterExternalDropList);
+            this.RibTabFilterExternalList.FlowToBottom = false;
+            this.RibTabFilterExternalList.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
+            resources.ApplyResources(this.RibTabFilterExternalList, "RibTabFilterExternalList");
             // 
-            // ribbonButton10
+            // RibTabFilterExternalDropList
             // 
-            this.ribbonButton10.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton10.Image")));
-            this.ribbonButton10.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton10.SmallImage")));
-            resources.ApplyResources(this.ribbonButton10, "ribbonButton10");
-            // 
-            // ribbonPanel2
-            // 
-            this.ribbonPanel2.Items.Add(this.ribbonButtonList3);
-            resources.ApplyResources(this.ribbonPanel2, "ribbonPanel2");
-            // 
-            // ribbonButtonList3
-            // 
-            this.ribbonButtonList3.Buttons.Add(this.ribbonButton11);
-            this.ribbonButtonList3.Buttons.Add(this.ribbonButton12);
-            this.ribbonButtonList3.Buttons.Add(this.ribbonButton13);
-            this.ribbonButtonList3.Buttons.Add(this.ribbonButton14);
-            this.ribbonButtonList3.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
-            this.ribbonButtonList3.FlowToBottom = false;
-            this.ribbonButtonList3.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
-            resources.ApplyResources(this.ribbonButtonList3, "ribbonButtonList3");
-            // 
-            // ribbonButton11
-            // 
-            this.ribbonButton11.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton11.Image")));
-            this.ribbonButton11.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton11.SmallImage")));
-            resources.ApplyResources(this.ribbonButton11, "ribbonButton11");
-            // 
-            // ribbonButton12
-            // 
-            this.ribbonButton12.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton12.Image")));
-            this.ribbonButton12.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton12.SmallImage")));
-            resources.ApplyResources(this.ribbonButton12, "ribbonButton12");
-            // 
-            // ribbonButton13
-            // 
-            this.ribbonButton13.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton13.Image")));
-            this.ribbonButton13.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton13.SmallImage")));
-            resources.ApplyResources(this.ribbonButton13, "ribbonButton13");
-            // 
-            // ribbonButton14
-            // 
-            this.ribbonButton14.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton14.Image")));
-            this.ribbonButton14.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton14.SmallImage")));
-            resources.ApplyResources(this.ribbonButton14, "ribbonButton14");
+            this.RibTabFilterExternalDropList.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.RibTabFilterExternalDropList.FlowToBottom = false;
+            this.RibTabFilterExternalDropList.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
+            resources.ApplyResources(this.RibTabFilterExternalDropList, "RibTabFilterExternalDropList");
             // 
             // RibTabSetting
             // 
@@ -486,12 +439,6 @@
             this.cmdStyle2013.Value = "2";
             this.cmdStyle2013.Click += new System.EventHandler(this.cmdStyle2010_Click);
             // 
-            // ribbonOrbOptionButton1
-            // 
-            this.ribbonOrbOptionButton1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonOrbOptionButton1.Image")));
-            this.ribbonOrbOptionButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbOptionButton1.SmallImage")));
-            resources.ApplyResources(this.ribbonOrbOptionButton1, "ribbonOrbOptionButton1");
-            // 
             // status
             // 
             resources.ApplyResources(this.status, "status");
@@ -504,9 +451,16 @@
             this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip.ToolTipTitle = "Tip:";
             // 
-            // RibTabMainApp
+            // dlgOpen
             // 
-            resources.ApplyResources(this.RibTabMainApp, "RibTabMainApp");
+            this.dlgOpen.DefaultExt = "jpg";
+            resources.ApplyResources(this.dlgOpen, "dlgOpen");
+            // 
+            // dlgSave
+            // 
+            this.dlgSave.DefaultExt = "jpg";
+            this.dlgSave.FileName = "*.jpg";
+            resources.ApplyResources(this.dlgSave, "dlgSave");
             // 
             // MainForm
             // 
@@ -554,32 +508,25 @@
         private System.Windows.Forms.RibbonButton cmdStyle2013;
         private System.Windows.Forms.RibbonButton cmdThemePurple;
         private System.Windows.Forms.Ribbon ribbonMain;
-        private System.Windows.Forms.RibbonOrbOptionButton ribbonOrbOptionButton1;
         private System.Windows.Forms.RibbonOrbMenuItem ribOrbMiSave;
         private System.Windows.Forms.RibbonOrbMenuItem ribOrbMiOpen;
         private System.Windows.Forms.RibbonPanel RibTabActInternal;
-        private System.Windows.Forms.RibbonButtonList ribbonButtonList1;
-        private System.Windows.Forms.RibbonButton ribbonButton3;
-        private System.Windows.Forms.RibbonButton ribbonButton4;
-        private System.Windows.Forms.RibbonButton ribbonButton1;
-        private System.Windows.Forms.RibbonButton ribbonButton2;
-        private System.Windows.Forms.RibbonButton ribbonButton5;
-        private System.Windows.Forms.RibbonButton ribbonButton6;
-        private System.Windows.Forms.RibbonPanel ribbonPanel1;
-        private System.Windows.Forms.RibbonButtonList ribbonButtonList2;
-        private System.Windows.Forms.RibbonButton ribbonButton7;
-        private System.Windows.Forms.RibbonButton ribbonButton8;
-        private System.Windows.Forms.RibbonButton ribbonButton9;
-        private System.Windows.Forms.RibbonButton ribbonButton10;
-        private System.Windows.Forms.RibbonPanel ribbonPanel2;
-        private System.Windows.Forms.RibbonButtonList ribbonButtonList3;
-        private System.Windows.Forms.RibbonButton ribbonButton11;
-        private System.Windows.Forms.RibbonButton ribbonButton12;
-        private System.Windows.Forms.RibbonButton ribbonButton13;
-        private System.Windows.Forms.RibbonButton ribbonButton14;
+        private System.Windows.Forms.RibbonButtonList RibTabActInternalList;
+        private System.Windows.Forms.RibbonPanel RibTabFilterInternal;
+        private System.Windows.Forms.RibbonButtonList RibTabFilterInternalList;
+        private System.Windows.Forms.RibbonPanel RibTabFilterExternal;
+        private System.Windows.Forms.RibbonButtonList RibTabFilterExternalList;
         private System.Windows.Forms.StatusStrip status;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.RibbonPanel RibTabMainApp;
+        private System.Windows.Forms.OpenFileDialog dlgOpen;
+        private System.Windows.Forms.SaveFileDialog dlgSave;
+        private System.Windows.Forms.RibbonPanel RibTabActExternal;
+        private System.Windows.Forms.RibbonButtonList RibTabActExternalList;
+        private System.Windows.Forms.RibbonButtonList RibTabActInternalDropList;
+        private System.Windows.Forms.RibbonButtonList RibTabActExternalDropList;
+        private System.Windows.Forms.RibbonButtonList RibTabFilterInternalDropList;
+        private System.Windows.Forms.RibbonButtonList RibTabFilterExternalDropList;
     }
 }
 

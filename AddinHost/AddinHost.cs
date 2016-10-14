@@ -74,6 +74,25 @@ namespace NetCharm.Image.Addins
         private string AddinDir = "";
         private string DatabaseDir = "";
 
+        private IAddin _currentapp = null;
+        public IAddin CurrentApp
+        {
+            get { return _currentapp; }
+            set { _currentapp = value; }
+        }
+        private IAddin _currentaction = null;
+        public IAddin CurrentAction
+        {
+            get { return _currentaction; }
+            set { _currentaction = value; }
+        }
+        private IAddin _currentfilter = null;
+        public IAddin CurrentFilter
+        {
+            get { return _currentfilter; }
+            set { _currentfilter = value; }
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -131,6 +150,11 @@ namespace NetCharm.Image.Addins
                     case AddinType.FormatOut: _formatouts.Add( addin.Name, addin ); break;
                 }
             }
+        }
+
+        public IAddin GetCurrentApp()
+        {
+            return(CurrentApp);
         }
     }
 }

@@ -96,7 +96,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="locale\zh_CN\LC_MESSAGES\PhotoTool.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="locale\zh_CN\LC_MESSAGES\PhotoTool.po" />
     <None Include="packages.config" />
+    <None Include="PhotoTool.pot" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

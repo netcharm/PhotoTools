@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AutoMask\n"
+"Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
+"POT-Creation-Date: 2016-10-13 23:20+0800\n"
+"PO-Revision-Date: 2016-10-13 23:20+0800\n"
+"Last-Translator: netcharm <netcharm@163.com>\n"
+"Language-Team: netcharm <netcharm@163.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: China\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+
+#: MainForm.Designer.cs:101
+msgid "File Name"
+msgstr ""
+
+#: MainForm.Designer.cs:106
+msgid "File Path"
+msgstr ""
+
+#: MainForm.Designer.cs:126
+msgid "Add"
+msgstr ""
+
+#: MainForm.Designer.cs:138
+msgid "Remove"
+msgstr ""
+
+#: MainForm.Designer.cs:145
+msgid "Clear"
+msgstr ""
+
+#: MainForm.Designer.cs:157
+msgid "Mask Selected"
+msgstr ""
+
+#: MainForm.Designer.cs:164
+msgid "Mask All"
+msgstr ""
+
+#: MainForm.Designer.cs:186
+msgid "Face Mask Current Selected Image"
+msgstr ""
+
+#: MainForm.Designer.cs:198
+msgid "Save Current Preview"
+msgstr ""
+
+#: MainForm.Designer.cs:212
+msgid "Erase some error mask or display required face in preview box"
+msgstr ""
+
+#: MainForm.Designer.cs:226
+msgid "Face Mask current selected image in preview box"
+msgstr ""
+
+#: MainForm.Designer.cs:238
+msgid "Gray First"
+msgstr ""
+
+#: MainForm.Designer.cs:239
+msgid "Convert image to grayscale first for face detect"
+msgstr ""
+
+#: MainForm.Designer.cs:260
+msgid "Output image large side size"
+msgstr ""
+
+#: MainForm.Designer.cs:277
+msgid "Face Dectect Scale Mode"
+msgstr ""
+
+#: MainForm.Designer.cs:289
+msgid "Face Detecting Search Mode"
+msgstr ""
+
+#: MainForm.Designer.cs:300
+msgid "Remove EXIF"
+msgstr ""
+
+#: MainForm.Designer.cs:301
+msgid "Remove EXIF data from output image"
+msgstr ""
+
+#: MainForm.Designer.cs:316
+msgid "Minimized Face Size"
+msgstr ""
+
+#: MainForm.Designer.cs:334
+msgid "Click to view photo without Mask"
+msgstr ""
+
+#: MainForm.Designer.cs:347
+msgid "Masking all files in filelist"
+msgstr ""
+
+#: MainForm.Designer.cs:377
+msgid "statusStrip1"
+msgstr ""
+
+#: MainForm.Designer.cs:389
+msgid "File"
+msgstr ""
+
+#: MainForm.Designer.cs:390
+msgid "Current Selected Image File Name"
+msgstr ""
+
+#: MainForm.Designer.cs:402
+msgid "Image Size"
+msgstr ""
+
+#: MainForm.Designer.cs:403
+msgid "Current Selected Image Size"
+msgstr ""
+
+#: MainForm.Designer.cs:415
+msgid "Preview Size"
+msgstr ""
+
+#: MainForm.Designer.cs:416
+msgid "Current Selected Image Preview Size"
+msgstr ""
+
+#: MainForm.Designer.cs:427
+msgid "OK"
+msgstr ""
+
+#: MainForm.Designer.cs:443
+msgid "Double Click to change the mask image"
+msgstr ""
+
+#: MainForm.Designer.cs:475
+msgid "Auto Mask Face(s"
+msgstr ""

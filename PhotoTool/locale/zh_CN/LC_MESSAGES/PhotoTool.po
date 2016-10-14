@@ -1,0 +1,185 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PhotoTool\n"
+"Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
+"POT-Creation-Date: 2016-10-13 21:15+0800\n"
+"PO-Revision-Date: 2016-10-13 14:52+0800\n"
+"Last-Translator: netcharm <netcharm@163.com>\n"
+"Language-Team: netcharm <netcharm@163.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: China\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+
+#: MainForm.resx:121 -> RibTabMain.Text.value
+msgid "Main"
+msgstr "基本功能"
+
+#: MainForm.resx:124 -> RibTabMainFile.Text.value
+msgid "File"
+msgstr "文件"
+
+#: MainForm.resx:135 -> cmdFileOpen.Text.value MainForm.resx:317
+#: ribOrbMiOpen.Text.value
+msgid "Open"
+msgstr "打开"
+
+#: MainForm.resx:145 -> cmdFileSave.Text.value MainForm.resx:320
+#: ribOrbMiSave.Text.value
+msgid "Save"
+msgstr "保存"
+
+#: MainForm.resx:148 -> RibTabMainEdit.Text.value MainForm.resx:190
+#: RibTabEdit.Text.value
+msgid "Edit"
+msgstr "编辑"
+
+#: MainForm.resx:151 -> cmdEditCut.Text.value
+msgid "Cut"
+msgstr "剪切"
+
+#: MainForm.resx:161 -> cmdEditCopy.Text.value
+msgid "Copy"
+msgstr "复制"
+
+#: MainForm.resx:171 -> cmdEditPaste.Text.value
+msgid "Paste"
+msgstr "粘贴"
+
+#: MainForm.resx:181 -> cmdEditClear.Text.value
+msgid "Clear"
+msgstr "清除"
+
+#: MainForm.resx:184 -> cmdEditClear.ToolTip.value
+msgid "Clear Content"
+msgstr "清除内容"
+
+#: MainForm.resx:187 -> RibTabMainApp.Text.value
+msgid "Application"
+msgstr "应用"
+
+#: MainForm.resx:193 -> RibTabAction.Text.value
+msgid "Action"
+msgstr "功能"
+
+#: MainForm.resx:196 -> RibTabActManager.Text.value MainForm.resx:233
+#: RibTabFilterManager.Text.value
+msgid "Manager"
+msgstr "管理"
+
+#: MainForm.resx:206 -> cmdActionReScan.Text.value MainForm.resx:258
+#: cmdFilterReScan.Text.value
+msgid "Re-Scan"
+msgstr "重新扫描"
+
+#: MainForm.resx:209 -> RibTabActInternal.Text.value MainForm.resx:218
+#: RibTabActInternalDropList.Text.value MainForm.resx:242
+#: RibTabFilterInternal.Text.value MainForm.resx:261
+#: RibTabFilterInternalDropList.Text.value
+msgid "Internal"
+msgstr "内部"
+
+#: MainForm.resx:212 -> RibTabActInternalList.Text.value MainForm.resx:215
+#: RibTabActInternalList.ToolTip.value
+msgid "Internal Actions"
+msgstr "内部功能"
+
+#: MainForm.resx:221 -> RibTabActExternal.Text.value MainForm.resx:230
+#: RibTabActExternalDropList.Text.value MainForm.resx:245
+#: RibTabFilterExternal.Text.value MainForm.resx:270
+#: RibTabFilterExternalDropList.Text.value
+msgid "External"
+msgstr "扩展"
+
+#: MainForm.resx:224 -> RibTabActExternalList.Text.value MainForm.resx:227
+#: RibTabActExternalList.ToolTip.value
+msgid "External Actions"
+msgstr "扩展功能"
+
+#: MainForm.resx:236 -> RibTabFilterInternalList.Text.value MainForm.resx:239
+#: RibTabFilterInternalList.ToolTip.value
+msgid "Internal Filters"
+msgstr "内部滤镜"
+
+#: MainForm.resx:248 -> RibTabFilter.Text.value
+msgid "Filter"
+msgstr "滤镜"
+
+#: MainForm.resx:264 -> RibTabFilterExternalList.Text.value MainForm.resx:267
+#: RibTabFilterExternalList.ToolTip.value
+msgid "External Filters"
+msgstr "扩展滤镜"
+
+#: MainForm.resx:273 -> RibTabSetting.Text.value
+msgid "Setting"
+msgstr "设定"
+
+#: MainForm.resx:302 -> ribbonMain.Text.value
+msgid "Ribbon"
+msgstr ""
+
+#: MainForm.resx:323 -> ribOptBtnExit.Text.value
+msgid "Exit"
+msgstr "退出"
+
+#: MainForm.resx:326 -> ribOptBtnOptions.Text.value
+msgid "Options"
+msgstr "选项"
+
+#: MainForm.resx:343 -> ribThemeSelect.Text.value
+msgid "Theme"
+msgstr "主题颜色"
+
+#: MainForm.resx:360 -> cmdThemeBlue.Text.value
+msgid "Blue"
+msgstr "蓝色"
+
+#: MainForm.resx:377 -> cmdThemeBlack.Text.value
+msgid "Black"
+msgstr "黑色"
+
+#: MainForm.resx:394 -> cmdThemeGreen.Text.value
+msgid "Green"
+msgstr "绿色"
+
+#: MainForm.resx:411 -> cmdThemePurple.Text.value
+msgid "Purple"
+msgstr "紫色"
+
+#: MainForm.resx:428 -> ribStyleSelect.Text.value MainForm.resx:431
+#: ribStyleSelect.ToolTip.value
+msgid "Style"
+msgstr "主题风格"
+
+#: MainForm.resx:448 -> cmdStyle2007.Text.value
+msgid "Office 2007"
+msgstr ""
+
+#: MainForm.resx:465 -> cmdStyle2010.Text.value
+msgid "Office 2010"
+msgstr ""
+
+#: MainForm.resx:482 -> cmdStyle2013.Text.value
+msgid "Office 2013"
+msgstr ""
+
+#: MainForm.resx:497 -> status.Text.value
+msgid "OK"
+msgstr "确认"
+
+#: MainForm.resx:539 -> $this.Text.value
+msgid "Photo Tool"
+msgstr "图像工具"
+
+#: MainForm.Designer.cs:296
+msgid "Recent"
+msgstr "最近打开的"

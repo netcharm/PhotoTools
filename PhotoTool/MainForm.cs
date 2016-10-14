@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NetCharm.Image.Addins;
+using NGettext.WinForm;
 
 namespace PhotoTool
 {
@@ -48,10 +50,22 @@ namespace PhotoTool
                     Theme.ColorTable = new RibbonProfesionalRendererColorTable();
                     break;
             }
-            status.BackColor = Theme.ColorTable.GetColor(RibbonColorPart.RibbonBackground);
-            status.ForeColor = Theme.ColorTable.GetColor( RibbonColorPart.RibbonItemText_2013 );
-            //ribbonMain.Refresh();
-            //this.Refresh();
+
+            if( ribbonMain.OrbStyle == RibbonOrbStyle.Office_2007 )
+            {
+                status.BackColor = Theme.ColorTable.GetColor( RibbonColorPart.RibbonBackground );
+                status.ForeColor = Theme.ColorTable.GetColor( RibbonColorPart.Text );
+            }
+            else if ( ribbonMain.OrbStyle == RibbonOrbStyle.Office_2010 )
+            {
+                status.BackColor = Theme.ColorTable.GetColor( RibbonColorPart.RibbonBackground );
+                status.ForeColor = Theme.ColorTable.GetColor( RibbonColorPart.Text );
+            }
+            else if ( ribbonMain.OrbStyle == RibbonOrbStyle.Office_2013 )
+            {
+                status.BackColor = Theme.ColorTable.GetColor( RibbonColorPart.RibbonBackground_2013 );
+                status.ForeColor = Theme.ColorTable.GetColor( RibbonColorPart.RibbonItemText_2013 );
+            }
         }
 
         /// <summary>
@@ -61,8 +75,21 @@ namespace PhotoTool
         private void ChangeStyle( RibbonOrbStyle style = RibbonOrbStyle.Office_2010 )
         {
             ribbonMain.OrbStyle = style;
-            //ribbonMain.Refresh();
-            //this.Refresh();
+            if ( ribbonMain.OrbStyle == RibbonOrbStyle.Office_2007 )
+            {
+                status.BackColor = Theme.ColorTable.GetColor( RibbonColorPart.RibbonBackground );
+                status.ForeColor = Theme.ColorTable.GetColor( RibbonColorPart.Text );
+            }
+            else if ( ribbonMain.OrbStyle == RibbonOrbStyle.Office_2010 )
+            {
+                status.BackColor = Theme.ColorTable.GetColor( RibbonColorPart.RibbonBackground );
+                status.ForeColor = Theme.ColorTable.GetColor( RibbonColorPart.Text );
+            }
+            else if ( ribbonMain.OrbStyle == RibbonOrbStyle.Office_2013 )
+            {
+                status.BackColor = Theme.ColorTable.GetColor( RibbonColorPart.RibbonBackground_2013 );
+                status.ForeColor = Theme.ColorTable.GetColor( RibbonColorPart.RibbonItemText_2013 );
+            }
         }
 
         /// <summary>
@@ -79,21 +106,21 @@ namespace PhotoTool
                 RibbonButton btnAddin = new RibbonButton();
                 RibTabMainApp.Items.Add( btnAddin );
 
-                if ( addin.LargeImage != null)
-                    btnAddin.Image = addin.LargeImage;
+                if ( addin.LargeIcon != null)
+                    btnAddin.Image = addin.LargeIcon;
                 else
                     btnAddin.Image = addins.LargeImage;
-                if ( addin.SmallImage != null )
-                    btnAddin.SmallImage = addin.SmallImage;
+                if ( addin.SmallIcon != null )
+                    btnAddin.SmallImage = addin.SmallIcon;
                 else
                     btnAddin.SmallImage = addins.SmallImage;
 
-                btnAddin.Text = addin.DisplayName;
-                btnAddin.ToolTip = addin.Description;
-                btnAddin.ToolTipTitle = addin.Author;
+                btnAddin.Text = I18N._(addin.DisplayName);
+                btnAddin.ToolTip = I18N._(addin.Description);
+                btnAddin.ToolTipTitle = I18N._(addin.Author);
 
                 btnAddin.Value = addin.Name;
-                btnAddin.Click += AddinClick;
+                btnAddin.Click += AddinAppClick;
 
                 //resources.ApplyResources( btnAddin, addin.Name );
             }
@@ -101,9 +128,136 @@ namespace PhotoTool
             ribbonMain.PerformLayout();
         }
 
-        public void AddinClick(object sender, EventArgs e)
+        private void AddAddinAction( List<IAddin> acts, bool IsExt = true )
         {
-            addins.Apps[(sender as RibbonButton).Value].Show(this);
+            foreach ( IAddin addin in acts )
+            {
+                RibbonButton btnAddin = new RibbonButton();
+                if ( string.Equals( addin.Author, "netcharm", StringComparison.CurrentCultureIgnoreCase ) ||
+                    addin.Author.StartsWith( "NetCharm ", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    RibTabActInternalList.Buttons.Add( btnAddin );
+                    RibTabActInternalDropList.Buttons.Add( btnAddin );
+                }
+                else
+                {
+                    RibTabActExternalList.Buttons.Add( btnAddin );
+                    RibTabActExternalDropList.Buttons.Add( btnAddin );
+                }
+
+                if ( addin.LargeIcon != null )
+                    btnAddin.Image = addin.LargeIcon;
+                else
+                    btnAddin.Image = addins.LargeImage;
+                if ( addin.SmallIcon != null )
+                    btnAddin.SmallImage = addin.SmallIcon;
+                else
+                    btnAddin.SmallImage = addins.SmallImage;
+
+                btnAddin.Text = I18N._(addin.DisplayName);
+                btnAddin.ToolTip = I18N._( addin.Description);
+                btnAddin.ToolTipTitle = I18N._( addin.Author);
+
+                btnAddin.Value = addin.Name;
+                btnAddin.Click += AddinActionClick;
+            }
+            ribbonMain.ResumeLayout( true );
+            ribbonMain.PerformLayout();
+        }
+
+        private void AddAddinFilter( List<IAddin> filters, bool IsExt = true )
+        {
+            foreach ( IAddin addin in filters )
+            {
+                RibbonButton btnAddin = new RibbonButton();
+                if ( string.Equals( addin.Author, "netcharm", StringComparison.CurrentCultureIgnoreCase ) ||
+                    addin.Author.StartsWith( "NetCharm ", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    RibTabFilterInternalList.Buttons.Add( btnAddin );
+                    RibTabFilterInternalDropList.Buttons.Add( btnAddin );
+                }
+                else
+                {
+                    RibTabFilterExternalList.Buttons.Add( btnAddin );
+                    RibTabFilterExternalDropList.Buttons.Add( btnAddin );
+                }
+
+                if ( addin.LargeIcon != null )
+                    btnAddin.Image = addin.LargeIcon;
+                else
+                    btnAddin.Image = addins.LargeImage;
+                if ( addin.SmallIcon != null )
+                    btnAddin.SmallImage = addin.SmallIcon;
+                else
+                    btnAddin.SmallImage = addins.SmallImage;
+
+                btnAddin.Text = I18N._( addin.DisplayName);
+                btnAddin.ToolTip = I18N._( addin.Description);
+                btnAddin.ToolTipTitle = I18N._( addin.Author);
+
+                btnAddin.Value = addin.Name;
+                btnAddin.Click += AddinFilterClick;
+            }
+            ribbonMain.ResumeLayout( true );
+            ribbonMain.PerformLayout();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void AddinAppClick(object sender, EventArgs e)
+        {
+            string an = ( sender as RibbonButton ).Value;
+            if ( addins.Apps.ContainsKey( an ) )
+            {
+                addins.CurrentApp = addins.Apps[an];
+                if ( addins.CurrentApp != null )
+                {
+                    addins.CurrentApp.Show( this );
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void AddinActionClick( object sender, EventArgs e )
+        {
+            string an = ( sender as RibbonButton ).Value;
+            if ( addins.CurrentApp != null && addins.Actions.ContainsKey( an ) )
+            {
+                addins.CurrentAction = addins.Actions[an];
+                if ( addins.CurrentAction != null )
+                {
+                    addins.CurrentAction.ImageData = addins.CurrentApp.ImageData;
+                    addins.CurrentAction.Show( this );
+                    addins.CurrentApp.ImageData = addins.CurrentAction.ImageData;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void AddinFilterClick( object sender, EventArgs e )
+        {
+            string an = ( sender as RibbonButton ).Value;
+            if ( addins.CurrentApp != null && addins.Filters.ContainsKey( an ) )
+            {
+                addins.CurrentFilter = addins.Filters[an];
+                if ( addins.CurrentFilter != null )
+                {
+                    addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
+                    addins.CurrentFilter.Show( this );
+                    addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                }
+            }
         }
 
         /// <summary>
@@ -112,6 +266,136 @@ namespace PhotoTool
         public MainForm()
         {
             InitializeComponent();
+            I18N i10n = new I18N( null, this );
+            TranslateRibbon( ribbonMain );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="items"></param>
+        private void TranslateRibbonItems(RibbonItemCollection items)
+        {
+            if ( items == null || items.Count <= 0 ) return;
+
+            foreach ( RibbonItem item in items )
+            {
+                item.Text = I18N._( item.Text );
+                item.ToolTip = I18N._( item.ToolTip );
+                item.ToolTipTitle = I18N._( item.ToolTipTitle );
+
+                if( item.GetType().ToString().EndsWith( "RibbonButton", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    var btn = item as RibbonButton;
+                    if (btn.Style != RibbonButtonStyle.Normal)
+                    {
+                        TranslateRibbonItems( btn.DropDownItems );
+                    }
+                }
+                else if( item.GetType().ToString().EndsWith("RibbonButtonList", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    TranslateRibbonItems( item as RibbonButtonList );
+                }
+                else if ( item.GetType().ToString().EndsWith( "RibbonButtonCollection", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    //TranslateRibbonItems( (RibbonItemCollection) item. );
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="items"></param>
+        private void TranslateRibbonItems( RibbonButtonCollection items )
+        {
+            if ( items == null || items.Count() <= 0 ) return;
+
+            foreach ( RibbonButton item in items )
+            {
+                item.Text = I18N._( item.Text );
+                item.ToolTip = I18N._( item.ToolTip );
+                item.ToolTipTitle = I18N._( item.ToolTipTitle );
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="items"></param>
+        private void TranslateRibbonItems( RibbonButtonList items )
+        {
+            if ( items == null || items.Buttons.Count <= 0 ) return;
+
+            foreach ( RibbonButton item in items.Buttons )
+            {
+                item.Text = I18N._( item.Text );
+                item.ToolTip = I18N._( item.ToolTip );
+                item.ToolTipTitle = I18N._( item.ToolTipTitle );
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rib"></param>
+        public void TranslateRibbon(Ribbon rib)
+        {
+            rib.Text = I18N._( rib.Text );
+
+            #region Ribbon QuickAccessToolbar
+            rib.QuickAcessToolbar.Text = I18N._( rib.QuickAcessToolbar.Text );
+            rib.QuickAcessToolbar.ToolTip = I18N._( rib.QuickAcessToolbar.ToolTip );
+            rib.QuickAcessToolbar.ToolTipTitle = I18N._( rib.QuickAcessToolbar.ToolTipTitle );
+            rib.QuickAcessToolbar.DropDownButton.Text = I18N._( rib.QuickAcessToolbar.DropDownButton.Text );
+            rib.QuickAcessToolbar.DropDownButton.ToolTip = I18N._( rib.QuickAcessToolbar.DropDownButton.ToolTip );
+            rib.QuickAcessToolbar.DropDownButton.ToolTipTitle = I18N._( rib.QuickAcessToolbar.DropDownButton.ToolTipTitle );
+            TranslateRibbonItems( rib.QuickAcessToolbar.Items );
+            //foreach ( RibbonItem item in rib.QuickAcessToolbar.Items )
+            //{
+            //    item.Text = I18N._( item.Text );
+            //    item.ToolTip = I18N._( item.ToolTip );
+            //    item.ToolTipTitle = I18N._( item.ToolTipTitle );
+            //}
+            TranslateRibbonItems( rib.QuickAcessToolbar.DropDownButtonItems );
+            //foreach ( RibbonItem item in rib.QuickAcessToolbar.DropDownButtonItems )
+            //{
+            //    item.Text = I18N._( item.Text );
+            //    item.ToolTip = I18N._( item.ToolTip );
+            //    item.ToolTipTitle = I18N._( item.ToolTipTitle );
+            //}
+            #endregion
+
+            #region Ribbon OrbDropDown
+            rib.OrbDropDown.Text = I18N._( rib.QuickAcessToolbar.Text );
+            TranslateRibbonItems( rib.OrbDropDown.MenuItems );
+            TranslateRibbonItems( rib.OrbDropDown.OptionItems );
+
+            rib.OrbDropDown.RecentItemsCaption = I18N._( rib.OrbDropDown.RecentItemsCaption );
+            TranslateRibbonItems( rib.OrbDropDown.RecentItems );
+            #endregion
+
+            #region Ribbon Tabs
+            foreach ( RibbonTab tab in rib.Tabs)
+            {
+                tab.Text = I18N._( tab.Text );
+                tab.ToolTip = I18N._( tab.ToolTip );
+                tab.ToolTipTitle = I18N._( tab.ToolTipTitle );
+
+                #region Ribbon Panel in Tab
+                foreach (RibbonPanel panel in tab.Panels)
+                {
+                    panel.Text = I18N._( panel.Text );
+                    foreach( RibbonItem item in panel.Items)
+                    {
+                        item.Text = I18N._( item.Text );
+                        item.ToolTip = I18N._( item.ToolTip );
+                        item.ToolTipTitle = I18N._( item.ToolTipTitle );
+                    }
+                }
+                #endregion
+            }
+            #endregion
         }
 
         /// <summary>
@@ -131,6 +415,8 @@ namespace PhotoTool
 
             addins.Scan();
             AddAddinApp( addins.Apps.Select( kvp => kvp.Value ).ToList() );
+            AddAddinAction( addins.Actions.Select( kvp => kvp.Value ).ToList() );
+            AddAddinFilter( addins.Filters.Select( kvp => kvp.Value ).ToList() );
         }
 
         /// <summary>
@@ -173,6 +459,56 @@ namespace PhotoTool
             foreach( KeyValuePair<string, IAddin> kv in addins.Actions)
             {
                 //kv.Value.LargeImage
+            }
+        }
+
+        private void cmdFileOpen_Click( object sender, EventArgs e )
+        {
+            if ( addins.CurrentApp != null )
+            {
+                if ( dlgOpen.ShowDialog() == DialogResult.OK )
+                {
+                    addins.CurrentApp.ImageData = new Bitmap( dlgOpen.FileName );
+                }
+            }
+        }
+
+        private void cmdFileSave_Click( object sender, EventArgs e )
+        {
+            if ( addins.CurrentApp != null )
+            {
+                dlgSave.FileName = string.Format( $"{Path.GetFileNameWithoutExtension(dlgOpen.FileName)}_{DateTime.Now.Ticks}.{dlgSave.DefaultExt}" );
+                if ( dlgSave.ShowDialog() == DialogResult.OK )
+                {
+                    if ( addins.CurrentApp.ImageData != null )
+                    {
+                        ImageFormat ff = ImageFormat.Jpeg;
+                        string fext = Path.GetExtension(dlgSave.FileName).ToLower();
+                        if ( string.Equals( fext, ".jpg", StringComparison.CurrentCultureIgnoreCase ) || 
+                             string.Equals( fext, ".jpeg", StringComparison.CurrentCultureIgnoreCase ))
+                        {
+                            ff = ImageFormat.Jpeg;
+                        }
+                        else if ( string.Equals( fext, ".tif", StringComparison.CurrentCultureIgnoreCase ) ||
+                             string.Equals( fext, ".tiff", StringComparison.CurrentCultureIgnoreCase ) )
+                        {
+                            ff = ImageFormat.Tiff;
+                        }
+                        else if ( string.Equals( fext, ".bmp", StringComparison.CurrentCultureIgnoreCase ))
+                        {
+                            ff = ImageFormat.Bmp;
+                        }
+                        else if ( string.Equals( fext, ".png", StringComparison.CurrentCultureIgnoreCase ) )
+                        {
+                            ff = ImageFormat.Png;
+                        }
+                        else if ( string.Equals( fext, ".gif", StringComparison.CurrentCultureIgnoreCase ) )
+                        {
+                            ff = ImageFormat.Gif;
+                        }
+                        addins.CurrentApp.ImageData.Save( dlgSave.FileName, ff );
+                    }
+                }
             }
         }
     }

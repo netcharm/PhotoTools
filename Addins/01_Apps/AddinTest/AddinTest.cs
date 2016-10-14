@@ -20,6 +20,8 @@ namespace AddinTest
     public class AddinTest : IAddin
     {
         private FileVersionInfo fv = null;
+        private Image img = null;
+
         /// <summary>
         /// 
         /// </summary>
@@ -82,6 +84,17 @@ namespace AddinTest
         /// <summary>
         /// 
         /// </summary>
+        public string Domain
+        {
+            get
+            {
+                if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
+                return ( Path.GetFileNameWithoutExtension( fv.InternalName ) );
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name
         {
             get
@@ -93,24 +106,25 @@ namespace AddinTest
         /// <summary>
         /// 
         /// </summary>
+        private string _displayName = "App Test";
         public string DisplayName
         {
-            get
-            {
-                if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
-                return ( fv.ProductName );
-            }
+            get { return ( _displayName ); }
+            set { _displayName = value; }
         }
         /// <summary>
         /// 
         /// </summary>
+        private string _description = "";
         public string Description
         {
             get
             {
                 if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
-                return ( fv.FileDescription );
+                if ( string.IsNullOrEmpty( _description ) ) _description = fv.FileDescription;
+                return ( _description );
             }
+            set { _description = value; }
         }
         /// <summary>
         /// 
@@ -125,7 +139,7 @@ namespace AddinTest
         /// <summary>
         /// 
         /// </summary>
-        public Image LargeImage
+        public Image LargeIcon
         {
             get
             {
@@ -136,12 +150,26 @@ namespace AddinTest
         /// <summary>
         /// 
         /// </summary>
-        public Image SmallImage
+        public Image SmallIcon
         {
             get
             {
                 return ( null );
                 //throw new NotImplementedException();
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Image ImageData
+        {
+            get
+            {
+                return ( img );
+            }
+            set
+            {
+                img = value;
             }
         }
 

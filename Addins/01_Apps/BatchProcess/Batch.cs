@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
 
 [assembly: Addin]
 [assembly: AddinDependency( "AddinHost", "1.0" )]
@@ -18,6 +19,9 @@ namespace BatchProcess
     public class Batch : IAddin
     {
         private FileVersionInfo fv = null;
+        private BatchProcessForm fm = null;
+        private Image img = null;
+
         /// <summary>
         /// 
         /// </summary>
@@ -80,6 +84,17 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
+        public string Domain
+        {
+            get
+            {
+                if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
+                return ( Path.GetFileNameWithoutExtension( fv.InternalName ) );
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name
         {
             get
@@ -91,25 +106,25 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
+        private string _displayName = "Batch";
         public string DisplayName
         {
-            get
-            {
-                //if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
-                //return ( fv.ProductName );
-                return ( "Batch" );
-            }
+            get { return ( _displayName ); }
+            set { _displayName = value; }
         }
         /// <summary>
         /// 
         /// </summary>
+        private string _description = "";
         public string Description
         {
             get
             {
                 if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
-                return ( fv.FileDescription );
+                if ( string.IsNullOrEmpty( _description ) ) _description = fv.FileDescription;
+                return ( _description );
             }
+            set { _description = value; }
         }
         /// <summary>
         /// 
@@ -124,7 +139,7 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
-        public Image LargeImage
+        public Image LargeIcon
         {
             get
             {
@@ -136,13 +151,27 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
-        public Image SmallImage
+        public Image SmallIcon
         {
             get
             {
                 return ( Properties.Resources.Batch_16x );
                 //return ( null );
                 //throw new NotImplementedException();
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Image ImageData
+        {
+            get
+            {
+                return ( img );
+            }
+            set
+            {
+                img = value;
             }
         }
 
@@ -176,11 +205,19 @@ namespace BatchProcess
         /// </summary>
         public void Show( Form parent = null )
         {
-            BatchProcessForm fm = new BatchProcessForm(Host);
-            fm.Text = fv.ProductName;
-            fm.MdiParent = parent;
-            fm.WindowState = FormWindowState.Maximized;
-            fm.Show();
+            //BatchProcessForm fm = new BatchProcessForm(Host);
+            if ( fm == null )
+            {
+                fm = new BatchProcessForm( Host );
+                fm.Text = fv.ProductName;
+                fm.MdiParent = parent;
+                fm.WindowState = FormWindowState.Maximized;
+                fm.Show();
+            }
+            else
+            {
+                fm.Activate();
+            }
         }
 
         /// <summary>
