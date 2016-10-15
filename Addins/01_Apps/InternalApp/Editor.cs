@@ -283,27 +283,27 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="msg"></param>
+        /// <param name="cmd"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        public bool Message( AddinMessage msg, out ValueType result, params object[] msgParams )
+        public bool Command( AddinCommand cmd, out ValueType result, params object[] cmdArgs )
         {
             result = null;
-            switch(msg)
+            switch(cmd)
             {
-                case AddinMessage.Open:
-                    if ( msgParams.Length > 0 && msgParams[0] is string )
-                        Open( msgParams[0] as string );
-                    else if ( msgParams.Length > 0 && msgParams[0] is string[] )
-                        Open( msgParams[0] as string[] );
+                case AddinCommand.Open:
+                    if ( cmdArgs.Length > 0 && cmdArgs[0] is string )
+                        Open( cmdArgs[0] as string );
+                    else if ( cmdArgs.Length > 0 && cmdArgs[0] is string[] )
+                        Open( cmdArgs[0] as string[] );
                     break;
-                case AddinMessage.ZoomIn:
+                case AddinCommand.ZoomIn:
                     break;
-                case AddinMessage.ZoomOut:
+                case AddinCommand.ZoomOut:
                     break;
-                case AddinMessage.ZoomFit:
+                case AddinCommand.ZoomFit:
                     break;
-                case AddinMessage.Zoom100:
+                case AddinCommand.Zoom100:
                     break;
             }
             return ( true );

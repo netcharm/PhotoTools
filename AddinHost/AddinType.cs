@@ -18,7 +18,7 @@ namespace NetCharm.Image.Addins
         FormatOut = 5,
     }
 
-    public enum AddinMessage
+    public enum AddinCommand
     {
         Open = 100,
         Save = 101,

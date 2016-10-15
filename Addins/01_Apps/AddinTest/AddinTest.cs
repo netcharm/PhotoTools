@@ -249,11 +249,11 @@ namespace AddinTest
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="msg"></param>
+        /// <param name="cmd"></param>
         /// <param name="result"></param>
-        /// <param name="msgParams"></param>
+        /// <param name="cmdArgs"></param>
         /// <returns></returns>
-        public bool Message( AddinMessage msg, out ValueType result, params object[] msgParams )
+        public bool Command( AddinCommand cmd, out ValueType result, params object[] cmdArgs )
         {
             result = null;
             return ( true );

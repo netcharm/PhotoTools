@@ -160,11 +160,11 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="msg"></param>
+        /// <param name="cmd"></param>
         /// <param name="result"></param>
-        /// <param name="msgParams"></param>
+        /// <param name="cmdArgs"></param>
         /// <returns></returns>
-        bool Message( AddinMessage msg, out ValueType result, params object[] msgParams );
+        bool Command( AddinCommand cmd, out ValueType result, params object[] cmdArgs );
     }
 
     /// <summary>
@@ -467,11 +467,11 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="msg"></param>
+        /// <param name="cmd"></param>
         /// <param name="result"></param>
-        /// <param name="msgParams"></param>
+        /// <param name="cmdArgs"></param>
         /// <returns></returns>
-        public virtual bool Message( AddinMessage msg, out ValueType result, params object[] msgParams )
+        public virtual bool Command( AddinCommand cmd, out ValueType result, params object[] cmdArgs )
         {
             result = null;
             return ( true );
