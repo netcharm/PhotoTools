@@ -33,6 +33,15 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
+        private string _displayName = null;
+        public string DisplayName
+        {
+            get { return _displayName; }
+            set { _displayName = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         private Type _type = null;
         public Type Type
         {
@@ -147,6 +156,15 @@ namespace NetCharm.Image.Addins
         /// </summary>
         /// <param name="filenames"></param>
         void Open( string[] filenames );
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="result"></param>
+        /// <param name="msgParams"></param>
+        /// <returns></returns>
+        bool Message( AddinMessage msg, out ValueType result, params object[] msgParams );
     }
 
     /// <summary>
@@ -161,6 +179,8 @@ namespace NetCharm.Image.Addins
 
         protected internal System.Drawing.Image ImgSrc = null;
         protected internal System.Drawing.Image ImgDst = null;
+
+        protected internal Form Parent = null;
 
         /// <summary>
         /// 
@@ -291,6 +311,7 @@ namespace NetCharm.Image.Addins
             }
             set { ImgSrc = value; }
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -443,5 +464,17 @@ namespace NetCharm.Image.Addins
             //
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="result"></param>
+        /// <param name="msgParams"></param>
+        /// <returns></returns>
+        public virtual bool Message( AddinMessage msg, out ValueType result, params object[] msgParams )
+        {
+            result = null;
+            return ( true );
+        }
     }
 }

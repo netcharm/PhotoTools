@@ -60,6 +60,7 @@ namespace InternalFilters
         {
             ParamItem pi = new ParamItem();
             pi.Name = name;
+            pi.DisplayName = AddinUtils._( addin, name );
             pi.Type = typeof( RotateFlipType );
             pi.Value = flip;
             return ( pi );
@@ -72,6 +73,7 @@ namespace InternalFilters
         {
             ParamItem pi = new ParamItem();
             pi.Name = name;
+            pi.DisplayName = AddinUtils._( addin, name );
             pi.Type = typeof( double );
             pi.Value = (double) numAngle.Value;
             return ( pi );
@@ -84,6 +86,7 @@ namespace InternalFilters
         {
             ParamItem pi = new ParamItem();
             pi.Name = name;
+            pi.DisplayName = AddinUtils._( addin, name );
             pi.Type = typeof( bool );
             pi.Value = chkKeepSize.Checked;
             return ( pi );
@@ -370,6 +373,7 @@ namespace InternalFilters
         private void numAngle_ValueChanged( object sender, EventArgs e )
         {
             angle = (double) numAngle.Value % 360;
+            numAngle.Value = Convert.ToDecimal( angle );
             imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
         }
     }

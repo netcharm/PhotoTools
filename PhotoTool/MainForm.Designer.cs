@@ -190,10 +190,10 @@
             // 
             this.RibTabFilterInternalList.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
             this.RibTabFilterInternalList.DropDownItems.Add(this.RibTabFilterInternalDropList);
-            this.RibTabFilterInternalList.FlowToBottom = true;
-            this.RibTabFilterInternalList.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
+            this.RibTabFilterInternalList.FlowToBottom = false;
+            this.RibTabFilterInternalList.ItemsSizeInDropwDownMode = new System.Drawing.Size(5, 5);
             this.RibTabFilterInternalList.ItemsWideInLargeMode = 10;
-            this.RibTabFilterInternalList.ItemsWideInMediumMode = 4;
+            this.RibTabFilterInternalList.ItemsWideInMediumMode = 6;
             this.RibTabFilterInternalList.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
             this.RibTabFilterInternalList.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.DropDown;
             resources.ApplyResources(this.RibTabFilterInternalList, "RibTabFilterInternalList");
@@ -504,6 +504,7 @@
             // 
             // MainForm
             // 
+            this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.status);
@@ -512,6 +513,8 @@
             this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             this.status.ResumeLayout(false);
             this.status.PerformLayout();
             this.ResumeLayout(false);

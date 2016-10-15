@@ -66,14 +66,23 @@ namespace NetCharm.Image.Addins
             get { return _formatouts; }
             set { _formatouts = value; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        private Dictionary<string, string> _notloadedaddin = new Dictionary<string, string>();
+        public Dictionary<string, string> NotLoadedAddin
+        {
+            get { return _notloadedaddin; }
+            set { _notloadedaddin = value; }
+        }
         #endregion
 
         private string RootDir = "";
-
         private string ConfigDir = "";
         private string AddinDir = "";
         private string DatabaseDir = "";
 
+        #region addin properties
         private IAddin _currentapp = null;
         public IAddin CurrentApp
         {
@@ -92,6 +101,9 @@ namespace NetCharm.Image.Addins
             get { return _currentfilter; }
             set { _currentfilter = value; }
         }
+
+        #endregion addin properties
+
 
         /// <summary>
         /// 
@@ -143,11 +155,36 @@ namespace NetCharm.Image.Addins
                 addin.Host = this;
                 switch ( addin.Type )
                 {
-                    case AddinType.App: _apps.Add( addin.Name, addin ); break;
-                    case AddinType.Action: _actions.Add( addin.Name, addin ); break;
-                    case AddinType.Filter: _filters.Add( addin.Name, addin ); break;
-                    case AddinType.FormatIn: _formatins.Add( addin.Name, addin ); break;
-                    case AddinType.FormatOut: _formatouts.Add( addin.Name, addin ); break;
+                    case AddinType.App:
+                        if ( _apps.ContainsKey( addin.Name ) )
+                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $"Domain APP: {addin.Location}" );
+                        else
+                            _apps.Add( addin.Name, addin );
+                        break;
+                    case AddinType.Action:
+                        if ( _actions.ContainsKey( addin.Name ) )
+                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $"Domain Action: {addin.Location}" );
+                        else
+                            _actions.Add( addin.Name, addin );
+                        break;
+                    case AddinType.Filter:
+                        if ( _filters.ContainsKey( addin.Name ) )
+                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $"Domain Filter: {addin.Location}" );
+                        else
+                            _filters.Add( addin.Name, addin );
+                        break;
+                    case AddinType.FormatIn:
+                        if ( _formatins.ContainsKey( addin.Name ) )
+                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $"Domain Format In: {addin.Location}" );
+                        else
+                            _formatins.Add( addin.Name, addin );
+                        break;
+                    case AddinType.FormatOut:
+                        if ( _formatouts.ContainsKey( addin.Name ) )
+                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $"Domain Format Out: {addin.Location}" );
+                        else
+                            _formatouts.Add( addin.Name, addin );
+                        break;
                 }
             }
         }

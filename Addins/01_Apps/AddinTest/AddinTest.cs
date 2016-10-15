@@ -246,5 +246,18 @@ namespace AddinTest
             //throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="result"></param>
+        /// <param name="msgParams"></param>
+        /// <returns></returns>
+        public bool Message( AddinMessage msg, out ValueType result, params object[] msgParams )
+        {
+            result = null;
+            return ( true );
+        }
+
     }
 }

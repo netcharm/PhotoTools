@@ -33,17 +33,30 @@
             // 
             // imgEditor
             // 
+            this.imgEditor.AllowDoubleClick = true;
             this.imgEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.imgEditor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgEditor.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.imgEditor.Location = new System.Drawing.Point(0, 0);
             this.imgEditor.Name = "imgEditor";
+            this.imgEditor.SelectionMode = Cyotek.Windows.Forms.ImageBoxSelectionMode.Rectangle;
             this.imgEditor.ShowPixelGrid = true;
             this.imgEditor.Size = new System.Drawing.Size(573, 439);
             this.imgEditor.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.imgEditor.TabIndex = 0;
             this.imgEditor.Text = "Image Editor";
             this.imgEditor.TextDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.None;
+            this.imgEditor.ImageChanged += new System.EventHandler(this.imgEditor_ImageChanged);
+            this.imgEditor.Selected += new System.EventHandler<System.EventArgs>(this.imgEditor_Selected);
+            this.imgEditor.Selecting += new System.EventHandler<Cyotek.Windows.Forms.ImageBoxCancelEventArgs>(this.imgEditor_Selecting);
+            this.imgEditor.SizeChanged += new System.EventHandler(this.imgEditor_SizeChanged);
+            this.imgEditor.Click += new System.EventHandler(this.imgEditor_Click);
+            this.imgEditor.DoubleClick += new System.EventHandler(this.imgEditor_DoubleClick);
+            this.imgEditor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.imgEditor_KeyDown);
+            this.imgEditor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.imgEditor_KeyUp);
+            this.imgEditor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.imgEditor_MouseDown);
+            this.imgEditor.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imgEditor_MouseMove);
+            this.imgEditor.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imgEditor_MouseUp);
             // 
             // EditorForm
             // 

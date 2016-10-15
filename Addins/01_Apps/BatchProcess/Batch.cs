@@ -22,6 +22,8 @@ namespace BatchProcess
         private BatchProcessForm fm = null;
         private Image img = null;
 
+        protected internal Form ParentForm = null;
+
         /// <summary>
         /// 
         /// </summary>
@@ -99,8 +101,9 @@ namespace BatchProcess
         {
             get
             {
-                if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
-                return ( fv.InternalName );
+                return ( "Batch" );
+                //if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
+                //return ( fv.InternalName );
             }
         }
         /// <summary>
@@ -198,14 +201,15 @@ namespace BatchProcess
         /// </summary>
         public void Show()
         {
-            MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
+            //MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
+            Show( ParentForm );
         }
         /// <summary>
         /// 
         /// </summary>
         public void Show( Form parent = null )
         {
-            //BatchProcessForm fm = new BatchProcessForm(Host);
+            ParentForm = parent;
             if ( fm == null )
             {
                 //fm = new BatchProcessForm( Host );
@@ -235,9 +239,14 @@ namespace BatchProcess
         /// <param name="filename"></param>
         public void Open( string filename )
         {
-            if(fm is BatchProcessForm )
+            if (fm is BatchProcessForm )
             {
                 fm.AddFiles( filename );
+                if ( Host.CurrentApp != this)
+                {
+                    Host.CurrentApp = this;
+                    Host.CurrentApp.Show( ParentForm );
+                }
             }
         }
         /// <summary>
@@ -249,6 +258,11 @@ namespace BatchProcess
             if ( fm is BatchProcessForm )
             {
                 fm.AddFiles( filenames );
+                if ( Host.CurrentApp != this )
+                {
+                    Host.CurrentApp = this;
+                    Host.CurrentApp.Show( ParentForm );
+                }
             }
         }
 
@@ -262,6 +276,18 @@ namespace BatchProcess
             MessageBox.Show( "Calling Apply() method", "Title", MessageBoxButtons.OK );
             return ( image );
             //throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public bool Message( AddinMessage msg, out ValueType result, params object[] msgParams )
+        {
+            result = null;
+            return ( true );
         }
     }
 }

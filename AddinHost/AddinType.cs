@@ -17,4 +17,24 @@ namespace NetCharm.Image.Addins
         FormatIn = 4,
         FormatOut = 5,
     }
+
+    public enum AddinMessage
+    {
+        Open = 0,
+        Save = 1,
+        SaveAs = 2,
+        Close = 3,
+
+        Copy = 4,
+        Cut = 5,
+        Paste = 6,
+        Clear = 7,
+
+        Zoom = 8,
+        ZoomIn = 9,
+        ZoomOut = 10,
+        Zoom100 = 11,
+        ZoomFit = 12,
+        ZoomSelect = 13,
+    }
 }

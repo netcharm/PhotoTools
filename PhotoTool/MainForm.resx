@@ -171,14 +171,14 @@
   <data name="RibTabFilterInternal.Text" xml:space="preserve">
     <value>Internal</value>
   </data>
+  <data name="RibTabFilterInternalDropList.Text" xml:space="preserve">
+    <value>Internal</value>
+  </data>
   <data name="RibTabFilterInternalList.Text" xml:space="preserve">
     <value>Internal Filters</value>
   </data>
   <data name="RibTabFilterInternalList.ToolTip" xml:space="preserve">
     <value>Internal Filters</value>
-  </data>
-  <data name="RibTabFilterInternalDropList.Text" xml:space="preserve">
-    <value>Internal</value>
   </data>
   <data name="RibTabFilterExternal.Text" xml:space="preserve">
     <value>External</value>

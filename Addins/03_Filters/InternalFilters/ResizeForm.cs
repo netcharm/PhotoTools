@@ -38,19 +38,21 @@ namespace InternalFilters
             //
         }
 
-        internal ParamItem GetWidth()
+        internal ParamItem GetWidth(string name)
         {
             ParamItem pi = new ParamItem();
-            pi.Name = "Width";
+            pi.Name = name;
+            pi.DisplayName = AddinUtils._( addin, name );
             pi.Type =  Convert.ToInt32( edWidth.Value ).GetType();
             pi.Value = Convert.ToInt32( edWidth.Value );
             return ( pi );
         }
 
-        internal ParamItem GetHeight()
+        internal ParamItem GetHeight(string name)
         {
             ParamItem pi = new ParamItem();
-            pi.Name = "Height";
+            pi.Name = name;
+            pi.DisplayName = AddinUtils._( addin, name );
             pi.Type = Convert.ToInt32( edHeight.Value ).GetType();
             pi.Value = Convert.ToInt32( edHeight.Value );
             return ( pi );

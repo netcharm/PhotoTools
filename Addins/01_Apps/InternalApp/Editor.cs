@@ -21,6 +21,9 @@ namespace InternalFilters
     {
         private FileVersionInfo fv = null;
         private EditorForm fm = null;
+
+        protected internal Form ParentForm = null;
+
         /// <summary>
         /// 
         /// </summary>
@@ -98,8 +101,9 @@ namespace InternalFilters
         {
             get
             {
-                if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
-                return ( fv.InternalName );
+                return ( "Editor" );
+                //if ( fv == null ) fv = FileVersionInfo.GetVersionInfo( Location );
+                //return ( fv.InternalName );
             }
         }
         /// <summary>
@@ -196,7 +200,8 @@ namespace InternalFilters
         /// </summary>
         public void Show()
         {
-            MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
+            //MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
+            Show( null );
         }
         /// <summary>
         /// 
@@ -206,7 +211,7 @@ namespace InternalFilters
             //EditorForm fm = new EditorForm(Host);
             if(fm == null)
             {
-                fm = new EditorForm( Host );
+                fm = new EditorForm( Host, this );
                 AddinUtils.Translate( this, fm );
                 fm.Text = DisplayName;
                 fm.MdiParent = parent;
@@ -233,7 +238,15 @@ namespace InternalFilters
         /// <param name="filename"></param>
         public void Open( string filename )
         {
-            ImageData = new Bitmap( filename );
+            if(File.Exists( filename ) )
+            {
+                ImageData = new Bitmap( filename );
+                if ( Host.CurrentApp != this )
+                {
+                    Host.CurrentApp = this;
+                    Host.CurrentApp.Show( ParentForm );
+                }
+            }
         }
         /// <summary>
         /// 
@@ -241,9 +254,17 @@ namespace InternalFilters
         /// <param name="filenames"></param>
         public void Open( string[] filenames )
         {
-            if(filenames.Length>0)
+            if ( filenames.Length > 0 )
             {
-                ImageData = new Bitmap( filenames[0] );
+                if ( File.Exists( filenames[0] ) )
+                {
+                    ImageData = new Bitmap( filenames[0] );
+                    if ( Host.CurrentApp != this )
+                    {
+                        Host.CurrentApp = this;
+                        Host.CurrentApp.Show( ParentForm );
+                    }
+                }
             }
         }
 
@@ -258,5 +279,35 @@ namespace InternalFilters
             return ( image );
             //throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public bool Message( AddinMessage msg, out ValueType result, params object[] msgParams )
+        {
+            result = null;
+            switch(msg)
+            {
+                case AddinMessage.Open:
+                    if ( msgParams.Length > 0 && msgParams[0] is string )
+                        Open( msgParams[0] as string );
+                    else if ( msgParams.Length > 0 && msgParams[0] is string[] )
+                        Open( msgParams[0] as string[] );
+                    break;
+                case AddinMessage.ZoomIn:
+                    break;
+                case AddinMessage.ZoomOut:
+                    break;
+                case AddinMessage.ZoomFit:
+                    break;
+                case AddinMessage.Zoom100:
+                    break;
+            }
+            return ( true );
+        }
+
     }
 }

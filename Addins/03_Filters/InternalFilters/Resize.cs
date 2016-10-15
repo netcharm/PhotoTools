@@ -254,27 +254,23 @@ namespace InternalFilters
                 Translate( fm );
                 fm.Text = DisplayName;
 
-                if ( Params.ContainsKey( "Width" ) )
-                    fm.SetWidth( Params["Width"] );
-                else if( ImgSrc != null)
+                if ( ImgSrc != null )
+                {
                     fm.SetWidth( ImgSrc.Width );
-
-                if ( Params.ContainsKey( "Height" ) )
-                    fm.SetHeight( Params["Height"] );
-                else if ( ImgSrc != null )
                     fm.SetHeight( ImgSrc.Height );
+                }
             }
             if ( fm.ShowDialog() == DialogResult.OK )
             {
                 if ( Params.ContainsKey( "Width" ) )
-                    Params["Width"] = fm.GetWidth();
+                    Params["Width"] = fm.GetWidth( "Width" );
                 else
-                    Params.Add( "Width", fm.GetWidth() );
+                    Params.Add( "Width", fm.GetWidth( "Width" ) );
 
                 if ( Params.ContainsKey( "Height" ) )
-                    Params["Height"] = fm.GetHeight();
+                    Params["Height"] = fm.GetHeight( "Height" );
                 else
-                    Params.Add( "Height", fm.GetHeight() );
+                    Params.Add( "Height", fm.GetHeight( "Height" ) );
 
                 ImgDst = Apply( ImgSrc );
             }
@@ -298,6 +294,19 @@ namespace InternalFilters
                 return ( AddinUtils.ProcessImage( filter, image ) );
             }
             return ( image );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="result"></param>
+        /// <param name="msgParams"></param>
+        /// <returns></returns>
+        public bool Message( AddinMessage msg, out ValueType result, params object[] msgParams )
+        {
+            result = null;
+            return ( true );
         }
 
     }
