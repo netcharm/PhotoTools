@@ -287,6 +287,23 @@ namespace BatchProcess
         public bool Message( AddinMessage msg, out ValueType result, params object[] msgParams )
         {
             result = null;
+            switch ( msg )
+            {
+                case AddinMessage.Open:
+                    if ( msgParams.Length > 0 && msgParams[0] is string )
+                        Open( msgParams[0] as string );
+                    else if ( msgParams.Length > 0 && msgParams[0] is string[] )
+                        Open( msgParams[0] as string[] );
+                    break;
+                case AddinMessage.ZoomIn:
+                    break;
+                case AddinMessage.ZoomOut:
+                    break;
+                case AddinMessage.ZoomFit:
+                    break;
+                case AddinMessage.Zoom100:
+                    break;
+            }
             return ( true );
         }
     }

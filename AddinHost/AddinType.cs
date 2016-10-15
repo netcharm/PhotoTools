@@ -20,21 +20,35 @@ namespace NetCharm.Image.Addins
 
     public enum AddinMessage
     {
-        Open = 0,
-        Save = 1,
-        SaveAs = 2,
-        Close = 3,
+        Open = 100,
+        Save = 101,
+        SaveAs = 102,
+        Close = 103,
 
-        Copy = 4,
-        Cut = 5,
-        Paste = 6,
-        Clear = 7,
+        Copy = 201,
+        Cut = 202,
+        Paste = 203,
+        Clear = 204,
 
-        Zoom = 8,
-        ZoomIn = 9,
-        ZoomOut = 10,
-        Zoom100 = 11,
-        ZoomFit = 12,
-        ZoomSelect = 13,
+        Zoom = 301,
+        ZoomIn = 302,
+        ZoomOut = 303,
+        Zoom100 = 304,
+        ZoomFit = 305,
+        ZoomSelect = 306,
+        ZoomLevel = 310,
+
+        GetImage = 1001,
+        SetImage = 1002,
+        GetThumb = 1003,
+        SetThumb = 1004,
+
+        GetHost = 2001,
+        SetHost = 2002,
+        GetAddin = 2003,
+        SetAddin = 2004,
+
+        Show = 3001,
+        Apply = 3002,
     }
 }
