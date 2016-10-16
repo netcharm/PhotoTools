@@ -133,7 +133,6 @@
     <None Include="Resources\OptionsDropdown_23x16.png" />
     <None Include="Resources\Save_32x.png" />
     <None Include="icons\btn_save.ico" />
-    <None Include="icons\btn_save_32x32.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

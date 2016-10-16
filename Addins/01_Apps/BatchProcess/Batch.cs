@@ -281,15 +281,6 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
-        private List<KeyValuePair<AddinCommand, object>> _cmdProperties = new List<KeyValuePair<AddinCommand, object>>();
-        public List<KeyValuePair<AddinCommand, object>> CommandProperties
-        {
-            get { return ( _cmdProperties ); }
-            set { _cmdProperties = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="cmd"></param>
         /// <param name="result"></param>
         /// <returns></returns>

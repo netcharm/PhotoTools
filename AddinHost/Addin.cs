@@ -157,7 +157,6 @@ namespace NetCharm.Image.Addins
         /// <param name="filenames"></param>
         void Open( string[] filenames );
 
-        List<KeyValuePair<AddinCommand, object>> CommandProperties { get; }
         /// <summary>
         /// 
         /// </summary>
@@ -465,15 +464,6 @@ namespace NetCharm.Image.Addins
             //
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private List<KeyValuePair<AddinCommand, object>> _cmdProperties = new List<KeyValuePair<AddinCommand, object>>();
-        public List<KeyValuePair<AddinCommand, object>> CommandProperties
-        {
-            get { return ( _cmdProperties ); }
-            set { _cmdProperties = value; }
-        }
         /// <summary>
         /// 
         /// </summary>

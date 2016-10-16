@@ -27,12 +27,14 @@ namespace NetCharm.Image.Addins
             _cmd = command;
             _value = property;
         }
+        
         private AddinCommand _cmd = AddinCommand.Unknown;
         public AddinCommand Command
         {
             get { return ( _cmd ); }
             private set { }
         }
+        
         private object _value = null;
         public object Property
         {
@@ -44,6 +46,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    [ToolboxBitmap( @"AddIn.ico" )]
     public class AddinHost : UserControl
     {
         #region Addin Host List Properties
@@ -114,24 +117,28 @@ namespace NetCharm.Image.Addins
         /// 
         /// </summary>
         private string _rootdir = "";
+        [Browsable( true ), Category( "Addin Host" ), DefaultValue( "" )]
         public string AddinRootDir
         {
             get { return _rootdir; }
             set { _rootdir = value; }
         }
         private string _configdir = "";
+        [Browsable( true ), Category( "Addin Host" ), DefaultValue( "" )]
         public string AddinConfigDir
         {
             get { return _configdir; }
             set { _configdir = value; }
         }
         private string _addindir = "";
+        [Browsable( true ), Category( "Addin Host" ), DefaultValue( "" )]
         public string AddinStorageDir
         {
             get { return _addindir; }
             set { _addindir = value; }
         }
         private string _databasedir = "";
+        [Browsable( true ), Category( "Addin Host" ), DefaultValue( "" )]
         public string AddinDatabaseDir
         {
             get { return _databasedir; }
@@ -163,16 +170,6 @@ namespace NetCharm.Image.Addins
             set { _currentfilter = value; }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private List<KeyValuePair<AddinCommand, object>> _cmdProperties = new List<KeyValuePair<AddinCommand, object>>();
-        [Browsable( false )]
-        public List<KeyValuePair<AddinCommand, object>> CommandProperties
-        {
-            get { return ( _cmdProperties ); }
-            set { _cmdProperties = value; }
-        }
         #endregion Addin Host Properties
 
         #region Addin Host Event
@@ -211,6 +208,10 @@ namespace NetCharm.Image.Addins
             get { return _defaultSmallImage; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
         private void SetDir( string path )
         {
             if ( string.IsNullOrEmpty( path ) )
@@ -226,19 +227,28 @@ namespace NetCharm.Image.Addins
             _addindir = Path.Combine( _rootdir, "addins" );
             _databasedir = Path.Combine( _rootdir, ".addinsdb" );
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public AddinHost()
         {
             SetDir( "" );
             Visible = false;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
         public AddinHost( string path = "" )
         {
             SetDir( path );
             Visible = false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
         public void Scan( string path = "" )
         {
             SetDir( path );
@@ -289,11 +299,18 @@ namespace NetCharm.Image.Addins
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IAddin GetCurrentApp()
         {
             return ( CurrentApp );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddinHost));
