@@ -283,6 +283,15 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
+        private List<KeyValuePair<AddinCommand, object>> _cmdProperties = new List<KeyValuePair<AddinCommand, object>>();
+        public List<KeyValuePair<AddinCommand, object>> CommandProperties
+        {
+            get { return ( _cmdProperties ); }
+            set { _cmdProperties = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="cmd"></param>
         /// <param name="result"></param>
         /// <returns></returns>
@@ -298,12 +307,18 @@ namespace InternalFilters
                         Open( cmdArgs[0] as string[] );
                     break;
                 case AddinCommand.ZoomIn:
-                    break;
                 case AddinCommand.ZoomOut:
-                    break;
+                case AddinCommand.ZoomRegion:
                 case AddinCommand.ZoomFit:
-                    break;
                 case AddinCommand.Zoom100:
+                case AddinCommand.ZoomLevel:
+                    if ( fm is EditorForm ) result = fm.Zoom( cmd );
+                    break;
+                case AddinCommand.GetImageSize:
+                    if ( fm is EditorForm && fm.ImageData is Image)
+                    {
+                        result = new Size( fm.ImageData.Width, fm.ImageData.Height );
+                    }
                     break;
             }
             return ( true );

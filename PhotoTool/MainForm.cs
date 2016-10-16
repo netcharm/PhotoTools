@@ -41,12 +41,34 @@ namespace PhotoTool
             ChangeStyle( RibbonOrbStyle.Office_2010 );
             ChangeTheme( RibbonTheme.Halloween );
 
+            addins.CommandPropertiesChange += Addins_RaiseCommandPropertiesChange;
+
             addins.Scan();
             AddAddinApp( addins.Apps.Select( kvp => kvp.Value ).ToList() );
             AddAddinAction( addins.Actions.Select( kvp => kvp.Value ).ToList() );
             AddAddinFilter( addins.Filters.Select( kvp => kvp.Value ).ToList() );
 
             OpenCmdArgs( ParseCommandLine( Environment.CommandLine ) );
+
+        }
+
+        private void Addins_RaiseCommandPropertiesChange( object sender, CommandPropertiesChangeEventArgs e )
+        {
+            //tssLabelImageName.Text = I18N._( "None" );
+            //tssLabelImageSize.Text = "0 x 0";
+            //tssLabelImageZoom.Text = "";
+            switch ( e.Command)
+            {
+                case AddinCommand.ZoomLevel:
+                    tssLabelImageZoom.Text = $"{e.Property}%";
+                    break;
+                case AddinCommand.GetImageName:
+                    tssLabelImageName.Text = $"{Path.GetFileName( (string) e.Property )}";
+                    break;
+                case AddinCommand.GetImageSize:
+                    tssLabelImageSize.Text = $"{( (Size) e.Property ).Width} x {( (Size) e.Property ).Height}";
+                    break;
+            }
         }
 
         /// <summary>
@@ -112,7 +134,7 @@ namespace PhotoTool
         private void cmdActionReScan_Click( object sender, EventArgs e )
         {
             addins.Scan();
-            foreach( KeyValuePair<string, IAddin> kv in addins.Actions)
+            foreach ( KeyValuePair<string, IAddin> kv in addins.Actions )
             {
                 //kv.Value.LargeImage
             }
@@ -125,24 +147,9 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void cmdFileOpen_Click( object sender, EventArgs e )
         {
-            if ( addins.CurrentApp != null )
+            if ( dlgOpen.ShowDialog() == DialogResult.OK )
             {
-                if ( dlgOpen.ShowDialog() == DialogResult.OK )
-                {
-                    if( addins.CurrentApp.SupportMultiFile )
-                    {
-                        addins.CurrentApp.Open( dlgOpen.FileNames );
-                    }
-                    else
-                    {
-                        addins.CurrentApp.Open( dlgOpen.FileName );
-                    }
-                    tssLabelImageName.Text = Path.GetFileName( dlgOpen.FileName );
-                    if( addins.CurrentApp.ImageData is Image)
-                    {
-                        tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height}";
-                    }
-                }
+                OpenCmdArgs( dlgOpen.FileNames );
             }
         }
 
@@ -190,5 +197,104 @@ namespace PhotoTool
             }
         }
 
+        private void cmdEditCut_Click( object sender, EventArgs e )
+        {
+
+        }
+
+        private void cmdEditCopy_Click( object sender, EventArgs e )
+        {
+
+        }
+
+        private void cmdEditPaste_Click( object sender, EventArgs e )
+        {
+
+        }
+
+        private void cmdEditClear_Click( object sender, EventArgs e )
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmdViewZoomIn_Click( object sender, EventArgs e )
+        {
+            if(addins.CurrentApp != null)
+            {
+                ValueType zoomLevel = 100;
+                addins.CurrentApp.Command( AddinCommand.ZoomIn, out zoomLevel );
+                tssLabelImageZoom.Text = $"{zoomLevel}%";
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmdViewZoomOut_Click( object sender, EventArgs e )
+        {
+            if ( addins.CurrentApp != null )
+            {
+                ValueType zoomLevel = 100;
+                addins.CurrentApp.Command( AddinCommand.ZoomOut, out zoomLevel );
+                tssLabelImageZoom.Text = $"{zoomLevel}%";
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmdViewZoomFit_Click( object sender, EventArgs e )
+        {
+            if ( addins.CurrentApp != null )
+            {
+                ValueType zoomLevel = 100;
+                addins.CurrentApp.Command( AddinCommand.ZoomFit, out zoomLevel );
+                tssLabelImageZoom.Text = $"{zoomLevel}%";
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmdViewZoom100_Click( object sender, EventArgs e )
+        {
+            if ( addins.CurrentApp != null )
+            {
+                ValueType zoomLevel = 100;
+                addins.CurrentApp.Command( AddinCommand.Zoom100, out zoomLevel );
+                tssLabelImageZoom.Text = $"{zoomLevel}%";
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmdViewZoomRegion_Click( object sender, EventArgs e )
+        {
+            if ( addins.CurrentApp != null )
+            {
+                ValueType zoomLevel = 100;
+                addins.CurrentApp.Command( AddinCommand.ZoomRegion, out zoomLevel );
+                tssLabelImageZoom.Text = $"{zoomLevel}%";
+            }
+        }
+
+        private void addins_Validating( object sender, CancelEventArgs e )
+        {
+
+        }
     }
 }

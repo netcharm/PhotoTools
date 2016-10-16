@@ -20,8 +20,19 @@ namespace InternalFilters
         private static Image ImgDst = null;
         public Image ImageData
         {
-            get { ImgDst = imgEditor.Image; return ( ImgDst ); }
-            set { ImgSrc = value; SetSizeMode(); imgEditor.Image = ImgSrc; }
+            get
+            {
+                ImgDst = imgEditor.Image;
+                return ( ImgDst );
+            }
+            set
+            {
+                ImgSrc = value;
+                SetSizeMode();
+                imgEditor.Zoom = 100;
+                imgEditor.Image = ImgSrc;
+                imgEditor.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Normal;
+            }
         }
 
         private bool ShiftPressed = false;
@@ -72,11 +83,12 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
-        private void SetSizeMode()
+        private void SetSizeMode(bool fit=false)
         {
-            if(ImgSrc is Image)
+            if (ImgSrc is Image)
             {
                 RectangleF rectSel = imgEditor.SelectionRegion;
+
                 if ( imgEditor.ClientSize.Width >= ImgSrc.Width && imgEditor.ClientSize.Height >= ImgSrc.Height )
                 {
                     imgEditor.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Normal;
@@ -84,11 +96,37 @@ namespace InternalFilters
                 else
                 {
                     imgEditor.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
+                    //float zoom = Math.Min(imgEditor.ClientSize.Width, imgEditor.ClientSize.Height) / Math.Min(ImgSrc.Width, ImgSrc.Height);
+                    //imgEditor.Zoom = (int) Math.Ceiling( zoom * 100 );
                 }
                 imgEditor.SelectionRegion = rectSel;
             }
         }
 
+        public ValueType Zoom( AddinCommand zoomMode)
+        {
+            switch(zoomMode)
+            {
+                case AddinCommand.ZoomIn:
+                    imgEditor.ZoomIn();
+                    break;
+                case AddinCommand.ZoomOut:
+                    imgEditor.ZoomOut();
+                    break;
+                case AddinCommand.ZoomRegion:
+                    imgEditor.ZoomToRegion( imgEditor.SelectionRegion );
+                    break;
+                case AddinCommand.ZoomFit:
+                    imgEditor.ZoomToFit();
+                    break;
+                case AddinCommand.Zoom100:
+                    imgEditor.Zoom = 100;
+                    break;
+                case AddinCommand.ZoomLevel:
+                    break;
+            }
+            return ( imgEditor.Zoom );
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -96,7 +134,9 @@ namespace InternalFilters
         /// <param name="e"></param>
         private void EditorForm_Load( object sender, EventArgs e )
         {
-            imgEditor.Image = ImgSrc;
+            //imgEditor.Image = ImgSrc;
+            ImageData = ImgSrc;
+            //SetSizeMode();
         }
 
         /// <summary>
@@ -106,12 +146,12 @@ namespace InternalFilters
         /// <param name="e"></param>
         private void imgEditor_SizeChanged( object sender, EventArgs e )
         {
-            SetSizeMode();
+            //SetSizeMode();
         }
 
         private void imgEditor_ImageChanged( object sender, EventArgs e )
         {
-            //
+
         }
 
         private void imgEditor_Click( object sender, EventArgs e )
@@ -227,6 +267,16 @@ namespace InternalFilters
             rect.Height = (float) Math.Round( rect.Height );
 
             imgEditor.SelectionRegion = rect;
+        }
+
+        private void imgEditor_ZoomChanged( object sender, EventArgs e )
+        {
+            //
+        }
+
+        private void imgEditor_Zoomed( object sender, Cyotek.Windows.Forms.ImageBoxZoomEventArgs e )
+        {
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.ZoomLevel, imgEditor.Zoom ) );
         }
     }
 }

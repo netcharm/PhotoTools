@@ -33,6 +33,7 @@
             this.RibTabMain = new System.Windows.Forms.RibbonTab();
             this.RibTabMainFile = new System.Windows.Forms.RibbonPanel();
             this.RibTabMainEdit = new System.Windows.Forms.RibbonPanel();
+            this.RibTabMainView = new System.Windows.Forms.RibbonPanel();
             this.RibTabMainApp = new System.Windows.Forms.RibbonPanel();
             this.RibTabEdit = new System.Windows.Forms.RibbonTab();
             this.RibTabAction = new System.Windows.Forms.RibbonTab();
@@ -54,6 +55,10 @@
             this.RibTabSetting = new System.Windows.Forms.RibbonTab();
             this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
             this.status = new System.Windows.Forms.StatusStrip();
+            this.tssLabelImageName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssLabelImageSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssLabelImageZoom = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssLabelImageInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.dlgSave = new System.Windows.Forms.SaveFileDialog();
@@ -64,6 +69,11 @@
             this.cmdEditCopy = new System.Windows.Forms.RibbonButton();
             this.cmdEditPaste = new System.Windows.Forms.RibbonButton();
             this.cmdEditClear = new System.Windows.Forms.RibbonButton();
+            this.cmdViewZoomIn = new System.Windows.Forms.RibbonButton();
+            this.cmdViewZoomOut = new System.Windows.Forms.RibbonButton();
+            this.cmdViewZoomFit = new System.Windows.Forms.RibbonButton();
+            this.cmdViewZoom100 = new System.Windows.Forms.RibbonButton();
+            this.cmdViewZoomRegion = new System.Windows.Forms.RibbonButton();
             this.cmdActionReScan = new System.Windows.Forms.RibbonButton();
             this.cmdFilterReScan = new System.Windows.Forms.RibbonButton();
             this.ribOrbMiOpen = new System.Windows.Forms.RibbonOrbMenuItem();
@@ -79,9 +89,7 @@
             this.cmdStyle2007 = new System.Windows.Forms.RibbonButton();
             this.cmdStyle2010 = new System.Windows.Forms.RibbonButton();
             this.cmdStyle2013 = new System.Windows.Forms.RibbonButton();
-            this.tssLabelImageName = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tssLabelImageSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tssLabelImageInfo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.addins = new NetCharm.Image.Addins.AddinHost();
             this.status.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +97,7 @@
             // 
             this.RibTabMain.Panels.Add(this.RibTabMainFile);
             this.RibTabMain.Panels.Add(this.RibTabMainEdit);
+            this.RibTabMain.Panels.Add(this.RibTabMainView);
             this.RibTabMain.Panels.Add(this.RibTabMainApp);
             resources.ApplyResources(this.RibTabMain, "RibTabMain");
             // 
@@ -105,6 +114,15 @@
             this.RibTabMainEdit.Items.Add(this.cmdEditPaste);
             this.RibTabMainEdit.Items.Add(this.cmdEditClear);
             resources.ApplyResources(this.RibTabMainEdit, "RibTabMainEdit");
+            // 
+            // RibTabMainView
+            // 
+            this.RibTabMainView.Items.Add(this.cmdViewZoomIn);
+            this.RibTabMainView.Items.Add(this.cmdViewZoomOut);
+            this.RibTabMainView.Items.Add(this.cmdViewZoomFit);
+            this.RibTabMainView.Items.Add(this.cmdViewZoom100);
+            this.RibTabMainView.Items.Add(this.cmdViewZoomRegion);
+            resources.ApplyResources(this.RibTabMainView, "RibTabMainView");
             // 
             // RibTabMainApp
             // 
@@ -234,10 +252,48 @@
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssLabelImageName,
             this.tssLabelImageSize,
+            this.tssLabelImageZoom,
             this.tssLabelImageInfo});
             resources.ApplyResources(this.status, "status");
             this.status.Name = "status";
             this.status.ShowItemToolTips = true;
+            // 
+            // tssLabelImageName
+            // 
+            this.tssLabelImageName.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tssLabelImageName.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tssLabelImageName.Name = "tssLabelImageName";
+            resources.ApplyResources(this.tssLabelImageName, "tssLabelImageName");
+            // 
+            // tssLabelImageSize
+            // 
+            this.tssLabelImageSize.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tssLabelImageSize.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tssLabelImageSize.Name = "tssLabelImageSize";
+            resources.ApplyResources(this.tssLabelImageSize, "tssLabelImageSize");
+            // 
+            // tssLabelImageZoom
+            // 
+            this.tssLabelImageZoom.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tssLabelImageZoom.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tssLabelImageZoom.Name = "tssLabelImageZoom";
+            resources.ApplyResources(this.tssLabelImageZoom, "tssLabelImageZoom");
+            // 
+            // tssLabelImageInfo
+            // 
+            this.tssLabelImageInfo.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tssLabelImageInfo.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tssLabelImageInfo.Name = "tssLabelImageInfo";
+            resources.ApplyResources(this.tssLabelImageInfo, "tssLabelImageInfo");
+            this.tssLabelImageInfo.Spring = true;
             // 
             // toolTip
             // 
@@ -280,7 +336,7 @@
             this.ribbonMain.OrbDropDown.RecentItemsCaption = "Recent";
             this.ribbonMain.OrbDropDown.Size = ((System.Drawing.Size)(resources.GetObject("ribbonMain.OrbDropDown.Size")));
             this.ribbonMain.OrbDropDown.TabIndex = ((int)(resources.GetObject("ribbonMain.OrbDropDown.TabIndex")));
-            this.ribbonMain.OrbImage = global::PhotoTool.Properties.Resources.Image_16x;
+            this.ribbonMain.OrbImage = ((System.Drawing.Image)(resources.GetObject("ribbonMain.OrbImage")));
             this.ribbonMain.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010;
             this.ribbonMain.PanelCaptionHeight = 20;
             // 
@@ -298,82 +354,121 @@
             // 
             // cmdFileOpen
             // 
-            this.cmdFileOpen.Image = global::PhotoTool.Properties.Resources.ExportPerformance_32x;
-            this.cmdFileOpen.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdFileOpen.SmallImage")));
+            this.cmdFileOpen.Image = global::PhotoTool.Properties.Resources.Open_32x;
+            this.cmdFileOpen.SmallImage = global::PhotoTool.Properties.Resources.Open_16x;
             resources.ApplyResources(this.cmdFileOpen, "cmdFileOpen");
             this.cmdFileOpen.Click += new System.EventHandler(this.cmdFileOpen_Click);
             // 
             // cmdFileSave
             // 
-            this.cmdFileSave.Image = global::PhotoTool.Properties.Resources.Save_32x;
-            this.cmdFileSave.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdFileSave.SmallImage")));
+            this.cmdFileSave.Image = ((System.Drawing.Image)(resources.GetObject("cmdFileSave.Image")));
+            this.cmdFileSave.SmallImage = global::PhotoTool.Properties.Resources.Save_16x;
             resources.ApplyResources(this.cmdFileSave, "cmdFileSave");
             this.cmdFileSave.Click += new System.EventHandler(this.cmdFileSave_Click);
             // 
             // cmdEditCut
             // 
-            this.cmdEditCut.Image = global::PhotoTool.Properties.Resources.Cut_32x;
-            this.cmdEditCut.SmallImage = global::PhotoTool.Properties.Resources.Marquee_16x;
+            this.cmdEditCut.Image = ((System.Drawing.Image)(resources.GetObject("cmdEditCut.Image")));
+            this.cmdEditCut.SmallImage = global::PhotoTool.Properties.Resources.Cut_16x;
             resources.ApplyResources(this.cmdEditCut, "cmdEditCut");
+            this.cmdEditCut.Click += new System.EventHandler(this.cmdEditCut_Click);
             // 
             // cmdEditCopy
             // 
-            this.cmdEditCopy.Image = global::PhotoTool.Properties.Resources.Copy_32x;
-            this.cmdEditCopy.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdEditCopy.SmallImage")));
+            this.cmdEditCopy.Image = ((System.Drawing.Image)(resources.GetObject("cmdEditCopy.Image")));
+            this.cmdEditCopy.SmallImage = global::PhotoTool.Properties.Resources.Copy_16x;
             resources.ApplyResources(this.cmdEditCopy, "cmdEditCopy");
+            this.cmdEditCopy.Click += new System.EventHandler(this.cmdEditCopy_Click);
             // 
             // cmdEditPaste
             // 
-            this.cmdEditPaste.Image = global::PhotoTool.Properties.Resources.Paste_32x;
-            this.cmdEditPaste.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdEditPaste.SmallImage")));
+            this.cmdEditPaste.Image = ((System.Drawing.Image)(resources.GetObject("cmdEditPaste.Image")));
+            this.cmdEditPaste.SmallImage = global::PhotoTool.Properties.Resources.Paste_16x;
             resources.ApplyResources(this.cmdEditPaste, "cmdEditPaste");
+            this.cmdEditPaste.Click += new System.EventHandler(this.cmdEditPaste_Click);
             // 
             // cmdEditClear
             // 
             this.cmdEditClear.Image = global::PhotoTool.Properties.Resources.Clear_32x;
-            this.cmdEditClear.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdEditClear.SmallImage")));
+            this.cmdEditClear.SmallImage = global::PhotoTool.Properties.Resources.Clear_16x;
             resources.ApplyResources(this.cmdEditClear, "cmdEditClear");
+            this.cmdEditClear.Click += new System.EventHandler(this.cmdEditClear_Click);
+            // 
+            // cmdViewZoomIn
+            // 
+            this.cmdViewZoomIn.Image = global::PhotoTool.Properties.Resources.ZoomIn_32x;
+            this.cmdViewZoomIn.SmallImage = global::PhotoTool.Properties.Resources.ZoomIn_16x;
+            resources.ApplyResources(this.cmdViewZoomIn, "cmdViewZoomIn");
+            this.cmdViewZoomIn.Click += new System.EventHandler(this.cmdViewZoomIn_Click);
+            // 
+            // cmdViewZoomOut
+            // 
+            this.cmdViewZoomOut.Image = global::PhotoTool.Properties.Resources.ZoomOut_32x;
+            this.cmdViewZoomOut.SmallImage = global::PhotoTool.Properties.Resources.ZoomOut_16x;
+            resources.ApplyResources(this.cmdViewZoomOut, "cmdViewZoomOut");
+            this.cmdViewZoomOut.Click += new System.EventHandler(this.cmdViewZoomOut_Click);
+            // 
+            // cmdViewZoomFit
+            // 
+            this.cmdViewZoomFit.Image = global::PhotoTool.Properties.Resources.ZoomToFit_32x;
+            this.cmdViewZoomFit.SmallImage = global::PhotoTool.Properties.Resources.ZoomToFit_16x;
+            resources.ApplyResources(this.cmdViewZoomFit, "cmdViewZoomFit");
+            this.cmdViewZoomFit.Click += new System.EventHandler(this.cmdViewZoomFit_Click);
+            // 
+            // cmdViewZoom100
+            // 
+            this.cmdViewZoom100.Image = global::PhotoTool.Properties.Resources.ZoomOriginalSize_32x;
+            this.cmdViewZoom100.SmallImage = global::PhotoTool.Properties.Resources.ZoomOriginalSize_16x;
+            resources.ApplyResources(this.cmdViewZoom100, "cmdViewZoom100");
+            this.cmdViewZoom100.Click += new System.EventHandler(this.cmdViewZoom100_Click);
+            // 
+            // cmdViewZoomRegion
+            // 
+            this.cmdViewZoomRegion.Image = global::PhotoTool.Properties.Resources.ZoomToRegion_32x;
+            this.cmdViewZoomRegion.SmallImage = global::PhotoTool.Properties.Resources.ZoomToRegion_16x;
+            resources.ApplyResources(this.cmdViewZoomRegion, "cmdViewZoomRegion");
+            this.cmdViewZoomRegion.Click += new System.EventHandler(this.cmdViewZoomRegion_Click);
             // 
             // cmdActionReScan
             // 
-            this.cmdActionReScan.Image = global::PhotoTool.Properties.Resources.AddIn_32x;
-            this.cmdActionReScan.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdActionReScan.SmallImage")));
+            this.cmdActionReScan.Image = ((System.Drawing.Image)(resources.GetObject("cmdActionReScan.Image")));
+            this.cmdActionReScan.SmallImage = global::PhotoTool.Properties.Resources.AddIn_16x;
             resources.ApplyResources(this.cmdActionReScan, "cmdActionReScan");
             this.cmdActionReScan.Click += new System.EventHandler(this.cmdActionReScan_Click);
             // 
             // cmdFilterReScan
             // 
-            this.cmdFilterReScan.Image = global::PhotoTool.Properties.Resources.AddIn_32x;
-            this.cmdFilterReScan.SmallImage = ((System.Drawing.Image)(resources.GetObject("cmdFilterReScan.SmallImage")));
+            this.cmdFilterReScan.Image = ((System.Drawing.Image)(resources.GetObject("cmdFilterReScan.Image")));
+            this.cmdFilterReScan.SmallImage = global::PhotoTool.Properties.Resources.AddIn_16x;
             resources.ApplyResources(this.cmdFilterReScan, "cmdFilterReScan");
             // 
             // ribOrbMiOpen
             // 
             this.ribOrbMiOpen.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.ribOrbMiOpen.Image = global::PhotoTool.Properties.Resources.ExportPerformance_32x;
-            this.ribOrbMiOpen.SmallImage = global::PhotoTool.Properties.Resources.ExportPerformance_32x;
+            this.ribOrbMiOpen.Image = global::PhotoTool.Properties.Resources.Open_32x;
+            this.ribOrbMiOpen.SmallImage = global::PhotoTool.Properties.Resources.Open_32x;
             this.ribOrbMiOpen.Style = System.Windows.Forms.RibbonButtonStyle.SplitDropDown;
             resources.ApplyResources(this.ribOrbMiOpen, "ribOrbMiOpen");
             // 
             // ribOrbMiSave
             // 
             this.ribOrbMiSave.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.ribOrbMiSave.Image = global::PhotoTool.Properties.Resources.Save_32x;
-            this.ribOrbMiSave.SmallImage = global::PhotoTool.Properties.Resources.Save_32x;
+            this.ribOrbMiSave.Image = ((System.Drawing.Image)(resources.GetObject("ribOrbMiSave.Image")));
+            this.ribOrbMiSave.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribOrbMiSave.SmallImage")));
             this.ribOrbMiSave.Style = System.Windows.Forms.RibbonButtonStyle.SplitDropDown;
             resources.ApplyResources(this.ribOrbMiSave, "ribOrbMiSave");
             // 
             // ribOptBtnExit
             // 
-            this.ribOptBtnExit.Image = global::PhotoTool.Properties.Resources.Exit_16x;
-            this.ribOptBtnExit.SmallImage = global::PhotoTool.Properties.Resources.Exit_16x;
+            this.ribOptBtnExit.Image = ((System.Drawing.Image)(resources.GetObject("ribOptBtnExit.Image")));
+            this.ribOptBtnExit.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribOptBtnExit.SmallImage")));
             resources.ApplyResources(this.ribOptBtnExit, "ribOptBtnExit");
             this.ribOptBtnExit.Click += new System.EventHandler(this.ribOptBtnExit_Click);
             // 
             // ribOptBtnOptions
             // 
-            this.ribOptBtnOptions.Image = global::PhotoTool.Properties.Resources.Settings_32x;
-            this.ribOptBtnOptions.SmallImage = global::PhotoTool.Properties.Resources.Settings_16x;
+            this.ribOptBtnOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribOptBtnOptions.Image")));
+            this.ribOptBtnOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribOptBtnOptions.SmallImage")));
             resources.ApplyResources(this.ribOptBtnOptions, "ribOptBtnOptions");
             // 
             // ribThemeSelect
@@ -474,39 +569,20 @@
             this.cmdStyle2013.Value = "2";
             this.cmdStyle2013.Click += new System.EventHandler(this.cmdStyle2010_Click);
             // 
-            // tssLabelImageName
+            // addins
             // 
-            this.tssLabelImageName.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.tssLabelImageName.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.tssLabelImageName.Name = "tssLabelImageName";
-            resources.ApplyResources(this.tssLabelImageName, "tssLabelImageName");
-            // 
-            // tssLabelImageSize
-            // 
-            this.tssLabelImageSize.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.tssLabelImageSize.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.tssLabelImageSize.Name = "tssLabelImageSize";
-            resources.ApplyResources(this.tssLabelImageSize, "tssLabelImageSize");
-            // 
-            // tssLabelImageInfo
-            // 
-            this.tssLabelImageInfo.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.tssLabelImageInfo.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.tssLabelImageInfo.Name = "tssLabelImageInfo";
-            resources.ApplyResources(this.tssLabelImageInfo, "tssLabelImageInfo");
-            this.tssLabelImageInfo.Spring = true;
+            this.addins.CurrentAction = null;
+            this.addins.CurrentApp = null;
+            this.addins.CurrentFilter = null;
+            resources.ApplyResources(this.addins, "addins");
+            this.addins.Name = "addins";
             // 
             // MainForm
             // 
             this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.addins);
             this.Controls.Add(this.status);
             this.Controls.Add(this.ribbonMain);
             this.HelpButton = true;
@@ -575,6 +651,14 @@
         private System.Windows.Forms.ToolStripStatusLabel tssLabelImageName;
         private System.Windows.Forms.ToolStripStatusLabel tssLabelImageSize;
         private System.Windows.Forms.ToolStripStatusLabel tssLabelImageInfo;
+        private System.Windows.Forms.RibbonPanel RibTabMainView;
+        private System.Windows.Forms.RibbonButton cmdViewZoomIn;
+        private System.Windows.Forms.RibbonButton cmdViewZoomOut;
+        private System.Windows.Forms.RibbonButton cmdViewZoomFit;
+        private System.Windows.Forms.RibbonButton cmdViewZoom100;
+        private System.Windows.Forms.RibbonButton cmdViewZoomRegion;
+        private System.Windows.Forms.ToolStripStatusLabel tssLabelImageZoom;
+        private NetCharm.Image.Addins.AddinHost addins;
     }
 }
 

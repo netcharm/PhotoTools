@@ -20,6 +20,8 @@ namespace NetCharm.Image.Addins
 
     public enum AddinCommand
     {
+        Unknown = 0,
+
         Open = 100,
         Save = 101,
         SaveAs = 102,
@@ -35,13 +37,18 @@ namespace NetCharm.Image.Addins
         ZoomOut = 303,
         Zoom100 = 304,
         ZoomFit = 305,
-        ZoomSelect = 306,
+        ZoomRegion = 306,
         ZoomLevel = 310,
 
         GetImage = 1001,
         SetImage = 1002,
         GetThumb = 1003,
         SetThumb = 1004,
+        GetImageName = 1005,
+        GetImageSize = 1006,
+        GetImageProp = 1007,
+        GetImageSelection = 1011,
+        SetImageSelection = 1012,
 
         GetHost = 2001,
         SetHost = 2002,

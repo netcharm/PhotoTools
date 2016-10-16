@@ -81,9 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addin.cs" />
-    <Compile Include="AddinHost.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="AddinHost.cs" />
     <Compile Include="AddinType.cs" />
     <Compile Include="AddinUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,6 +92,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddinHost.resx">
+      <DependentUpon>AddinHost.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

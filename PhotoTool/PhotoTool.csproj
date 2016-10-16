@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>image_32x.ico</ApplicationIcon>
+    <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NGettext">
@@ -91,14 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="locale\zh_CN\LC_MESSAGES\PhotoTool.mo">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -109,6 +104,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -119,23 +119,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\Exit_16x.png" />
-    <None Include="icons\Exit_32x.png" />
-    <None Include="icons\Image_16x.png" />
-    <None Include="icons\Image_32x.png" />
-    <None Include="icons\Settings_16x.png" />
-    <None Include="icons\Settings_32x.png" />
-    <None Include="icons\AddIn_32x.png" />
-    <None Include="icons\Clear_32x.png" />
-    <None Include="icons\Paste_32x.png" />
-    <None Include="icons\Copy_32x.png" />
-    <None Include="icons\Cut_32x.png" />
-    <None Include="icons\OptionsDropdown_23x16.png" />
-    <None Include="icons\Save_32x.png" />
-    <None Include="icons\ExportPerformance_32x.png" />
-    <None Include="icons\save_32x32.png" />
-    <None Include="icons\Save_FloppyDisk.png" />
-    <None Include="icons\FolderOpen_32x42_72.png" />
+    <None Include="Resources\Exit_16x.png" />
+    <None Include="Resources\Exit_32x.png" />
+    <None Include="Resources\Image_16x.png" />
+    <None Include="Resources\Image_32x.png" />
+    <None Include="Resources\Settings_16x.png" />
+    <None Include="Resources\Settings_32x.png" />
+    <None Include="Resources\AddIn_32x.png" />
+    <None Include="Resources\Clear_32x.png" />
+    <None Include="Resources\Paste_32x.png" />
+    <None Include="Resources\Copy_32x.png" />
+    <None Include="Resources\Cut_32x.png" />
+    <None Include="Resources\OptionsDropdown_23x16.png" />
+    <None Include="Resources\Save_32x.png" />
     <None Include="icons\btn_save.ico" />
     <None Include="icons\btn_save_32x32.png" />
   </ItemGroup>
@@ -157,13 +153,32 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\Marquee_32x.png" />
+    <None Include="Resources\Marquee_32x.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\Marquee_16x.png" />
+    <None Include="Resources\Marquee_16x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="image_32x.ico" />
+    <Content Include="app.ico" />
+    <None Include="Resources\ZoomToWidth_32x.png" />
+    <None Include="Resources\ZoomToWidth_16x.png" />
+    <None Include="Resources\AddIn_16x.png" />
+    <None Include="Resources\Copy_16x.png" />
+    <None Include="Resources\ClearWindowContent_32x.png" />
+    <None Include="Resources\ClearWindowContent_16x.png" />
+    <None Include="Resources\Cut_16x.png" />
+    <None Include="Resources\Paste_16x.png" />
+    <None Include="Resources\ExportPerformance_32x.png" />
+    <None Include="Resources\ExportPerformance_16x.png" />
+    <None Include="Resources\Save_16x.png" />
+    <None Include="Resources\ZoomOriginalSize_32x.png" />
+    <None Include="Resources\ZoomOriginalSize_16x.png" />
+    <None Include="Resources\ZoomToFit_32x.png" />
+    <None Include="Resources\ZoomToFit_16x.png" />
+    <None Include="Resources\ZoomOut_32x.png" />
+    <None Include="Resources\ZoomOut_16x.png" />
+    <None Include="Resources\ZoomIn_32x.png" />
+    <None Include="Resources\ZoomIn_16x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AddinHost\AddinHost.csproj">

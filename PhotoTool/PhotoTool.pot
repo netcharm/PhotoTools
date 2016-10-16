@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PhotoTool\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-10-15 00:38+0800\n"
-"PO-Revision-Date: 2016-10-15 00:38+0800\n"
+"POT-Creation-Date: 2016-10-16 09:34+0800\n"
+"PO-Revision-Date: 2016-10-16 09:34+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,186 +20,224 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: MainForm.resx:121 -> RibTabMain.Text.value
-msgid "Main"
-msgstr ""
-
-#: MainForm.resx:124 -> RibTabMainFile.Text.value
-msgid "File"
-msgstr ""
-
-#: MainForm.resx:127 -> RibTabMainEdit.Text.value MainForm.resx:133
-#: RibTabEdit.Text.value
-msgid "Edit"
-msgstr ""
-
-#: MainForm.resx:130 -> RibTabMainApp.Text.value
-msgid "Application"
-msgstr ""
-
-#: MainForm.resx:136 -> RibTabAction.Text.value
-msgid "Action"
-msgstr ""
-
-#: MainForm.resx:139 -> RibTabActManager.Text.value MainForm.resx:169
-#: RibTabFilterManager.Text.value
-msgid "Manager"
-msgstr ""
-
-#: MainForm.resx:142 -> RibTabActInternal.Text.value MainForm.resx:151
-#: RibTabActInternalDropList.Text.value MainForm.resx:172
-#: RibTabFilterInternal.Text.value MainForm.resx:181
-#: RibTabFilterInternalDropList.Text.value
-msgid "Internal"
-msgstr ""
-
-#: MainForm.resx:145 -> RibTabActInternalList.Text.value MainForm.resx:148
-#: RibTabActInternalList.ToolTip.value
-msgid "Internal Actions"
-msgstr ""
-
-#: MainForm.resx:154 -> RibTabActExternal.Text.value MainForm.resx:163
-#: RibTabActExternalDropList.Text.value MainForm.resx:184
-#: RibTabFilterExternal.Text.value MainForm.resx:193
-#: RibTabFilterExternalDropList.Text.value
-msgid "External"
-msgstr ""
-
-#: MainForm.resx:157 -> RibTabActExternalList.Text.value MainForm.resx:160
-#: RibTabActExternalList.ToolTip.value
-msgid "External Actions"
-msgstr ""
-
-#: MainForm.resx:166 -> RibTabFilter.Text.value
-msgid "Filter"
-msgstr ""
-
-#: MainForm.resx:175 -> RibTabFilterInternalList.Text.value MainForm.resx:178
-#: RibTabFilterInternalList.ToolTip.value
-msgid "Internal Filters"
-msgstr ""
-
-#: MainForm.resx:187 -> RibTabFilterExternalList.Text.value MainForm.resx:190
-#: RibTabFilterExternalList.ToolTip.value
-msgid "External Filters"
-msgstr ""
-
-#: MainForm.resx:196 -> RibTabSetting.Text.value
-msgid "Setting"
-msgstr ""
-
-#: MainForm.resx:213 -> status.Text.value
-msgid "OK"
-msgstr ""
-
-#: MainForm.resx:234 -> dlgOpen.Filter.value
-msgid "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All File(*.*)|*.*"
-msgstr ""
-
-#: MainForm.resx:240 -> dlgSave.Filter.value
-msgid "JPEG File(*.jpg;*.jpeg)|*.jpg;*.jpeg|PNG File(*.png)|*.png|TIFF File(*.tif;*.tiff)|*.tif;*.tiff|Bitmap File(*.png)|*.bmp|GIF File(*.gif)|*.gif|All File(*.*)|*.*"
-msgstr ""
-
-#: MainForm.resx:268 -> ribbonMain.Text.value
-msgid "Ribbon"
-msgstr ""
-
-#: MainForm.resx:290 -> cmdFileOpen.Text.value MainForm.resx:359
+#: MainForm.resx:121 -> cmdFileOpen.Text.value MainForm.resx:435
 #: ribOrbMiOpen.Text.value
 msgid "Open"
 msgstr ""
 
-#: MainForm.resx:300 -> cmdFileSave.Text.value MainForm.resx:362
+#: MainForm.resx:133 -> cmdFileSave.Text.value MainForm.resx:454
 #: ribOrbMiSave.Text.value
 msgid "Save"
 msgstr ""
 
-#: MainForm.resx:303 -> cmdEditCut.Text.value
+#: MainForm.resx:136 -> RibTabMainFile.Text.value
+msgid "File"
+msgstr ""
+
+#: MainForm.resx:181 -> cmdEditCut.Text.value
 msgid "Cut"
 msgstr ""
 
-#: MainForm.resx:313 -> cmdEditCopy.Text.value
+#: MainForm.resx:192 -> cmdEditCopy.Text.value
 msgid "Copy"
 msgstr ""
 
-#: MainForm.resx:323 -> cmdEditPaste.Text.value
+#: MainForm.resx:212 -> cmdEditPaste.Text.value
 msgid "Paste"
 msgstr ""
 
-#: MainForm.resx:333 -> cmdEditClear.Text.value
+#: MainForm.resx:215 -> cmdEditClear.Text.value
 msgid "Clear"
 msgstr ""
 
-#: MainForm.resx:336 -> cmdEditClear.ToolTip.value
+#: MainForm.resx:218 -> cmdEditClear.ToolTip.value
 msgid "Clear Content"
 msgstr ""
 
-#: MainForm.resx:346 -> cmdActionReScan.Text.value MainForm.resx:356
+#: MainForm.resx:221 -> RibTabMainEdit.Text.value MainForm.resx:248
+#: RibTabEdit.Text.value
+msgid "Edit"
+msgstr ""
+
+#: MainForm.resx:224 -> cmdViewZoomIn.Text.value
+msgid "Zoom In"
+msgstr ""
+
+#: MainForm.resx:227 -> cmdViewZoomOut.Text.value
+msgid "Zoom Out"
+msgstr ""
+
+#: MainForm.resx:230 -> cmdViewZoomFit.Text.value
+msgid "Fit View"
+msgstr ""
+
+#: MainForm.resx:233 -> cmdViewZoom100.Text.value MainForm.resx:355
+#: tssLabelImageSize.Text.value MainForm.resx:358
+#: tssLabelImageSize.ToolTipText.value
+msgid "Image Size"
+msgstr ""
+
+#: MainForm.resx:236 -> cmdViewZoomRegion.Text.value
+msgid "Zoom Selected"
+msgstr ""
+
+#: MainForm.resx:239 -> RibTabMainView.Text.value
+msgid "View"
+msgstr ""
+
+#: MainForm.resx:242 -> RibTabMainApp.Text.value
+msgid "Application"
+msgstr ""
+
+#: MainForm.resx:245 -> RibTabMain.Text.value
+msgid "Main"
+msgstr ""
+
+#: MainForm.resx:261 -> cmdActionReScan.Text.value MainForm.resx:304
 #: cmdFilterReScan.Text.value
 msgid "Re-Scan"
 msgstr ""
 
-#: MainForm.resx:365 -> ribOptBtnExit.Text.value
+#: MainForm.resx:264 -> RibTabActManager.Text.value MainForm.resx:307
+#: RibTabFilterManager.Text.value
+msgid "Manager"
+msgstr ""
+
+#: MainForm.resx:267 -> RibTabActInternalDropList.Text.value MainForm.resx:276
+#: RibTabActInternal.Text.value MainForm.resx:310
+#: RibTabFilterInternalDropList.Text.value MainForm.resx:319
+#: RibTabFilterInternal.Text.value
+msgid "Internal"
+msgstr ""
+
+#: MainForm.resx:270 -> RibTabActInternalList.Text.value MainForm.resx:273
+#: RibTabActInternalList.ToolTip.value
+msgid "Internal Actions"
+msgstr ""
+
+#: MainForm.resx:279 -> RibTabActExternalDropList.Text.value MainForm.resx:288
+#: RibTabActExternal.Text.value MainForm.resx:322
+#: RibTabFilterExternalDropList.Text.value MainForm.resx:331
+#: RibTabFilterExternal.Text.value
+msgid "External"
+msgstr ""
+
+#: MainForm.resx:282 -> RibTabActExternalList.Text.value MainForm.resx:285
+#: RibTabActExternalList.ToolTip.value
+msgid "External Actions"
+msgstr ""
+
+#: MainForm.resx:291 -> RibTabAction.Text.value
+msgid "Action"
+msgstr ""
+
+#: MainForm.resx:313 -> RibTabFilterInternalList.Text.value MainForm.resx:316
+#: RibTabFilterInternalList.ToolTip.value
+msgid "Internal Filters"
+msgstr ""
+
+#: MainForm.resx:325 -> RibTabFilterExternalList.Text.value MainForm.resx:328
+#: RibTabFilterExternalList.ToolTip.value
+msgid "External Filters"
+msgstr ""
+
+#: MainForm.resx:334 -> RibTabFilter.Text.value
+msgid "Filter"
+msgstr ""
+
+#: MainForm.resx:337 -> RibTabSetting.Text.value
+msgid "Setting"
+msgstr ""
+
+#: MainForm.resx:346 -> tssLabelImageName.Text.value
+msgid "Image File"
+msgstr ""
+
+#: MainForm.resx:349 -> tssLabelImageName.ToolTipText.value
+msgid "Image File Name"
+msgstr ""
+
+#: MainForm.resx:364 -> tssLabelImageZoom.Text.value
+msgid "Zoom"
+msgstr ""
+
+#: MainForm.resx:371 -> tssLabelImageZoom.ToolTipText.value
+msgid "Image Zoom Level"
+msgstr ""
+
+#: MainForm.resx:377 -> tssLabelImageInfo.Text.value
+msgid "Ready"
+msgstr ""
+
+#: MainForm.resx:393 -> status.Text.value
+msgid "OK"
+msgstr ""
+
+#: MainForm.resx:414 -> dlgOpen.Filter.value
+msgid "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All File(*.*)|*.*"
+msgstr ""
+
+#: MainForm.resx:420 -> dlgSave.Filter.value
+msgid "JPEG File(*.jpg;*.jpeg)|*.jpg;*.jpeg|PNG File(*.png)|*.png|TIFF File(*.tif;*.tiff)|*.tif;*.tiff|Bitmap File(*.png)|*.bmp|GIF File(*.gif)|*.gif|All File(*.*)|*.*"
+msgstr ""
+
+#: MainForm.resx:477 -> ribOptBtnExit.Text.value
 msgid "Exit"
 msgstr ""
 
-#: MainForm.resx:368 -> ribOptBtnOptions.Text.value
+#: MainForm.resx:505 -> ribOptBtnOptions.Text.value
 msgid "Options"
 msgstr ""
 
-#: MainForm.resx:385 -> ribThemeSelect.Text.value
-msgid "Theme"
-msgstr ""
-
-#: MainForm.resx:402 -> cmdThemeBlue.Text.value
+#: MainForm.resx:522 -> cmdThemeBlue.Text.value
 msgid "Blue"
 msgstr ""
 
-#: MainForm.resx:419 -> cmdThemeBlack.Text.value
+#: MainForm.resx:539 -> cmdThemeBlack.Text.value
 msgid "Black"
 msgstr ""
 
-#: MainForm.resx:436 -> cmdThemeGreen.Text.value
+#: MainForm.resx:556 -> cmdThemeGreen.Text.value
 msgid "Green"
 msgstr ""
 
-#: MainForm.resx:453 -> cmdThemePurple.Text.value
+#: MainForm.resx:573 -> cmdThemePurple.Text.value
 msgid "Purple"
 msgstr ""
 
-#: MainForm.resx:470 -> ribStyleSelect.Text.value MainForm.resx:473
+#: MainForm.resx:590 -> ribThemeSelect.Text.value
+msgid "Theme"
+msgstr ""
+
+#: MainForm.resx:607 -> cmdStyle2007.Text.value
+msgid "Office 2007"
+msgstr ""
+
+#: MainForm.resx:624 -> cmdStyle2010.Text.value
+msgid "Office 2010"
+msgstr ""
+
+#: MainForm.resx:641 -> cmdStyle2013.Text.value
+msgid "Office 2013"
+msgstr ""
+
+#: MainForm.resx:658 -> ribStyleSelect.Text.value MainForm.resx:661
 #: ribStyleSelect.ToolTip.value
 msgid "Style"
 msgstr ""
 
-#: MainForm.resx:490 -> cmdStyle2007.Text.value
-msgid "Office 2007"
+#: MainForm.resx:925 -> ribbonMain.Text.value
+msgid "Ribbon"
 msgstr ""
 
-#: MainForm.resx:507 -> cmdStyle2010.Text.value
-msgid "Office 2010"
-msgstr ""
-
-#: MainForm.resx:524 -> cmdStyle2013.Text.value
-msgid "Office 2013"
-msgstr ""
-
-#: MainForm.resx:530 -> tssLabelImageName.Text.value
-msgid "Image File"
-msgstr ""
-
-#: MainForm.resx:536 -> tssLabelImageSize.Text.value
-msgid "Image Size"
-msgstr ""
-
-#: MainForm.resx:542 -> tssLabelImageInfo.Text.value
-msgid "Ready"
-msgstr ""
-
-#: MainForm.resx:560 -> $this.Text.value
+#: MainForm.resx:952 -> $this.Text.value
 msgid "Photo Tool"
 msgstr ""
 
-#: MainForm.Designer.cs:280
+#: MainForm.Designer.cs:425
 msgid "Recent"
+msgstr ""
+
+#: MainFormUtils.cs:515
+msgid "None"
 msgstr ""

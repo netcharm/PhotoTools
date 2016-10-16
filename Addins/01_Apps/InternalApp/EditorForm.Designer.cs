@@ -42,13 +42,14 @@
             this.imgEditor.SelectionMode = Cyotek.Windows.Forms.ImageBoxSelectionMode.Rectangle;
             this.imgEditor.ShowPixelGrid = true;
             this.imgEditor.Size = new System.Drawing.Size(573, 439);
-            this.imgEditor.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.imgEditor.TabIndex = 0;
             this.imgEditor.Text = "Image Editor";
             this.imgEditor.TextDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.None;
             this.imgEditor.ImageChanged += new System.EventHandler(this.imgEditor_ImageChanged);
             this.imgEditor.Selected += new System.EventHandler<System.EventArgs>(this.imgEditor_Selected);
             this.imgEditor.Selecting += new System.EventHandler<Cyotek.Windows.Forms.ImageBoxCancelEventArgs>(this.imgEditor_Selecting);
+            this.imgEditor.ZoomChanged += new System.EventHandler(this.imgEditor_ZoomChanged);
+            this.imgEditor.Zoomed += new System.EventHandler<Cyotek.Windows.Forms.ImageBoxZoomEventArgs>(this.imgEditor_Zoomed);
             this.imgEditor.SizeChanged += new System.EventHandler(this.imgEditor_SizeChanged);
             this.imgEditor.Click += new System.EventHandler(this.imgEditor_Click);
             this.imgEditor.DoubleClick += new System.EventHandler(this.imgEditor_DoubleClick);

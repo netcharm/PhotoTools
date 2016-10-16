@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -91,7 +92,7 @@ namespace PhotoTool
         #endregion Style / Theme Change Routine
 
         #region Addin Loading Routine
-        private AddinHost addins = new AddinHost();
+        //private AddinHost addins = new AddinHost() { Visible = false };
 
         /// <summary>
         /// 
@@ -99,6 +100,7 @@ namespace PhotoTool
         /// <param name="apps"></param>
         private void AddAddinApp( List<IAddin> apps )
         {
+            RibTabMainApp.Items.Clear();
             foreach ( IAddin addin in apps )
             {
                 RibbonButton btnAddin = new RibbonButton();
@@ -120,8 +122,8 @@ namespace PhotoTool
                 btnAddin.Value = addin.Name;
                 btnAddin.Click += AddinAppClick;
             }
-            ribbonMain.ResumeLayout( true );
-            ribbonMain.PerformLayout();
+            //ribbonMain.ResumeLayout( true );
+            //ribbonMain.PerformLayout();
         }
 
         /// <summary>
@@ -131,6 +133,8 @@ namespace PhotoTool
         /// <param name="IsExt"></param>
         private void AddAddinAction( List<IAddin> acts, bool IsExt = true )
         {
+            RibTabActInternalList.Buttons.Clear();
+            RibTabActInternalDropList.Buttons.Clear();
             foreach ( IAddin addin in acts )
             {
                 RibbonButton btnAddin = new RibbonButton();
@@ -173,6 +177,8 @@ namespace PhotoTool
         /// <param name="IsExt"></param>
         private void AddAddinFilter( List<IAddin> filters, bool IsExt = true )
         {
+            RibTabActInternalList.Buttons.Clear();
+            RibTabActInternalDropList.Buttons.Clear();
             foreach ( IAddin addin in filters )
             {
                 RibbonButton btnAddin = new RibbonButton();
@@ -491,6 +497,27 @@ namespace PhotoTool
                     addins.CurrentApp.Show( this );
                     addins.CurrentApp.Open( flist );
                 }
+            }
+
+            if(flist.Length>0)
+            {
+                tssLabelImageName.Text = Path.GetFileName( flist[0] );
+                if ( addins.CurrentApp.ImageData is Image )
+                {
+                    ValueType imgSize = new Size(0, 0);
+                    addins.CurrentApp.Command( AddinCommand.GetImageSize, out imgSize );
+                    tssLabelImageSize.Text = $"{((Size)imgSize).Width} x {((Size)imgSize).Height}";
+
+                    ValueType zoomLevel = 100;
+                    addins.CurrentApp.Command( AddinCommand.ZoomLevel, out zoomLevel );
+                    tssLabelImageZoom.Text = $"{zoomLevel}%";
+                }
+            }
+            else
+            {
+                tssLabelImageName.Text = I18N._( "None" );
+                tssLabelImageSize.Text = "0 x 0";
+                tssLabelImageZoom.Text = "";
             }
         }
 
