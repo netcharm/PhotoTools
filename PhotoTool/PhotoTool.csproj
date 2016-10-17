@@ -52,6 +52,12 @@
   <PropertyGroup>
     <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>netcharm.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="NGettext">
       <HintPath>..\..\..\_refs\NGettext.dll</HintPath>
@@ -98,6 +104,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="locale\zh_CN\LC_MESSAGES\PhotoTool.po" />
+    <None Include="netcharm.snk" />
     <None Include="packages.config" />
     <None Include="PhotoTool.pot" />
     <None Include="Properties\Settings.settings">
@@ -180,9 +187,9 @@
     <None Include="Resources\ZoomIn_16x.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AddinHost\AddinHost.csproj">
+    <ProjectReference Include="..\AddinHost\NetCharm.Image.AddinHost.csproj">
       <Project>{c2275eb5-e68a-42d5-b285-0083b1b7840c}</Project>
-      <Name>AddinHost</Name>
+      <Name>NetCharm.Image.AddinHost</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

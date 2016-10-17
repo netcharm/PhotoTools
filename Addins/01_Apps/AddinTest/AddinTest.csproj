@@ -51,14 +51,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AddinHost\AddinHost.csproj">
+    <ProjectReference Include="..\..\..\AddinHost\NetCharm.Image.AddinHost.csproj">
       <Project>{c2275eb5-e68a-42d5-b285-0083b1b7840c}</Project>
-      <Name>AddinHost</Name>
+      <Name>NetCharm.Image.AddinHost</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>XCOPY /Y "$(TargetPath)" "$(SolutionDir)\PhotoTool\$(OutDir)\addins\app"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -8,6 +8,51 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    public class CommandPropertiesChangeEventArgs : EventArgs
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public CommandPropertiesChangeEventArgs()
+        {
+            _cmd = AddinCommand.Unknown;
+            _value = null;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="property"></param>
+        public CommandPropertiesChangeEventArgs( AddinCommand command, ValueType property )
+        {
+            _cmd = command;
+            _value = property;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private AddinCommand _cmd = AddinCommand.Unknown;
+        public AddinCommand Command
+        {
+            get { return ( _cmd ); }
+            private set { }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private object _value = null;
+        public object Property
+        {
+            get { return ( _value ); }
+            private set { }
+        } // readonly
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
     public enum AddinType
     {
         Unknown = 0,
@@ -18,6 +63,9 @@ namespace NetCharm.Image.Addins
         FormatOut = 5,
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public enum AddinCommand
     {
         Unknown = 0,
@@ -46,7 +94,7 @@ namespace NetCharm.Image.Addins
         SetThumb = 1004,
         GetImageName = 1005,
         GetImageSize = 1006,
-        GetImageProp = 1007,
+        GetImageInfo = 1007,
         GetImageSelection = 1011,
         SetImageSelection = 1012,
 
@@ -57,5 +105,6 @@ namespace NetCharm.Image.Addins
 
         Show = 3001,
         Apply = 3002,
+        Reset = 3003,
     }
 }

@@ -24,6 +24,8 @@ namespace InternalFilters
 
         protected internal Form ParentForm = null;
 
+        private string lastImageFileName = null;
+
         /// <summary>
         /// 
         /// </summary>
@@ -246,6 +248,7 @@ namespace InternalFilters
                     Host.CurrentApp = this;
                     Host.CurrentApp.Show( ParentForm );
                 }
+                lastImageFileName = filename;
             }
         }
         /// <summary>
@@ -264,6 +267,7 @@ namespace InternalFilters
                         Host.CurrentApp = this;
                         Host.CurrentApp.Show( ParentForm );
                     }
+                    lastImageFileName = filenames[0];
                 }
             }
         }
@@ -286,7 +290,7 @@ namespace InternalFilters
         /// <param name="cmd"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        public bool Command( AddinCommand cmd, out ValueType result, params object[] cmdArgs )
+        public bool Command( AddinCommand cmd, out object result, params object[] cmdArgs )
         {
             result = null;
             switch(cmd)
@@ -304,6 +308,9 @@ namespace InternalFilters
                 case AddinCommand.Zoom100:
                 case AddinCommand.ZoomLevel:
                     if ( fm is EditorForm ) result = fm.Zoom( cmd );
+                    break;
+                case AddinCommand.GetImageName:
+                    result = lastImageFileName;
                     break;
                 case AddinCommand.GetImageSize:
                     if ( fm is EditorForm && fm.ImageData is Image)

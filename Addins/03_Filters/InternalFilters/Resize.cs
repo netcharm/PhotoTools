@@ -303,7 +303,7 @@ namespace InternalFilters
         /// <param name="result"></param>
         /// <param name="cmdArgs"></param>
         /// <returns></returns>
-        public bool Command( AddinCommand cmd, out ValueType result, params object[] cmdArgs )
+        public bool Command( AddinCommand cmd, out object result, params object[] cmdArgs )
         {
             result = null;
             return ( true );

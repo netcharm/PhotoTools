@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NetCharm.Image.Addins</RootNamespace>
-    <AssemblyName>AddinHost</AssemblyName>
+    <AssemblyName>NetCharm.Image.AddinHost</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -34,6 +34,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>AddIn.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>netcharm.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accord, Version=3.3.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
@@ -81,7 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addin.cs" />
-    <Compile Include="AddinHost.cs" />
+    <Compile Include="AddinHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="AddinType.cs" />
     <Compile Include="AddinUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +109,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="netcharm.snk" />
     <None Include="packages.config" />
     <None Include="Resources\AddInterface_32x.png" />
   </ItemGroup>

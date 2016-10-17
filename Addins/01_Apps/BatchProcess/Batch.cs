@@ -284,7 +284,7 @@ namespace BatchProcess
         /// <param name="cmd"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        public bool Command( AddinCommand cmd, out ValueType result, params object[] cmdArgs )
+        public bool Command( AddinCommand cmd, out object result, params object[] cmdArgs )
         {
             result = null;
             switch ( cmd )

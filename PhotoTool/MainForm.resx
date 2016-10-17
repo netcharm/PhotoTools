@@ -123,11 +123,123 @@
   <data name="RibTabMainFile.Text" xml:space="preserve">
     <value>File</value>
   </data>
-  <data name="RibTabMainEdit.Text" xml:space="preserve">
-    <value>Edit</value>
+  <data name="cmdFileOpen.Text" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cmdFileSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAB4SURBVFhH7c7BCYAwDIXh7OjVoRxAcBNXUi+9RnKwFHm5aVLlFX5oQimfqGpqcBlZvZRS9OUW
+        aU4GwKoIFyDDDNu3A+a9u+ZxWiEiDGAhRCjAuiPCAVaLSAFY/wN4oT8sAr4LeCoCCCCAAAII6B8QVX+A
+        rOAyLpUTfXT2T2fvNSgAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="cmdFileSave.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="RibTabMainClipboard.Text" xml:space="preserve">
+    <value>Clipboard</value>
+  </data>
+  <data name="cmdEditCut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="cmdEditCut.Text" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="cmdEditCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAACDSURBVFhH7ZZBCsAgDAR9W/7/l7YXrykWk4NUQzUFE7Iw
+        YFlN5tiEiA+jlD7njJrwXj4MUvq3ISvwXj4MUnp6CABL+BE4j+sTISAKSPwuQIUWdgXo4iw0x75AO0Ci
+        XSD1IRACIeBfgL5bqPcvIOFfoP5MdRMC+wvMYl9Ai7qnm00EMN0cuHuJzhkIngAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="cmdEditCopy.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="cmdEditPaste.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAWJLR0QfBQ0QvQAAAAd0SU1FB+AKAxUa
+        I4oy7F8AAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMTAtMDNUMjE6MjY6MzUrMDg6MDA0rl7+AAAAJXRF
+        WHRkYXRlOm1vZGlmeQAyMDE2LTEwLTAzVDIxOjI2OjM1KzA4OjAwRfPmQgAAAB50RVh0cGRmOkhpUmVz
+        Qm91bmRpbmdCb3gAMTZ4MTYrMCswnHvaewAAABZ0RVh0cGRmOlNwb3RDb2xvci0wAFZTIE91dNFAVpsA
+        AAAVdEVYdHBkZjpTcG90Q29sb3ItMQBWUyBCRy9VPo8AAAAVdEVYdHBkZjpTcG90Q29sb3ItMgBWUyBG
+        R3rR4RYAAAAUdEVYdHBkZjpWZXJzaW9uAFBERi0xLjUNQINXTAAAAWFJREFUWEftkz9OwzAUh3MFrhR1
+        zsYRwljKxJaZE0RiKENGhsw0B8gBslLKAgwBBCxZH/5ZftGrsSIngapItvQNrd+fz89xNHZ1XbdQ3CrI
+        4kFxZsL+ZqGBaEhN01Bd11ICXJvw312qME6um1RVRUmSUBzHPXmeS4krkzZ/qWJoDDBifWpumqYprVYX
+        /e+iKKTEqQJ5J6bUtCUKarIs0802dxv6/PjSbO+3vYQdr1iYUn4LCRa6EO4aYPSAmzM8ibIsdVzbtixw
+        aeowwxNRAZy4B5+QeXt93xPAdch9x8fJDE+EA/nEjCwOlstz2u0e6fnphdbrmx/7+B5kvpiIn4BdcC6Q
+        mCSAu50DP9fJAvKepwCJIDAogD8sDi7AG5NwNZV4CyBgDPyuXU0l3gI8cl+4oKupZLQAEoaw37WrqQQ5
+        owRcRSR2QVeMJAgEgSAQBP6fgC9c0LXn4vgFDsgxCUTRN6ufOREvZ37vAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="cmdEditPaste.Text" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="cmdEditClear.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="cmdEditClear.ToolTip" xml:space="preserve">
+    <value>Clear Content</value>
   </data>
   <data name="RibTabMainView.Text" xml:space="preserve">
     <value>View</value>
+  </data>
+  <data name="cmdViewZoomIn.Text" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="cmdViewZoomOut.Text" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="cmdViewZoomFit.Text" xml:space="preserve">
+    <value>Fit View</value>
+  </data>
+  <data name="cmdViewZoom100.Text" xml:space="preserve">
+    <value>Image Size</value>
+  </data>
+  <data name="cmdViewZoomRegion.Text" xml:space="preserve">
+    <value>Zoom Selected</value>
   </data>
   <data name="RibTabMainApp.Text" xml:space="preserve">
     <value>Application</value>
@@ -138,70 +250,33 @@
   <data name="RibTabAction.Text" xml:space="preserve">
     <value>Action</value>
   </data>
-  <data name="RibTabActManager.Text" xml:space="preserve">
-    <value>Manager</value>
-  </data>
   <data name="RibTabActInternal.Text" xml:space="preserve">
-    <value>Internal</value>
-  </data>
-  <data name="RibTabActInternalList.Text" xml:space="preserve">
-    <value>Internal Actions</value>
-  </data>
-  <data name="RibTabActInternalList.ToolTip" xml:space="preserve">
-    <value>Internal Actions</value>
-  </data>
-  <data name="RibTabActInternalDropList.Text" xml:space="preserve">
     <value>Internal</value>
   </data>
   <data name="RibTabActExternal.Text" xml:space="preserve">
     <value>External</value>
   </data>
-  <data name="RibTabActExternalList.Text" xml:space="preserve">
-    <value>External Actions</value>
-  </data>
-  <data name="RibTabActExternalList.ToolTip" xml:space="preserve">
-    <value>External Actions</value>
-  </data>
-  <data name="RibTabActExternalDropList.Text" xml:space="preserve">
-    <value>External</value>
-  </data>
-  <data name="RibTabFilter.Text" xml:space="preserve">
-    <value>Filter</value>
-  </data>
-  <data name="RibTabFilterManager.Text" xml:space="preserve">
-    <value>Manager</value>
-  </data>
   <data name="RibTabFilterInternal.Text" xml:space="preserve">
-    <value>Internal</value>
-  </data>
-  <data name="RibTabFilterInternalList.Text" xml:space="preserve">
-    <value>Internal Filters</value>
-  </data>
-  <data name="RibTabFilterInternalList.ToolTip" xml:space="preserve">
-    <value>Internal Filters</value>
-  </data>
-  <data name="RibTabFilterInternalDropList.Text" xml:space="preserve">
     <value>Internal</value>
   </data>
   <data name="RibTabFilterExternal.Text" xml:space="preserve">
     <value>External</value>
   </data>
-  <data name="RibTabFilterExternalList.Text" xml:space="preserve">
-    <value>External Filters</value>
-  </data>
-  <data name="RibTabFilterExternalList.ToolTip" xml:space="preserve">
-    <value>External Filters</value>
-  </data>
-  <data name="RibTabFilterExternalDropList.Text" xml:space="preserve">
-    <value>External</value>
+  <data name="RibTabFilter.Text" xml:space="preserve">
+    <value>Filter</value>
   </data>
   <data name="RibTabSetting.Text" xml:space="preserve">
     <value>Setting</value>
   </data>
+  <data name="RibTabSetAddinManager.Text" xml:space="preserve">
+    <value>Addins</value>
+  </data>
+  <data name="cmdAddinReScan.Text" xml:space="preserve">
+    <value>Re-Scan</value>
+  </data>
   <metadata name="status.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="status.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 572</value>
   </data>
@@ -225,7 +300,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;status.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="tssLabelImageName.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 17</value>
@@ -259,7 +334,7 @@
     <value>Image Zoom Level</value>
   </data>
   <data name="tssLabelImageInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>608, 17</value>
+    <value>577, 17</value>
   </data>
   <data name="tssLabelImageInfo.Text" xml:space="preserve">
     <value>Ready</value>
@@ -303,7 +378,7 @@
   <data name="ribbonMain.OrbImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADsAAAA7AAWrWiQkAADgkaVRYdFhNTDpjb20uYWRvYmUu
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADrwAAA68AZW8ckkAADgkaVRYdFhNTDpjb20uYWRvYmUu
         eG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/
         Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29y
         ZSA1LjUtYzAyMSA3OS4xNTU3NzIsIDIwMTQvMDEvMTMtMTk6NDQ6MDAgICAgICAgICI+CiAgIDxyZGY6
@@ -568,144 +643,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ribbonMain.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="cmdFileOpen.Text" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="cmdFileSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAB4SURBVFhH7c7BCYAwDIXh7OjVoRxAcBNXUi+9RnKwFHm5aVLlFX5oQimfqGpqcBlZvZRS9OUW
-        aU4GwKoIFyDDDNu3A+a9u+ZxWiEiDGAhRCjAuiPCAVaLSAFY/wN4oT8sAr4LeCoCCCCAAAII6B8QVX+A
-        rOAyLpUTfXT2T2fvNSgAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="cmdFileSave.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="cmdEditCut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
-  </data>
-  <data name="cmdEditCut.Text" xml:space="preserve">
-    <value>Cut</value>
-  </data>
-  <data name="cmdEditCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAACDSURBVFhH7ZZBCsAgDAR9W/7/l7YXrykWk4NUQzUFE7Iw
-        YFlN5tiEiA+jlD7njJrwXj4MUvq3ISvwXj4MUnp6CABL+BE4j+sTISAKSPwuQIUWdgXo4iw0x75AO0Ci
-        XSD1IRACIeBfgL5bqPcvIOFfoP5MdRMC+wvMYl9Ai7qnm00EMN0cuHuJzhkIngAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="cmdEditCopy.Text" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="cmdEditPaste.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAWJLR0QfBQ0QvQAAAAd0SU1FB+AKAxUa
-        I4oy7F8AAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMTAtMDNUMjE6MjY6MzUrMDg6MDA0rl7+AAAAJXRF
-        WHRkYXRlOm1vZGlmeQAyMDE2LTEwLTAzVDIxOjI2OjM1KzA4OjAwRfPmQgAAAB50RVh0cGRmOkhpUmVz
-        Qm91bmRpbmdCb3gAMTZ4MTYrMCswnHvaewAAABZ0RVh0cGRmOlNwb3RDb2xvci0wAFZTIE91dNFAVpsA
-        AAAVdEVYdHBkZjpTcG90Q29sb3ItMQBWUyBCRy9VPo8AAAAVdEVYdHBkZjpTcG90Q29sb3ItMgBWUyBG
-        R3rR4RYAAAAUdEVYdHBkZjpWZXJzaW9uAFBERi0xLjUNQINXTAAAAWFJREFUWEftkz9OwzAUh3MFrhR1
-        zsYRwljKxJaZE0RiKENGhsw0B8gBslLKAgwBBCxZH/5ZftGrsSIngapItvQNrd+fz89xNHZ1XbdQ3CrI
-        4kFxZsL+ZqGBaEhN01Bd11ICXJvw312qME6um1RVRUmSUBzHPXmeS4krkzZ/qWJoDDBifWpumqYprVYX
-        /e+iKKTEqQJ5J6bUtCUKarIs0802dxv6/PjSbO+3vYQdr1iYUn4LCRa6EO4aYPSAmzM8ibIsdVzbtixw
-        aeowwxNRAZy4B5+QeXt93xPAdch9x8fJDE+EA/nEjCwOlstz2u0e6fnphdbrmx/7+B5kvpiIn4BdcC6Q
-        mCSAu50DP9fJAvKepwCJIDAogD8sDi7AG5NwNZV4CyBgDPyuXU0l3gI8cl+4oKupZLQAEoaw37WrqQQ5
-        owRcRSR2QVeMJAgEgSAQBP6fgC9c0LXn4vgFDsgxCUTRN6ufOREvZ37vAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="cmdEditPaste.Text" xml:space="preserve">
-    <value>Paste</value>
-  </data>
-  <data name="cmdEditClear.Text" xml:space="preserve">
-    <value>Clear</value>
-  </data>
-  <data name="cmdEditClear.ToolTip" xml:space="preserve">
-    <value>Clear Content</value>
-  </data>
-  <data name="cmdViewZoomIn.Text" xml:space="preserve">
-    <value>Zoom In</value>
-  </data>
-  <data name="cmdViewZoomOut.Text" xml:space="preserve">
-    <value>Zoom Out</value>
-  </data>
-  <data name="cmdViewZoomFit.Text" xml:space="preserve">
-    <value>Fit View</value>
-  </data>
-  <data name="cmdViewZoom100.Text" xml:space="preserve">
-    <value>Image Size</value>
-  </data>
-  <data name="cmdViewZoomRegion.Text" xml:space="preserve">
-    <value>Zoom Selected</value>
-  </data>
-  <data name="cmdActionReScan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr8AAA6/ATgFUyQAAAD2SURBVFhH3ZXNDcMgDIU7QmdiIVbohhkkB7cHuFKM7Iry
-        k1oqLiVP+qIEO/ZLAuQyQs65m/ceIoEAHKOwrmKzLWtcslGajujJw77vwVobjDEJPMcxjKm+idggvfa8
-        eW4CY5hD6eNFDarmDMcpfbz+wcDcT/CTSUhPIYINtGI9qE1frZt6qBrg4qNY18AdHl9xXgMcl+ZVBmhN
-        V79UvpYWluZx3dQ8nhz9UhPSwtI8rivazVQNxINkP3+NlYWkHBl4a/CJUxqY+wmmT8Lpy5A1dSPKBQBX
-        hC6rSdoqinBcmtc1UEpqQMr6BkaxngEtqE1frZvG4cMTrQ6Bl+hDTLQAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="cmdActionReScan.Text" xml:space="preserve">
-    <value>Re-Scan</value>
-  </data>
-  <data name="cmdFilterReScan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr8AAA6/ATgFUyQAAAD2SURBVFhH3ZXNDcMgDIU7QmdiIVbohhkkB7cHuFKM7Iry
-        k1oqLiVP+qIEO/ZLAuQyQs65m/ceIoEAHKOwrmKzLWtcslGajujJw77vwVobjDEJPMcxjKm+idggvfa8
-        eW4CY5hD6eNFDarmDMcpfbz+wcDcT/CTSUhPIYINtGI9qE1frZt6qBrg4qNY18AdHl9xXgMcl+ZVBmhN
-        V79UvpYWluZx3dQ8nhz9UhPSwtI8rivazVQNxINkP3+NlYWkHBl4a/CJUxqY+wmmT8Lpy5A1dSPKBQBX
-        hC6rSdoqinBcmtc1UEpqQMr6BkaxngEtqE1frZvG4cMTrQ6Bl+hDTLQAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="cmdFilterReScan.Text" xml:space="preserve">
-    <value>Re-Scan</value>
+    <value>1</value>
   </data>
   <data name="ribOrbMiOpen.Text" xml:space="preserve">
     <value>Open</value>
@@ -732,7 +670,7 @@
   <data name="ribOptBtnExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr8AAA6/ATgFUyQAAADPSURBVDhPrZO9DYMwEIUZKSNE9AzANqloMwIjUDAFPQPQ
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAADPSURBVDhPrZO9DYMwEIUZKSNE9AzANqloMwIjUDAFPQPQ
         uaQBU17us2wrJm5ieNITp3uP+7GhuhXHcTyttYNSThzQvC2Pfd/7ZVmk6zppmkbqunYkJoemhd7engJh
         nmdnbttWxnGUaZocicmh4fkpwmhUD52MMatO8yIPif0akck6mhh4kS4ar9u2PbwUQR4PK/FMfFSkO6PS
         zSW/gB6YLYJAkn1zJx30M0ORewpcXSEeIjfw9yEy9qVrBGrqiz+kAITiTzmA0dRU9jOVoao+KCfcbaEK
@@ -742,7 +680,7 @@
   <data name="ribOptBtnExit.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr8AAA6/ATgFUyQAAADPSURBVDhPrZO9DYMwEIUZKSNE9AzANqloMwIjUDAFPQPQ
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAADPSURBVDhPrZO9DYMwEIUZKSNE9AzANqloMwIjUDAFPQPQ
         uaQBU17us2wrJm5ieNITp3uP+7GhuhXHcTyttYNSThzQvC2Pfd/7ZVmk6zppmkbqunYkJoemhd7engJh
         nmdnbttWxnGUaZocicmh4fkpwmhUD52MMatO8yIPif0akck6mhh4kS4ar9u2PbwUQR4PK/FMfFSkO6PS
         zSW/gB6YLYJAkn1zJx30M0ORewpcXSEeIjfw9yEy9qVrBGrqiz+kAITiTzmA0dRU9jOVoao+KCfcbaEK
@@ -755,7 +693,7 @@
   <data name="ribOptBtnOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr8AAA6/ATgFUyQAAAIOSURBVFhHxVc7csIwEOUIOUqOwNAzk5IyE+pwDHp6nyGu
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAIOSURBVFhHxVc7csIwEOUIOUqOwNAzk5IyE+pwDHp6nyGu
         Q0FPxRFCkaShcDL8SkVPs8+zXsl84hC9mTcY7frtarWS7d61OB6Pj4fDwaUIm7jdDj5QaQMrluLWHbvd
         7t7PqC9/A6qqumOw4XDoBoNBIK45Dh9xD4AGtOTvZdjv9w9erBLRFUvL8i8Wizo4iTHYjO9KNCpoYvws
         GMRyu92++d8gOJ1OowQwRj/xjTSYXCtk5sG5KIpaeL1eN4R0+UmMbTab2gf3MFFocby1Elgn7xDKzuCa
@@ -770,7 +708,7 @@
   <data name="ribOptBtnOptions.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr8AAA6/ATgFUyQAAADhSURBVDhPrZMxEoJADEX3KJ6FnjtYcCx6jmEjBdV6BG6A
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAADhSURBVDhPrZMxEoJADEX3KJ6FnjtYcCx6jmEjBdV6BG6A
         FkC57ov5zqqFDpiZzGyS//8mYQnvtq7rcZ7n07IsqXRy1Bz2abl4yMAowjiOqaoqc87KgwHrtIc5eeq6
         Lg3DYEDOEmjb1nLUyIN9EUG1JDRNk+q6fsacySl2kWhk5pK6AN9cXcIN5cJ0Czf25z5dp5s5Z3UERni4
         tG9LYk6BRI7xYi4RiYPVYk2AQukiK5ZIicH/J0A7bPbXEcA+R9i9xN2fEcvB9oeE8SxzYvtTxlxk289U
@@ -936,149 +874,6 @@
   <data name="cmdStyle2013.Text" xml:space="preserve">
     <value>Office 2013</value>
   </data>
-  <data name="addins.Actions" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAPsBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
-        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbTmV0Q2hhcm0uSW1hZ2UuQWRk
-        aW5zLklBZGRpbiwgQWRkaW5Ib3N0LCBWZXJzaW9uPTEuMC40LjUsIEN1bHR1cmU9bmV1dHJhbCwgUHVi
-        bGljS2V5VG9rZW49bnVsbF1dLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRy
-        YWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkMAwAAAJoBbXNjb3JsaWIsIFZlcnNpb249
-        NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0s
-        IG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49
-        Yjc3YTVjNTYxOTM0ZTA4OQUBAAAANlN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkRpY3Rpb25hcnlg
-        MltbU3lzdGVtLlN0cmluZwMAAAAHVmVyc2lvbghDb21wYXJlcghIYXNoU2l6ZQAEAAhDU3lzdGVtLkNv
-        bGxlY3Rpb25zLkdlbmVyaWMuR2VuZXJpY0VxdWFsaXR5Q29tcGFyZXJgMVtbU3lzdGVtLlN0cmluZwMA
-        AAAIAgAAAAAAAAAJBAAAAAAAAAAFBAAAAENTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5HZW5lcmlj
-        RXF1YWxpdHlDb21wYXJlcmAxW1tTeXN0ZW0uU3RyaW5nAAAAAAMAAAAL
-</value>
-  </data>
-  <data name="addins.Apps" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAPsBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
-        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbTmV0Q2hhcm0uSW1hZ2UuQWRk
-        aW5zLklBZGRpbiwgQWRkaW5Ib3N0LCBWZXJzaW9uPTEuMC40LjUsIEN1bHR1cmU9bmV1dHJhbCwgUHVi
-        bGljS2V5VG9rZW49bnVsbF1dLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRy
-        YWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkMAwAAAJoBbXNjb3JsaWIsIFZlcnNpb249
-        NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0s
-        IG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49
-        Yjc3YTVjNTYxOTM0ZTA4OQUBAAAANlN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkRpY3Rpb25hcnlg
-        MltbU3lzdGVtLlN0cmluZwMAAAAHVmVyc2lvbghDb21wYXJlcghIYXNoU2l6ZQAEAAhDU3lzdGVtLkNv
-        bGxlY3Rpb25zLkdlbmVyaWMuR2VuZXJpY0VxdWFsaXR5Q29tcGFyZXJgMVtbU3lzdGVtLlN0cmluZwMA
-        AAAIAgAAAAAAAAAJBAAAAAAAAAAFBAAAAENTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5HZW5lcmlj
-        RXF1YWxpdHlDb21wYXJlcmAxW1tTeXN0ZW0uU3RyaW5nAAAAAAMAAAAL
-</value>
-  </data>
-  <data name="addins.CommandProperties" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAALsCQWRkaW5Ib3N0LCBWZXJzaW9uPTEuMC40LjUsIEN1bHR1cmU9
-        bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbF0sW1N5c3RlbS5PYmplY3QsIG1zY29ybGliLCBWZXJz
-        aW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4
-        OV1dLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRv
-        a2VuPWI3N2E1YzU2MTkzNGUwODldXSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
-        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAABwU3lzdGVtLkNvbGxlY3Rp
-        b25zLkdlbmVyaWMuTGlzdGAxW1tTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5LZXlWYWx1ZVBhaXJg
-        MltbTmV0Q2hhcm0uSW1hZ2UuQWRkaW5zLkFkZGluQ29tbWFuZAMAAAAGX2l0ZW1zBV9zaXplCF92ZXJz
-        aW9uAwAA8AFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5LZXlWYWx1ZVBhaXJgMltbTmV0Q2hhcm0u
-        SW1hZ2UuQWRkaW5zLkFkZGluQ29tbWFuZCwgQWRkaW5Ib3N0LCBWZXJzaW9uPTEuMC40LjUsIEN1bHR1
-        cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbF0sW1N5c3RlbS5PYmplY3QsIG1zY29ybGliLCBW
-        ZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0
-        ZTA4OV1dW10ICAIAAAAJAwAAAAAAAAAAAAAADAQAAADsAUFkZGluSG9zdCwgVmVyc2lvbj0xLjAuNC41
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGxdLFtTeXN0ZW0uT2JqZWN0LCBtc2Nv
-        cmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1
-        YzU2MTkzNGUwODldXSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQ
-        dWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BwMAAAAAAQAAAAAAAAAETVN5c3RlbS5Db2xsZWN0
-        aW9ucy5HZW5lcmljLktleVZhbHVlUGFpcmAyW1tOZXRDaGFybS5JbWFnZS5BZGRpbnMuQWRkaW5Db21t
-        YW5kBAAAAAs=
-</value>
-  </data>
-  <data name="addins.Filters" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAPsBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
-        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbTmV0Q2hhcm0uSW1hZ2UuQWRk
-        aW5zLklBZGRpbiwgQWRkaW5Ib3N0LCBWZXJzaW9uPTEuMC40LjUsIEN1bHR1cmU9bmV1dHJhbCwgUHVi
-        bGljS2V5VG9rZW49bnVsbF1dLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRy
-        YWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkMAwAAAJoBbXNjb3JsaWIsIFZlcnNpb249
-        NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0s
-        IG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49
-        Yjc3YTVjNTYxOTM0ZTA4OQUBAAAANlN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkRpY3Rpb25hcnlg
-        MltbU3lzdGVtLlN0cmluZwMAAAAHVmVyc2lvbghDb21wYXJlcghIYXNoU2l6ZQAEAAhDU3lzdGVtLkNv
-        bGxlY3Rpb25zLkdlbmVyaWMuR2VuZXJpY0VxdWFsaXR5Q29tcGFyZXJgMVtbU3lzdGVtLlN0cmluZwMA
-        AAAIAgAAAAAAAAAJBAAAAAAAAAAFBAAAAENTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5HZW5lcmlj
-        RXF1YWxpdHlDb21wYXJlcmAxW1tTeXN0ZW0uU3RyaW5nAAAAAAMAAAAL
-</value>
-  </data>
-  <data name="addins.FormatIns" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAPsBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
-        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbTmV0Q2hhcm0uSW1hZ2UuQWRk
-        aW5zLklBZGRpbiwgQWRkaW5Ib3N0LCBWZXJzaW9uPTEuMC40LjUsIEN1bHR1cmU9bmV1dHJhbCwgUHVi
-        bGljS2V5VG9rZW49bnVsbF1dLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRy
-        YWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkMAwAAAJoBbXNjb3JsaWIsIFZlcnNpb249
-        NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0s
-        IG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49
-        Yjc3YTVjNTYxOTM0ZTA4OQUBAAAANlN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkRpY3Rpb25hcnlg
-        MltbU3lzdGVtLlN0cmluZwMAAAAHVmVyc2lvbghDb21wYXJlcghIYXNoU2l6ZQAEAAhDU3lzdGVtLkNv
-        bGxlY3Rpb25zLkdlbmVyaWMuR2VuZXJpY0VxdWFsaXR5Q29tcGFyZXJgMVtbU3lzdGVtLlN0cmluZwMA
-        AAAIAgAAAAAAAAAJBAAAAAAAAAAFBAAAAENTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5HZW5lcmlj
-        RXF1YWxpdHlDb21wYXJlcmAxW1tTeXN0ZW0uU3RyaW5nAAAAAAMAAAAL
-</value>
-  </data>
-  <data name="addins.FormatOuts" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAPsBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
-        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbTmV0Q2hhcm0uSW1hZ2UuQWRk
-        aW5zLklBZGRpbiwgQWRkaW5Ib3N0LCBWZXJzaW9uPTEuMC40LjUsIEN1bHR1cmU9bmV1dHJhbCwgUHVi
-        bGljS2V5VG9rZW49bnVsbF1dLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRy
-        YWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkMAwAAAJoBbXNjb3JsaWIsIFZlcnNpb249
-        NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0s
-        IG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49
-        Yjc3YTVjNTYxOTM0ZTA4OQUBAAAANlN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkRpY3Rpb25hcnlg
-        MltbU3lzdGVtLlN0cmluZwMAAAAHVmVyc2lvbghDb21wYXJlcghIYXNoU2l6ZQAEAAhDU3lzdGVtLkNv
-        bGxlY3Rpb25zLkdlbmVyaWMuR2VuZXJpY0VxdWFsaXR5Q29tcGFyZXJgMVtbU3lzdGVtLlN0cmluZwMA
-        AAAIAgAAAAAAAAAJBAAAAAAAAAAFBAAAAENTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5HZW5lcmlj
-        RXF1YWxpdHlDb21wYXJlcmAxW1tTeXN0ZW0uU3RyaW5nAAAAAAMAAAAL
-</value>
-  </data>
-  <data name="addins.Location" type="System.Drawing.Point, System.Drawing">
-    <value>662, 330</value>
-  </data>
-  <data name="addins.NotLoadedAddin" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAPcBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
-        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
-        b3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdh
-        NWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
-        UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQwDAAAAmgFtc2NvcmxpYiwgVmVyc2lvbj00LjAu
-        MC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldXSwgbXNj
-        b3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdh
-        NWM1NjE5MzRlMDg5BQEAAAA2U3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuRGljdGlvbmFyeWAyW1tT
-        eXN0ZW0uU3RyaW5nAwAAAAdWZXJzaW9uCENvbXBhcmVyCEhhc2hTaXplAAQACENTeXN0ZW0uQ29sbGVj
-        dGlvbnMuR2VuZXJpYy5HZW5lcmljRXF1YWxpdHlDb21wYXJlcmAxW1tTeXN0ZW0uU3RyaW5nAwAAAAgC
-        AAAAAAAAAAkEAAAAAAAAAAUEAAAAQ1N5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkdlbmVyaWNFcXVh
-        bGl0eUNvbXBhcmVyYDFbW1N5c3RlbS5TdHJpbmcAAAAAAwAAAAs=
-</value>
-  </data>
-  <data name="addins.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 48</value>
-  </data>
-  <data name="addins.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="addins.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;addins.Name" xml:space="preserve">
-    <value>addins</value>
-  </data>
-  <data name="&gt;&gt;addins.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.AddinHost, AddinHost, Version=1.0.4.5, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;addins.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;addins.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1088,11 +883,8 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>794, 594</value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 600</value>
+    <value>640, 480</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Photo Tool</value>
@@ -1109,17 +901,83 @@
   <data name="&gt;&gt;RibTabMainFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;RibTabMainEdit.Name" xml:space="preserve">
-    <value>RibTabMainEdit</value>
+  <data name="&gt;&gt;cmdFileOpen.Name" xml:space="preserve">
+    <value>cmdFileOpen</value>
   </data>
-  <data name="&gt;&gt;RibTabMainEdit.Type" xml:space="preserve">
+  <data name="&gt;&gt;cmdFileOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdFileSave.Name" xml:space="preserve">
+    <value>cmdFileSave</value>
+  </data>
+  <data name="&gt;&gt;cmdFileSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;RibTabMainClipboard.Name" xml:space="preserve">
+    <value>RibTabMainClipboard</value>
+  </data>
+  <data name="&gt;&gt;RibTabMainClipboard.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdEditCut.Name" xml:space="preserve">
+    <value>cmdEditCut</value>
+  </data>
+  <data name="&gt;&gt;cmdEditCut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdEditCopy.Name" xml:space="preserve">
+    <value>cmdEditCopy</value>
+  </data>
+  <data name="&gt;&gt;cmdEditCopy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdEditPaste.Name" xml:space="preserve">
+    <value>cmdEditPaste</value>
+  </data>
+  <data name="&gt;&gt;cmdEditPaste.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdEditClear.Name" xml:space="preserve">
+    <value>cmdEditClear</value>
+  </data>
+  <data name="&gt;&gt;cmdEditClear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RibTabMainView.Name" xml:space="preserve">
     <value>RibTabMainView</value>
   </data>
   <data name="&gt;&gt;RibTabMainView.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdViewZoomIn.Name" xml:space="preserve">
+    <value>cmdViewZoomIn</value>
+  </data>
+  <data name="&gt;&gt;cmdViewZoomIn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdViewZoomOut.Name" xml:space="preserve">
+    <value>cmdViewZoomOut</value>
+  </data>
+  <data name="&gt;&gt;cmdViewZoomOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdViewZoomFit.Name" xml:space="preserve">
+    <value>cmdViewZoomFit</value>
+  </data>
+  <data name="&gt;&gt;cmdViewZoomFit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdViewZoom100.Name" xml:space="preserve">
+    <value>cmdViewZoom100</value>
+  </data>
+  <data name="&gt;&gt;cmdViewZoom100.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdViewZoomRegion.Name" xml:space="preserve">
+    <value>cmdViewZoomRegion</value>
+  </data>
+  <data name="&gt;&gt;cmdViewZoomRegion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RibTabMainApp.Name" xml:space="preserve">
     <value>RibTabMainApp</value>
@@ -1139,29 +997,11 @@
   <data name="&gt;&gt;RibTabAction.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonTab, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;RibTabActManager.Name" xml:space="preserve">
-    <value>RibTabActManager</value>
-  </data>
-  <data name="&gt;&gt;RibTabActManager.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;RibTabActInternal.Name" xml:space="preserve">
     <value>RibTabActInternal</value>
   </data>
   <data name="&gt;&gt;RibTabActInternal.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;RibTabActInternalList.Name" xml:space="preserve">
-    <value>RibTabActInternalList</value>
-  </data>
-  <data name="&gt;&gt;RibTabActInternalList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButtonList, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;RibTabActInternalDropList.Name" xml:space="preserve">
-    <value>RibTabActInternalDropList</value>
-  </data>
-  <data name="&gt;&gt;RibTabActInternalDropList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButtonList, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RibTabActExternal.Name" xml:space="preserve">
     <value>RibTabActExternal</value>
@@ -1169,29 +1009,11 @@
   <data name="&gt;&gt;RibTabActExternal.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;RibTabActExternalList.Name" xml:space="preserve">
-    <value>RibTabActExternalList</value>
-  </data>
-  <data name="&gt;&gt;RibTabActExternalList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButtonList, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;RibTabActExternalDropList.Name" xml:space="preserve">
-    <value>RibTabActExternalDropList</value>
-  </data>
-  <data name="&gt;&gt;RibTabActExternalDropList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButtonList, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;RibTabFilter.Name" xml:space="preserve">
     <value>RibTabFilter</value>
   </data>
   <data name="&gt;&gt;RibTabFilter.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonTab, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;RibTabFilterManager.Name" xml:space="preserve">
-    <value>RibTabFilterManager</value>
-  </data>
-  <data name="&gt;&gt;RibTabFilterManager.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RibTabFilterInternal.Name" xml:space="preserve">
     <value>RibTabFilterInternal</value>
@@ -1199,41 +1021,29 @@
   <data name="&gt;&gt;RibTabFilterInternal.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;RibTabFilterInternalList.Name" xml:space="preserve">
-    <value>RibTabFilterInternalList</value>
-  </data>
-  <data name="&gt;&gt;RibTabFilterInternalList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButtonList, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;RibTabFilterInternalDropList.Name" xml:space="preserve">
-    <value>RibTabFilterInternalDropList</value>
-  </data>
-  <data name="&gt;&gt;RibTabFilterInternalDropList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButtonList, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;RibTabFilterExternal.Name" xml:space="preserve">
     <value>RibTabFilterExternal</value>
   </data>
   <data name="&gt;&gt;RibTabFilterExternal.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;RibTabFilterExternalList.Name" xml:space="preserve">
-    <value>RibTabFilterExternalList</value>
-  </data>
-  <data name="&gt;&gt;RibTabFilterExternalList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButtonList, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;RibTabFilterExternalDropList.Name" xml:space="preserve">
-    <value>RibTabFilterExternalDropList</value>
-  </data>
-  <data name="&gt;&gt;RibTabFilterExternalDropList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButtonList, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;RibTabSetting.Name" xml:space="preserve">
     <value>RibTabSetting</value>
   </data>
   <data name="&gt;&gt;RibTabSetting.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonTab, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;RibTabSetAddinManager.Name" xml:space="preserve">
+    <value>RibTabSetAddinManager</value>
+  </data>
+  <data name="&gt;&gt;RibTabSetAddinManager.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdAddinReScan.Name" xml:space="preserve">
+    <value>cmdAddinReScan</value>
+  </data>
+  <data name="&gt;&gt;cmdAddinReScan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ribbonSeparator1.Name" xml:space="preserve">
     <value>ribbonSeparator1</value>
@@ -1282,84 +1092,6 @@
   </data>
   <data name="&gt;&gt;dlgSave.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdFileOpen.Name" xml:space="preserve">
-    <value>cmdFileOpen</value>
-  </data>
-  <data name="&gt;&gt;cmdFileOpen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdFileSave.Name" xml:space="preserve">
-    <value>cmdFileSave</value>
-  </data>
-  <data name="&gt;&gt;cmdFileSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdEditCut.Name" xml:space="preserve">
-    <value>cmdEditCut</value>
-  </data>
-  <data name="&gt;&gt;cmdEditCut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdEditCopy.Name" xml:space="preserve">
-    <value>cmdEditCopy</value>
-  </data>
-  <data name="&gt;&gt;cmdEditCopy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdEditPaste.Name" xml:space="preserve">
-    <value>cmdEditPaste</value>
-  </data>
-  <data name="&gt;&gt;cmdEditPaste.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdEditClear.Name" xml:space="preserve">
-    <value>cmdEditClear</value>
-  </data>
-  <data name="&gt;&gt;cmdEditClear.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdViewZoomIn.Name" xml:space="preserve">
-    <value>cmdViewZoomIn</value>
-  </data>
-  <data name="&gt;&gt;cmdViewZoomIn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdViewZoomOut.Name" xml:space="preserve">
-    <value>cmdViewZoomOut</value>
-  </data>
-  <data name="&gt;&gt;cmdViewZoomOut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdViewZoomFit.Name" xml:space="preserve">
-    <value>cmdViewZoomFit</value>
-  </data>
-  <data name="&gt;&gt;cmdViewZoomFit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdViewZoom100.Name" xml:space="preserve">
-    <value>cmdViewZoom100</value>
-  </data>
-  <data name="&gt;&gt;cmdViewZoom100.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdViewZoomRegion.Name" xml:space="preserve">
-    <value>cmdViewZoomRegion</value>
-  </data>
-  <data name="&gt;&gt;cmdViewZoomRegion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdActionReScan.Name" xml:space="preserve">
-    <value>cmdActionReScan</value>
-  </data>
-  <data name="&gt;&gt;cmdActionReScan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmdFilterReScan.Name" xml:space="preserve">
-    <value>cmdFilterReScan</value>
-  </data>
-  <data name="&gt;&gt;cmdFilterReScan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ribOrbMiOpen.Name" xml:space="preserve">
     <value>ribOrbMiOpen</value>

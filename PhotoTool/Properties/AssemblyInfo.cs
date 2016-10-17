@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using NGettext.WinForm;
 
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
@@ -8,10 +9,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle( "PhotoTool" )]
 [assembly: AssemblyDescription( "" )]
 [assembly: AssemblyConfiguration( "" )]
-[assembly: AssemblyCompany( "" )]
+[assembly: AssemblyCompany( "NetCharm Studio!" )]
 [assembly: AssemblyProduct( "PhotoTool" )]
 [assembly: AssemblyCopyright( "Copyright ©  2016" )]
-[assembly: AssemblyTrademark( "" )]
+[assembly: AssemblyTrademark( "NetCharm Studio!" )]
 [assembly: AssemblyCulture( "" )]
 
 //将 ComVisible 设置为 false 将使此程序集中的类型

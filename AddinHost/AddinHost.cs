@@ -1,103 +1,100 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.IO;
-using System.Threading.Tasks;
-using System.Resources;
-using Mono.Addins;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Resources;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Mono.Addins;
 
 [assembly: AddinRoot( "AddinHost", "1.0" )]
 namespace NetCharm.Image.Addins
 {
-
-    public class CommandPropertiesChangeEventArgs : EventArgs
-    {
-        public CommandPropertiesChangeEventArgs()
-        {
-            _cmd = AddinCommand.Unknown;
-            _value = null;
-        }
-        public CommandPropertiesChangeEventArgs( AddinCommand command, ValueType property )
-        {
-            _cmd = command;
-            _value = property;
-        }
-        
-        private AddinCommand _cmd = AddinCommand.Unknown;
-        public AddinCommand Command
-        {
-            get { return ( _cmd ); }
-            private set { }
-        }
-        
-        private object _value = null;
-        public object Property
-        {
-            get { return ( _value ); }
-            private set { }
-        } // readonly
-    }
-
     /// <summary>
     /// 
     /// </summary>
     [ToolboxBitmap( @"AddIn.ico" )]
-    public class AddinHost : UserControl
+    //public class AddinHost : UserControl
+    public class AddinHost : Control
     {
         #region Addin Host List Properties
         /// <summary>
         /// 
         /// </summary>
-        private Dictionary<string, IAddin> _apps = new Dictionary<string, IAddin>();
+        private Dictionary<string, IAddin> _apps = null;
         [Browsable( false )]
         public Dictionary<string, IAddin> Apps
         {
-            get { return _apps; }
+            get
+            {
+                if ( !( _apps is Dictionary<string, IAddin> ) )
+                    _apps = new Dictionary<string, IAddin>();
+                return _apps;
+            }
             set { _apps = value; }
         }
         /// <summary>
         /// 
         /// </summary>
-        private Dictionary<string, IAddin> _actions = new Dictionary<string, IAddin>();
+        private Dictionary<string, IAddin> _actions = null;
         [Browsable( false )]
         public Dictionary<string, IAddin> Actions
         {
-            get { return _actions; }
+            get
+            {
+                if ( !( _actions is Dictionary<string, IAddin> ) )
+                    _actions = new Dictionary<string, IAddin>();
+                return _actions;
+            }
             set { _actions = value; }
         }
         /// <summary>
         /// 
         /// </summary>
-        private Dictionary<string, IAddin> _filters = new Dictionary<string, IAddin>();
+        private Dictionary<string, IAddin> _filters = null;
         [Browsable( false )]
         public Dictionary<string, IAddin> Filters
         {
-            get { return _filters; }
+            get
+            {
+                if ( !( _filters is Dictionary<string, IAddin> ) )
+                    _filters = new Dictionary<string, IAddin>();
+                return _filters;
+            }
             set { _filters = value; }
         }
         /// <summary>
         /// 
         /// </summary>
-        private Dictionary<string, IAddin> _formatins = new Dictionary<string, IAddin>();
+        private Dictionary<string, IAddin> _formatins = null;
         [Browsable( false )]
         public Dictionary<string, IAddin> FormatIns
         {
-            get { return _formatins; }
+            get
+            {
+                if ( !( _formatins is Dictionary<string, IAddin> ) )
+                    _formatins = new Dictionary<string, IAddin>();
+                return _formatins;
+            }
             set { _formatins = value; }
         }
         /// <summary>
         /// 
         /// </summary>
-        private Dictionary<string, IAddin> _formatouts = new Dictionary<string, IAddin>();
+        private Dictionary<string, IAddin> _formatouts = null;
         [Browsable( false )]
         public Dictionary<string, IAddin> FormatOuts
         {
-            get { return _formatouts; }
+            get
+            {
+                if( !(_formatouts is Dictionary<string, IAddin> ))
+                    _formatouts = new Dictionary<string, IAddin>();
+                return _formatouts;
+            }
             set { _formatouts = value; }
         }
         /// <summary>
@@ -117,28 +114,28 @@ namespace NetCharm.Image.Addins
         /// 
         /// </summary>
         private string _rootdir = "";
-        [Browsable( true ), Category( "Addin Host" ), DefaultValue( "" )]
+        [Browsable( true ), Category( "Addin Host" ), DefaultValue( @".\" )]
         public string AddinRootDir
         {
             get { return _rootdir; }
             set { _rootdir = value; }
         }
         private string _configdir = "";
-        [Browsable( true ), Category( "Addin Host" ), DefaultValue( "" )]
+        [Browsable( true ), Category( "Addin Host" ), DefaultValue( @".\" )]
         public string AddinConfigDir
         {
             get { return _configdir; }
             set { _configdir = value; }
         }
         private string _addindir = "";
-        [Browsable( true ), Category( "Addin Host" ), DefaultValue( "" )]
+        [Browsable( true ), Category( "Addin Host" ), DefaultValue( @".\" )]
         public string AddinStorageDir
         {
             get { return _addindir; }
             set { _addindir = value; }
         }
         private string _databasedir = "";
-        [Browsable( true ), Category( "Addin Host" ), DefaultValue( "" )]
+        [Browsable( true ), Category( "Addin Host" ), DefaultValue( @".\" )]
         public string AddinDatabaseDir
         {
             get { return _databasedir; }
@@ -208,6 +205,33 @@ namespace NetCharm.Image.Addins
             get { return _defaultSmallImage; }
         }
 
+        private void InitAddinList()
+        {
+            if ( !( _apps is Dictionary<string, IAddin> ) )
+                _apps = new Dictionary<string, IAddin>();
+            else
+                _apps.Clear();
+
+            if ( !( _actions is Dictionary<string, IAddin> ) )
+                _actions = new Dictionary<string, IAddin>();
+            else
+                _actions.Clear();
+
+            if ( !( _filters is Dictionary<string, IAddin> ) )
+                _filters = new Dictionary<string, IAddin>();
+            else
+                _filters.Clear();
+
+            if ( !( _formatins is Dictionary<string, IAddin> ) )
+                _formatins = new Dictionary<string, IAddin>();
+            else
+                _formatins.Clear();
+
+            if ( !( _formatouts is Dictionary<string, IAddin> ) )
+                _formatouts = new Dictionary<string, IAddin>();
+            else
+                _formatouts.Clear();
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -234,6 +258,8 @@ namespace NetCharm.Image.Addins
         {
             SetDir( "" );
             Visible = false;
+
+
         }
         /// <summary>
         /// 
@@ -256,9 +282,7 @@ namespace NetCharm.Image.Addins
             AddinManager.Initialize( _configdir, _addindir, _databasedir );
             AddinManager.Registry.Update();
 
-            _apps.Clear();
-            _actions.Clear();
-            _filters.Clear();
+            InitAddinList();
 
             foreach ( IAddin addin in AddinManager.GetExtensionObjects<IAddin>( true ) )
             {

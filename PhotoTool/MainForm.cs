@@ -38,39 +38,33 @@ namespace PhotoTool
             Icon = Icon.ExtractAssociatedIcon( Application.ExecutablePath );
             #endregion
 
-            ChangeStyle( RibbonOrbStyle.Office_2010 );
-            ChangeTheme( RibbonTheme.Halloween );
+            #region Setup Ribbon UI Style & Theme
 
-            addins.CommandPropertiesChange += Addins_RaiseCommandPropertiesChange;
+            ChangeStyle( RibbonOrbStyle.Office_2010 );
+            //ChangeTheme( RibbonTheme.Halloween );
+            ChangeTheme( RibbonTheme.Black );
+
+            #endregion Setup Ribbon UI Style & Theme
+
+            #region Addin Host Setup
+
+            addins.CommandPropertiesChange += AddinsCommandPropertiesChange;
 
             addins.Scan();
             AddAddinApp( addins.Apps.Select( kvp => kvp.Value ).ToList() );
             AddAddinAction( addins.Actions.Select( kvp => kvp.Value ).ToList() );
             AddAddinFilter( addins.Filters.Select( kvp => kvp.Value ).ToList() );
 
+            #endregion Addin Host Setup
+
+            #region Process Commnad-Line Parameters
+
             OpenCmdArgs( ParseCommandLine( Environment.CommandLine ) );
 
+            #endregion Process Commnad-Line Parameters
         }
 
-        private void Addins_RaiseCommandPropertiesChange( object sender, CommandPropertiesChangeEventArgs e )
-        {
-            //tssLabelImageName.Text = I18N._( "None" );
-            //tssLabelImageSize.Text = "0 x 0";
-            //tssLabelImageZoom.Text = "";
-            switch ( e.Command)
-            {
-                case AddinCommand.ZoomLevel:
-                    tssLabelImageZoom.Text = $"{e.Property}%";
-                    break;
-                case AddinCommand.GetImageName:
-                    tssLabelImageName.Text = $"{Path.GetFileName( (string) e.Property )}";
-                    break;
-                case AddinCommand.GetImageSize:
-                    tssLabelImageSize.Text = $"{( (Size) e.Property ).Width} x {( (Size) e.Property ).Height}";
-                    break;
-            }
-        }
-
+        #region DrapDrop Events
         /// <summary>
         /// 
         /// </summary>
@@ -92,6 +86,9 @@ namespace PhotoTool
             OpenCmdArgs( flist );
         }
 
+        #endregion DragDrop Events
+
+        #region Ribbon UI Events
         /// <summary>
         /// 
         /// </summary>
@@ -126,20 +123,9 @@ namespace PhotoTool
             Close();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cmdActionReScan_Click( object sender, EventArgs e )
-        {
-            addins.Scan();
-            foreach ( KeyValuePair<string, IAddin> kv in addins.Actions )
-            {
-                //kv.Value.LargeImage
-            }
-        }
+        #endregion Ribbon UI Events
 
+        #region File Command Events
         /// <summary>
         /// 
         /// </summary>
@@ -162,7 +148,15 @@ namespace PhotoTool
         {
             if ( addins.CurrentApp != null )
             {
-                dlgSave.FileName = string.Format( $"{Path.GetFileNameWithoutExtension(dlgOpen.FileName)}_{DateTime.Now.Ticks}.{dlgSave.DefaultExt}" );
+                string fname = I18N._("NewFile");
+                object fn = fname;
+                addins.CurrentApp.Command( AddinCommand.GetImageName, out fn );
+                if ( fn is string && !string.IsNullOrEmpty( (string) fn ) )
+                {
+                    fname = Path.GetFileNameWithoutExtension( (string) fn);
+                }
+
+                dlgSave.FileName = string.Format( $"{fname}_{DateTime.Now.Ticks}.{dlgSave.DefaultExt}" );
                 if ( dlgSave.ShowDialog() == DialogResult.OK )
                 {
                     if ( addins.CurrentApp.ImageData != null )
@@ -197,26 +191,64 @@ namespace PhotoTool
             }
         }
 
+        #endregion File Command Events
+
+        #region Clipboard Command Events
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdEditCut_Click( object sender, EventArgs e )
         {
-
+            if ( addins.CurrentApp != null )
+            {
+                object data = null;
+                addins.CurrentApp.Command( AddinCommand.Cut, out data );
+            }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdEditCopy_Click( object sender, EventArgs e )
         {
-
+            if ( addins.CurrentApp != null )
+            {
+                object data = null;
+                addins.CurrentApp.Command( AddinCommand.Copy, out data );
+            }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdEditPaste_Click( object sender, EventArgs e )
         {
-
+            if ( addins.CurrentApp != null )
+            {
+                object data = null;
+                addins.CurrentApp.Command( AddinCommand.Paste, out data );
+            }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdEditClear_Click( object sender, EventArgs e )
         {
-
+            if ( addins.CurrentApp != null )
+            {
+                object data = null;
+                addins.CurrentApp.Command( AddinCommand.Clear, out data );
+            }
         }
+        #endregion Clipboard Command Events
 
+        #region Zoom Command Events
         /// <summary>
         /// 
         /// </summary>
@@ -226,7 +258,7 @@ namespace PhotoTool
         {
             if(addins.CurrentApp != null)
             {
-                ValueType zoomLevel = 100;
+                object zoomLevel = 100;
                 addins.CurrentApp.Command( AddinCommand.ZoomIn, out zoomLevel );
                 tssLabelImageZoom.Text = $"{zoomLevel}%";
             }
@@ -241,7 +273,7 @@ namespace PhotoTool
         {
             if ( addins.CurrentApp != null )
             {
-                ValueType zoomLevel = 100;
+                object zoomLevel = 100;
                 addins.CurrentApp.Command( AddinCommand.ZoomOut, out zoomLevel );
                 tssLabelImageZoom.Text = $"{zoomLevel}%";
             }
@@ -256,7 +288,7 @@ namespace PhotoTool
         {
             if ( addins.CurrentApp != null )
             {
-                ValueType zoomLevel = 100;
+                object zoomLevel = 100;
                 addins.CurrentApp.Command( AddinCommand.ZoomFit, out zoomLevel );
                 tssLabelImageZoom.Text = $"{zoomLevel}%";
             }
@@ -271,7 +303,7 @@ namespace PhotoTool
         {
             if ( addins.CurrentApp != null )
             {
-                ValueType zoomLevel = 100;
+                object zoomLevel = 100;
                 addins.CurrentApp.Command( AddinCommand.Zoom100, out zoomLevel );
                 tssLabelImageZoom.Text = $"{zoomLevel}%";
             }
@@ -286,15 +318,27 @@ namespace PhotoTool
         {
             if ( addins.CurrentApp != null )
             {
-                ValueType zoomLevel = 100;
+                object zoomLevel = 100;
                 addins.CurrentApp.Command( AddinCommand.ZoomRegion, out zoomLevel );
                 tssLabelImageZoom.Text = $"{zoomLevel}%";
             }
         }
 
-        private void addins_Validating( object sender, CancelEventArgs e )
-        {
+        #endregion Zoom Command Events
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmdAddinReScan_Click( object sender, EventArgs e )
+        {
+            addins.Scan();
+            foreach ( KeyValuePair<string, IAddin> kv in addins.Actions )
+            {
+                //kv.Value.LargeImage
+            }
         }
+
     }
 }

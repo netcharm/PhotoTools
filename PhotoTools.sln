@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoTool", "PhotoTool\PhotoTool.csproj", "{A9358E25-10FF-4670-AF50-9CFD2E30D1F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinHost", "AddinHost\AddinHost.csproj", "{C2275EB5-E68A-42D5-B285-0083B1B7840C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCharm.Image.AddinHost", "AddinHost\NetCharm.Image.AddinHost.csproj", "{C2275EB5-E68A-42D5-B285-0083B1B7840C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Addins", "Addins", "{E8830580-1F8F-4528-B3E7-1626F400627C}"
 EndProject

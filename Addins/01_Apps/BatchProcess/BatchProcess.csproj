@@ -31,6 +31,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>netcharm.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cyotek.Windows.Forms.ImageBox">
       <HintPath>..\..\..\..\..\_refs\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
@@ -65,9 +71,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AddinHost\AddinHost.csproj">
+    <ProjectReference Include="..\..\..\AddinHost\NetCharm.Image.AddinHost.csproj">
       <Project>{c2275eb5-e68a-42d5-b285-0083b1b7840c}</Project>
-      <Name>AddinHost</Name>
+      <Name>NetCharm.Image.AddinHost</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +86,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="netcharm.snk" />
     <None Include="Resources\ImageStack_16x.png" />
   </ItemGroup>
   <ItemGroup>

@@ -164,7 +164,7 @@ namespace NetCharm.Image.Addins
         /// <param name="result"></param>
         /// <param name="cmdArgs"></param>
         /// <returns></returns>
-        bool Command( AddinCommand cmd, out ValueType result, params object[] cmdArgs );
+        bool Command( AddinCommand cmd, out object result, params object[] cmdArgs );
     }
 
     /// <summary>
@@ -471,7 +471,7 @@ namespace NetCharm.Image.Addins
         /// <param name="result"></param>
         /// <param name="cmdArgs"></param>
         /// <returns></returns>
-        public virtual bool Command( AddinCommand cmd, out ValueType result, params object[] cmdArgs )
+        public virtual bool Command( AddinCommand cmd, out object result, params object[] cmdArgs )
         {
             result = null;
             return ( true );

@@ -92,7 +92,9 @@ namespace PhotoTool
         #endregion Style / Theme Change Routine
 
         #region Addin Loading Routine
-        //private AddinHost addins = new AddinHost() { Visible = false };
+        private AddinHost addins = new AddinHost() {
+            Visible = false
+        };
 
         /// <summary>
         /// 
@@ -122,8 +124,6 @@ namespace PhotoTool
                 btnAddin.Value = addin.Name;
                 btnAddin.Click += AddinAppClick;
             }
-            //ribbonMain.ResumeLayout( true );
-            //ribbonMain.PerformLayout();
         }
 
         /// <summary>
@@ -133,21 +133,20 @@ namespace PhotoTool
         /// <param name="IsExt"></param>
         private void AddAddinAction( List<IAddin> acts, bool IsExt = true )
         {
-            RibTabActInternalList.Buttons.Clear();
-            RibTabActInternalDropList.Buttons.Clear();
+            RibTabActInternal.Items.Clear();
+            RibTabActExternal.Items.Clear();
+
             foreach ( IAddin addin in acts )
             {
                 RibbonButton btnAddin = new RibbonButton();
                 if ( string.Equals( addin.Author, "netcharm", StringComparison.CurrentCultureIgnoreCase ) ||
                     addin.Author.StartsWith( "NetCharm ", StringComparison.CurrentCultureIgnoreCase ) )
                 {
-                    RibTabActInternalList.Buttons.Add( btnAddin );
-                    RibTabActInternalDropList.Buttons.Add( btnAddin );
+                    RibTabActInternal.Items.Add( btnAddin );
                 }
                 else
                 {
-                    RibTabActExternalList.Buttons.Add( btnAddin );
-                    RibTabActExternalDropList.Buttons.Add( btnAddin );
+                    RibTabActExternal.Items.Add( btnAddin );
                 }
 
                 if ( addin.LargeIcon != null )
@@ -158,6 +157,9 @@ namespace PhotoTool
                     btnAddin.SmallImage = addin.SmallIcon;
                 else
                     btnAddin.SmallImage = addins.SmallImage;
+
+                btnAddin.MaxSizeMode = RibbonElementSizeMode.Large;
+                btnAddin.MinSizeMode = RibbonElementSizeMode.DropDown;
 
                 btnAddin.Text = I18N._( addin.DisplayName );
                 btnAddin.ToolTip = I18N._( addin.Description );
@@ -177,21 +179,20 @@ namespace PhotoTool
         /// <param name="IsExt"></param>
         private void AddAddinFilter( List<IAddin> filters, bool IsExt = true )
         {
-            RibTabActInternalList.Buttons.Clear();
-            RibTabActInternalDropList.Buttons.Clear();
+            RibTabFilterInternal.Items.Clear();
+            RibTabFilterExternal.Items.Clear();
+
             foreach ( IAddin addin in filters )
             {
                 RibbonButton btnAddin = new RibbonButton();
                 if ( string.Equals( addin.Author, "netcharm", StringComparison.CurrentCultureIgnoreCase ) ||
                     addin.Author.StartsWith( "NetCharm ", StringComparison.CurrentCultureIgnoreCase ) )
                 {
-                    RibTabFilterInternalList.Buttons.Add( btnAddin );
-                    RibTabFilterInternalDropList.Buttons.Add( btnAddin );
+                    RibTabFilterInternal.Items.Add( btnAddin );
                 }
                 else
                 {
-                    RibTabFilterExternalList.Buttons.Add( btnAddin );
-                    RibTabFilterExternalDropList.Buttons.Add( btnAddin );
+                    RibTabFilterExternal.Items.Add( btnAddin );
                 }
 
                 if ( addin.LargeIcon != null )
@@ -268,6 +269,41 @@ namespace PhotoTool
                     addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
                     tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height}";
                 }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddinsCommandPropertiesChange( object sender, CommandPropertiesChangeEventArgs e )
+        {
+            //tssLabelImageName.Text = I18N._( "None" );
+            //tssLabelImageSize.Text = "0 x 0";
+            //tssLabelImageZoom.Text = "";
+            switch ( e.Command )
+            {
+                case AddinCommand.ZoomLevel:
+                    if ( e.Property is int || e.Property is decimal || e.Property is double || e.Property is float )
+                    {
+                        tssLabelImageZoom.Text = $"{e.Property}%";
+                    }
+                    break;
+                case AddinCommand.GetImageName:
+                    if ( e.Property is string )
+                    {
+                        tssLabelImageName.Text = $"{Path.GetFileName( (string) e.Property )}";
+                    }
+                    break;
+                case AddinCommand.GetImageSize:
+                    if ( e.Property is Size )
+                    {
+                        tssLabelImageSize.Text = $"{( (Size) e.Property ).Width} x {( (Size) e.Property ).Height}";
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -504,11 +540,11 @@ namespace PhotoTool
                 tssLabelImageName.Text = Path.GetFileName( flist[0] );
                 if ( addins.CurrentApp.ImageData is Image )
                 {
-                    ValueType imgSize = new Size(0, 0);
+                    object imgSize = new Size(0, 0);
                     addins.CurrentApp.Command( AddinCommand.GetImageSize, out imgSize );
                     tssLabelImageSize.Text = $"{((Size)imgSize).Width} x {((Size)imgSize).Height}";
 
-                    ValueType zoomLevel = 100;
+                    object zoomLevel = 100;
                     addins.CurrentApp.Command( AddinCommand.ZoomLevel, out zoomLevel );
                     tssLabelImageZoom.Text = $"{zoomLevel}%";
                 }
@@ -516,8 +552,8 @@ namespace PhotoTool
             else
             {
                 tssLabelImageName.Text = I18N._( "None" );
-                tssLabelImageSize.Text = "0 x 0";
-                tssLabelImageZoom.Text = "";
+                tssLabelImageSize.Text = I18N._( "None" );
+                tssLabelImageZoom.Text = I18N._( "None" );
             }
         }
 

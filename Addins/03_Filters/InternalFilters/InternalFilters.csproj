@@ -32,6 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>netcharm.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accord, Version=3.3.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Accord.3.3.0\lib\net40\Accord.dll</HintPath>
@@ -102,9 +108,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AddinHost\AddinHost.csproj">
+    <ProjectReference Include="..\..\..\AddinHost\NetCharm.Image.AddinHost.csproj">
       <Project>{c2275eb5-e68a-42d5-b285-0083b1b7840c}</Project>
-      <Name>AddinHost</Name>
+      <Name>NetCharm.Image.AddinHost</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +129,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="netcharm.snk" />
     <None Include="packages.config" />
     <None Include="Resources\Resize_16x.png" />
   </ItemGroup>
