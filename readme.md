@@ -5,9 +5,13 @@
 ## Requirements
 
 1. .net 4.0 framework
-2. Accord 
-3. Accord Image
-4. Accord Vision
+2. System.Windows.Forms.Ribbon35 ( Fake Ribbon UI interface)
+3. NGettext & My NGettext.Winform ( Windows I18N )
+4. Cyotek.Windows.Forms.ImageBox ( Image Display )
+5. Mono.Addin framework ( addin base library )
+6. Accord 
+7. Accord Image ( Image Process Filters )
+8. Accord Vision
 
 ## AutoMask
 

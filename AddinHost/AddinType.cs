@@ -58,9 +58,10 @@ namespace NetCharm.Image.Addins
         Unknown = 0,
         App = 1,
         Action = 2,
-        Filter = 3,
-        FormatIn = 4,
-        FormatOut = 5,
+        Editor = 3,
+        Effect = 4,
+        FormatIn = 5,
+        FormatOut = 6,
     }
 
     /// <summary>
@@ -69,6 +70,9 @@ namespace NetCharm.Image.Addins
     public enum AddinCommand
     {
         Unknown = 0,
+
+        About = 10,
+        Commands = 20,
 
         Open = 100,
         Save = 101,
@@ -92,19 +96,24 @@ namespace NetCharm.Image.Addins
         SetImage = 1002,
         GetThumb = 1003,
         SetThumb = 1004,
-        GetImageName = 1005,
-        GetImageSize = 1006,
-        GetImageInfo = 1007,
-        GetImageSelection = 1011,
-        SetImageSelection = 1012,
+        GetImageName = 1101,
+        GetImageSize = 1102,
+        GetImageInfo = 1103,
+        GetImageSelection = 1201,
+        SetImageSelection = 1202,
 
         GetHost = 2001,
         SetHost = 2002,
         GetAddin = 2003,
         SetAddin = 2004,
 
+        GetParams = 2101,
+        SetParams = 2102,
+
         Show = 3001,
         Apply = 3002,
-        Reset = 3003,
+        ApplyAll = 3003,
+
+        Reset = 4001,
     }
 }

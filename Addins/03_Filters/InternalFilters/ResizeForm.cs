@@ -16,6 +16,68 @@ namespace InternalFilters
         private AddinHost host;
         private IAddin addin;
 
+        public ParamItem ParamWidth
+        {
+            get
+            {
+                ParamItem pi = new ParamItem();
+                pi.Name = "Width";
+                pi.DisplayName = AddinUtils._( addin, pi.Name );
+                pi.Type = Convert.ToInt32( edWidth.Value ).GetType();
+                pi.Value = Convert.ToInt32( edWidth.Value );
+                return ( pi );
+            }
+            set { edWidth.Value = Convert.ToDecimal( value.Value ); }
+        }
+
+        public ParamItem ParamHeight
+        {
+            get
+            {
+                ParamItem pi = new ParamItem();
+                pi.Name = "Height";
+                pi.DisplayName = AddinUtils._( addin, pi.Name );
+                pi.Type = Convert.ToInt32( edHeight.Value ).GetType();
+                pi.Value = Convert.ToInt32( edHeight.Value );
+                return ( pi );
+            }
+            set { edHeight.Value = Convert.ToDecimal( value.Value ); }
+        }
+
+        public ParamItem ParamAspect
+        {
+            get
+            {
+                ParamItem pi = new ParamItem();
+                pi.Name = "Mode";
+                pi.DisplayName = AddinUtils._( addin, pi.Name );
+                pi.Type = chkAspect.Checked.GetType();
+                pi.Value = chkAspect.Checked;
+                return ( pi );
+            }
+            set { edWidth.Value = Convert.ToDecimal( value.Value ); }
+        }
+
+        public ParamItem ParamMethod
+        {
+            get
+            {
+                ParamItem pi = new ParamItem();
+                pi.Name = "Method";
+                pi.DisplayName = AddinUtils._( addin, pi.Name );
+                pi.Type = cbResizeMethod.SelectedIndex.GetType();
+                pi.Value = cbResizeMethod.SelectedIndex;
+                return ( pi );
+            }
+            set {
+                if ( 0 <= Convert.ToInt32( value.Value ) && Convert.ToInt32( value.Value ) < cbResizeMethod.Items.Count )
+                {
+                    cbResizeMethod.SelectedIndex = Convert.ToInt32( value.Value );
+                }
+                else cbResizeMethod.SelectedIndex = 0;
+            }
+        }
+
         public ResizeForm()
         {
             InitializeComponent();
@@ -31,51 +93,41 @@ namespace InternalFilters
         {
             this.addin = filter;
             InitializeComponent();
+
+            cbResizeMethod.Items.Clear();
+            cbResizeMethod.Items.Add( AddinUtils.T( "Bicubic" ) );
+            cbResizeMethod.Items.Add( AddinUtils.T( "Bilinear" ) );
+            cbResizeMethod.Items.Add( AddinUtils.T( "Nearest" ) );
         }
 
-        private void InternalFilterResizeForm_Load( object sender, EventArgs e )
-        {            
-            //
-        }
-
-        internal ParamItem GetWidth(string name)
+        private void ResizeForm_Load( object sender, EventArgs e )
         {
-            ParamItem pi = new ParamItem();
-            pi.Name = name;
-            pi.DisplayName = AddinUtils._( addin, name );
-            pi.Type =  Convert.ToInt32( edWidth.Value ).GetType();
-            pi.Value = Convert.ToInt32( edWidth.Value );
-            return ( pi );
+            chkAspect.Checked = true;
+            cbResizeMethod.SelectedIndex = 0;
         }
 
-        internal ParamItem GetHeight(string name)
+        private void edWidth_ValueChanged( object sender, EventArgs e )
         {
-            ParamItem pi = new ParamItem();
-            pi.Name = name;
-            pi.DisplayName = AddinUtils._( addin, name );
-            pi.Type = Convert.ToInt32( edHeight.Value ).GetType();
-            pi.Value = Convert.ToInt32( edHeight.Value );
-            return ( pi );
-        }
+            if ( addin is IAddin && chkAspect.Checked )
+            {
+                var w = addin.ImageData.Width;
+                var h = addin.ImageData.Height;
+                double factor_o = w / (float)h;
 
-        internal void SetWidth( ParamItem paramItem )
-        {
-            edWidth.Value = Convert.ToDecimal(paramItem.Value);
-        }
+                int wn = Convert.ToInt32(edWidth.Value);
+                int hn = Convert.ToInt32(edHeight.Value);
 
-        internal void SetHeight( ParamItem paramItem )
-        {
-            edHeight.Value = Convert.ToDecimal( paramItem.Type );
-        }
-
-        internal void SetWidth( int width )
-        {
-            edWidth.Value = width;
-        }
-
-        internal void SetHeight( int height )
-        {
-            edHeight.Value = height;
+                if ( sender == edWidth )
+                {
+                    hn = (int) Math.Round( wn * factor_o );
+                    edHeight.Value = Convert.ToDecimal( hn );
+                }
+                else if ( sender == edHeight )
+                {
+                    wn = (int) Math.Round( hn / factor_o );
+                    edWidth.Value = Convert.ToDecimal( wn );
+                }
+            }
         }
     }
 }

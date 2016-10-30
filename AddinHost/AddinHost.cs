@@ -19,7 +19,7 @@ namespace NetCharm.Image.Addins
     /// </summary>
     [ToolboxBitmap( @"AddIn.ico" )]
     //public class AddinHost : UserControl
-    public class AddinHost : Control
+    public class AddinHost : Component
     {
         #region Addin Host List Properties
         /// <summary>
@@ -55,17 +55,32 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        private Dictionary<string, IAddin> _filters = null;
+        private Dictionary<string, IAddin> _editors = null;
         [Browsable( false )]
-        public Dictionary<string, IAddin> Filters
+        public Dictionary<string, IAddin> Editors
         {
             get
             {
-                if ( !( _filters is Dictionary<string, IAddin> ) )
-                    _filters = new Dictionary<string, IAddin>();
-                return _filters;
+                if ( !( _editors is Dictionary<string, IAddin> ) )
+                    _editors = new Dictionary<string, IAddin>();
+                return _editors;
             }
-            set { _filters = value; }
+            set { _editors = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private Dictionary<string, IAddin> _effects = null;
+        [Browsable( false )]
+        public Dictionary<string, IAddin> Effects
+        {
+            get
+            {
+                if ( !( _effects is Dictionary<string, IAddin> ) )
+                    _effects = new Dictionary<string, IAddin>();
+                return _effects;
+            }
+            set { _effects = value; }
         }
         /// <summary>
         /// 
@@ -217,10 +232,15 @@ namespace NetCharm.Image.Addins
             else
                 _actions.Clear();
 
-            if ( !( _filters is Dictionary<string, IAddin> ) )
-                _filters = new Dictionary<string, IAddin>();
+            if ( !( _editors is Dictionary<string, IAddin> ) )
+                _editors = new Dictionary<string, IAddin>();
             else
-                _filters.Clear();
+                _editors.Clear();
+
+            if ( !( _effects is Dictionary<string, IAddin> ) )
+                _effects = new Dictionary<string, IAddin>();
+            else
+                _effects.Clear();
 
             if ( !( _formatins is Dictionary<string, IAddin> ) )
                 _formatins = new Dictionary<string, IAddin>();
@@ -257,9 +277,6 @@ namespace NetCharm.Image.Addins
         public AddinHost()
         {
             SetDir( "" );
-            Visible = false;
-
-
         }
         /// <summary>
         /// 
@@ -268,7 +285,6 @@ namespace NetCharm.Image.Addins
         public AddinHost( string path = "" )
         {
             SetDir( path );
-            Visible = false;
         }
 
         /// <summary>
@@ -291,25 +307,31 @@ namespace NetCharm.Image.Addins
                 {
                     case AddinType.App:
                         if ( _apps.ContainsKey( addin.Name ) )
-                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $"Domain APP: {addin.Location}" );
+                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $" APP: {addin.Location}" );
                         else
                             _apps.Add( addin.Name, addin );
                         break;
                     case AddinType.Action:
                         if ( _actions.ContainsKey( addin.Name ) )
-                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $"Domain Action: {addin.Location}" );
+                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $" Action: {addin.Location}" );
                         else
                             _actions.Add( addin.Name, addin );
                         break;
-                    case AddinType.Filter:
-                        if ( _filters.ContainsKey( addin.Name ) )
-                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $"Domain Filter: {addin.Location}" );
+                    case AddinType.Editor:
+                        if ( _editors.ContainsKey( addin.Name ) )
+                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $" Editor: {addin.Location}" );
                         else
-                            _filters.Add( addin.Name, addin );
+                            _editors.Add( addin.Name, addin );
+                        break;
+                    case AddinType.Effect:
+                        if ( _effects.ContainsKey( addin.Name ) )
+                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $" Effect: {addin.Location}" );
+                        else
+                            _effects.Add( addin.Name, addin );
                         break;
                     case AddinType.FormatIn:
                         if ( _formatins.ContainsKey( addin.Name ) )
-                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $"Domain Format In: {addin.Location}" );
+                            _notloadedaddin.Add( $"{addin.GUID}_{addin.Name}", $" Format In: {addin.Location}" );
                         else
                             _formatins.Add( addin.Name, addin );
                         break;
@@ -338,14 +360,11 @@ namespace NetCharm.Image.Addins
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddinHost));
-            this.SuspendLayout();
             // 
             // AddinHost
             // 
-            this.Name = "AddinHost";
+            //this.Name = "AddinHost";
             resources.ApplyResources( this, "$this" );
-            this.ResumeLayout( false );
-
         }
 
     }

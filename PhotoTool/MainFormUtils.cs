@@ -92,9 +92,7 @@ namespace PhotoTool
         #endregion Style / Theme Change Routine
 
         #region Addin Loading Routine
-        private AddinHost addins = new AddinHost() {
-            Visible = false
-        };
+        private AddinHost addins = new AddinHost();
 
         /// <summary>
         /// 
@@ -177,10 +175,10 @@ namespace PhotoTool
         /// </summary>
         /// <param name="filters"></param>
         /// <param name="IsExt"></param>
-        private void AddAddinFilter( List<IAddin> filters, bool IsExt = true )
+        private void AddAddinEffect( List<IAddin> filters, bool IsExt = true )
         {
-            RibTabFilterInternal.Items.Clear();
-            RibTabFilterExternal.Items.Clear();
+            RibTabEffectInternal.Items.Clear();
+            RibTabEffectExternal.Items.Clear();
 
             foreach ( IAddin addin in filters )
             {
@@ -188,11 +186,11 @@ namespace PhotoTool
                 if ( string.Equals( addin.Author, "netcharm", StringComparison.CurrentCultureIgnoreCase ) ||
                     addin.Author.StartsWith( "NetCharm ", StringComparison.CurrentCultureIgnoreCase ) )
                 {
-                    RibTabFilterInternal.Items.Add( btnAddin );
+                    RibTabEffectInternal.Items.Add( btnAddin );
                 }
                 else
                 {
-                    RibTabFilterExternal.Items.Add( btnAddin );
+                    RibTabEffectExternal.Items.Add( btnAddin );
                 }
 
                 if ( addin.LargeIcon != null )
@@ -209,7 +207,7 @@ namespace PhotoTool
                 btnAddin.ToolTipTitle = I18N._( addin.Author );
 
                 btnAddin.Value = addin.Name;
-                btnAddin.Click += AddinFilterClick;
+                btnAddin.Click += AddinEffectClick;
             }
         }
 
@@ -256,12 +254,12 @@ namespace PhotoTool
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void AddinFilterClick( object sender, EventArgs e )
+        public void AddinEffectClick( object sender, EventArgs e )
         {
             string an = ( sender as RibbonButton ).Value;
-            if ( addins.CurrentApp != null && addins.Filters.ContainsKey( an ) )
+            if ( addins.CurrentApp != null && addins.Effects.ContainsKey( an ) )
             {
-                addins.CurrentFilter = addins.Filters[an];
+                addins.CurrentFilter = addins.Effects[an];
                 if ( addins.CurrentFilter != null )
                 {
                     addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;

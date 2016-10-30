@@ -130,7 +130,7 @@ namespace InternalFilters
         /// </summary>
         public AddinType Type
         {
-            get { return AddinType.Filter; }
+            get { return AddinType.Effect; }
         }
         /// <summary>
         /// 
@@ -239,6 +239,71 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="form"></param>
+        /// <param name="img"></param>
+        private void SetParams( ResizeForm form, Image img = null )
+        {
+            if ( img is Image )
+            {
+                fm.ParamWidth = new ParamItem()
+                {
+                    Name = "Width",
+                    DisplayName = AddinUtils._( this, "Width" ),
+                    Type = ImgSrc.Width.GetType(),
+                    Value = ImgSrc.Width
+                };
+                fm.ParamHeight = new ParamItem()
+                {
+                    Name = "Height",
+                    DisplayName = AddinUtils._( this, "Height" ),
+                    Type = ImgSrc.Width.GetType(),
+                    Value = ImgSrc.Width
+                };
+            }
+            else
+            {
+                if ( Params.ContainsKey( "Width" ) )
+                    fm.ParamWidth = Params["Width"];
+
+                if ( Params.ContainsKey( "Height" ) )
+                    fm.ParamHeight = Params["Height"];
+            }
+            if ( Params.ContainsKey( "Aspect" ) )
+                fm.ParamAspect = Params["Aspect"];
+
+            if ( Params.ContainsKey( "Method" ) )
+                fm.ParamMethod = Params["Method"];
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
+        private void GetParams( ResizeForm form )
+        {
+            if ( Params.ContainsKey( "Width" ) )
+                Params["Width"] = fm.ParamWidth;
+            else
+                Params.Add( "Width", fm.ParamWidth );
+
+            if ( Params.ContainsKey( "Height" ) )
+                Params["Height"] = fm.ParamHeight;
+            else
+                Params.Add( "Height", fm.ParamHeight );
+
+            if ( Params.ContainsKey( "Aspect" ) )
+                Params["Aspect"] = fm.ParamAspect;
+            else
+                Params.Add( "Aspect", fm.ParamAspect );
+
+            if ( Params.ContainsKey( "Method" ) )
+                Params["Method"] = fm.ParamMethod;
+            else
+                Params.Add( "Method", fm.ParamMethod );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Show()
         {
             MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
@@ -256,22 +321,12 @@ namespace InternalFilters
 
                 if ( ImgSrc != null )
                 {
-                    fm.SetWidth( ImgSrc.Width );
-                    fm.SetHeight( ImgSrc.Height );
+                    SetParams( fm, ImgSrc );
                 }
             }
             if ( fm.ShowDialog() == DialogResult.OK )
             {
-                if ( Params.ContainsKey( "Width" ) )
-                    Params["Width"] = fm.GetWidth( "Width" );
-                else
-                    Params.Add( "Width", fm.GetWidth( "Width" ) );
-
-                if ( Params.ContainsKey( "Height" ) )
-                    Params["Height"] = fm.GetHeight( "Height" );
-                else
-                    Params.Add( "Height", fm.GetHeight( "Height" ) );
-
+                GetParams( fm );
                 ImgDst = Apply( ImgSrc );
             }
             if ( fm != null )
@@ -288,10 +343,37 @@ namespace InternalFilters
         /// <returns></returns>
         public Image Apply( Image image )
         {
-            if(image != null)
+            if ( image != null )
             {
-                ResizeBicubic filter = new ResizeBicubic((int)Params["Width"].Value, (int)Params["Height"].Value);
-                return ( AddinUtils.ProcessImage( filter, image ) );
+                var w = Params.ContainsKey( "Width" ) && Params["Width"].Value is int ?  (int)Params["Width"].Value : image.Width;
+                var h = Params.ContainsKey( "Height" ) && Params["Height"].Value is int ?  (int)Params["Height"].Value : image.Height;
+
+                var aspect = Params.ContainsKey( "Aspect" ) && Params["Aspect"].Value is bool ? (bool) Params["Aspect"].Value : true;
+                if ( aspect )
+                {
+                    double factor_o = image.Width / (float)image.Height;
+                    w = w >= h ? w : (int) Math.Round( h / factor_o );
+                    h = w >= h ? (int) Math.Round( w * factor_o ) : h;
+                }
+
+                var method = Params.ContainsKey( "Method" ) && Params["Method"].Value is int ? (int) Params["Method"].Value : 0;
+                Image dst = image;
+                if ( method == 0 )
+                {
+                    ResizeBicubic filter = new ResizeBicubic(w, h);
+                    dst = AddinUtils.ProcessImage( filter, image );
+                }
+                else if ( method == 1 )
+                {
+                    ResizeBilinear filter = new ResizeBilinear(w, h);
+                    dst = AddinUtils.ProcessImage( filter, image );
+                }
+                else if ( method == 2 )
+                {
+                    ResizeNearestNeighbor filter = new ResizeNearestNeighbor(w, h);
+                    dst = AddinUtils.ProcessImage( filter, image );
+                }
+                return ( dst );
             }
             return ( image );
         }
@@ -303,7 +385,7 @@ namespace InternalFilters
         /// <param name="result"></param>
         /// <param name="cmdArgs"></param>
         /// <returns></returns>
-        public bool Command( AddinCommand cmd, out object result, params object[] cmdArgs )
+        public bool Command( AddinCommand cmd, out object result, params object[] args)
         {
             result = null;
             return ( true );

@@ -34,6 +34,8 @@
             this.RibTabMainFile = new System.Windows.Forms.RibbonPanel();
             this.cmdFileOpen = new System.Windows.Forms.RibbonButton();
             this.cmdFileSave = new System.Windows.Forms.RibbonButton();
+            this.cmdFileSep01 = new System.Windows.Forms.RibbonSeparator();
+            this.cmdFileApply = new System.Windows.Forms.RibbonButton();
             this.RibTabMainClipboard = new System.Windows.Forms.RibbonPanel();
             this.cmdEditCut = new System.Windows.Forms.RibbonButton();
             this.cmdEditCopy = new System.Windows.Forms.RibbonButton();
@@ -46,13 +48,12 @@
             this.cmdViewZoom100 = new System.Windows.Forms.RibbonButton();
             this.cmdViewZoomRegion = new System.Windows.Forms.RibbonButton();
             this.RibTabMainApp = new System.Windows.Forms.RibbonPanel();
-            this.RibTabEdit = new System.Windows.Forms.RibbonTab();
             this.RibTabAction = new System.Windows.Forms.RibbonTab();
             this.RibTabActInternal = new System.Windows.Forms.RibbonPanel();
             this.RibTabActExternal = new System.Windows.Forms.RibbonPanel();
-            this.RibTabFilter = new System.Windows.Forms.RibbonTab();
-            this.RibTabFilterInternal = new System.Windows.Forms.RibbonPanel();
-            this.RibTabFilterExternal = new System.Windows.Forms.RibbonPanel();
+            this.RibTabEffect = new System.Windows.Forms.RibbonTab();
+            this.RibTabEffectInternal = new System.Windows.Forms.RibbonPanel();
+            this.RibTabEffectExternal = new System.Windows.Forms.RibbonPanel();
             this.RibTabSetting = new System.Windows.Forms.RibbonTab();
             this.RibTabSetAddinManager = new System.Windows.Forms.RibbonPanel();
             this.cmdAddinReScan = new System.Windows.Forms.RibbonButton();
@@ -94,6 +95,8 @@
             // 
             this.RibTabMainFile.Items.Add(this.cmdFileOpen);
             this.RibTabMainFile.Items.Add(this.cmdFileSave);
+            this.RibTabMainFile.Items.Add(this.cmdFileSep01);
+            this.RibTabMainFile.Items.Add(this.cmdFileApply);
             resources.ApplyResources(this.RibTabMainFile, "RibTabMainFile");
             // 
             // cmdFileOpen
@@ -109,6 +112,12 @@
             this.cmdFileSave.SmallImage = global::PhotoTool.Properties.Resources.Save_16x;
             resources.ApplyResources(this.cmdFileSave, "cmdFileSave");
             this.cmdFileSave.Click += new System.EventHandler(this.cmdFileSave_Click);
+            // 
+            // cmdFileApply
+            // 
+            this.cmdFileApply.Image = global::PhotoTool.Properties.Resources.Run_32x;
+            this.cmdFileApply.SmallImage = global::PhotoTool.Properties.Resources.Run_16x;
+            resources.ApplyResources(this.cmdFileApply, "cmdFileApply");
             // 
             // RibTabMainClipboard
             // 
@@ -195,10 +204,6 @@
             // 
             resources.ApplyResources(this.RibTabMainApp, "RibTabMainApp");
             // 
-            // RibTabEdit
-            // 
-            resources.ApplyResources(this.RibTabEdit, "RibTabEdit");
-            // 
             // RibTabAction
             // 
             this.RibTabAction.Panels.Add(this.RibTabActInternal);
@@ -213,19 +218,19 @@
             // 
             resources.ApplyResources(this.RibTabActExternal, "RibTabActExternal");
             // 
-            // RibTabFilter
+            // RibTabEffect
             // 
-            this.RibTabFilter.Panels.Add(this.RibTabFilterInternal);
-            this.RibTabFilter.Panels.Add(this.RibTabFilterExternal);
-            resources.ApplyResources(this.RibTabFilter, "RibTabFilter");
+            this.RibTabEffect.Panels.Add(this.RibTabEffectInternal);
+            this.RibTabEffect.Panels.Add(this.RibTabEffectExternal);
+            resources.ApplyResources(this.RibTabEffect, "RibTabEffect");
             // 
-            // RibTabFilterInternal
+            // RibTabEffectInternal
             // 
-            resources.ApplyResources(this.RibTabFilterInternal, "RibTabFilterInternal");
+            resources.ApplyResources(this.RibTabEffectInternal, "RibTabEffectInternal");
             // 
-            // RibTabFilterExternal
+            // RibTabEffectExternal
             // 
-            resources.ApplyResources(this.RibTabFilterExternal, "RibTabFilterExternal");
+            resources.ApplyResources(this.RibTabEffectExternal, "RibTabEffectExternal");
             // 
             // RibTabSetting
             // 
@@ -342,9 +347,8 @@
             this.ribbonMain.QuickAcessToolbar.Visible = false;
             this.ribbonMain.RibbonTabFont = new System.Drawing.Font("Segoe UI", 10F);
             this.ribbonMain.Tabs.Add(this.RibTabMain);
-            this.ribbonMain.Tabs.Add(this.RibTabEdit);
             this.ribbonMain.Tabs.Add(this.RibTabAction);
-            this.ribbonMain.Tabs.Add(this.RibTabFilter);
+            this.ribbonMain.Tabs.Add(this.RibTabEffect);
             this.ribbonMain.Tabs.Add(this.RibTabSetting);
             this.ribbonMain.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbonMain.ThemeColor = System.Windows.Forms.RibbonTheme.Black;
@@ -498,9 +502,8 @@
 
         #endregion
         private System.Windows.Forms.RibbonTab RibTabMain;
-        private System.Windows.Forms.RibbonTab RibTabEdit;
         private System.Windows.Forms.RibbonTab RibTabAction;
-        private System.Windows.Forms.RibbonTab RibTabFilter;
+        private System.Windows.Forms.RibbonTab RibTabEffect;
         private System.Windows.Forms.RibbonPanel RibTabMainFile;
         private System.Windows.Forms.RibbonPanel RibTabMainClipboard;
         private System.Windows.Forms.RibbonOrbOptionButton ribOptBtnExit;
@@ -526,8 +529,8 @@
         private System.Windows.Forms.RibbonOrbMenuItem ribOrbMiSave;
         private System.Windows.Forms.RibbonOrbMenuItem ribOrbMiOpen;
         private System.Windows.Forms.RibbonPanel RibTabActInternal;
-        private System.Windows.Forms.RibbonPanel RibTabFilterInternal;
-        private System.Windows.Forms.RibbonPanel RibTabFilterExternal;
+        private System.Windows.Forms.RibbonPanel RibTabEffectInternal;
+        private System.Windows.Forms.RibbonPanel RibTabEffectExternal;
         private System.Windows.Forms.StatusStrip status;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.RibbonPanel RibTabMainApp;
@@ -546,6 +549,8 @@
         private System.Windows.Forms.ToolStripStatusLabel tssLabelImageZoom;
         private System.Windows.Forms.RibbonPanel RibTabSetAddinManager;
         private System.Windows.Forms.RibbonButton cmdAddinReScan;
+        private System.Windows.Forms.RibbonButton cmdFileApply;
+        private System.Windows.Forms.RibbonSeparator cmdFileSep01;
     }
 }
 

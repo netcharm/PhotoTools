@@ -129,6 +129,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="locale\zh_CN\LC_MESSAGES\InternalFilters.mo" />
+    <None Include="locale\zh_CN\LC_MESSAGES\InternalFilters.po" />
     <None Include="netcharm.snk" />
     <None Include="packages.config" />
     <None Include="Resources\Resize_16x.png" />

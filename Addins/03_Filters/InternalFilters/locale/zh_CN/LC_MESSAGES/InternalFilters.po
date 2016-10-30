@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-10-14 22:58+0800\n"
+"POT-Creation-Date: 2016-10-30 15:03+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -36,7 +36,15 @@ msgstr "宽度:"
 msgid "Height:"
 msgstr "高度:"
 
-#: ResizeForm.resx:292 -> $this.Text.value Resize.cs:113
+#: ResizeForm.resx:292 -> chkAspect.Text.value
+msgid "Keep Aspect"
+msgstr "保持原比例"
+
+#: ResizeForm.resx:352 -> labelMethod.Text.value
+msgid "Method:"
+msgstr "缩放算法:"
+
+#: ResizeForm.resx:382 -> $this.Text.value Resize.cs:113
 msgid "Resize"
 msgstr "缩放"
 
@@ -91,6 +99,18 @@ msgstr "旋转"
 #: Resize.cs:122
 msgid "Resize Image"
 msgstr "缩放图像"
+
+#: ResizeForm.cs:103
+msgid "Bicubic"
+msgstr "双立方"
+
+#: ResizeForm.cs:104
+msgid "Bilinear"
+msgstr "双线性"
+
+#: ResizeForm.cs:105
+msgid "Nearest"
+msgstr "邻近点"
 
 #: Rotate.cs:33
 msgid "Rotate Image"

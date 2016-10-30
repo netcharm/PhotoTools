@@ -13,6 +13,9 @@ using NGettext;
 using System.Diagnostics;
 using System.Reflection;
 using Accord.Imaging.Filters;
+using Accord.Imaging;
+using System.Drawing.Imaging;
+using System.Security.Permissions;
 
 namespace NetCharm.Image.Addins
 {
@@ -162,16 +165,17 @@ namespace NetCharm.Image.Addins
         /// </summary>
         /// <param name="cmd"></param>
         /// <param name="result"></param>
-        /// <param name="cmdArgs"></param>
+        /// <param name="args"></param>
         /// <returns></returns>
-        bool Command( AddinCommand cmd, out object result, params object[] cmdArgs );
+        bool Command( AddinCommand cmd, out object result, params object[] args );
     }
 
     /// <summary>
     /// 
     /// </summary>
-    public class AddinBase : IAddin
+    public class AddinBase : IAddin, IFilter
     {
+        #region Private object
         private static ICatalog catalog = null;
 
         private FileVersionInfo fv = null;
@@ -181,7 +185,11 @@ namespace NetCharm.Image.Addins
         protected internal System.Drawing.Image ImgDst = null;
 
         protected internal Form Parent = null;
+        #endregion
 
+        #region IAddin implement
+
+        #region IAddin public object
         /// <summary>
         /// 
         /// </summary>
@@ -283,7 +291,7 @@ namespace NetCharm.Image.Addins
         /// </summary>
         public virtual AddinType Type
         {
-            get { return AddinType.Filter; }
+            get { return AddinType.Effect; }
         }
         /// <summary>
         /// 
@@ -329,7 +337,9 @@ namespace NetCharm.Image.Addins
         {
             get { return ( _params ); }
         }
+        #endregion
 
+        #region I18N private routines
         /// <summary>
         /// 
         /// </summary>
@@ -378,6 +388,9 @@ namespace NetCharm.Image.Addins
             catalog = i10n.Catalog;
         }
 
+        #endregion
+
+        #region IAddin public routines
         /// <summary>
         /// 
         /// </summary>
@@ -469,12 +482,55 @@ namespace NetCharm.Image.Addins
         /// </summary>
         /// <param name="cmd"></param>
         /// <param name="result"></param>
-        /// <param name="cmdArgs"></param>
+        /// <param name="args"></param>
         /// <returns></returns>
-        public virtual bool Command( AddinCommand cmd, out object result, params object[] cmdArgs )
+        public virtual bool Command( AddinCommand cmd, out object result, params object[] args )
         {
             result = null;
             return ( true );
         }
+
+        #endregion
+
+        #endregion
+
+        #region IFilter Implement
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        public virtual Bitmap Apply( Bitmap image )
+        {
+            return ( Apply( image as System.Drawing.Image ) as Bitmap );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imageData"></param>
+        /// <returns></returns>
+        public virtual Bitmap Apply( BitmapData imageData )
+        {
+            return ( Apply( UnmanagedImage.FromManagedImage( imageData ) ).ToManagedImage() );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        public virtual UnmanagedImage Apply( UnmanagedImage image )
+        {
+            return ( UnmanagedImage.FromManagedImage( Apply( image.ToManagedImage() ) ) );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourceImage"></param>
+        /// <param name="destinationImage"></param>
+        public virtual void Apply( UnmanagedImage sourceImage, UnmanagedImage destinationImage )
+        {
+            destinationImage = Apply( sourceImage );
+        }
+        #endregion
     }
 }

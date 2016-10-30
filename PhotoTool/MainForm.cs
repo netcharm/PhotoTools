@@ -53,7 +53,7 @@ namespace PhotoTool
             addins.Scan();
             AddAddinApp( addins.Apps.Select( kvp => kvp.Value ).ToList() );
             AddAddinAction( addins.Actions.Select( kvp => kvp.Value ).ToList() );
-            AddAddinFilter( addins.Filters.Select( kvp => kvp.Value ).ToList() );
+            AddAddinEffect( addins.Effects.Select( kvp => kvp.Value ).ToList() );
 
             #endregion Addin Host Setup
 

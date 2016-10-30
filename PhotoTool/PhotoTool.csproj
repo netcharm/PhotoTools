@@ -166,6 +166,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\Run_32x.png" />
+    <None Include="Resources\Run_16x.png" />
     <None Include="Resources\ZoomToWidth_32x.png" />
     <None Include="Resources\ZoomToWidth_16x.png" />
     <None Include="Resources\AddIn_16x.png" />
