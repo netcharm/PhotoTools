@@ -110,6 +110,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="locale\zh_CN\LC_MESSAGES\NetCharm.Image.AddinHost.mo" />
+    <None Include="locale\zh_CN\LC_MESSAGES\NetCharm.Image.AddinHost.po" />
     <None Include="netcharm.snk" />
     <None Include="packages.config" />
     <None Include="Resources\AddInterface_32x.png" />

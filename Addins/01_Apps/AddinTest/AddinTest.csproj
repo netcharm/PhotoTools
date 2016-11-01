@@ -56,6 +56,9 @@
       <Name>NetCharm.Image.AddinHost</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="locale\zh_CN\LC_MESSAGES\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

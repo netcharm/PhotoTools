@@ -86,6 +86,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="locale\zh_CN\LC_MESSAGES\BatchProcess.mo" />
+    <None Include="locale\zh_CN\LC_MESSAGES\BatchProcess.po" />
     <None Include="netcharm.snk" />
     <None Include="Resources\ImageStack_16x.png" />
   </ItemGroup>

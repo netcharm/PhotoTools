@@ -92,6 +92,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="locale\zh_CN\LC_MESSAGES\InternalApp.mo" />
+    <None Include="locale\zh_CN\LC_MESSAGES\InternalApp.po" />
     <None Include="netcharm.snk" />
     <None Include="Resources\Editor_16x.png" />
   </ItemGroup>
