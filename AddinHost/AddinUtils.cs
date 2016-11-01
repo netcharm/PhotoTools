@@ -122,7 +122,18 @@ namespace NetCharm.Image.Addins
                     System.Drawing.Imaging.PixelFormat.Format64bppPArgb
                 };
 
-                if ( AlphaFormat.Contains( img.PixelFormat ) )
+                if ( filter is IFilterInformation && ( filter as IFilterInformation ).FormatTranslations.ContainsKey( img.PixelFormat ) )
+                {
+                    if ( filter is IFilter )
+                    {
+                        return ( ( filter as IFilter ).Apply( img as Bitmap ) );
+                    }
+                    else if ( filter is IAddin )
+                    {
+                        return ( ( filter as IAddin ).Apply( img ) );
+                    }
+                }
+                else if ( AlphaFormat.Contains( img.PixelFormat ) )
                 {
                     if ( filter is IFilter )
                     {

@@ -13,6 +13,8 @@ using Accord.Imaging.Filters;
 using System.IO;
 using NGettext;
 using NGettext.WinForm;
+//using Accord.Imaging;
+using System.Drawing.Imaging;
 
 [assembly: Addin]
 [assembly: AddinDependency( "AddinHost", "1.0" )]
@@ -20,15 +22,15 @@ using NGettext.WinForm;
 namespace InternalFilters
 {
     [Extension]
-    class Resize : IAddin
+    class Resize : IAddin, IFilter, IFilterInformation
     {
         private ICatalog catalog = null;
 
         private FileVersionInfo fv = null;
         private ResizeForm fm = null;
 
-        private Image ImgSrc = null;
-        private Image ImgDst = null;
+        private System.Drawing.Image ImgSrc = null;
+        private System.Drawing.Image ImgDst = null;
 
         /// <summary>
         /// 
@@ -135,21 +137,21 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
-        public Image LargeIcon
+        public System.Drawing.Image LargeIcon
         {
             get { return ( Properties.Resources.Resize_32x ); }
         }
         /// <summary>
         /// 
         /// </summary>
-        public Image SmallIcon
+        public System.Drawing.Image SmallIcon
         {
             get { return ( Properties.Resources.Resize_16x ); }
         }
         /// <summary>
         /// 
         /// </summary>
-        public Image ImageData
+        public System.Drawing.Image ImageData
         {
             get
             {
@@ -219,6 +221,7 @@ namespace InternalFilters
         {
             get { return ( _supportMultiFile ); }
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -241,9 +244,9 @@ namespace InternalFilters
         /// </summary>
         /// <param name="form"></param>
         /// <param name="img"></param>
-        private void SetParams( ResizeForm form, Image img = null )
+        private void SetParams( ResizeForm form, System.Drawing.Image img = null )
         {
-            if ( img is Image )
+            if ( img is System.Drawing.Image )
             {
                 fm.ParamWidth = new ParamItem()
                 {
@@ -341,7 +344,7 @@ namespace InternalFilters
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public Image Apply( Image image )
+        public System.Drawing.Image Apply( System.Drawing.Image image )
         {
             if ( image != null )
             {
@@ -357,7 +360,7 @@ namespace InternalFilters
                 }
 
                 var method = Params.ContainsKey( "Method" ) && Params["Method"].Value is int ? (int) Params["Method"].Value : 0;
-                Image dst = image;
+                System.Drawing.Image dst = image;
                 if ( method == 0 )
                 {
                     ResizeBicubic filter = new ResizeBicubic(w, h);
@@ -390,6 +393,66 @@ namespace InternalFilters
             result = null;
             return ( true );
         }
+
+        #region IFilter Implementation
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        public Bitmap Apply( Bitmap image )
+        {
+            return ( Apply( image as System.Drawing.Image ) as Bitmap );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imageData"></param>
+        /// <returns></returns>
+        public Bitmap Apply( BitmapData imageData )
+        {
+            return ( Apply( Accord.Imaging.UnmanagedImage.FromManagedImage( imageData ) ).ToManagedImage() );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        public Accord.Imaging.UnmanagedImage Apply( Accord.Imaging.UnmanagedImage image )
+        {
+            return ( Accord.Imaging.UnmanagedImage.FromManagedImage( Apply( image.ToManagedImage() ) ) );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourceImage"></param>
+        /// <param name="destinationImage"></param>
+        public void Apply( Accord.Imaging.UnmanagedImage sourceImage, Accord.Imaging.UnmanagedImage destinationImage )
+        {
+            destinationImage = Apply( sourceImage );
+        }
+        #endregion
+
+        #region IFilterInformation Implementation
+        private Dictionary<PixelFormat, PixelFormat> _formatTranslations = new Dictionary<PixelFormat, PixelFormat>();
+        public Dictionary<PixelFormat, PixelFormat> FormatTranslations
+        {
+            get
+            {
+                if ( !( _formatTranslations is Dictionary<PixelFormat, PixelFormat> ) )
+                {
+                    _formatTranslations = new Dictionary<PixelFormat, PixelFormat>();
+                }
+                if ( _formatTranslations.Count == 0 )
+                {
+                    _formatTranslations.Add( PixelFormat.Format8bppIndexed, PixelFormat.Format8bppIndexed );
+                    _formatTranslations.Add( PixelFormat.Format24bppRgb, PixelFormat.Format24bppRgb );
+                    _formatTranslations.Add( PixelFormat.Format32bppArgb, PixelFormat.Format32bppArgb );
+                }
+                return ( _formatTranslations );
+            }
+        }
+        #endregion
 
     }
 }

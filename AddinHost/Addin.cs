@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Resources;
-using Mono.Addins;
-using System.Drawing;
 using System.ComponentModel;
-using System.Windows.Forms;
-using System.IO;
-using NGettext.WinForm;
-using NGettext;
 using System.Diagnostics;
-using System.Reflection;
-using Accord.Imaging.Filters;
-using Accord.Imaging;
+using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Security.Permissions;
+using System.Text;
+using System.Windows.Forms;
+using Accord.Imaging;
+using Accord.Imaging.Filters;
+using Mono.Addins;
+using NGettext;
+using NGettext.WinForm;
 
 namespace NetCharm.Image.Addins
 {
@@ -173,7 +173,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
-    public class AddinBase : IAddin, IFilter
+    public class BaseAddinEffect : IAddin, IFilter, IInPlaceFilter, IInPlacePartialFilter, IFilterInformation
     {
         #region Private object
         private static ICatalog catalog = null;
@@ -187,7 +187,7 @@ namespace NetCharm.Image.Addins
         protected internal Form Parent = null;
         #endregion
 
-        #region IAddin implement
+        #region IAddin Implementation
 
         #region IAddin public object
         /// <summary>
@@ -460,6 +460,7 @@ namespace NetCharm.Image.Addins
         {
             get { return ( _supportMultiFile ); }
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -490,11 +491,11 @@ namespace NetCharm.Image.Addins
             return ( true );
         }
 
-        #endregion
+        #endregion IAddin public routines
 
-        #endregion
+        #endregion IAddin Implementation
 
-        #region IFilter Implement
+        #region IFilter Implementation
         /// <summary>
         /// 
         /// </summary>
@@ -532,5 +533,87 @@ namespace NetCharm.Image.Addins
             destinationImage = Apply( sourceImage );
         }
         #endregion
+
+        #region IApplyInPlace Implementation
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        public virtual void ApplyInPlace( Bitmap image )
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imageData"></param>
+        public virtual void ApplyInPlace( BitmapData imageData )
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        public virtual void ApplyInPlace( UnmanagedImage image )
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region IInPlacePartialFilter Implementation
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="rect"></param>
+        public virtual void ApplyInPlace( Bitmap image, Rectangle rect )
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imageData"></param>
+        /// <param name="rect"></param>
+        public virtual void ApplyInPlace( BitmapData imageData, Rectangle rect )
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="rect"></param>
+        public virtual void ApplyInPlace( UnmanagedImage image, Rectangle rect )
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region IFilterInformation Implementation
+        /// <summary>
+        /// 
+        /// </summary>
+        private Dictionary<PixelFormat, PixelFormat> _formatTranslations = new Dictionary<PixelFormat, PixelFormat>();
+        public virtual Dictionary<PixelFormat, PixelFormat> FormatTranslations
+        {
+            get
+            {
+                if ( !( _formatTranslations is Dictionary<PixelFormat, PixelFormat> ) )
+                {
+                    _formatTranslations = new Dictionary<PixelFormat, PixelFormat>();
+                }
+                if ( _formatTranslations.Count == 0 )
+                {
+                    _formatTranslations.Add( PixelFormat.Format8bppIndexed, PixelFormat.Format8bppIndexed );
+                    _formatTranslations.Add( PixelFormat.Format24bppRgb, PixelFormat.Format24bppRgb );
+                    _formatTranslations.Add( PixelFormat.Format32bppArgb, PixelFormat.Format32bppArgb );
+                }
+                return ( _formatTranslations );
+            }
+        }
+        #endregion
+
     }
 }

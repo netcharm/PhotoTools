@@ -14,7 +14,7 @@ using NetCharm.Image.Addins;
 namespace InternalFilters
 {
     [Extension]
-    class Rotate : AddinBase
+    class Rotate : BaseAddinEffect
     {
         private RotateForm fm = null;
 
