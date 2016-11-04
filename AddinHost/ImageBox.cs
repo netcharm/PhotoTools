@@ -6,11 +6,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Cyotek.Windows.Forms;
 
 namespace NetCharm.Image.Addins
 {
     public partial class ImageBox : UserControl
     {
+        #region Private variables for ImageBox
         private CornerRegion selectionCorner;
         private RectangleF selection = new RectangleF();
         private RectangleF selectionSrc = new RectangleF();
@@ -28,21 +30,76 @@ namespace NetCharm.Image.Addins
         //OpaqueMode opaqueMode = OpaqueMode.Alpha;
 
         private CropMode cropMode = CropMode.AspectRatio;
-        //private SideType cropSide = (SideType.Top | SideType.Bottom | SideType.Left | SideType.Right);
-        //private string cropAspect = "3 x 2";
         private float cropAspectFactor = 1f;
 
+        #endregion
 
+        #region Properties of ImageBox
+        /// <summary>
+        /// 
+        /// </summary>
+        public System.Drawing.Image Image
+        {
+            get { return ( Viewer.Image ); }
+            set { Viewer.Image = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Color SelectionColor
+        {
+            get { return ( Viewer.SelectionColor ); }
+            set { Viewer.SelectionColor = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public RectangleF SelectionRegion
+        {
+            get { return ( Viewer.SelectionRegion ); }
+            set { Viewer.SelectionRegion = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public ImageBoxSizeMode SizeMode
+        {
+            get { return ( Viewer.SizeMode ); }
+            set { Viewer.SizeMode = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Zoom
+        {
+            get { return ( Viewer.Zoom ); }
+            set { Viewer.Zoom = value; }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ImageBox()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Viewer_DoubleClick( object sender, EventArgs e )
         {
             Viewer.SelectNone();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Viewer_MouseDown( object sender, MouseEventArgs e )
         {
             pO = Viewer.PointToImage( e.X, e.Y );
@@ -72,7 +129,11 @@ namespace NetCharm.Image.Addins
                 mStart = false;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Viewer_MouseUp( object sender, MouseEventArgs e )
         {
             if ( e.Clicks >= 1 && e.Button == MouseButtons.Right ) Viewer.SelectNone();
@@ -85,7 +146,11 @@ namespace NetCharm.Image.Addins
             mPos = CornerRegionType.None;
             Viewer.Cursor = Cursors.Default;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Viewer_MouseMove( object sender, MouseEventArgs e )
         {
             PointF pN = Viewer.PointToImage( e.X, e.Y );
@@ -260,7 +325,11 @@ namespace NetCharm.Image.Addins
                 }
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Viewer_SelectionRegionChanged( object sender, EventArgs e )
         {
             if ( !mMoveRegion || !mSelection )

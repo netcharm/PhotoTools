@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PhotoTool\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-04 17:00+0800\n"
+"POT-Creation-Date: 2016-11-05 01:34+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: LogForm.resx:160 -> $this.Text.value MainForm.resx:272
+#: LogForm.resx:163 -> $this.Text.value MainForm.resx:272
 #: cmdOptionLogger.Text.value
 msgid "Logger"
 msgstr "日志"
@@ -235,6 +235,6 @@ msgstr "最近打开的"
 msgid "NewFile"
 msgstr "新文件"
 
-#: MainFormUtils.cs:577 MainFormUtils.cs:578 MainFormUtils.cs:579
+#: MainFormUtils.cs:632 MainFormUtils.cs:633 MainFormUtils.cs:634
 msgid "None"
 msgstr "无"

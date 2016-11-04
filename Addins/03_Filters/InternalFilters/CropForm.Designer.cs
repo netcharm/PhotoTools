@@ -74,7 +74,6 @@
             this.btnModeSelection.Text = "Selection";
             this.toolTip.SetToolTip(this.btnModeSelection, "Selection Area");
             this.btnModeSelection.UseVisualStyleBackColor = true;
-            this.btnModeSelection.CheckedChanged += new System.EventHandler(this.btnMode_CheckedChanged);
             this.btnModeSelection.Click += new System.EventHandler(this.btnMode_Click);
             // 
             // btnModeTrans
@@ -88,7 +87,6 @@
             this.btnModeTrans.Text = "Transparent";
             this.toolTip.SetToolTip(this.btnModeTrans, "Transparent Pixels");
             this.btnModeTrans.UseVisualStyleBackColor = true;
-            this.btnModeTrans.CheckedChanged += new System.EventHandler(this.btnMode_CheckedChanged);
             this.btnModeTrans.Click += new System.EventHandler(this.btnMode_Click);
             // 
             // btnModeTopLeft
@@ -102,7 +100,6 @@
             this.btnModeTopLeft.Text = "Top Left";
             this.toolTip.SetToolTip(this.btnModeTopLeft, "Top Left Pixel Color");
             this.btnModeTopLeft.UseVisualStyleBackColor = true;
-            this.btnModeTopLeft.CheckedChanged += new System.EventHandler(this.btnMode_CheckedChanged);
             this.btnModeTopLeft.Click += new System.EventHandler(this.btnMode_Click);
             // 
             // btnModeBottomRight
@@ -116,7 +113,6 @@
             this.btnModeBottomRight.Text = "Bottom Right";
             this.toolTip.SetToolTip(this.btnModeBottomRight, "Bottom Right Pixel Color");
             this.btnModeBottomRight.UseVisualStyleBackColor = true;
-            this.btnModeBottomRight.CheckedChanged += new System.EventHandler(this.btnMode_CheckedChanged);
             this.btnModeBottomRight.Click += new System.EventHandler(this.btnMode_Click);
             // 
             // chkSideT
@@ -190,7 +186,6 @@
             this.btnModeAspect.Text = "Aspect Ratio";
             this.toolTip.SetToolTip(this.btnModeAspect, "Custom Aspect Ratio");
             this.btnModeAspect.UseVisualStyleBackColor = true;
-            this.btnModeAspect.CheckedChanged += new System.EventHandler(this.btnMode_CheckedChanged);
             this.btnModeAspect.Click += new System.EventHandler(this.btnMode_Click);
             // 
             // cbAspect

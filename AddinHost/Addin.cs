@@ -84,6 +84,14 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
+        string GroupName { get; }
+        /// <summary>
+        /// 
+        /// </summary>
+        string DisplayGroupName { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         string Description { get; set; }
         /// <summary>
         /// 
@@ -263,20 +271,15 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        //private string _name = "AddinSample";
         public virtual string Name
         {
-            //get { return ( _name ); }
             get { throw new NotImplementedException(); }
         }
         /// <summary>
         /// 
         /// </summary>
-        //private string _displayName = "AddinSample";
         public virtual string DisplayName
         {
-            //get { return ( _( _displayName ) ); }
-            //set { _displayName = value; }
             get
             {
                 throw new NotImplementedException();
@@ -290,7 +293,22 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        private string _description = "Addin Sample";
+        public virtual string GroupName
+        {
+            get { return ( string.Empty ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual string DisplayGroupName
+        {
+            get { return ( _( GroupName ) ); }
+            set { throw new NotImplementedException(); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private string _description = "It's a Addin";
         public virtual string Description
         {
             get { return ( _( _description ) ); }

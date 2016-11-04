@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-04 17:00+0800\n"
+"POT-Creation-Date: 2016-11-05 01:34+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -21,12 +21,12 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 
 #: ResizeForm.resx:187 -> btnOk.Text.value RotateForm.resx:364
-#: CropForm.Designer.cs:315
+#: CropForm.Designer.cs:308
 msgid "OK"
 msgstr "确认"
 
 #: ResizeForm.resx:211 -> btnCancel.Text.value RotateForm.resx:388
-#: CropForm.Designer.cs:305
+#: CropForm.Designer.cs:298
 msgid "Cancel"
 msgstr "取消"
 
@@ -106,107 +106,111 @@ msgstr "选区"
 msgid "Selection Area"
 msgstr "选区"
 
-#: CropForm.Designer.cs:88
+#: CropForm.Designer.cs:87
 msgid "Transparent"
 msgstr "透明像素"
 
-#: CropForm.Designer.cs:89
+#: CropForm.Designer.cs:88
 msgid "Transparent Pixels"
 msgstr "透明像素"
 
-#: CropForm.Designer.cs:102
+#: CropForm.Designer.cs:100
 msgid "Top Left"
 msgstr "左上角像素色"
 
-#: CropForm.Designer.cs:103
+#: CropForm.Designer.cs:101
 msgid "Top Left Pixel Color"
 msgstr "左上角像素色"
 
-#: CropForm.Designer.cs:116
+#: CropForm.Designer.cs:113
 msgid "Bottom Right"
 msgstr "右下角像素色"
 
-#: CropForm.Designer.cs:117
+#: CropForm.Designer.cs:114
 msgid "Bottom Right Pixel Color"
 msgstr "右下角像素色"
 
-#: CropForm.Designer.cs:132
+#: CropForm.Designer.cs:128
 msgid "Top"
 msgstr "顶"
 
-#: CropForm.Designer.cs:133
+#: CropForm.Designer.cs:129
 msgid "Top Side"
 msgstr "顶边"
 
-#: CropForm.Designer.cs:147
+#: CropForm.Designer.cs:143
 msgid "Bottom"
 msgstr "底"
 
-#: CropForm.Designer.cs:148
+#: CropForm.Designer.cs:144
 msgid "Bottom Side"
 msgstr "底边"
 
-#: CropForm.Designer.cs:162
+#: CropForm.Designer.cs:158
 msgid "Left"
 msgstr "左"
 
-#: CropForm.Designer.cs:163
+#: CropForm.Designer.cs:159
 msgid "Left Side"
 msgstr "左边"
 
-#: CropForm.Designer.cs:177
+#: CropForm.Designer.cs:173
 msgid "Right"
 msgstr "右"
 
-#: CropForm.Designer.cs:178
+#: CropForm.Designer.cs:174
 msgid "Right Side"
 msgstr "右边"
 
-#: CropForm.Designer.cs:190
+#: CropForm.Designer.cs:186
 msgid "Aspect Ratio"
 msgstr "长宽比"
 
-#: CropForm.Designer.cs:191
+#: CropForm.Designer.cs:187
 msgid "Custom Aspect Ratio"
 msgstr "自定长宽比例"
 
-#: CropForm.Designer.cs:208
-msgid "Image Preview"
-msgstr "预览"
-
-#: CropForm.Designer.cs:226
+#: CropForm.Designer.cs:200
 msgid "Pre-Defined Aspect Ratio List"
 msgstr "预定义长宽比列表"
 
-#: CropForm.Designer.cs:242 CropForm.Designer.cs:263
+#: CropForm.Designer.cs:216 CropForm.Designer.cs:237
 msgid "Aspect Ratio of Width & Height"
 msgstr "自定义长宽比例"
 
-#: CropForm.Designer.cs:283
+#: CropForm.Designer.cs:257
+msgid "Image Preview"
+msgstr "预览"
+
+#: CropForm.Designer.cs:276
 msgid "Crop Mode"
 msgstr "裁切模式"
 
-#: CropForm.Designer.cs:296
+#: CropForm.Designer.cs:289
 msgid "Crop Side"
 msgstr "裁切方向"
 
-#: CropForm.Designer.cs:329
+#: CropForm.Designer.cs:322
 msgid "Crop Aspect"
 msgstr "裁切比例"
 
-#: CropForm.Designer.cs:337
+#: CropForm.Designer.cs:330
 msgid "x"
 msgstr "比"
 
-#: CropForm.Designer.cs:359 Crop.cs:23
+#: CropForm.Designer.cs:352 Crop.cs:23
 msgid "Crop"
 msgstr "裁切"
 
-#: Crop.cs:30
+#: Crop.cs:35 Resize.cs:128 Rotate.cs:48
+msgid "Edit"
+msgstr "编辑"
+
+#: Crop.cs:42
 msgid "Crop Image"
 msgstr "裁切图像"
 
-#: Resize.cs:121
+#: Resize.cs:137
 msgid "Resize Image"
 msgstr "缩放图像"
 
@@ -222,6 +226,6 @@ msgstr "双线性"
 msgid "Nearest"
 msgstr "邻近点"
 
-#: Rotate.cs:41
+#: Rotate.cs:57
 msgid "Rotate Image"
 msgstr "旋转图像"

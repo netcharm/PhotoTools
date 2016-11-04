@@ -115,6 +115,22 @@ namespace AddinTest
         /// <summary>
         /// 
         /// </summary>
+        public string GroupName
+        {
+            get { return ( "Test" ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private string _displayGroupName = AddinUtils.T("Test");
+        public string DisplayGroupName
+        {
+            get { return ( AddinUtils._( this, _displayGroupName ) ); }
+            set { _displayGroupName = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         private string _description = "";
         public string Description
         {

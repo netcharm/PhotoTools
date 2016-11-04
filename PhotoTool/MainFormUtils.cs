@@ -94,6 +94,10 @@ namespace PhotoTool
         #endregion Style / Theme Change Routine
 
         #region Addin Loading Routine
+        internal Dictionary<string, RibbonPanel> CustomPanelApp = new Dictionary<string, RibbonPanel>();
+        internal Dictionary<string, RibbonPanel> CustomPanelAction = new Dictionary<string, RibbonPanel>();
+        internal Dictionary<string, RibbonPanel> CustomPanelEffect = new Dictionary<string, RibbonPanel>();
+
         private AddinHost addins = new AddinHost();
 
         /// <summary>
@@ -103,6 +107,8 @@ namespace PhotoTool
         private void AddAddinApp( List<IAddin> apps )
         {
             RibTabMainApp.Items.Clear();
+            CustomPanelApp.Clear();
+
             foreach ( IAddin addin in apps )
             {
                 RibbonButton btnAddin = new RibbonButton();
@@ -136,18 +142,37 @@ namespace PhotoTool
             RibTabActInternal.Items.Clear();
             RibTabActExternal.Items.Clear();
 
+            foreach ( var kv in CustomPanelAction )
+            {
+                if ( kv.Value is RibbonPanel )
+                {
+                    RibTabAction.Panels.Remove( kv.Value );
+                    kv.Value.Dispose();
+                }
+            }
+            CustomPanelAction.Clear();
+
             foreach ( IAddin addin in acts )
             {
-                RibbonButton btnAddin = new RibbonButton();
-                if ( string.Equals( addin.Author, "netcharm", StringComparison.CurrentCultureIgnoreCase ) ||
+                RibbonPanel targetPanel = RibTabActExternal;
+                if ( !string.IsNullOrEmpty( addin.GroupName ) )
+                {
+                    if ( !CustomPanelAction.ContainsKey( addin.GroupName ) )
+                        CustomPanelAction.Add( addin.GroupName, new RibbonPanel( I18N._( addin.DisplayGroupName ) ) );
+                    targetPanel = CustomPanelAction[addin.GroupName];
+                }
+                else if ( string.Equals( addin.Author, "netcharm", StringComparison.CurrentCultureIgnoreCase ) ||
                     addin.Author.StartsWith( "NetCharm ", StringComparison.CurrentCultureIgnoreCase ) )
                 {
-                    RibTabActInternal.Items.Add( btnAddin );
+                    targetPanel = RibTabActInternal;
                 }
                 else
                 {
-                    RibTabActExternal.Items.Add( btnAddin );
+                    targetPanel = RibTabActExternal;
                 }
+
+                RibbonButton btnAddin = new RibbonButton();
+                targetPanel.Items.Add( btnAddin );
 
                 if ( addin.LargeIcon != null )
                     btnAddin.Image = addin.LargeIcon;
@@ -168,8 +193,13 @@ namespace PhotoTool
                 btnAddin.Value = addin.Name;
                 btnAddin.Click += AddinActionClick;
             }
-            ribbonMain.ResumeLayout( true );
-            ribbonMain.PerformLayout();
+            int c = 0;
+            foreach ( var kv in CustomPanelAction )
+            {
+                //RibTabAction.Panels.Add( kv.Value );
+                RibTabAction.Panels.Insert( c, kv.Value );
+                c++;
+            }
         }
 
         /// <summary>
@@ -182,18 +212,37 @@ namespace PhotoTool
             RibTabEffectInternal.Items.Clear();
             RibTabEffectExternal.Items.Clear();
 
+            foreach(var kv in CustomPanelEffect )
+            {
+                if( kv.Value is RibbonPanel)
+                {
+                    RibTabEffect.Panels.Remove( kv.Value );
+                    kv.Value.Dispose();
+                }
+            }
+            CustomPanelEffect.Clear();
+
             foreach ( IAddin addin in filters )
             {
-                RibbonButton btnAddin = new RibbonButton();
-                if ( string.Equals( addin.Author, "netcharm", StringComparison.CurrentCultureIgnoreCase ) ||
+                RibbonPanel targetPanel = RibTabEffectExternal;
+                if(!string.IsNullOrEmpty(addin.GroupName))
+                {
+                    if(!CustomPanelEffect.ContainsKey( addin.GroupName ) )
+                        CustomPanelEffect.Add( addin.GroupName, new RibbonPanel( I18N._(addin.DisplayGroupName) ) );
+                    targetPanel = CustomPanelEffect[addin.GroupName];
+                }
+                else if ( string.Equals( addin.Author, "netcharm", StringComparison.CurrentCultureIgnoreCase ) ||
                     addin.Author.StartsWith( "NetCharm ", StringComparison.CurrentCultureIgnoreCase ) )
                 {
-                    RibTabEffectInternal.Items.Add( btnAddin );
+                    targetPanel = RibTabEffectInternal;
                 }
                 else
                 {
-                    RibTabEffectExternal.Items.Add( btnAddin );
+                    targetPanel = RibTabEffectExternal;
                 }
+
+                RibbonButton btnAddin = new RibbonButton();
+                targetPanel.Items.Add( btnAddin );
 
                 if ( addin.LargeIcon != null )
                     btnAddin.Image = addin.LargeIcon;
@@ -210,6 +259,13 @@ namespace PhotoTool
 
                 btnAddin.Value = addin.Name;
                 btnAddin.Click += AddinEffectClick;
+            }
+            int c = 0;
+            foreach ( var kv in CustomPanelEffect )
+            {
+                //RibTabEffect.Panels.Add( kv.Value );
+                RibTabEffect.Panels.Insert( c, kv.Value );
+                c++;
             }
         }
 

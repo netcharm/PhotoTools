@@ -280,7 +280,6 @@ namespace InternalFilters
 
         private void btnMode_CheckedChanged( object sender, EventArgs e )
         {
-            //
         }
 
         private void chkSide_Click( object sender, EventArgs e )

@@ -129,6 +129,9 @@
   <data name="edLog.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="edLog.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
+  </data>
   <data name="edLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>604, 230</value>
   </data>

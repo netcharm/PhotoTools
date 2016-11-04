@@ -38,6 +38,22 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
+        public override string GroupName
+        {
+            get { return ( "Edit" ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private string _displayGroupName = T("Edit");
+        public override string DisplayGroupName
+        {
+            get { return _( _displayGroupName ); }
+            set { _displayGroupName = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         private string _description = T("Rotate Image");
         public override string Description
         {

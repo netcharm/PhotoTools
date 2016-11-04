@@ -27,6 +27,18 @@ namespace InternalFilters
             set { _displayname = value; }
         }
 
+        public override string GroupName
+        {
+            get { return ( "Edit"); }
+        }
+
+        private string _displayGroupName = T("Edit");
+        public override string DisplayGroupName
+        {
+            get { return _( _displayGroupName ); }
+            set { _displayGroupName = value; }
+        }
+
         private string _description = T("Crop Image");
         public override string Description
         {

@@ -545,21 +545,21 @@ namespace NetCharm.Image.Addins
         public static RectangleF AdjustRegion( RectangleF region, System.Drawing.Image image, SideType side )
         {
             var result = new RectangleF(region.X, region.Y, region.Width, region.Height);
-            if ( !side.HasFlag( AnchorStyles.Top ) )
+            if ( !side.HasFlag( SideType.Top ) )
             {
                 result.Y = 0;
                 result.Height += region.Y;
             }
-            if ( !side.HasFlag( AnchorStyles.Bottom ) )
+            if ( !side.HasFlag( SideType.Bottom ) )
             {
                 result.Height = image.Height - result.Y;
             }
-            if ( !side.HasFlag( AnchorStyles.Left ) )
+            if ( !side.HasFlag( SideType.Left ) )
             {
                 result.X = 0;
                 result.Width += region.X;
             }
-            if ( !side.HasFlag( AnchorStyles.Right ) )
+            if ( !side.HasFlag( SideType.Right ) )
             {
                 result.Width = image.Width - result.X;
             }

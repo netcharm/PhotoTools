@@ -118,6 +118,22 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
+        public string GroupName
+        {
+            get { return ( "Edit" ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private string _displayGroupName = T("Edit");
+        public string DisplayGroupName
+        {
+            get { return ( _( _displayGroupName ) ); }
+            set { _displayGroupName = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         private string _description = T("Resize Image");
         public string Description
         {
@@ -449,6 +465,7 @@ namespace InternalFilters
                 return ( _formatTranslations );
             }
         }
+
         #endregion
 
     }

@@ -121,6 +121,22 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
+        public string GroupName
+        {
+            get { return ( "Application" ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private string _displayGroupName = AddinUtils.T("Application");
+        public string DisplayGroupName
+        {
+            get { return ( AddinUtils._(this, _displayGroupName ) ); }
+            set { _displayGroupName = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         private string _description = AddinUtils.T("Image Editor");
         public string Description
         {
