@@ -39,10 +39,10 @@
             this.chkSideL = new System.Windows.Forms.CheckBox();
             this.chkSideR = new System.Windows.Forms.CheckBox();
             this.btnModeAspect = new System.Windows.Forms.RadioButton();
-            this.imgPreview = new Cyotek.Windows.Forms.ImageBox();
             this.cbAspect = new System.Windows.Forms.ComboBox();
             this.edAspectW = new System.Windows.Forms.NumericUpDown();
             this.edAspectH = new System.Windows.Forms.NumericUpDown();
+            this.imgPreview = new Cyotek.Windows.Forms.ImageBox();
             this.grpCropMode = new System.Windows.Forms.GroupBox();
             this.grpCropSide = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -193,28 +193,6 @@
             this.btnModeAspect.CheckedChanged += new System.EventHandler(this.btnMode_CheckedChanged);
             this.btnModeAspect.Click += new System.EventHandler(this.btnMode_Click);
             // 
-            // imgPreview
-            // 
-            this.imgPreview.GridDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.Image;
-            this.imgPreview.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.imgPreview.InvertMouse = true;
-            this.imgPreview.Location = new System.Drawing.Point(185, 13);
-            this.imgPreview.Name = "imgPreview";
-            this.imgPreview.SelectionColor = System.Drawing.Color.PaleTurquoise;
-            this.imgPreview.ShowPixelGrid = true;
-            this.imgPreview.Size = new System.Drawing.Size(256, 256);
-            this.imgPreview.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
-            this.imgPreview.TabIndex = 4;
-            this.imgPreview.Text = "Preview";
-            this.imgPreview.TextDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.None;
-            this.toolTip.SetToolTip(this.imgPreview, "Image Preview");
-            this.imgPreview.SelectionRegionChanged += new System.EventHandler(this.imgPreview_SelectionRegionChanged);
-            this.imgPreview.Click += new System.EventHandler(this.imgPreview_Click);
-            this.imgPreview.DoubleClick += new System.EventHandler(this.imgPreview_DoubleClick);
-            this.imgPreview.MouseDown += new System.Windows.Forms.MouseEventHandler(this.imgPreview_MouseDown);
-            this.imgPreview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imgPreview_MouseMove);
-            this.imgPreview.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imgPreview_MouseUp);
-            // 
             // cbAspect
             // 
             this.cbAspect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -268,6 +246,25 @@
             0,
             0});
             this.edAspectH.ValueChanged += new System.EventHandler(this.edAspect_ValueChanged);
+            // 
+            // imgPreview
+            // 
+            this.imgPreview.GridDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.Image;
+            this.imgPreview.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.imgPreview.InvertMouse = true;
+            this.imgPreview.Location = new System.Drawing.Point(185, 13);
+            this.imgPreview.Name = "imgPreview";
+            this.imgPreview.SelectionColor = System.Drawing.Color.PaleTurquoise;
+            this.imgPreview.ShowPixelGrid = true;
+            this.imgPreview.Size = new System.Drawing.Size(256, 256);
+            this.imgPreview.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
+            this.imgPreview.TabIndex = 4;
+            this.imgPreview.Text = "Image Preview";
+            this.imgPreview.TextDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.None;
+            this.imgPreview.SelectionRegionChanged += new System.EventHandler(this.imgPreview_SelectionRegionChanged);
+            this.imgPreview.MouseDown += new System.Windows.Forms.MouseEventHandler(this.imgPreview_MouseDown);
+            this.imgPreview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imgPreview_MouseMove);
+            this.imgPreview.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imgPreview_MouseUp);
             // 
             // grpCropMode
             // 

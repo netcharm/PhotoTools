@@ -57,6 +57,8 @@
             this.RibTabSetting = new System.Windows.Forms.RibbonTab();
             this.RibTabSetAddinManager = new System.Windows.Forms.RibbonPanel();
             this.cmdAddinReScan = new System.Windows.Forms.RibbonButton();
+            this.RibTabSetOptions = new System.Windows.Forms.RibbonPanel();
+            this.cmdOptionLogger = new System.Windows.Forms.RibbonButton();
             this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
             this.status = new System.Windows.Forms.StatusStrip();
             this.tssLabelImageName = new System.Windows.Forms.ToolStripStatusLabel();
@@ -235,6 +237,7 @@
             // RibTabSetting
             // 
             this.RibTabSetting.Panels.Add(this.RibTabSetAddinManager);
+            this.RibTabSetting.Panels.Add(this.RibTabSetOptions);
             resources.ApplyResources(this.RibTabSetting, "RibTabSetting");
             // 
             // RibTabSetAddinManager
@@ -248,6 +251,18 @@
             this.cmdAddinReScan.SmallImage = global::PhotoTool.Properties.Resources.AddIn_16x;
             resources.ApplyResources(this.cmdAddinReScan, "cmdAddinReScan");
             this.cmdAddinReScan.Click += new System.EventHandler(this.cmdAddinReScan_Click);
+            // 
+            // RibTabSetOptions
+            // 
+            this.RibTabSetOptions.Items.Add(this.cmdOptionLogger);
+            resources.ApplyResources(this.RibTabSetOptions, "RibTabSetOptions");
+            // 
+            // cmdOptionLogger
+            // 
+            this.cmdOptionLogger.Image = global::PhotoTool.Properties.Resources.Log_32x;
+            this.cmdOptionLogger.SmallImage = global::PhotoTool.Properties.Resources.Log_16x;
+            resources.ApplyResources(this.cmdOptionLogger, "cmdOptionLogger");
+            this.cmdOptionLogger.Click += new System.EventHandler(this.cmdOptionLogger_Click);
             // 
             // status
             // 
@@ -551,6 +566,8 @@
         private System.Windows.Forms.RibbonButton cmdAddinReScan;
         private System.Windows.Forms.RibbonButton cmdFileApply;
         private System.Windows.Forms.RibbonSeparator cmdFileSep01;
+        private System.Windows.Forms.RibbonPanel RibTabSetOptions;
+        private System.Windows.Forms.RibbonButton cmdOptionLogger;
     }
 }
 

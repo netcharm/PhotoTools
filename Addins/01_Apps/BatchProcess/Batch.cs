@@ -303,6 +303,8 @@ namespace BatchProcess
                     break;
                 case AddinCommand.Zoom100:
                     break;
+                default:
+                    break;
             }
             return ( true );
         }

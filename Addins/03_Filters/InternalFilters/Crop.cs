@@ -97,6 +97,7 @@ namespace InternalFilters
             if ( fm == null )
             {
                 fm = new CropForm( this );
+                fm.host = Host;
                 Translate( fm );
                 fm.Text = DisplayName;
                 SetParams( fm, ImgSrc );
@@ -123,7 +124,7 @@ namespace InternalFilters
 
             if ( Params.ContainsKey( "CropSide" ) )
             {
-                var side = (AnchorStyles)Params["CropSide"].Value;
+                var side = (SideType)Params["CropSide"].Value;
                 region = Rectangle.Round( AddinUtils.AdjustRegion( region, ImgSrc, side ) );
             }
 
@@ -164,6 +165,8 @@ namespace InternalFilters
                                 fm.SetImageSelection( (RectangleF) args[0] );
                         }
                     }
+                    break;
+                default:
                     break;
             }
             return ( true );

@@ -340,5 +340,19 @@ namespace PhotoTool
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmdOptionLogger_Click( object sender, EventArgs e )
+        {
+            if ( !( fmLog is LogForm ) || fmLog.IsDisposed )
+            {
+                fmLog = new LogForm();
+                I18N.Translate( fmLog );
+            }
+            fmLog.Show();
+        }
     }
 }

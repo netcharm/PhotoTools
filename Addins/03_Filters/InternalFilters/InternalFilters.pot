@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-03 18:03+0800\n"
-"PO-Revision-Date: 2016-11-03 18:03+0800\n"
+"POT-Creation-Date: 2016-11-04 17:00+0800\n"
+"PO-Revision-Date: 2016-11-04 17:00+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -21,12 +21,12 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 
 #: ResizeForm.resx:187 -> btnOk.Text.value RotateForm.resx:364
-#: CropForm.Designer.cs:305
+#: CropForm.Designer.cs:315
 msgid "OK"
 msgstr ""
 
 #: ResizeForm.resx:211 -> btnCancel.Text.value RotateForm.resx:388
-#: CropForm.Designer.cs:295
+#: CropForm.Designer.cs:305
 msgid "Cancel"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgstr ""
 msgid "Free Rotate"
 msgstr ""
 
-#: RotateForm.resx:412 -> imgPreview.Text.value CropForm.Designer.cs:199
+#: RotateForm.resx:412 -> imgPreview.Text.value
 msgid "Preview"
 msgstr ""
 
@@ -106,99 +106,99 @@ msgstr ""
 msgid "Selection Area"
 msgstr ""
 
-#: CropForm.Designer.cs:87
+#: CropForm.Designer.cs:88
 msgid "Transparent"
 msgstr ""
 
-#: CropForm.Designer.cs:88
+#: CropForm.Designer.cs:89
 msgid "Transparent Pixels"
 msgstr ""
 
-#: CropForm.Designer.cs:100
+#: CropForm.Designer.cs:102
 msgid "Top Left"
 msgstr ""
 
-#: CropForm.Designer.cs:101
+#: CropForm.Designer.cs:103
 msgid "Top Left Pixel Color"
 msgstr ""
 
-#: CropForm.Designer.cs:113
+#: CropForm.Designer.cs:116
 msgid "Bottom Right"
 msgstr ""
 
-#: CropForm.Designer.cs:114
+#: CropForm.Designer.cs:117
 msgid "Bottom Right Pixel Color"
 msgstr ""
 
-#: CropForm.Designer.cs:128
+#: CropForm.Designer.cs:132
 msgid "Top"
 msgstr ""
 
-#: CropForm.Designer.cs:129
+#: CropForm.Designer.cs:133
 msgid "Top Side"
 msgstr ""
 
-#: CropForm.Designer.cs:142
+#: CropForm.Designer.cs:147
 msgid "Bottom"
 msgstr ""
 
-#: CropForm.Designer.cs:143
+#: CropForm.Designer.cs:148
 msgid "Bottom Side"
 msgstr ""
 
-#: CropForm.Designer.cs:156
+#: CropForm.Designer.cs:162
 msgid "Left"
 msgstr ""
 
-#: CropForm.Designer.cs:157
+#: CropForm.Designer.cs:163
 msgid "Left Side"
 msgstr ""
 
-#: CropForm.Designer.cs:170
+#: CropForm.Designer.cs:177
 msgid "Right"
 msgstr ""
 
-#: CropForm.Designer.cs:171
+#: CropForm.Designer.cs:178
 msgid "Right Side"
 msgstr ""
 
-#: CropForm.Designer.cs:182
+#: CropForm.Designer.cs:190
 msgid "Aspect Ratio"
 msgstr ""
 
-#: CropForm.Designer.cs:183
+#: CropForm.Designer.cs:191
 msgid "Custom Aspect Ratio"
 msgstr ""
 
-#: CropForm.Designer.cs:201
+#: CropForm.Designer.cs:208
 msgid "Image Preview"
 msgstr ""
 
-#: CropForm.Designer.cs:218
+#: CropForm.Designer.cs:226
 msgid "Pre-Defined Aspect Ratio List"
 msgstr ""
 
-#: CropForm.Designer.cs:234 CropForm.Designer.cs:254
+#: CropForm.Designer.cs:242 CropForm.Designer.cs:263
 msgid "Aspect Ratio of Width & Height"
 msgstr ""
 
-#: CropForm.Designer.cs:273
+#: CropForm.Designer.cs:283
 msgid "Crop Mode"
 msgstr ""
 
-#: CropForm.Designer.cs:286
+#: CropForm.Designer.cs:296
 msgid "Crop Side"
 msgstr ""
 
-#: CropForm.Designer.cs:319
+#: CropForm.Designer.cs:329
 msgid "Crop Aspect"
 msgstr ""
 
-#: CropForm.Designer.cs:327
+#: CropForm.Designer.cs:337
 msgid "x"
 msgstr ""
 
-#: CropForm.Designer.cs:349 Crop.cs:23
+#: CropForm.Designer.cs:359 Crop.cs:23
 msgid "Crop"
 msgstr ""
 
@@ -210,15 +210,15 @@ msgstr ""
 msgid "Resize Image"
 msgstr ""
 
-#: ResizeForm.cs:98
+#: ResizeForm.cs:99
 msgid "Bicubic"
 msgstr ""
 
-#: ResizeForm.cs:99
+#: ResizeForm.cs:100
 msgid "Bilinear"
 msgstr ""
 
-#: ResizeForm.cs:100
+#: ResizeForm.cs:101
 msgid "Nearest"
 msgstr ""
 

@@ -13,6 +13,8 @@ namespace PhotoTool
 {
     public partial class MainForm : RibbonForm
     {
+        LogForm fmLog;
+
         #region Style / Theme Change Routine
         /// <summary>
         /// 
@@ -287,6 +289,12 @@ namespace PhotoTool
             //tssLabelImageZoom.Text = "";
             switch ( e.Command )
             {
+                case AddinCommand.Log:
+                    if ( fmLog is LogForm && !fmLog.IsDisposed  )
+                    {
+                        fmLog.Log( $"{e.Property}" );
+                    }
+                    break;
                 case AddinCommand.ZoomLevel:
                     if ( e.Property is int || e.Property is decimal || e.Property is double || e.Property is float )
                     {

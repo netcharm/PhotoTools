@@ -13,6 +13,15 @@ namespace NetCharm.Image.Addins
         BottomRight = 2
     }
 
+    public enum CropMode
+    {
+        Selection = 0,
+        Opaque = 1,
+        TopLeft = 2,
+        BottomRight = 3,
+        AspectRatio = 4
+    }
+
     public class ImageInfo
     {
         public List<PropertyItem> EXIF;
@@ -39,6 +48,12 @@ namespace NetCharm.Image.Addins
         /// <param name="command"></param>
         /// <param name="property"></param>
         public CommandPropertiesChangeEventArgs( AddinCommand command, ValueType property )
+        {
+            _cmd = command;
+            _value = property;
+        }
+
+        public CommandPropertiesChangeEventArgs( AddinCommand command, object property )
         {
             _cmd = command;
             _value = property;
@@ -88,6 +103,7 @@ namespace NetCharm.Image.Addins
 
         About = 10,
         Commands = 20,
+        Log = 30,
 
         Open = 100,
         Save = 101,

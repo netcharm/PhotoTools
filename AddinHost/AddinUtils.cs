@@ -10,8 +10,183 @@ using NGettext.WinForm;
 
 namespace NetCharm.Image.Addins
 {
+
+    public enum SideType
+    {
+        //
+        // 摘要:
+        //     该控件未锚定到其容器的任何边缘。
+        None = 0,
+        //
+        // 摘要:
+        //     该控件锚定到其容器的上边缘。
+        Top = 1,
+        //
+        // 摘要:
+        //     该控件锚定到其容器的下边缘。
+        Bottom = 2,
+        //
+        // 摘要:
+        //     该控件锚定到其容器的左边缘。
+        Left = 4,
+        //
+        // 摘要:
+        //     该控件锚定到其容器的右边缘。
+        Right = 8
+    }
+
+    public enum CornerRegionType
+    {
+        None = 0,
+        //
+        // 摘要:
+        //     内容在垂直方向上顶部对齐，在水平方向上左边对齐。
+        TopLeft = 1,
+        //
+        // 摘要:
+        //     内容在垂直方向上顶部对齐，在水平方向上居中对齐。
+        TopCenter = 2,
+        //
+        // 摘要:
+        //     内容在垂直方向上顶部对齐，在水平方向上右边对齐。
+        TopRight = 4,
+        //
+        // 摘要:
+        //     内容在垂直方向上中间对齐，在水平方向上左边对齐。
+        MiddleLeft = 16,
+        //
+        // 摘要:
+        //     内容在垂直方向上中间对齐，在水平方向上居中对齐。
+        MiddleCenter = 32,
+        //
+        // 摘要:
+        //     内容在垂直方向上中间对齐，在水平方向上右边对齐。
+        MiddleRight = 64,
+        //
+        // 摘要:
+        //     内容在垂直方向上底边对齐，在水平方向上左边对齐。
+        BottomLeft = 256,
+        //
+        // 摘要:
+        //     内容在垂直方向上底边对齐，在水平方向上居中对齐。
+        BottomCenter = 512,
+        //
+        // 摘要:
+        //     内容在垂直方向上底边对齐，在水平方向上右边对齐。
+        BottomRight = 1024
+    }
+
+    public class CornerRegion
+    {
+        private RectangleF _tl;
+        public RectangleF TopLeft
+        {
+            get { return ( _tl ); }
+        }
+        private RectangleF _tc;
+        public RectangleF TopCenter
+        {
+            get { return ( _tc ); }
+        }
+        private RectangleF _tr;
+        public RectangleF TopRight
+        {
+            get { return ( _tr ); }
+        }
+        private RectangleF _ml;
+        public RectangleF MiddleLeft
+        {
+            get { return ( _ml ); }
+        }
+        private RectangleF _mc;
+        public RectangleF MiddleCenter
+        {
+            get { return ( _mc ); }
+        }
+        private RectangleF _mr;
+        public RectangleF MiddleRight
+        {
+            get { return ( _mr ); }
+        }
+        private RectangleF _bl;
+        public RectangleF BottomLeft
+        {
+            get { return ( _bl ); }
+        }
+        private RectangleF _bc;
+        public RectangleF BottomCenter
+        {
+            get { return ( _bc ); }
+        }
+        private RectangleF _br;
+        public RectangleF BottomRight
+        {
+            get { return ( _br ); }
+        }
+
+        public CornerRegion()
+        {
+            //
+        }
+
+        public CornerRegion( Rectangle region, float ratio = 8 )
+        {
+            _tl = new RectangleF( region.Left - ratio, region.Top - ratio, ratio * 2, ratio * 2 );
+            _tc = new RectangleF( region.Left + ratio, region.Top - ratio, region.Width - ratio * 2, ratio * 2 );
+            _tr = new RectangleF( region.Right - ratio, region.Top - ratio, ratio * 2, ratio * 2 );
+
+            _ml = new RectangleF( region.Left - ratio, region.Top + ratio, ratio * 2, region.Height - ratio * 2 );
+            _mc = new RectangleF( region.Left + ratio, region.Top + ratio, region.Width - ratio * 2, region.Height - ratio * 2 );
+            _mr = new RectangleF( region.Right - ratio, region.Top + ratio, ratio * 2, region.Height - ratio * 2 );
+
+            _bl = new RectangleF( region.Left - ratio, region.Bottom - ratio, ratio * 2, ratio * 2 );
+            _bc = new RectangleF( region.Left + ratio, region.Bottom - ratio, region.Width - ratio * 2, ratio * 2 );
+            _br = new RectangleF( region.Right - ratio, region.Bottom - ratio, ratio * 2, ratio * 2 );
+        }
+
+        public CornerRegion(RectangleF region, float ratio = 8 )
+        {
+            _tl = new RectangleF( region.Left - ratio, region.Top - ratio, ratio * 2, ratio * 2 );
+            _tc = new RectangleF( region.Left + ratio, region.Top - ratio, region.Width - ratio * 2, ratio * 2 );
+            _tr = new RectangleF( region.Right - ratio, region.Top - ratio, ratio * 2, ratio * 2 );
+
+            _ml = new RectangleF( region.Left - ratio, region.Top + ratio, ratio * 2, region.Height - ratio * 2 );
+            _mc = new RectangleF( region.Left + ratio, region.Top + ratio, region.Width - ratio * 2, region.Height - ratio * 2 );
+            _mr = new RectangleF( region.Right - ratio, region.Top + ratio, ratio * 2, region.Height - ratio * 2 );
+
+            _bl = new RectangleF( region.Left - ratio, region.Bottom - ratio, ratio * 2, ratio * 2 );
+            _bc = new RectangleF( region.Left + ratio, region.Bottom - ratio, region.Width - ratio * 2, ratio * 2 );
+            _br = new RectangleF( region.Right - ratio, region.Bottom - ratio, ratio * 2, ratio * 2 );
+        }
+
+        public CornerRegionType GetRegion(PointF p)
+        {
+            if ( _tl.Contains( p ) )
+                return ( CornerRegionType.TopLeft );
+            else if ( _tc.Contains( p ) )
+                return ( CornerRegionType.TopCenter );
+            else if ( _tr.Contains( p ) )
+                return ( CornerRegionType.TopRight );
+            else if ( _ml.Contains( p ) )
+                return ( CornerRegionType.MiddleLeft );
+            else if ( _mc.Contains( p ) )
+                return ( CornerRegionType.MiddleCenter );
+            else if ( _mr.Contains( p ) )
+                return ( CornerRegionType.MiddleRight );
+            else if ( _bl.Contains( p ) )
+                return ( CornerRegionType.BottomLeft );
+            else if ( _bc.Contains( p ) )
+                return ( CornerRegionType.BottomCenter );
+            else if ( _br.Contains( p ) )
+                return ( CornerRegionType.BottomRight );
+
+            return ( CornerRegionType.None );
+        }
+    }
+
     public static class AddinUtils
     {
+        #region PixelFormat catalogs
         /// <summary>
         /// 
         /// </summary>
@@ -26,7 +201,6 @@ namespace NetCharm.Image.Addins
             System.Drawing.Imaging.PixelFormat.Format64bppArgb,
             System.Drawing.Imaging.PixelFormat.Format64bppPArgb
         };
-
         public static System.Drawing.Imaging.PixelFormat[] Format1bpp = new System.Drawing.Imaging.PixelFormat[]
         {
             System.Drawing.Imaging.PixelFormat.Format1bppIndexed
@@ -68,6 +242,7 @@ namespace NetCharm.Image.Addins
             System.Drawing.Imaging.PixelFormat.Format64bppArgb,
             System.Drawing.Imaging.PixelFormat.Format64bppPArgb
         };
+        #endregion
 
         /// <summary>
         /// Fake function for gettext collection msgid
@@ -367,7 +542,7 @@ namespace NetCharm.Image.Addins
         /// <param name="image"></param>
         /// <param name="side"></param>
         /// <returns></returns>
-        public static RectangleF AdjustRegion( RectangleF region, System.Drawing.Image image, AnchorStyles side )
+        public static RectangleF AdjustRegion( RectangleF region, System.Drawing.Image image, SideType side )
         {
             var result = new RectangleF(region.X, region.Y, region.Width, region.Height);
             if ( !side.HasFlag( AnchorStyles.Top ) )
@@ -399,97 +574,61 @@ namespace NetCharm.Image.Addins
         /// <param name="ca"></param>
         /// <param name="cursor"></param>
         /// <returns></returns>
-        public static bool GetPosOfRegion( RectangleF region, PointF pos, out ContentAlignment ca, out Cursor cursor )
+        public static bool GetPosOfRegion( RectangleF region, PointF pos, out CornerRegionType ca, out Cursor cursor )
         {
             bool result = false;
-            ca = 0;
+            ca = CornerRegionType.None;
             cursor = Cursors.Default;
 
-            float corner = 8f;
+            float ratio = 8f;
             PointF pN = pos;
 
             if ( region.Width > 0 && region.Height > 0 )
             {
-                if ( pN.X > region.X - corner &&
-                     pN.X < region.X + corner &&
-                     pN.Y > region.Y - corner &&
-                     pN.Y < region.Y + corner )
+                CornerRegion cr = new CornerRegion(region, ratio);
+                ca = cr.GetRegion( pN );
+                switch ( ca )
                 {
-                    ca = ContentAlignment.TopLeft;
-                    cursor = Cursors.PanNW;
-                    result = true;
-                }
-                else if ( pN.X > region.X + corner &&
-                          pN.X < region.X + region.Width - corner &&
-                          pN.Y > region.Y - corner &&
-                          pN.Y < region.Y + corner )
-                {
-                    ca = ContentAlignment.TopCenter;
-                    cursor = Cursors.PanNorth;
-                    result = true;
-                }
-                else if ( pN.X > region.X + region.Width - corner &&
-                          pN.X < region.X + region.Width + corner &&
-                          pN.Y > region.Y - corner &&
-                          pN.Y < region.Y + corner )
-                {
-                    ca = ContentAlignment.TopRight;
-                    cursor = Cursors.PanNE;
-                    result = true;
-                }
-                else if ( pN.X > region.X - corner &&
-                          pN.X < region.X + corner &&
-                          pN.Y > region.Y + corner &&
-                          pN.Y < region.Y + region.Height - corner )
-                {
-                    ca = ContentAlignment.MiddleLeft;
-                    cursor = Cursors.PanWest;
-                    result = true;
-                }
-                else if ( pN.X > region.X + region.Width - corner &&
-                          pN.X < region.X + region.Width + corner &&
-                          pN.Y > region.Y + corner &&
-                          pN.Y < region.Y + region.Height - corner )
-                {
-                    ca = ContentAlignment.MiddleRight;
-                    cursor = Cursors.PanEast;
-                    result = true;
-                }
-                else if ( pN.X > region.X - corner &&
-                          pN.X < region.X + corner &&
-                          pN.Y > region.Y + region.Height - corner &&
-                          pN.Y < region.Y + region.Height + corner )
-                {
-                    ca = ContentAlignment.BottomLeft;
-                    cursor = Cursors.PanSW;
-                    result = true;
-                }
-                else if ( pN.X > region.X + corner &&
-                          pN.X < region.X + region.Width - corner &&
-                          pN.Y > region.Y + region.Height - corner &&
-                          pN.Y < region.Y + region.Height + corner )
-                {
-                    ca = ContentAlignment.BottomCenter;
-                    cursor = Cursors.PanSouth;
-                    result = true;
-                }
-                else if ( pN.X > region.X + region.Width - corner &&
-                          pN.X < region.X + region.Width + corner &&
-                          pN.Y > region.Y + region.Height - corner &&
-                          pN.Y < region.Y + region.Height + corner )
-                {
-                    ca = ContentAlignment.BottomRight;
-                    cursor = Cursors.PanSE;
-                    result = true;
-                }
-                else if ( pN.X > region.X + corner &&
-                          pN.X < region.X + region.Width - corner &&
-                          pN.Y > region.Y + corner &&
-                          pN.Y < region.Y + region.Height - corner )
-                {
-                    ca = ContentAlignment.MiddleCenter;
-                    cursor = Cursors.Hand;
-                    result = false;
+                    case CornerRegionType.TopLeft:
+                        cursor = Cursors.SizeNWSE;
+                        result = true;
+                        break;
+                    case CornerRegionType.TopCenter:
+                        cursor = Cursors.SizeNS;
+                        result = true;
+                        break;
+                    case CornerRegionType.TopRight:
+                        cursor = Cursors.SizeNESW;
+                        result = true;
+                        break;
+                    case CornerRegionType.MiddleLeft:
+                        cursor = Cursors.SizeWE;
+                        result = true;
+                        break;
+                    case CornerRegionType.MiddleCenter:
+                        cursor = Cursors.SizeAll;
+                        result = true;
+                        break;
+                    case CornerRegionType.MiddleRight:
+                        cursor = Cursors.SizeWE;
+                        result = true;
+                        break;
+                    case CornerRegionType.BottomLeft:
+                        cursor = Cursors.SizeNESW;
+                        result = true;
+                        break;
+                    case CornerRegionType.BottomCenter:
+                        cursor = Cursors.SizeNS;
+                        result = true;
+                        break;
+                    case CornerRegionType.BottomRight:
+                        cursor = Cursors.SizeNWSE;
+                        result = true;
+                        break;
+                    default:
+                        cursor = Cursors.Default;
+                        result = false;
+                        break;
                 }
             }
             return ( result );

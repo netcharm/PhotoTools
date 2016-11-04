@@ -232,10 +232,7 @@ namespace InternalFilters
                     rect.Y = pO.Y - ms;
                 rect.Height = ms;
             }
-            rect.X = (float) Math.Round( rect.X );
-            rect.Y = (float) Math.Round( rect.Y );
-            rect.Width = (float) Math.Round( rect.Width );
-            rect.Height = (float) Math.Round( rect.Height );
+            rect = Rectangle.Round( rect );
 
             imgEditor.SelectionRegion = rect;
         }

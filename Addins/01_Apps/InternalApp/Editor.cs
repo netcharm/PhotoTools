@@ -349,6 +349,8 @@ namespace InternalFilters
                         }
                     }
                     break;
+                default:
+                    break;
             }
             return ( true );
         }

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalApp\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-03 18:03+0800\n"
-"PO-Revision-Date: 2016-11-03 18:03+0800\n"
+"POT-Creation-Date: 2016-11-04 17:00+0800\n"
+"PO-Revision-Date: 2016-11-04 17:00+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,10 +20,10 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: EditorForm.Designer.cs:46 EditorForm.Designer.cs:69 Editor.cs:123
+#: EditorForm.Designer.cs:46 EditorForm.Designer.cs:69 Editor.cs:124
 msgid "Image Editor"
 msgstr ""
 
-#: Editor.cs:114
+#: Editor.cs:115
 msgid "Editor"
 msgstr ""

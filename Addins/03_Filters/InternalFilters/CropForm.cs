@@ -12,30 +12,33 @@ namespace InternalFilters
 {
     public partial class CropForm : Form
     {
-        private AddinHost host;
-        private IAddin addin;
+        internal AddinHost host;
+        internal IAddin addin;
 
         private Image thumb = null;
 
         private Dictionary<string, Size> aspectList = new Dictionary<string, Size>();
 
+        private CornerRegion selectionCorner;
         private RectangleF selection = new RectangleF();
         private RectangleF selectionSrc = new RectangleF();
-        private bool mSelection;
-        private bool mMoveRegion;
-        private bool mResizeRegion;
-        private bool mCornerSide;
+        private bool mSelection =false;
+        private bool mMoveRegion = false;
+        private bool mResizeRegion = false;
+        private bool mCornerSide = false;
+        private bool mStart = false;
         private PointF pO;
         private PointF pS;
         private PointF pL;
-        private float corner = 8f;
-        private ContentAlignment mPos = ContentAlignment.MiddleCenter;
+
+        private CornerRegionType mPos = CornerRegionType.None;
 
         OpaqueMode opaqueMode = OpaqueMode.Alpha;
 
-        private int cropMode = 4;
-        private AnchorStyles cropSide = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+        private CropMode cropMode = CropMode.AspectRatio;
+        private SideType cropSide = (SideType.Top | SideType.Bottom | SideType.Left | SideType.Right);
         private string cropAspect = "3 x 2";
+        private float cropAspectFactor = 1f;
 
         public ParamItem ParamCropMode
         {
@@ -48,7 +51,7 @@ namespace InternalFilters
                 pi.Value = cropMode;
                 return ( pi );
             }
-            internal set { cropMode = (int) value.Value; }
+            internal set { cropMode = (CropMode) value.Value; }
         }
         public ParamItem ParamCropSide
         {
@@ -61,7 +64,7 @@ namespace InternalFilters
                 pi.Value = cropSide;
                 return ( pi );
             }
-            internal set { cropSide = (AnchorStyles) value.Value; }
+            internal set { cropSide = (SideType) value.Value; }
         }
         public ParamItem ParamCropAspect
         {
@@ -108,6 +111,59 @@ namespace InternalFilters
             return ( Rectangle.Round( selectionSrc ) );
         }
 
+        internal RectangleF MakeAspectRegion( Size size, RectangleF region, float aspect, bool force=false )
+        {
+            RectangleF result = new RectangleF(region.X, region.Y, region.Width, region.Height);
+
+            if ( force || region.Width == 0 || region.Height == 0 )
+            {
+                result.X = size.Width / 2.0f;
+                result.Y = size.Height / 2.0f;
+                result.Width = 0;
+                result.Height = 0;
+                float w = size.Width;
+                float h = size.Height;
+                if ( cropAspectFactor >= 1 && size.Width >= size.Height )
+                {
+                    w = h * cropAspectFactor;
+                    if ( w > size.Width )
+                    {
+                        w = size.Width;
+                        h = w / cropAspectFactor;
+                    }
+                }
+                else if ( cropAspectFactor >= 1 && size.Width < size.Height )
+                {
+                    h = w / cropAspectFactor;
+                    if ( h > size.Height )
+                    {
+                        h = size.Height;
+                        w = h * cropAspectFactor;
+                    }
+                }
+                else if ( cropAspectFactor < 1 && size.Width >= size.Height )
+                {
+                    w = h * cropAspectFactor;
+                    if ( w > size.Width )
+                    {
+                        w = size.Width;
+                        h = w / cropAspectFactor;
+                    }
+                }
+                else
+                {
+                    h = w / cropAspectFactor;
+                    if ( h > size.Height )
+                    {
+                        h = size.Height;
+                        w = h * cropAspectFactor;
+                    }
+                }
+                result.Inflate( w / 2.0f, h / 2.0f );
+            }
+            return ( result );
+        }
+
         public CropForm()
         {
             InitializeComponent();
@@ -151,19 +207,19 @@ namespace InternalFilters
 
             btnModeTrans.Enabled = AddinUtils.AlphaFormat.Contains( addin.ImageData.PixelFormat );
 
-            if ( cropSide.HasFlag( AnchorStyles.Left ) )
+            if ( cropSide.HasFlag( SideType.Left ) )
                 chkSideL.Checked = true;
             else
                 chkSideL.Checked = false;
-            if ( cropSide.HasFlag( AnchorStyles.Right ) )
+            if ( cropSide.HasFlag( SideType.Right ) )
                 chkSideR.Checked = true;
             else
                 chkSideR.Checked = false;
-            if ( cropSide.HasFlag( AnchorStyles.Top ) )
+            if ( cropSide.HasFlag( SideType.Top ) )
                 chkSideT.Checked = true;
             else
                 chkSideT.Checked = false;
-            if ( cropSide.HasFlag( AnchorStyles.Bottom ) )
+            if ( cropSide.HasFlag( SideType.Bottom ) )
                 chkSideB.Checked = true;
             else
                 chkSideB.Checked = false;
@@ -183,7 +239,7 @@ namespace InternalFilters
             {
                 grpCropSide.Enabled = false;
                 grpCropAspect.Enabled = true;
-                cropMode = 0;
+                cropMode = CropMode.Selection;
             }
             else if ( sender == btnModeTrans || sender == btnModeTopLeft || sender == btnModeBottomRight )
             {
@@ -195,17 +251,17 @@ namespace InternalFilters
                     if ( sender == btnModeTrans )
                     {
                         opaqueMode = OpaqueMode.Alpha;
-                        cropMode = 1;
+                        cropMode = CropMode.Opaque;
                     }
                     else if ( sender == btnModeTopLeft )
                     {
                         opaqueMode = OpaqueMode.TopLeft;
-                        cropMode = 2;
+                        cropMode = CropMode.TopLeft;
                     }
                     else if ( sender == btnModeBottomRight )
                     {
                         opaqueMode = OpaqueMode.BottomRight;
-                        cropMode = 3;
+                        cropMode = CropMode.BottomRight;
                     }
 
                     selectionSrc = AddinUtils.AdjustRegion( AddinUtils.GetOpaqueBound( addin.ImageData, opaqueMode ), addin.ImageData, cropSide );
@@ -216,7 +272,9 @@ namespace InternalFilters
             {
                 grpCropSide.Enabled = false;
                 grpCropAspect.Enabled = true;
-                cropMode = 4;
+                cropMode = CropMode.AspectRatio;
+                selection = MakeAspectRegion( thumb.Size, selection, cropAspectFactor );
+                imgPreview.SelectionRegion = selection;
             }
         }
 
@@ -227,23 +285,23 @@ namespace InternalFilters
 
         private void chkSide_Click( object sender, EventArgs e )
         {
-            cropSide = AnchorStyles.None;
+            cropSide = SideType.None;
 
             if ( chkSideL.Checked )
             {
-                cropSide |= AnchorStyles.Left;
+                cropSide |= SideType.Left;
             }
             if ( chkSideR.Checked )
             {
-                cropSide |= AnchorStyles.Right;
+                cropSide |= SideType.Right;
             }
             if ( chkSideT.Checked )
             {
-                cropSide |= AnchorStyles.Top;
+                cropSide |= SideType.Top;
             }
             if ( chkSideB.Checked )
             {
-                cropSide |= AnchorStyles.Bottom;
+                cropSide |= SideType.Bottom;
             }
 
             selectionSrc = AddinUtils.AdjustRegion( AddinUtils.GetOpaqueBound( addin.ImageData, opaqueMode ), addin.ImageData, cropSide );
@@ -262,17 +320,12 @@ namespace InternalFilters
 
         private void edAspect_ValueChanged( object sender, EventArgs e )
         {
-            //
-        }
-
-        private void imgPreview_Click( object sender, EventArgs e )
-        {
-            //
-        }
-
-        private void imgPreview_DoubleClick( object sender, EventArgs e )
-        {
-            imgPreview.SelectNone();
+            cropAspectFactor = (float) Convert.ToDouble( edAspectW.Value / edAspectH.Value );
+            if ( cropMode == CropMode.AspectRatio )
+            {
+                selection = MakeAspectRegion( thumb.Size, selection, cropAspectFactor, true );
+            }
+            imgPreview.SelectionRegion = selection;
         }
 
         private void imgPreview_MouseDown( object sender, MouseEventArgs e )
@@ -281,13 +334,11 @@ namespace InternalFilters
             pO.X = (float) Math.Round( pO.X );
             pO.Y = (float) Math.Round( pO.Y );
 
-            if ( pO.X > selection.X + corner && pO.X < selection.X + selection.Width - corner &&
-                pO.Y > selection.Y+ corner && pO.Y < selection.Y + selection.Height - corner )
+            if ( mPos == CornerRegionType.MiddleCenter )
             {
                 mSelection = false;
                 mMoveRegion = true;
                 mResizeRegion = false;
-                imgPreview.Cursor = Cursors.Hand;
                 pS = new PointF( selection.X, selection.Y );
             }
             else if ( mCornerSide )
@@ -296,137 +347,211 @@ namespace InternalFilters
                 mMoveRegion = false;
                 mResizeRegion = true;
                 pL = new PointF( pO.X, pO.Y );
+                pS = new PointF( selection.Right, selection.Bottom );
             }
             else
             {
                 mSelection = true;
                 mMoveRegion = false;
                 mResizeRegion = false;
-                selection.X = pO.X;
-                selection.Y = pO.Y;
+                mStart = false;
             }
         }
 
         private void imgPreview_MouseUp( object sender, MouseEventArgs e )
         {
-            mMoveRegion = false;
+            if ( e.Clicks >= 1 && e.Button == MouseButtons.Right) imgPreview.SelectNone();
+
             mSelection = false;
+            mMoveRegion = false;
             mResizeRegion = false;
             mCornerSide = false;
-            mPos = 0;
+            mStart = false;
+            mPos = CornerRegionType.None;
             imgPreview.Cursor = Cursors.Default;
         }
 
         private void imgPreview_MouseMove( object sender, MouseEventArgs e )
         {
             PointF pN = imgPreview.PointToImage( e.X, e.Y );
-            if ( mSelection )
+            if ( e.Button == MouseButtons.Left )
             {
-                #region Mouse Selection
-                float dX = pN.X - pO.X;
-                float dY = pN.Y - pO.Y;
-                if ( dX < 0 )
+                if ( mSelection )
                 {
-                    selection.X = pN.X;
-                    selection.Width = -dX;
-                }
-                else
-                    selection.Width = dX;
-                if ( dY < 0 )
-                {
-                    selection.Y = pN.Y;
-                    selection.Height = -dY;
-                }
-                else
-                    selection.Height = dY;
+                    #region Mouse Selection
+                    if(!mStart)
+                    {
+                        selection.X = pO.X;
+                        selection.Y = pO.Y;
+                        mStart = true;
+                    }
 
-                imgPreview.SelectionRegion = selection;
-                #endregion
-            }
-            else if ( mMoveRegion )
-            {
-                #region Mouse Move SelectionRegion
-                float dX = pN.X - pO.X;
-                float dY = pN.Y - pO.Y;
-                selection.X = pS.X + dX;
-                selection.Y = pS.Y + dY;
-                imgPreview.SelectionRegion = selection;
-                #endregion
-            }
-            else if ( mResizeRegion )
-            {
-                #region Resize SelectionRegion
-
-                float dX = pN.X - pL.X;
-                float dY = pN.Y - pL.Y;
-                pL.X = pN.X;
-                pL.Y = pN.Y;
-
-                switch(mPos)
-                {
-                    case ContentAlignment.TopLeft:
-                        selection.X += dX;
-                        selection.Width -= dX;
-                        selection.Y += dY;
-                        selection.Height -= dY;
-                        break;
-                    case ContentAlignment.TopCenter:
-                        selection.Y += dY;
-                        selection.Height -= dY;
-                        break;
-                    case ContentAlignment.TopRight:
-                        selection.Width += dX;
-                        selection.Y += dY;
-                        selection.Height -= dY;
-                        break;
-                    case ContentAlignment.MiddleLeft:
-                        selection.X += dX;
-                        selection.Width -= dX;
-                        break;
-                    case ContentAlignment.MiddleCenter:
-                        break;
-                    case ContentAlignment.MiddleRight:
-                        selection.Width += dX;
-                        break;
-                    case ContentAlignment.BottomLeft:
-                        selection.X += dX;
-                        selection.Width -= dX;
-                        selection.Height += dY;
-                        break;
-                    case ContentAlignment.BottomCenter:
-                        selection.Height += dY;
-                        break;
-                    case ContentAlignment.BottomRight:
-                        selection.Width += dX;
-                        selection.Height += dY;
-                        break;
-                }
-                imgPreview.SelectionRegion = selection;
-
-                #endregion
-            }
-            else if ( selection.Width > 0 && selection.Height > 0 )
-            {
-                Cursor cur = Cursors.Default;
-                mCornerSide = AddinUtils.GetPosOfRegion( selection, pN, out mPos, out cur );
-                if ( mCornerSide )
-                {
-                    imgPreview.Cursor = cur;
-                }
-                else
-                {
-                    if(mPos == ContentAlignment.MiddleCenter)
-                        imgPreview.Cursor = Cursors.Hand;
+                    float dX = pN.X - pO.X;
+                    float dY = pN.Y - pO.Y;
+                    if ( dX < 0 )
+                    {
+                        selection.X = pN.X;
+                        selection.Width = -dX;
+                    }
                     else
-                        imgPreview.Cursor = Cursors.Default;
+                        selection.Width = dX;
+
+                    if ( dY < 0 )
+                    {
+                        selection.Y = pN.Y;
+                        selection.Height = -dY;
+                    }
+                    else
+                        selection.Height = dY;
+                    #endregion
+                }
+                else if ( mMoveRegion )
+                {
+                    #region Mouse Move SelectionRegion
+                    float dX = pN.X - pO.X;
+                    float dY = pN.Y - pO.Y;
+                    selection.X = pS.X + dX;
+                    selection.Y = pS.Y + dY;
+                    #endregion
+                }
+                else if ( mResizeRegion )
+                {
+                    #region Resize SelectionRegion
+
+                    float dX = pN.X - pL.X;
+                    float dY = pN.Y - pL.Y;
+                    pL.X = pN.X;
+                    pL.Y = pN.Y;
+
+                    float max = 0;
+                    float min = 0;
+                    float nw = 0;
+                    float nh = 0;
+
+                    if ( cropMode == CropMode.AspectRatio )
+                    {
+                        #region Keep Aspect Ration Resize SelectionRegion
+
+                        switch ( mPos )
+                        {
+                            case CornerRegionType.TopLeft:
+                                selection.X += dX;
+                                selection.Y += dY;
+                                selection.Width -= dX;
+                                selection.Height -= dY;
+                                break;
+                            case CornerRegionType.TopCenter:
+                                selection.Y += dY;
+                                selection.Height -= dY;
+                                selection.Inflate( ( selection.Height * cropAspectFactor - selection.Width ) / 2.0f, 0 );
+                                break;
+                            case CornerRegionType.TopRight:
+                                selection.Y += dY;
+                                selection.Width += dX;
+                                selection.Height -= dY;
+                                break;
+                            case CornerRegionType.MiddleLeft:
+                                selection.X += dX;
+                                selection.Width -= dX;
+                                selection.Inflate( 0, ( selection.Width / cropAspectFactor - selection.Height ) / 2.0f );
+                                break;
+                            case CornerRegionType.MiddleCenter:
+                                break;
+                            case CornerRegionType.MiddleRight:
+                                selection.Width += dX;
+                                selection.Inflate( 0, ( selection.Width / cropAspectFactor - selection.Height ) / 2.0f );
+                                break;
+                            case CornerRegionType.BottomLeft:
+                                selection.X += dX;
+                                selection.Width -= dX;
+                                selection.Height += dY;
+                                break;
+                            case CornerRegionType.BottomCenter:
+                                selection.Height += dY;
+                                selection.Inflate( ( selection.Height * cropAspectFactor - selection.Width ) / 2.0f, 0 );
+                                break;
+                            case CornerRegionType.BottomRight:
+                                selection.Width += dX;
+                                selection.Height += dY;
+                                min = Math.Min( selection.Width, selection.Height );
+                                if ( selection.Width > selection.Height )
+                                    selection.Height = selection.Width / cropAspectFactor;
+                                else
+                                    selection.Width = selection.Height * cropAspectFactor;
+                                break;
+                        }
+                        #endregion
+                    }
+                    else
+                    {
+                        #region Normal Resize Selection Region
+                        switch ( mPos )
+                        {
+                            case CornerRegionType.TopLeft:
+                                selection.X += dX;
+                                selection.Width -= dX;
+                                selection.Y += dY;
+                                selection.Height -= dY;
+                                break;
+                            case CornerRegionType.TopCenter:
+                                selection.Y += dY;
+                                selection.Height -= dY;
+                                break;
+                            case CornerRegionType.TopRight:
+                                selection.Width += dX;
+                                selection.Y += dY;
+                                selection.Height -= dY;
+                                break;
+                            case CornerRegionType.MiddleLeft:
+                                selection.X += dX;
+                                selection.Width -= dX;
+                                break;
+                            case CornerRegionType.MiddleCenter:
+                                break;
+                            case CornerRegionType.MiddleRight:
+                                selection.Width += dX;
+                                break;
+                            case CornerRegionType.BottomLeft:
+                                selection.X += dX;
+                                selection.Width -= dX;
+                                selection.Height += dY;
+                                break;
+                            case CornerRegionType.BottomCenter:
+                                selection.Height += dY;
+                                break;
+                            case CornerRegionType.BottomRight:
+                                selection.Width += dX;
+                                selection.Height += dY;
+                                break;
+                        }
+                        #endregion
+                    }
+#if DEBUG
+                    string log = $"Region: X[{selection.X}], Y[{selection.Y}], W[{selection.Width}], H[{selection.Height}]";
+                    host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Log, log ) );
+#endif
+                    #endregion
+                }
+                imgPreview.SelectionRegion = selection;
+                selectionCorner = new CornerRegion( selection );
+            }
+            else if(e.Button == MouseButtons.None)
+            {
+                if ( selection.Width > 0 && selection.Height > 0 )
+                {
+                    #region Detect Mouse Role
+                    Cursor cur = Cursors.Default;
+                    mCornerSide = AddinUtils.GetPosOfRegion( selection, pN, out mPos, out cur );
+                    imgPreview.Cursor = cur;
+                    #endregion
+                }
+                else
+                {
+                    mPos = CornerRegionType.None;
+                    mCornerSide = false;
+                    imgPreview.Cursor = Cursors.Default;
                 }
             }
-            else
-            {
-                mCornerSide = false;
-                imgPreview.Cursor = Cursors.Default;
-            }
-
         }
 
         private void imgPreview_SelectionRegionChanged( object sender, EventArgs e )
@@ -434,6 +559,7 @@ namespace InternalFilters
             if ( !mMoveRegion || !mSelection )
             {
                 selection = imgPreview.SelectionRegion;
+                selectionCorner = new CornerRegion( selection );
             }
         }
 
