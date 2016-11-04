@@ -1,10 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 
 namespace NetCharm.Image.Addins
 {
+    public enum OpaqueMode
+    {
+        Alpha = 0,
+        TopLeft = 1,
+        BottomRight = 2
+    }
+
+    public class ImageInfo
+    {
+        public List<PropertyItem> EXIF;
+        public Dictionary<string, string> IPTC;
+        public System.Windows.Media.Imaging.BitmapMetadata Meta;
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -99,6 +114,7 @@ namespace NetCharm.Image.Addins
         GetImageName = 1101,
         GetImageSize = 1102,
         GetImageInfo = 1103,
+        GetImageColors = 1104,
         GetImageSelection = 1201,
         SetImageSelection = 1202,
 
