@@ -245,6 +245,9 @@ namespace PhotoTool
                     addins.CurrentAction.ImageData = addins.CurrentApp.ImageData;
                     addins.CurrentAction.Show( this );
                     addins.CurrentApp.ImageData = addins.CurrentAction.ImageData;
+
+                    int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
+                    tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height} x {bits}";
                 }
             }
         }
@@ -265,7 +268,9 @@ namespace PhotoTool
                     addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
                     addins.CurrentFilter.Show( this );
                     addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
-                    tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height}";
+
+                    int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
+                    tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height} x {bits}";
                 }
             }
         }
@@ -299,6 +304,12 @@ namespace PhotoTool
                     {
                         tssLabelImageSize.Text = $"{( (Size) e.Property ).Width} x {( (Size) e.Property ).Height}";
                     }
+                    break;
+                case AddinCommand.GetImageSelection:
+                    object data = null;
+                    object selection = null;
+                    addins.CurrentApp.Command( AddinCommand.GetImageSelection, out selection );
+                    addins.CurrentFilter.Command( AddinCommand.SetImageSelection, out data, selection );
                     break;
                 default:
                     break;
@@ -536,11 +547,16 @@ namespace PhotoTool
             if(flist.Length>0)
             {
                 tssLabelImageName.Text = Path.GetFileName( flist[0] );
+                tssLabelImageName.ToolTipText = $"{I18N._( "Image File" )}: {flist[0]}";
                 if ( addins.CurrentApp.ImageData is Image )
                 {
                     object imgSize = new Size(0, 0);
+                    object imgFormat = PixelFormat.Format32bppArgb;
                     addins.CurrentApp.Command( AddinCommand.GetImageSize, out imgSize );
-                    tssLabelImageSize.Text = $"{((Size)imgSize).Width} x {((Size)imgSize).Height}";
+                    addins.CurrentApp.Command( AddinCommand.GetImageColors, out imgFormat );
+
+                    int bits = AddinUtils.GetColorDeep((PixelFormat) imgFormat);
+                    tssLabelImageSize.Text = $"{( (Size) imgSize ).Width} x {( (Size) imgSize ).Height} x {bits}";
 
                     object zoomLevel = 100;
                     addins.CurrentApp.Command( AddinCommand.ZoomLevel, out zoomLevel );
