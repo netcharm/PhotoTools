@@ -263,19 +263,29 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        private string _name = "AddinSample";
+        //private string _name = "AddinSample";
         public virtual string Name
         {
-            get { return ( _name ); }
+            //get { return ( _name ); }
+            get { throw new NotImplementedException(); }
         }
         /// <summary>
         /// 
         /// </summary>
-        private string _displayName = "AddinSample";
+        //private string _displayName = "AddinSample";
         public virtual string DisplayName
         {
-            get { return ( _( _displayName ) ); }
-            set { _displayName = value; }
+            //get { return ( _( _displayName ) ); }
+            //set { _displayName = value; }
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+
         }
         /// <summary>
         /// 
@@ -314,8 +324,8 @@ namespace NetCharm.Image.Addins
         {
             get
             {
-                if ( ImgDst is System.Drawing.Image) return(ImgDst);
-                else return (ImgSrc);
+                if ( ImgDst is System.Drawing.Image ) return ( ImgDst );
+                else return ( ImgSrc );
             }
             set { ImgSrc = value; }
         }
@@ -358,7 +368,7 @@ namespace NetCharm.Image.Addins
         /// <returns></returns>
         protected internal static string T( string t )
         {
-            if ( catalog is ICatalog ) return ( catalog.GetString(t) );
+            if ( catalog is ICatalog ) return ( catalog.GetString( t ) );
             return ( t );
         }
         /// <summary>
@@ -380,7 +390,7 @@ namespace NetCharm.Image.Addins
         /// 
         /// </summary>
         /// <param name="form"></param>
-        protected internal void Translate( Form form, ToolTip tooltip=null, object[] extra=null )
+        protected internal void Translate( Form form, ToolTip tooltip = null, object[] extra = null )
         {
             string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( Location ) ), "locale" );
 
@@ -613,6 +623,7 @@ namespace NetCharm.Image.Addins
                 return ( _formatTranslations );
             }
         }
+
         #endregion
 
     }
