@@ -48,7 +48,8 @@ namespace InternalFilters
             toolTip.ToolTipTitle = addin.DisplayName;
             AddinUtils.Translate( addin, this, toolTip );
 
-            thumb = CreateThumb( addin.ImageData );
+            //thumb = CreateThumb( addin.ImageData );
+            thumb = AddinUtils.CreateThumb( addin.ImageData, imgPreview.Size );
             imgPreview.Image = thumb;
         }
 

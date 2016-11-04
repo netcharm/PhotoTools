@@ -27,7 +27,7 @@ namespace InternalFilters
                 pi.Value = Convert.ToInt32( edWidth.Value );
                 return ( pi );
             }
-            set { edWidth.Value = Convert.ToDecimal( value.Value ); }
+            internal set { edWidth.Value = Convert.ToDecimal( value.Value ); }
         }
 
         public ParamItem ParamHeight
@@ -41,7 +41,7 @@ namespace InternalFilters
                 pi.Value = Convert.ToInt32( edHeight.Value );
                 return ( pi );
             }
-            set { edHeight.Value = Convert.ToDecimal( value.Value ); }
+            internal set { edHeight.Value = Convert.ToDecimal( value.Value ); }
         }
 
         public ParamItem ParamAspect
@@ -55,7 +55,7 @@ namespace InternalFilters
                 pi.Value = chkAspect.Checked;
                 return ( pi );
             }
-            set { edWidth.Value = Convert.ToDecimal( value.Value ); }
+            internal set { edWidth.Value = Convert.ToDecimal( value.Value ); }
         }
 
         public ParamItem ParamMethod
@@ -69,7 +69,8 @@ namespace InternalFilters
                 pi.Value = cbResizeMethod.SelectedIndex;
                 return ( pi );
             }
-            set {
+            internal set
+            {
                 if ( 0 <= Convert.ToInt32( value.Value ) && Convert.ToInt32( value.Value ) < cbResizeMethod.Items.Count )
                 {
                     cbResizeMethod.SelectedIndex = Convert.ToInt32( value.Value );

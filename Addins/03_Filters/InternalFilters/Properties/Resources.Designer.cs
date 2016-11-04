@@ -63,6 +63,26 @@ namespace InternalFilters.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Crop_16x {
+            get {
+                object obj = ResourceManager.GetObject("Crop_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Crop_32x {
+            get {
+                object obj = ResourceManager.GetObject("Crop_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap FlipX_16x {
             get {
                 object obj = ResourceManager.GetObject("FlipX_16x", resourceCulture);

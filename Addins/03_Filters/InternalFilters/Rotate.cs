@@ -21,6 +21,14 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
+        private string _name = "Rotate";
+        public override string Name
+        {
+            get { return ( _name ); }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         private string _displayName = T("Rotate");
         public override string DisplayName
         {

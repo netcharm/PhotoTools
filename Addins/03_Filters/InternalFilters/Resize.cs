@@ -16,9 +16,6 @@ using NGettext.WinForm;
 //using Accord.Imaging;
 using System.Drawing.Imaging;
 
-[assembly: Addin]
-[assembly: AddinDependency( "AddinHost", "1.0" )]
-
 namespace InternalFilters
 {
     [Extension]
@@ -248,14 +245,14 @@ namespace InternalFilters
         {
             if ( img is System.Drawing.Image )
             {
-                fm.ParamWidth = new ParamItem()
+                form.ParamWidth = new ParamItem()
                 {
                     Name = "Width",
                     DisplayName = AddinUtils._( this, "Width" ),
                     Type = ImgSrc.Width.GetType(),
                     Value = ImgSrc.Width
                 };
-                fm.ParamHeight = new ParamItem()
+                form.ParamHeight = new ParamItem()
                 {
                     Name = "Height",
                     DisplayName = AddinUtils._( this, "Height" ),
@@ -266,16 +263,16 @@ namespace InternalFilters
             else
             {
                 if ( Params.ContainsKey( "Width" ) )
-                    fm.ParamWidth = Params["Width"];
+                    form.ParamWidth = Params["Width"];
 
                 if ( Params.ContainsKey( "Height" ) )
-                    fm.ParamHeight = Params["Height"];
+                    form.ParamHeight = Params["Height"];
             }
             if ( Params.ContainsKey( "Aspect" ) )
-                fm.ParamAspect = Params["Aspect"];
+                form.ParamAspect = Params["Aspect"];
 
             if ( Params.ContainsKey( "Method" ) )
-                fm.ParamMethod = Params["Method"];
+                form.ParamMethod = Params["Method"];
         }
         /// <summary>
         /// 
@@ -284,24 +281,24 @@ namespace InternalFilters
         private void GetParams( ResizeForm form )
         {
             if ( Params.ContainsKey( "Width" ) )
-                Params["Width"] = fm.ParamWidth;
+                Params["Width"] = form.ParamWidth;
             else
-                Params.Add( "Width", fm.ParamWidth );
+                Params.Add( "Width", form.ParamWidth );
 
             if ( Params.ContainsKey( "Height" ) )
-                Params["Height"] = fm.ParamHeight;
+                Params["Height"] = form.ParamHeight;
             else
-                Params.Add( "Height", fm.ParamHeight );
+                Params.Add( "Height", form.ParamHeight );
 
             if ( Params.ContainsKey( "Aspect" ) )
-                Params["Aspect"] = fm.ParamAspect;
+                Params["Aspect"] = form.ParamAspect;
             else
-                Params.Add( "Aspect", fm.ParamAspect );
+                Params.Add( "Aspect", form.ParamAspect );
 
             if ( Params.ContainsKey( "Method" ) )
-                Params["Method"] = fm.ParamMethod;
+                Params["Method"] = form.ParamMethod;
             else
-                Params.Add( "Method", fm.ParamMethod );
+                Params.Add( "Method", form.ParamMethod );
         }
 
         /// <summary>
