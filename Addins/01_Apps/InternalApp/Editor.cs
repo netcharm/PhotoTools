@@ -10,6 +10,7 @@ using NetCharm.Image.Addins;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Media.Imaging;
 
 [assembly: Addin]
 [assembly: AddinDependency( "AddinHost", "1.0" )]
@@ -242,7 +243,10 @@ namespace InternalFilters
         {
             if(File.Exists( filename ) )
             {
-                ImageData = new Bitmap( filename );
+                using ( FileStream fs = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
+                {
+                    ImageData = Image.FromStream( fs );
+                }
                 if ( Host.CurrentApp != this )
                 {
                     Host.CurrentApp = this;
@@ -261,13 +265,7 @@ namespace InternalFilters
             {
                 if ( File.Exists( filenames[0] ) )
                 {
-                    ImageData = new Bitmap( filenames[0] );
-                    if ( Host.CurrentApp != this )
-                    {
-                        Host.CurrentApp = this;
-                        Host.CurrentApp.Show( ParentForm );
-                    }
-                    lastImageFileName = filenames[0];
+                    Open( filenames[0] );
                 }
             }
         }
@@ -316,6 +314,39 @@ namespace InternalFilters
                     if ( fm is EditorForm && fm.ImageData is Image)
                     {
                         result = new Size( fm.ImageData.Width, fm.ImageData.Height );
+                    }
+                    break;
+                case AddinCommand.GetImageInfo:
+                    if ( fm is EditorForm && fm.ImageData is Image )
+                    {
+                        result = new ImageInfo();
+                        ( result as ImageInfo ).EXIF = fm.ImageData.PropertyItems.ToList();
+                        ( result as ImageInfo ).IPTC = new Dictionary<string, string>();
+                        ( result as ImageInfo ).Meta = new BitmapMetadata( "jpg" );
+                    }
+                    break;
+                case AddinCommand.GetImageColors:
+                    if ( fm is EditorForm && fm.ImageData is Image )
+                    {
+                        result = fm.ImageData.PixelFormat;
+                    }
+                    break;
+                case AddinCommand.GetImageSelection:
+                    if ( fm is EditorForm && fm.ImageData is Image )
+                    {
+                        result = fm.GetImageSelection();
+                    }
+                    break;
+                case AddinCommand.SetImageSelection:
+                    if ( fm is EditorForm && fm.ImageData is Image )
+                    {
+                        if ( cmdArgs.Length > 0 )
+                        {
+                            if ( cmdArgs[0] is Rectangle )
+                                fm.SetImageSelection( (Rectangle) cmdArgs[0] );
+                            else if ( cmdArgs[0] is RectangleF )
+                                fm.SetImageSelection( (RectangleF) cmdArgs[0] );
+                        }
                     }
                     break;
             }

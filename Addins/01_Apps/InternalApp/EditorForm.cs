@@ -278,5 +278,25 @@ namespace InternalFilters
         {
             Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.ZoomLevel, imgEditor.Zoom ) );
         }
+
+        internal Rectangle GetImageSelection()
+        {
+            Rectangle result = new Rectangle(
+                (int)Math.Round(imgEditor.SelectionRegion.X), 
+                (int)Math.Round(imgEditor.SelectionRegion.Y),
+                (int)Math.Round(imgEditor.SelectionRegion.Width), 
+                (int)Math.Round(imgEditor.SelectionRegion.Height));
+            return ( result );
+        }
+
+        internal void SetImageSelection(RectangleF selection)
+        {
+            imgEditor.SelectionRegion = selection;
+        }
+
+        internal void SetImageSelection( Rectangle selection )
+        {
+            imgEditor.SelectionRegion = selection;
+        }
     }
 }
