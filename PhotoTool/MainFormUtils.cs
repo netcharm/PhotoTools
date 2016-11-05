@@ -183,9 +183,6 @@ namespace PhotoTool
                 else
                     btnAddin.SmallImage = addins.SmallImage;
 
-                btnAddin.MaxSizeMode = RibbonElementSizeMode.Large;
-                btnAddin.MinSizeMode = RibbonElementSizeMode.DropDown;
-
                 btnAddin.Text = I18N._( addin.DisplayName );
                 btnAddin.ToolTip = I18N._( addin.Description );
                 btnAddin.ToolTipTitle = I18N._( addin.Author );
@@ -374,6 +371,9 @@ namespace PhotoTool
                     object selection = null;
                     addins.CurrentApp.Command( AddinCommand.GetImageSelection, out selection );
                     addins.CurrentFilter.Command( AddinCommand.SetImageSelection, out data, selection );
+                    break;
+                case AddinCommand.SetImageSelection:
+                    addins.CurrentApp.Command( AddinCommand.SetImageSelection, out data, e.Property );
                     break;
                 default:
                     break;

@@ -145,7 +145,7 @@ namespace InternalFilters
         /// </summary>
         public AddinType Type
         {
-            get { return AddinType.Effect; }
+            get { return AddinType.Action; }
         }
         /// <summary>
         /// 

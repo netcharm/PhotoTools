@@ -14,6 +14,12 @@ namespace InternalFilters
     {
         private CropForm fm = null;
 
+        #region Properties override
+        public override AddinType Type
+        {
+            get { return ( AddinType.Action ); }
+        }
+
         private string _name = "Crop";
         public override string Name
         {
@@ -56,6 +62,7 @@ namespace InternalFilters
             get { return Properties.Resources.Crop_16x; }
         }
 
+        #endregion
 
         /// <summary>
         /// 
@@ -119,6 +126,7 @@ namespace InternalFilters
             {
                 GetParams( fm );
                 ImgDst = Apply( ImgSrc );
+                Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.SetImageSelection, new RectangleF( 0, 0, 0, 0 ) ) );
             }
             if ( fm != null )
             {

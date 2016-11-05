@@ -21,6 +21,14 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
+        public override AddinType Type
+        {
+            get { return ( AddinType.Action ); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private string _name = "Rotate";
         public override string Name
         {

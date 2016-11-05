@@ -97,6 +97,7 @@ namespace InternalFilters
         internal void SetImageSelection( Rectangle rectangle )
         {
             selectionSrc = rectangle;
+            selection = rectangle;
         }
 
         internal void SetImageSelection( RectangleF rectangleF )
@@ -276,10 +277,6 @@ namespace InternalFilters
                 selection = MakeAspectRegion( thumb.Size, selection, cropAspectFactor );
                 imgPreview.SelectionRegion = selection;
             }
-        }
-
-        private void btnMode_CheckedChanged( object sender, EventArgs e )
-        {
         }
 
         private void chkSide_Click( object sender, EventArgs e )
