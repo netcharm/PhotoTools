@@ -193,7 +193,6 @@ namespace PhotoTool
             int c = 0;
             foreach ( var kv in CustomPanelAction )
             {
-                //RibTabAction.Panels.Add( kv.Value );
                 RibTabAction.Panels.Insert( c, kv.Value );
                 c++;
             }
@@ -260,7 +259,6 @@ namespace PhotoTool
             int c = 0;
             foreach ( var kv in CustomPanelEffect )
             {
-                //RibTabEffect.Panels.Add( kv.Value );
                 RibTabEffect.Panels.Insert( c, kv.Value );
                 c++;
             }
