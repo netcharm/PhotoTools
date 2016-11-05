@@ -265,20 +265,35 @@
   <data name="RibTabEffectExternal.Text" xml:space="preserve">
     <value>External</value>
   </data>
-  <data name="RibTabSetAddinManager.Text" xml:space="preserve">
+  <data name="RibTabSysAddinManager.Text" xml:space="preserve">
     <value>Addins</value>
   </data>
-  <data name="cmdOptionLogger.Text" xml:space="preserve">
-    <value>Logger</value>
+  <data name="RibTabSysTools.Text" xml:space="preserve">
+    <value>Tools</value>
   </data>
-  <data name="RibTabSetOptions.Text" xml:space="preserve">
-    <value>Options</value>
+  <data name="cmdAbout.Text" xml:space="preserve">
+    <value>About</value>
   </data>
-  <data name="RibTabSetting.Text" xml:space="preserve">
-    <value>Setting</value>
+  <data name="cmdAbout.ToolTip" xml:space="preserve">
+    <value>Show About Info</value>
+  </data>
+  <data name="RibTabSysAbout.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="RibTabSystem.Text" xml:space="preserve">
+    <value>System</value>
   </data>
   <data name="cmdAddinReScan.Text" xml:space="preserve">
     <value>Re-Scan</value>
+  </data>
+  <data name="cmdAddinReScan.ToolTip" xml:space="preserve">
+    <value>Re-Scan Addins</value>
+  </data>
+  <data name="cmdLogger.Text" xml:space="preserve">
+    <value>Logger</value>
+  </data>
+  <data name="cmdLogger.ToolTip" xml:space="preserve">
+    <value>Show Logger Window</value>
   </data>
   <metadata name="status.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -1039,16 +1054,16 @@
   <data name="&gt;&gt;RibTabEffectExternal.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;RibTabSetting.Name" xml:space="preserve">
-    <value>RibTabSetting</value>
+  <data name="&gt;&gt;RibTabSystem.Name" xml:space="preserve">
+    <value>RibTabSystem</value>
   </data>
-  <data name="&gt;&gt;RibTabSetting.Type" xml:space="preserve">
+  <data name="&gt;&gt;RibTabSystem.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonTab, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;RibTabSetAddinManager.Name" xml:space="preserve">
-    <value>RibTabSetAddinManager</value>
+  <data name="&gt;&gt;RibTabSysAddinManager.Name" xml:space="preserve">
+    <value>RibTabSysAddinManager</value>
   </data>
-  <data name="&gt;&gt;RibTabSetAddinManager.Type" xml:space="preserve">
+  <data name="&gt;&gt;RibTabSysAddinManager.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cmdAddinReScan.Name" xml:space="preserve">
@@ -1057,16 +1072,28 @@
   <data name="&gt;&gt;cmdAddinReScan.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;RibTabSetOptions.Name" xml:space="preserve">
-    <value>RibTabSetOptions</value>
+  <data name="&gt;&gt;RibTabSysTools.Name" xml:space="preserve">
+    <value>RibTabSysTools</value>
   </data>
-  <data name="&gt;&gt;RibTabSetOptions.Type" xml:space="preserve">
+  <data name="&gt;&gt;RibTabSysTools.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;cmdOptionLogger.Name" xml:space="preserve">
-    <value>cmdOptionLogger</value>
+  <data name="&gt;&gt;cmdLogger.Name" xml:space="preserve">
+    <value>cmdLogger</value>
   </data>
-  <data name="&gt;&gt;cmdOptionLogger.Type" xml:space="preserve">
+  <data name="&gt;&gt;cmdLogger.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;RibTabSysAbout.Name" xml:space="preserve">
+    <value>RibTabSysAbout</value>
+  </data>
+  <data name="&gt;&gt;RibTabSysAbout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdAbout.Name" xml:space="preserve">
+    <value>cmdAbout</value>
+  </data>
+  <data name="&gt;&gt;cmdAbout.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ribbonSeparator1.Name" xml:space="preserve">

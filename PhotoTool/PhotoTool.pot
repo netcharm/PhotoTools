@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PhotoTool\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-05 01:34+0800\n"
-"PO-Revision-Date: 2016-11-05 01:34+0800\n"
+"POT-Creation-Date: 2016-11-05 12:19+0800\n"
+"PO-Revision-Date: 2016-11-05 12:19+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +20,7 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: LogForm.resx:163 -> $this.Text.value MainForm.resx:272
-#: cmdOptionLogger.Text.value
+#: LogForm.resx:163 -> $this.Text.value MainForm.resx:293 cmdLogger.Text.value
 msgid "Logger"
 msgstr ""
 
@@ -33,12 +32,12 @@ msgstr ""
 msgid "File"
 msgstr ""
 
-#: MainForm.resx:127 -> cmdFileOpen.Text.value MainForm.resx:655
+#: MainForm.resx:127 -> cmdFileOpen.Text.value MainForm.resx:670
 #: ribOrbMiOpen.Text.value
 msgid "Open"
 msgstr ""
 
-#: MainForm.resx:139 -> cmdFileSave.Text.value MainForm.resx:674
+#: MainForm.resx:139 -> cmdFileSave.Text.value MainForm.resx:689
 #: ribOrbMiSave.Text.value
 msgid "Save"
 msgstr ""
@@ -87,8 +86,8 @@ msgstr ""
 msgid "Fit View"
 msgstr ""
 
-#: MainForm.resx:242 -> cmdViewZoom100.Text.value MainForm.resx:324
-#: tssLabelImageSize.Text.value MainForm.resx:327
+#: MainForm.resx:242 -> cmdViewZoom100.Text.value MainForm.resx:339
+#: tssLabelImageSize.Text.value MainForm.resx:342
 #: tssLabelImageSize.ToolTipText.value
 msgid "Image Size"
 msgstr ""
@@ -119,105 +118,125 @@ msgstr ""
 msgid "Effect"
 msgstr ""
 
-#: MainForm.resx:269 -> RibTabSetAddinManager.Text.value
+#: MainForm.resx:269 -> RibTabSysAddinManager.Text.value
 msgid "Addins"
 msgstr ""
 
-#: MainForm.resx:275 -> RibTabSetOptions.Text.value MainForm.resx:725
-#: ribOptBtnOptions.Text.value
-msgid "Options"
+#: MainForm.resx:272 -> RibTabSysTools.Text.value
+msgid "Tools"
 msgstr ""
 
-#: MainForm.resx:278 -> RibTabSetting.Text.value
-msgid "Setting"
+#: MainForm.resx:275 -> cmdAbout.Text.value MainForm.resx:281
+#: RibTabSysAbout.Text.value
+msgid "About"
 msgstr ""
 
-#: MainForm.resx:281 -> cmdAddinReScan.Text.value
+#: MainForm.resx:278 -> cmdAbout.ToolTip.value
+msgid "Show About Info"
+msgstr ""
+
+#: MainForm.resx:284 -> RibTabSystem.Text.value
+msgid "System"
+msgstr ""
+
+#: MainForm.resx:287 -> cmdAddinReScan.Text.value
 msgid "Re-Scan"
 msgstr ""
 
-#: MainForm.resx:297 -> status.Text.value
+#: MainForm.resx:290 -> cmdAddinReScan.ToolTip.value
+msgid "Re-Scan Addins"
+msgstr ""
+
+#: MainForm.resx:296 -> cmdLogger.ToolTip.value
+msgid "Show Logger Window"
+msgstr ""
+
+#: MainForm.resx:312 -> status.Text.value
 msgid "OK"
 msgstr ""
 
-#: MainForm.resx:315 -> tssLabelImageName.Text.value
+#: MainForm.resx:330 -> tssLabelImageName.Text.value
 msgid "Image File"
 msgstr ""
 
-#: MainForm.resx:318 -> tssLabelImageName.ToolTipText.value
+#: MainForm.resx:333 -> tssLabelImageName.ToolTipText.value
 msgid "Image File Name"
 msgstr ""
 
-#: MainForm.resx:333 -> tssLabelImageZoom.Text.value
+#: MainForm.resx:348 -> tssLabelImageZoom.Text.value
 msgid "Zoom"
 msgstr ""
 
-#: MainForm.resx:340 -> tssLabelImageZoom.ToolTipText.value
+#: MainForm.resx:355 -> tssLabelImageZoom.ToolTipText.value
 msgid "Image Zoom Level"
 msgstr ""
 
-#: MainForm.resx:346 -> tssLabelImageInfo.Text.value
+#: MainForm.resx:361 -> tssLabelImageInfo.Text.value
 msgid "Ready"
 msgstr ""
 
-#: MainForm.resx:358 -> dlgOpen.Filter.value
+#: MainForm.resx:373 -> dlgOpen.Filter.value
 msgid "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All File(*.*)|*.*"
 msgstr ""
 
-#: MainForm.resx:364 -> dlgSave.Filter.value
+#: MainForm.resx:379 -> dlgSave.Filter.value
 msgid "JPEG File(*.jpg;*.jpeg)|*.jpg;*.jpeg|PNG File(*.png)|*.png|TIFF File(*.tif;*.tiff)|*.tif;*.tiff|Bitmap File(*.png)|*.bmp|GIF File(*.gif)|*.gif|All File(*.*)|*.*"
 msgstr ""
 
-#: MainForm.resx:640 -> ribbonMain.Text.value
+#: MainForm.resx:655 -> ribbonMain.Text.value
 msgid "Ribbon"
 msgstr ""
 
-#: MainForm.resx:697 -> ribOptBtnExit.Text.value
+#: MainForm.resx:712 -> ribOptBtnExit.Text.value
 msgid "Exit"
 msgstr ""
 
-#: MainForm.resx:742 -> ribThemeSelect.Text.value
+#: MainForm.resx:740 -> ribOptBtnOptions.Text.value
+msgid "Options"
+msgstr ""
+
+#: MainForm.resx:757 -> ribThemeSelect.Text.value
 msgid "Theme"
 msgstr ""
 
-#: MainForm.resx:759 -> cmdThemeBlue.Text.value
+#: MainForm.resx:774 -> cmdThemeBlue.Text.value
 msgid "Blue"
 msgstr ""
 
-#: MainForm.resx:776 -> cmdThemeBlack.Text.value
+#: MainForm.resx:791 -> cmdThemeBlack.Text.value
 msgid "Black"
 msgstr ""
 
-#: MainForm.resx:793 -> cmdThemeGreen.Text.value
+#: MainForm.resx:808 -> cmdThemeGreen.Text.value
 msgid "Green"
 msgstr ""
 
-#: MainForm.resx:810 -> cmdThemePurple.Text.value
+#: MainForm.resx:825 -> cmdThemePurple.Text.value
 msgid "Purple"
 msgstr ""
 
-#: MainForm.resx:827 -> ribStyleSelect.Text.value MainForm.resx:830
+#: MainForm.resx:842 -> ribStyleSelect.Text.value MainForm.resx:845
 #: ribStyleSelect.ToolTip.value
 msgid "Style"
 msgstr ""
 
-#: MainForm.resx:847 -> cmdStyle2007.Text.value
+#: MainForm.resx:862 -> cmdStyle2007.Text.value
 msgid "Office 2007"
 msgstr ""
 
-#: MainForm.resx:864 -> cmdStyle2010.Text.value
+#: MainForm.resx:879 -> cmdStyle2010.Text.value
 msgid "Office 2010"
 msgstr ""
 
-#: MainForm.resx:881 -> cmdStyle2013.Text.value
+#: MainForm.resx:896 -> cmdStyle2013.Text.value
 msgid "Office 2013"
 msgstr ""
 
-#: MainForm.resx:896 -> $this.Text.value
+#: MainForm.resx:911 -> $this.Text.value
 msgid "Photo Tool"
 msgstr ""
 
-#: MainForm.Designer.cs:353
+#: MainForm.Designer.cs:368
 msgid "Recent"
 msgstr ""
 
@@ -225,6 +244,6 @@ msgstr ""
 msgid "NewFile"
 msgstr ""
 
-#: MainFormUtils.cs:632 MainFormUtils.cs:633 MainFormUtils.cs:634
+#: MainFormUtils.cs:633 MainFormUtils.cs:634 MainFormUtils.cs:635
 msgid "None"
 msgstr ""

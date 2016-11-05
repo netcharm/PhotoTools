@@ -117,11 +117,11 @@ namespace PhotoTool
                 if ( addin.LargeIcon != null )
                     btnAddin.Image = addin.LargeIcon;
                 else
-                    btnAddin.Image = addins.LargeImage;
+                    btnAddin.Image = addins.LargeApplicationImage;
                 if ( addin.SmallIcon != null )
                     btnAddin.SmallImage = addin.SmallIcon;
                 else
-                    btnAddin.SmallImage = addins.SmallImage;
+                    btnAddin.SmallImage = addins.SmallApplicationImage;
 
                 btnAddin.Text = I18N._( addin.DisplayName );
                 btnAddin.ToolTip = I18N._( addin.Description );
@@ -177,11 +177,13 @@ namespace PhotoTool
                 if ( addin.LargeIcon != null )
                     btnAddin.Image = addin.LargeIcon;
                 else
-                    btnAddin.Image = addins.LargeImage;
+                    btnAddin.Image = addins.LargeActionImage;
+                    //btnAddin.Image = addins.LargeImage;
                 if ( addin.SmallIcon != null )
                     btnAddin.SmallImage = addin.SmallIcon;
                 else
-                    btnAddin.SmallImage = addins.SmallImage;
+                    btnAddin.SmallImage = addins.SmallActionImage;
+                    //btnAddin.SmallImage = addins.SmallImage;
 
                 btnAddin.Text = I18N._( addin.DisplayName );
                 btnAddin.ToolTip = I18N._( addin.Description );
@@ -196,6 +198,14 @@ namespace PhotoTool
                 RibTabAction.Panels.Insert( c, kv.Value );
                 c++;
             }
+            if ( RibTabActInternal.Items.Count == 0 )
+                RibTabActInternal.Visible = false;
+            else
+                RibTabActInternal.Visible = true;
+            if ( RibTabActExternal.Items.Count == 0 )
+                RibTabActExternal.Visible = false;
+            else
+                RibTabActExternal.Visible = true;
         }
 
         /// <summary>
@@ -243,11 +253,11 @@ namespace PhotoTool
                 if ( addin.LargeIcon != null )
                     btnAddin.Image = addin.LargeIcon;
                 else
-                    btnAddin.Image = addins.LargeImage;
+                    btnAddin.Image = addins.LargeEffectImage;
                 if ( addin.SmallIcon != null )
                     btnAddin.SmallImage = addin.SmallIcon;
                 else
-                    btnAddin.SmallImage = addins.SmallImage;
+                    btnAddin.SmallImage = addins.SmallEffectImage;
 
                 btnAddin.Text = I18N._( addin.DisplayName );
                 btnAddin.ToolTip = I18N._( addin.Description );
@@ -262,6 +272,14 @@ namespace PhotoTool
                 RibTabEffect.Panels.Insert( c, kv.Value );
                 c++;
             }
+            if ( RibTabEffectInternal.Items.Count == 0 )
+                RibTabEffectInternal.Visible = false;
+            else
+                RibTabEffectInternal.Visible = true;
+            if ( RibTabEffectExternal.Items.Count == 0 )
+                RibTabEffectExternal.Visible = false;
+            else
+                RibTabEffectExternal.Visible = true;
         }
 
         /// <summary>
@@ -579,12 +597,13 @@ namespace PhotoTool
             string[] exts = new string[] { ".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp", ".gif" };
 
             string[] flist = args.Where(f => File.Exists(f) && exts.Contains(Path.GetExtension(f))).ToArray();
+            object result = true;
 
             if ( flist.Length == 1 )
             {
                 if ( addins.CurrentApp is IAddin )
                 {
-                    addins.CurrentApp.Open( flist );
+                    addins.CurrentApp.Command( AddinCommand.Open, out result, flist );
                 }
                 else
                 {
@@ -592,7 +611,7 @@ namespace PhotoTool
                     {
                         addins.CurrentApp = addins.Apps["Editor"];
                         addins.CurrentApp.Show( this );
-                        addins.CurrentApp.Open( flist );
+                        addins.CurrentApp.Command( AddinCommand.Open, out result, flist );
                     }
                 }
             }
@@ -602,7 +621,7 @@ namespace PhotoTool
                 {
                     addins.CurrentApp = addins.Apps["Batch"];
                     addins.CurrentApp.Show( this );
-                    addins.CurrentApp.Open( flist );
+                    addins.CurrentApp.Command( AddinCommand.Open, out result, flist );
                 }
             }
 

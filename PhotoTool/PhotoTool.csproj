@@ -175,6 +175,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\UIAboutBox_32x.png" />
+    <None Include="Resources\UIAboutBox_16x.png" />
     <None Include="Resources\Log_32x.png" />
     <None Include="Resources\Log_16x.png" />
     <None Include="Resources\Run_32x.png" />

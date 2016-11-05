@@ -326,6 +326,7 @@ namespace PhotoTool
 
         #endregion Zoom Command Events
 
+        #region RibbonTab System
         /// <summary>
         /// 
         /// </summary>
@@ -345,7 +346,7 @@ namespace PhotoTool
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cmdOptionLogger_Click( object sender, EventArgs e )
+        private void cmdLogger_Click( object sender, EventArgs e )
         {
             if ( !( fmLog is LogForm ) || fmLog.IsDisposed )
             {
@@ -354,5 +355,13 @@ namespace PhotoTool
             }
             fmLog.Show();
         }
+
+        private void cmdAbout_Click( object sender, EventArgs e )
+        {
+
+        }
+
+        #endregion
+
     }
 }
