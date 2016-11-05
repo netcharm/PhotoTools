@@ -61,6 +61,26 @@ namespace NetCharm.Image.Addins.Properties {
         }
         
         /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Action_16x {
+            get {
+                object obj = ResourceManager.GetObject("Action_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Action_32x {
+            get {
+                object obj = ResourceManager.GetObject("Action_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Icon AddIn {
@@ -96,6 +116,46 @@ namespace NetCharm.Image.Addins.Properties {
         internal static System.Drawing.Bitmap AddInHost_16x {
             get {
                 object obj = ResourceManager.GetObject("AddInHost_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Application_16x {
+            get {
+                object obj = ResourceManager.GetObject("Application_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Application_32x {
+            get {
+                object obj = ResourceManager.GetObject("Application_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Effect_16x {
+            get {
+                object obj = ResourceManager.GetObject("Effect_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Effect_32x {
+            get {
+                object obj = ResourceManager.GetObject("Effect_32x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

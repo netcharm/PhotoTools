@@ -220,6 +220,57 @@ namespace NetCharm.Image.Addins
             get { return _defaultSmallImage; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private System.Drawing.Image _defaultLargeImageApp = Properties.Resources.Application_32x as Bitmap;
+        public System.Drawing.Image LargeApplicationImage
+        {
+            get { return _defaultLargeImageApp; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private System.Drawing.Image _defaultSmallImageApp = Properties.Resources.Application_16x as Bitmap;
+        public System.Drawing.Image SmallApplicationImage
+        {
+            get { return _defaultSmallImageApp; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private System.Drawing.Image _defaultLargeImageAction = Properties.Resources.Action_32x as Bitmap;
+        public System.Drawing.Image LargeActionImage
+        {
+            get { return _defaultLargeImageAction; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private System.Drawing.Image _defaultSmallImageAction = Properties.Resources.Action_16x as Bitmap;
+        public System.Drawing.Image SmallActionImage
+        {
+            get { return _defaultSmallImageAction; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private System.Drawing.Image _defaultLargeImageEffect = Properties.Resources.Effect_32x as Bitmap;
+        public System.Drawing.Image LargeEffectImage
+        {
+            get { return _defaultLargeImageEffect; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private System.Drawing.Image _defaultSmallImageEffect = Properties.Resources.Effect_16x as Bitmap;
+        public System.Drawing.Image SmallEffectImage
+        {
+            get { return _defaultSmallImageEffect; }
+        }
+
         private void InitAddinList()
         {
             if ( !( _apps is Dictionary<string, IAddin> ) )
