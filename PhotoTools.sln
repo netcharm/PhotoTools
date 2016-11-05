@@ -34,7 +34,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchProcess", "Addins\01_A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalApp", "addins\01_Apps\InternalApp\InternalApp.csproj", "{32E1318C-9464-415B-893D-3B812F5F05F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalFilters", "addins\03_Filters\InternalFilters\InternalFilters.csproj", "{3FFFD0B2-0AD6-4257-B91E-04CE69714113}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalFilters", "addins\00_Filters\InternalFilters\InternalFilters.csproj", "{3FFFD0B2-0AD6-4257-B91E-04CE69714113}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_Effects", "03_Effects", "{BFCA8302-9BA1-46F1-9881-F75F3DFCDB7F}"
 EndProject
