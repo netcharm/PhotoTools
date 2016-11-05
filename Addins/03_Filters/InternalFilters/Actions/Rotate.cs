@@ -86,6 +86,16 @@ namespace InternalFilters.Actions
         /// <summary>
         /// 
         /// </summary>
+        private bool _success = false;
+        public override bool Success
+        {
+            get { return ( _success ); }
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="parent"></param>
         public override void Show( Form parent = null )
         {
@@ -97,6 +107,7 @@ namespace InternalFilters.Actions
             }
             if ( fm.ShowDialog() == DialogResult.OK )
             {
+                _success = true;
                 if ( Params.ContainsKey( "Mode" ) )
                     Params["Mode"] = fm.GetMode( "Mode" );
                 else
@@ -114,6 +125,8 @@ namespace InternalFilters.Actions
 
                 ImgDst = Apply( ImgSrc );
             }
+            else
+                _success = false;
             if ( fm != null )
             {
                 fm.Dispose();

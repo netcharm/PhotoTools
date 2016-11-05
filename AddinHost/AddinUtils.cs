@@ -282,6 +282,40 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="imageFile"></param>
+        /// <param name="iconFile"></param>
+        public static void BitmapToIcon( string imageFile, string iconFile )
+        {
+            // Create a Bitmap object from an image file.
+            Bitmap bmp = new Bitmap( imageFile );
+
+            Icon newIcon = BitmapToIcon( bmp );
+
+            //Write Icon to File Stream
+            FileStream fs = new FileStream( iconFile, FileMode.OpenOrCreate );
+            newIcon.Save( fs );
+            fs.Close();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        public static Icon BitmapToIcon( System.Drawing.Image image )
+        {
+            // Create a Bitmap object from an image file.
+            Bitmap bmp = image as Bitmap;
+            // Get an Hicon for myBitmap.
+            IntPtr Hicon = bmp.GetHicon();
+            // Create a new icon from the handle.
+            Icon newIcon = Icon.FromHandle(Hicon);
+
+            return ( newIcon );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="filter"></param>
         /// <param name="img"></param>
         /// <returns></returns>
@@ -634,5 +668,66 @@ namespace NetCharm.Image.Addins
             return ( result );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="size"></param>
+        /// <param name="region"></param>
+        /// <param name="aspect"></param>
+        /// <param name="aspectFactor"></param>
+        /// <param name="force"></param>
+        /// <returns></returns>
+        public static RectangleF MakeAspectRegion( Size size, RectangleF region, float aspect, float aspectFactor, bool force = false )
+        {
+            RectangleF result = new RectangleF(region.X, region.Y, region.Width, region.Height);
+
+            if ( force || region.Width == 0 || region.Height == 0 )
+            {
+                result.X = size.Width / 2.0f;
+                result.Y = size.Height / 2.0f;
+                result.Width = 0;
+                result.Height = 0;
+                float w = size.Width;
+                float h = size.Height;
+                if ( aspectFactor >= 1 && size.Width >= size.Height )
+                {
+                    w = h * aspectFactor;
+                    if ( w > size.Width )
+                    {
+                        w = size.Width;
+                        h = w / aspectFactor;
+                    }
+                }
+                else if ( aspectFactor >= 1 && size.Width < size.Height )
+                {
+                    h = w / aspectFactor;
+                    if ( h > size.Height )
+                    {
+                        h = size.Height;
+                        w = h * aspectFactor;
+                    }
+                }
+                else if ( aspectFactor < 1 && size.Width >= size.Height )
+                {
+                    w = h * aspectFactor;
+                    if ( w > size.Width )
+                    {
+                        w = size.Width;
+                        h = w / aspectFactor;
+                    }
+                }
+                else
+                {
+                    h = w / aspectFactor;
+                    if ( h > size.Height )
+                    {
+                        h = size.Height;
+                        w = h * aspectFactor;
+                    }
+                }
+                result.Inflate( w / 2.0f, h / 2.0f );
+            }
+            return ( result );
+        }
     }
 }

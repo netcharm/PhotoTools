@@ -16,6 +16,7 @@ namespace InternalFilters
         private AddinHost Host = null;
         private IAddin Addin = null;
 
+
         private static Image ImgSrc = null;
         private static Image ImgDst = null;
         public Image ImageData
@@ -27,13 +28,20 @@ namespace InternalFilters
             }
             set
             {
+                if ( imgEditor.Image is Image ) HistoryUndo.Push( imgEditor.Image );
                 ImgSrc = value;
                 SetSizeMode();
                 imgEditor.Zoom = 100;
                 imgEditor.Image = ImgSrc;
                 imgEditor.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Normal;
+
+                Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 0 ) );
+                Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Redo, HistoryRedo.Count > 0 ) );
             }
         }
+
+        private Stack<Image> HistoryUndo = new Stack<Image>(10);
+        private Stack<Image> HistoryRedo = new Stack<Image>(10);
 
         private bool ShiftPressed = false;
         PointF pO = new Point(0,0);
@@ -127,6 +135,40 @@ namespace InternalFilters
             }
             return ( imgEditor.Zoom );
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        internal object Undo()
+        {
+            var img = HistoryUndo.Pop();
+            if(img is Image)
+            {
+                HistoryRedo.Push( imgEditor.Image );
+                imgEditor.Image = img;
+            }
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 0 ) );
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Redo, HistoryRedo.Count > 0 ) );
+            return ( true );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        internal object Redo()
+        {
+            var img = HistoryRedo.Pop();
+            if ( img is Image )
+            {
+                HistoryUndo.Push( img );
+                imgEditor.Image = img;
+            }
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 0 ) );
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Redo, HistoryRedo.Count > 0 ) );
+            return ( true );
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -266,16 +308,30 @@ namespace InternalFilters
             imgEditor.SelectionRegion = rect;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void imgEditor_ZoomChanged( object sender, EventArgs e )
         {
             //
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void imgEditor_Zoomed( object sender, Cyotek.Windows.Forms.ImageBoxZoomEventArgs e )
         {
             Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.ZoomLevel, imgEditor.Zoom ) );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         internal Rectangle GetImageSelection()
         {
             Rectangle result = new Rectangle(
@@ -286,14 +342,23 @@ namespace InternalFilters
             return ( result );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="selection"></param>
         internal void SetImageSelection(RectangleF selection)
         {
             imgEditor.SelectionRegion = selection;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="selection"></param>
         internal void SetImageSelection( Rectangle selection )
         {
             imgEditor.SelectionRegion = selection;
         }
+
     }
 }

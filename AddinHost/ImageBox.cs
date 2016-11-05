@@ -59,6 +59,12 @@ namespace NetCharm.Image.Addins
             get { return ( Viewer.SelectionRegion ); }
             set { Viewer.SelectionRegion = value; }
         }
+        private bool _selectionKeepAspectRatio = false;
+        public bool SelectionKeepAspect
+        {
+            get { return ( _selectionKeepAspectRatio ); }
+            set { _selectionKeepAspectRatio = value; }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -204,12 +210,7 @@ namespace NetCharm.Image.Addins
                     pL.X = pN.X;
                     pL.Y = pN.Y;
 
-                    float max = 0;
-                    float min = 0;
-                    float nw = 0;
-                    float nh = 0;
-
-                    if ( cropMode == CropMode.AspectRatio )
+                    if ( _selectionKeepAspectRatio )
                     {
                         #region Keep Aspect Ration Resize SelectionRegion
 

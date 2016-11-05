@@ -12,9 +12,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Media.Imaging;
 
-[assembly: Addin]
-[assembly: AddinDependency( "AddinHost", "1.0" )]
-
 namespace InternalFilters
 {
     [Extension]
@@ -299,6 +296,15 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
+        private bool _success = true;
+        public bool Success
+        {
+            get { return ( _success ); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="cmd"></param>
         /// <param name="result"></param>
         /// <returns></returns>
@@ -312,6 +318,12 @@ namespace InternalFilters
                         Open( cmdArgs[0] as string );
                     else if ( cmdArgs.Length > 0 && cmdArgs[0] is string[] )
                         Open( cmdArgs[0] as string[] );
+                    break;
+                case AddinCommand.Undo:
+                    if ( fm is EditorForm ) result = fm.Undo();
+                    break;
+                case AddinCommand.Redo:
+                    if ( fm is EditorForm ) result = fm.Redo();
                     break;
                 case AddinCommand.ZoomIn:
                 case AddinCommand.ZoomOut:

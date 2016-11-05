@@ -146,7 +146,7 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void cmdFileSave_Click( object sender, EventArgs e )
         {
-            if ( addins.CurrentApp != null )
+            if ( addins.CurrentApp != null && addins.CurrentApp is IAddin )
             {
                 string fname = I18N._("NewFile");
                 object fn = fname;
@@ -193,6 +193,26 @@ namespace PhotoTool
 
         #endregion File Command Events
 
+        #region Edit Command Events
+        private void cmdEditUndo_Click( object sender, EventArgs e )
+        {
+            if ( addins.CurrentApp != null && addins.CurrentApp is IAddin )
+            {
+                object data = null;
+                addins.CurrentApp.Command( AddinCommand.Undo, out data );
+            }
+        }
+
+        private void cmdEditRedo_Click( object sender, EventArgs e )
+        {
+            if ( addins.CurrentApp != null && addins.CurrentApp is IAddin )
+            {
+                object data = null;
+                addins.CurrentApp.Command( AddinCommand.Redo, out data );
+            }
+        }
+        #endregion
+
         #region Clipboard Command Events
         /// <summary>
         /// 
@@ -201,7 +221,7 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void cmdEditCut_Click( object sender, EventArgs e )
         {
-            if ( addins.CurrentApp != null )
+            if ( addins.CurrentApp != null && addins.CurrentApp is IAddin )
             {
                 object data = null;
                 addins.CurrentApp.Command( AddinCommand.Cut, out data );
@@ -214,7 +234,7 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void cmdEditCopy_Click( object sender, EventArgs e )
         {
-            if ( addins.CurrentApp != null )
+            if ( addins.CurrentApp != null && addins.CurrentApp is IAddin )
             {
                 object data = null;
                 addins.CurrentApp.Command( AddinCommand.Copy, out data );
@@ -227,7 +247,7 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void cmdEditPaste_Click( object sender, EventArgs e )
         {
-            if ( addins.CurrentApp != null )
+            if ( addins.CurrentApp != null && addins.CurrentApp is IAddin )
             {
                 object data = null;
                 addins.CurrentApp.Command( AddinCommand.Paste, out data );
@@ -240,7 +260,7 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void cmdEditClear_Click( object sender, EventArgs e )
         {
-            if ( addins.CurrentApp != null )
+            if ( addins.CurrentApp != null && addins.CurrentApp is IAddin )
             {
                 object data = null;
                 addins.CurrentApp.Command( AddinCommand.Clear, out data );
@@ -256,7 +276,7 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void cmdViewZoomIn_Click( object sender, EventArgs e )
         {
-            if(addins.CurrentApp != null)
+            if ( addins.CurrentApp != null && addins.CurrentApp is IAddin )
             {
                 object zoomLevel = 100;
                 addins.CurrentApp.Command( AddinCommand.ZoomIn, out zoomLevel );
@@ -271,7 +291,7 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void cmdViewZoomOut_Click( object sender, EventArgs e )
         {
-            if ( addins.CurrentApp != null )
+            if ( addins.CurrentApp != null && addins.CurrentApp is IAddin )
             {
                 object zoomLevel = 100;
                 addins.CurrentApp.Command( AddinCommand.ZoomOut, out zoomLevel );
@@ -286,7 +306,7 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void cmdViewZoomFit_Click( object sender, EventArgs e )
         {
-            if ( addins.CurrentApp != null )
+            if ( addins.CurrentApp != null && addins.CurrentApp is IAddin )
             {
                 object zoomLevel = 100;
                 addins.CurrentApp.Command( AddinCommand.ZoomFit, out zoomLevel );
@@ -301,7 +321,7 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void cmdViewZoom100_Click( object sender, EventArgs e )
         {
-            if ( addins.CurrentApp != null )
+            if ( addins.CurrentApp != null && addins.CurrentApp is IAddin )
             {
                 object zoomLevel = 100;
                 addins.CurrentApp.Command( AddinCommand.Zoom100, out zoomLevel );
@@ -316,7 +336,7 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void cmdViewZoomRegion_Click( object sender, EventArgs e )
         {
-            if ( addins.CurrentApp != null )
+            if ( addins.CurrentApp != null && addins.CurrentApp is IAddin )
             {
                 object zoomLevel = 100;
                 addins.CurrentApp.Command( AddinCommand.ZoomRegion, out zoomLevel );
@@ -326,7 +346,7 @@ namespace PhotoTool
 
         #endregion Zoom Command Events
 
-        #region RibbonTab System
+        #region System Command Events
         /// <summary>
         /// 
         /// </summary>

@@ -11,8 +11,6 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
 
-[assembly: Addin]
-[assembly: AddinDependency( "AddinHost", "1.0" )]
 namespace BatchProcess
 {
     [Extension]
@@ -195,7 +193,16 @@ namespace BatchProcess
         {
             get { return ( _params ); }
         }
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _success = true;
+        public bool Success
+        {
+            get { return ( _success ); }
+        }
+
         /// <summary>
         /// 
         /// </summary>

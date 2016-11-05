@@ -313,6 +313,26 @@ namespace PhotoTool.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Redo_16x {
+            get {
+                object obj = ResourceManager.GetObject("Redo_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Redo_32x {
+            get {
+                object obj = ResourceManager.GetObject("Redo_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Run_16x {
             get {
                 object obj = ResourceManager.GetObject("Run_16x", resourceCulture);
@@ -366,6 +386,26 @@ namespace PhotoTool.Properties {
         internal static System.Drawing.Bitmap Settings_32x {
             get {
                 object obj = ResourceManager.GetObject("Settings_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Undo_16x {
+            get {
+                object obj = ResourceManager.GetObject("Undo_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Undo_32x {
+            get {
+                object obj = ResourceManager.GetObject("Undo_32x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -67,44 +67,53 @@ namespace InternalFilters.Actions
         /// <summary>
         /// 
         /// </summary>
+        private bool _success = false;
+        public override bool Success
+        {
+            get { return ( _success ); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="form"></param>
         /// <param name="img"></param>
-        private void SetParams( CropForm form, System.Drawing.Image img = null )
+        protected override void SetParams( Form form, System.Drawing.Image img = null )
         {
             if ( Params.ContainsKey( "CropMode" ) )
-                form.ParamCropMode = Params["CropMode"];
+                ( form as CropForm ).ParamCropMode = Params["CropMode"];
             if ( Params.ContainsKey( "CropSide" ) )
-                form.ParamCropSide = Params["CropSide"];
+                ( form as CropForm ).ParamCropSide = Params["CropSide"];
             if ( Params.ContainsKey( "CropAspect" ) )
-                form.ParamCropAspect = Params["CropAspect"];
+                ( form as CropForm ).ParamCropAspect = Params["CropAspect"];
             if ( Params.ContainsKey( "CropRegion" ) )
-                form.ParamCropRegion = Params["CropRegion"];
+                ( form as CropForm ).ParamCropRegion = Params["CropRegion"];
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="form"></param>
-        private void GetParams( CropForm form )
+        protected override void GetParams( Form form )
         {
             if ( Params.ContainsKey( "CropMode" ) )
-                Params["CropMode"] = form.ParamCropMode;
+                Params["CropMode"] = ( form as CropForm ).ParamCropMode;
             else
-                Params.Add( "CropMode", form.ParamCropMode );
+                Params.Add( "CropMode", ( form as CropForm ).ParamCropMode );
 
             if ( Params.ContainsKey( "CropSide" ) )
-                Params["CropSide"] = form.ParamCropSide;
+                Params["CropSide"] = ( form as CropForm ).ParamCropSide;
             else
-                Params.Add( "CropSide", form.ParamCropSide );
+                Params.Add( "CropSide", ( form as CropForm ).ParamCropSide );
 
             if ( Params.ContainsKey( "CropAspect" ) )
-                Params["CropAspect"] = form.ParamCropAspect;
+                Params["CropAspect"] = ( form as CropForm ).ParamCropAspect;
             else
-                Params.Add( "CropAspect", form.ParamCropAspect );
+                Params.Add( "CropAspect", ( form as CropForm ).ParamCropAspect );
 
             if ( Params.ContainsKey( "CropRegion" ) )
-                Params["CropRegion"] = form.ParamCropRegion;
+                Params["CropRegion"] = ( form as CropForm ).ParamCropRegion;
             else
-                Params.Add( "CropRegion", form.ParamCropRegion );
+                Params.Add( "CropRegion", ( form as CropForm ).ParamCropRegion );
         }
 
         /// <summary>
@@ -113,6 +122,8 @@ namespace InternalFilters.Actions
         /// <param name="parent"></param>
         public override void Show( Form parent = null )
         {
+            ImgDst = ImgSrc;
+
             if ( fm == null )
             {
                 fm = new CropForm( this );
@@ -124,10 +135,13 @@ namespace InternalFilters.Actions
             }
             if ( fm.ShowDialog() == DialogResult.OK )
             {
+                _success = true;
                 GetParams( fm );
                 ImgDst = Apply( ImgSrc );
                 Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.SetImageSelection, new RectangleF( 0, 0, 0, 0 ) ) );
             }
+            else
+                _success = false;
             if ( fm != null )
             {
                 fm.Dispose();
@@ -156,7 +170,7 @@ namespace InternalFilters.Actions
             else
                 return ( ImgSrc );
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -167,7 +181,7 @@ namespace InternalFilters.Actions
         public override bool Command( AddinCommand cmd, out object result, params object[] args )
         {
             result = null;
-            switch ( cmd)
+            switch ( cmd )
             {
                 case AddinCommand.GetImageSelection:
                     if ( fm is CropForm )

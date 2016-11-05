@@ -114,6 +114,8 @@ namespace NetCharm.Image.Addins
         Cut = 202,
         Paste = 203,
         Clear = 204,
+        Undo = 210,
+        Redo = 211,
 
         Zoom = 301,
         ZoomIn = 302,

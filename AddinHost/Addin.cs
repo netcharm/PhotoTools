@@ -156,6 +156,11 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
+        bool Success { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         bool SupportMultiFile { get; }
 
         /// <summary>
@@ -370,6 +375,17 @@ namespace NetCharm.Image.Addins
         {
             get { return ( _params ); }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected internal bool _success = false;
+        public virtual bool Success
+        {
+            //get { throw new NotImplementedException(); }
+            get { return ( _success ); }
+        }
+
         #endregion
 
         #region I18N private routines
@@ -424,6 +440,24 @@ namespace NetCharm.Image.Addins
         #endregion
 
         #region IAddin public routines
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="img"></param>
+        protected virtual void SetParams( Form form, System.Drawing.Image img = null )
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
+        protected virtual void GetParams( Form form )
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// 
         /// </summary>

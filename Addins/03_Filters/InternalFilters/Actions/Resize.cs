@@ -341,6 +341,7 @@ namespace InternalFilters.Actions
             }
             if ( fm.ShowDialog() == DialogResult.OK )
             {
+                _success = true;
                 GetParams( fm );
                 ImgDst = Apply( ImgSrc );
             }
@@ -391,6 +392,15 @@ namespace InternalFilters.Actions
                 return ( dst );
             }
             return ( image );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _success = false;
+        public bool Success
+        {
+            get { return ( _success ); }
         }
 
         /// <summary>

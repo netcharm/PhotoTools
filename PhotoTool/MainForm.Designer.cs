@@ -36,6 +36,9 @@
             this.cmdFileSave = new System.Windows.Forms.RibbonButton();
             this.cmdFileSep01 = new System.Windows.Forms.RibbonSeparator();
             this.cmdFileApply = new System.Windows.Forms.RibbonButton();
+            this.RibTabMainEdit = new System.Windows.Forms.RibbonPanel();
+            this.cmdEditUndo = new System.Windows.Forms.RibbonButton();
+            this.cmdEditRedo = new System.Windows.Forms.RibbonButton();
             this.RibTabMainClipboard = new System.Windows.Forms.RibbonPanel();
             this.cmdEditCut = new System.Windows.Forms.RibbonButton();
             this.cmdEditCopy = new System.Windows.Forms.RibbonButton();
@@ -90,6 +93,7 @@
             // RibTabMain
             // 
             this.RibTabMain.Panels.Add(this.RibTabMainFile);
+            this.RibTabMain.Panels.Add(this.RibTabMainEdit);
             this.RibTabMain.Panels.Add(this.RibTabMainClipboard);
             this.RibTabMain.Panels.Add(this.RibTabMainView);
             this.RibTabMain.Panels.Add(this.RibTabMainApp);
@@ -122,6 +126,26 @@
             this.cmdFileApply.Image = global::PhotoTool.Properties.Resources.Run_32x;
             this.cmdFileApply.SmallImage = global::PhotoTool.Properties.Resources.Run_16x;
             resources.ApplyResources(this.cmdFileApply, "cmdFileApply");
+            // 
+            // RibTabMainEdit
+            // 
+            this.RibTabMainEdit.Items.Add(this.cmdEditUndo);
+            this.RibTabMainEdit.Items.Add(this.cmdEditRedo);
+            resources.ApplyResources(this.RibTabMainEdit, "RibTabMainEdit");
+            // 
+            // cmdEditUndo
+            // 
+            this.cmdEditUndo.Image = global::PhotoTool.Properties.Resources.Undo_32x;
+            this.cmdEditUndo.SmallImage = global::PhotoTool.Properties.Resources.Undo_16x;
+            resources.ApplyResources(this.cmdEditUndo, "cmdEditUndo");
+            this.cmdEditUndo.Click += new System.EventHandler(this.cmdEditUndo_Click);
+            // 
+            // cmdEditRedo
+            // 
+            this.cmdEditRedo.Image = global::PhotoTool.Properties.Resources.Redo_32x;
+            this.cmdEditRedo.SmallImage = global::PhotoTool.Properties.Resources.Redo_16x;
+            resources.ApplyResources(this.cmdEditRedo, "cmdEditRedo");
+            this.cmdEditRedo.Click += new System.EventHandler(this.cmdEditRedo_Click);
             // 
             // RibTabMainClipboard
             // 
@@ -585,6 +609,9 @@
         private System.Windows.Forms.RibbonButton cmdLogger;
         private System.Windows.Forms.RibbonPanel RibTabSysAbout;
         private System.Windows.Forms.RibbonButton cmdAbout;
+        private System.Windows.Forms.RibbonPanel RibTabMainEdit;
+        private System.Windows.Forms.RibbonButton cmdEditUndo;
+        private System.Windows.Forms.RibbonButton cmdEditRedo;
     }
 }
 

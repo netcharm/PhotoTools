@@ -201,6 +201,16 @@ namespace AddinTest
         {
             get { return ( _params ); }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _success = true;
+        public bool Success
+        {
+            get { return ( _success ); }
+        }
+
         /// <summary>
         /// 
         /// </summary>

@@ -310,12 +310,15 @@ namespace PhotoTool
             string an = ( sender as RibbonButton ).Value;
             if ( addins.CurrentApp != null && addins.Actions.ContainsKey( an ) )
             {
-                addins.CurrentAction = addins.Actions[an];
-                if ( addins.CurrentAction != null )
+                addins.CurrentFilter = addins.Actions[an];
+                if ( addins.CurrentFilter != null )
                 {
-                    addins.CurrentAction.ImageData = addins.CurrentApp.ImageData;
-                    addins.CurrentAction.Show( this );
-                    addins.CurrentApp.ImageData = addins.CurrentAction.ImageData;
+                    addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
+                    addins.CurrentFilter.Show( this );
+                    if( addins.CurrentFilter.Success)
+                    {
+                        addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                    }
 
                     int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
                     tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height} x {bits}";
@@ -338,7 +341,10 @@ namespace PhotoTool
                 {
                     addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
                     addins.CurrentFilter.Show( this );
-                    addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                    if ( addins.CurrentFilter.Success )
+                    {
+                        addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                    }
 
                     int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
                     tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height} x {bits}";
@@ -353,11 +359,16 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void AddinsCommandPropertiesChange( object sender, CommandPropertiesChangeEventArgs e )
         {
-            //tssLabelImageName.Text = I18N._( "None" );
-            //tssLabelImageSize.Text = "0 x 0";
-            //tssLabelImageZoom.Text = "";
             switch ( e.Command )
             {
+                case AddinCommand.Undo:
+                    if ( e.Property is bool )
+                        cmdEditUndo.Enabled = (bool) e.Property;
+                    break;
+                case AddinCommand.Redo:
+                    if ( e.Property is bool )
+                        cmdEditRedo.Enabled = (bool) e.Property;
+                    break;
                 case AddinCommand.Log:
                     if ( fmLog is LogForm && !fmLog.IsDisposed  )
                     {
@@ -393,6 +404,11 @@ namespace PhotoTool
                     break;
                 default:
                     break;
+            }
+            if( addins.CurrentApp is IAddin && addins.CurrentApp.ImageData is Image)
+            {
+                int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
+                tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height} x {bits}";
             }
         }
 
