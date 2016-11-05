@@ -135,6 +135,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddIn.ico" />
+    <None Include="Resources\Application_32x.png" />
+    <None Include="Resources\Application_16x.png" />
+    <None Include="Resources\Action_32x.png" />
+    <None Include="Resources\Action_16x.png" />
+    <None Include="Resources\Effects_32x.png" />
+    <None Include="Resources\Effects_16x.png" />
     <None Include="Resources\AddIn_16x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
