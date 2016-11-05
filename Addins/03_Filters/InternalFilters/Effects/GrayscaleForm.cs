@@ -14,12 +14,13 @@ namespace InternalFilters.Effects
     {
         internal AddinHost host;
         private IAddin addin;
-        private GrayscaleMode grayscaleMode;
         private Image thumb = null;
+
 
         /// <summary>
         /// 
         /// </summary>
+        private GrayscaleMode grayscaleMode;
         public ParamItem ParamGrayscaleMode
         {
             get
@@ -33,7 +34,6 @@ namespace InternalFilters.Effects
             }
             internal set { grayscaleMode = (GrayscaleMode) value.Value; }
         }
-
 
         public GrayscaleForm()
         {
@@ -52,13 +52,6 @@ namespace InternalFilters.Effects
             imgPreview.Image = thumb;
 
             cbGrayMode.DataSource = Enum.GetValues( typeof( GrayscaleMode ) );
-
-            //cbGrayMode.Items.Clear();
-            //cbGrayMode.Items.Add( AddinUtils._( addin, AddinUtils.T( "None" ) ) );
-            //cbGrayMode.Items.Add( AddinUtils._( addin, AddinUtils.T( "Grayscale" ) ) );
-            //cbGrayMode.Items.Add( AddinUtils._( addin, AddinUtils.T( "Sepia" ) ) );
-            //cbGrayMode.Items.Add( AddinUtils._( addin, AddinUtils.T( "Tawawa" ) ) );
-            //cbGrayMode.Items.Add( AddinUtils._( addin, AddinUtils.T( "Custom" ) ) );
         }
 
         private void GrayscaleForm_Load( object sender, EventArgs e )

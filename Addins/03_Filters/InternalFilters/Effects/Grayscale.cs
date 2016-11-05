@@ -24,6 +24,7 @@ namespace InternalFilters.Effects
         Sepia_2,
         Sepia_3,
         Tawawa,
+        TawawaR,
         Sepia,
         Custom
     }
@@ -157,6 +158,9 @@ namespace InternalFilters.Effects
                     break;
                 case GrayscaleMode.Tawawa:
                     dst = Tawawa( image );
+                    break;
+                case GrayscaleMode.TawawaR:
+                    dst = Tawawa( image, false );
                     break;
                 case GrayscaleMode.Custom:
                     dst = Gray( image, grayscaleMode );
@@ -322,30 +326,40 @@ namespace InternalFilters.Effects
             return ( dst );
         }
 
-        internal Image Tawawa(Image image)
+        internal Image Tawawa( Image image, bool rgb = true )
         {
             Bitmap src = Accord.Imaging.Image.Clone( image as Bitmap, PixelFormat.Format32bppArgb );
             Accord.Imaging.UnmanagedImage dst = Accord.Imaging.UnmanagedImage.FromManagedImage(src);
             for ( int h = 0; h < dst.Height; h++ )
             {
-                for ( int w = 0; w< dst.Width; w++ )
+                for ( int w = 0; w < dst.Width; w++ )
                 {
                     Color pcSrc = dst.GetPixel(w, h);
-                    //double y = pcSrc.R * 0.3 + pcSrc.G * 0.59 + pcSrc.B * 0.11;
-                    double y = pcSrc.B * 0.3 + pcSrc.G * 0.59 + pcSrc.R * 0.11;
+                    double y = 0;
+
+                    if ( rgb )
+                        y = pcSrc.R * 0.3 + pcSrc.G * 0.59 + pcSrc.B * 0.11;
+                    else
+                        y = pcSrc.B * 0.3 + pcSrc.G * 0.59 + pcSrc.R * 0.11;
+
                     y = y / 255 * 200 + 55;
                     if ( y > 255 ) y = 255;
+                    int iy = (int)Math.Round(y);
 
-                    int g = (int)Math.Round(y);
-                    int r = (int)Math.Round(g > 85 ? ( ( y - 85 ) / 255 * 340 ) : 0);
-                    int b = g > 135 ? 255 : g + 120;
+                    int r = (int)Math.Round(iy > 85 ? ( ( y - 85 ) / 255 * 340 ) : 0);
+                    int g = iy;
+                    int b = iy > 135 ? 255 : g + 120;
 
-                    Color pcDst = Color.FromArgb(pcSrc.A, r, g, b);
-
-                    //pcDst.R = iy > 85 ? ( ( y - 85 ) / 255 * 340 ) : 0;
-                    //pcDst.G = iy;
-                    //pcDst.B = iy > 135 ? 255 : iy + 120;
-                    dst.SetPixel( w, h, pcDst );
+                    if ( rgb )
+                    {
+                        Color pcDst = Color.FromArgb(pcSrc.A, r, g, b);
+                        dst.SetPixel( w, h, pcDst );
+                    }
+                    else
+                    {
+                        Color pcDst = Color.FromArgb(pcSrc.A, b, g, r);
+                        dst.SetPixel( w, h, pcDst );
+                    }
                 }
             }
             return ( dst.ToManagedImage() );
