@@ -92,16 +92,16 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Addin.cs" />
-    <Compile Include="AddinHost.cs">
+    <Compile Include="BaseAddin\Addin.cs" />
+    <Compile Include="BaseHost\AddinHost.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="AddinType.cs" />
-    <Compile Include="AddinUtils.cs" />
-    <Compile Include="ImageBox.cs">
+    <Compile Include="Common\AddinType.cs" />
+    <Compile Include="Common\AddinUtils.cs" />
+    <Compile Include="Common\ImageBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ImageBox.Designer.cs">
+    <Compile Include="Common\ImageBox.Designer.cs">
       <DependentUpon>ImageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,10 +112,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddinHost.resx">
+    <EmbeddedResource Include="BaseHost\AddinHost.resx">
       <DependentUpon>AddinHost.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImageBox.resx">
+    <EmbeddedResource Include="Common\ImageBox.resx">
       <DependentUpon>ImageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
