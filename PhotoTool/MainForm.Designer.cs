@@ -161,6 +161,7 @@
             this.cmdEditCut.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact;
             this.cmdEditCut.SmallImage = global::PhotoTool.Properties.Resources.Cut_16x;
             resources.ApplyResources(this.cmdEditCut, "cmdEditCut");
+            this.cmdEditCut.ToolTipTitle = "Cut";
             this.cmdEditCut.Click += new System.EventHandler(this.cmdEditCut_Click);
             // 
             // cmdEditCopy

@@ -340,7 +340,9 @@ namespace InternalFilters.Effects
             ColorMatrix c = GrayscaleMatrix[mode];
             a.SetColorMatrix( c, ColorMatrixFlag.Default, ColorAdjustType.Bitmap );
 
-            Bitmap src = Accord.Imaging.Image.Clone( image as Bitmap, PixelFormat.Format32bppArgb );
+            Bitmap src = image.Clone() as Bitmap;
+            if ( image.PixelFormat != PixelFormat.Format32bppArgb )
+                src = Accord.Imaging.Image.Clone( image as Bitmap, PixelFormat.Format32bppArgb );
             Bitmap dst = new Bitmap( src.Width, src.Height, src.PixelFormat );
             AddinUtils.CloneExif( src, dst );
 
@@ -361,7 +363,10 @@ namespace InternalFilters.Effects
 
         internal Image Tawawa( Image image, bool rgb = true )
         {
-            Bitmap src = Accord.Imaging.Image.Clone( image as Bitmap, PixelFormat.Format32bppArgb );
+            Bitmap src = AddinUtils.CloneImage(image) as Bitmap;
+            if ( image.PixelFormat != PixelFormat.Format32bppArgb )
+                src = Accord.Imaging.Image.Clone( image as Bitmap, PixelFormat.Format32bppArgb );
+
             Accord.Imaging.UnmanagedImage dst = Accord.Imaging.UnmanagedImage.FromManagedImage(src);
             for ( int h = 0; h < dst.Height; h++ )
             {
@@ -395,7 +400,11 @@ namespace InternalFilters.Effects
                     }
                 }
             }
-            return ( dst.ToManagedImage() );
+            Bitmap dstBmp = dst.ToManagedImage();
+            AddinUtils.CloneExif( image, dstBmp );
+            src.Dispose();
+            dst.Dispose();
+            return ( dstBmp );
         }
 
         #endregion

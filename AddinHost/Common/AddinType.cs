@@ -93,6 +93,11 @@ namespace NetCharm.Image.Addins
             }
         }
 
+        public T Peek()
+        {
+            return ( _items.Last() );
+        }
+
         public void Clear()
         {
             _items.Clear();

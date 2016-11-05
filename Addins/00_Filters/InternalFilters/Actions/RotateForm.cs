@@ -263,7 +263,7 @@ namespace InternalFilters
         {
             if ( img != null )
             {
-                Image dst = img.Clone() as Image;
+                Image dst = AddinUtils.CloneImage(img) as Image;
                 double angleNew = angle;
                 if ( angleNew < 0 ) angleNew = 360 + angleNew;
 
@@ -314,7 +314,9 @@ namespace InternalFilters
                         }
                     }
                     RotateBicubic filter = new RotateBicubic(-angleNew, keep);
-                    return ( AddinUtils.ProcessImage( filter, dst ) );
+                    dst = AddinUtils.ProcessImage( filter, dst );
+                    AddinUtils.CloneExif( img, dst );
+                    return ( dst );
                 }
             }
             return ( img );

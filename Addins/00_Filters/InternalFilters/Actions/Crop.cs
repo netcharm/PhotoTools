@@ -163,7 +163,7 @@ namespace InternalFilters.Actions
             if ( region.Width > 0 && region.Height > 0 )
             {
                 Accord.Imaging.Filters.Crop filter = new Accord.Imaging.Filters.Crop(region);
-                Bitmap dst = filter.Apply( ImgSrc as Bitmap );
+                Bitmap dst = filter.Apply( AddinUtils.CloneImage(ImgSrc) as Bitmap );
                 AddinUtils.CloneExif( ImgSrc, dst );
                 return (dst) ;
             }

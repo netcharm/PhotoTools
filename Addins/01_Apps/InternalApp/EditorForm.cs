@@ -35,7 +35,7 @@ namespace InternalFilters
                 imgEditor.Image = ImgSrc;
                 imgEditor.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Normal;
 
-                Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 0 ) );
+                Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 1 ) );
                 Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Redo, HistoryRedo.Count > 0 ) );
             }
         }
@@ -144,13 +144,13 @@ namespace InternalFilters
         /// <returns></returns>
         internal object Undo()
         {
-            var img = HistoryUndo.Pop();
+            var img = HistoryUndo.Count==1 ? HistoryUndo.Peek() : HistoryUndo.Pop();
             if(img is Image)
             {
                 HistoryRedo.Push( imgEditor.Image );
                 imgEditor.Image = img;
             }
-            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 0 ) );
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 1 ) );
             Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Redo, HistoryRedo.Count > 0 ) );
             return ( true );
         }
@@ -163,10 +163,10 @@ namespace InternalFilters
             var img = HistoryRedo.Pop();
             if ( img is Image )
             {
-                HistoryUndo.Push( img );
+                HistoryUndo.Push( imgEditor.Image );
                 imgEditor.Image = img;
             }
-            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 0 ) );
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 1 ) );
             Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Redo, HistoryRedo.Count > 0 ) );
             return ( true );
         }

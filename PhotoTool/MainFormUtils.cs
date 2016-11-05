@@ -713,12 +713,16 @@ namespace PhotoTool
         #region System Settint Load & Save routines
         private void Setting_Load()
         {
-            string json = File.ReadAllText(Path.Combine(AppPath, "settings.json"));
-            settings = JsonConvert.DeserializeObject<Dictionary<string, object>>( json );
-
-            foreach (string item in ( settings["RecentItem"] as JArray ).ToList() )
+            string jfile = Path.Combine(AppPath, "settings.json");
+            if(File.Exists(jfile))
             {
-                RecentItemAdd( item );
+                string json = File.ReadAllText(jfile);
+                settings = JsonConvert.DeserializeObject<Dictionary<string, object>>( json );
+
+                foreach ( string item in ( settings["RecentItem"] as JArray ).ToList() )
+                {
+                    RecentItemAdd( item );
+                }
             }
         }
 

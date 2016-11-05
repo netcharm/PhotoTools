@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-05 22:07+0800\n"
+"POT-Creation-Date: 2016-11-06 01:29+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -52,7 +52,7 @@ msgstr "缩放算法:"
 msgid "Resize"
 msgstr "缩放"
 
-#: Effects\GrayscaleForm.resx:246 -> $this.Text.value Effects\Grayscale.cs:50
+#: Effects\GrayscaleForm.resx:246 -> $this.Text.value Effects\Grayscale.cs:56
 msgid "Grayscale"
 msgstr "灰度"
 
@@ -232,11 +232,11 @@ msgstr "双线性"
 msgid "Nearest"
 msgstr "邻近点"
 
-#: Effects\Grayscale.cs:62
+#: Effects\Grayscale.cs:72
 msgid "Color"
 msgstr "色彩"
 
-#: Effects\Grayscale.cs:69
+#: Effects\Grayscale.cs:81
 msgid "Convert Image to Grayscale"
 msgstr "转换为灰度/单色图像"
 

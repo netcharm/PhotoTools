@@ -33,5 +33,5 @@ using NGettext.WinForm;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion( "1.0.4.16" )]
-[assembly: AssemblyFileVersion( "1.0.4.16" )]
+[assembly: AssemblyVersion( "1.0.4.17" )]
+[assembly: AssemblyFileVersion( "1.0.4.17" )]

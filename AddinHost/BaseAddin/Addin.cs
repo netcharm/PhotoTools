@@ -361,6 +361,11 @@ namespace NetCharm.Image.Addins
                 else return ( ImgSrc );
             }
             set { ImgSrc = value; ImgDst = value; }
+            //set
+            //{
+            //    ImgDst = (System.Drawing.Image) value.Clone();
+            //    ImgSrc = (System.Drawing.Image) value.Clone();
+            //}
         }
 
         public virtual List<IAddin> Filters
