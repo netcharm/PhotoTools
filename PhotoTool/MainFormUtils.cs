@@ -7,13 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using NetCharm.Image.Addins;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NGettext.WinForm;
 
 namespace PhotoTool
 {
     public partial class MainForm : RibbonForm
     {
-        LogForm fmLog;
+        internal string AppPath = Path.GetDirectoryName(Application.ExecutablePath);
+
+        private Dictionary<string, object> settings = new Dictionary<string, object>();
+        private LogForm fmLog;
 
         #region Style / Theme Change Routine
         /// <summary>
@@ -545,6 +550,38 @@ namespace PhotoTool
 
         #endregion Ribbon Localization Routines
 
+        #region Ribbon Help Routine & Orb Command Events
+        private void RecentItemAdd( string filename )
+        {
+            RibbonItem result = ribbonMain.OrbDropDown.RecentItems.Find(
+                delegate(RibbonItem ri)
+                {
+                    return string.Equals(ri.Value, filename, StringComparison.CurrentCultureIgnoreCase);
+                }
+            );
+            if ( result != null )
+            {
+                ribbonMain.OrbDropDown.RecentItems.Remove( result );
+            }
+
+            ribbonMain.OrbDropDown.RecentItems.Insert( 0, new RibbonButton( Path.GetFileName(filename) ) );
+            ribbonMain.OrbDropDown.RecentItems.First().Value = filename;
+            ribbonMain.OrbDropDown.RecentItems.First().Click += RecentItem_Click;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RecentItem_Click( object sender, EventArgs e )
+        {
+            string fn = ( sender as RibbonButton ).Value;
+            string[] flist = new string[] { fn };
+            OpenCmdArgs( flist );
+        }
+        #endregion
+
         #region Command Line Arguments Routines
         /// <summary>
         /// 
@@ -658,6 +695,9 @@ namespace PhotoTool
                     object zoomLevel = 100;
                     addins.CurrentApp.Command( AddinCommand.ZoomLevel, out zoomLevel );
                     tssLabelImageZoom.Text = $"{zoomLevel}%";
+
+                    RecentItemAdd( flist[0] );
+
                 }
             }
             else
@@ -670,5 +710,28 @@ namespace PhotoTool
 
         #endregion Command Line Arguments Routines
 
+        #region System Settint Load & Save routines
+        private void Setting_Load()
+        {
+            string json = File.ReadAllText(Path.Combine(AppPath, "settings.json"));
+            settings = JsonConvert.DeserializeObject<Dictionary<string, object>>( json );
+
+            foreach (string item in ( settings["RecentItem"] as JArray ).ToList() )
+            {
+                RecentItemAdd( item );
+            }
+        }
+
+        private void Setting_Save()
+        {
+            if ( settings.ContainsKey( "RecentItem" ) )
+                settings["RecentItem"] = ribbonMain.OrbDropDown.RecentItems.Select( o => o.Value );
+            else
+                settings.Add( "RecentItem", ribbonMain.OrbDropDown.RecentItems.Select( o => o.Value ) );
+
+            string json = JsonConvert.SerializeObject( settings, Formatting.Indented );
+            File.WriteAllText( Path.Combine(AppPath, "settings.json"), json );
+        }
+        #endregion
     }
 }

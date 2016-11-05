@@ -5,7 +5,7 @@
 
 namespace InternalFilters
 {
-    class Common
-    {
-    }
+    //class Common
+    //{
+    //}
 }

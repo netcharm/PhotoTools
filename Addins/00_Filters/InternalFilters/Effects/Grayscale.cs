@@ -34,51 +34,66 @@ namespace InternalFilters.Effects
     {
         GrayscaleForm fm = null;
 
-        internal Dictionary<GrayscaleMode, ColorMatrix> GrayscaleMatrix = new Dictionary<GrayscaleMode, ColorMatrix>();
-
         #region Properties override
+        /// <summary>
+        /// 
+        /// </summary>
         public override AddinType Type
         {
             get { return ( AddinType.Effect ); }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         private string _name = "Grayscale";
         public override string Name
         {
             get { return _name; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         private string _displayname = T("Grayscale");
         public override string DisplayName
         {
             get { return _( _displayname ); }
             set { _displayname = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override string GroupName
         {
             get { return ( "Color" ); }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         private string _displayGroupName = T("Color");
         public override string DisplayGroupName
         {
             get { return _( _displayGroupName ); }
             set { _displayGroupName = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         private string _description = T("Convert Image to Grayscale");
         public override string Description
         {
             get { return _( _description ); }
             set { _description = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override Image LargeIcon
         {
             get { return Properties.Resources.Grayscale_32x; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override Image SmallIcon
         {
             get { return Properties.Resources.Grayscale_16x; }
@@ -87,6 +102,10 @@ namespace InternalFilters.Effects
         #endregion
 
         #region Method override
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
         protected override void GetParams( Form form )
         {
             if ( Params.ContainsKey( "GrayscaleMode" ) )
@@ -94,13 +113,20 @@ namespace InternalFilters.Effects
             else
                 Params.Add( "GrayscaleMode", ( form as GrayscaleForm ).ParamGrayscaleMode );
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="img"></param>
         protected override void SetParams( Form form, Image img = null )
         {
             if ( Params.ContainsKey( "GrayscaleMode" ) )
                 ( form as GrayscaleForm ).ParamGrayscaleMode = Params["GrayscaleMode"];
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parent"></param>
         public override void Show( Form parent = null )
         {
             _success = false;
@@ -133,7 +159,11 @@ namespace InternalFilters.Effects
                 fm = null;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
         public override Image Apply( Image image )
         {
             GrayscaleMode grayscaleMode = GrayscaleMode.Grayscale;
@@ -183,6 +213,9 @@ namespace InternalFilters.Effects
             return base.Command( cmd, out result, args );
         }
         #endregion
+
+        #region Gray / Tawawa routines
+        internal Dictionary<GrayscaleMode, ColorMatrix> GrayscaleMatrix = new Dictionary<GrayscaleMode, ColorMatrix>();
 
         //
         // BT709: 0.2125, 0.7154, 0.0721 
@@ -364,5 +397,7 @@ namespace InternalFilters.Effects
             }
             return ( dst.ToManagedImage() );
         }
+
+        #endregion
     }
 }

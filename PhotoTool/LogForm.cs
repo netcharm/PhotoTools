@@ -6,11 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using NetCharm.Image.Addins;
 
 namespace PhotoTool
 {
     public partial class LogForm : Form
     {
+        internal AddinHost Host;
+        private StringBuilder sb = new StringBuilder();
+
         /// <summary>
         /// 
         /// </summary>
@@ -37,10 +41,24 @@ namespace PhotoTool
         /// <param name="text"></param>
         internal void Log(string text)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine( edLog.Text.Trim() );
             sb.AppendLine( text.Trim() );
             edLog.Text = sb.ToString();
         }
+
+        private void btnClear_Click( object sender, EventArgs e )
+        {
+            sb.Clear();
+            edLog.Clear();
+        }
+
+        private void btnAddinError_Click( object sender, EventArgs e )
+        {
+            foreach(var kv in Host.NotLoadedAddin)
+            {
+                sb.AppendLine( $"<Addin> {kv.Key} : {kv.Value}" );                
+            }
+            edLog.Text = sb.ToString();
+        }
+
     }
 }

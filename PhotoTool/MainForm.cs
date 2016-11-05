@@ -33,6 +33,7 @@ namespace PhotoTool
         /// <param name="e"></param>
         private void MainForm_Load( object sender, EventArgs e )
         {
+            Setting_Load();
             //
             #region extracting icon from application to this form window
             Icon = Icon.ExtractAssociatedIcon( Application.ExecutablePath );
@@ -371,6 +372,7 @@ namespace PhotoTool
             if ( !( fmLog is LogForm ) || fmLog.IsDisposed )
             {
                 fmLog = new LogForm();
+                fmLog.Host = addins;
                 I18N.Translate( fmLog );
             }
             fmLog.Show();
@@ -383,5 +385,9 @@ namespace PhotoTool
 
         #endregion
 
+        private void MainForm_FormClosed( object sender, FormClosedEventArgs e )
+        {
+            Setting_Save();
+        }
     }
 }

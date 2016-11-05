@@ -67,15 +67,6 @@ namespace InternalFilters.Actions
         /// <summary>
         /// 
         /// </summary>
-        private bool _success = false;
-        public override bool Success
-        {
-            get { return ( _success ); }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="form"></param>
         /// <param name="img"></param>
         protected override void SetParams( Form form, System.Drawing.Image img = null )

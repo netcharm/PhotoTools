@@ -86,16 +86,6 @@ namespace InternalFilters.Actions
         /// <summary>
         /// 
         /// </summary>
-        private bool _success = false;
-        public override bool Success
-        {
-            get { return ( _success ); }
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="parent"></param>
         public override void Show( Form parent = null )
         {

@@ -61,7 +61,8 @@ namespace InternalFilters.Effects
 
         private void cbGrayMode_SelectedIndexChanged( object sender, EventArgs e )
         {
-            grayscaleMode = (GrayscaleMode) cbGrayMode.SelectedIndex;
+            //grayscaleMode = (GrayscaleMode) cbGrayMode.SelectedIndex;
+            Enum.TryParse( cbGrayMode.SelectedValue.ToString(), out grayscaleMode );
             if ( !addin.Params.ContainsKey( ParamGrayscaleMode.Name ) )
                 addin.Params.Add( ParamGrayscaleMode.Name, ParamGrayscaleMode );
             else

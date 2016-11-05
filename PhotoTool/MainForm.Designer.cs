@@ -414,6 +414,7 @@
             this.ribOrbMiOpen.SmallImage = global::PhotoTool.Properties.Resources.Open_32x;
             this.ribOrbMiOpen.Style = System.Windows.Forms.RibbonButtonStyle.SplitDropDown;
             resources.ApplyResources(this.ribOrbMiOpen, "ribOrbMiOpen");
+            this.ribOrbMiOpen.Click += new System.EventHandler(this.cmdFileOpen_Click);
             // 
             // ribOrbMiSave
             // 
@@ -422,6 +423,7 @@
             this.ribOrbMiSave.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribOrbMiSave.SmallImage")));
             this.ribOrbMiSave.Style = System.Windows.Forms.RibbonButtonStyle.SplitDropDown;
             resources.ApplyResources(this.ribOrbMiSave, "ribOrbMiSave");
+            this.ribOrbMiSave.Click += new System.EventHandler(this.cmdFileSave_Click);
             // 
             // ribOptBtnExit
             // 
@@ -544,6 +546,7 @@
             this.HelpButton = true;
             this.IsMdiContainer = true;
             this.Name = "MainForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
