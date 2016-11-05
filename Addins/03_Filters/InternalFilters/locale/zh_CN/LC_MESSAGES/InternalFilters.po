@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-05 01:34+0800\n"
+"POT-Creation-Date: 2016-11-05 12:19+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -20,212 +20,227 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: ResizeForm.resx:187 -> btnOk.Text.value RotateForm.resx:364
-#: CropForm.Designer.cs:308
+#: Actions\ResizeForm.resx:187 -> btnOk.Text.value Actions\RotateForm.resx:364
+#: Actions\CropForm.Designer.cs:308
 msgid "OK"
 msgstr "确认"
 
-#: ResizeForm.resx:211 -> btnCancel.Text.value RotateForm.resx:388
-#: CropForm.Designer.cs:298
+#: Actions\ResizeForm.resx:211 -> btnCancel.Text.value
+#: Actions\RotateForm.resx:388 Actions\CropForm.Designer.cs:298
 msgid "Cancel"
 msgstr "取消"
 
-#: ResizeForm.resx:235 -> labelWidth.Text.value
+#: Actions\ResizeForm.resx:235 -> labelWidth.Text.value
 msgid "Width:"
 msgstr "宽度:"
 
-#: ResizeForm.resx:262 -> labelHeight.Text.value
+#: Actions\ResizeForm.resx:262 -> labelHeight.Text.value
 msgid "Height:"
 msgstr "高度:"
 
-#: ResizeForm.resx:292 -> chkAspect.Text.value
+#: Actions\ResizeForm.resx:292 -> chkAspect.Text.value
 msgid "Keep Aspect"
 msgstr "保持原比例"
 
-#: ResizeForm.resx:352 -> labelMethod.Text.value
+#: Actions\ResizeForm.resx:352 -> labelMethod.Text.value
 msgid "Method:"
 msgstr "缩放算法:"
 
-#: ResizeForm.resx:382 -> $this.Text.value Resize.cs:112
+#: Actions\ResizeForm.resx:382 -> $this.Text.value Actions\Resize.cs:112
 msgid "Resize"
 msgstr "缩放"
 
-#: RotateForm.resx:142 -> btnRotateFlipY.ToolTip.value
+#: Actions\RotateForm.resx:142 -> btnRotateFlipY.ToolTip.value
 msgid "Flip Vertical"
 msgstr "垂直镜像"
 
-#: RotateForm.resx:172 -> btnRotateFlipX.ToolTip.value
+#: Actions\RotateForm.resx:172 -> btnRotateFlipX.ToolTip.value
 msgid "Flip Horizontal"
 msgstr "水平镜像"
 
-#: RotateForm.resx:202 -> btnRotate90r.ToolTip.value
+#: Actions\RotateForm.resx:202 -> btnRotate90r.ToolTip.value
 msgid "Rotate Right 90°"
 msgstr "右转90°"
 
-#: RotateForm.resx:229 -> btnRotate90l.ToolTip.value
+#: Actions\RotateForm.resx:229 -> btnRotate90l.ToolTip.value
 msgid "Rotate Left 90°"
 msgstr "左转90°"
 
-#: RotateForm.resx:253 -> groupMode.Text.value
+#: Actions\RotateForm.resx:253 -> groupMode.Text.value
 msgid "Orientation"
 msgstr "方向调整"
 
-#: RotateForm.resx:280 -> chkKeepSize.Text.value
+#: Actions\RotateForm.resx:280 -> chkKeepSize.Text.value
 msgid "Keep Size"
 msgstr "保持原大小"
 
-#: RotateForm.resx:286 -> chkKeepSize.ToolTip.value
+#: Actions\RotateForm.resx:286 -> chkKeepSize.ToolTip.value
 msgid "Keep Image Size"
 msgstr "保持原图像大小"
 
-#: RotateForm.resx:316 -> numAngle.ToolTip.value
+#: Actions\RotateForm.resx:316 -> numAngle.ToolTip.value
 msgid "Rotate Angle"
 msgstr "旋转角度"
 
-#: RotateForm.resx:340 -> groupAngle.Text.value
+#: Actions\RotateForm.resx:340 -> groupAngle.Text.value
 msgid "Free Rotate"
 msgstr "任意角度旋转"
 
-#: RotateForm.resx:412 -> imgPreview.Text.value
+#: Actions\RotateForm.resx:412 -> imgPreview.Text.value
 msgid "Preview"
 msgstr "预览"
 
-#: RotateForm.resx:415 -> imgPreview.ToolTip.value
+#: Actions\RotateForm.resx:415 -> imgPreview.ToolTip.value
 msgid "Rotate Prevew "
 msgstr "旋转预览"
 
-#: RotateForm.resx:442 -> $this.Text.value Rotate.cs:32
+#: Actions\RotateForm.resx:442 -> $this.Text.value Actions\Rotate.cs:40
 msgid "Rotate"
 msgstr "旋转"
 
-#: CropForm.Designer.cs:74
+#: Actions\CropForm.Designer.cs:74
 msgid "Selection"
 msgstr "选区"
 
-#: CropForm.Designer.cs:75
+#: Actions\CropForm.Designer.cs:75
 msgid "Selection Area"
 msgstr "选区"
 
-#: CropForm.Designer.cs:87
+#: Actions\CropForm.Designer.cs:87
 msgid "Transparent"
 msgstr "透明像素"
 
-#: CropForm.Designer.cs:88
+#: Actions\CropForm.Designer.cs:88
 msgid "Transparent Pixels"
 msgstr "透明像素"
 
-#: CropForm.Designer.cs:100
+#: Actions\CropForm.Designer.cs:100
 msgid "Top Left"
 msgstr "左上角像素色"
 
-#: CropForm.Designer.cs:101
+#: Actions\CropForm.Designer.cs:101
 msgid "Top Left Pixel Color"
 msgstr "左上角像素色"
 
-#: CropForm.Designer.cs:113
+#: Actions\CropForm.Designer.cs:113
 msgid "Bottom Right"
 msgstr "右下角像素色"
 
-#: CropForm.Designer.cs:114
+#: Actions\CropForm.Designer.cs:114
 msgid "Bottom Right Pixel Color"
 msgstr "右下角像素色"
 
-#: CropForm.Designer.cs:128
+#: Actions\CropForm.Designer.cs:128
 msgid "Top"
 msgstr "顶"
 
-#: CropForm.Designer.cs:129
+#: Actions\CropForm.Designer.cs:129
 msgid "Top Side"
 msgstr "顶边"
 
-#: CropForm.Designer.cs:143
+#: Actions\CropForm.Designer.cs:143
 msgid "Bottom"
 msgstr "底"
 
-#: CropForm.Designer.cs:144
+#: Actions\CropForm.Designer.cs:144
 msgid "Bottom Side"
 msgstr "底边"
 
-#: CropForm.Designer.cs:158
+#: Actions\CropForm.Designer.cs:158
 msgid "Left"
 msgstr "左"
 
-#: CropForm.Designer.cs:159
+#: Actions\CropForm.Designer.cs:159
 msgid "Left Side"
 msgstr "左边"
 
-#: CropForm.Designer.cs:173
+#: Actions\CropForm.Designer.cs:173
 msgid "Right"
 msgstr "右"
 
-#: CropForm.Designer.cs:174
+#: Actions\CropForm.Designer.cs:174
 msgid "Right Side"
 msgstr "右边"
 
-#: CropForm.Designer.cs:186
+#: Actions\CropForm.Designer.cs:186
 msgid "Aspect Ratio"
 msgstr "长宽比"
 
-#: CropForm.Designer.cs:187
+#: Actions\CropForm.Designer.cs:187
 msgid "Custom Aspect Ratio"
 msgstr "自定长宽比例"
 
-#: CropForm.Designer.cs:200
+#: Actions\CropForm.Designer.cs:200
 msgid "Pre-Defined Aspect Ratio List"
 msgstr "预定义长宽比列表"
 
-#: CropForm.Designer.cs:216 CropForm.Designer.cs:237
+#: Actions\CropForm.Designer.cs:216 Actions\CropForm.Designer.cs:237
 msgid "Aspect Ratio of Width & Height"
 msgstr "自定义长宽比例"
 
-#: CropForm.Designer.cs:257
+#: Actions\CropForm.Designer.cs:257
 msgid "Image Preview"
 msgstr "预览"
 
-#: CropForm.Designer.cs:276
+#: Actions\CropForm.Designer.cs:276
 msgid "Crop Mode"
 msgstr "裁切模式"
 
-#: CropForm.Designer.cs:289
+#: Actions\CropForm.Designer.cs:289
 msgid "Crop Side"
 msgstr "裁切方向"
 
-#: CropForm.Designer.cs:322
+#: Actions\CropForm.Designer.cs:322
 msgid "Crop Aspect"
 msgstr "裁切比例"
 
-#: CropForm.Designer.cs:330
+#: Actions\CropForm.Designer.cs:330
 msgid "x"
 msgstr "比"
 
-#: CropForm.Designer.cs:352 Crop.cs:23
+#: Actions\CropForm.Designer.cs:352 Actions\Crop.cs:29
 msgid "Crop"
 msgstr "裁切"
 
-#: Crop.cs:35 Resize.cs:128 Rotate.cs:48
+#: Actions\Crop.cs:41 Actions\Resize.cs:128 Actions\Rotate.cs:56
 msgid "Edit"
 msgstr "编辑"
 
-#: Crop.cs:42
+#: Actions\Crop.cs:48
 msgid "Crop Image"
 msgstr "裁切图像"
 
-#: Resize.cs:137
+#: Actions\Resize.cs:137
 msgid "Resize Image"
 msgstr "缩放图像"
 
-#: ResizeForm.cs:99
+#: Actions\ResizeForm.cs:99
 msgid "Bicubic"
 msgstr "双立方"
 
-#: ResizeForm.cs:100
+#: Actions\ResizeForm.cs:100
 msgid "Bilinear"
 msgstr "双线性"
 
-#: ResizeForm.cs:101
+#: Actions\ResizeForm.cs:101
 msgid "Nearest"
 msgstr "邻近点"
 
-#: Rotate.cs:57
+#: Effects\Grayscale.cs:28
+msgid "Grayscale"
+msgstr "灰度"
+
+#: Effects\Grayscale.cs:40
+msgid "Color"
+msgstr "色彩"
+
+#: Effects\Grayscale.cs:47
+msgid "Convert Image to Grayscale"
+msgstr "转换为灰度/单色图像"
+
+#: Actions\Rotate.cs:65
 msgid "Rotate Image"
 msgstr "旋转图像"
+
+#~ msgid "Effect"
+#~ msgstr "效果"

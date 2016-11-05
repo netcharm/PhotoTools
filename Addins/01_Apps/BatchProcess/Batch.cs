@@ -27,6 +27,16 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
+        public AddinType Type
+        {
+            get
+            {
+                return AddinType.App;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         private AddinHost _host = null;
         public AddinHost Host
         {
@@ -148,60 +158,34 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
-        public AddinType Type
-        {
-            get
-            {
-                return AddinType.App;
-            }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
         public Image LargeIcon
         {
-            get
-            {
-                return ( Properties.Resources.Batch_32x );
-                //return ( null );
-                //throw new NotImplementedException();
-            }
+            get { return ( Properties.Resources.Batch_32x ); }
         }
         /// <summary>
         /// 
         /// </summary>
         public Image SmallIcon
         {
-            get
-            {
-                return ( Properties.Resources.Batch_16x );
-                //return ( null );
-                //throw new NotImplementedException();
-            }
+            get { return ( Properties.Resources.Batch_16x ); }
         }
         /// <summary>
         /// 
         /// </summary>
         public Image ImageData
         {
-            get
-            {
-                return ( img );
-            }
-            set
-            {
-                img = value;
-            }
+            get { return ( img ); }
+            set { img = value; }
         }
 
         /// <summary>
         /// 
         /// </summary>
-        private ComponentResourceManager resources = new ComponentResourceManager();
-        public ComponentResourceManager Resources
+        private List<IAddin> _filters = new List<IAddin>();
+        public List<IAddin> Filters
         {
-            get { return resources; }
-            set { resources = value; }
+            get { return ( _filters ); }
+            internal set { _filters = value; }
         }
         /// <summary>
         /// 

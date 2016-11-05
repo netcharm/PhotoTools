@@ -11,7 +11,7 @@ using Accord.Imaging.Filters;
 using Mono.Addins;
 using NetCharm.Image.Addins;
 
-namespace InternalFilters
+namespace InternalFilters.Actions
 {
     [Extension]
     class Rotate : BaseAddinEffect

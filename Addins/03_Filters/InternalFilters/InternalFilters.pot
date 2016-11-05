@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-05 01:34+0800\n"
-"PO-Revision-Date: 2016-11-05 01:34+0800\n"
+"POT-Creation-Date: 2016-11-05 12:19+0800\n"
+"PO-Revision-Date: 2016-11-05 12:19+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,212 +20,224 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: ResizeForm.resx:187 -> btnOk.Text.value RotateForm.resx:364
-#: CropForm.Designer.cs:308
+#: Actions\ResizeForm.resx:187 -> btnOk.Text.value Actions\RotateForm.resx:364
+#: Actions\CropForm.Designer.cs:308
 msgid "OK"
 msgstr ""
 
-#: ResizeForm.resx:211 -> btnCancel.Text.value RotateForm.resx:388
-#: CropForm.Designer.cs:298
+#: Actions\ResizeForm.resx:211 -> btnCancel.Text.value
+#: Actions\RotateForm.resx:388 Actions\CropForm.Designer.cs:298
 msgid "Cancel"
 msgstr ""
 
-#: ResizeForm.resx:235 -> labelWidth.Text.value
+#: Actions\ResizeForm.resx:235 -> labelWidth.Text.value
 msgid "Width:"
 msgstr ""
 
-#: ResizeForm.resx:262 -> labelHeight.Text.value
+#: Actions\ResizeForm.resx:262 -> labelHeight.Text.value
 msgid "Height:"
 msgstr ""
 
-#: ResizeForm.resx:292 -> chkAspect.Text.value
+#: Actions\ResizeForm.resx:292 -> chkAspect.Text.value
 msgid "Keep Aspect"
 msgstr ""
 
-#: ResizeForm.resx:352 -> labelMethod.Text.value
+#: Actions\ResizeForm.resx:352 -> labelMethod.Text.value
 msgid "Method:"
 msgstr ""
 
-#: ResizeForm.resx:382 -> $this.Text.value Resize.cs:112
+#: Actions\ResizeForm.resx:382 -> $this.Text.value Actions\Resize.cs:112
 msgid "Resize"
 msgstr ""
 
-#: RotateForm.resx:142 -> btnRotateFlipY.ToolTip.value
+#: Actions\RotateForm.resx:142 -> btnRotateFlipY.ToolTip.value
 msgid "Flip Vertical"
 msgstr ""
 
-#: RotateForm.resx:172 -> btnRotateFlipX.ToolTip.value
+#: Actions\RotateForm.resx:172 -> btnRotateFlipX.ToolTip.value
 msgid "Flip Horizontal"
 msgstr ""
 
-#: RotateForm.resx:202 -> btnRotate90r.ToolTip.value
+#: Actions\RotateForm.resx:202 -> btnRotate90r.ToolTip.value
 msgid "Rotate Right 90°"
 msgstr ""
 
-#: RotateForm.resx:229 -> btnRotate90l.ToolTip.value
+#: Actions\RotateForm.resx:229 -> btnRotate90l.ToolTip.value
 msgid "Rotate Left 90°"
 msgstr ""
 
-#: RotateForm.resx:253 -> groupMode.Text.value
+#: Actions\RotateForm.resx:253 -> groupMode.Text.value
 msgid "Orientation"
 msgstr ""
 
-#: RotateForm.resx:280 -> chkKeepSize.Text.value
+#: Actions\RotateForm.resx:280 -> chkKeepSize.Text.value
 msgid "Keep Size"
 msgstr ""
 
-#: RotateForm.resx:286 -> chkKeepSize.ToolTip.value
+#: Actions\RotateForm.resx:286 -> chkKeepSize.ToolTip.value
 msgid "Keep Image Size"
 msgstr ""
 
-#: RotateForm.resx:316 -> numAngle.ToolTip.value
+#: Actions\RotateForm.resx:316 -> numAngle.ToolTip.value
 msgid "Rotate Angle"
 msgstr ""
 
-#: RotateForm.resx:340 -> groupAngle.Text.value
+#: Actions\RotateForm.resx:340 -> groupAngle.Text.value
 msgid "Free Rotate"
 msgstr ""
 
-#: RotateForm.resx:412 -> imgPreview.Text.value
+#: Actions\RotateForm.resx:412 -> imgPreview.Text.value
 msgid "Preview"
 msgstr ""
 
-#: RotateForm.resx:415 -> imgPreview.ToolTip.value
+#: Actions\RotateForm.resx:415 -> imgPreview.ToolTip.value
 msgid "Rotate Prevew "
 msgstr ""
 
-#: RotateForm.resx:442 -> $this.Text.value Rotate.cs:32
+#: Actions\RotateForm.resx:442 -> $this.Text.value Actions\Rotate.cs:40
 msgid "Rotate"
 msgstr ""
 
-#: CropForm.Designer.cs:74
+#: Actions\CropForm.Designer.cs:74
 msgid "Selection"
 msgstr ""
 
-#: CropForm.Designer.cs:75
+#: Actions\CropForm.Designer.cs:75
 msgid "Selection Area"
 msgstr ""
 
-#: CropForm.Designer.cs:87
+#: Actions\CropForm.Designer.cs:87
 msgid "Transparent"
 msgstr ""
 
-#: CropForm.Designer.cs:88
+#: Actions\CropForm.Designer.cs:88
 msgid "Transparent Pixels"
 msgstr ""
 
-#: CropForm.Designer.cs:100
+#: Actions\CropForm.Designer.cs:100
 msgid "Top Left"
 msgstr ""
 
-#: CropForm.Designer.cs:101
+#: Actions\CropForm.Designer.cs:101
 msgid "Top Left Pixel Color"
 msgstr ""
 
-#: CropForm.Designer.cs:113
+#: Actions\CropForm.Designer.cs:113
 msgid "Bottom Right"
 msgstr ""
 
-#: CropForm.Designer.cs:114
+#: Actions\CropForm.Designer.cs:114
 msgid "Bottom Right Pixel Color"
 msgstr ""
 
-#: CropForm.Designer.cs:128
+#: Actions\CropForm.Designer.cs:128
 msgid "Top"
 msgstr ""
 
-#: CropForm.Designer.cs:129
+#: Actions\CropForm.Designer.cs:129
 msgid "Top Side"
 msgstr ""
 
-#: CropForm.Designer.cs:143
+#: Actions\CropForm.Designer.cs:143
 msgid "Bottom"
 msgstr ""
 
-#: CropForm.Designer.cs:144
+#: Actions\CropForm.Designer.cs:144
 msgid "Bottom Side"
 msgstr ""
 
-#: CropForm.Designer.cs:158
+#: Actions\CropForm.Designer.cs:158
 msgid "Left"
 msgstr ""
 
-#: CropForm.Designer.cs:159
+#: Actions\CropForm.Designer.cs:159
 msgid "Left Side"
 msgstr ""
 
-#: CropForm.Designer.cs:173
+#: Actions\CropForm.Designer.cs:173
 msgid "Right"
 msgstr ""
 
-#: CropForm.Designer.cs:174
+#: Actions\CropForm.Designer.cs:174
 msgid "Right Side"
 msgstr ""
 
-#: CropForm.Designer.cs:186
+#: Actions\CropForm.Designer.cs:186
 msgid "Aspect Ratio"
 msgstr ""
 
-#: CropForm.Designer.cs:187
+#: Actions\CropForm.Designer.cs:187
 msgid "Custom Aspect Ratio"
 msgstr ""
 
-#: CropForm.Designer.cs:200
+#: Actions\CropForm.Designer.cs:200
 msgid "Pre-Defined Aspect Ratio List"
 msgstr ""
 
-#: CropForm.Designer.cs:216 CropForm.Designer.cs:237
+#: Actions\CropForm.Designer.cs:216 Actions\CropForm.Designer.cs:237
 msgid "Aspect Ratio of Width & Height"
 msgstr ""
 
-#: CropForm.Designer.cs:257
+#: Actions\CropForm.Designer.cs:257
 msgid "Image Preview"
 msgstr ""
 
-#: CropForm.Designer.cs:276
+#: Actions\CropForm.Designer.cs:276
 msgid "Crop Mode"
 msgstr ""
 
-#: CropForm.Designer.cs:289
+#: Actions\CropForm.Designer.cs:289
 msgid "Crop Side"
 msgstr ""
 
-#: CropForm.Designer.cs:322
+#: Actions\CropForm.Designer.cs:322
 msgid "Crop Aspect"
 msgstr ""
 
-#: CropForm.Designer.cs:330
+#: Actions\CropForm.Designer.cs:330
 msgid "x"
 msgstr ""
 
-#: CropForm.Designer.cs:352 Crop.cs:23
+#: Actions\CropForm.Designer.cs:352 Actions\Crop.cs:29
 msgid "Crop"
 msgstr ""
 
-#: Crop.cs:35 Resize.cs:128 Rotate.cs:48
+#: Actions\Crop.cs:41 Actions\Resize.cs:128 Actions\Rotate.cs:56
 msgid "Edit"
 msgstr ""
 
-#: Crop.cs:42
+#: Actions\Crop.cs:48
 msgid "Crop Image"
 msgstr ""
 
-#: Resize.cs:137
+#: Actions\Resize.cs:137
 msgid "Resize Image"
 msgstr ""
 
-#: ResizeForm.cs:99
+#: Actions\ResizeForm.cs:99
 msgid "Bicubic"
 msgstr ""
 
-#: ResizeForm.cs:100
+#: Actions\ResizeForm.cs:100
 msgid "Bilinear"
 msgstr ""
 
-#: ResizeForm.cs:101
+#: Actions\ResizeForm.cs:101
 msgid "Nearest"
 msgstr ""
 
-#: Rotate.cs:57
+#: Effects\Grayscale.cs:28
+msgid "Grayscale"
+msgstr ""
+
+#: Effects\Grayscale.cs:40
+msgid "Color"
+msgstr ""
+
+#: Effects\Grayscale.cs:47
+msgid "Convert Image to Grayscale"
+msgstr ""
+
+#: Actions\Rotate.cs:65
 msgid "Rotate Image"
 msgstr ""

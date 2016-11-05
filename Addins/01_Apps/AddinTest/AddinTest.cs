@@ -189,14 +189,9 @@ namespace AddinTest
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private ComponentResourceManager resources = new ComponentResourceManager();
-        public ComponentResourceManager Resources
+        public List<IAddin> Filters
         {
-            get { return resources; }
-            set { resources = value; }
+            get { return ( null ); }
         }
         /// <summary>
         /// 

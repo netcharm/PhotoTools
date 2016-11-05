@@ -16,7 +16,7 @@ using NGettext.WinForm;
 //using Accord.Imaging;
 using System.Drawing.Imaging;
 
-namespace InternalFilters
+namespace InternalFilters.Actions
 {
     [Extension]
     class Resize : IAddin, IFilter, IFilterInformation
@@ -173,14 +173,13 @@ namespace InternalFilters
             }
             set { ImgSrc = value; }
         }
+
         /// <summary>
         /// 
         /// </summary>
-        private ComponentResourceManager resources = new ComponentResourceManager();
-        public ComponentResourceManager Resources
+        public List<IAddin> Filters
         {
-            get { return resources; }
-            set { resources = value; }
+            get { return ( null ); }
         }
         /// <summary>
         /// 

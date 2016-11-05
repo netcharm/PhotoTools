@@ -123,6 +123,26 @@ namespace InternalFilters.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Grayscale_16x {
+            get {
+                object obj = ResourceManager.GetObject("Grayscale_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Grayscale_32x {
+            get {
+                object obj = ResourceManager.GetObject("Grayscale_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Resize_16x {
             get {
                 object obj = ResourceManager.GetObject("Resize_16x", resourceCulture);
