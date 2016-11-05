@@ -132,7 +132,7 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        ComponentResourceManager Resources { get; }
+        List<IAddin> Filters { get; }
         /// <summary>
         /// 
         /// </summary>
@@ -157,16 +157,6 @@ namespace NetCharm.Image.Addins
         /// 
         /// </summary>
         bool SupportMultiFile { get; }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="filename"></param>
-        void Open( string filename );
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="filenames"></param>
-        void Open( string[] filenames );
 
         /// <summary>
         /// 
@@ -326,14 +316,34 @@ namespace NetCharm.Image.Addins
         /// </summary>
         public virtual System.Drawing.Image LargeIcon
         {
-            get { return ( Properties.Resources.AddIn_32x ); }
+            get
+            {
+                if ( Type == AddinType.App )
+                    return ( Properties.Resources.Application_32x );
+                else if ( Type == AddinType.Action )
+                    return ( Properties.Resources.Action_32x );
+                else if ( Type == AddinType.Effect )
+                    return ( Properties.Resources.Effect_32x );
+                else
+                    return ( Properties.Resources.AddIn_32x );
+            }
         }
         /// <summary>
         /// 
         /// </summary>
         public virtual System.Drawing.Image SmallIcon
         {
-            get { return ( Properties.Resources.AddIn_16x ); }
+            get
+            {
+                if ( Type == AddinType.App )
+                    return ( Properties.Resources.Application_16x );
+                else if ( Type == AddinType.Action )
+                    return ( Properties.Resources.Action_16x );
+                else if ( Type == AddinType.Effect )
+                    return ( Properties.Resources.Effect_16x );
+                else
+                    return ( Properties.Resources.AddIn_16x );
+            }
         }
         /// <summary>
         /// 
@@ -348,14 +358,9 @@ namespace NetCharm.Image.Addins
             set { ImgSrc = value; }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private ComponentResourceManager resources = new ComponentResourceManager();
-        public ComponentResourceManager Resources
+        public virtual List<IAddin> Filters
         {
-            get { return resources; }
-            set { resources = value; }
+            get { return (null); }
         }
         /// <summary>
         /// 
