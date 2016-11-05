@@ -102,8 +102,16 @@ namespace InternalFilters.Actions
             if ( fm == null )
             {
                 fm = new RotateForm( this );
-                Translate( fm );
+                fm.host = Host;
                 fm.Text = DisplayName;
+                fm.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                fm.MaximizeBox = false;
+                fm.MinimizeBox = false;
+                fm.ShowIcon = false;
+                fm.ShowInTaskbar = false;
+                fm.StartPosition = FormStartPosition.CenterParent;
+
+                Translate( fm );
             }
             if ( fm.ShowDialog() == DialogResult.OK )
             {
@@ -148,6 +156,7 @@ namespace InternalFilters.Actions
                 bool keep = (bool)Params["KeepSize"].Value;
 
                 Image dst = RotateForm.RotateImage( image, flip, angle, keep );
+                AddinUtils.CloneExif( image, dst );
                 return ( dst );
             }
             return ( image );

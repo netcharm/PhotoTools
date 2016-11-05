@@ -128,8 +128,15 @@ namespace InternalFilters.Actions
             {
                 fm = new CropForm( this );
                 fm.host = Host;
-                Translate( fm );
                 fm.Text = DisplayName;
+                fm.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                fm.MaximizeBox = false;
+                fm.MinimizeBox = false;
+                fm.ShowIcon = false;
+                fm.ShowInTaskbar = false;
+                fm.StartPosition = FormStartPosition.CenterParent;
+
+                Translate( fm );
                 SetParams( fm, ImgSrc );
                 Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.GetImageSelection, 0 ) );
             }
@@ -165,7 +172,9 @@ namespace InternalFilters.Actions
             if ( region.Width > 0 && region.Height > 0 )
             {
                 Accord.Imaging.Filters.Crop filter = new Accord.Imaging.Filters.Crop(region);
-                return filter.Apply( ImgSrc as Bitmap );
+                Bitmap dst = filter.Apply( ImgSrc as Bitmap );
+                AddinUtils.CloneExif( ImgSrc, dst );
+                return (dst) ;
             }
             else
                 return ( ImgSrc );

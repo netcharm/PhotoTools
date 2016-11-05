@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BatchProcess\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-05 12:19+0800\n"
-"PO-Revision-Date: 2016-11-05 12:19+0800\n"
+"POT-Creation-Date: 2016-11-05 22:07+0800\n"
+"PO-Revision-Date: 2016-11-05 22:07+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -64,14 +64,14 @@ msgstr ""
 msgid "Batch Image Processing"
 msgstr ""
 
-#: Batch.cs:122
+#: Batch.cs:120
 msgid "Batch"
 msgstr ""
 
-#: Batch.cs:138
+#: Batch.cs:136
 msgid "Application"
 msgstr ""
 
-#: Batch.cs:147
+#: Batch.cs:145
 msgid "Batch Image Process"
 msgstr ""

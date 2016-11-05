@@ -360,7 +360,7 @@ namespace NetCharm.Image.Addins
                 if ( ImgDst is System.Drawing.Image ) return ( ImgDst );
                 else return ( ImgSrc );
             }
-            set { ImgSrc = value; }
+            set { ImgSrc = value; ImgDst = value; }
         }
 
         public virtual List<IAddin> Filters

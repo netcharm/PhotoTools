@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-05 12:19+0800\n"
-"PO-Revision-Date: 2016-11-05 12:19+0800\n"
+"POT-Creation-Date: 2016-11-05 22:07+0800\n"
+"PO-Revision-Date: 2016-11-05 22:07+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,13 +20,15 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: Actions\ResizeForm.resx:187 -> btnOk.Text.value Actions\RotateForm.resx:364
+#: Actions\ResizeForm.resx:187 -> btnOk.Text.value
+#: Effects\GrayscaleForm.resx:139 Actions\RotateForm.resx:364
 #: Actions\CropForm.Designer.cs:308
 msgid "OK"
 msgstr ""
 
 #: Actions\ResizeForm.resx:211 -> btnCancel.Text.value
-#: Actions\RotateForm.resx:388 Actions\CropForm.Designer.cs:298
+#: Effects\GrayscaleForm.resx:166 Actions\RotateForm.resx:388
+#: Actions\CropForm.Designer.cs:298
 msgid "Cancel"
 msgstr ""
 
@@ -48,6 +50,10 @@ msgstr ""
 
 #: Actions\ResizeForm.resx:382 -> $this.Text.value Actions\Resize.cs:112
 msgid "Resize"
+msgstr ""
+
+#: Effects\GrayscaleForm.resx:246 -> $this.Text.value Effects\Grayscale.cs:50
+msgid "Grayscale"
 msgstr ""
 
 #: Actions\RotateForm.resx:142 -> btnRotateFlipY.ToolTip.value
@@ -226,15 +232,11 @@ msgstr ""
 msgid "Nearest"
 msgstr ""
 
-#: Effects\Grayscale.cs:28
-msgid "Grayscale"
-msgstr ""
-
-#: Effects\Grayscale.cs:40
+#: Effects\Grayscale.cs:62
 msgid "Color"
 msgstr ""
 
-#: Effects\Grayscale.cs:47
+#: Effects\Grayscale.cs:69
 msgid "Convert Image to Grayscale"
 msgstr ""
 

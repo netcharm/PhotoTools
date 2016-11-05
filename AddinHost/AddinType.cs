@@ -6,6 +6,9 @@ using System.Text;
 
 namespace NetCharm.Image.Addins
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum OpaqueMode
     {
         Alpha = 0,
@@ -13,6 +16,9 @@ namespace NetCharm.Image.Addins
         BottomRight = 2
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public enum CropMode
     {
         Selection = 0,
@@ -22,11 +28,76 @@ namespace NetCharm.Image.Addins
         AspectRatio = 4
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class ImageInfo
     {
         public List<PropertyItem> EXIF;
         public Dictionary<string, string> IPTC;
         public System.Windows.Media.Imaging.BitmapMetadata Meta;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class CircularStack<T>
+    {
+        private List<T> _items = new List<T>();
+        private int _limit = 0;
+
+        public int Count
+        {
+            get { return ( _items is List<T> ? _items.Count : -1 ); }
+        }
+
+        public CircularStack()
+        {
+            _items = new List<T>();
+        }
+
+        public CircularStack(int limit)
+        {
+            _limit = limit;
+            _items = new List<T>(limit);
+        }
+
+        public void Push(T item)
+        {
+            _items.Add( item );
+            if ( _items.Count >= _limit )
+            {
+                _items.RemoveAt( 0 );
+            }
+        }
+
+        public T Pop()
+        {
+            if( _items is List<T>)
+            {
+                if ( Count > 0 )
+                {
+                    var item = _items.Last();
+                    _items.Remove( _items.Last() );
+                    return ( item );
+                }
+                else
+                {
+                    throw new InvalidOperationException();
+                }
+            }
+            else
+            {
+                throw new ArgumentNullException();
+            }
+        }
+
+        public void Clear()
+        {
+            _items.Clear();
+        }
+
     }
 
     /// <summary>

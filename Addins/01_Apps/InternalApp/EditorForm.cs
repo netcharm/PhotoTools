@@ -40,8 +40,10 @@ namespace InternalFilters
             }
         }
 
-        private Stack<Image> HistoryUndo = new Stack<Image>(10);
-        private Stack<Image> HistoryRedo = new Stack<Image>(10);
+        //private Stack<Image> HistoryUndo = new Stack<Image>(10);
+        //private Stack<Image> HistoryRedo = new Stack<Image>(10);
+        private CircularStack<Image> HistoryUndo = new CircularStack<Image>(10);
+        private CircularStack<Image> HistoryRedo = new CircularStack<Image>(10);
 
         private bool ShiftPressed = false;
         PointF pO = new Point(0,0);
@@ -167,6 +169,14 @@ namespace InternalFilters
             Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 0 ) );
             Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Redo, HistoryRedo.Count > 0 ) );
             return ( true );
+        }
+
+        internal void ClearHistory()
+        {
+            HistoryUndo.Clear();
+            HistoryRedo.Clear();
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 0 ) );
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Redo, HistoryRedo.Count > 0 ) );
         }
 
         /// <summary>

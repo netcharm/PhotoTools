@@ -257,6 +257,10 @@ namespace InternalFilters
                 using ( FileStream fs = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
                 {
                     ImageData = Image.FromStream( fs );
+                    if( fm is EditorForm && !fm.IsDisposed)
+                    {
+                        fm.ClearHistory();
+                    }
                 }
                 if ( Host.CurrentApp != this )
                 {

@@ -331,8 +331,16 @@ namespace InternalFilters.Actions
             if ( fm == null )
             {
                 fm = new ResizeForm( this );
-                Translate( fm );
+                fm.host = Host;
                 fm.Text = DisplayName;
+                fm.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                fm.MaximizeBox = false;
+                fm.MinimizeBox = false;
+                fm.ShowIcon = false;
+                fm.ShowInTaskbar = false;
+                fm.StartPosition = FormStartPosition.CenterParent;
+
+                Translate( fm );
 
                 if ( ImgSrc != null )
                 {

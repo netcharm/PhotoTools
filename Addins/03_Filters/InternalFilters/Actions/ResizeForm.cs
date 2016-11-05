@@ -13,7 +13,7 @@ namespace InternalFilters
 {
     public partial class ResizeForm : Form
     {
-        private AddinHost host;
+        internal AddinHost host;
         private IAddin addin;
 
         public ParamItem ParamWidth

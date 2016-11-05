@@ -13,7 +13,7 @@ namespace InternalFilters
 {
     public partial class RotateForm : Form
     {
-        private AddinHost host;
+        internal AddinHost host;
         private IAddin addin;
 
         private double angle = 0f;
