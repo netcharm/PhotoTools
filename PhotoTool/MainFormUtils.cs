@@ -303,6 +303,9 @@ namespace PhotoTool
                     addins.CurrentApp.Show( this );
                 }
             }
+            cmdFileApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
+            cmdFileApplyAll.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
+            cmdFileSepApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
         }
 
         /// <summary>
@@ -697,7 +700,6 @@ namespace PhotoTool
                     tssLabelImageZoom.Text = $"{zoomLevel}%";
 
                     RecentItemAdd( flist[0] );
-
                 }
             }
             else
@@ -706,11 +708,17 @@ namespace PhotoTool
                 tssLabelImageSize.Text = I18N._( "None" );
                 tssLabelImageZoom.Text = I18N._( "None" );
             }
+            cmdFileApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
+            cmdFileApplyAll.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
+            cmdFileSepApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
         }
 
         #endregion Command Line Arguments Routines
 
         #region System Settint Load & Save routines
+        /// <summary>
+        /// 
+        /// </summary>
         private void Setting_Load()
         {
             string jfile = Path.Combine(AppPath, "settings.json");
@@ -726,6 +734,9 @@ namespace PhotoTool
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void Setting_Save()
         {
             if ( settings.ContainsKey( "RecentItem" ) )

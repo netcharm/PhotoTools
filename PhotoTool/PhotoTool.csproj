@@ -179,6 +179,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\RunChecked_32x.png" />
+    <None Include="Resources\RunChecked_16x.png" />
     <None Include="Resources\Redo_32x.png" />
     <None Include="Resources\Redo_16x.png" />
     <None Include="Resources\Undo_32x.png" />

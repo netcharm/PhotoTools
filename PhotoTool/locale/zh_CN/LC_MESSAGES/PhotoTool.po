@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PhotoTool\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-06 11:02+0800\n"
+"POT-Creation-Date: 2016-11-06 22:30+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -24,221 +24,229 @@ msgstr ""
 msgid "Addin Error"
 msgstr "插件错误"
 
-#: LogForm.resx:193 -> btnClear.Text.value MainForm.resx:293
+#: LogForm.resx:193 -> btnClear.Text.value MainForm.resx:269
 #: cmdEditClear.Text.value
 msgid "Clear"
 msgstr "清除"
 
-#: LogForm.resx:217 -> $this.Text.value MainForm.resx:332 cmdLogger.Text.value
+#: LogForm.resx:217 -> $this.Text.value MainForm.resx:338 cmdLogger.Text.value
 msgid "Logger"
 msgstr "日志"
 
-#: MainForm.resx:121 -> RibTabMainFile.Text.value
-msgid "File"
-msgstr "文件"
-
-#: MainForm.resx:124 -> RibTabMainEdit.Text.value
-msgid "Edit"
-msgstr "编辑"
-
-#: MainForm.resx:127 -> RibTabMainClipboard.Text.value
-msgid "Clipboard"
-msgstr "剪贴板"
-
-#: MainForm.resx:130 -> cmdViewZoomIn.Text.value MainForm.resx:133
-#: cmdViewZoomIn.ToolTip.value
-msgid "Zoom In"
-msgstr "放大"
-
-#: MainForm.resx:136 -> cmdViewZoomOut.Text.value MainForm.resx:139
-#: cmdViewZoomOut.ToolTip.value
-msgid "Zoom Out"
-msgstr "缩小"
-
-#: MainForm.resx:142 -> cmdViewZoomFit.Text.value
-msgid "Fit View"
-msgstr "适应窗口"
-
-#: MainForm.resx:145 -> cmdViewZoomFit.ToolTip.value
-msgid "Fit Current Window Viewer"
-msgstr "图像缩放适应当前窗口"
-
-#: MainForm.resx:148 -> cmdViewZoom100.Text.value MainForm.resx:387
-#: tssLabelImageSize.Text.value MainForm.resx:390
-#: tssLabelImageSize.ToolTipText.value
-msgid "Image Size"
-msgstr "图像大小"
-
-#: MainForm.resx:151 -> cmdViewZoom100.ToolTip.value
-msgid "Real Image Size"
-msgstr "实际图像大小"
-
-#: MainForm.resx:154 -> cmdViewZoomRegion.Text.value
-msgid "Zoom Selected"
-msgstr "放大选区"
-
-#: MainForm.resx:157 -> cmdViewZoomRegion.ToolTip.value
-msgid "Zoom Selected Region"
-msgstr "放大当前选择的区域"
-
-#: MainForm.resx:160 -> RibTabMainView.Text.value
-msgid "View"
-msgstr "查看"
-
-#: MainForm.resx:163 -> RibTabMainApp.Text.value
-msgid "Application"
-msgstr "应用模块"
-
-#: MainForm.resx:166 -> RibTabMain.Text.value
-msgid "Main"
-msgstr "常用功能"
-
-#: MainForm.resx:169 -> cmdFileOpen.Text.value MainForm.resx:718
+#: MainForm.resx:121 -> cmdFileOpen.Text.value MainForm.resx:724
 #: ribOrbMiOpen.Text.value
 msgid "Open"
 msgstr "打开"
 
-#: MainForm.resx:172 -> cmdFileOpen.ToolTip.value
+#: MainForm.resx:124 -> cmdFileOpen.ToolTip.value
 msgid "Open Image From File"
 msgstr "打开图像文件"
 
-#: MainForm.resx:184 -> cmdFileSave.Text.value MainForm.resx:737
+#: MainForm.resx:136 -> cmdFileSave.Text.value MainForm.resx:743
 #: ribOrbMiSave.Text.value
 msgid "Save"
 msgstr "保存"
 
-#: MainForm.resx:187 -> cmdFileSave.ToolTip.value
+#: MainForm.resx:139 -> cmdFileSave.ToolTip.value
 msgid "Save Image To File"
 msgstr "保存图像文件"
 
-#: MainForm.resx:190 -> cmdFileApply.Text.value
+#: MainForm.resx:142 -> cmdFileApply.Text.value
 msgid "Apply"
-msgstr "执行"
+msgstr "应用"
 
-#: MainForm.resx:193 -> cmdFileApply.ToolTip.value
-msgid "Apply To Image"
-msgstr "执行于当前图像"
+#: MainForm.resx:145 -> cmdFileApply.ToolTip.value
+msgid "Apply To Selected Image(s)"
+msgstr "应用到当前选中的图像文件"
 
-#: MainForm.resx:196 -> cmdEditUndo.Text.value
+#: MainForm.resx:148 -> cmdFileApplyAll.Text.value
+msgid "Apply All"
+msgstr "全部应用"
+
+#: MainForm.resx:151 -> cmdFileApplyAll.ToolTip.value
+msgid "Apply To All Images"
+msgstr "应用到列表中的全部图像文件"
+
+#: MainForm.resx:154 -> RibTabMainFile.Text.value
+msgid "File"
+msgstr "文件"
+
+#: MainForm.resx:157 -> RibTabMainEdit.Text.value
+msgid "Edit"
+msgstr "编辑"
+
+#: MainForm.resx:160 -> RibTabMainClipboard.Text.value
+msgid "Clipboard"
+msgstr "剪贴板"
+
+#: MainForm.resx:163 -> RibTabMainView.Text.value
+msgid "View"
+msgstr "查看"
+
+#: MainForm.resx:166 -> RibTabMainApp.Text.value
+msgid "Application"
+msgstr "应用模块"
+
+#: MainForm.resx:169 -> RibTabMain.Text.value
+msgid "Main"
+msgstr "常用功能"
+
+#: MainForm.resx:172 -> cmdEditUndo.Text.value
 msgid "Undo"
 msgstr "恢复"
 
-#: MainForm.resx:199 -> cmdEditUndo.ToolTip.value
+#: MainForm.resx:175 -> cmdEditUndo.ToolTip.value
 msgid "Undo Last Operation"
 msgstr "恢复前次操作"
 
-#: MainForm.resx:202 -> cmdEditRedo.Text.value
+#: MainForm.resx:178 -> cmdEditRedo.Text.value
 msgid "Redo"
 msgstr "重做"
 
-#: MainForm.resx:205 -> cmdEditRedo.ToolTip.value
+#: MainForm.resx:181 -> cmdEditRedo.ToolTip.value
 msgid "Redo Last Operation"
 msgstr "重做前次操作"
 
-#: MainForm.resx:250 -> cmdEditCut.Text.value
+#: MainForm.resx:226 -> cmdEditCut.Text.value
 msgid "Cut"
 msgstr "剪切"
 
-#: MainForm.resx:253 -> cmdEditCut.ToolTip.value
+#: MainForm.resx:229 -> cmdEditCut.ToolTip.value
 msgid "Cut Content"
 msgstr "剪切当前内容"
 
-#: MainForm.resx:264 -> cmdEditCopy.Text.value
+#: MainForm.resx:240 -> cmdEditCopy.Text.value
 msgid "Copy"
 msgstr "复制"
 
-#: MainForm.resx:267 -> cmdEditCopy.ToolTip.value
+#: MainForm.resx:243 -> cmdEditCopy.ToolTip.value
 msgid "Copy Content"
 msgstr "复制当前内容"
 
-#: MainForm.resx:287 -> cmdEditPaste.Text.value
+#: MainForm.resx:263 -> cmdEditPaste.Text.value
 msgid "Paste"
 msgstr "粘贴"
 
-#: MainForm.resx:290 -> cmdEditPaste.ToolTip.value
+#: MainForm.resx:266 -> cmdEditPaste.ToolTip.value
 msgid "Paste Content"
 msgstr "粘贴到当前窗口"
 
-#: MainForm.resx:296 -> cmdEditClear.ToolTip.value
+#: MainForm.resx:272 -> cmdEditClear.ToolTip.value
 msgid "Clear Content"
 msgstr "清除内容"
 
-#: MainForm.resx:299 -> RibTabAction.Text.value
+#: MainForm.resx:275 -> cmdViewZoomIn.Text.value MainForm.resx:278
+#: cmdViewZoomIn.ToolTip.value
+msgid "Zoom In"
+msgstr "放大"
+
+#: MainForm.resx:281 -> cmdViewZoomOut.Text.value MainForm.resx:284
+#: cmdViewZoomOut.ToolTip.value
+msgid "Zoom Out"
+msgstr "缩小"
+
+#: MainForm.resx:287 -> cmdViewZoomFit.Text.value
+msgid "Fit View"
+msgstr "适应窗口"
+
+#: MainForm.resx:290 -> cmdViewZoomFit.ToolTip.value
+msgid "Fit Current Window Viewer"
+msgstr "图像缩放适应当前窗口"
+
+#: MainForm.resx:293 -> cmdViewZoom100.Text.value MainForm.resx:393
+#: tssLabelImageSize.Text.value MainForm.resx:396
+#: tssLabelImageSize.ToolTipText.value
+msgid "Image Size"
+msgstr "图像大小"
+
+#: MainForm.resx:296 -> cmdViewZoom100.ToolTip.value
+msgid "Real Image Size"
+msgstr "实际图像大小"
+
+#: MainForm.resx:299 -> cmdViewZoomRegion.Text.value
+msgid "Zoom Selected"
+msgstr "放大选区"
+
+#: MainForm.resx:302 -> cmdViewZoomRegion.ToolTip.value
+msgid "Zoom Selected Region"
+msgstr "放大当前选择的区域"
+
+#: MainForm.resx:305 -> RibTabAction.Text.value
 msgid "Action"
 msgstr "功能"
 
-#: MainForm.resx:302 -> RibTabActInternal.Text.value MainForm.resx:311
+#: MainForm.resx:308 -> RibTabActInternal.Text.value MainForm.resx:317
 #: RibTabEffectInternal.Text.value
 msgid "Internal"
 msgstr "内部"
 
-#: MainForm.resx:305 -> RibTabActExternal.Text.value MainForm.resx:314
+#: MainForm.resx:311 -> RibTabActExternal.Text.value MainForm.resx:320
 #: RibTabEffectExternal.Text.value
 msgid "External"
 msgstr "扩展"
 
-#: MainForm.resx:308 -> RibTabEffect.Text.value
+#: MainForm.resx:314 -> RibTabEffect.Text.value
 msgid "Effect"
 msgstr "滤镜"
 
-#: MainForm.resx:317 -> RibTabSystem.Text.value
+#: MainForm.resx:323 -> RibTabSystem.Text.value
 msgid "System"
 msgstr "系统"
 
-#: MainForm.resx:320 -> RibTabSysAddinManager.Text.value
+#: MainForm.resx:326 -> RibTabSysAddinManager.Text.value
 msgid "Addins"
 msgstr "扩展插件"
 
-#: MainForm.resx:323 -> cmdAddinReScan.Text.value
+#: MainForm.resx:329 -> cmdAddinReScan.Text.value
 msgid "Re-Scan"
 msgstr "重新扫描"
 
-#: MainForm.resx:326 -> cmdAddinReScan.ToolTip.value
+#: MainForm.resx:332 -> cmdAddinReScan.ToolTip.value
 msgid "Re-Scan Addins"
 msgstr "重新扫描扩展插件"
 
-#: MainForm.resx:329 -> RibTabSysTools.Text.value
+#: MainForm.resx:335 -> RibTabSysTools.Text.value
 msgid "Tools"
 msgstr "工具"
 
-#: MainForm.resx:335 -> cmdLogger.ToolTip.value
+#: MainForm.resx:341 -> cmdLogger.ToolTip.value
 msgid "Show Logger Window"
 msgstr "显示日志窗口"
 
-#: MainForm.resx:338 -> RibTabSysAbout.Text.value MainForm.resx:341
+#: MainForm.resx:344 -> RibTabSysAbout.Text.value MainForm.resx:347
 #: cmdAbout.Text.value
 msgid "About"
 msgstr "关于"
 
-#: MainForm.resx:344 -> cmdAbout.ToolTip.value
+#: MainForm.resx:350 -> cmdAbout.ToolTip.value
 msgid "Show About Info"
 msgstr "显示应用以及插件的相关信息"
 
-#: MainForm.resx:360 -> status.Text.value
+#: MainForm.resx:366 -> status.Text.value
 msgid "OK"
 msgstr "确认"
 
-#: MainForm.resx:378 -> tssLabelImageName.Text.value
+#: MainForm.resx:384 -> tssLabelImageName.Text.value
 msgid "Image File"
 msgstr "图像文件"
 
-#: MainForm.resx:381 -> tssLabelImageName.ToolTipText.value
+#: MainForm.resx:387 -> tssLabelImageName.ToolTipText.value
 msgid "Image File Name"
 msgstr "图像文件名"
 
-#: MainForm.resx:396 -> tssLabelImageZoom.Text.value
+#: MainForm.resx:402 -> tssLabelImageZoom.Text.value
 msgid "Zoom"
 msgstr "缩放"
 
-#: MainForm.resx:403 -> tssLabelImageZoom.ToolTipText.value
+#: MainForm.resx:409 -> tssLabelImageZoom.ToolTipText.value
 msgid "Image Zoom Level"
 msgstr "图像缩放比例"
 
-#: MainForm.resx:409 -> tssLabelImageInfo.Text.value
+#: MainForm.resx:415 -> tssLabelImageInfo.Text.value
 msgid "Ready"
 msgstr "就绪"
 
-#: MainForm.resx:421 -> dlgOpen.Filter.value
+#: MainForm.resx:427 -> dlgOpen.Filter.value
 msgid ""
 "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All "
 "File(*.*)|*.*"
@@ -246,7 +254,7 @@ msgstr ""
 "图像文件(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|全部文"
 "件(*.*)|*.*"
 
-#: MainForm.resx:427 -> dlgSave.Filter.value
+#: MainForm.resx:433 -> dlgSave.Filter.value
 msgid ""
 "JPEG File(*.jpg;*.jpeg)|*.jpg;*.jpeg|PNG File(*.png)|*.png|TIFF File(*.tif;*."
 "tiff)|*.tif;*.tiff|Bitmap File(*.png)|*.bmp|GIF File(*.gif)|*.gif|All File(*."
@@ -256,60 +264,60 @@ msgstr ""
 "tiff)|*.tif;*.tiff|位图文件(*.png)|*.bmp|GIF 文件(*.gif)|*.gif|全部文件(*.*)|"
 "*.*"
 
-#: MainForm.resx:703 -> ribbonMain.Text.value
+#: MainForm.resx:709 -> ribbonMain.Text.value
 msgid "Ribbon"
 msgstr ""
 
-#: MainForm.resx:760 -> ribOptBtnExit.Text.value
+#: MainForm.resx:766 -> ribOptBtnExit.Text.value
 msgid "Exit"
 msgstr "退出"
 
-#: MainForm.resx:788 -> ribOptBtnOptions.Text.value
+#: MainForm.resx:794 -> ribOptBtnOptions.Text.value
 msgid "Options"
 msgstr "选项"
 
-#: MainForm.resx:805 -> ribThemeSelect.Text.value
+#: MainForm.resx:811 -> ribThemeSelect.Text.value
 msgid "Theme"
 msgstr "主题颜色"
 
-#: MainForm.resx:822 -> cmdThemeBlue.Text.value
+#: MainForm.resx:828 -> cmdThemeBlue.Text.value
 msgid "Blue"
 msgstr "蓝色"
 
-#: MainForm.resx:839 -> cmdThemeBlack.Text.value
+#: MainForm.resx:845 -> cmdThemeBlack.Text.value
 msgid "Black"
 msgstr "黑色"
 
-#: MainForm.resx:856 -> cmdThemeGreen.Text.value
+#: MainForm.resx:862 -> cmdThemeGreen.Text.value
 msgid "Green"
 msgstr "绿色"
 
-#: MainForm.resx:873 -> cmdThemePurple.Text.value
+#: MainForm.resx:879 -> cmdThemePurple.Text.value
 msgid "Purple"
 msgstr "紫色"
 
-#: MainForm.resx:890 -> ribStyleSelect.Text.value MainForm.resx:893
+#: MainForm.resx:896 -> ribStyleSelect.Text.value MainForm.resx:899
 #: ribStyleSelect.ToolTip.value
 msgid "Style"
 msgstr "主题风格"
 
-#: MainForm.resx:910 -> cmdStyle2007.Text.value
+#: MainForm.resx:916 -> cmdStyle2007.Text.value
 msgid "Office 2007"
 msgstr ""
 
-#: MainForm.resx:927 -> cmdStyle2010.Text.value
+#: MainForm.resx:933 -> cmdStyle2010.Text.value
 msgid "Office 2010"
 msgstr ""
 
-#: MainForm.resx:944 -> cmdStyle2013.Text.value
+#: MainForm.resx:950 -> cmdStyle2013.Text.value
 msgid "Office 2013"
 msgstr ""
 
-#: MainForm.resx:959 -> $this.Text.value
+#: MainForm.resx:965 -> $this.Text.value
 msgid "Photo Tool"
 msgstr "图像工具"
 
-#: MainForm.Designer.cs:393
+#: MainForm.Designer.cs:401
 msgid "Recent"
 msgstr "最近打开的"
 
@@ -317,7 +325,7 @@ msgstr "最近打开的"
 msgid "NewFile"
 msgstr "新文件"
 
-#: MainFormUtils.cs:705 MainFormUtils.cs:706 MainFormUtils.cs:707
+#: MainFormUtils.cs:715 MainFormUtils.cs:716 MainFormUtils.cs:717
 msgid "None"
 msgstr "无"
 

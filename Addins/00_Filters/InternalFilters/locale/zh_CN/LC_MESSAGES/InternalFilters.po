@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-06 22:11+0800\n"
+"POT-Creation-Date: 2016-11-06 22:30+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 
 #: Actions\ResizeForm.resx:187 -> btnOk.Text.value Effects\BlurForm.resx:298
-#: Effects\GrayscaleForm.resx:139 Effects\InvertForm.resx:208
+#: Effects\GrayscaleForm.resx:139 Effects\InvertForm.resx:214
 #: Effects\SharpenForm.resx:301 Actions\RotateForm.resx:364
 #: Actions\CropForm.Designer.cs:308
 msgid "OK"
@@ -29,7 +29,7 @@ msgstr "确认"
 
 #: Actions\ResizeForm.resx:211 -> btnCancel.Text.value
 #: Effects\BlurForm.resx:322 Effects\GrayscaleForm.resx:166
-#: Effects\InvertForm.resx:232 Effects\SharpenForm.resx:325
+#: Effects\InvertForm.resx:238 Effects\SharpenForm.resx:325
 #: Actions\RotateForm.resx:388 Actions\CropForm.Designer.cs:298
 msgid "Cancel"
 msgstr "取消"

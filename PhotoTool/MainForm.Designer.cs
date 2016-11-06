@@ -34,8 +34,9 @@
             this.RibTabMainFile = new System.Windows.Forms.RibbonPanel();
             this.cmdFileOpen = new System.Windows.Forms.RibbonButton();
             this.cmdFileSave = new System.Windows.Forms.RibbonButton();
-            this.cmdFileSep01 = new System.Windows.Forms.RibbonSeparator();
+            this.cmdFileSepApply = new System.Windows.Forms.RibbonSeparator();
             this.cmdFileApply = new System.Windows.Forms.RibbonButton();
+            this.cmdFileApplyAll = new System.Windows.Forms.RibbonButton();
             this.RibTabMainEdit = new System.Windows.Forms.RibbonPanel();
             this.cmdEditUndo = new System.Windows.Forms.RibbonButton();
             this.cmdEditRedo = new System.Windows.Forms.RibbonButton();
@@ -103,8 +104,9 @@
             // 
             this.RibTabMainFile.Items.Add(this.cmdFileOpen);
             this.RibTabMainFile.Items.Add(this.cmdFileSave);
-            this.RibTabMainFile.Items.Add(this.cmdFileSep01);
+            this.RibTabMainFile.Items.Add(this.cmdFileSepApply);
             this.RibTabMainFile.Items.Add(this.cmdFileApply);
+            this.RibTabMainFile.Items.Add(this.cmdFileApplyAll);
             resources.ApplyResources(this.RibTabMainFile, "RibTabMainFile");
             // 
             // cmdFileOpen
@@ -123,9 +125,15 @@
             // 
             // cmdFileApply
             // 
-            this.cmdFileApply.Image = global::PhotoTool.Properties.Resources.Run_32x;
-            this.cmdFileApply.SmallImage = global::PhotoTool.Properties.Resources.Run_16x;
+            this.cmdFileApply.Image = global::PhotoTool.Properties.Resources.RunChecked_32x;
+            this.cmdFileApply.SmallImage = global::PhotoTool.Properties.Resources.RunChecked_16x;
             resources.ApplyResources(this.cmdFileApply, "cmdFileApply");
+            // 
+            // cmdFileApplyAll
+            // 
+            this.cmdFileApplyAll.Image = global::PhotoTool.Properties.Resources.Run_32x;
+            this.cmdFileApplyAll.SmallImage = global::PhotoTool.Properties.Resources.Run_16x;
+            resources.ApplyResources(this.cmdFileApplyAll, "cmdFileApplyAll");
             // 
             // RibTabMainEdit
             // 
@@ -608,7 +616,7 @@
         private System.Windows.Forms.RibbonPanel RibTabSysAddinManager;
         private System.Windows.Forms.RibbonButton cmdAddinReScan;
         private System.Windows.Forms.RibbonButton cmdFileApply;
-        private System.Windows.Forms.RibbonSeparator cmdFileSep01;
+        private System.Windows.Forms.RibbonSeparator cmdFileSepApply;
         private System.Windows.Forms.RibbonPanel RibTabSysTools;
         private System.Windows.Forms.RibbonButton cmdLogger;
         private System.Windows.Forms.RibbonPanel RibTabSysAbout;
@@ -616,6 +624,7 @@
         private System.Windows.Forms.RibbonPanel RibTabMainEdit;
         private System.Windows.Forms.RibbonButton cmdEditUndo;
         private System.Windows.Forms.RibbonButton cmdEditRedo;
+        private System.Windows.Forms.RibbonButton cmdFileApplyAll;
     }
 }
 

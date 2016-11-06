@@ -353,6 +353,26 @@ namespace PhotoTool.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap RunChecked_16x {
+            get {
+                object obj = ResourceManager.GetObject("RunChecked_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap RunChecked_32x {
+            get {
+                object obj = ResourceManager.GetObject("RunChecked_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Save_16x {
             get {
                 object obj = ResourceManager.GetObject("Save_16x", resourceCulture);
