@@ -36,12 +36,12 @@
             this.btnRotate90r = new System.Windows.Forms.Button();
             this.btnRotate90l = new System.Windows.Forms.Button();
             this.groupAngle = new System.Windows.Forms.GroupBox();
+            this.chkKeepSize = new System.Windows.Forms.CheckBox();
+            this.numAngle = new System.Windows.Forms.NumericUpDown();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.numAngle = new System.Windows.Forms.NumericUpDown();
             this.imgPreview = new Cyotek.Windows.Forms.ImageBox();
-            this.chkKeepSize = new System.Windows.Forms.CheckBox();
             this.groupMode.SuspendLayout();
             this.groupAngle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAngle)).BeginInit();
@@ -101,23 +101,13 @@
             this.groupAngle.Name = "groupAngle";
             this.groupAngle.TabStop = false;
             // 
-            // btnOk
+            // chkKeepSize
             // 
-            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            resources.ApplyResources(this.btnOk, "btnOk");
-            this.btnOk.Name = "btnOk";
-            this.btnOk.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // toolTip
-            // 
-            this.toolTip.ShowAlways = true;
+            resources.ApplyResources(this.chkKeepSize, "chkKeepSize");
+            this.chkKeepSize.Name = "chkKeepSize";
+            this.toolTip.SetToolTip(this.chkKeepSize, resources.GetString("chkKeepSize.ToolTip"));
+            this.chkKeepSize.UseVisualStyleBackColor = true;
+            this.chkKeepSize.Click += new System.EventHandler(this.chkKeepSize_Click);
             // 
             // numAngle
             // 
@@ -143,6 +133,24 @@
             this.toolTip.SetToolTip(this.numAngle, resources.GetString("numAngle.ToolTip"));
             this.numAngle.ValueChanged += new System.EventHandler(this.numAngle_ValueChanged);
             // 
+            // btnOk
+            // 
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.btnOk, "btnOk");
+            this.btnOk.Name = "btnOk";
+            this.btnOk.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.btnCancel, "btnCancel");
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // toolTip
+            // 
+            this.toolTip.ShowAlways = true;
+            // 
             // imgPreview
             // 
             this.imgPreview.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Bicubic;
@@ -152,13 +160,6 @@
             this.imgPreview.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.imgPreview.TextDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.None;
             this.toolTip.SetToolTip(this.imgPreview, resources.GetString("imgPreview.ToolTip"));
-            // 
-            // chkKeepSize
-            // 
-            resources.ApplyResources(this.chkKeepSize, "chkKeepSize");
-            this.chkKeepSize.Name = "chkKeepSize";
-            this.toolTip.SetToolTip(this.chkKeepSize, resources.GetString("chkKeepSize.ToolTip"));
-            this.chkKeepSize.UseVisualStyleBackColor = true;
             // 
             // RotateForm
             // 

@@ -183,7 +183,7 @@ namespace InternalFilters.Effects
                     dst = Gray( image, grayscaleMode );
                     break;
                 case GrayscaleMode.Sepia:
-                    dst = AddinUtils.ProcessImage( new Accord.Imaging.Filters.Sepia(), image );
+                    dst = AddinUtils.ProcessImage( new Accord.Imaging.Filters.Sepia(), image, false );
                     break;
                 case GrayscaleMode.Tawawa:
                     dst = Tawawa( image );

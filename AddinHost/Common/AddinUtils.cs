@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -422,6 +423,7 @@ namespace NetCharm.Image.Addins
                         Bitmap dst = Accord.Imaging.Image.Clone(CloneImage(img) as Bitmap, System.Drawing.Imaging.PixelFormat.Format24bppRgb );
                         dst = Accord.Imaging.Image.Clone( filter.Apply( dst ), System.Drawing.Imaging.PixelFormat.Format32bppArgb );
                         rca.ApplyInPlace( dst );
+                        bmpA.Dispose();
                         return ( dst );
                     }
                     else if ( filter is IAddin )
@@ -430,15 +432,16 @@ namespace NetCharm.Image.Addins
                         System.Drawing.Image bmpA = (filter as IAddin).Apply(eca.Apply( CloneImage(img) as Bitmap ));
                         ReplaceChannel rca = new ReplaceChannel(Accord.Imaging.RGB.A, bmpA as Bitmap);
 
-                        Bitmap dst = Accord.Imaging.Image.Clone(CloneImage(img) as Bitmap, System.Drawing.Imaging.PixelFormat.Format24bppRgb );
+                        Bitmap dst = Accord.Imaging.Image.Clone(CloneImage(img) as Bitmap, PixelFormat.Format24bppRgb );
                         dst = Accord.Imaging.Image.Clone( ( filter as IAddin ).Apply( dst as System.Drawing.Image ) as Bitmap, System.Drawing.Imaging.PixelFormat.Format32bppArgb );
                         rca.ApplyInPlace( dst );
+                        bmpA.Dispose();
                         return ( dst );
                     }
                 }
                 return ( img );
             }
-            else return ( img );
+            return ( img );
         }
 
         /// <summary>
@@ -469,7 +472,7 @@ namespace NetCharm.Image.Addins
                 {
                     if ( filter is IFilter )
                     {
-                        if( ( filter as IFilterInformation ).FormatTranslations.ContainsKey( System.Drawing.Imaging.PixelFormat.Format8bppIndexed ) ||
+                        if( ( filter as IFilterInformation ).FormatTranslations.ContainsKey( PixelFormat.Format8bppIndexed ) ||
                             !AlphaFormat.Contains( img.PixelFormat ) )
                         {
                             Bitmap dst = ( filter as IFilter ).Apply( CloneImage(img) as Bitmap );
@@ -482,9 +485,10 @@ namespace NetCharm.Image.Addins
                             Bitmap bmpA = eca.Apply( CloneImage(img) as Bitmap );
                             ReplaceChannel rca = new ReplaceChannel(Accord.Imaging.RGB.A, bmpA);
 
-                            Bitmap dst = Accord.Imaging.Image.Clone(CloneImage(img) as Bitmap, System.Drawing.Imaging.PixelFormat.Format24bppRgb );
-                            dst = Accord.Imaging.Image.Clone( ( (IFilter) filter ).Apply( dst ), System.Drawing.Imaging.PixelFormat.Format32bppArgb );
+                            Bitmap dst = Accord.Imaging.Image.Clone(CloneImage(img) as Bitmap, PixelFormat.Format24bppRgb );
+                            dst = Accord.Imaging.Image.Clone( ( (IFilter) filter ).Apply( dst ), PixelFormat.Format32bppArgb );
                             rca.ApplyInPlace( dst );
+                            bmpA.Dispose();
 
                             CloneExif( img, dst );
                             return ( dst );
@@ -509,9 +513,10 @@ namespace NetCharm.Image.Addins
                             bmpA = eca.Apply( CloneImage( img ) as Bitmap );
                         ReplaceChannel rca = new ReplaceChannel(Accord.Imaging.RGB.A, bmpA);
 
-                        Bitmap dst = Accord.Imaging.Image.Clone(CloneImage(img) as Bitmap, System.Drawing.Imaging.PixelFormat.Format24bppRgb );
-                        dst = Accord.Imaging.Image.Clone( ( (IFilter) filter ).Apply( dst ), System.Drawing.Imaging.PixelFormat.Format32bppArgb );
+                        Bitmap dst = Accord.Imaging.Image.Clone(CloneImage(img) as Bitmap, PixelFormat.Format24bppRgb );
+                        dst = Accord.Imaging.Image.Clone( ( (IFilter) filter ).Apply( dst ), PixelFormat.Format32bppArgb );
                         rca.ApplyInPlace( dst );
+                        bmpA.Dispose();
 
                         CloneExif( img, dst );
                         return ( dst );
@@ -525,7 +530,7 @@ namespace NetCharm.Image.Addins
                 }
                 return ( img );
             }
-            else return ( img );
+            return ( img );
         }
 
         /// <summary>
@@ -537,14 +542,11 @@ namespace NetCharm.Image.Addins
         public static System.Drawing.Image CreateThumb( System.Drawing.Image source, Size size )
         {
             double thumbSize = Math.Min(size.Width, size.Height);
-
-            //double aspect = (float)img.Width / (float)img.Height;
             double factor = Math.Max(source.Width, source.Height) / thumbSize;
             int w = (int)Math.Round( source.Width / factor );
             int h = (int)Math.Round( source.Height / factor );
 
             ResizeBicubic filter = new ResizeBicubic(w, h);
-
             return ( ProcessImage( filter, source ) );
         }
 
@@ -590,36 +592,28 @@ namespace NetCharm.Image.Addins
                         case OpaqueMode.Alpha:
                             if ( !content && c.A != cRef.A )
                             {
-                                if ( x < xMin )
-                                    xMin = x - 1;
-                                if ( y < yMin )
-                                    yMin = y - 1;
+                                if ( x < xMin ) xMin = x - 1;
+                                if ( y < yMin ) yMin = y - 1;
                                 content = true;
                             }
                             else if ( content && c.A != cRef.A )
                             {
-                                if ( x > xMax )
-                                    xMax = x + 1;
-                                if ( y > yMax )
-                                    yMax = y + 1;
+                                if ( x > xMax ) xMax = x + 1;
+                                if ( y > yMax ) yMax = y + 1;
                             }
                             break;
                         case OpaqueMode.TopLeft:
                         case OpaqueMode.BottomRight:
                             if ( !content && ( c.R != cRef.R || c.G != cRef.G || c.B != cRef.B ) )
                             {
-                                if ( x < xMin )
-                                    xMin = x - 1;
-                                if ( y < yMin )
-                                    yMin = y - 1;
+                                if ( x < xMin ) xMin = x - 1;
+                                if ( y < yMin ) yMin = y - 1;
                                 content = true;
                             }
                             else if ( content && ( c.R != cRef.R || c.G != cRef.G || c.B != cRef.B ) )
                             {
-                                if ( x > xMax )
-                                    xMax = x + 1;
-                                if ( y > yMax )
-                                    yMax = y + 1;
+                                if ( x > xMax ) xMax = x + 1;
+                                if ( y > yMax ) yMax = y + 1;
                             }
                             break;
                     }

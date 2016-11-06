@@ -42,9 +42,9 @@ namespace PhotoTool
 
             #region Setup Ribbon UI Style & Theme
 
-            ChangeStyle( RibbonOrbStyle.Office_2013 );
+            //ChangeStyle( RibbonOrbStyle.Office_2013 );
+            //ChangeTheme( RibbonTheme.Black );
             //ChangeTheme( RibbonTheme.Halloween );
-            ChangeTheme( RibbonTheme.Black );
 
             #endregion Setup Ribbon UI Style & Theme
 

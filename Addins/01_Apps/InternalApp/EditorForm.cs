@@ -29,13 +29,14 @@ namespace InternalFilters
             set
             {
                 if ( imgEditor.Image is Image ) HistoryUndo.Push( imgEditor.Image );
+                else if ( value is Image ) HistoryUndo.Push( value );
                 ImgSrc = value;
                 SetSizeMode();
                 imgEditor.Zoom = 100;
                 imgEditor.Image = ImgSrc;
                 imgEditor.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Normal;
 
-                Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 0 ) );
+                Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 1 ) );
                 Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Redo, HistoryRedo.Count > 0 ) );
             }
         }
@@ -175,7 +176,7 @@ namespace InternalFilters
         {
             HistoryUndo.Clear();
             HistoryRedo.Clear();
-            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 0 ) );
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 1 ) );
             Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Redo, HistoryRedo.Count > 0 ) );
         }
 

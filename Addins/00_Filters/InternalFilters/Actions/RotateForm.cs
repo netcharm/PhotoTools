@@ -379,5 +379,17 @@ namespace InternalFilters
             numAngle.Value = Convert.ToDecimal( angle );
             imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chkKeepSize_Click( object sender, EventArgs e )
+        {
+            angle = (double) numAngle.Value % 360;
+            numAngle.Value = Convert.ToDecimal( angle );
+            imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
+        }
     }
 }

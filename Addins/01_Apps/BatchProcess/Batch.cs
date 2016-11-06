@@ -223,6 +223,8 @@ namespace BatchProcess
                 fm = new BatchProcessForm( this );
                 fm.Text = fv.ProductName;
                 fm.MdiParent = parent;
+                fm.Size = parent.ClientSize;
+                //fm.FormBorderStyle = FormBorderStyle.None;
                 fm.WindowState = FormWindowState.Maximized;
                 fm.Show();
             }

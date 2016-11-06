@@ -301,6 +301,8 @@ namespace PhotoTool
                 if ( addins.CurrentApp != null )
                 {
                     addins.CurrentApp.Show( this );
+                    //ribbonMain.BringToFront();
+                    //ribbonMain.Update();
                 }
             }
             cmdFileApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
@@ -722,15 +724,40 @@ namespace PhotoTool
         private void Setting_Load()
         {
             string jfile = Path.Combine(AppPath, "settings.json");
-            if(File.Exists(jfile))
+            if ( File.Exists( jfile ) )
             {
                 string json = File.ReadAllText(jfile);
                 settings = JsonConvert.DeserializeObject<Dictionary<string, object>>( json );
 
-                foreach ( string item in ( settings["RecentItem"] as JArray ).ToList() )
+                #region RecentItem
+                if ( settings.ContainsKey( "RecentItem" ) )
                 {
-                    RecentItemAdd( item );
+                    foreach ( string item in ( settings["RecentItem"] as JArray ).Reverse().ToList() )
+                    {
+                        RecentItemAdd( item );
+                    }
                 }
+                #endregion
+
+                #region Ribbon Style & Theme
+                if ( settings.ContainsKey( "ThemeStyle" ) && settings["ThemeStyle"] != null )
+                    ChangeStyle( (RibbonOrbStyle) Enum.Parse( typeof( RibbonOrbStyle ), settings["ThemeStyle"].ToString() ) );
+                if ( settings.ContainsKey( "ThemeColor" ) && settings["ThemeColor"] != null )
+                    ChangeTheme( (RibbonTheme) Enum.Parse( typeof( RibbonTheme ), settings["ThemeColor"].ToString() ) );
+                #endregion
+
+                #region Window Position & Size
+                if ( settings.ContainsKey( "WindowTop" ) && settings["WindowTop"] != null )
+                    this.Top = Convert.ToInt32( settings["WindowTop"] );
+                if ( settings.ContainsKey( "WindowLeft" ) && settings["WindowLeft"] != null )
+                    this.Left = Convert.ToInt32( settings["WindowLeft"] );
+                if ( settings.ContainsKey( "WindowWidth" ) && settings["WindowWidth"] != null )
+                    this.Width = Convert.ToInt32( settings["WindowWidth"] );
+                if ( settings.ContainsKey( "WindowHeight" ) && settings["WindowHeight"] != null )
+                    this.Height = Convert.ToInt32( settings["WindowHeight"] );
+                if ( settings.ContainsKey( "WindowState" ) && settings["WindowState"] != null )
+                    this.WindowState = (FormWindowState) Enum.Parse( typeof( FormWindowState ), settings["WindowState"].ToString() );
+                #endregion
             }
         }
 
@@ -739,13 +766,17 @@ namespace PhotoTool
         /// </summary>
         private void Setting_Save()
         {
-            if ( settings.ContainsKey( "RecentItem" ) )
-                settings["RecentItem"] = ribbonMain.OrbDropDown.RecentItems.Select( o => o.Value );
-            else
-                settings.Add( "RecentItem", ribbonMain.OrbDropDown.RecentItems.Select( o => o.Value ) );
+            settings["RecentItem"] = ribbonMain.OrbDropDown.RecentItems.Select( o => o.Value ).Take( 20 );
+            settings["ThemeStyle"] = Theme.ThemeStyle.ToString();
+            settings["ThemeColor"] = Theme.ThemeColor.ToString();
+            settings["WindowTop"] = this.Top;
+            settings["WindowLeft"] = this.Left;
+            settings["WindowWidth"] = this.Width;
+            settings["WindowHeight"] = this.Height;
+            settings["WindowState"] = this.WindowState;
 
             string json = JsonConvert.SerializeObject( settings, Formatting.Indented );
-            File.WriteAllText( Path.Combine(AppPath, "settings.json"), json );
+            File.WriteAllText( Path.Combine( AppPath, "settings.json" ), json );
         }
         #endregion
     }

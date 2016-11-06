@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 namespace InternalFilters
 {
     [Extension]
-    public class ImageEditor:IAddin
+    public class ImageEditor : IAddin
     {
         private FileVersionInfo fv = null;
         private EditorForm fm = null;
@@ -112,7 +112,7 @@ namespace InternalFilters
         private string _displayName = AddinUtils.T("Editor");
         public string DisplayName
         {
-            get{ return ( AddinUtils._( this, _displayName ) ); }
+            get { return ( AddinUtils._( this, _displayName ) ); }
             set { _displayName = value; }
         }
         /// <summary>
@@ -128,7 +128,7 @@ namespace InternalFilters
         private string _displayGroupName = AddinUtils.T("Application");
         public string DisplayGroupName
         {
-            get { return ( AddinUtils._(this, _displayGroupName ) ); }
+            get { return ( AddinUtils._( this, _displayGroupName ) ); }
             set { _displayGroupName = value; }
         }
         /// <summary>
@@ -223,12 +223,14 @@ namespace InternalFilters
         public void Show( Form parent = null )
         {
             //EditorForm fm = new EditorForm(Host);
-            if(fm == null)
+            if ( fm == null )
             {
                 fm = new EditorForm( Host, this );
                 AddinUtils.Translate( this, fm );
                 fm.Text = DisplayName;
                 fm.MdiParent = parent;
+                fm.Size = parent.ClientSize;
+                //fm.FormBorderStyle = FormBorderStyle.None;
                 fm.WindowState = FormWindowState.Maximized;
                 fm.Show();
             }
@@ -252,14 +254,14 @@ namespace InternalFilters
         /// <param name="filename"></param>
         public void Open( string filename )
         {
-            if(File.Exists( filename ) )
+            if ( File.Exists( filename ) )
             {
                 using ( FileStream fs = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
                 {
-                    ImageData = Image.FromStream( fs );
-                    if( fm is EditorForm && !fm.IsDisposed)
+                    if ( fm is EditorForm && !fm.IsDisposed )
                     {
                         fm.ClearHistory();
+                        ImageData = Image.FromStream( fs );
                     }
                 }
                 if ( Host.CurrentApp != this )
@@ -315,7 +317,7 @@ namespace InternalFilters
         public bool Command( AddinCommand cmd, out object result, params object[] cmdArgs )
         {
             result = null;
-            switch(cmd)
+            switch ( cmd )
             {
                 case AddinCommand.Open:
                     if ( cmdArgs.Length > 0 && cmdArgs[0] is string )
@@ -341,7 +343,7 @@ namespace InternalFilters
                     result = lastImageFileName;
                     break;
                 case AddinCommand.GetImageSize:
-                    if ( fm is EditorForm && fm.ImageData is Image)
+                    if ( fm is EditorForm && fm.ImageData is Image )
                     {
                         result = new Size( fm.ImageData.Width, fm.ImageData.Height );
                     }

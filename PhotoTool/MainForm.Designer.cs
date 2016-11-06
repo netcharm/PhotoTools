@@ -402,7 +402,6 @@
             this.ribbonMain.OrbDropDown.Size = ((System.Drawing.Size)(resources.GetObject("ribbonMain.OrbDropDown.Size")));
             this.ribbonMain.OrbDropDown.TabIndex = ((int)(resources.GetObject("ribbonMain.OrbDropDown.TabIndex")));
             this.ribbonMain.OrbImage = ((System.Drawing.Image)(resources.GetObject("ribbonMain.OrbImage")));
-            this.ribbonMain.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010;
             this.ribbonMain.PanelCaptionHeight = 20;
             // 
             // 
@@ -414,7 +413,6 @@
             this.ribbonMain.Tabs.Add(this.RibTabEffect);
             this.ribbonMain.Tabs.Add(this.RibTabSystem);
             this.ribbonMain.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
-            this.ribbonMain.ThemeColor = System.Windows.Forms.RibbonTheme.Black;
             // 
             // ribOrbMiOpen
             // 
