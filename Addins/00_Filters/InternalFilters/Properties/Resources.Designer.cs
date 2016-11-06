@@ -63,6 +63,26 @@ namespace InternalFilters.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Blur_16x {
+            get {
+                object obj = ResourceManager.GetObject("Blur_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Blur_32x {
+            get {
+                object obj = ResourceManager.GetObject("Blur_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Crop_16x {
             get {
                 object obj = ResourceManager.GetObject("Crop_16x", resourceCulture);
@@ -143,6 +163,26 @@ namespace InternalFilters.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Invert_16x {
+            get {
+                object obj = ResourceManager.GetObject("Invert_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Invert_32x {
+            get {
+                object obj = ResourceManager.GetObject("Invert_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Resize_16x {
             get {
                 object obj = ResourceManager.GetObject("Resize_16x", resourceCulture);
@@ -216,6 +256,26 @@ namespace InternalFilters.Properties {
         internal static System.Drawing.Bitmap RotateR_32x {
             get {
                 object obj = ResourceManager.GetObject("RotateR_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Sharpen_16x {
+            get {
+                object obj = ResourceManager.GetObject("Sharpen_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Sharpen_32x {
+            get {
+                object obj = ResourceManager.GetObject("Sharpen_32x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

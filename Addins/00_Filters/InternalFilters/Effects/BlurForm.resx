@@ -1,0 +1,612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnOriginal.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnOriginal.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnOriginal.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnOriginal.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAWJLR0QPGLoA2QAAAAd0SU1FB+ALBg87
+        Kf1374YAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMTEtMDZUMTU6NTk6NDErMDg6MDADdy/5AAAAJXRF
+        WHRkYXRlOm1vZGlmeQAyMDE2LTExLTA2VDE1OjU5OjQxKzA4OjAwciqXRQAAAB50RVh0cGRmOkhpUmVz
+        Qm91bmRpbmdCb3gAMTZ4MTYrMCswnHvaewAAABZ0RVh0cGRmOlNwb3RDb2xvci0wAFZTIE91dNFAVpsA
+        AAAVdEVYdHBkZjpTcG90Q29sb3ItMQBWUyBCRy9VPo8AAAAVdEVYdHBkZjpTcG90Q29sb3ItMgBWUyBG
+        R3rR4RYAAAAUdEVYdHBkZjpWZXJzaW9uAFBERi0xLjUNQINXTAAAARFJREFUWEftk0EOgjAQRTkbcc1Z
+        8Cy4xXPIBcA7yEpdsVE3bDWfZMjQtJ0OIdQoTd6CTqf/FUqyjeij7/tdTCDwjskoUNf1qnRdNxVI03RV
+        ILGIQJ7vVWRZNvQtJvB8vFRAAn1qAddJbCE+Zgk0zXmyCZ6pRnO3632UAmV5nPQQagFfOOC1EAmVgBQO
+        eB1IEsECZnh7aYdmE76Gr3VJoAdzXgEz3AdtKEESooAmHIQKAEiIAtWpsga50AjgcKIA0EgUxWHY1ITf
+        AUBvFjU8i5fQlDBvN8HXEAjja/hnDRYAIRK8DnzhQCUAJAlek8KBWgCYEvw/53PYnLCFg1kCPmwhPn5P
+        YC7fJxCL+ALb+PORJB9DQAiWCJs7UQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnOriginal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 272</value>
+  </data>
+  <data name="btnOriginal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 38</value>
+  </data>
+  <data name="btnOriginal.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="btnOriginal.ToolTip" xml:space="preserve">
+    <value>View Original</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.Name" xml:space="preserve">
+    <value>btnOriginal</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="edGaussianSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 87</value>
+  </data>
+  <data name="edGaussianSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 21</value>
+  </data>
+  <data name="edGaussianSize.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="edGaussianSize.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="edGaussianSize.ToolTip" xml:space="preserve">
+    <value>Gaussian Kernel Size</value>
+  </data>
+  <data name="&gt;&gt;edGaussianSize.Name" xml:space="preserve">
+    <value>edGaussianSize</value>
+  </data>
+  <data name="&gt;&gt;edGaussianSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;edGaussianSize.Parent" xml:space="preserve">
+    <value>grpGaussianParams</value>
+  </data>
+  <data name="&gt;&gt;edGaussianSize.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="edGaussianSigma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 40</value>
+  </data>
+  <data name="edGaussianSigma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 21</value>
+  </data>
+  <data name="edGaussianSigma.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="edGaussianSigma.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="edGaussianSigma.ThousandsSeparator" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="edGaussianSigma.ToolTip" xml:space="preserve">
+    <value>Gaussian Sigma Value</value>
+  </data>
+  <data name="&gt;&gt;edGaussianSigma.Name" xml:space="preserve">
+    <value>edGaussianSigma</value>
+  </data>
+  <data name="&gt;&gt;edGaussianSigma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;edGaussianSigma.Parent" xml:space="preserve">
+    <value>grpGaussianParams</value>
+  </data>
+  <data name="&gt;&gt;edGaussianSigma.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="edGaussianThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 134</value>
+  </data>
+  <data name="edGaussianThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 21</value>
+  </data>
+  <data name="edGaussianThreshold.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="edGaussianThreshold.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="edGaussianThreshold.ToolTip" xml:space="preserve">
+    <value>Gaussian Threshold Value</value>
+  </data>
+  <data name="&gt;&gt;edGaussianThreshold.Name" xml:space="preserve">
+    <value>edGaussianThreshold</value>
+  </data>
+  <data name="&gt;&gt;edGaussianThreshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;edGaussianThreshold.Parent" xml:space="preserve">
+    <value>grpGaussianParams</value>
+  </data>
+  <data name="&gt;&gt;edGaussianThreshold.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="imgPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 12</value>
+  </data>
+  <data name="imgPreview.SelectionRegion" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0
+        dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABlTeXN0ZW0uRHJh
+        d2luZy5SZWN0YW5nbGVGBAAAAAF4AXkFd2lkdGgGaGVpZ2h0AAAAAAsLCwsCAAAAAAAAAAAAAAAAAAAA
+        AAAAAAs=
+</value>
+  </data>
+  <data name="imgPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 256</value>
+  </data>
+  <data name="imgPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;imgPreview.Name" xml:space="preserve">
+    <value>imgPreview</value>
+  </data>
+  <data name="&gt;&gt;imgPreview.Type" xml:space="preserve">
+    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.7.17, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;imgPreview.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;imgPreview.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>343, 282</value>
+  </data>
+  <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnOk.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnOk.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;btnOk.Name" xml:space="preserve">
+    <value>btnOk</value>
+  </data>
+  <data name="&gt;&gt;btnOk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOk.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnOk.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 282</value>
+  </data>
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
+    <value>btnCancel</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianThreshold.Name" xml:space="preserve">
+    <value>lblGaussianThreshold</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianThreshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianThreshold.Parent" xml:space="preserve">
+    <value>grpGaussianParams</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianThreshold.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSize.Name" xml:space="preserve">
+    <value>lblGaussianSize</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSize.Parent" xml:space="preserve">
+    <value>grpGaussianParams</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSize.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSigma.Name" xml:space="preserve">
+    <value>lblGaussianSigma</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSigma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSigma.Parent" xml:space="preserve">
+    <value>grpGaussianParams</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSigma.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="grpGaussianParams.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 100</value>
+  </data>
+  <data name="grpGaussianParams.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 168</value>
+  </data>
+  <data name="grpGaussianParams.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="grpGaussianParams.Text" xml:space="preserve">
+    <value>Gaussian Params</value>
+  </data>
+  <data name="&gt;&gt;grpGaussianParams.Name" xml:space="preserve">
+    <value>grpGaussianParams</value>
+  </data>
+  <data name="&gt;&gt;grpGaussianParams.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpGaussianParams.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpGaussianParams.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblGaussianThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblGaussianThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 111</value>
+  </data>
+  <data name="lblGaussianThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="lblGaussianThreshold.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="lblGaussianThreshold.Text" xml:space="preserve">
+    <value>Threshold:</value>
+  </data>
+  <data name="lblGaussianThreshold.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianThreshold.Name" xml:space="preserve">
+    <value>lblGaussianThreshold</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianThreshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianThreshold.Parent" xml:space="preserve">
+    <value>grpGaussianParams</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianThreshold.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblGaussianSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblGaussianSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 64</value>
+  </data>
+  <data name="lblGaussianSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="lblGaussianSize.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lblGaussianSize.Text" xml:space="preserve">
+    <value>Size:</value>
+  </data>
+  <data name="lblGaussianSize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSize.Name" xml:space="preserve">
+    <value>lblGaussianSize</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSize.Parent" xml:space="preserve">
+    <value>grpGaussianParams</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSize.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblGaussianSigma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblGaussianSigma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 17</value>
+  </data>
+  <data name="lblGaussianSigma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="lblGaussianSigma.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lblGaussianSigma.Text" xml:space="preserve">
+    <value>Sigma:</value>
+  </data>
+  <data name="lblGaussianSigma.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSigma.Name" xml:space="preserve">
+    <value>lblGaussianSigma</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSigma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSigma.Parent" xml:space="preserve">
+    <value>grpGaussianParams</value>
+  </data>
+  <data name="&gt;&gt;lblGaussianSigma.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;btnModeGaussian.Name" xml:space="preserve">
+    <value>btnModeGaussian</value>
+  </data>
+  <data name="&gt;&gt;btnModeGaussian.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnModeGaussian.Parent" xml:space="preserve">
+    <value>grpMode</value>
+  </data>
+  <data name="&gt;&gt;btnModeGaussian.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnModeNormal.Name" xml:space="preserve">
+    <value>btnModeNormal</value>
+  </data>
+  <data name="&gt;&gt;btnModeNormal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnModeNormal.Parent" xml:space="preserve">
+    <value>grpMode</value>
+  </data>
+  <data name="&gt;&gt;btnModeNormal.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="grpMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 82</value>
+  </data>
+  <data name="grpMode.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="grpMode.Text" xml:space="preserve">
+    <value>Sharpen Mode</value>
+  </data>
+  <data name="&gt;&gt;grpMode.Name" xml:space="preserve">
+    <value>grpMode</value>
+  </data>
+  <data name="&gt;&gt;grpMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpMode.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpMode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnModeGaussian.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnModeGaussian.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 47</value>
+  </data>
+  <data name="btnModeGaussian.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="btnModeGaussian.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnModeGaussian.Text" xml:space="preserve">
+    <value>Gaussian</value>
+  </data>
+  <data name="&gt;&gt;btnModeGaussian.Name" xml:space="preserve">
+    <value>btnModeGaussian</value>
+  </data>
+  <data name="&gt;&gt;btnModeGaussian.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnModeGaussian.Parent" xml:space="preserve">
+    <value>grpMode</value>
+  </data>
+  <data name="&gt;&gt;btnModeGaussian.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnModeNormal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnModeNormal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 21</value>
+  </data>
+  <data name="btnModeNormal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="btnModeNormal.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btnModeNormal.Text" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="&gt;&gt;btnModeNormal.Name" xml:space="preserve">
+    <value>btnModeNormal</value>
+  </data>
+  <data name="&gt;&gt;btnModeNormal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnModeNormal.Parent" xml:space="preserve">
+    <value>grpMode</value>
+  </data>
+  <data name="&gt;&gt;btnModeNormal.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>430, 318</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>BlurForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

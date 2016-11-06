@@ -196,6 +196,13 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
+        public virtual AddinType Type
+        {
+            get { return AddinType.Effect; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         private AddinHost _host = null;
         public AddinHost Host
         {
@@ -312,13 +319,6 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        public virtual AddinType Type
-        {
-            get { return AddinType.Effect; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
         public virtual System.Drawing.Image LargeIcon
         {
             get
@@ -370,7 +370,7 @@ namespace NetCharm.Image.Addins
 
         public virtual List<IAddin> Filters
         {
-            get { return (null); }
+            get { return ( null ); }
         }
         /// <summary>
         /// 
@@ -387,8 +387,8 @@ namespace NetCharm.Image.Addins
         protected internal bool _success = false;
         public virtual bool Success
         {
-            //get { throw new NotImplementedException(); }
             get { return ( _success ); }
+            protected internal set { _success = value; }
         }
 
         #endregion

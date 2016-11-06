@@ -35,7 +35,7 @@ namespace InternalFilters
                 imgEditor.Image = ImgSrc;
                 imgEditor.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Normal;
 
-                Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 1 ) );
+                Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Undo, HistoryUndo.Count > 0 ) );
                 Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.Redo, HistoryRedo.Count > 0 ) );
             }
         }

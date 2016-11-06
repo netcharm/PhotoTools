@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-06 01:29+0800\n"
+"POT-Creation-Date: 2016-11-06 22:11+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -20,15 +20,17 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: Actions\ResizeForm.resx:187 -> btnOk.Text.value
-#: Effects\GrayscaleForm.resx:139 Actions\RotateForm.resx:364
+#: Actions\ResizeForm.resx:187 -> btnOk.Text.value Effects\BlurForm.resx:298
+#: Effects\GrayscaleForm.resx:139 Effects\InvertForm.resx:208
+#: Effects\SharpenForm.resx:301 Actions\RotateForm.resx:364
 #: Actions\CropForm.Designer.cs:308
 msgid "OK"
 msgstr "确认"
 
 #: Actions\ResizeForm.resx:211 -> btnCancel.Text.value
-#: Effects\GrayscaleForm.resx:166 Actions\RotateForm.resx:388
-#: Actions\CropForm.Designer.cs:298
+#: Effects\BlurForm.resx:322 Effects\GrayscaleForm.resx:166
+#: Effects\InvertForm.resx:232 Effects\SharpenForm.resx:325
+#: Actions\RotateForm.resx:388 Actions\CropForm.Designer.cs:298
 msgid "Cancel"
 msgstr "取消"
 
@@ -51,6 +53,61 @@ msgstr "缩放算法:"
 #: Actions\ResizeForm.resx:382 -> $this.Text.value Actions\Resize.cs:112
 msgid "Resize"
 msgstr "缩放"
+
+#: Effects\BlurForm.resx:161 -> btnOriginal.ToolTip.value
+#: Effects\InvertForm.resx:161 Effects\SharpenForm.resx:164
+msgid "View Original"
+msgstr "查看原图"
+
+#: Effects\BlurForm.resx:188 -> edGaussianSize.ToolTip.value
+#: Effects\SharpenForm.resx:218
+msgid "Gaussian Kernel Size"
+msgstr "高斯运算核心大小"
+
+#: Effects\BlurForm.resx:218 -> edGaussianSigma.ToolTip.value
+#: Effects\SharpenForm.resx:248
+msgid "Gaussian Sigma Value"
+msgstr "高斯运算Sigma值"
+
+#: Effects\BlurForm.resx:245 -> edGaussianThreshold.ToolTip.value
+#: Effects\SharpenForm.resx:191
+msgid "Gaussian Threshold Value"
+msgstr "高斯运算阈值"
+
+#: Effects\BlurForm.resx:382 -> grpGaussianParams.Text.value
+#: Effects\SharpenForm.resx:484
+msgid "Gaussian Params"
+msgstr "高斯运算参数"
+
+#: Effects\BlurForm.resx:409 -> lblGaussianThreshold.Text.value
+#: Effects\SharpenForm.resx:511
+msgid "Threshold:"
+msgstr "阈值:"
+
+#: Effects\BlurForm.resx:439 -> lblGaussianSize.Text.value
+#: Effects\SharpenForm.resx:541
+msgid "Size:"
+msgstr "大小:"
+
+#: Effects\BlurForm.resx:469 -> lblGaussianSigma.Text.value
+#: Effects\SharpenForm.resx:571
+msgid "Sigma:"
+msgstr ""
+
+#: Effects\BlurForm.resx:520 -> grpMode.Text.value
+#: Effects\SharpenForm.resx:373
+msgid "Sharpen Mode"
+msgstr "锐化模式"
+
+#: Effects\BlurForm.resx:547 -> btnModeGaussian.Text.value
+#: Effects\SharpenForm.resx:400
+msgid "Gaussian"
+msgstr "高斯运算"
+
+#: Effects\BlurForm.resx:574 -> btnModeNormal.Text.value
+#: Effects\SharpenForm.resx:424
+msgid "Normal"
+msgstr "常规模式"
 
 #: Effects\GrayscaleForm.resx:246 -> $this.Text.value Effects\Grayscale.cs:56
 msgid "Grayscale"
@@ -232,13 +289,41 @@ msgstr "双线性"
 msgid "Nearest"
 msgstr "邻近点"
 
-#: Effects\Grayscale.cs:72
+#: Effects\Blur.cs:36
+msgid "Blur"
+msgstr "模糊"
+
+#: Effects\Blur.cs:48 Effects\Sharpen.cs:48
+msgid "Clearness"
+msgstr "清晰度"
+
+#: Effects\Blur.cs:55
+msgid "Blur Image"
+msgstr "模糊图像"
+
+#: Effects\Grayscale.cs:72 Effects\Invert.cs:47
 msgid "Color"
 msgstr "色彩"
 
 #: Effects\Grayscale.cs:81
 msgid "Convert Image to Grayscale"
 msgstr "转换为灰度/单色图像"
+
+#: Effects\Invert.cs:35
+msgid "Invert"
+msgstr "反色"
+
+#: Effects\Invert.cs:54
+msgid "Invert Image Color"
+msgstr "反转图像色彩"
+
+#: Effects\Sharpen.cs:36
+msgid "Sharpen"
+msgstr "锐化"
+
+#: Effects\Sharpen.cs:55
+msgid "Sharpen Image"
+msgstr "锐化图像"
 
 #: Actions\Rotate.cs:65
 msgid "Rotate Image"

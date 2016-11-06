@@ -320,7 +320,7 @@ namespace PhotoTool
                 {
                     addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
                     addins.CurrentFilter.Show( this );
-                    if( addins.CurrentFilter.Success)
+                    if ( addins.CurrentFilter.Success )
                     {
                         addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
                     }

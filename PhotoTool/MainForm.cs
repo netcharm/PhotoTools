@@ -16,6 +16,7 @@ namespace PhotoTool
 {
     public partial class MainForm : RibbonForm
     {
+        #region Form window Events
         /// <summary>
         /// 
         /// </summary>
@@ -64,6 +65,16 @@ namespace PhotoTool
 
             #endregion Process Commnad-Line Parameters
         }
+        /// <summary>
+        /// Form Closed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_FormClosed( object sender, FormClosedEventArgs e )
+        {
+            Setting_Save();
+        }
+        #endregion
 
         #region DrapDrop Events
         /// <summary>
@@ -187,6 +198,7 @@ namespace PhotoTool
                             ff = ImageFormat.Gif;
                         }
                         addins.CurrentApp.ImageData.Save( dlgSave.FileName, ff );
+                        RecentItemAdd( dlgSave.FileName );
                     }
                 }
             }
@@ -385,9 +397,5 @@ namespace PhotoTool
 
         #endregion
 
-        private void MainForm_FormClosed( object sender, FormClosedEventArgs e )
-        {
-            Setting_Save();
-        }
     }
 }

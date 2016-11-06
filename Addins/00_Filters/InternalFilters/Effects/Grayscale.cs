@@ -148,7 +148,7 @@ namespace InternalFilters.Effects
             }
             if ( fm.ShowDialog() == DialogResult.OK )
             {
-                _success = true;
+                Success = true;
                 GetParams( fm );
                 ImgDst = Apply( ImgSrc );
                 Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.SetImageSelection, new RectangleF( 0, 0, 0, 0 ) ) );
@@ -166,7 +166,7 @@ namespace InternalFilters.Effects
         /// <returns></returns>
         public override Image Apply( Image image )
         {
-            GrayscaleMode grayscaleMode = GrayscaleMode.Grayscale;
+            GrayscaleMode grayscaleMode = GrayscaleMode.BT709;
             if ( Params.ContainsKey( "GrayscaleMode" ) )
                 grayscaleMode = (GrayscaleMode)Params["GrayscaleMode"].Value;
 
@@ -180,7 +180,6 @@ namespace InternalFilters.Effects
                 case GrayscaleMode.Sepia_2:
                 case GrayscaleMode.Sepia_3:
                 case GrayscaleMode.Grayscale:
-                    //dst = AddinUtils.ProcessImage( new Accord.Imaging.Filters.Grayscale( 0.2125, 0.7154, 0.0721 ), image );
                     dst = Gray( image, grayscaleMode );
                     break;
                 case GrayscaleMode.Sepia:
@@ -215,14 +214,23 @@ namespace InternalFilters.Effects
         #endregion
 
         #region Gray / Tawawa routines
+        /// <summary>
+        /// 
+        /// </summary>
         internal Dictionary<GrayscaleMode, ColorMatrix> GrayscaleMatrix = new Dictionary<GrayscaleMode, ColorMatrix>();
 
-        //
-        // BT709: 0.2125, 0.7154, 0.0721 
-        // RMY  : 0.5000, 0.4190, 0.0810
-        // Y    : 0.2990, 0.5870, 0.1140
-        // Half : 0.5000, 0.5000, 0.5000
-        // Sepia: 
+        /// <summary>
+        ///
+        /// BT709: 0.2125, 0.7154, 0.0721 
+        /// RMY  : 0.5000, 0.4190, 0.0810
+        /// Y    : 0.2990, 0.5870, 0.1140
+        /// Half : 0.5000, 0.5000, 0.5000
+        /// Sepia:
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="mode"></param>
+        /// <returns></returns>            
         internal Image Gray( Image image, GrayscaleMode mode = GrayscaleMode.BT709 )
         {
             if ( GrayscaleMatrix.Count == 0 )
@@ -340,9 +348,9 @@ namespace InternalFilters.Effects
             ColorMatrix c = GrayscaleMatrix[mode];
             a.SetColorMatrix( c, ColorMatrixFlag.Default, ColorAdjustType.Bitmap );
 
-            Bitmap src = image.Clone() as Bitmap;
-            if ( image.PixelFormat != PixelFormat.Format32bppArgb )
-                src = Accord.Imaging.Image.Clone( image as Bitmap, PixelFormat.Format32bppArgb );
+            Bitmap src = AddinUtils.CloneImage(image) as Bitmap;
+            if ( src.PixelFormat != PixelFormat.Format32bppArgb )
+                src = Accord.Imaging.Image.Clone( src, PixelFormat.Format32bppArgb );
             Bitmap dst = new Bitmap( src.Width, src.Height, src.PixelFormat );
             AddinUtils.CloneExif( src, dst );
 
@@ -360,7 +368,13 @@ namespace InternalFilters.Effects
             }
             return ( dst );
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="rgb"></param>
+        /// <returns></returns>
         internal Image Tawawa( Image image, bool rgb = true )
         {
             Bitmap src = AddinUtils.CloneImage(image) as Bitmap;
