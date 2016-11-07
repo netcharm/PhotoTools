@@ -121,6 +121,9 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnOriginal.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
   <data name="btnOriginal.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
   </data>
@@ -149,7 +152,7 @@
 </value>
   </data>
   <data name="btnOriginal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 272</value>
+    <value>162, 286</value>
   </data>
   <data name="btnOriginal.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 38</value>
@@ -170,13 +173,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOriginal.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="edGaussianSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 87</value>
+    <value>18, 85</value>
   </data>
   <data name="edGaussianSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 21</value>
+    <value>107, 21</value>
   </data>
   <data name="edGaussianSize.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -200,10 +203,10 @@
     <value>3</value>
   </data>
   <data name="edGaussianSigma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 40</value>
+    <value>18, 38</value>
   </data>
   <data name="edGaussianSigma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 21</value>
+    <value>107, 21</value>
   </data>
   <data name="edGaussianSigma.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -230,10 +233,10 @@
     <value>5</value>
   </data>
   <data name="edGaussianThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 134</value>
+    <value>18, 132</value>
   </data>
   <data name="edGaussianThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 21</value>
+    <value>107, 21</value>
   </data>
   <data name="edGaussianThreshold.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -256,6 +259,126 @@
   <data name="&gt;&gt;edGaussianThreshold.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="edBoxSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 20</value>
+  </data>
+  <data name="edBoxSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 21</value>
+  </data>
+  <data name="edBoxSize.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="edBoxSize.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="edBoxSize.ToolTip" xml:space="preserve">
+    <value>Box Size</value>
+  </data>
+  <data name="&gt;&gt;edBoxSize.Name" xml:space="preserve">
+    <value>edBoxSize</value>
+  </data>
+  <data name="&gt;&gt;edBoxSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;edBoxSize.Parent" xml:space="preserve">
+    <value>grpBoxParams</value>
+  </data>
+  <data name="&gt;&gt;edBoxSize.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnModeBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnModeBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 67</value>
+  </data>
+  <data name="btnModeBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="btnModeBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnModeBox.Text" xml:space="preserve">
+    <value>Box</value>
+  </data>
+  <data name="btnModeBox.ToolTip" xml:space="preserve">
+    <value>Fast Box Blur</value>
+  </data>
+  <data name="&gt;&gt;btnModeBox.Name" xml:space="preserve">
+    <value>btnModeBox</value>
+  </data>
+  <data name="&gt;&gt;btnModeBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnModeBox.Parent" xml:space="preserve">
+    <value>grpMode</value>
+  </data>
+  <data name="&gt;&gt;btnModeBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnModeGaussian.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnModeGaussian.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 42</value>
+  </data>
+  <data name="btnModeGaussian.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="btnModeGaussian.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnModeGaussian.Text" xml:space="preserve">
+    <value>Gaussian</value>
+  </data>
+  <data name="btnModeGaussian.ToolTip" xml:space="preserve">
+    <value>Gaussian Blur</value>
+  </data>
+  <data name="&gt;&gt;btnModeGaussian.Name" xml:space="preserve">
+    <value>btnModeGaussian</value>
+  </data>
+  <data name="&gt;&gt;btnModeGaussian.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnModeGaussian.Parent" xml:space="preserve">
+    <value>grpMode</value>
+  </data>
+  <data name="&gt;&gt;btnModeGaussian.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnModeNormal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnModeNormal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="btnModeNormal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="btnModeNormal.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btnModeNormal.Text" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="btnModeNormal.ToolTip" xml:space="preserve">
+    <value>Normal Blur</value>
+  </data>
+  <data name="&gt;&gt;btnModeNormal.Name" xml:space="preserve">
+    <value>btnModeNormal</value>
+  </data>
+  <data name="&gt;&gt;btnModeNormal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnModeNormal.Parent" xml:space="preserve">
+    <value>grpMode</value>
+  </data>
+  <data name="&gt;&gt;btnModeNormal.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="imgPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="imgPreview.Location" type="System.Drawing.Point, System.Drawing">
     <value>162, 12</value>
   </data>
@@ -277,16 +400,19 @@
     <value>imgPreview</value>
   </data>
   <data name="&gt;&gt;imgPreview.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.7.17, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.7.18, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imgPreview.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;imgPreview.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
+  </data>
+  <data name="btnOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>343, 282</value>
+    <value>343, 301</value>
   </data>
   <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -307,10 +433,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOk.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
+  </data>
+  <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>253, 282</value>
+    <value>253, 301</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -331,7 +460,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;lblGaussianThreshold.Name" xml:space="preserve">
     <value>lblGaussianThreshold</value>
@@ -370,10 +499,10 @@
     <value>4</value>
   </data>
   <data name="grpGaussianParams.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 100</value>
+    <value>12, 109</value>
   </data>
   <data name="grpGaussianParams.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 168</value>
+    <value>143, 164</value>
   </data>
   <data name="grpGaussianParams.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -391,13 +520,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;grpGaussianParams.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="lblGaussianThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblGaussianThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 111</value>
+    <value>18, 109</value>
   </data>
   <data name="lblGaussianThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 20</value>
@@ -427,7 +556,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblGaussianSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 64</value>
+    <value>18, 62</value>
   </data>
   <data name="lblGaussianSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 20</value>
@@ -457,7 +586,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblGaussianSigma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 17</value>
+    <value>18, 15</value>
   </data>
   <data name="lblGaussianSigma.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 20</value>
@@ -483,35 +612,11 @@
   <data name="&gt;&gt;lblGaussianSigma.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;btnModeGaussian.Name" xml:space="preserve">
-    <value>btnModeGaussian</value>
-  </data>
-  <data name="&gt;&gt;btnModeGaussian.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnModeGaussian.Parent" xml:space="preserve">
-    <value>grpMode</value>
-  </data>
-  <data name="&gt;&gt;btnModeGaussian.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnModeNormal.Name" xml:space="preserve">
-    <value>btnModeNormal</value>
-  </data>
-  <data name="&gt;&gt;btnModeNormal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnModeNormal.Parent" xml:space="preserve">
-    <value>grpMode</value>
-  </data>
-  <data name="&gt;&gt;btnModeNormal.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="grpMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
   <data name="grpMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 82</value>
+    <value>143, 91</value>
   </data>
   <data name="grpMode.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -529,61 +634,31 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;grpMode.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
-  <data name="btnModeGaussian.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="grpBoxParams.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 278</value>
   </data>
-  <data name="btnModeGaussian.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 47</value>
+  <data name="grpBoxParams.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 51</value>
   </data>
-  <data name="btnModeGaussian.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 20</value>
+  <data name="grpBoxParams.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
-  <data name="btnModeGaussian.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="grpBoxParams.Text" xml:space="preserve">
+    <value>Box Params</value>
   </data>
-  <data name="btnModeGaussian.Text" xml:space="preserve">
-    <value>Gaussian</value>
+  <data name="&gt;&gt;grpBoxParams.Name" xml:space="preserve">
+    <value>grpBoxParams</value>
   </data>
-  <data name="&gt;&gt;btnModeGaussian.Name" xml:space="preserve">
-    <value>btnModeGaussian</value>
+  <data name="&gt;&gt;grpBoxParams.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnModeGaussian.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;grpBoxParams.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;btnModeGaussian.Parent" xml:space="preserve">
-    <value>grpMode</value>
-  </data>
-  <data name="&gt;&gt;btnModeGaussian.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grpBoxParams.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="btnModeNormal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnModeNormal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 21</value>
-  </data>
-  <data name="btnModeNormal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 20</value>
-  </data>
-  <data name="btnModeNormal.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="btnModeNormal.Text" xml:space="preserve">
-    <value>Normal</value>
-  </data>
-  <data name="&gt;&gt;btnModeNormal.Name" xml:space="preserve">
-    <value>btnModeNormal</value>
-  </data>
-  <data name="&gt;&gt;btnModeNormal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnModeNormal.Parent" xml:space="preserve">
-    <value>grpMode</value>
-  </data>
-  <data name="&gt;&gt;btnModeNormal.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -592,7 +667,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>430, 318</value>
+    <value>430, 340</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

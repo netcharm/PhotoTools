@@ -420,24 +420,36 @@ namespace NetCharm.Image.Addins
                             bmpA = eca.Apply( CloneImage(img) as Bitmap );
                         ReplaceChannel rca = new ReplaceChannel(Accord.Imaging.RGB.A, bmpA);
 
-                        Bitmap dst = Accord.Imaging.Image.Clone(CloneImage(img) as Bitmap, System.Drawing.Imaging.PixelFormat.Format24bppRgb );
-                        dst = Accord.Imaging.Image.Clone( filter.Apply( dst ), System.Drawing.Imaging.PixelFormat.Format32bppArgb );
+                        Bitmap dst = Accord.Imaging.Image.Clone(CloneImage(img) as Bitmap, PixelFormat.Format24bppRgb );
+                        dst = Accord.Imaging.Image.Clone( filter.Apply( dst ), PixelFormat.Format32bppArgb );
                         rca.ApplyInPlace( dst );
                         bmpA.Dispose();
+
+                        CloneExif( img, dst );
                         return ( dst );
                     }
                     else if ( filter is IAddin )
                     {
-                        ExtractChannel eca = new ExtractChannel(Accord.Imaging.RGB.A);
-                        System.Drawing.Image bmpA = (filter as IAddin).Apply(eca.Apply( CloneImage(img) as Bitmap ));
-                        ReplaceChannel rca = new ReplaceChannel(Accord.Imaging.RGB.A, bmpA as Bitmap);
-
-                        Bitmap dst = Accord.Imaging.Image.Clone(CloneImage(img) as Bitmap, PixelFormat.Format24bppRgb );
-                        dst = Accord.Imaging.Image.Clone( ( filter as IAddin ).Apply( dst as System.Drawing.Image ) as Bitmap, System.Drawing.Imaging.PixelFormat.Format32bppArgb );
-                        rca.ApplyInPlace( dst );
-                        bmpA.Dispose();
+                        System.Drawing.Image dst = ( filter as IAddin ).Apply( CloneImage(img) as Bitmap );
+                        CloneExif( img, dst );
                         return ( dst );
+
+                        //ExtractChannel eca = new ExtractChannel(Accord.Imaging.RGB.A);
+                        //System.Drawing.Image bmpA = (filter as IAddin).Apply(eca.Apply( CloneImage(img) as Bitmap ));
+                        //ReplaceChannel rca = new ReplaceChannel(Accord.Imaging.RGB.A, bmpA as Bitmap);
+
+                        //Bitmap dst = Accord.Imaging.Image.Clone(CloneImage(img) as Bitmap, PixelFormat.Format24bppRgb );
+                        //dst = Accord.Imaging.Image.Clone( ( filter as IAddin ).Apply( dst as System.Drawing.Image ) as Bitmap, System.Drawing.Imaging.PixelFormat.Format32bppArgb );
+                        //rca.ApplyInPlace( dst );
+                        //bmpA.Dispose();
+                        //return ( dst );
                     }
+                }
+                else if ( filter is IFilterInformation && ( filter as IFilterInformation ).FormatTranslations.ContainsKey( img.PixelFormat ) )
+                {
+                    Bitmap dst = ( filter as IFilter ).Apply( CloneImage(img) as Bitmap );
+                    CloneExif( img, dst );
+                    return ( dst );
                 }
                 return ( img );
             }

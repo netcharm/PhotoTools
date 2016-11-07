@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-06 22:30+0800\n"
-"PO-Revision-Date: 2016-11-06 22:30+0800\n"
+"POT-Creation-Date: 2016-11-07 10:49+0800\n"
+"PO-Revision-Date: 2016-11-07 10:49+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: Actions\ResizeForm.resx:187 -> btnOk.Text.value Effects\BlurForm.resx:298
+#: Actions\ResizeForm.resx:187 -> btnOk.Text.value Effects\BlurForm.resx:424
 #: Effects\GrayscaleForm.resx:139 Effects\InvertForm.resx:214
 #: Effects\SharpenForm.resx:301 Actions\RotateForm.resx:364
 #: Actions\CropForm.Designer.cs:308
@@ -28,7 +28,7 @@ msgid "OK"
 msgstr ""
 
 #: Actions\ResizeForm.resx:211 -> btnCancel.Text.value
-#: Effects\BlurForm.resx:322 Effects\GrayscaleForm.resx:166
+#: Effects\BlurForm.resx:451 Effects\GrayscaleForm.resx:166
 #: Effects\InvertForm.resx:238 Effects\SharpenForm.resx:325
 #: Actions\RotateForm.resx:388 Actions\CropForm.Designer.cs:298
 msgid "Cancel"
@@ -54,59 +54,83 @@ msgstr ""
 msgid "Resize"
 msgstr ""
 
-#: Effects\BlurForm.resx:161 -> btnOriginal.ToolTip.value
+#: Effects\BlurForm.resx:164 -> btnOriginal.ToolTip.value
 #: Effects\InvertForm.resx:161 Effects\SharpenForm.resx:164
 msgid "View Original"
 msgstr ""
 
-#: Effects\BlurForm.resx:188 -> edGaussianSize.ToolTip.value
+#: Effects\BlurForm.resx:191 -> edGaussianSize.ToolTip.value
 #: Effects\SharpenForm.resx:218
 msgid "Gaussian Kernel Size"
 msgstr ""
 
-#: Effects\BlurForm.resx:218 -> edGaussianSigma.ToolTip.value
+#: Effects\BlurForm.resx:221 -> edGaussianSigma.ToolTip.value
 #: Effects\SharpenForm.resx:248
 msgid "Gaussian Sigma Value"
 msgstr ""
 
-#: Effects\BlurForm.resx:245 -> edGaussianThreshold.ToolTip.value
+#: Effects\BlurForm.resx:248 -> edGaussianThreshold.ToolTip.value
 #: Effects\SharpenForm.resx:191
 msgid "Gaussian Threshold Value"
 msgstr ""
 
-#: Effects\BlurForm.resx:382 -> grpGaussianParams.Text.value
-#: Effects\SharpenForm.resx:484
-msgid "Gaussian Params"
+#: Effects\BlurForm.resx:275 -> edBoxSize.ToolTip.value
+msgid "Box Size"
 msgstr ""
 
-#: Effects\BlurForm.resx:409 -> lblGaussianThreshold.Text.value
-#: Effects\SharpenForm.resx:511
-msgid "Threshold:"
+#: Effects\BlurForm.resx:302 -> btnModeBox.Text.value
+msgid "Box"
 msgstr ""
 
-#: Effects\BlurForm.resx:439 -> lblGaussianSize.Text.value
-#: Effects\SharpenForm.resx:541
-msgid "Size:"
+#: Effects\BlurForm.resx:305 -> btnModeBox.ToolTip.value
+msgid "Fast Box Blur"
 msgstr ""
 
-#: Effects\BlurForm.resx:469 -> lblGaussianSigma.Text.value
-#: Effects\SharpenForm.resx:571
-msgid "Sigma:"
-msgstr ""
-
-#: Effects\BlurForm.resx:520 -> grpMode.Text.value
-#: Effects\SharpenForm.resx:373
-msgid "Sharpen Mode"
-msgstr ""
-
-#: Effects\BlurForm.resx:547 -> btnModeGaussian.Text.value
+#: Effects\BlurForm.resx:332 -> btnModeGaussian.Text.value
 #: Effects\SharpenForm.resx:400
 msgid "Gaussian"
 msgstr ""
 
-#: Effects\BlurForm.resx:574 -> btnModeNormal.Text.value
+#: Effects\BlurForm.resx:335 -> btnModeGaussian.ToolTip.value
+msgid "Gaussian Blur"
+msgstr ""
+
+#: Effects\BlurForm.resx:362 -> btnModeNormal.Text.value
 #: Effects\SharpenForm.resx:424
 msgid "Normal"
+msgstr ""
+
+#: Effects\BlurForm.resx:365 -> btnModeNormal.ToolTip.value
+msgid "Normal Blur"
+msgstr ""
+
+#: Effects\BlurForm.resx:511 -> grpGaussianParams.Text.value
+#: Effects\SharpenForm.resx:484
+msgid "Gaussian Params"
+msgstr ""
+
+#: Effects\BlurForm.resx:538 -> lblGaussianThreshold.Text.value
+#: Effects\SharpenForm.resx:511
+msgid "Threshold:"
+msgstr ""
+
+#: Effects\BlurForm.resx:568 -> lblGaussianSize.Text.value
+#: Effects\SharpenForm.resx:541
+msgid "Size:"
+msgstr ""
+
+#: Effects\BlurForm.resx:598 -> lblGaussianSigma.Text.value
+#: Effects\SharpenForm.resx:571
+msgid "Sigma:"
+msgstr ""
+
+#: Effects\BlurForm.resx:625 -> grpMode.Text.value
+#: Effects\SharpenForm.resx:373
+msgid "Sharpen Mode"
+msgstr ""
+
+#: Effects\BlurForm.resx:649 -> grpBoxParams.Text.value
+msgid "Box Params"
 msgstr ""
 
 #: Effects\GrayscaleForm.resx:246 -> $this.Text.value Effects\Grayscale.cs:56
@@ -289,15 +313,15 @@ msgstr ""
 msgid "Nearest"
 msgstr ""
 
-#: Effects\Blur.cs:36
+#: Effects\Blur.cs:37
 msgid "Blur"
 msgstr ""
 
-#: Effects\Blur.cs:48 Effects\Sharpen.cs:48
+#: Effects\Blur.cs:49 Effects\Sharpen.cs:48
 msgid "Clearness"
 msgstr ""
 
-#: Effects\Blur.cs:55
+#: Effects\Blur.cs:56
 msgid "Blur Image"
 msgstr ""
 

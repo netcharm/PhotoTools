@@ -13,7 +13,8 @@ namespace InternalFilters.Effects
     public enum BlurMode
     {
         Normal = 0,
-        Gaussian
+        Gaussian,
+        Box
     }
 
     [Extension]
@@ -82,6 +83,7 @@ namespace InternalFilters.Effects
             kv.Add( "GaussianSigma", (double) 1.4 );
             kv.Add( "GaussianSize", 7 );
             kv.Add( "GaussianThreshold", 0 );
+            kv.Add( "BoxSize", 3 );
 
             Params.Clear();
             foreach ( var item in kv )
@@ -110,6 +112,7 @@ namespace InternalFilters.Effects
                 Params["GaussianSigma"] = cfm.ParmaGaussianSigma;
                 Params["GaussianSize"] = cfm.ParmaGaussianSize;
                 Params["GaussianThreshold"] = cfm.ParmaGaussianThreshold;
+                Params["BoxSize"] = cfm.ParmaBoxSize;
             }
         }
 
@@ -130,6 +133,7 @@ namespace InternalFilters.Effects
                 cfm.ParmaGaussianSigma = Params["GaussianSigma"];
                 cfm.ParmaGaussianSize = Params["GaussianSize"];
                 cfm.ParmaGaussianThreshold = Params["GaussianThreshold"];
+                cfm.ParmaBoxSize = Params["BoxSize"];
             }
         }
 
@@ -184,6 +188,7 @@ namespace InternalFilters.Effects
             double gaussianSigma = (double) Params["GaussianSigma"].Value;
             int gaussianSize = (int) Params["GaussianSize"].Value;
             int gaussianThreshold = (int) Params["GaussianThreshold"].Value;
+            int boxSize = (int) Params["BoxSize"].Value;
 
             Accord.Imaging.Filters.IFilter filter = null;
             switch ( blurMode )
@@ -198,6 +203,10 @@ namespace InternalFilters.Effects
                     ( filter as Accord.Imaging.Filters.GaussianBlur ).Size = gaussianSize;
                     ( filter as Accord.Imaging.Filters.GaussianBlur ).Threshold = gaussianThreshold;
                     dst = filter.Apply( dst );
+                    break;
+                case BlurMode.Box:
+                    filter = new Accord.Imaging.Filters.FastBoxBlur( (byte) boxSize, (byte) boxSize );
+                    dst = AddinUtils.ProcessImage( filter, dst, false );
                     break;
             }
             AddinUtils.CloneExif( image, dst );

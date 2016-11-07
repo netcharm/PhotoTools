@@ -73,6 +73,20 @@ namespace InternalFilters.Effects
             }
             set { gaussianThreshold = (int) value.Value; }
         }
+        private int boxSize = 3;
+        internal ParamItem ParmaBoxSize
+        {
+            get
+            {
+                ParamItem pi = new ParamItem();
+                pi.Name = "BoxSizeH";
+                pi.DisplayName = AddinUtils._( addin, pi.Name );
+                pi.Type = boxSize.GetType();
+                pi.Value = boxSize;
+                return ( pi );
+            }
+            set { boxSize = (int) value.Value; }
+        }
 
         public BlurForm()
         {
@@ -89,7 +103,6 @@ namespace InternalFilters.Effects
 
             thumb = AddinUtils.CreateThumb( addin.ImageData, imgPreview.Size );
             imgPreview.Image = thumb;
-
         }
 
         private void BlurForm_Load( object sender, EventArgs e )
@@ -98,16 +111,25 @@ namespace InternalFilters.Effects
             {
                 btnModeNormal.Checked = true;
                 grpGaussianParams.Enabled = false;
+                grpBoxParams.Enabled = false;
             }
-            else
+            else if (blurMode == BlurMode.Gaussian)
             {
                 btnModeGaussian.Checked = true;
                 grpGaussianParams.Enabled = true;
+                grpBoxParams.Enabled = false;
+            }
+            else if ( blurMode == BlurMode.Box )
+            {
+                btnModeBox.Checked = true;
+                grpGaussianParams.Enabled = true;
+                grpBoxParams.Enabled = true;
             }
 
             edGaussianSigma.Value = Convert.ToDecimal( gaussianSigma );
             edGaussianSize.Value = Convert.ToDecimal( gaussianSize );
             edGaussianThreshold.Value = Convert.ToDecimal( gaussianThreshold );
+            edBoxSize.Value = Convert.ToDecimal( boxSize );
         }
 
         private void btnOriginal_Click( object sender, EventArgs e )
@@ -130,20 +152,30 @@ namespace InternalFilters.Effects
             {
                 blurMode = BlurMode.Normal;
                 grpGaussianParams.Enabled = false;
+                grpBoxParams.Enabled = false;
             }
-            else
+            else if ( sender == btnModeGaussian )
             {
                 blurMode = BlurMode.Gaussian;
                 grpGaussianParams.Enabled = true;
+                grpBoxParams.Enabled = false;
             }
+            else if ( sender == btnModeBox )
+            {
+                blurMode = BlurMode.Box;
+                grpGaussianParams.Enabled = false;
+                grpBoxParams.Enabled = true;
+            }
+
             imgPreview.Image = addin.Apply( thumb );
         }
 
-        private void edGaussian_ValueChanged( object sender, EventArgs e )
+        private void edMode_ValueChanged( object sender, EventArgs e )
         {
             gaussianSigma = Convert.ToDouble( edGaussianSigma.Value );
             gaussianSize = Convert.ToInt32( edGaussianSize.Value );
             gaussianThreshold = Convert.ToInt32( edGaussianThreshold.Value );
+            boxSize = Convert.ToInt32( edBoxSize.Value );
 
             imgPreview.Image = addin.Apply( thumb );
         }

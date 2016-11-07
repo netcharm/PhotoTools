@@ -35,6 +35,10 @@
             this.edGaussianSize = new System.Windows.Forms.NumericUpDown();
             this.edGaussianSigma = new System.Windows.Forms.NumericUpDown();
             this.edGaussianThreshold = new System.Windows.Forms.NumericUpDown();
+            this.edBoxSize = new System.Windows.Forms.NumericUpDown();
+            this.btnModeBox = new System.Windows.Forms.RadioButton();
+            this.btnModeGaussian = new System.Windows.Forms.RadioButton();
+            this.btnModeNormal = new System.Windows.Forms.RadioButton();
             this.imgPreview = new NetCharm.Image.Addins.ImageBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -43,13 +47,14 @@
             this.lblGaussianSize = new System.Windows.Forms.Label();
             this.lblGaussianSigma = new System.Windows.Forms.Label();
             this.grpMode = new System.Windows.Forms.GroupBox();
-            this.btnModeGaussian = new System.Windows.Forms.RadioButton();
-            this.btnModeNormal = new System.Windows.Forms.RadioButton();
+            this.grpBoxParams = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.edGaussianSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edGaussianSigma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edGaussianThreshold)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edBoxSize)).BeginInit();
             this.grpGaussianParams.SuspendLayout();
             this.grpMode.SuspendLayout();
+            this.grpBoxParams.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOriginal
@@ -81,7 +86,7 @@
             0,
             0,
             0});
-            this.edGaussianSize.ValueChanged += new System.EventHandler(this.edGaussian_ValueChanged);
+            this.edGaussianSize.ValueChanged += new System.EventHandler(this.edMode_ValueChanged);
             // 
             // edGaussianSigma
             // 
@@ -110,7 +115,7 @@
             0,
             0,
             65536});
-            this.edGaussianSigma.ValueChanged += new System.EventHandler(this.edGaussian_ValueChanged);
+            this.edGaussianSigma.ValueChanged += new System.EventHandler(this.edMode_ValueChanged);
             // 
             // edGaussianThreshold
             // 
@@ -118,12 +123,62 @@
             resources.ApplyResources(this.edGaussianThreshold, "edGaussianThreshold");
             this.edGaussianThreshold.Name = "edGaussianThreshold";
             this.toolTip.SetToolTip(this.edGaussianThreshold, resources.GetString("edGaussianThreshold.ToolTip"));
-            this.edGaussianThreshold.ValueChanged += new System.EventHandler(this.edGaussian_ValueChanged);
+            this.edGaussianThreshold.ValueChanged += new System.EventHandler(this.edMode_ValueChanged);
+            // 
+            // edBoxSize
+            // 
+            this.edBoxSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.edBoxSize, "edBoxSize");
+            this.edBoxSize.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.edBoxSize.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.edBoxSize.Name = "edBoxSize";
+            this.toolTip.SetToolTip(this.edBoxSize, resources.GetString("edBoxSize.ToolTip"));
+            this.edBoxSize.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.edBoxSize.ValueChanged += new System.EventHandler(this.edMode_ValueChanged);
+            // 
+            // btnModeBox
+            // 
+            resources.ApplyResources(this.btnModeBox, "btnModeBox");
+            this.btnModeBox.Name = "btnModeBox";
+            this.btnModeBox.TabStop = true;
+            this.toolTip.SetToolTip(this.btnModeBox, resources.GetString("btnModeBox.ToolTip"));
+            this.btnModeBox.UseVisualStyleBackColor = true;
+            this.btnModeBox.Click += new System.EventHandler(this.btnMode_Click);
+            // 
+            // btnModeGaussian
+            // 
+            resources.ApplyResources(this.btnModeGaussian, "btnModeGaussian");
+            this.btnModeGaussian.Name = "btnModeGaussian";
+            this.btnModeGaussian.TabStop = true;
+            this.toolTip.SetToolTip(this.btnModeGaussian, resources.GetString("btnModeGaussian.ToolTip"));
+            this.btnModeGaussian.UseVisualStyleBackColor = true;
+            this.btnModeGaussian.Click += new System.EventHandler(this.btnMode_Click);
+            // 
+            // btnModeNormal
+            // 
+            resources.ApplyResources(this.btnModeNormal, "btnModeNormal");
+            this.btnModeNormal.Name = "btnModeNormal";
+            this.btnModeNormal.TabStop = true;
+            this.toolTip.SetToolTip(this.btnModeNormal, resources.GetString("btnModeNormal.ToolTip"));
+            this.btnModeNormal.UseVisualStyleBackColor = true;
+            this.btnModeNormal.Click += new System.EventHandler(this.btnMode_Click);
             // 
             // imgPreview
             // 
-            this.imgPreview.Image = null;
             resources.ApplyResources(this.imgPreview, "imgPreview");
+            this.imgPreview.Image = null;
             this.imgPreview.Name = "imgPreview";
             this.imgPreview.SelectionColor = System.Drawing.SystemColors.Highlight;
             this.imgPreview.SelectionKeepAspect = false;
@@ -133,15 +188,15 @@
             // 
             // btnOk
             // 
-            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             resources.ApplyResources(this.btnOk, "btnOk");
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.Name = "btnOk";
             this.btnOk.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.btnCancel, "btnCancel");
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -175,6 +230,7 @@
             // 
             // grpMode
             // 
+            this.grpMode.Controls.Add(this.btnModeBox);
             this.grpMode.Controls.Add(this.btnModeGaussian);
             this.grpMode.Controls.Add(this.btnModeNormal);
             this.grpMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -182,21 +238,12 @@
             this.grpMode.Name = "grpMode";
             this.grpMode.TabStop = false;
             // 
-            // btnModeGaussian
+            // grpBoxParams
             // 
-            resources.ApplyResources(this.btnModeGaussian, "btnModeGaussian");
-            this.btnModeGaussian.Name = "btnModeGaussian";
-            this.btnModeGaussian.TabStop = true;
-            this.btnModeGaussian.UseVisualStyleBackColor = true;
-            this.btnModeGaussian.Click += new System.EventHandler(this.btnMode_Click);
-            // 
-            // btnModeNormal
-            // 
-            resources.ApplyResources(this.btnModeNormal, "btnModeNormal");
-            this.btnModeNormal.Name = "btnModeNormal";
-            this.btnModeNormal.TabStop = true;
-            this.btnModeNormal.UseVisualStyleBackColor = true;
-            this.btnModeNormal.Click += new System.EventHandler(this.btnMode_Click);
+            this.grpBoxParams.Controls.Add(this.edBoxSize);
+            resources.ApplyResources(this.grpBoxParams, "grpBoxParams");
+            this.grpBoxParams.Name = "grpBoxParams";
+            this.grpBoxParams.TabStop = false;
             // 
             // BlurForm
             // 
@@ -204,6 +251,7 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.grpBoxParams);
             this.Controls.Add(this.grpGaussianParams);
             this.Controls.Add(this.grpMode);
             this.Controls.Add(this.btnOriginal);
@@ -219,8 +267,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.edGaussianSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edGaussianSigma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edGaussianThreshold)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edBoxSize)).EndInit();
             this.grpGaussianParams.ResumeLayout(false);
             this.grpMode.ResumeLayout(false);
+            this.grpBoxParams.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,5 +293,8 @@
         private System.Windows.Forms.RadioButton btnModeNormal;
         private System.Windows.Forms.Label lblGaussianThreshold;
         private System.Windows.Forms.NumericUpDown edGaussianThreshold;
+        private System.Windows.Forms.GroupBox grpBoxParams;
+        private System.Windows.Forms.NumericUpDown edBoxSize;
+        private System.Windows.Forms.RadioButton btnModeBox;
     }
 }
