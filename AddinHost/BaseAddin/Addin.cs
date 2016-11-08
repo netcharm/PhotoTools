@@ -112,7 +112,8 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        System.Drawing.Image SmallIcon { get; }
+        System.Drawing.Image SmallIcon { get; }        
+       
         /// <summary>
         /// 
         /// </summary>
@@ -145,7 +146,7 @@ namespace NetCharm.Image.Addins
         /// 
         /// </summary>
         /// <param name="parent"></param>
-        void Show(Form parent);
+        void Show(Form parent, bool setup);
         /// <summary>
         /// 
         /// </summary>
@@ -448,6 +449,23 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="kvlist"></param>
+        public virtual void InitParams( Dictionary<string, object> kvlist )
+        {
+            Params.Clear();
+            foreach ( var item in kvlist )
+            {
+                Params.Add( item.Key, new ParamItem() );
+                Params[item.Key].Name = item.Key;
+                Params[item.Key].DisplayName = AddinUtils._( this, item.Key );
+                Params[item.Key].Type = item.Value.GetType();
+                Params[item.Key].Value = item.Value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="form"></param>
         /// <param name="img"></param>
         protected virtual void SetParams( Form form, System.Drawing.Image img = null )
@@ -473,7 +491,7 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        public virtual void Show( Form parent = null )
+        public virtual void Show( Form parent = null, bool setup=false )
         {
             MessageBox.Show( "Calling Show(parentForm) method", "Title", MessageBoxButtons.OK );
             //if ( fm == null )
@@ -560,6 +578,28 @@ namespace NetCharm.Image.Addins
         public virtual bool Command( AddinCommand cmd, out object result, params object[] args )
         {
             result = null;
+            switch ( cmd )
+            {
+                case AddinCommand.InitParams:
+                    if ( args.Length > 0 )
+                    {
+                        InitParams( args[0] as Dictionary<string, object> );
+                    }
+                    break;
+                case AddinCommand.GetParams:
+                    result = Params;
+                    break;
+                case AddinCommand.SetParams:
+                    if ( args.Length > 0 && args[0] is Dictionary<string, ParamItem> )
+                    {
+                        Params.Clear();
+                        foreach (var kv in args[0] as Dictionary<string, ParamItem> )
+                        {
+                            Params[kv.Key] = kv.Value;
+                        }                        
+                    }
+                    break;
+            }
             return ( true );
         }
 

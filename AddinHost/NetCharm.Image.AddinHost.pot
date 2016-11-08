@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Image.AddinHost\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-07 10:49+0800\n"
-"PO-Revision-Date: 2016-11-07 10:49+0800\n"
+"POT-Creation-Date: 2016-11-08 14:58+0800\n"
+"PO-Revision-Date: 2016-11-08 14:58+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,32 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: Common\ImageBox.Designer.cs:43
+#: Controls\ImageBox.Designer.cs:43
 msgid "imageBox1"
+msgstr ""
+
+#: Controls\SlideColorLum.Designer.cs:75
+msgid "Luminance"
+msgstr ""
+
+#: Controls\SlideColorLum.Designer.cs:136
+#: Controls\SlideColorSat.Designer.cs:135
+#: Controls\SlideColorHue.Designer.cs:134 Controls\SlideNumber.Designer.cs:137
+msgid ":"
+msgstr ""
+
+#: Controls\SlideColorSat.Designer.cs:75
+msgid "Saturation"
+msgstr ""
+
+#: Controls\SlideColorHue.Designer.cs:74
+msgid "Hue"
+msgstr ""
+
+#: Controls\SlideNumber.Designer.cs:75
+msgid "ParamName"
+msgstr ""
+
+#: Controls\SlideNumber.Designer.cs:123
+msgid "%"
 msgstr ""

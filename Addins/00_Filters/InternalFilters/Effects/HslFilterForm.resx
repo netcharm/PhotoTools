@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 320</value>
+    <value>343, 282</value>
   </data>
   <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -148,13 +148,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOk.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>6</value>
   </data>
   <data name="btnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 320</value>
+    <value>253, 282</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -175,16 +175,86 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
+  </data>
+  <data name="scpPicker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>206, 272</value>
+  </data>
+  <data name="scpPicker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 38</value>
+  </data>
+  <data name="&gt;&gt;scpPicker.Name" xml:space="preserve">
+    <value>scpPicker</value>
+  </data>
+  <data name="&gt;&gt;scpPicker.Type" xml:space="preserve">
+    <value>Cyotek.Windows.Forms.ScreenColorPicker, Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
+  </data>
+  <data name="&gt;&gt;scpPicker.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;scpPicker.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnOriginal.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="btnOriginal.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnOriginal.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnOriginal.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAWJLR0QPGLoA2QAAAAd0SU1FB+ALBg87
+        Kf1374YAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMTEtMDZUMTU6NTk6NDErMDg6MDADdy/5AAAAJXRF
+        WHRkYXRlOm1vZGlmeQAyMDE2LTExLTA2VDE1OjU5OjQxKzA4OjAwciqXRQAAAB50RVh0cGRmOkhpUmVz
+        Qm91bmRpbmdCb3gAMTZ4MTYrMCswnHvaewAAABZ0RVh0cGRmOlNwb3RDb2xvci0wAFZTIE91dNFAVpsA
+        AAAVdEVYdHBkZjpTcG90Q29sb3ItMQBWUyBCRy9VPo8AAAAVdEVYdHBkZjpTcG90Q29sb3ItMgBWUyBG
+        R3rR4RYAAAAUdEVYdHBkZjpWZXJzaW9uAFBERi0xLjUNQINXTAAAARFJREFUWEftk0EOgjAQRTkbcc1Z
+        8Cy4xXPIBcA7yEpdsVE3bDWfZMjQtJ0OIdQoTd6CTqf/FUqyjeij7/tdTCDwjskoUNf1qnRdNxVI03RV
+        ILGIQJ7vVWRZNvQtJvB8vFRAAn1qAddJbCE+Zgk0zXmyCZ6pRnO3632UAmV5nPQQagFfOOC1EAmVgBQO
+        eB1IEsECZnh7aYdmE76Gr3VJoAdzXgEz3AdtKEESooAmHIQKAEiIAtWpsga50AjgcKIA0EgUxWHY1ITf
+        AUBvFjU8i5fQlDBvN8HXEAjja/hnDRYAIRK8DnzhQCUAJAlek8KBWgCYEvw/53PYnLCFg1kCPmwhPn5P
+        YC7fJxCL+ALb+PORJB9DQAiWCJs7UQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnOriginal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnOriginal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 272</value>
+  </data>
+  <data name="btnOriginal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 38</value>
+  </data>
+  <data name="btnOriginal.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="btnOriginal.ToolTip" xml:space="preserve">
+    <value>View Original</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.Name" xml:space="preserve">
+    <value>btnOriginal</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="cbGrayMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 321</value>
+    <value>13, 284</value>
   </data>
   <data name="cbGrayMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 20</value>
+    <value>143, 20</value>
   </data>
   <data name="cbGrayMode.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>15</value>
   </data>
   <data name="cbGrayMode.ToolTip" xml:space="preserve">
     <value>Grayscale Mode</value>
@@ -201,8 +271,92 @@
   <data name="&gt;&gt;cbGrayMode.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="edTol.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 213</value>
+  </data>
+  <data name="edTol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 54</value>
+  </data>
+  <data name="edTol.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;edTol.Name" xml:space="preserve">
+    <value>edTol</value>
+  </data>
+  <data name="&gt;&gt;edTol.Type" xml:space="preserve">
+    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.9.31, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;edTol.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;edTol.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="edLum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 147</value>
+  </data>
+  <data name="edLum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 56</value>
+  </data>
+  <data name="edLum.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;edLum.Name" xml:space="preserve">
+    <value>edLum</value>
+  </data>
+  <data name="&gt;&gt;edLum.Type" xml:space="preserve">
+    <value>NetCharm.Image.Addins.Controls.SlideColorLum, NetCharm.Image.AddinHost, Version=1.0.9.31, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;edLum.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;edLum.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="edSat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 81</value>
+  </data>
+  <data name="edSat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 56</value>
+  </data>
+  <data name="edSat.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;edSat.Name" xml:space="preserve">
+    <value>edSat</value>
+  </data>
+  <data name="&gt;&gt;edSat.Type" xml:space="preserve">
+    <value>NetCharm.Image.Addins.Controls.SlideColorSat, NetCharm.Image.AddinHost, Version=1.0.9.31, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;edSat.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;edSat.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="edHue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 13</value>
+  </data>
+  <data name="edHue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 58</value>
+  </data>
+  <data name="edHue.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;edHue.Name" xml:space="preserve">
+    <value>edHue</value>
+  </data>
+  <data name="&gt;&gt;edHue.Type" xml:space="preserve">
+    <value>NetCharm.Image.Addins.Controls.SlideColorHue, NetCharm.Image.AddinHost, Version=1.0.9.31, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;edHue.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;edHue.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="imgPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 8</value>
+    <value>162, 12</value>
   </data>
   <data name="imgPreview.SelectionRegion" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -213,7 +367,7 @@
 </value>
   </data>
   <data name="imgPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 300</value>
+    <value>256, 256</value>
   </data>
   <data name="imgPreview.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -228,7 +382,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;imgPreview.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>9</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -237,13 +391,10 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>318, 353</value>
+    <value>430, 318</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Grayscale</value>
   </data>
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>
@@ -252,7 +403,7 @@
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>GrayscaleForm</value>
+    <value>HslFilterForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

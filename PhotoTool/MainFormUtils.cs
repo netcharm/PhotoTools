@@ -300,9 +300,7 @@ namespace PhotoTool
                 addins.CurrentApp = addins.Apps[an];
                 if ( addins.CurrentApp != null )
                 {
-                    addins.CurrentApp.Show( this );
-                    //ribbonMain.BringToFront();
-                    //ribbonMain.Update();
+                    addins.CurrentApp.Show( this, false );
                 }
             }
             cmdFileApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
@@ -324,7 +322,7 @@ namespace PhotoTool
                 if ( addins.CurrentFilter != null )
                 {
                     addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
-                    addins.CurrentFilter.Show( this );
+                    addins.CurrentFilter.Show( this, false );
                     if ( addins.CurrentFilter.Success )
                     {
                         addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
@@ -350,7 +348,7 @@ namespace PhotoTool
                 if ( addins.CurrentFilter != null )
                 {
                     addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
-                    addins.CurrentFilter.Show( this );
+                    addins.CurrentFilter.Show( this, false );
                     if ( addins.CurrentFilter.Success )
                     {
                         addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
@@ -373,11 +371,17 @@ namespace PhotoTool
             {
                 case AddinCommand.Undo:
                     if ( e.Property is bool )
+                    {
                         cmdEditUndo.Enabled = (bool) e.Property;
+                        cmdQUndo.Enabled = (bool) e.Property;
+                    }
                     break;
                 case AddinCommand.Redo:
                     if ( e.Property is bool )
+                    {
                         cmdEditRedo.Enabled = (bool) e.Property;
+                        cmdQRedo.Enabled = (bool) e.Property;
+                    }
                     break;
                 case AddinCommand.Log:
                     if ( fmLog is LogForm && !fmLog.IsDisposed  )
@@ -668,7 +672,7 @@ namespace PhotoTool
                     if ( addins.Apps.ContainsKey( "Editor" ) )
                     {
                         addins.CurrentApp = addins.Apps["Editor"];
-                        addins.CurrentApp.Show( this );
+                        addins.CurrentApp.Show( this, false );
                         addins.CurrentApp.Command( AddinCommand.Open, out result, flist );
                     }
                 }
@@ -678,7 +682,7 @@ namespace PhotoTool
                 if ( addins.Apps.ContainsKey( "Batch" ) )
                 {
                     addins.CurrentApp = addins.Apps["Batch"];
-                    addins.CurrentApp.Show( this );
+                    addins.CurrentApp.Show( this, false );
                     addins.CurrentApp.Command( AddinCommand.Open, out result, flist );
                 }
             }

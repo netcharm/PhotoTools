@@ -10,6 +10,8 @@ using Cyotek.Windows.Forms;
 
 namespace NetCharm.Image.Addins
 {
+    [ToolboxBitmap(typeof( Cyotek.Windows.Forms.ImageBox ), "ImageBox.bmp")]
+    [ToolboxItem(true)]
     public partial class ImageBox : UserControl
     {
         #region Private variables for ImageBox
@@ -90,6 +92,18 @@ namespace NetCharm.Image.Addins
         public ImageBox()
         {
             InitializeComponent();
+            Viewer.Size = ClientSize;
+            Viewer.Dock = DockStyle.Fill;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public Point PointToImage(Point p)
+        {
+            return ( Viewer.PointToImage( p ) );
         }
 
         /// <summary>

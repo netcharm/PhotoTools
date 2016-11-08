@@ -127,7 +127,7 @@ namespace InternalFilters.Effects
         /// 
         /// </summary>
         /// <param name="parent"></param>
-        public override void Show( Form parent = null )
+        public override void Show( Form parent = null, bool setup = false )
         {
             _success = false;
             if ( fm == null )
@@ -150,8 +150,11 @@ namespace InternalFilters.Effects
             {
                 Success = true;
                 GetParams( fm );
-                ImgDst = Apply( ImgSrc );
-                Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.SetImageSelection, new RectangleF( 0, 0, 0, 0 ) ) );
+                if ( !setup )
+                {
+                    ImgDst = Apply( ImgSrc );
+                    Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.SetImageSelection, new RectangleF( 0, 0, 0, 0 ) ) );
+                }
             }
             if ( fm != null )
             {
@@ -168,7 +171,7 @@ namespace InternalFilters.Effects
         {
             GrayscaleMode grayscaleMode = GrayscaleMode.BT709;
             if ( Params.ContainsKey( "GrayscaleMode" ) )
-                grayscaleMode = (GrayscaleMode)Params["GrayscaleMode"].Value;
+                grayscaleMode = (GrayscaleMode) Params["GrayscaleMode"].Value;
 
             var dst = image.Clone();
             switch ( grayscaleMode )
@@ -217,7 +220,130 @@ namespace InternalFilters.Effects
         /// <summary>
         /// 
         /// </summary>
-        internal Dictionary<GrayscaleMode, ColorMatrix> GrayscaleMatrix = new Dictionary<GrayscaleMode, ColorMatrix>();
+        internal Dictionary<GrayscaleMode, ColorMatrix> GrayscaleMatrix = new Dictionary<GrayscaleMode, ColorMatrix>()
+        {
+                #region Fill ColorMatrix List
+            { GrayscaleMode.BT709, new ColorMatrix()
+                {
+                    Matrix00 = 0.2125f,
+                    Matrix01 = 0.2125f,
+                    Matrix02 = 0.2125f,
+                    Matrix10 = 0.7154f,
+                    Matrix11 = 0.7154f,
+                    Matrix12 = 0.7154f,
+                    Matrix20 = 0.0721f,
+                    Matrix21 = 0.0721f,
+                    Matrix22 = 0.0721f
+                }
+            },
+            { GrayscaleMode.RMY, new ColorMatrix()
+                {
+                    Matrix00 = 0.5000f,
+                    Matrix01 = 0.5000f,
+                    Matrix02 = 0.5000f,
+                    Matrix10 = 0.4190f,
+                    Matrix11 = 0.4190f,
+                    Matrix12 = 0.4190f,
+                    Matrix20 = 0.0810f,
+                    Matrix21 = 0.0810f,
+                    Matrix22 = 0.0810f
+                }
+            },
+            { GrayscaleMode.Y, new ColorMatrix()
+                {
+                    Matrix00 = 0.2990f,
+                    Matrix01 = 0.2990f,
+                    Matrix02 = 0.2990f,
+                    Matrix10 = 0.5870f,
+                    Matrix11 = 0.5870f,
+                    Matrix12 = 0.5870f,
+                    Matrix20 = 0.1140f,
+                    Matrix21 = 0.1140f,
+                    Matrix22 = 0.1140f,
+                }
+            },
+            { GrayscaleMode.Grayscale, new ColorMatrix()
+                {
+                    Matrix00 = 0.5000f,
+                    Matrix01 = 0.5000f,
+                    Matrix02 = 0.5000f,
+                    Matrix10 = 0.5000f,
+                    Matrix11 = 0.5000f,
+                    Matrix12 = 0.5000f,
+                    Matrix20 = 0.5000f,
+                    Matrix21 = 0.5000f,
+                    Matrix22 = 0.5000f,
+                }
+            },
+            { GrayscaleMode.Sepia_1, new ColorMatrix()
+                {
+                    Matrix00 = 0.393f,
+                    Matrix01 = 0.349f,
+                    Matrix02 = 0.272f,
+                    Matrix10 = 0.769f,
+                    Matrix11 = 0.686f,
+                    Matrix12 = 0.534f,
+                    Matrix20 = 0.189f,
+                    Matrix21 = 0.168f,
+                    Matrix22 = 0.131f,
+                }
+            },
+            { GrayscaleMode.Sepia_2, new ColorMatrix()
+                {
+                    Matrix00 = 0.393f,
+                    Matrix01 = 0.349f,
+                    Matrix02 = 0.299f,
+                    Matrix10 = 0.769f,
+                    Matrix11 = 0.686f,
+                    Matrix12 = 0.534f,
+                    Matrix20 = 0.189f,
+                    Matrix21 = 0.168f,
+                    Matrix22 = 0.131f,
+                }
+            },
+            { GrayscaleMode.Sepia_3, new ColorMatrix()
+                {
+                    Matrix00 = 0.340f,
+                    Matrix01 = 0.330f,
+                    Matrix02 = 0.330f,
+                    Matrix04 = 30.00f,
+                    Matrix10 = 0.330f,
+                    Matrix11 = 0.340f,
+                    Matrix12 = 0.330f,
+                    Matrix20 = 0.330f,
+                    Matrix21 = 0.330f,
+                    Matrix22 = 0.334f,
+                    Matrix24 = 20.00f,
+                }
+            },
+            { GrayscaleMode.Tawawa, new ColorMatrix()
+                {
+                    Matrix00 = 0.2125f,
+                    Matrix01 = 0.2125f,
+                    Matrix02 = 0.2125f,
+                    Matrix10 = 0.7154f,
+                    Matrix11 = 0.7154f,
+                    Matrix12 = 0.7154f,
+                    Matrix20 = 0.0721f,
+                    Matrix21 = 0.0721f,
+                    Matrix22 = 0.0721f,
+                }
+            },
+            { GrayscaleMode.Custom, new ColorMatrix()
+                {
+                    Matrix00 = 0.300f,
+                    Matrix01 = 0.300f,
+                    Matrix02 = 0.300f,
+                    Matrix10 = 0.590f,
+                    Matrix11 = 0.590f,
+                    Matrix12 = 0.590f,
+                    Matrix20 = 0.110f,
+                    Matrix21 = 0.110f,
+                    Matrix22 = 0.110f,
+                }
+            }
+            #endregion
+        };
 
         /// <summary>
         ///
@@ -339,7 +465,7 @@ namespace InternalFilters.Effects
 
                 #endregion
             }
-            if ( !GrayscaleMatrix.ContainsKey(mode))
+            if ( !GrayscaleMatrix.ContainsKey( mode ) )
             {
                 return ( image );
             }
@@ -352,7 +478,6 @@ namespace InternalFilters.Effects
             if ( src.PixelFormat != PixelFormat.Format32bppArgb )
                 src = Accord.Imaging.Image.Clone( src, PixelFormat.Format32bppArgb );
             Bitmap dst = new Bitmap( src.Width, src.Height, src.PixelFormat );
-            AddinUtils.CloneExif( src, dst );
 
             using ( var g = Graphics.FromImage( dst ) )
             {
@@ -366,9 +491,11 @@ namespace InternalFilters.Effects
                              GraphicsUnit.Pixel,
                              a );
             }
+
+            AddinUtils.CloneExif( src, dst );
             return ( dst );
         }
-        
+
         /// <summary>
         /// 
         /// </summary>

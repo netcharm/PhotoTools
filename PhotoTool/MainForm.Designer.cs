@@ -88,6 +88,10 @@
             this.cmdStyle2007 = new System.Windows.Forms.RibbonButton();
             this.cmdStyle2010 = new System.Windows.Forms.RibbonButton();
             this.cmdStyle2013 = new System.Windows.Forms.RibbonButton();
+            this.cmdQOpen = new System.Windows.Forms.RibbonButton();
+            this.cmdQSave = new System.Windows.Forms.RibbonButton();
+            this.cmdQUndo = new System.Windows.Forms.RibbonButton();
+            this.cmdQRedo = new System.Windows.Forms.RibbonButton();
             this.status.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -393,26 +397,30 @@
             this.ribbonMain.OrbDropDown.Location = ((System.Drawing.Point)(resources.GetObject("ribbonMain.OrbDropDown.Location")));
             this.ribbonMain.OrbDropDown.MenuItems.Add(this.ribOrbMiOpen);
             this.ribbonMain.OrbDropDown.MenuItems.Add(this.ribOrbMiSave);
-            this.ribbonMain.OrbDropDown.Name = "";
+            this.ribbonMain.OrbDropDown.Name = "Orb";
             this.ribbonMain.OrbDropDown.OptionItems.Add(this.ribOptBtnExit);
             this.ribbonMain.OrbDropDown.OptionItems.Add(this.ribOptBtnOptions);
             this.ribbonMain.OrbDropDown.OptionItems.Add(this.ribThemeSelect);
             this.ribbonMain.OrbDropDown.OptionItems.Add(this.ribStyleSelect);
             this.ribbonMain.OrbDropDown.RecentItemsCaption = "Recent";
-            this.ribbonMain.OrbDropDown.Size = ((System.Drawing.Size)(resources.GetObject("ribbonMain.OrbDropDown.Size")));
             this.ribbonMain.OrbDropDown.TabIndex = ((int)(resources.GetObject("ribbonMain.OrbDropDown.TabIndex")));
             this.ribbonMain.OrbImage = ((System.Drawing.Image)(resources.GetObject("ribbonMain.OrbImage")));
             this.ribbonMain.PanelCaptionHeight = 20;
             // 
             // 
             // 
-            this.ribbonMain.QuickAcessToolbar.Visible = false;
+            this.ribbonMain.QuickAcessToolbar.DropDownButtonVisible = false;
+            this.ribbonMain.QuickAcessToolbar.Items.Add(this.cmdQOpen);
+            this.ribbonMain.QuickAcessToolbar.Items.Add(this.cmdQSave);
+            this.ribbonMain.QuickAcessToolbar.Items.Add(this.cmdQUndo);
+            this.ribbonMain.QuickAcessToolbar.Items.Add(this.cmdQRedo);
             this.ribbonMain.RibbonTabFont = new System.Drawing.Font("Segoe UI", 10F);
             this.ribbonMain.Tabs.Add(this.RibTabMain);
             this.ribbonMain.Tabs.Add(this.RibTabAction);
             this.ribbonMain.Tabs.Add(this.RibTabEffect);
             this.ribbonMain.Tabs.Add(this.RibTabSystem);
             this.ribbonMain.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
+            this.ribbonMain.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
             // 
             // ribOrbMiOpen
             // 
@@ -543,6 +551,34 @@
             this.cmdStyle2013.Value = "2";
             this.cmdStyle2013.Click += new System.EventHandler(this.cmdStyle2010_Click);
             // 
+            // cmdQOpen
+            // 
+            this.cmdQOpen.Image = global::PhotoTool.Properties.Resources.Open_32x;
+            this.cmdQOpen.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact;
+            this.cmdQOpen.SmallImage = global::PhotoTool.Properties.Resources.Open_16x;
+            this.cmdQOpen.Click += new System.EventHandler(this.cmdFileOpen_Click);
+            // 
+            // cmdQSave
+            // 
+            this.cmdQSave.Image = global::PhotoTool.Properties.Resources.Save_32x;
+            this.cmdQSave.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact;
+            this.cmdQSave.SmallImage = global::PhotoTool.Properties.Resources.Save_16x;
+            this.cmdQSave.Click += new System.EventHandler(this.cmdFileSave_Click);
+            // 
+            // cmdQUndo
+            // 
+            this.cmdQUndo.Image = global::PhotoTool.Properties.Resources.Undo_32x;
+            this.cmdQUndo.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact;
+            this.cmdQUndo.SmallImage = global::PhotoTool.Properties.Resources.Undo_16x;
+            this.cmdQUndo.Click += new System.EventHandler(this.cmdEditUndo_Click);
+            // 
+            // cmdQRedo
+            // 
+            this.cmdQRedo.Image = global::PhotoTool.Properties.Resources.Redo_32x;
+            this.cmdQRedo.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact;
+            this.cmdQRedo.SmallImage = global::PhotoTool.Properties.Resources.Redo_16x;
+            this.cmdQRedo.Click += new System.EventHandler(this.cmdEditRedo_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -623,6 +659,10 @@
         private System.Windows.Forms.RibbonButton cmdEditUndo;
         private System.Windows.Forms.RibbonButton cmdEditRedo;
         private System.Windows.Forms.RibbonButton cmdFileApplyAll;
+        private System.Windows.Forms.RibbonButton cmdQOpen;
+        private System.Windows.Forms.RibbonButton cmdQSave;
+        private System.Windows.Forms.RibbonButton cmdQUndo;
+        private System.Windows.Forms.RibbonButton cmdQRedo;
     }
 }
 

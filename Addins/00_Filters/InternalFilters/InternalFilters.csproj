@@ -63,6 +63,9 @@
       <HintPath>..\..\..\packages\Accord.Statistics.3.3.0\lib\net40\Accord.Statistics.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Cyotek.Windows.Forms.ColorPicker">
+      <HintPath>..\..\..\..\..\_refs\Cyotek.Windows.Forms.ColorPicker.dll</HintPath>
+    </Reference>
     <Reference Include="Cyotek.Windows.Forms.ImageBox">
       <HintPath>..\..\..\..\..\_refs\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
     </Reference>
@@ -116,6 +119,20 @@
     <Compile Include="Effects\GrayscaleForm.Designer.cs">
       <DependentUpon>GrayscaleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Effects\HslFilter.cs" />
+    <Compile Include="Effects\HslFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Effects\HslFilterForm.Designer.cs">
+      <DependentUpon>HslFilterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Effects\HueFilter.cs" />
+    <Compile Include="Effects\HueFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Effects\HueFilterForm.Designer.cs">
+      <DependentUpon>HueFilterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Effects\Invert.cs" />
     <Compile Include="Effects\InvertForm.cs">
       <SubType>Form</SubType>
@@ -166,6 +183,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Effects\GrayscaleForm.resx">
       <DependentUpon>GrayscaleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Effects\HslFilterForm.resx">
+      <DependentUpon>HslFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Effects\HueFilterForm.resx">
+      <DependentUpon>HueFilterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Effects\InvertForm.resx">
       <DependentUpon>InvertForm.cs</DependentUpon>
@@ -250,6 +273,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Invert_32x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eyedropper.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

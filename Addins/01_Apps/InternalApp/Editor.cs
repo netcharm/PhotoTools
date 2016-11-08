@@ -220,7 +220,7 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
-        public void Show( Form parent = null )
+        public void Show( Form parent = null, bool setup = false )
         {
             //EditorForm fm = new EditorForm(Host);
             if ( fm == null )
@@ -267,7 +267,7 @@ namespace InternalFilters
                 if ( Host.CurrentApp != this )
                 {
                     Host.CurrentApp = this;
-                    Host.CurrentApp.Show( ParentForm );
+                    Host.CurrentApp.Show( ParentForm, false );
                 }
                 lastImageFileName = filename;
             }

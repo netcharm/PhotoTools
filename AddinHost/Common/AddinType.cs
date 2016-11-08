@@ -217,8 +217,9 @@ namespace NetCharm.Image.Addins
         GetAddin = 2003,
         SetAddin = 2004,
 
-        GetParams = 2101,
-        SetParams = 2102,
+        InitParams = 2101,
+        GetParams = 2111,
+        SetParams = 2112,
 
         Show = 3001,
         Apply = 3002,

@@ -125,7 +125,7 @@ namespace InternalFilters.Effects
         /// 
         /// </summary>
         /// <param name="parent"></param>
-        public override void Show( Form parent = null )
+        public override void Show( Form parent = null, bool setup = false )
         {
             _success = false;
             if ( fm == null )
@@ -148,8 +148,11 @@ namespace InternalFilters.Effects
             {
                 _success = true;
                 GetParams( fm );
-                ImgDst = Apply( ImgSrc );
-                //Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.SetImageSelection, new RectangleF( 0, 0, 0, 0 ) ) );
+                if ( !setup )
+                {
+                    ImgDst = Apply( ImgSrc );
+                    //Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.SetImageSelection, new RectangleF( 0, 0, 0, 0 ) ) );
+                }
             }
             if ( fm != null )
             {

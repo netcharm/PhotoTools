@@ -87,7 +87,7 @@ namespace InternalFilters.Actions
         /// 
         /// </summary>
         /// <param name="parent"></param>
-        public override void Show( Form parent = null )
+        public override void Show( Form parent = null, bool setup = false )
         {
             if ( fm == null )
             {
@@ -121,7 +121,10 @@ namespace InternalFilters.Actions
                 else
                     Params.Add( "KeepSize", fm.GetKeepSize( "KeepSize" ) );
 
-                ImgDst = Apply( ImgSrc );
+                if ( !setup )
+                {
+                    ImgDst = Apply( ImgSrc );
+                }
             }
             else
                 _success = false;

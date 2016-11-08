@@ -17,7 +17,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
-    [ToolboxBitmap( @"AddIn.ico" )]
+    [ToolboxBitmap( typeof(AddinHost), "AddinHost.bmp" )]
     //public class AddinHost : UserControl
     public class AddinHost : Component
     {
@@ -162,20 +162,25 @@ namespace NetCharm.Image.Addins
         /// </summary>
         private IAddin _currentapp = null;
         [Browsable( false )]
+        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
         public IAddin CurrentApp
         {
             get { return _currentapp; }
             set { _currentapp = value; }
         }
+
         private IAddin _currentaction = null;
         [Browsable( false )]
+        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
         public IAddin CurrentAction
         {
             get { return _currentaction; }
             set { _currentaction = value; }
         }
+
         private IAddin _currentfilter = null;
         [Browsable( false )]
+        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
         public IAddin CurrentFilter
         {
             get { return _currentfilter; }

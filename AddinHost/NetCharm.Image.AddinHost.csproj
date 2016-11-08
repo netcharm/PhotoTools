@@ -67,6 +67,9 @@
       <HintPath>..\packages\Accord.Statistics.3.3.0\lib\net40\Accord.Statistics.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Cyotek.Windows.Forms.ColorPicker">
+      <HintPath>..\..\..\_refs\Cyotek.Windows.Forms.ColorPicker.dll</HintPath>
+    </Reference>
     <Reference Include="Cyotek.Windows.Forms.ImageBox">
       <HintPath>..\..\..\_refs\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
     </Reference>
@@ -98,11 +101,41 @@
     </Compile>
     <Compile Include="Common\AddinType.cs" />
     <Compile Include="Common\AddinUtils.cs" />
-    <Compile Include="Common\ImageBox.cs">
+    <Compile Include="Controls\ImageBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Common\ImageBox.Designer.cs">
+    <Compile Include="Controls\ImageBox.Designer.cs">
       <DependentUpon>ImageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SlideColorLum.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SlideColorLum.Designer.cs">
+      <DependentUpon>SlideColorLum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SlideColorSat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SlideColorSat.Designer.cs">
+      <DependentUpon>SlideColorSat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SlideColorHue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SlideColorHue.Designer.cs">
+      <DependentUpon>SlideColorHue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SlideNumber.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SlideNumber.Designer.cs">
+      <DependentUpon>SlideNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SlideControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SlideControl.Designer.cs">
+      <DependentUpon>SlideControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -115,8 +148,23 @@
     <EmbeddedResource Include="BaseHost\AddinHost.resx">
       <DependentUpon>AddinHost.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Common\ImageBox.resx">
+    <EmbeddedResource Include="Controls\ImageBox.resx">
       <DependentUpon>ImageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SlideColorLum.resx">
+      <DependentUpon>SlideColorLum.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SlideColorSat.resx">
+      <DependentUpon>SlideColorSat.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SlideColorHue.resx">
+      <DependentUpon>SlideColorHue.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SlideNumber.resx">
+      <DependentUpon>SlideNumber.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

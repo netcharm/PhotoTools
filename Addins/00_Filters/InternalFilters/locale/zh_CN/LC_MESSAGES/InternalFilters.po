@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-07 10:49+0800\n"
+"POT-Creation-Date: 2016-11-08 14:58+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -21,7 +21,8 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 
 #: Actions\ResizeForm.resx:187 -> btnOk.Text.value Effects\BlurForm.resx:424
-#: Effects\GrayscaleForm.resx:139 Effects\InvertForm.resx:214
+#: Effects\GrayscaleForm.resx:139 Effects\HslFilterForm.resx:139
+#: Effects\HueFilterForm.resx:191 Effects\InvertForm.resx:214
 #: Effects\SharpenForm.resx:301 Actions\RotateForm.resx:364
 #: Actions\CropForm.Designer.cs:308
 msgid "OK"
@@ -29,6 +30,7 @@ msgstr "确认"
 
 #: Actions\ResizeForm.resx:211 -> btnCancel.Text.value
 #: Effects\BlurForm.resx:451 Effects\GrayscaleForm.resx:166
+#: Effects\HslFilterForm.resx:166 Effects\HueFilterForm.resx:218
 #: Effects\InvertForm.resx:238 Effects\SharpenForm.resx:325
 #: Actions\RotateForm.resx:388 Actions\CropForm.Designer.cs:298
 msgid "Cancel"
@@ -55,6 +57,7 @@ msgid "Resize"
 msgstr "缩放"
 
 #: Effects\BlurForm.resx:164 -> btnOriginal.ToolTip.value
+#: Effects\HslFilterForm.resx:236 Effects\HueFilterForm.resx:164
 #: Effects\InvertForm.resx:161 Effects\SharpenForm.resx:164
 msgid "View Original"
 msgstr "查看原图"
@@ -132,6 +135,11 @@ msgstr "锐化模式"
 #: Effects\BlurForm.resx:649 -> grpBoxParams.Text.value
 msgid "Box Params"
 msgstr "方框参数"
+
+#: Effects\GrayscaleForm.resx:190 -> cbGrayMode.ToolTip.value
+#: Effects\HslFilterForm.resx:260
+msgid "Grayscale Mode"
+msgstr "灰阶化模式"
 
 #: Effects\GrayscaleForm.resx:246 -> $this.Text.value Effects\Grayscale.cs:56
 msgid "Grayscale"
@@ -289,6 +297,22 @@ msgstr "比"
 msgid "Crop"
 msgstr "裁切"
 
+#: Effects\HslFilterForm.Designer.cs:89
+msgid "Tolerance"
+msgstr "容差"
+
+#: Effects\HslFilterForm.Designer.cs:118
+msgid "Luminance"
+msgstr "明度"
+
+#: Effects\HslFilterForm.Designer.cs:142
+msgid "Saturation"
+msgstr "饱和度"
+
+#: Effects\HslFilterForm.Designer.cs:166 Effects\HueFilterForm.Designer.cs:76
+msgid "Hue"
+msgstr "色度"
+
 #: Actions\Crop.cs:41 Actions\Resize.cs:128 Actions\Rotate.cs:56
 msgid "Edit"
 msgstr "编辑"
@@ -325,13 +349,30 @@ msgstr "清晰度"
 msgid "Blur Image"
 msgstr "模糊图像"
 
-#: Effects\Grayscale.cs:72 Effects\Invert.cs:47
+#: Effects\Grayscale.cs:72 Effects\HslFilter.cs:47 Effects\HueFilter.cs:47
+#: Effects\Invert.cs:47
 msgid "Color"
 msgstr "色彩"
 
 #: Effects\Grayscale.cs:81
 msgid "Convert Image to Grayscale"
 msgstr "转换为灰度/单色图像"
+
+#: Effects\HslFilter.cs:35
+msgid "HslFilter"
+msgstr "HSL滤色"
+
+#: Effects\HslFilter.cs:54
+msgid "Using HSL Value Filter Image"
+msgstr "HSL色调过滤"
+
+#: Effects\HueFilter.cs:35
+msgid "HueFilter"
+msgstr "Hue滤色"
+
+#: Effects\HueFilter.cs:54
+msgid "Using Hue value filtering image color"
+msgstr "Hue色调过滤"
 
 #: Effects\Invert.cs:35
 msgid "Invert"
@@ -352,6 +393,18 @@ msgstr "锐化图像"
 #: Actions\Rotate.cs:65
 msgid "Rotate Image"
 msgstr "旋转图像"
+
+#~ msgid "Hue Color Value"
+#~ msgstr "Hue色彩值"
+
+#~ msgid "Hue Value"
+#~ msgstr "色值"
+
+#~ msgid "HSL Tint Value"
+#~ msgstr "HSL色调数值"
+
+#~ msgid "HSL Tint"
+#~ msgstr "HSL色调"
 
 #~ msgid "Box Horizontal Size"
 #~ msgstr "水平镜像"

@@ -214,7 +214,7 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
-        public void Show( Form parent = null )
+        public void Show( Form parent = null, bool setup = false )
         {
             ParentForm = parent;
             if ( fm == null )
@@ -254,7 +254,7 @@ namespace BatchProcess
                 if ( Host.CurrentApp != this)
                 {
                     Host.CurrentApp = this;
-                    Host.CurrentApp.Show( ParentForm );
+                    Host.CurrentApp.Show( ParentForm, false );
                 }
             }
         }
@@ -270,7 +270,7 @@ namespace BatchProcess
                 if ( Host.CurrentApp != this )
                 {
                     Host.CurrentApp = this;
-                    Host.CurrentApp.Show( ParentForm );
+                    Host.CurrentApp.Show( ParentForm, false );
                 }
             }
         }

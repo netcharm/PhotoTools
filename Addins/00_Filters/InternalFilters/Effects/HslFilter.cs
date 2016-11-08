@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -10,17 +11,15 @@ using NetCharm.Image.Addins;
 
 namespace InternalFilters.Effects
 {
-    public enum BlurMode
+    public enum HslFilterMode
     {
-        Normal = 0,
-        Gaussian,
-        Box
+        Normal = 0
     }
 
     [Extension]
-    class Blur : BaseAddinEffect
+    class HslFilter : BaseAddinEffect
     {
-        BlurForm fm = null;
+        HslFilterForm fm = null;
 
         #region Properties override
         public override AddinType Type
@@ -28,13 +27,13 @@ namespace InternalFilters.Effects
             get { return ( AddinType.Effect ); }
         }
 
-        private string _name = "Blur";
+        private string _name = "HslFilter";
         public override string Name
         {
             get { return _name; }
         }
 
-        private string _displayname = T("Blur");
+        private string _displayname = T("HslFilter");
         public override string DisplayName
         {
             get { return _( _displayname ); }
@@ -43,32 +42,32 @@ namespace InternalFilters.Effects
 
         public override string GroupName
         {
-            get { return ( "Clearness" ); }
+            get { return ( "Color" ); }
         }
 
-        private string _displayGroupName = T("Clearness");
+        private string _displayGroupName = T("Color");
         public override string DisplayGroupName
         {
             get { return _( _displayGroupName ); }
             set { _displayGroupName = value; }
         }
 
-        private string _description = T("Blur Image");
+        private string _description = T("Using HSL Value Filter Image");
         public override string Description
         {
             get { return _( _description ); }
             set { _description = value; }
         }
 
-        public override Image LargeIcon
-        {
-            get { return Properties.Resources.Blur_32x; }
-        }
+        //public override Image LargeIcon
+        //{
+        //    get { return Properties.Resources.HslFilter_32x; }
+        //}
 
-        public override Image SmallIcon
-        {
-            get { return Properties.Resources.Blur_16x; }
-        }
+        //public override Image SmallIcon
+        //{
+        //    get { return Properties.Resources.HslFilter_16x; }
+        //}
 
         #endregion
 
@@ -78,12 +77,15 @@ namespace InternalFilters.Effects
         /// </summary>
         private void InitParams()
         {
-            Dictionary<string, object> kv = new Dictionary<string, object>();
-            kv.Add( "BlurMode", BlurMode.Normal );
-            kv.Add( "GaussianSigma", (double) 1.4 );
-            kv.Add( "GaussianSize", 7 );
-            kv.Add( "GaussianThreshold", 0 );
-            kv.Add( "BoxSize", 3 );
+            Dictionary<string, object> kv = new Dictionary<string, object>()
+            {
+                { "HslFilterMode", HslFilterMode.Normal },
+                { "HslHue", 180 },
+                { "HslSaturation", 1.0f },
+                { "HslLuminance", 0.5f },
+                { "HslTolerance", 5.0f },
+                { "GrayscaleMode", GrayscaleMode.None }
+            };
 
             Params.Clear();
             foreach ( var item in kv )
@@ -106,13 +108,13 @@ namespace InternalFilters.Effects
 
             if ( form is Form && !form.IsDisposed )
             {
-                var cfm = (form as BlurForm);
-
-                Params["BlurMode"] = cfm.ParamMode;
-                Params["GaussianSigma"] = cfm.ParmaGaussianSigma;
-                Params["GaussianSize"] = cfm.ParmaGaussianSize;
-                Params["GaussianThreshold"] = cfm.ParmaGaussianThreshold;
-                Params["BoxSize"] = cfm.ParmaBoxSize;
+                var cfm = (form as HslFilterForm);
+                Params["HslFilterMode"] = cfm.ParamMode;
+                Params["HslHue"] = cfm.ParamHue;
+                Params["HslSaturation"] = cfm.ParamSaturation;
+                Params["HslLuminance"] = cfm.ParamLuminance;
+                Params["HslTolerance"] = cfm.ParamTolerance;
+                Params["GrayscaleMode"] = cfm.ParamGrayscaleMode;
             }
         }
 
@@ -127,13 +129,13 @@ namespace InternalFilters.Effects
 
             if ( form is Form && !form.IsDisposed )
             {
-                var cfm = (form as BlurForm);
-
-                cfm.ParamMode = Params["BlurMode"];
-                cfm.ParmaGaussianSigma = Params["GaussianSigma"];
-                cfm.ParmaGaussianSize = Params["GaussianSize"];
-                cfm.ParmaGaussianThreshold = Params["GaussianThreshold"];
-                cfm.ParmaBoxSize = Params["BoxSize"];
+                var cfm = (form as HslFilterForm);
+                cfm.ParamMode = Params["HslFilterMode"];
+                cfm.ParamHue = Params["HslHue"];
+                cfm.ParamSaturation = Params["HslSaturation"];
+                cfm.ParamLuminance = Params["HslLuminance"];
+                cfm.ParamTolerance = Params["HslTolerance"];
+                cfm.ParamGrayscaleMode = Params["GrayscaleMode"];
             }
         }
 
@@ -146,17 +148,9 @@ namespace InternalFilters.Effects
             _success = false;
             if ( fm == null )
             {
-                fm = new BlurForm( this );
+                fm = new HslFilterForm( this );
                 fm.host = Host;
-                fm.Text = DisplayName;
-                fm.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-                fm.MaximizeBox = false;
-                fm.MinimizeBox = false;
-                fm.ShowIcon = false;
-                fm.ShowInTaskbar = false;
-                fm.StartPosition = FormStartPosition.CenterParent;
-
-                Translate( fm );
+                //Translate( fm );
                 SetParams( fm, ImgSrc );
                 //Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.GetImageSelection, 0 ) );
             }
@@ -187,31 +181,63 @@ namespace InternalFilters.Effects
             Bitmap dst = AddinUtils.CloneImage(image) as Bitmap;
 
             GetParams( fm );
-            BlurMode blurMode = (BlurMode) Params["BlurMode"].Value;
-            double gaussianSigma = (double) Params["GaussianSigma"].Value;
-            int gaussianSize = (int) Params["GaussianSize"].Value;
-            int gaussianThreshold = (int) Params["GaussianThreshold"].Value;
-            int boxSize = (int) Params["BoxSize"].Value;
+            HslFilterMode HslFilterMode = (HslFilterMode) Params["HslFilterMode"].Value;
+            GrayscaleMode grayscaleMode = (GrayscaleMode)Params["GrayscaleMode"].Value;
+            int hueValue = (int)Params["HslHue"].Value;
+            float satValue = (float)Params["HslSaturation"].Value;
+            float lumValue = (float)Params["HslLuminance"].Value;
+            float tolValue = (float)Params["HslTolerance"].Value;
+            float factor_n = 1 - tolValue / 100;
+            float factor_p = 1 + tolValue / 100;
+            //
+            // your filter codes begin
+            //
+            Accord.Imaging.Filters.HSLFiltering filter = new Accord.Imaging.Filters.HSLFiltering();
+            filter.Hue = new Accord.IntRange( (int) Math.Round( hueValue * factor_n ), (int) Math.Round( hueValue * factor_p ) );
+            filter.Saturation = new Accord.Range( satValue * factor_n, satValue * factor_p );
+            filter.Luminance = new Accord.Range( lumValue * factor_n, lumValue * factor_p );
+            //filter.FillColor = new Accord.Imaging.HSL( hueValue, satValue, lumValue );
+            //filter.FillOutsideRange = false;
+            filter.FillColor = new Accord.Imaging.HSL( hueValue, 0.0f, lumValue );
+            filter.FillOutsideRange = true;
 
-            Accord.Imaging.Filters.IFilter filter = null;
-            switch ( blurMode )
+            //
+            // your filter codes end
+            //
+            //dst = AddinUtils.ProcessImage( filter, dst, false );
+            dst = filter.Apply( dst );
+            dst = Accord.Imaging.Image.Clone( dst as Bitmap, PixelFormat.Format32bppArgb );
+            Accord.Imaging.UnmanagedImage uimg = Accord.Imaging.UnmanagedImage.FromManagedImage(dst);
+            Color fc = filter.FillColor.ToRGB().Color;
+            for ( int y = 0; y < uimg.Height; y++ )
             {
-                case BlurMode.Normal:
-                    filter = new Accord.Imaging.Filters.Blur();
-                    dst = ( filter as Accord.Imaging.Filters.Blur ).Apply( dst );
-                    break;
-                case BlurMode.Gaussian:
-                    filter = new Accord.Imaging.Filters.GaussianBlur();
-                    ( filter as Accord.Imaging.Filters.GaussianBlur ).Sigma = gaussianSigma;
-                    ( filter as Accord.Imaging.Filters.GaussianBlur ).Size = gaussianSize;
-                    ( filter as Accord.Imaging.Filters.GaussianBlur ).Threshold = gaussianThreshold;
-                    dst = filter.Apply( dst );
-                    break;
-                case BlurMode.Box:
-                    filter = new Accord.Imaging.Filters.FastBoxBlur( (byte) boxSize, (byte) boxSize );
-                    dst = AddinUtils.ProcessImage( filter, dst, false );
-                    break;
+                for ( int x = 0; x < uimg.Width; x++ )
+                {
+                    if ( uimg.GetPixel( x, y ) == fc ) uimg.SetPixel( x, y, Color.Transparent );
+                }
             }
+            dst = uimg.ToManagedImage();
+
+            IAddin gfilter = Host.Effects["Grayscale"];
+            Dictionary<string, ParamItem> oldParams = gfilter.Params;
+            object data = null;
+            gfilter.Command( AddinCommand.InitParams, out data,
+                new Dictionary<string, object>()
+                {
+                    { "GrayscaleMode", grayscaleMode }
+                } 
+            );
+
+            var gimg = gfilter.Apply( image );
+
+            gfilter.Command( AddinCommand.SetParams, out data, oldParams );
+            
+            using ( var g = Graphics.FromImage( gimg ) )
+            {
+                g.DrawImage( dst, 0, 0, dst.Width, dst.Height );
+            }
+            dst = gimg as Bitmap;
+
             AddinUtils.CloneExif( image, dst );
             return ( dst );
         }
@@ -230,13 +256,13 @@ namespace InternalFilters.Effects
             switch ( cmd )
             {
                 case AddinCommand.GetImageSelection:
-                    if ( fm is BlurForm )
+                    if ( fm is HslFilterForm )
                     {
                         //result = fm.GetImageSelection();
                     }
                     break;
                 case AddinCommand.SetImageSelection:
-                    if ( fm is BlurForm )
+                    if ( fm is HslFilterForm )
                     {
                         if ( args.Length > 0 )
                         {

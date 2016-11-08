@@ -10,17 +10,15 @@ using NetCharm.Image.Addins;
 
 namespace InternalFilters.Effects
 {
-    public enum BlurMode
+    public enum HueFilterMode
     {
-        Normal = 0,
-        Gaussian,
-        Box
+        Normal = 0
     }
 
     [Extension]
-    class Blur : BaseAddinEffect
+    class HueFilter : BaseAddinEffect
     {
-        BlurForm fm = null;
+        HueFilterForm fm = null;
 
         #region Properties override
         public override AddinType Type
@@ -28,13 +26,13 @@ namespace InternalFilters.Effects
             get { return ( AddinType.Effect ); }
         }
 
-        private string _name = "Blur";
+        private string _name = "HueFilter";
         public override string Name
         {
             get { return _name; }
         }
 
-        private string _displayname = T("Blur");
+        private string _displayname = T("HueFilter");
         public override string DisplayName
         {
             get { return _( _displayname ); }
@@ -43,32 +41,32 @@ namespace InternalFilters.Effects
 
         public override string GroupName
         {
-            get { return ( "Clearness" ); }
+            get { return ( "Color" ); }
         }
 
-        private string _displayGroupName = T("Clearness");
+        private string _displayGroupName = T("Color");
         public override string DisplayGroupName
         {
             get { return _( _displayGroupName ); }
             set { _displayGroupName = value; }
         }
 
-        private string _description = T("Blur Image");
+        private string _description = T("Using Hue value filtering image color");
         public override string Description
         {
             get { return _( _description ); }
             set { _description = value; }
         }
 
-        public override Image LargeIcon
-        {
-            get { return Properties.Resources.Blur_32x; }
-        }
+        //public override Image LargeIcon
+        //{
+        //    get { return Properties.Resources.HueFilter_32x; }
+        //}
 
-        public override Image SmallIcon
-        {
-            get { return Properties.Resources.Blur_16x; }
-        }
+        //public override Image SmallIcon
+        //{
+        //    get { return Properties.Resources.HueFilter_16x; }
+        //}
 
         #endregion
 
@@ -79,11 +77,8 @@ namespace InternalFilters.Effects
         private void InitParams()
         {
             Dictionary<string, object> kv = new Dictionary<string, object>();
-            kv.Add( "BlurMode", BlurMode.Normal );
-            kv.Add( "GaussianSigma", (double) 1.4 );
-            kv.Add( "GaussianSize", 7 );
-            kv.Add( "GaussianThreshold", 0 );
-            kv.Add( "BoxSize", 3 );
+            kv.Add( "HueFilterMode", HueFilterMode.Normal );
+            kv.Add( "HueFilterValue", 180 );
 
             Params.Clear();
             foreach ( var item in kv )
@@ -106,13 +101,9 @@ namespace InternalFilters.Effects
 
             if ( form is Form && !form.IsDisposed )
             {
-                var cfm = (form as BlurForm);
-
-                Params["BlurMode"] = cfm.ParamMode;
-                Params["GaussianSigma"] = cfm.ParmaGaussianSigma;
-                Params["GaussianSize"] = cfm.ParmaGaussianSize;
-                Params["GaussianThreshold"] = cfm.ParmaGaussianThreshold;
-                Params["BoxSize"] = cfm.ParmaBoxSize;
+                var cfm = (form as HueFilterForm);
+                Params["HueFilterMode"] = cfm.ParamMode;
+                Params["HueFilterValue"] = cfm.ParamValue;
             }
         }
 
@@ -127,13 +118,9 @@ namespace InternalFilters.Effects
 
             if ( form is Form && !form.IsDisposed )
             {
-                var cfm = (form as BlurForm);
-
-                cfm.ParamMode = Params["BlurMode"];
-                cfm.ParmaGaussianSigma = Params["GaussianSigma"];
-                cfm.ParmaGaussianSize = Params["GaussianSize"];
-                cfm.ParmaGaussianThreshold = Params["GaussianThreshold"];
-                cfm.ParmaBoxSize = Params["BoxSize"];
+                var cfm = (form as HueFilterForm);
+                cfm.ParamMode = Params["HueFilterMode"];
+                cfm.ParamValue = Params["HueFilterValue"];
             }
         }
 
@@ -146,17 +133,9 @@ namespace InternalFilters.Effects
             _success = false;
             if ( fm == null )
             {
-                fm = new BlurForm( this );
+                fm = new HueFilterForm( this );
                 fm.host = Host;
-                fm.Text = DisplayName;
-                fm.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-                fm.MaximizeBox = false;
-                fm.MinimizeBox = false;
-                fm.ShowIcon = false;
-                fm.ShowInTaskbar = false;
-                fm.StartPosition = FormStartPosition.CenterParent;
-
-                Translate( fm );
+                //Translate( fm );
                 SetParams( fm, ImgSrc );
                 //Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.GetImageSelection, 0 ) );
             }
@@ -187,31 +166,10 @@ namespace InternalFilters.Effects
             Bitmap dst = AddinUtils.CloneImage(image) as Bitmap;
 
             GetParams( fm );
-            BlurMode blurMode = (BlurMode) Params["BlurMode"].Value;
-            double gaussianSigma = (double) Params["GaussianSigma"].Value;
-            int gaussianSize = (int) Params["GaussianSize"].Value;
-            int gaussianThreshold = (int) Params["GaussianThreshold"].Value;
-            int boxSize = (int) Params["BoxSize"].Value;
-
-            Accord.Imaging.Filters.IFilter filter = null;
-            switch ( blurMode )
-            {
-                case BlurMode.Normal:
-                    filter = new Accord.Imaging.Filters.Blur();
-                    dst = ( filter as Accord.Imaging.Filters.Blur ).Apply( dst );
-                    break;
-                case BlurMode.Gaussian:
-                    filter = new Accord.Imaging.Filters.GaussianBlur();
-                    ( filter as Accord.Imaging.Filters.GaussianBlur ).Sigma = gaussianSigma;
-                    ( filter as Accord.Imaging.Filters.GaussianBlur ).Size = gaussianSize;
-                    ( filter as Accord.Imaging.Filters.GaussianBlur ).Threshold = gaussianThreshold;
-                    dst = filter.Apply( dst );
-                    break;
-                case BlurMode.Box:
-                    filter = new Accord.Imaging.Filters.FastBoxBlur( (byte) boxSize, (byte) boxSize );
-                    dst = AddinUtils.ProcessImage( filter, dst, false );
-                    break;
-            }
+            HueFilterMode HueFilterMode = (HueFilterMode) Params["HueFilterMode"].Value;
+            int value = (int) Params["HueFilterValue"].Value;
+            Accord.Imaging.Filters.HueModifier filter = new Accord.Imaging.Filters.HueModifier(value);
+            dst = filter.Apply( dst );
             AddinUtils.CloneExif( image, dst );
             return ( dst );
         }
@@ -230,13 +188,13 @@ namespace InternalFilters.Effects
             switch ( cmd )
             {
                 case AddinCommand.GetImageSelection:
-                    if ( fm is BlurForm )
+                    if ( fm is HueFilterForm )
                     {
                         //result = fm.GetImageSelection();
                     }
                     break;
                 case AddinCommand.SetImageSelection:
-                    if ( fm is BlurForm )
+                    if ( fm is HueFilterForm )
                     {
                         if ( args.Length > 0 )
                         {

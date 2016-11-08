@@ -673,9 +673,6 @@
   <data name="ribStyleSelect.ToolTip" xml:space="preserve">
     <value>Style</value>
   </data>
-  <data name="ribbonMain.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>527, 160</value>
-  </data>
   <data name="ribbonMain.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -1298,6 +1295,30 @@
     <value>cmdStyle2013</value>
   </data>
   <data name="&gt;&gt;cmdStyle2013.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdQOpen.Name" xml:space="preserve">
+    <value>cmdQOpen</value>
+  </data>
+  <data name="&gt;&gt;cmdQOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdQSave.Name" xml:space="preserve">
+    <value>cmdQSave</value>
+  </data>
+  <data name="&gt;&gt;cmdQSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdQUndo.Name" xml:space="preserve">
+    <value>cmdQUndo</value>
+  </data>
+  <data name="&gt;&gt;cmdQUndo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmdQRedo.Name" xml:space="preserve">
+    <value>cmdQRedo</value>
+  </data>
+  <data name="&gt;&gt;cmdQRedo.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

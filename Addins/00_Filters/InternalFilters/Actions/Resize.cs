@@ -326,7 +326,7 @@ namespace InternalFilters.Actions
         /// <summary>
         /// 
         /// </summary>
-        public void Show( Form parent = null )
+        public void Show( Form parent = null, bool setup = false )
         {
             if ( fm == null )
             {
@@ -351,7 +351,10 @@ namespace InternalFilters.Actions
             {
                 _success = true;
                 GetParams( fm );
-                ImgDst = Apply( ImgSrc );
+                if ( !setup )
+                {
+                    ImgDst = Apply( ImgSrc );
+                }
             }
             if ( fm != null )
             {
