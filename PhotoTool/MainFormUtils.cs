@@ -659,7 +659,7 @@ namespace PhotoTool
         {
             string[] exts = new string[] { ".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp", ".gif" };
 
-            string[] flist = args.Where(f => File.Exists(f) && exts.Contains(Path.GetExtension(f))).ToArray();
+            string[] flist = args.Where(f => File.Exists(f) && exts.Contains(Path.GetExtension(f).ToLower())).ToArray();
             object result = true;
 
             if ( flist.Length == 1 )
