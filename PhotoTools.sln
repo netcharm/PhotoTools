@@ -7,7 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMask", "AutoMask\AutoMa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C01A14BA-0112-4EE1-BD98-9E66F5BC71D1}"
 	ProjectSection(SolutionItems) = preProject
-		MIT_License.txt = MIT_License.txt
 		readme.md = readme.md
 		SystemUI_Draft.xmind = SystemUI_Draft.xmind
 	EndProjectSection
@@ -37,6 +36,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalFilters", "addins\00_Filters\InternalFilters\InternalFilters.csproj", "{3FFFD0B2-0AD6-4257-B91E-04CE69714113}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_Effects", "03_Effects", "{BFCA8302-9BA1-46F1-9881-F75F3DFCDB7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template", "Template", "{995B6089-9D13-4E61-9A91-26B0088694E8}"
+	ProjectSection(SolutionItems) = preProject
+		AddinForm.zip = AddinForm.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Licenses", "Licenses", "{D4BB2BFC-12C1-46B3-B67D-EF054256CADA}"
+	ProjectSection(SolutionItems) = preProject
+		MIT_License.txt = MIT_License.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,5 +94,7 @@ Global
 		{32E1318C-9464-415B-893D-3B812F5F05F4} = {F6D163E0-97CC-4F74-B799-61C8013CEDBA}
 		{3FFFD0B2-0AD6-4257-B91E-04CE69714113} = {469DFEFC-D960-44F2-84CE-0D3E6784B958}
 		{BFCA8302-9BA1-46F1-9881-F75F3DFCDB7F} = {E8830580-1F8F-4528-B3E7-1626F400627C}
+		{995B6089-9D13-4E61-9A91-26B0088694E8} = {C01A14BA-0112-4EE1-BD98-9E66F5BC71D1}
+		{D4BB2BFC-12C1-46B3-B67D-EF054256CADA} = {C01A14BA-0112-4EE1-BD98-9E66F5BC71D1}
 	EndGlobalSection
 EndGlobal
