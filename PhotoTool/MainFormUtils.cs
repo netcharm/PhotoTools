@@ -70,6 +70,7 @@ namespace PhotoTool
                 status.BackColor = Theme.ColorTable.GetColor( RibbonColorPart.RibbonBackground_2013 );
                 status.ForeColor = Theme.ColorTable.GetColor( RibbonColorPart.RibbonItemText_2013 );
             }
+            Theme.ThemeColor = theme;
         }
 
         /// <summary>
