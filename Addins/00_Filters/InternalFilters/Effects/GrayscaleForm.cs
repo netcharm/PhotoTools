@@ -15,6 +15,7 @@ namespace InternalFilters.Effects
         internal AddinHost host;
         private IAddin addin;
         private Image thumb = null;
+        private Image thumbBackup = null;
 
 
         /// <summary>
@@ -71,5 +72,15 @@ namespace InternalFilters.Effects
             imgPreview.Image = addin.Apply( thumb );
         }
 
+        private void btnOriginal_MouseDown( object sender, MouseEventArgs e )
+        {
+            thumbBackup = imgPreview.Image;
+            imgPreview.Image = thumb;
+        }
+
+        private void btnOriginal_MouseUp( object sender, MouseEventArgs e )
+        {
+            imgPreview.Image = thumbBackup is Image ? thumbBackup : thumb;
+        }
     }
 }

@@ -120,18 +120,42 @@
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cbGrayMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>42, 320</value>
+  </data>
+  <data name="cbGrayMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 20</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cbGrayMode.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="cbGrayMode.ToolTip" xml:space="preserve">
+    <value>Grayscale Mode</value>
+  </data>
+  <data name="&gt;&gt;cbGrayMode.Name" xml:space="preserve">
+    <value>cbGrayMode</value>
+  </data>
+  <data name="&gt;&gt;cbGrayMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbGrayMode.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cbGrayMode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnOk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
     <value>233, 320</value>
   </data>
   <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnOk.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
@@ -148,7 +172,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOk.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -175,31 +199,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="cbGrayMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 321</value>
-  </data>
-  <data name="cbGrayMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 20</value>
-  </data>
-  <data name="cbGrayMode.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="cbGrayMode.ToolTip" xml:space="preserve">
-    <value>Grayscale Mode</value>
-  </data>
-  <data name="&gt;&gt;cbGrayMode.Name" xml:space="preserve">
-    <value>cbGrayMode</value>
-  </data>
-  <data name="&gt;&gt;cbGrayMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbGrayMode.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cbGrayMode.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="imgPreview.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 8</value>
@@ -222,13 +222,37 @@
     <value>imgPreview</value>
   </data>
   <data name="&gt;&gt;imgPreview.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.9.31, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.11.33, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imgPreview.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;imgPreview.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
+  </data>
+  <data name="btnOriginal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 317</value>
+  </data>
+  <data name="btnOriginal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="btnOriginal.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnOriginal.ToolTip" xml:space="preserve">
+    <value>View Original</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.Name" xml:space="preserve">
+    <value>btnOriginal</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

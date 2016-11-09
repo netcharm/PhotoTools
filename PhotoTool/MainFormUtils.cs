@@ -106,6 +106,17 @@ namespace PhotoTool
 
         private AddinHost addins = new AddinHost();
 
+        internal void FixedMdiSize()
+        {
+            //var os = this.Size;
+            //var ns = this.Size;
+            //ns.Height -= 1;
+            //this.Size = ns;
+            //this.Size = os;
+            this.Height -= 1;
+            this.Height += 1;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -316,6 +327,7 @@ namespace PhotoTool
                 if ( addins.CurrentApp != null )
                 {
                     addins.CurrentApp.Show( this, false );
+                    FixedMdiSize();
                 }
             }
             cmdFileApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
@@ -740,6 +752,8 @@ namespace PhotoTool
             cmdFileApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
             cmdFileApplyAll.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
             cmdFileSepApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
+
+            FixedMdiSize();
         }
 
         #endregion Command Line Arguments Routines
