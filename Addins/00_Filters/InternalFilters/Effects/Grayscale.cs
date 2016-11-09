@@ -23,18 +23,12 @@ namespace InternalFilters.Effects
         Sepia_1,
         Sepia_2,
         Sepia_3,
-        Tawawa,
-        TawawaR,
-        TawawaS,
+        TawawaBlue,
+        TawawaDarkBlue,
+        TawawaOrange,
+        TawawaDarkOrange,
         Sepia,
         Custom
-    }
-
-    public enum SwapColorMode
-    {
-        Normal = 0,
-        R2B_ALL,
-        R2B_SRC
     }
 
     [Extension]
@@ -196,15 +190,17 @@ namespace InternalFilters.Effects
                 case GrayscaleMode.Sepia:
                     dst = AddinUtils.ProcessImage( new Accord.Imaging.Filters.Sepia(), image, false );
                     break;
-                case GrayscaleMode.Tawawa:
-                    dst = Tawawa( image );
+                case GrayscaleMode.TawawaBlue:
+                    dst = Tawawa( image, false, false );
                     break;
-                case GrayscaleMode.TawawaS:
-                    dst = Tawawa( image, SwapColorMode.R2B_SRC );
-                    dst = Tawawa( image );
+                case GrayscaleMode.TawawaDarkBlue:
+                    dst = Tawawa( image, true, false );
                     break;
-                case GrayscaleMode.TawawaR:
-                    dst = Tawawa( image, SwapColorMode.R2B_ALL );
+                case GrayscaleMode.TawawaOrange:
+                    dst = Tawawa( image, false, true );
+                    break;
+                case GrayscaleMode.TawawaDarkOrange:
+                    dst = Tawawa( image, true, true );
                     break;
                 case GrayscaleMode.Custom:
                     dst = Gray( image, grayscaleMode );
@@ -328,7 +324,7 @@ namespace InternalFilters.Effects
                     Matrix24 = 20.00f,
                 }
             },
-            { GrayscaleMode.Tawawa, new ColorMatrix()
+            { GrayscaleMode.TawawaBlue, new ColorMatrix()
                 {
                     Matrix00 = 0.2125f,
                     Matrix01 = 0.2125f,
@@ -453,16 +449,16 @@ namespace InternalFilters.Effects
                 GrayscaleMatrix[GrayscaleMode.Sepia_3].Matrix22 = 0.334f;
                 GrayscaleMatrix[GrayscaleMode.Sepia_3].Matrix24 = 20.00f;
 
-                GrayscaleMatrix.Add( GrayscaleMode.Tawawa, new ColorMatrix() );
-                GrayscaleMatrix[GrayscaleMode.Tawawa].Matrix00 = 0.2125f;
-                GrayscaleMatrix[GrayscaleMode.Tawawa].Matrix01 = 0.2125f;
-                GrayscaleMatrix[GrayscaleMode.Tawawa].Matrix02 = 0.2125f;
-                GrayscaleMatrix[GrayscaleMode.Tawawa].Matrix10 = 0.7154f;
-                GrayscaleMatrix[GrayscaleMode.Tawawa].Matrix11 = 0.7154f;
-                GrayscaleMatrix[GrayscaleMode.Tawawa].Matrix12 = 0.7154f;
-                GrayscaleMatrix[GrayscaleMode.Tawawa].Matrix20 = 0.0721f;
-                GrayscaleMatrix[GrayscaleMode.Tawawa].Matrix21 = 0.0721f;
-                GrayscaleMatrix[GrayscaleMode.Tawawa].Matrix22 = 0.0721f;
+                GrayscaleMatrix.Add( GrayscaleMode.TawawaBlue, new ColorMatrix() );
+                GrayscaleMatrix[GrayscaleMode.TawawaBlue].Matrix00 = 0.2125f;
+                GrayscaleMatrix[GrayscaleMode.TawawaBlue].Matrix01 = 0.2125f;
+                GrayscaleMatrix[GrayscaleMode.TawawaBlue].Matrix02 = 0.2125f;
+                GrayscaleMatrix[GrayscaleMode.TawawaBlue].Matrix10 = 0.7154f;
+                GrayscaleMatrix[GrayscaleMode.TawawaBlue].Matrix11 = 0.7154f;
+                GrayscaleMatrix[GrayscaleMode.TawawaBlue].Matrix12 = 0.7154f;
+                GrayscaleMatrix[GrayscaleMode.TawawaBlue].Matrix20 = 0.0721f;
+                GrayscaleMatrix[GrayscaleMode.TawawaBlue].Matrix21 = 0.0721f;
+                GrayscaleMatrix[GrayscaleMode.TawawaBlue].Matrix22 = 0.0721f;
 
                 GrayscaleMatrix.Add( GrayscaleMode.Custom, new ColorMatrix() );
                 GrayscaleMatrix[GrayscaleMode.Custom].Matrix00 = 0.300f;
@@ -514,68 +510,116 @@ namespace InternalFilters.Effects
         /// <param name="image"></param>
         /// <param name="swap"></param>
         /// <returns></returns>
-        internal Image Tawawa( Image image, SwapColorMode swap = SwapColorMode.Normal )
+        internal Image Tawawa( Image image, bool dark = true, bool swap = false )
         {
             Bitmap src = AddinUtils.CloneImage(image) as Bitmap;
             if ( image.PixelFormat != PixelFormat.Format32bppArgb )
                 src = Accord.Imaging.Image.Clone( image as Bitmap, PixelFormat.Format32bppArgb );
 
             Accord.Imaging.UnmanagedImage dst = Accord.Imaging.UnmanagedImage.FromManagedImage(src);
-            for ( int h = 0; h < dst.Height; h++ )
+            if ( !dark && !swap )
             {
-                for ( int w = 0; w < dst.Width; w++ )
+                #region Tawawa Blue
+                for ( int h = 0; h < dst.Height; h++ )
                 {
-                    Color pcSrc = dst.GetPixel(w, h);
-                    double y = 0;
-
-                    switch ( swap )
+                    for ( int w = 0; w < dst.Width; w++ )
                     {
-                        case SwapColorMode.Normal:
-                            y = pcSrc.R * 0.33 + pcSrc.G * 0.55 + pcSrc.B * 0.20;
-                            break;
-                        case SwapColorMode.R2B_ALL:
-                        case SwapColorMode.R2B_SRC:
-                            y = pcSrc.B * 0.3 + pcSrc.G * 0.59 + pcSrc.R * 0.11;
-                            break;
-                    }
+                        Color pcSrc = dst.GetPixel(w, h);
 
-                    y = y / 255 * 200 + 55;
-                    if ( y > 255 ) y = 255;
-                    int iy = (int)Math.Round(y);
+                        double y = 0;
+                        y = pcSrc.R * 0.33 + pcSrc.G * 0.55 + pcSrc.B * 0.20;
+                        y = y / 255 * 200 + 55;
+                        if ( y > 255 ) y = 255;
+                        int iy = (int)Math.Round(y);
 
-                    int r = (int)Math.Round(iy > 85 ? ( ( y - 85 ) / 255 * 340 ) : 0);
-                    int g = iy;
-                    int b = iy > 135 ? 255 : g + 120;
+                        int r = (int)Math.Round(iy > 85 ? ( ( y - 85 ) / 255 * 340 ) : 0);
+                        int g = iy;
+                        int b = iy > 135 ? 255 : g + 120;
 
-                    Color pcDst = Color.Transparent;
-                    switch (swap)
-                    {
-                        case SwapColorMode.Normal:
-                            pcDst = Color.FromArgb( pcSrc.A, r, g, b );
-                            dst.SetPixel( w, h, pcDst );
-                            break;
-                        case SwapColorMode.R2B_ALL:
-                            pcDst = Color.FromArgb( pcSrc.A, b, g, r );
-                            dst.SetPixel( w, h, pcDst );
-                            break;
-                        case SwapColorMode.R2B_SRC:
-                            pcDst = Color.FromArgb( pcSrc.A, r, g, b );
-                            dst.SetPixel( w, h, pcDst );
-                            break;
+                        Color pcDst = Color.FromArgb( pcSrc.A, r, g, b );
+                        dst.SetPixel( w, h, pcDst );
                     }
                 }
+                #endregion
             }
+            else if ( dark && !swap )
+            {
+                #region Tawawa Dark Blue
+                for ( int h = 0; h < dst.Height; h++ )
+                {
+                    for ( int w = 0; w < dst.Width; w++ )
+                    {
+                        Color pcSrc = dst.GetPixel(w, h);
+
+                        double y = 0;
+                        y = pcSrc.R * 0.3 + pcSrc.G * 0.59 + pcSrc.B * 0.11;
+                        y = y / 255 * 200 + 55;
+                        if ( y > 255 ) y = 255;
+                        int iy = (int)Math.Round(y);
+
+                        int r = (int)Math.Round(iy > 85 ? ( ( y - 85 ) / 255 * 340 ) : 0);
+                        int g = iy;
+                        int b = iy > 135 ? 255 : g + 120;
+
+                        Color pcDst = Color.FromArgb( pcSrc.A, r, g, b );
+                        dst.SetPixel( w, h, pcDst );
+                    }
+                }
+                #endregion
+            }
+            else if( !dark && swap)
+            {
+                #region Tawawa Orange
+                for ( int h = 0; h < dst.Height; h++ )
+                {
+                    for ( int w = 0; w < dst.Width; w++ )
+                    {
+                        Color pcSrc = dst.GetPixel(w, h);
+
+                        double y = 0;
+                        y = pcSrc.R * 0.33 + pcSrc.G * 0.55 + pcSrc.B * 0.20;
+                        y = y / 255 * 200 + 55;
+                        if ( y > 255 ) y = 255;
+                        int iy = (int)Math.Round(y);
+
+                        int r = (int)Math.Round(iy > 85 ? ( ( y - 85 ) / 255 * 340 ) : 0);
+                        int g = iy;
+                        int b = iy > 135 ? 255 : g + 120;
+
+                        Color pcDst = Color.FromArgb( pcSrc.A, b, g, r );
+                        dst.SetPixel( w, h, pcDst );
+                    }
+                }
+                #endregion
+            }
+            else
+            {
+                #region Tawawa Dark Orange
+                for ( int h = 0; h < dst.Height; h++ )
+                {
+                    for ( int w = 0; w < dst.Width; w++ )
+                    {
+                        Color pcSrc = dst.GetPixel(w, h);
+                        double y = 0;
+                        y = pcSrc.R * 0.3 + pcSrc.G * 0.59 + pcSrc.B * 0.11;
+                        y = y / 255 * 200 + 55;
+                        if ( y > 255 ) y = 255;
+                        int iy = (int)Math.Round(y);
+
+                        int r = (int)Math.Round(iy > 85 ? ( ( y - 85 ) / 255 * 340 ) : 0);
+                        int g = iy;
+                        int b = iy > 135 ? 255 : g + 120;
+
+                        Color pcDst = Color.FromArgb( pcSrc.A, b, g, r );
+                        dst.SetPixel( w, h, pcDst );
+                    }
+                }
+                #endregion
+            }
+
             Bitmap dstBmp = dst.ToManagedImage();
-            var filter = new Accord.Imaging.Filters.BrightnessCorrection(15);
-            // create filter
-            //Accord.Imaging.Filters.HSLLinear filter = new Accord.Imaging.Filters.HSLLinear( );
-            //// configure the filter
-            //filter.InLuminance = new Accord.Range( 0, 0.95f );
-            //filter.OutLuminance = new Accord.Range( 0, 0.88f );
-            //filter.InSaturation = new Accord.Range( 0, 1 );
-            //filter.OutSaturation = new Accord.Range( 0, 0.75f );
-            // apply the filter
-            filter.ApplyInPlace( dstBmp );
+            //var filter = new Accord.Imaging.Filters.BrightnessCorrection(10);
+            //filter.ApplyInPlace( dstBmp );
 
             AddinUtils.CloneExif( image, dstBmp );
             src.Dispose();
