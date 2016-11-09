@@ -224,6 +224,7 @@ namespace NetCharm.Image.Addins
         Show = 3001,
         Apply = 3002,
         ApplyAll = 3003,
+        ApplyTiming = 3100,
 
         Reset = 4001,
     }

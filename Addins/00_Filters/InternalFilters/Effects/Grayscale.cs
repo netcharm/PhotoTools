@@ -25,8 +25,16 @@ namespace InternalFilters.Effects
         Sepia_3,
         Tawawa,
         TawawaR,
+        TawawaS,
         Sepia,
         Custom
+    }
+
+    public enum SwapColorMode
+    {
+        Normal = 0,
+        R2B_ALL,
+        R2B_SRC
     }
 
     [Extension]
@@ -191,8 +199,12 @@ namespace InternalFilters.Effects
                 case GrayscaleMode.Tawawa:
                     dst = Tawawa( image );
                     break;
+                case GrayscaleMode.TawawaS:
+                    dst = Tawawa( image, SwapColorMode.R2B_SRC );
+                    dst = Tawawa( image );
+                    break;
                 case GrayscaleMode.TawawaR:
-                    dst = Tawawa( image, false );
+                    dst = Tawawa( image, SwapColorMode.R2B_ALL );
                     break;
                 case GrayscaleMode.Custom:
                     dst = Gray( image, grayscaleMode );
@@ -222,7 +234,7 @@ namespace InternalFilters.Effects
         /// </summary>
         internal Dictionary<GrayscaleMode, ColorMatrix> GrayscaleMatrix = new Dictionary<GrayscaleMode, ColorMatrix>()
         {
-                #region Fill ColorMatrix List
+            #region Fill ColorMatrix List
             { GrayscaleMode.BT709, new ColorMatrix()
                 {
                     Matrix00 = 0.2125f,
@@ -500,9 +512,9 @@ namespace InternalFilters.Effects
         /// 
         /// </summary>
         /// <param name="image"></param>
-        /// <param name="rgb"></param>
+        /// <param name="swap"></param>
         /// <returns></returns>
-        internal Image Tawawa( Image image, bool rgb = true )
+        internal Image Tawawa( Image image, SwapColorMode swap = SwapColorMode.Normal )
         {
             Bitmap src = AddinUtils.CloneImage(image) as Bitmap;
             if ( image.PixelFormat != PixelFormat.Format32bppArgb )
@@ -516,10 +528,16 @@ namespace InternalFilters.Effects
                     Color pcSrc = dst.GetPixel(w, h);
                     double y = 0;
 
-                    if ( rgb )
-                        y = pcSrc.R * 0.3 + pcSrc.G * 0.59 + pcSrc.B * 0.11;
-                    else
-                        y = pcSrc.B * 0.3 + pcSrc.G * 0.59 + pcSrc.R * 0.11;
+                    switch ( swap )
+                    {
+                        case SwapColorMode.Normal:
+                            y = pcSrc.R * 0.33 + pcSrc.G * 0.55 + pcSrc.B * 0.20;
+                            break;
+                        case SwapColorMode.R2B_ALL:
+                        case SwapColorMode.R2B_SRC:
+                            y = pcSrc.B * 0.3 + pcSrc.G * 0.59 + pcSrc.R * 0.11;
+                            break;
+                    }
 
                     y = y / 255 * 200 + 55;
                     if ( y > 255 ) y = 255;
@@ -529,19 +547,36 @@ namespace InternalFilters.Effects
                     int g = iy;
                     int b = iy > 135 ? 255 : g + 120;
 
-                    if ( rgb )
+                    Color pcDst = Color.Transparent;
+                    switch (swap)
                     {
-                        Color pcDst = Color.FromArgb(pcSrc.A, r, g, b);
-                        dst.SetPixel( w, h, pcDst );
-                    }
-                    else
-                    {
-                        Color pcDst = Color.FromArgb(pcSrc.A, b, g, r);
-                        dst.SetPixel( w, h, pcDst );
+                        case SwapColorMode.Normal:
+                            pcDst = Color.FromArgb( pcSrc.A, r, g, b );
+                            dst.SetPixel( w, h, pcDst );
+                            break;
+                        case SwapColorMode.R2B_ALL:
+                            pcDst = Color.FromArgb( pcSrc.A, b, g, r );
+                            dst.SetPixel( w, h, pcDst );
+                            break;
+                        case SwapColorMode.R2B_SRC:
+                            pcDst = Color.FromArgb( pcSrc.A, r, g, b );
+                            dst.SetPixel( w, h, pcDst );
+                            break;
                     }
                 }
             }
             Bitmap dstBmp = dst.ToManagedImage();
+            var filter = new Accord.Imaging.Filters.BrightnessCorrection(15);
+            // create filter
+            //Accord.Imaging.Filters.HSLLinear filter = new Accord.Imaging.Filters.HSLLinear( );
+            //// configure the filter
+            //filter.InLuminance = new Accord.Range( 0, 0.95f );
+            //filter.OutLuminance = new Accord.Range( 0, 0.88f );
+            //filter.InSaturation = new Accord.Range( 0, 1 );
+            //filter.OutSaturation = new Accord.Range( 0, 0.75f );
+            // apply the filter
+            filter.ApplyInPlace( dstBmp );
+
             AddinUtils.CloneExif( image, dstBmp );
             src.Dispose();
             dst.Dispose();

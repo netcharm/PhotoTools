@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-08 14:58+0800\n"
+"POT-Creation-Date: 2016-11-09 00:41+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -107,32 +107,31 @@ msgstr "常规模式"
 msgid "Normal Blur"
 msgstr "常规模糊"
 
-#: Effects\BlurForm.resx:511 -> grpGaussianParams.Text.value
-#: Effects\SharpenForm.resx:484
-msgid "Gaussian Params"
-msgstr "高斯运算参数"
-
-#: Effects\BlurForm.resx:538 -> lblGaussianThreshold.Text.value
+#: Effects\BlurForm.resx:478 -> lblGaussianThreshold.Text.value
 #: Effects\SharpenForm.resx:511
 msgid "Threshold:"
 msgstr "阈值:"
 
-#: Effects\BlurForm.resx:568 -> lblGaussianSize.Text.value
+#: Effects\BlurForm.resx:508 -> lblGaussianSize.Text.value
 #: Effects\SharpenForm.resx:541
 msgid "Size:"
 msgstr "大小:"
 
-#: Effects\BlurForm.resx:598 -> lblGaussianSigma.Text.value
+#: Effects\BlurForm.resx:538 -> lblGaussianSigma.Text.value
 #: Effects\SharpenForm.resx:571
 msgid "Sigma:"
 msgstr "SIGMA:"
 
-#: Effects\BlurForm.resx:625 -> grpMode.Text.value
-#: Effects\SharpenForm.resx:373
-msgid "Sharpen Mode"
-msgstr "锐化模式"
+#: Effects\BlurForm.resx:565 -> grpGaussianParams.Text.value
+#: Effects\SharpenForm.resx:484
+msgid "Gaussian Params"
+msgstr "高斯运算参数"
 
-#: Effects\BlurForm.resx:649 -> grpBoxParams.Text.value
+#: Effects\BlurForm.resx:589 -> grpMode.Text.value
+msgid "Blur Mode"
+msgstr "模糊模式"
+
+#: Effects\BlurForm.resx:613 -> grpBoxParams.Text.value
 msgid "Box Params"
 msgstr "方框参数"
 
@@ -144,6 +143,10 @@ msgstr "灰阶化模式"
 #: Effects\GrayscaleForm.resx:246 -> $this.Text.value Effects\Grayscale.cs:56
 msgid "Grayscale"
 msgstr "灰度"
+
+#: Effects\SharpenForm.resx:373 -> grpMode.Text.value
+msgid "Sharpen Mode"
+msgstr "锐化模式"
 
 #: Actions\RotateForm.resx:142 -> btnRotateFlipY.ToolTip.value
 msgid "Flip Vertical"
@@ -297,19 +300,19 @@ msgstr "比"
 msgid "Crop"
 msgstr "裁切"
 
-#: Effects\HslFilterForm.Designer.cs:89
+#: Effects\HslFilterForm.Designer.cs:90
 msgid "Tolerance"
 msgstr "容差"
 
-#: Effects\HslFilterForm.Designer.cs:118
+#: Effects\HslFilterForm.Designer.cs:119
 msgid "Luminance"
 msgstr "明度"
 
-#: Effects\HslFilterForm.Designer.cs:142
+#: Effects\HslFilterForm.Designer.cs:143
 msgid "Saturation"
 msgstr "饱和度"
 
-#: Effects\HslFilterForm.Designer.cs:166 Effects\HueFilterForm.Designer.cs:76
+#: Effects\HslFilterForm.Designer.cs:167 Effects\HueFilterForm.Designer.cs:76
 msgid "Hue"
 msgstr "色度"
 
@@ -349,7 +352,7 @@ msgstr "清晰度"
 msgid "Blur Image"
 msgstr "模糊图像"
 
-#: Effects\Grayscale.cs:72 Effects\HslFilter.cs:47 Effects\HueFilter.cs:47
+#: Effects\Grayscale.cs:72 Effects\HslFilter.cs:48 Effects\HueFilter.cs:47
 #: Effects\Invert.cs:47
 msgid "Color"
 msgstr "色彩"
@@ -358,11 +361,11 @@ msgstr "色彩"
 msgid "Convert Image to Grayscale"
 msgstr "转换为灰度/单色图像"
 
-#: Effects\HslFilter.cs:35
+#: Effects\HslFilter.cs:36
 msgid "HslFilter"
 msgstr "HSL滤色"
 
-#: Effects\HslFilter.cs:54
+#: Effects\HslFilter.cs:55
 msgid "Using HSL Value Filter Image"
 msgstr "HSL色调过滤"
 

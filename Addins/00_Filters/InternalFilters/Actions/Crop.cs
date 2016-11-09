@@ -204,6 +204,8 @@ namespace InternalFilters.Actions
                         }
                     }
                     break;
+                case AddinCommand.ApplyTiming:
+                    break;
                 default:
                     break;
             }

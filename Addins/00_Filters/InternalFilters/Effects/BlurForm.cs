@@ -122,7 +122,7 @@ namespace InternalFilters.Effects
             else if ( blurMode == BlurMode.Box )
             {
                 btnModeBox.Checked = true;
-                grpGaussianParams.Enabled = true;
+                grpGaussianParams.Enabled = false;
                 grpBoxParams.Enabled = true;
             }
 

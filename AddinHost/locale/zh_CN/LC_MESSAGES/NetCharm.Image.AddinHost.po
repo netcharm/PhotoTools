@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Image.AddinHost\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-08 11:54+0800\n"
+"POT-Creation-Date: 2016-11-09 00:41+0800\n"
 "PO-Revision-Date: 2016-10-24 00:17+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -24,17 +24,17 @@ msgstr ""
 msgid "imageBox1"
 msgstr ""
 
-#: Controls\SlideColorLum.Designer.cs:75
+#: Controls\SlideColorLum.Designer.cs:80
 msgid "Luminance"
 msgstr ""
 
-#: Controls\SlideColorLum.Designer.cs:136
-#: Controls\SlideColorSat.Designer.cs:135
+#: Controls\SlideColorLum.Designer.cs:141
+#: Controls\SlideColorSat.Designer.cs:140
 #: Controls\SlideColorHue.Designer.cs:134 Controls\SlideNumber.Designer.cs:137
 msgid ":"
 msgstr ""
 
-#: Controls\SlideColorSat.Designer.cs:75
+#: Controls\SlideColorSat.Designer.cs:80
 msgid "Saturation"
 msgstr ""
 

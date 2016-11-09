@@ -400,7 +400,7 @@
     <value>imgPreview</value>
   </data>
   <data name="&gt;&gt;imgPreview.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.7.18, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.10.32, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imgPreview.Parent" xml:space="preserve">
     <value>$this</value>
@@ -461,66 +461,6 @@
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
     <value>5</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianThreshold.Name" xml:space="preserve">
-    <value>lblGaussianThreshold</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianThreshold.Parent" xml:space="preserve">
-    <value>grpGaussianParams</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianThreshold.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSize.Name" xml:space="preserve">
-    <value>lblGaussianSize</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSize.Parent" xml:space="preserve">
-    <value>grpGaussianParams</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSize.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSigma.Name" xml:space="preserve">
-    <value>lblGaussianSigma</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSigma.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSigma.Parent" xml:space="preserve">
-    <value>grpGaussianParams</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSigma.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="grpGaussianParams.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 109</value>
-  </data>
-  <data name="grpGaussianParams.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 164</value>
-  </data>
-  <data name="grpGaussianParams.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="grpGaussianParams.Text" xml:space="preserve">
-    <value>Gaussian Params</value>
-  </data>
-  <data name="&gt;&gt;grpGaussianParams.Name" xml:space="preserve">
-    <value>grpGaussianParams</value>
-  </data>
-  <data name="&gt;&gt;grpGaussianParams.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpGaussianParams.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;grpGaussianParams.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="lblGaussianThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -612,6 +552,30 @@
   <data name="&gt;&gt;lblGaussianSigma.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="grpGaussianParams.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 109</value>
+  </data>
+  <data name="grpGaussianParams.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 164</value>
+  </data>
+  <data name="grpGaussianParams.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="grpGaussianParams.Text" xml:space="preserve">
+    <value>Gaussian Params</value>
+  </data>
+  <data name="&gt;&gt;grpGaussianParams.Name" xml:space="preserve">
+    <value>grpGaussianParams</value>
+  </data>
+  <data name="&gt;&gt;grpGaussianParams.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpGaussianParams.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpGaussianParams.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="grpMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
@@ -622,7 +586,7 @@
     <value>11</value>
   </data>
   <data name="grpMode.Text" xml:space="preserve">
-    <value>Sharpen Mode</value>
+    <value>Blur Mode</value>
   </data>
   <data name="&gt;&gt;grpMode.Name" xml:space="preserve">
     <value>grpMode</value>
