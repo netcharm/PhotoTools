@@ -133,6 +133,20 @@ namespace PhotoTool
                 btnAddin.ToolTip = I18N._( addin.Description );
                 btnAddin.ToolTipTitle = I18N._( addin.Author );
 
+                #region fetch subitems of addin
+                object result = null;
+                addin.Command( AddinCommand.SubItems, out result );
+                if(result is Dictionary<string, object> )
+                {
+                    foreach(var item in ( result as Dictionary<string, object> ))
+                    {
+                        //var smi = new RibbonButton( item.Key );
+                        //smi.SmallImage = item.Value.
+                        //btnAddin.DropDownItems.Add( smi );
+                        //b
+                    }
+                }
+                #endregion
                 btnAddin.Value = addin.Name;
                 btnAddin.Click += AddinAppClick;
             }
@@ -563,6 +577,9 @@ namespace PhotoTool
         #region Ribbon Help Routine & Orb Command Events
         private void RecentItemAdd( string filename )
         {
+            //ribbonMain.OrbDropDown.RecentItems.Capacity = 15;
+            //ribbonMain.OrbDropDown.RecentItems.TrimExcess();
+
             RibbonItem result = ribbonMain.OrbDropDown.RecentItems.Find(
                 delegate(RibbonItem ri)
                 {
@@ -577,6 +594,11 @@ namespace PhotoTool
             ribbonMain.OrbDropDown.RecentItems.Insert( 0, new RibbonButton( Path.GetFileName(filename) ) );
             ribbonMain.OrbDropDown.RecentItems.First().Value = filename;
             ribbonMain.OrbDropDown.RecentItems.First().Click += RecentItem_Click;
+
+            if( ribbonMain.OrbDropDown.RecentItems.Count >= 15)
+            {
+                ribbonMain.OrbDropDown.RecentItems.RemoveRange( 15, ribbonMain.OrbDropDown.RecentItems.Count - 15 );
+            }
         }
 
         /// <summary>

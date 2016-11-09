@@ -90,6 +90,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\StampObject.cs" />
+    <Compile Include="Actions\StampObjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Actions\StampObjectForm.Designer.cs">
+      <DependentUpon>StampObjectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common.cs" />
     <Compile Include="Actions\Crop.cs" />
     <Compile Include="Actions\CropForm.cs">
@@ -176,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Actions\ResizeForm.resx">
       <DependentUpon>ResizeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Actions\StampObjectForm.resx">
+      <DependentUpon>StampObjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Effects\BlurForm.resx">
       <DependentUpon>BlurForm.cs</DependentUpon>

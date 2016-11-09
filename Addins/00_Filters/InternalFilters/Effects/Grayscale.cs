@@ -19,7 +19,8 @@ namespace InternalFilters.Effects
         BT709,
         RMY,
         Y,
-        Grayscale,
+        Grayscale_1,
+        Grayscale_2,
         Sepia_1,
         Sepia_2,
         Sepia_3,
@@ -28,6 +29,14 @@ namespace InternalFilters.Effects
         TawawaOrange,
         TawawaDarkOrange,
         Sepia,
+        BlackWhite,
+        ComicHigh,
+        ComicLow,
+        HiSat,
+        LoSat,
+        Invert,
+        LomoGraph,
+        Polaroid,
         Custom
     }
 
@@ -184,7 +193,17 @@ namespace InternalFilters.Effects
                 case GrayscaleMode.Sepia_1:
                 case GrayscaleMode.Sepia_2:
                 case GrayscaleMode.Sepia_3:
-                case GrayscaleMode.Grayscale:
+                case GrayscaleMode.Grayscale_1:
+                case GrayscaleMode.Grayscale_2:
+                case GrayscaleMode.BlackWhite:
+                case GrayscaleMode.ComicHigh:
+                case GrayscaleMode.ComicLow:
+                case GrayscaleMode.HiSat:
+                case GrayscaleMode.LoSat:
+                case GrayscaleMode.LomoGraph:
+                case GrayscaleMode.Invert:
+                case GrayscaleMode.Polaroid:
+                case GrayscaleMode.Custom:
                     dst = Gray( image, grayscaleMode );
                     break;
                 case GrayscaleMode.Sepia:
@@ -201,9 +220,6 @@ namespace InternalFilters.Effects
                     break;
                 case GrayscaleMode.TawawaDarkOrange:
                     dst = Tawawa( image, true, true );
-                    break;
-                case GrayscaleMode.Custom:
-                    dst = Gray( image, grayscaleMode );
                     break;
                 default:
                     break;
@@ -236,9 +252,11 @@ namespace InternalFilters.Effects
                     Matrix00 = 0.2125f,
                     Matrix01 = 0.2125f,
                     Matrix02 = 0.2125f,
+
                     Matrix10 = 0.7154f,
                     Matrix11 = 0.7154f,
                     Matrix12 = 0.7154f,
+
                     Matrix20 = 0.0721f,
                     Matrix21 = 0.0721f,
                     Matrix22 = 0.0721f
@@ -249,9 +267,11 @@ namespace InternalFilters.Effects
                     Matrix00 = 0.5000f,
                     Matrix01 = 0.5000f,
                     Matrix02 = 0.5000f,
+
                     Matrix10 = 0.4190f,
                     Matrix11 = 0.4190f,
                     Matrix12 = 0.4190f,
+
                     Matrix20 = 0.0810f,
                     Matrix21 = 0.0810f,
                     Matrix22 = 0.0810f
@@ -262,25 +282,48 @@ namespace InternalFilters.Effects
                     Matrix00 = 0.2990f,
                     Matrix01 = 0.2990f,
                     Matrix02 = 0.2990f,
+
                     Matrix10 = 0.5870f,
                     Matrix11 = 0.5870f,
                     Matrix12 = 0.5870f,
+
                     Matrix20 = 0.1140f,
                     Matrix21 = 0.1140f,
                     Matrix22 = 0.1140f,
                 }
             },
-            { GrayscaleMode.Grayscale, new ColorMatrix()
+            { GrayscaleMode.Grayscale_1, new ColorMatrix()
                 {
                     Matrix00 = 0.5000f,
                     Matrix01 = 0.5000f,
                     Matrix02 = 0.5000f,
+
                     Matrix10 = 0.5000f,
                     Matrix11 = 0.5000f,
                     Matrix12 = 0.5000f,
+
                     Matrix20 = 0.5000f,
                     Matrix21 = 0.5000f,
                     Matrix22 = 0.5000f,
+                }
+            },
+            { GrayscaleMode.Grayscale_2, new ColorMatrix()
+                {
+                    Matrix00 = 0.330f,
+                    Matrix01 = 0.330f,
+                    Matrix02 = 0.330f,
+
+                    Matrix10 = 0.590f,
+                    Matrix11 = 0.590f,
+                    Matrix12 = 0.590f,
+
+                    Matrix20 = 0.110f,
+                    Matrix21 = 0.110f,
+                    Matrix22 = 0.110f,
+
+                    Matrix33 = 1.000f,
+
+                    Matrix44 = 1.000f
                 }
             },
             { GrayscaleMode.Sepia_1, new ColorMatrix()
@@ -288,9 +331,11 @@ namespace InternalFilters.Effects
                     Matrix00 = 0.393f,
                     Matrix01 = 0.349f,
                     Matrix02 = 0.272f,
+
                     Matrix10 = 0.769f,
                     Matrix11 = 0.686f,
                     Matrix12 = 0.534f,
+
                     Matrix20 = 0.189f,
                     Matrix21 = 0.168f,
                     Matrix22 = 0.131f,
@@ -301,9 +346,11 @@ namespace InternalFilters.Effects
                     Matrix00 = 0.393f,
                     Matrix01 = 0.349f,
                     Matrix02 = 0.299f,
+
                     Matrix10 = 0.769f,
                     Matrix11 = 0.686f,
                     Matrix12 = 0.534f,
+
                     Matrix20 = 0.189f,
                     Matrix21 = 0.168f,
                     Matrix22 = 0.131f,
@@ -315,39 +362,180 @@ namespace InternalFilters.Effects
                     Matrix01 = 0.330f,
                     Matrix02 = 0.330f,
                     Matrix04 = 30.00f,
+
                     Matrix10 = 0.330f,
                     Matrix11 = 0.340f,
                     Matrix12 = 0.330f,
+
                     Matrix20 = 0.330f,
                     Matrix21 = 0.330f,
                     Matrix22 = 0.334f,
                     Matrix24 = 20.00f,
                 }
             },
-            { GrayscaleMode.TawawaBlue, new ColorMatrix()
+            { GrayscaleMode.BlackWhite, new ColorMatrix()
                 {
-                    Matrix00 = 0.2125f,
-                    Matrix01 = 0.2125f,
-                    Matrix02 = 0.2125f,
-                    Matrix10 = 0.7154f,
-                    Matrix11 = 0.7154f,
-                    Matrix12 = 0.7154f,
-                    Matrix20 = 0.0721f,
-                    Matrix21 = 0.0721f,
-                    Matrix22 = 0.0721f,
+                    Matrix00 = 1.500f,
+                    Matrix01 = 1.500f,
+                    Matrix02 = 1.500f,
+
+                    Matrix10 = 1.500f,
+                    Matrix11 = 1.500f,
+                    Matrix12 = 1.500f,
+
+                    Matrix20 = 1.500f,
+                    Matrix21 = 1.500f,
+                    Matrix22 = 1.500f,
+
+                    Matrix33 = 1.000f,
+
+                    Matrix40 = -1.00f,
+                    Matrix41 = -1.00f,
+                    Matrix42 = -1.00f,
+                    Matrix44 = 1.000f
+                }
+            },
+            { GrayscaleMode.ComicHigh, new ColorMatrix()
+                {
+                    Matrix00 = 2.000f,
+                    Matrix01 = -0.50f,
+                    Matrix02 = -0.50f,
+
+                    Matrix10 = -0.50f,
+                    Matrix11 = 2.000f,
+                    Matrix12 = -0.50f,
+
+                    Matrix20 = -0.50f,
+                    Matrix21 = -0.50f,
+                    Matrix22 = 2.000f,
+
+                    Matrix33 = 1.000f,
+
+                    Matrix44 = 1.000f
+                }
+            },
+            { GrayscaleMode.ComicLow, new ColorMatrix()
+                {
+                    Matrix00 = 1.000f,
+
+                    Matrix11 = 1.000f,
+
+                    Matrix22 = 1.000f,
+
+                    Matrix33 = 1.000f,
+
+                    Matrix40 = 0.075f,
+                    Matrix41 = 0.075f,
+                    Matrix42 = 0.075f,
+                    Matrix44 = 1.000f
+                }
+            },
+            { GrayscaleMode.HiSat, new ColorMatrix()
+                {
+                    Matrix00 = 3.000f,
+                    Matrix01 = -1.00f,
+                    Matrix02 = -1.00f,
+
+                    Matrix10 = -1.00f,
+                    Matrix11 = 3.000f,
+                    Matrix12 = -1.00f,
+
+                    Matrix20 = -1.00f,
+                    Matrix21 = -1.00f,
+                    Matrix22 = 3.000f,
+
+                    Matrix33 = 1.000f,
+
+                    Matrix44 = 1.000f
+                }
+            },
+            { GrayscaleMode.LoSat, new ColorMatrix()
+                {
+                    Matrix00 = 1.000f,
+
+                    Matrix11 = 1.000f,
+
+                    Matrix22 = 1.000f,
+
+                    Matrix33 = 1.000f,
+
+                    Matrix40 = 0.100f,
+                    Matrix41 = 0.100f,
+                    Matrix42 = 0.100f,
+                    Matrix44 = 1.000f
+                }
+            },
+            { GrayscaleMode.Invert, new ColorMatrix()
+                {
+                    Matrix00 = -1.000f,
+
+                    Matrix11 = -1.000f,
+
+                    Matrix22 = -1.000f,
+
+                    Matrix33 = 1.000f,
+
+                    Matrix40 = 1.000f,
+                    Matrix41 = 1.000f,
+                    Matrix42 = 1.000f,
+                    Matrix44 = 1.000f
+                }
+            },
+            { GrayscaleMode.LomoGraph, new ColorMatrix()
+                {
+                    Matrix00 = 1.500f,
+
+                    Matrix11 = 1.450f,
+
+                    Matrix22 = 1.090f,
+
+                    Matrix33 = 1.000f,
+
+                    Matrix40 = -0.10f,
+                    Matrix41 = 0.050f,
+                    Matrix42 = -0.08f,
+                    Matrix44 = 1.000f
+                }
+            },
+            { GrayscaleMode.Polaroid, new ColorMatrix()
+                {
+                    Matrix00 = 1.6380f,
+                    Matrix01 = -0.062f,
+                    Matrix02 = -0.262f,
+
+                    Matrix10 = -0.122f,
+                    Matrix11 = 1.3780f,
+                    Matrix12 = -0.122f,
+
+                    Matrix20 = 1.0160f,
+                    Matrix21 = -0.016f,
+                    Matrix22 = 1.3830f,
+
+                    Matrix33 = 1.000f,
+
+                    Matrix40 = 0.060f,
+                    Matrix41 = -0.05f,
+                    Matrix42 = -0.05f,
+                    Matrix44 = 1.000f
                 }
             },
             { GrayscaleMode.Custom, new ColorMatrix()
                 {
-                    Matrix00 = 0.300f,
-                    Matrix01 = 0.300f,
-                    Matrix02 = 0.300f,
+                    Matrix00 = 0.330f,
+                    Matrix01 = 0.330f,
+                    Matrix02 = 0.330f,
+
                     Matrix10 = 0.590f,
                     Matrix11 = 0.590f,
                     Matrix12 = 0.590f,
+
                     Matrix20 = 0.110f,
                     Matrix21 = 0.110f,
                     Matrix22 = 0.110f,
+
+                    Matrix33 = 1.000f,
+
+                    Matrix44 = 1.000f
                 }
             }
             #endregion
@@ -367,9 +555,9 @@ namespace InternalFilters.Effects
         /// <returns></returns>            
         internal Image Gray( Image image, GrayscaleMode mode = GrayscaleMode.BT709 )
         {
+            #region Fill ColorMatrix List
             if ( GrayscaleMatrix.Count == 0 )
             {
-                #region Fill ColorMatrix List
                 GrayscaleMatrix.Add( GrayscaleMode.BT709, new ColorMatrix() );
                 GrayscaleMatrix[GrayscaleMode.BT709].Matrix00 = 0.2125f;
                 GrayscaleMatrix[GrayscaleMode.BT709].Matrix01 = 0.2125f;
@@ -403,16 +591,16 @@ namespace InternalFilters.Effects
                 GrayscaleMatrix[GrayscaleMode.Y].Matrix21 = 0.1140f;
                 GrayscaleMatrix[GrayscaleMode.Y].Matrix22 = 0.1140f;
 
-                GrayscaleMatrix.Add( GrayscaleMode.Grayscale, new ColorMatrix() );
-                GrayscaleMatrix[GrayscaleMode.Grayscale].Matrix00 = 0.5000f;
-                GrayscaleMatrix[GrayscaleMode.Grayscale].Matrix01 = 0.5000f;
-                GrayscaleMatrix[GrayscaleMode.Grayscale].Matrix02 = 0.5000f;
-                GrayscaleMatrix[GrayscaleMode.Grayscale].Matrix10 = 0.5000f;
-                GrayscaleMatrix[GrayscaleMode.Grayscale].Matrix11 = 0.5000f;
-                GrayscaleMatrix[GrayscaleMode.Grayscale].Matrix12 = 0.5000f;
-                GrayscaleMatrix[GrayscaleMode.Grayscale].Matrix20 = 0.5000f;
-                GrayscaleMatrix[GrayscaleMode.Grayscale].Matrix21 = 0.5000f;
-                GrayscaleMatrix[GrayscaleMode.Grayscale].Matrix22 = 0.5000f;
+                GrayscaleMatrix.Add( GrayscaleMode.Grayscale_1, new ColorMatrix() );
+                GrayscaleMatrix[GrayscaleMode.Grayscale_1].Matrix00 = 0.5000f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_1].Matrix01 = 0.5000f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_1].Matrix02 = 0.5000f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_1].Matrix10 = 0.5000f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_1].Matrix11 = 0.5000f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_1].Matrix12 = 0.5000f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_1].Matrix20 = 0.5000f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_1].Matrix21 = 0.5000f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_1].Matrix22 = 0.5000f;
 
                 GrayscaleMatrix.Add( GrayscaleMode.Sepia_1, new ColorMatrix() );
                 GrayscaleMatrix[GrayscaleMode.Sepia_1].Matrix00 = 0.393f;
@@ -460,19 +648,19 @@ namespace InternalFilters.Effects
                 GrayscaleMatrix[GrayscaleMode.TawawaBlue].Matrix21 = 0.0721f;
                 GrayscaleMatrix[GrayscaleMode.TawawaBlue].Matrix22 = 0.0721f;
 
-                GrayscaleMatrix.Add( GrayscaleMode.Custom, new ColorMatrix() );
-                GrayscaleMatrix[GrayscaleMode.Custom].Matrix00 = 0.300f;
-                GrayscaleMatrix[GrayscaleMode.Custom].Matrix01 = 0.300f;
-                GrayscaleMatrix[GrayscaleMode.Custom].Matrix02 = 0.300f;
-                GrayscaleMatrix[GrayscaleMode.Custom].Matrix10 = 0.590f;
-                GrayscaleMatrix[GrayscaleMode.Custom].Matrix11 = 0.590f;
-                GrayscaleMatrix[GrayscaleMode.Custom].Matrix12 = 0.590f;
-                GrayscaleMatrix[GrayscaleMode.Custom].Matrix20 = 0.110f;
-                GrayscaleMatrix[GrayscaleMode.Custom].Matrix21 = 0.110f;
-                GrayscaleMatrix[GrayscaleMode.Custom].Matrix22 = 0.110f;
-
-                #endregion
+                GrayscaleMatrix.Add( GrayscaleMode.Grayscale_2, new ColorMatrix() );
+                GrayscaleMatrix[GrayscaleMode.Grayscale_2].Matrix00 = 0.300f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_2].Matrix01 = 0.300f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_2].Matrix02 = 0.300f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_2].Matrix10 = 0.590f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_2].Matrix11 = 0.590f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_2].Matrix12 = 0.590f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_2].Matrix20 = 0.110f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_2].Matrix21 = 0.110f;
+                GrayscaleMatrix[GrayscaleMode.Grayscale_2].Matrix22 = 0.110f;
             }
+            #endregion
+
             if ( !GrayscaleMatrix.ContainsKey( mode ) )
             {
                 return ( image );

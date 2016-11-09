@@ -101,6 +101,12 @@
     </Compile>
     <Compile Include="Common\AddinType.cs" />
     <Compile Include="Common\AddinUtils.cs" />
+    <Compile Include="Controls\CornerSide.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CornerSide.Designer.cs">
+      <DependentUpon>CornerSide.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ImageBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -147,6 +153,9 @@
   <ItemGroup>
     <EmbeddedResource Include="BaseHost\AddinHost.resx">
       <DependentUpon>AddinHost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CornerSide.resx">
+      <DependentUpon>CornerSide.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ImageBox.resx">
       <DependentUpon>ImageBox.cs</DependentUpon>

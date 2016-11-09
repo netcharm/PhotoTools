@@ -180,6 +180,7 @@ namespace NetCharm.Image.Addins
         About = 10,
         Commands = 20,
         Log = 30,
+        SubItems = 40,
 
         Open = 100,
         Save = 101,
