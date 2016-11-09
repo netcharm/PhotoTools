@@ -16,7 +16,6 @@ namespace InternalFilters
         private AddinHost Host = null;
         private IAddin Addin = null;
 
-
         private static Image ImgSrc = null;
         private static Image ImgDst = null;
         public Image ImageData
@@ -70,6 +69,7 @@ namespace InternalFilters
 
             ImgSrc = image;
             ImgDst = image;
+
             InitializeComponent();
         }
 
@@ -190,6 +190,12 @@ namespace InternalFilters
             //imgEditor.Image = ImgSrc;
             ImageData = ImgSrc;
             //SetSizeMode();
+
+            //this.MinimizeBox = false;
+            //this.MaximizeBox = false;
+            //this.ControlBox = false;
+            //this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         /// <summary>

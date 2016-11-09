@@ -527,7 +527,7 @@ namespace InternalFilters.Effects
                         Color pcSrc = dst.GetPixel(w, h);
 
                         double y = 0;
-                        y = pcSrc.R * 0.33 + pcSrc.G * 0.55 + pcSrc.B * 0.20;
+                        y = pcSrc.R * 0.25 + pcSrc.G * 0.65 + pcSrc.B * 0.25;
                         y = y / 255 * 200 + 55;
                         if ( y > 255 ) y = 255;
                         int iy = (int)Math.Round(y);
@@ -552,7 +552,7 @@ namespace InternalFilters.Effects
                         Color pcSrc = dst.GetPixel(w, h);
 
                         double y = 0;
-                        y = pcSrc.R * 0.3 + pcSrc.G * 0.59 + pcSrc.B * 0.11;
+                        y = pcSrc.R * 0.25 + pcSrc.G * 0.60 + pcSrc.B * 0.15;
                         y = y / 255 * 200 + 55;
                         if ( y > 255 ) y = 255;
                         int iy = (int)Math.Round(y);

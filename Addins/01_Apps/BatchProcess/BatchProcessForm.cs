@@ -41,6 +41,11 @@ namespace BatchProcess
         private void BatchProcessForm_Load( object sender, EventArgs e )
         {
             //
+            //this.MinimizeBox = false;
+            //this.MaximizeBox = false;
+            //this.ControlBox = false;
+            //this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         protected internal void AddFiles( string file )
@@ -93,5 +98,6 @@ namespace BatchProcess
 
             imgPreview.Image = new Bitmap( e.Item.SubItems[1].Text );
         }
+
     }
 }
