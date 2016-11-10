@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Mono.Addins;
-using NetCharm.Image.Addins;
 
-
-namespace InternalFilters.Effects
+namespace ColorMatrixTest
 {
     public enum GrayscaleMode
     {
@@ -33,216 +33,13 @@ namespace InternalFilters.Effects
         Invert,
         LomoGraph,
         Polaroid,
-        Sepia,
         TestMatrix,
-        TawawaBlue,
-        TawawaDarkBlue,
-        TawawaOrange,
-        TawawaDarkOrange,
         Custom
     }
 
-    [Extension]
-    class Grayscale : BaseAddinEffect
+    public partial class ColorMatrixForm : Form
     {
-        GrayscaleForm fm = null;
-
-        #region Properties override
-        /// <summary>
-        /// 
-        /// </summary>
-        public override AddinType Type
-        {
-            get { return ( AddinType.Effect ); }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private string _name = "Grayscale";
-        public override string Name
-        {
-            get { return _name; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private string _displayname = T("Grayscale");
-        public override string DisplayName
-        {
-            get { return _( _displayname ); }
-            set { _displayname = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public override string GroupName
-        {
-            get { return ( "Color" ); }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private string _displayGroupName = T("Color");
-        public override string DisplayGroupName
-        {
-            get { return _( _displayGroupName ); }
-            set { _displayGroupName = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private string _description = T("Convert Image to Grayscale");
-        public override string Description
-        {
-            get { return _( _description ); }
-            set { _description = value; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public override Image LargeIcon
-        {
-            get { return Properties.Resources.Grayscale_32x; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public override Image SmallIcon
-        {
-            get { return Properties.Resources.Grayscale_16x; }
-        }
-
-        #endregion
-
-        #region Method override
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="form"></param>
-        protected override void GetParams( Form form )
-        {
-            if ( Params.ContainsKey( "GrayscaleMode" ) )
-                Params["GrayscaleMode"] = ( form as GrayscaleForm ).ParamGrayscaleMode;
-            else
-                Params.Add( "GrayscaleMode", ( form as GrayscaleForm ).ParamGrayscaleMode );
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="form"></param>
-        /// <param name="img"></param>
-        protected override void SetParams( Form form, Image img = null )
-        {
-            if ( Params.ContainsKey( "GrayscaleMode" ) )
-                ( form as GrayscaleForm ).ParamGrayscaleMode = Params["GrayscaleMode"];
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parent"></param>
-        public override void Show( Form parent = null, bool setup = false )
-        {
-            _success = false;
-            if ( fm == null )
-            {
-                fm = new GrayscaleForm( this );
-                fm.host = Host;
-                fm.Text = DisplayName;
-                fm.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-                fm.MaximizeBox = false;
-                fm.MinimizeBox = false;
-                fm.ShowIcon = false;
-                fm.ShowInTaskbar = false;
-                fm.StartPosition = FormStartPosition.CenterParent;
-
-                Translate( fm );
-                SetParams( fm, ImgSrc );
-                Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.GetImageSelection, 0 ) );
-            }
-            if ( fm.ShowDialog() == DialogResult.OK )
-            {
-                Success = true;
-                GetParams( fm );
-                if ( !setup )
-                {
-                    ImgDst = Apply( ImgSrc );
-                    Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.SetImageSelection, new RectangleF( 0, 0, 0, 0 ) ) );
-                }
-            }
-            if ( fm != null )
-            {
-                fm.Dispose();
-                fm = null;
-            }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="image"></param>
-        /// <returns></returns>
-        public override Image Apply( Image image )
-        {
-            GrayscaleMode grayscaleMode = GrayscaleMode.BT709;
-            if ( Params.ContainsKey( "GrayscaleMode" ) )
-                grayscaleMode = (GrayscaleMode) Params["GrayscaleMode"].Value;
-
-            var dst = image.Clone();
-            switch ( grayscaleMode )
-            {
-                case GrayscaleMode.BT709:
-                case GrayscaleMode.RMY:
-                case GrayscaleMode.Y:
-                case GrayscaleMode.Sepia_1:
-                case GrayscaleMode.Sepia_2:
-                case GrayscaleMode.Sepia_3:
-                case GrayscaleMode.Grayscale_1:
-                case GrayscaleMode.Grayscale_2:
-                case GrayscaleMode.Grayscale_3:
-                case GrayscaleMode.BlackWhite:
-                case GrayscaleMode.ComicHigh:
-                case GrayscaleMode.ComicLow:
-                case GrayscaleMode.HiSat:
-                case GrayscaleMode.LoSat:
-                case GrayscaleMode.LomoGraph:
-                case GrayscaleMode.Invert:
-                case GrayscaleMode.Polaroid:
-                case GrayscaleMode.Custom:
-                case GrayscaleMode.TestMatrix:
-                    dst = Gray( image, grayscaleMode );
-                    break;
-                case GrayscaleMode.Sepia:
-                    dst = AddinUtils.ProcessImage( new Accord.Imaging.Filters.Sepia(), image, false );
-                    break;
-                case GrayscaleMode.TawawaBlue:
-                    dst = Tawawa( image, false, false );
-                    break;
-                case GrayscaleMode.TawawaDarkBlue:
-                    dst = Tawawa( image, true, false );
-                    break;
-                case GrayscaleMode.TawawaOrange:
-                    dst = Tawawa( image, false, true );
-                    break;
-                case GrayscaleMode.TawawaDarkOrange:
-                    dst = Tawawa( image, true, true );
-                    break;
-                default:
-                    break;
-            }
-            return ( dst as Image );
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="cmd"></param>
-        /// <param name="result"></param>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        public override bool Command( AddinCommand cmd, out object result, params object[] args )
-        {
-            return base.Command( cmd, out result, args );
-        }
-        #endregion
+        private Image ImgSrc = null;
 
         #region Gray / Tawawa routines
         /// <summary>
@@ -250,6 +47,9 @@ namespace InternalFilters.Effects
         /// </summary>
         internal Dictionary<GrayscaleMode, ColorMatrix> GrayscaleMatrix = new Dictionary<GrayscaleMode, ColorMatrix>();
 
+        /// <summary>
+        /// 
+        /// </summary>
         internal void InitColorMatrix()
         {
             GrayscaleMatrix.Clear();
@@ -262,7 +62,7 @@ namespace InternalFilters.Effects
                 new float[] { 0.0721f, 0.0721f, 0.0721f, 0, 0},        // blue scaling factor
                 new float[] {       0,       0,       0, 1, 0},        // alpha scaling factor
                 new float[] {       0,       0,       0, 0, 1}         // three translations
-            }));
+            } ) );
             #endregion
             #region RMY
             GrayscaleMatrix.Add( GrayscaleMode.RMY, new ColorMatrix( new[]{
@@ -417,7 +217,7 @@ namespace InternalFilters.Effects
                 new float[] {      0,      0,      0, 0, 1}         // three translations
             } ) );
             #endregion
-            #region TestMatrix
+            #region TawawaBlueN
             GrayscaleMatrix.Add( GrayscaleMode.TestMatrix, new ColorMatrix( new[]{
                 new float[] { 0.250f,      0,      0, 0, 0},        // red scaling factor
                 new float[] { 0.250f, 0.650f,      0, 0, 0},        // green scaling factor
@@ -431,12 +231,52 @@ namespace InternalFilters.Effects
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        internal ColorMatrix GetMatrix()
+        {
+            var cm = new ColorMatrix();
+            cm.Matrix00 = (float) Convert.ToDouble( edMatrix00.Value );
+            cm.Matrix01 = (float) Convert.ToDouble( edMatrix01.Value );
+            cm.Matrix02 = (float) Convert.ToDouble( edMatrix02.Value );
+            cm.Matrix03 = (float) Convert.ToDouble( edMatrix03.Value );
+            cm.Matrix04 = (float) Convert.ToDouble( edMatrix04.Value );
+
+            cm.Matrix10 = (float) Convert.ToDouble( edMatrix10.Value );
+            cm.Matrix11 = (float) Convert.ToDouble( edMatrix11.Value );
+            cm.Matrix12 = (float) Convert.ToDouble( edMatrix12.Value );
+            cm.Matrix13 = (float) Convert.ToDouble( edMatrix13.Value );
+            cm.Matrix14 = (float) Convert.ToDouble( edMatrix14.Value );
+
+            cm.Matrix20 = (float) Convert.ToDouble( edMatrix20.Value );
+            cm.Matrix21 = (float) Convert.ToDouble( edMatrix21.Value );
+            cm.Matrix22 = (float) Convert.ToDouble( edMatrix22.Value );
+            cm.Matrix23 = (float) Convert.ToDouble( edMatrix23.Value );
+            cm.Matrix24 = (float) Convert.ToDouble( edMatrix24.Value );
+
+            cm.Matrix30 = (float) Convert.ToDouble( edMatrix30.Value );
+            cm.Matrix31 = (float) Convert.ToDouble( edMatrix31.Value );
+            cm.Matrix32 = (float) Convert.ToDouble( edMatrix32.Value );
+            cm.Matrix33 = (float) Convert.ToDouble( edMatrix33.Value );
+            cm.Matrix34 = (float) Convert.ToDouble( edMatrix34.Value );
+
+            cm.Matrix40 = (float) Convert.ToDouble( edMatrix40.Value );
+            cm.Matrix41 = (float) Convert.ToDouble( edMatrix41.Value );
+            cm.Matrix42 = (float) Convert.ToDouble( edMatrix42.Value );
+            cm.Matrix43 = (float) Convert.ToDouble( edMatrix43.Value );
+            cm.Matrix44 = (float) Convert.ToDouble( edMatrix44.Value );
+
+            return ( cm );
+        }
+
+        /// <summary>
         ///
         /// </summary>
         /// <param name="image"></param>
         /// <param name="mode"></param>
         /// <returns></returns>            
-        internal Image Gray( Image image, GrayscaleMode mode = GrayscaleMode.BT709 )
+        internal Image Gray( Image image, GrayscaleMode mode = GrayscaleMode.BT709, ColorMatrix cm = null )
         {
             #region Fill ColorMatrix List
             if ( GrayscaleMatrix.Count == 0 )
@@ -452,12 +292,10 @@ namespace InternalFilters.Effects
 
             ImageAttributes a = new ImageAttributes();
             ColorMatrix c = GrayscaleMatrix[mode];
+            if ( cm is ColorMatrix ) c = cm;
             a.SetColorMatrix( c, ColorMatrixFlag.Default, ColorAdjustType.Bitmap );
 
-            Bitmap src = AddinUtils.CloneImage(image) as Bitmap;
-            if ( src.PixelFormat != PixelFormat.Format32bppArgb )
-                src = Accord.Imaging.Image.Clone( src, PixelFormat.Format32bppArgb );
-            Bitmap dst = new Bitmap( src.Width, src.Height, src.PixelFormat );
+            Bitmap dst = new Bitmap( image.Width, image.Height, PixelFormat.Format32bppArgb );
 
             using ( var g = Graphics.FromImage( dst ) )
             {
@@ -465,140 +303,171 @@ namespace InternalFilters.Effects
                 g.PixelOffsetMode = PixelOffsetMode.Half;
                 g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-                g.DrawImage( src,
-                             new Rectangle( 0, 0, src.Width, src.Height ),
-                             0, 0, src.Width, src.Height,
+                g.DrawImage( image,
+                             new Rectangle( 0, 0, image.Width, image.Height ),
+                             0, 0, image.Width, image.Height,
                              GraphicsUnit.Pixel,
                              a );
             }
-
-            AddinUtils.CloneExif( src, dst );
             return ( dst );
         }
 
+        #endregion
+
+        private void OpenImage( string[] args )
+        {
+            string[] exts = new string[] { ".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp", ".gif" };
+            string[] flist = args.Where(f => File.Exists(f) && exts.Contains(Path.GetExtension(f).ToLower())).ToArray();
+
+            if(flist.Length > 0)
+            {
+                using ( FileStream fs = new FileStream( flist[0], FileMode.Open, FileAccess.Read ) )
+                {
+                    ImgSrc = Image.FromStream( fs );
+                }
+                imgPreview.Image = ImgSrc;
+            }
+        }
+
+        public ColorMatrixForm()
+        {
+            InitializeComponent();
+        }
+
+        private void ColorMatrixForm_Load( object sender, EventArgs e )
+        {
+            cbGrayMode.DataSource = Enum.GetValues( typeof( GrayscaleMode ) );
+            InitColorMatrix();
+        }
+
+        #region DrapDrop Events
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="image"></param>
-        /// <param name="swap"></param>
-        /// <returns></returns>
-        internal Image Tawawa( Image image, bool dark = true, bool swap = false )
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ColorMatrixForm_DragEnter( object sender, DragEventArgs e )
         {
-            Bitmap src = AddinUtils.CloneImage(image) as Bitmap;
-            if ( image.PixelFormat != PixelFormat.Format32bppArgb )
-                src = Accord.Imaging.Image.Clone( image as Bitmap, PixelFormat.Format32bppArgb );
-
-            Accord.Imaging.UnmanagedImage dst = Accord.Imaging.UnmanagedImage.FromManagedImage(src);
-            if ( !dark && !swap )
-            {
-                #region Tawawa Blue
-                for ( int h = 0; h < dst.Height; h++ )
-                {
-                    for ( int w = 0; w < dst.Width; w++ )
-                    {
-                        Color pcSrc = dst.GetPixel(w, h);
-
-                        double y = 0;
-                        y = pcSrc.R * 0.25 + pcSrc.G * 0.65 + pcSrc.B * 0.25;
-                        y = y / 255 * 200 + 55;
-                        if ( y > 255 ) y = 255;
-                        int iy = (int)Math.Round(y);
-
-                        int r = (int)Math.Round(iy > 85 ? ( ( y - 85 ) / 255 * 340 ) : 0);
-                        int g = iy;
-                        int b = iy > 135 ? 255 : g + 120;
-
-                        Color pcDst = Color.FromArgb( pcSrc.A, r, g, b );
-                        dst.SetPixel( w, h, pcDst );
-                    }
-                }
-                #endregion
-            }
-            else if ( dark && !swap )
-            {
-                #region Tawawa Dark Blue
-                for ( int h = 0; h < dst.Height; h++ )
-                {
-                    for ( int w = 0; w < dst.Width; w++ )
-                    {
-                        Color pcSrc = dst.GetPixel(w, h);
-
-                        double y = 0;
-                        y = pcSrc.R * 0.25 + pcSrc.G * 0.60 + pcSrc.B * 0.15;
-                        y = y / 255 * 200 + 55;
-                        if ( y > 255 ) y = 255;
-                        int iy = (int)Math.Round(y);
-
-                        int r = (int)Math.Round(iy > 85 ? ( ( y - 85 ) / 255 * 340 ) : 0);
-                        int g = iy;
-                        int b = iy > 135 ? 255 : g + 120;
-
-                        Color pcDst = Color.FromArgb( pcSrc.A, r, g, b );
-                        dst.SetPixel( w, h, pcDst );
-                    }
-                }
-                #endregion
-            }
-            else if( !dark && swap)
-            {
-                #region Tawawa Orange
-                for ( int h = 0; h < dst.Height; h++ )
-                {
-                    for ( int w = 0; w < dst.Width; w++ )
-                    {
-                        Color pcSrc = dst.GetPixel(w, h);
-
-                        double y = 0;
-                        y = pcSrc.R * 0.33 + pcSrc.G * 0.55 + pcSrc.B * 0.20;
-                        y = y / 255 * 200 + 55;
-                        if ( y > 255 ) y = 255;
-                        int iy = (int)Math.Round(y);
-
-                        int r = (int)Math.Round(iy > 85 ? ( ( y - 85 ) / 255 * 340 ) : 0);
-                        int g = iy;
-                        int b = iy > 135 ? 255 : g + 120;
-
-                        Color pcDst = Color.FromArgb( pcSrc.A, b, g, r );
-                        dst.SetPixel( w, h, pcDst );
-                    }
-                }
-                #endregion
-            }
-            else
-            {
-                #region Tawawa Dark Orange
-                for ( int h = 0; h < dst.Height; h++ )
-                {
-                    for ( int w = 0; w < dst.Width; w++ )
-                    {
-                        Color pcSrc = dst.GetPixel(w, h);
-                        double y = 0;
-                        y = pcSrc.R * 0.3 + pcSrc.G * 0.59 + pcSrc.B * 0.11;
-                        y = y / 255 * 200 + 55;
-                        if ( y > 255 ) y = 255;
-                        int iy = (int)Math.Round(y);
-
-                        int r = (int)Math.Round(iy > 85 ? ( ( y - 85 ) / 255 * 340 ) : 0);
-                        int g = iy;
-                        int b = iy > 135 ? 255 : g + 120;
-
-                        Color pcDst = Color.FromArgb( pcSrc.A, b, g, r );
-                        dst.SetPixel( w, h, pcDst );
-                    }
-                }
-                #endregion
-            }
-
-            Bitmap dstBmp = dst.ToManagedImage();
-            //var filter = new Accord.Imaging.Filters.BrightnessCorrection(10);
-            //filter.ApplyInPlace( dstBmp );
-
-            AddinUtils.CloneExif( image, dstBmp );
-            src.Dispose();
-            dst.Dispose();
-            return ( dstBmp );
+            e.Effect = DragDropEffects.Move;
         }
 
-        #endregion
+        /// <summary>
+        ///         
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ColorMatrixForm_DragDrop( object sender, DragEventArgs e )
+        {
+            string[] flist = (string[])e.Data.GetData( DataFormats.FileDrop, true );
+
+            OpenImage( flist );
+        }
+
+        #endregion DragDrop Events
+
+        private void cbGrayMode_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            var grayscaleMode = GrayscaleMode.None;
+            Enum.TryParse( cbGrayMode.SelectedValue.ToString(), out grayscaleMode );
+            if( GrayscaleMatrix.ContainsKey( grayscaleMode ) )
+            {
+                var c = GrayscaleMatrix[grayscaleMode];
+
+                edMatrix00.Value = Convert.ToDecimal( c.Matrix00 );
+                edMatrix01.Value = Convert.ToDecimal( c.Matrix01 );
+                edMatrix02.Value = Convert.ToDecimal( c.Matrix02 );
+                edMatrix03.Value = Convert.ToDecimal( c.Matrix03 );
+                edMatrix04.Value = Convert.ToDecimal( c.Matrix04 );
+
+                edMatrix10.Value = Convert.ToDecimal( c.Matrix10 );
+                edMatrix11.Value = Convert.ToDecimal( c.Matrix11 );
+                edMatrix12.Value = Convert.ToDecimal( c.Matrix12 );
+                edMatrix13.Value = Convert.ToDecimal( c.Matrix13 );
+                edMatrix14.Value = Convert.ToDecimal( c.Matrix14 );
+
+                edMatrix20.Value = Convert.ToDecimal( c.Matrix20 );
+                edMatrix21.Value = Convert.ToDecimal( c.Matrix21 );
+                edMatrix22.Value = Convert.ToDecimal( c.Matrix22 );
+                edMatrix23.Value = Convert.ToDecimal( c.Matrix23 );
+                edMatrix24.Value = Convert.ToDecimal( c.Matrix24 );
+
+                edMatrix30.Value = Convert.ToDecimal( c.Matrix30 );
+                edMatrix31.Value = Convert.ToDecimal( c.Matrix31 );
+                edMatrix32.Value = Convert.ToDecimal( c.Matrix32 );
+                edMatrix33.Value = Convert.ToDecimal( c.Matrix33 );
+                edMatrix34.Value = Convert.ToDecimal( c.Matrix34 );
+
+                edMatrix40.Value = Convert.ToDecimal( c.Matrix40 );
+                edMatrix41.Value = Convert.ToDecimal( c.Matrix41 );
+                edMatrix42.Value = Convert.ToDecimal( c.Matrix42 );
+                edMatrix43.Value = Convert.ToDecimal( c.Matrix43 );
+                edMatrix44.Value = Convert.ToDecimal( c.Matrix44 );
+            }
+        }
+
+        private void btnCopyMatrix_Click( object sender, EventArgs e )
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var cm = GetMatrix();
+
+            sb.AppendLine( $"var cm = new ColorMatrix( new[]{{" );
+            sb.AppendLine( $"    new float[] {{ {cm.Matrix00,8:0.0000}f, {cm.Matrix01,8:0.0000}f, {cm.Matrix02,8:0.0000}f, {cm.Matrix03,8:0.0000}f, {cm.Matrix04,8:0.0000}f }},        // red scaling factor" );
+            sb.AppendLine( $"    new float[] {{ {cm.Matrix10,8:0.0000}f, {cm.Matrix11,8:0.0000}f, {cm.Matrix12,8:0.0000}f, {cm.Matrix13,8:0.0000}f, {cm.Matrix14,8:0.0000}f }},        // green scaling factor" );
+            sb.AppendLine( $"    new float[] {{ {cm.Matrix20,8:0.0000}f, {cm.Matrix21,8:0.0000}f, {cm.Matrix22,8:0.0000}f, {cm.Matrix23,8:0.0000}f, {cm.Matrix24,8:0.0000}f }},        // blue scaling factor" );
+            sb.AppendLine( $"    new float[] {{ {cm.Matrix30,8:0.0000}f, {cm.Matrix31,8:0.0000}f, {cm.Matrix32,8:0.0000}f, {cm.Matrix33,8:0.0000}f, {cm.Matrix34,8:0.0000}f }},        // alpha scaling factor" );
+            sb.AppendLine( $"    new float[] {{ {cm.Matrix40,8:0.0000}f, {cm.Matrix41,8:0.0000}f, {cm.Matrix42,8:0.0000}f, {cm.Matrix43,8:0.0000}f, {cm.Matrix44,8:0.0000}f }}         // three translations" );
+            sb.AppendLine( $"}} );" );
+
+            Clipboard.SetText( sb.ToString() );                
+        }
+
+        private void btnOriginal_Click( object sender, EventArgs e )
+        {
+            imgPreview.Image = ImgSrc;
+        }
+
+        private void btnTest_Click( object sender, EventArgs e )
+        {
+            if ( !(ImgSrc is Image) ) return;
+
+            var grayscaleMode = GrayscaleMode.None;
+            Enum.TryParse( cbGrayMode.SelectedValue.ToString(), out grayscaleMode );
+            switch ( grayscaleMode )
+            {
+                case GrayscaleMode.BT709:
+                case GrayscaleMode.RMY:
+                case GrayscaleMode.Y:
+                case GrayscaleMode.Sepia_1:
+                case GrayscaleMode.Sepia_2:
+                case GrayscaleMode.Sepia_3:
+                case GrayscaleMode.Grayscale_1:
+                case GrayscaleMode.Grayscale_2:
+                case GrayscaleMode.Grayscale_3:
+                case GrayscaleMode.BlackWhite:
+                case GrayscaleMode.ComicHigh:
+                case GrayscaleMode.ComicLow:
+                case GrayscaleMode.HiSat:
+                case GrayscaleMode.LoSat:
+                case GrayscaleMode.LomoGraph:
+                case GrayscaleMode.Invert:
+                case GrayscaleMode.Polaroid:
+                case GrayscaleMode.Custom:
+                    imgPreview.Image = Gray( ImgSrc, grayscaleMode );
+                    break;
+                case GrayscaleMode.TestMatrix:
+                    var cm = GetMatrix();
+                    imgPreview.Image = Gray( ImgSrc, grayscaleMode, cm );
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        private void btnOpen_Click( object sender, EventArgs e )
+        {
+            dlgOpen.ShowDialog();
+        }
     }
 }

@@ -375,14 +375,12 @@
             this.dlgOpen.DefaultExt = "jpg";
             resources.ApplyResources(this.dlgOpen, "dlgOpen");
             this.dlgOpen.Multiselect = true;
-            this.dlgOpen.ShowHelp = true;
             this.dlgOpen.SupportMultiDottedExtensions = true;
             // 
             // dlgSave
             // 
             this.dlgSave.DefaultExt = "jpg";
             resources.ApplyResources(this.dlgSave, "dlgSave");
-            this.dlgSave.ShowHelp = true;
             this.dlgSave.SupportMultiDottedExtensions = true;
             // 
             // ribbonMain

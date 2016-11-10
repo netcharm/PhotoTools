@@ -108,11 +108,6 @@ namespace PhotoTool
 
         internal void FixedMdiSize()
         {
-            //var os = this.Size;
-            //var ns = this.Size;
-            //ns.Height -= 1;
-            //this.Size = ns;
-            //this.Size = os;
             this.Height -= 1;
             this.Height += 1;
         }

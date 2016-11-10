@@ -1,18 +1,17 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using NGettext.WinForm;
 
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle( "PhotoTool" )]
+[assembly: AssemblyTitle( "ColorMatrixTest" )]
 [assembly: AssemblyDescription( "" )]
 [assembly: AssemblyConfiguration( "" )]
-[assembly: AssemblyCompany( "NetCharm Studio!" )]
-[assembly: AssemblyProduct( "PhotoTool" )]
+[assembly: AssemblyCompany( "" )]
+[assembly: AssemblyProduct( "ColorMatrixTest" )]
 [assembly: AssemblyCopyright( "Copyright ©  2016" )]
-[assembly: AssemblyTrademark( "NetCharm Studio!" )]
+[assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
 
 //将 ComVisible 设置为 false 将使此程序集中的类型
@@ -21,7 +20,7 @@ using NGettext.WinForm;
 [assembly: ComVisible( false )]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid( "a9358e25-10ff-4670-af50-9cfd2e30d1f5" )]
+[assembly: Guid( "e4fa10e9-f2c6-434f-a801-c8c95f42412a" )]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -33,5 +32,5 @@ using NGettext.WinForm;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion( "1.0.6.24" )]
-[assembly: AssemblyFileVersion( "1.0.6.24" )]
+[assembly: AssemblyVersion( "1.0.0.0" )]
+[assembly: AssemblyFileVersion( "1.0.0.0" )]
