@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using NetCharm.Image.Addins;
 
@@ -16,7 +19,6 @@ namespace InternalFilters.Effects
         private IAddin addin;
         private Image thumb = null;
         private Image thumbBackup = null;
-
 
         /// <summary>
         /// 
@@ -34,6 +36,20 @@ namespace InternalFilters.Effects
                 return ( pi );
             }
             internal set { grayscaleMode = (GrayscaleMode) value.Value; }
+        }
+        private ColorMatrix colorMatrix = null;
+        public ParamItem ParamColorMatrix
+        {
+            get
+            {
+                ParamItem pi = new ParamItem();
+                pi.Name = "ColorMatrix";
+                pi.DisplayName = AddinUtils._( addin, pi.Name );
+                pi.Type = colorMatrix.GetType();
+                pi.Value = colorMatrix;
+                return ( pi );
+            }
+            internal set { colorMatrix = (ColorMatrix) value.Value; }
         }
 
         public GrayscaleForm()
@@ -64,11 +80,21 @@ namespace InternalFilters.Effects
         {
             //grayscaleMode = (GrayscaleMode) cbGrayMode.SelectedIndex;
             Enum.TryParse( cbGrayMode.SelectedValue.ToString(), out grayscaleMode );
-            if ( !addin.Params.ContainsKey( ParamGrayscaleMode.Name ) )
-                addin.Params.Add( ParamGrayscaleMode.Name, ParamGrayscaleMode );
-            else
-                addin.Params[ParamGrayscaleMode.Name] = ParamGrayscaleMode;
+            addin.Params[ParamGrayscaleMode.Name] = ParamGrayscaleMode;
 
+            if ( grayscaleMode == GrayscaleMode.TestMatrix )
+            {
+                var dlgOpen = new OpenFileDialog();
+                dlgOpen.Filter = "ColorMatrix File( *.cm ) | *.cm";
+                if ( dlgOpen.ShowDialog() == DialogResult.OK )
+                {
+                    var json = File.ReadAllText( $"{dlgOpen.FileName}" );
+
+                    JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                    colorMatrix = (ColorMatrix) serializer.Deserialize(json , typeof(ColorMatrix));
+                    addin.Params[ParamColorMatrix.Name] = ParamColorMatrix;
+                }
+            }
             imgPreview.Image = addin.Apply( thumb );
         }
 

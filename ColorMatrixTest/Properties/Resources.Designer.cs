@@ -83,9 +83,29 @@ namespace ColorMatrixTest.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap ImageLoader_16x {
+            get {
+                object obj = ResourceManager.GetObject("ImageLoader_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Open_16x {
             get {
                 object obj = ResourceManager.GetObject("Open_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap SaveAs_16x {
+            get {
+                object obj = ResourceManager.GetObject("SaveAs_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

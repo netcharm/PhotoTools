@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace ColorMatrixTest
@@ -39,7 +40,13 @@ namespace ColorMatrixTest
 
     public partial class ColorMatrixForm : Form
     {
+        internal string AppPath = Path.GetDirectoryName(Application.ExecutablePath);
+
+        string[] exts_image = new string[] { ".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp", ".gif" };
+        string[] exts_cm = new string[] { ".cm" };
+
         private Image ImgSrc = null;
+        private Image ImgDst = null;
 
         #region Gray / Tawawa routines
         /// <summary>
@@ -231,46 +238,6 @@ namespace ColorMatrixTest
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        internal ColorMatrix GetMatrix()
-        {
-            var cm = new ColorMatrix();
-            cm.Matrix00 = (float) Convert.ToDouble( edMatrix00.Value );
-            cm.Matrix01 = (float) Convert.ToDouble( edMatrix01.Value );
-            cm.Matrix02 = (float) Convert.ToDouble( edMatrix02.Value );
-            cm.Matrix03 = (float) Convert.ToDouble( edMatrix03.Value );
-            cm.Matrix04 = (float) Convert.ToDouble( edMatrix04.Value );
-
-            cm.Matrix10 = (float) Convert.ToDouble( edMatrix10.Value );
-            cm.Matrix11 = (float) Convert.ToDouble( edMatrix11.Value );
-            cm.Matrix12 = (float) Convert.ToDouble( edMatrix12.Value );
-            cm.Matrix13 = (float) Convert.ToDouble( edMatrix13.Value );
-            cm.Matrix14 = (float) Convert.ToDouble( edMatrix14.Value );
-
-            cm.Matrix20 = (float) Convert.ToDouble( edMatrix20.Value );
-            cm.Matrix21 = (float) Convert.ToDouble( edMatrix21.Value );
-            cm.Matrix22 = (float) Convert.ToDouble( edMatrix22.Value );
-            cm.Matrix23 = (float) Convert.ToDouble( edMatrix23.Value );
-            cm.Matrix24 = (float) Convert.ToDouble( edMatrix24.Value );
-
-            cm.Matrix30 = (float) Convert.ToDouble( edMatrix30.Value );
-            cm.Matrix31 = (float) Convert.ToDouble( edMatrix31.Value );
-            cm.Matrix32 = (float) Convert.ToDouble( edMatrix32.Value );
-            cm.Matrix33 = (float) Convert.ToDouble( edMatrix33.Value );
-            cm.Matrix34 = (float) Convert.ToDouble( edMatrix34.Value );
-
-            cm.Matrix40 = (float) Convert.ToDouble( edMatrix40.Value );
-            cm.Matrix41 = (float) Convert.ToDouble( edMatrix41.Value );
-            cm.Matrix42 = (float) Convert.ToDouble( edMatrix42.Value );
-            cm.Matrix43 = (float) Convert.ToDouble( edMatrix43.Value );
-            cm.Matrix44 = (float) Convert.ToDouble( edMatrix44.Value );
-
-            return ( cm );
-        }
-
-        /// <summary>
         ///
         /// </summary>
         /// <param name="image"></param>
@@ -314,10 +281,47 @@ namespace ColorMatrixTest
 
         #endregion
 
-        private void OpenImage( string[] args )
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imageSize"></param>
+        /// <param name="patternSize"></param>
+        /// <returns></returns>
+        internal Image MakePatternImage( Size imageSize, int patternSize = 8 )
         {
-            string[] exts = new string[] { ".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp", ".gif" };
-            string[] flist = args.Where(f => File.Exists(f) && exts.Contains(Path.GetExtension(f).ToLower())).ToArray();
+            Bitmap pat = new Bitmap(patternSize*2, patternSize*2, PixelFormat.Format32bppArgb);
+            using ( var g = Graphics.FromImage( pat ) )
+            {
+                g.SmoothingMode = SmoothingMode.HighQuality;
+
+                SolidBrush bb = new SolidBrush(Color.Silver);
+                SolidBrush wb = new SolidBrush(Color.White);
+
+                g.FillRectangle( bb, 0, 0, patternSize, patternSize );
+                g.FillRectangle( bb, patternSize, patternSize, patternSize, patternSize );
+
+                g.FillRectangle( wb, 0, patternSize, patternSize, patternSize );
+                g.FillRectangle( wb, patternSize, 0, patternSize, patternSize );
+            }
+
+            Bitmap bg = new Bitmap(imageSize.Width, imageSize.Height, PixelFormat.Format32bppArgb);
+            using ( var g = Graphics.FromImage( bg ) )
+            {
+                g.SmoothingMode = SmoothingMode.HighQuality;
+
+                TextureBrush pb = new TextureBrush(pat);
+                g.FillRectangle( pb, 0, 0, imageSize.Width, imageSize.Height );
+            }
+            return ( bg );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
+        private void LoadImage( string[] args )
+        {
+            string[] flist = args.Where(f => File.Exists(f) && exts_image.Contains(Path.GetExtension(f).ToLower())).ToArray();
 
             if(flist.Length > 0)
             {
@@ -328,6 +332,127 @@ namespace ColorMatrixTest
                 imgPreview.Image = ImgSrc;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        private void SaveImage( string fileName )
+        {
+            if(imgPreview.Image is Image)
+            {
+                imgPreview.Image.Save( fileName );
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
+        private void LoadMatrix( string[] args)
+        {
+            string[] exts = new string[] { ".cm" };
+            string[] flist = args.Where(f => File.Exists(f) && exts.Contains(Path.GetExtension(f).ToLower())).ToArray();
+
+            if ( flist.Length > 0 )
+            {
+                //var json = File.ReadAllText( Path.Combine( AppPath, $"{dlgOpen.FileName}" ) );
+                var json = File.ReadAllText( $"{dlgOpen.FileName}" );
+
+                JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                var cm = serializer.Deserialize(json , typeof(ColorMatrix));
+                SetMatrix( (ColorMatrix) cm );
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="cm"></param>
+        private void SaveMatrix(string file, ColorMatrix cm)
+        {
+            JavaScriptSerializer serializer  = new JavaScriptSerializer();
+            var json = serializer.Serialize(cm);
+            File.WriteAllText( Path.Combine( AppPath, $"{file}" ), json );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private ColorMatrix GetMatrix()
+        {
+            var cm = new ColorMatrix();
+            cm.Matrix00 = (float) Convert.ToDouble( edMatrix00.Value );
+            cm.Matrix01 = (float) Convert.ToDouble( edMatrix01.Value );
+            cm.Matrix02 = (float) Convert.ToDouble( edMatrix02.Value );
+            cm.Matrix03 = (float) Convert.ToDouble( edMatrix03.Value );
+            cm.Matrix04 = (float) Convert.ToDouble( edMatrix04.Value );
+
+            cm.Matrix10 = (float) Convert.ToDouble( edMatrix10.Value );
+            cm.Matrix11 = (float) Convert.ToDouble( edMatrix11.Value );
+            cm.Matrix12 = (float) Convert.ToDouble( edMatrix12.Value );
+            cm.Matrix13 = (float) Convert.ToDouble( edMatrix13.Value );
+            cm.Matrix14 = (float) Convert.ToDouble( edMatrix14.Value );
+
+            cm.Matrix20 = (float) Convert.ToDouble( edMatrix20.Value );
+            cm.Matrix21 = (float) Convert.ToDouble( edMatrix21.Value );
+            cm.Matrix22 = (float) Convert.ToDouble( edMatrix22.Value );
+            cm.Matrix23 = (float) Convert.ToDouble( edMatrix23.Value );
+            cm.Matrix24 = (float) Convert.ToDouble( edMatrix24.Value );
+
+            cm.Matrix30 = (float) Convert.ToDouble( edMatrix30.Value );
+            cm.Matrix31 = (float) Convert.ToDouble( edMatrix31.Value );
+            cm.Matrix32 = (float) Convert.ToDouble( edMatrix32.Value );
+            cm.Matrix33 = (float) Convert.ToDouble( edMatrix33.Value );
+            cm.Matrix34 = (float) Convert.ToDouble( edMatrix34.Value );
+
+            cm.Matrix40 = (float) Convert.ToDouble( edMatrix40.Value );
+            cm.Matrix41 = (float) Convert.ToDouble( edMatrix41.Value );
+            cm.Matrix42 = (float) Convert.ToDouble( edMatrix42.Value );
+            cm.Matrix43 = (float) Convert.ToDouble( edMatrix43.Value );
+            cm.Matrix44 = (float) Convert.ToDouble( edMatrix44.Value );
+
+            return ( cm );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cm"></param>
+        private void SetMatrix( ColorMatrix cm )
+        {
+            if ( cm is ColorMatrix )
+            {
+                edMatrix00.Value = Convert.ToDecimal( cm.Matrix00 );
+                edMatrix01.Value = Convert.ToDecimal( cm.Matrix01 );
+                edMatrix02.Value = Convert.ToDecimal( cm.Matrix02 );
+                edMatrix03.Value = Convert.ToDecimal( cm.Matrix03 );
+                edMatrix04.Value = Convert.ToDecimal( cm.Matrix04 );
+
+                edMatrix10.Value = Convert.ToDecimal( cm.Matrix10 );
+                edMatrix11.Value = Convert.ToDecimal( cm.Matrix11 );
+                edMatrix12.Value = Convert.ToDecimal( cm.Matrix12 );
+                edMatrix13.Value = Convert.ToDecimal( cm.Matrix13 );
+                edMatrix14.Value = Convert.ToDecimal( cm.Matrix14 );
+
+                edMatrix20.Value = Convert.ToDecimal( cm.Matrix20 );
+                edMatrix21.Value = Convert.ToDecimal( cm.Matrix21 );
+                edMatrix22.Value = Convert.ToDecimal( cm.Matrix22 );
+                edMatrix23.Value = Convert.ToDecimal( cm.Matrix23 );
+                edMatrix24.Value = Convert.ToDecimal( cm.Matrix24 );
+
+                edMatrix30.Value = Convert.ToDecimal( cm.Matrix30 );
+                edMatrix31.Value = Convert.ToDecimal( cm.Matrix31 );
+                edMatrix32.Value = Convert.ToDecimal( cm.Matrix32 );
+                edMatrix33.Value = Convert.ToDecimal( cm.Matrix33 );
+                edMatrix34.Value = Convert.ToDecimal( cm.Matrix34 );
+
+                edMatrix40.Value = Convert.ToDecimal( cm.Matrix40 );
+                edMatrix41.Value = Convert.ToDecimal( cm.Matrix41 );
+                edMatrix42.Value = Convert.ToDecimal( cm.Matrix42 );
+                edMatrix43.Value = Convert.ToDecimal( cm.Matrix43 );
+                edMatrix44.Value = Convert.ToDecimal( cm.Matrix44 );
+            }
+        }
 
         public ColorMatrixForm()
         {
@@ -336,6 +461,21 @@ namespace ColorMatrixTest
 
         private void ColorMatrixForm_Load( object sender, EventArgs e )
         {
+            #region extracting icon from application to this form window
+            Icon = Icon.ExtractAssociatedIcon( Application.ExecutablePath );
+            #endregion
+
+            toolTip.ToolTipTitle = this.Text;
+
+            var cmtip_r = "r = R * M00 + G * M10 + B * M20 + A * M30 + M40 * 255";
+            var cmtip_g = "g = R * M01 + G * M11 + B * M21 + A * M31 + M41 * 255";
+            var cmtip_b = "b = R * M02 + G * M12 + B * M22 + A * M32 + M42 * 255";
+            var cmtip_a = "a = R * M03 + G * M13 + B * M23 + A * M33 + M43 * 255";
+            var cmtip = $"{cmtip_r}{Environment.NewLine}{cmtip_g}{Environment.NewLine}{cmtip_b}{Environment.NewLine}{cmtip_a}";
+            toolTip.SetToolTip( colorMatrix, cmtip );
+
+            imgPreview.BackgroundImage = MakePatternImage( imgPreview.Size );
+
             cbGrayMode.DataSource = Enum.GetValues( typeof( GrayscaleMode ) );
             InitColorMatrix();
         }
@@ -360,10 +500,15 @@ namespace ColorMatrixTest
         {
             string[] flist = (string[])e.Data.GetData( DataFormats.FileDrop, true );
 
-            OpenImage( flist );
+            LoadImage( flist );
         }
 
         #endregion DragDrop Events
+
+        private void imgPreview_DoubleClick( object sender, EventArgs e )
+        {
+            btnOpen.PerformClick();
+        }
 
         private void cbGrayMode_SelectedIndexChanged( object sender, EventArgs e )
         {
@@ -372,36 +517,7 @@ namespace ColorMatrixTest
             if( GrayscaleMatrix.ContainsKey( grayscaleMode ) )
             {
                 var c = GrayscaleMatrix[grayscaleMode];
-
-                edMatrix00.Value = Convert.ToDecimal( c.Matrix00 );
-                edMatrix01.Value = Convert.ToDecimal( c.Matrix01 );
-                edMatrix02.Value = Convert.ToDecimal( c.Matrix02 );
-                edMatrix03.Value = Convert.ToDecimal( c.Matrix03 );
-                edMatrix04.Value = Convert.ToDecimal( c.Matrix04 );
-
-                edMatrix10.Value = Convert.ToDecimal( c.Matrix10 );
-                edMatrix11.Value = Convert.ToDecimal( c.Matrix11 );
-                edMatrix12.Value = Convert.ToDecimal( c.Matrix12 );
-                edMatrix13.Value = Convert.ToDecimal( c.Matrix13 );
-                edMatrix14.Value = Convert.ToDecimal( c.Matrix14 );
-
-                edMatrix20.Value = Convert.ToDecimal( c.Matrix20 );
-                edMatrix21.Value = Convert.ToDecimal( c.Matrix21 );
-                edMatrix22.Value = Convert.ToDecimal( c.Matrix22 );
-                edMatrix23.Value = Convert.ToDecimal( c.Matrix23 );
-                edMatrix24.Value = Convert.ToDecimal( c.Matrix24 );
-
-                edMatrix30.Value = Convert.ToDecimal( c.Matrix30 );
-                edMatrix31.Value = Convert.ToDecimal( c.Matrix31 );
-                edMatrix32.Value = Convert.ToDecimal( c.Matrix32 );
-                edMatrix33.Value = Convert.ToDecimal( c.Matrix33 );
-                edMatrix34.Value = Convert.ToDecimal( c.Matrix34 );
-
-                edMatrix40.Value = Convert.ToDecimal( c.Matrix40 );
-                edMatrix41.Value = Convert.ToDecimal( c.Matrix41 );
-                edMatrix42.Value = Convert.ToDecimal( c.Matrix42 );
-                edMatrix43.Value = Convert.ToDecimal( c.Matrix43 );
-                edMatrix44.Value = Convert.ToDecimal( c.Matrix44 );
+                SetMatrix( c );
             }
         }
 
@@ -420,11 +536,6 @@ namespace ColorMatrixTest
             sb.AppendLine( $"}} );" );
 
             Clipboard.SetText( sb.ToString() );                
-        }
-
-        private void btnOriginal_Click( object sender, EventArgs e )
-        {
-            imgPreview.Image = ImgSrc;
         }
 
         private void btnTest_Click( object sender, EventArgs e )
@@ -467,7 +578,45 @@ namespace ColorMatrixTest
 
         private void btnOpen_Click( object sender, EventArgs e )
         {
-            dlgOpen.ShowDialog();
+            if ( dlgOpen.ShowDialog() == DialogResult.OK )
+            {
+                if ( exts_image.Contains( Path.GetExtension( dlgOpen.FileName ).ToLower() ) )
+                {
+                    LoadImage( dlgOpen.FileNames );
+                }
+                else if ( exts_cm.Contains( Path.GetExtension( dlgOpen.FileName ).ToLower() ) )
+                {
+                    cbGrayMode.Text = "TestMatrix";
+                    LoadMatrix( dlgOpen.FileNames );
+                }
+            }
         }
+
+        private void btnSave_Click( object sender, EventArgs e )
+        {
+            if ( dlgSave.ShowDialog() == DialogResult.OK )
+            {
+                if ( exts_image.Contains( Path.GetExtension( dlgSave.FileName ).ToLower() ) )
+                {
+                    SaveImage( dlgSave.FileName );
+                }
+                else if ( exts_cm.Contains( Path.GetExtension( dlgSave.FileName ).ToLower() ) )
+                {
+                    SaveMatrix( dlgSave.FileName, GetMatrix() );
+                }
+            }
+        }
+
+        private void btnOriginal_MouseDown( object sender, MouseEventArgs e )
+        {
+            ImgDst = imgPreview.Image;
+            imgPreview.Image = ImgSrc;
+        }
+
+        private void btnOriginal_MouseUp( object sender, MouseEventArgs e )
+        {
+            imgPreview.Image = ImgDst is Image ? ImgDst : ImgSrc;
+        }
+
     }
 }

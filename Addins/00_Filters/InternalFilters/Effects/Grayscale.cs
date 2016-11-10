@@ -121,10 +121,8 @@ namespace InternalFilters.Effects
         /// <param name="form"></param>
         protected override void GetParams( Form form )
         {
-            if ( Params.ContainsKey( "GrayscaleMode" ) )
-                Params["GrayscaleMode"] = ( form as GrayscaleForm ).ParamGrayscaleMode;
-            else
-                Params.Add( "GrayscaleMode", ( form as GrayscaleForm ).ParamGrayscaleMode );
+            Params["GrayscaleMode"] = ( form as GrayscaleForm ).ParamGrayscaleMode;
+            Params["ColorMatrix"] = ( form as GrayscaleForm ).ParamColorMatrix;
         }
         /// <summary>
         /// 
@@ -135,6 +133,8 @@ namespace InternalFilters.Effects
         {
             if ( Params.ContainsKey( "GrayscaleMode" ) )
                 ( form as GrayscaleForm ).ParamGrayscaleMode = Params["GrayscaleMode"];
+            if ( Params.ContainsKey( "ColorMatrix" ) )
+                ( form as GrayscaleForm ).ParamColorMatrix = Params["ColorMatrix"];
         }
         /// <summary>
         /// 
@@ -185,6 +185,9 @@ namespace InternalFilters.Effects
             GrayscaleMode grayscaleMode = GrayscaleMode.BT709;
             if ( Params.ContainsKey( "GrayscaleMode" ) )
                 grayscaleMode = (GrayscaleMode) Params["GrayscaleMode"].Value;
+            ColorMatrix cm = null;
+            if ( Params.ContainsKey( "ColorMatrix" ) )
+                cm = (ColorMatrix) Params["ColorMatrix"].Value;
 
             var dst = image.Clone();
             switch ( grayscaleMode )
@@ -207,8 +210,10 @@ namespace InternalFilters.Effects
                 case GrayscaleMode.Invert:
                 case GrayscaleMode.Polaroid:
                 case GrayscaleMode.Custom:
-                case GrayscaleMode.TestMatrix:
                     dst = Gray( image, grayscaleMode );
+                    break;
+                case GrayscaleMode.TestMatrix:
+                    dst = Gray( image, grayscaleMode, cm );
                     break;
                 case GrayscaleMode.Sepia:
                     dst = AddinUtils.ProcessImage( new Accord.Imaging.Filters.Sepia(), image, false );
@@ -436,7 +441,7 @@ namespace InternalFilters.Effects
         /// <param name="image"></param>
         /// <param name="mode"></param>
         /// <returns></returns>            
-        internal Image Gray( Image image, GrayscaleMode mode = GrayscaleMode.BT709 )
+        internal Image Gray( Image image, GrayscaleMode mode = GrayscaleMode.BT709, ColorMatrix cm = null )
         {
             #region Fill ColorMatrix List
             if ( GrayscaleMatrix.Count == 0 )
@@ -452,6 +457,7 @@ namespace InternalFilters.Effects
 
             ImageAttributes a = new ImageAttributes();
             ColorMatrix c = GrayscaleMatrix[mode];
+            if ( mode == GrayscaleMode.TestMatrix && cm is ColorMatrix ) c = cm;
             a.SetColorMatrix( c, ColorMatrixFlag.Default, ColorAdjustType.Bitmap );
 
             Bitmap src = AddinUtils.CloneImage(image) as Bitmap;
