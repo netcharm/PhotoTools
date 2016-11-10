@@ -18,6 +18,7 @@ namespace ColorMatrixTest
     {
         None = 0,
         BT709,
+        BT601,
         RMY,
         Y,
         Grayscale_1,
@@ -32,12 +33,22 @@ namespace ColorMatrixTest
         HiSat,
         LoSat,
         Invert,
-        LomoGraph,
-        Polaroid,
+        Kodachrome,
+        LomoGraph_1,
+        LomoGraph_2,
+        Polaroid_1,
+        Polaroid_2,
+        Achromatomaly,
+        Achromatopsia,
+        Deuteranomaly,
+        Deuteranopia,
+        Protanomaly,
+        Protanopia,
+        Tritanomaly,
+        Tritanopia,
         TestMatrix,
         Custom
     }
-
     public partial class ColorMatrixForm : Form
     {
         internal string AppPath = Path.GetDirectoryName(Application.ExecutablePath);
@@ -62,11 +73,29 @@ namespace ColorMatrixTest
             GrayscaleMatrix.Clear();
             #region Init ColorMatrix for Grayscal Mode
 
+            #region None
+            GrayscaleMatrix.Add( GrayscaleMode.None, new ColorMatrix( new[]{
+                new float[] { 1, 0, 0, 0, 0},        // red scaling factor
+                new float[] { 0, 1, 0, 0, 0},        // green scaling factor
+                new float[] { 0, 0, 1, 0, 0},        // blue scaling factor
+                new float[] { 0, 0, 0, 1, 0},        // alpha scaling factor
+                new float[] { 0, 0, 0, 0, 1}         // three translations
+            } ) );
+            #endregion
             #region BT709
             GrayscaleMatrix.Add( GrayscaleMode.BT709, new ColorMatrix( new[]{
                 new float[] { 0.2125f, 0.2125f, 0.2125f, 0, 0},        // red scaling factor
                 new float[] { 0.7154f, 0.7154f, 0.7154f, 0, 0},        // green scaling factor
                 new float[] { 0.0721f, 0.0721f, 0.0721f, 0, 0},        // blue scaling factor
+                new float[] {       0,       0,       0, 1, 0},        // alpha scaling factor
+                new float[] {       0,       0,       0, 0, 1}         // three translations
+            } ) );
+            #endregion
+            #region BT601
+            GrayscaleMatrix.Add( GrayscaleMode.BT601, new ColorMatrix( new[]{
+                new float[] { 0.2990f, 0.2990f, 0.2990f, 0, 0},        // red scaling factor
+                new float[] { 0.5870f, 0.5870f, 0.5870f, 0, 0},        // green scaling factor
+                new float[] { 0.1140f, 0.1140f, 0.1140f, 0, 0},        // blue scaling factor
                 new float[] {       0,       0,       0, 1, 0},        // alpha scaling factor
                 new float[] {       0,       0,       0, 0, 1}         // three translations
             } ) );
@@ -197,8 +226,17 @@ namespace ColorMatrixTest
                 new float[] { 1.000f, 1.000f, 1.000f, 0, 1}         // three translations
             } ) );
             #endregion
-            #region LomoGraph
-            GrayscaleMatrix.Add( GrayscaleMode.LomoGraph, new ColorMatrix( new[]{
+            #region Kodachrome
+            GrayscaleMatrix.Add( GrayscaleMode.Kodachrome, new ColorMatrix( new[]{
+                new float[] { 0.6997023f, 0, 0, 0, 0},        // red scaling factor
+                new float[] { 0, 0.4609577f, 0, 0, 0},        // green scaling factor
+                new float[] { 0, 0, 0.397218f, 0, 0},        // blue scaling factor
+                new float[] { 0, 0, 0, 1, 0},        // alpha scaling factor
+                new float[] { 0.005f, -0.005f, 0.005f, 0, 1}         // three translations
+            } ) );
+            #endregion
+            #region LomoGraph_1
+            GrayscaleMatrix.Add( GrayscaleMode.LomoGraph_1, new ColorMatrix( new[]{
                 new float[] { 1.500f,      0,      0, 0, 0},        // red scaling factor
                 new float[] {      0, 1.450f,      0, 0, 0},        // green scaling factor
                 new float[] {      0,      0, 1.090f, 0, 0},        // blue scaling factor
@@ -206,13 +244,103 @@ namespace ColorMatrixTest
                 new float[] { -0.10f, 0.050f, -0.08f, 0, 1}         // three translations
             } ) );
             #endregion
-            #region Polaroid
-            GrayscaleMatrix.Add( GrayscaleMode.Polaroid, new ColorMatrix( new[]{
+            #region LomoGraph_2
+            GrayscaleMatrix.Add( GrayscaleMode.LomoGraph_2, new ColorMatrix( new[]{
+                new float[] { 1.500f,      0,      0, 0, 0},        // red scaling factor
+                new float[] {      0, 1.450f,      0, 0, 0},        // green scaling factor
+                new float[] {      0,      0, 1.110f, 0, 0},        // blue scaling factor
+                new float[] {      0,      0,      0, 1, 0},        // alpha scaling factor
+                new float[] { -0.10f, 0.000f, -0.08f, 0, 1}         // three translations
+            } ) );
+            #endregion
+            #region Polaroid_1
+            GrayscaleMatrix.Add( GrayscaleMode.Polaroid_1, new ColorMatrix( new[]{
                 new float[] {  1.638f, -0.062f, -0.262f, 0, 0},        // red scaling factor
                 new float[] { -0.122f, 1.3780f, -0.122f, 0, 0},        // green scaling factor
                 new float[] { 1.0160f, -0.016f, 1.3830f, 0, 0},        // blue scaling factor
                 new float[] {       0,       0,       0, 1, 0},        // alpha scaling factor
                 new float[] { 0.0600f, -0.050f, -0.050f, 0, 1}         // three translations
+            } ) );
+            #endregion
+            #region Polaroid_2
+            GrayscaleMatrix.Add( GrayscaleMode.Polaroid_2, new ColorMatrix( new[]{
+                new float[] {  1.538f, -0.062f, -0.262f, 0, 0},        // red scaling factor
+                new float[] { -0.022f, 1.5780f, -0.022f, 0, 0},        // green scaling factor
+                new float[] { 0.2160f, -0.160f, 1.5831f, 0, 0},        // blue scaling factor
+                new float[] {       0,       0,       0, 1, 0},        // alpha scaling factor
+                new float[] { 0.0200f, -0.050f, -0.050f, 0, 1}         // three translations
+            } ) );
+            #endregion
+            #region Achromatomaly,
+            GrayscaleMatrix.Add( GrayscaleMode.Achromatomaly, new ColorMatrix( new[]{
+                new float[] { 0.618f, 0.163f, 0.163f, 0, 0},        // red scaling factor
+                new float[] { 0.320f, 0.775f, 0.320f, 0, 0},        // green scaling factor
+                new float[] { 0.062f, 0.062f, 0.516f, 0, 0},        // blue scaling factor
+                new float[] {      0,      0,      0, 1, 0},        // alpha scaling factor
+                new float[] {      0,      0,      0, 0, 1}         // three translations
+            } ) );
+            #endregion
+            #region Achromatopsia,
+            GrayscaleMatrix.Add( GrayscaleMode.Achromatopsia, new ColorMatrix( new[]{
+                new float[] { 0.299f, 0.299f, 0.299f, 0, 0},        // red scaling factor
+                new float[] { 0.587f, 0.587f, 0.587f, 0, 0},        // green scaling factor
+                new float[] { 0.114f, 0.114f, 0.114f, 0, 0},        // blue scaling factor
+                new float[] {      0,      0,      0, 1, 0},        // alpha scaling factor
+                new float[] {      0,      0,      0, 0, 1}         // three translations
+            } ) );
+            #endregion
+            #region Deuteranomaly,
+            GrayscaleMatrix.Add( GrayscaleMode.Deuteranomaly, new ColorMatrix( new[]{
+                new float[] {  1.538f, -0.062f, -0.262f, 0, 0},        // red scaling factor
+                new float[] { -0.022f, 1.5780f, -0.022f, 0, 0},        // green scaling factor
+                new float[] { 0.2160f, -0.160f, 1.5831f, 0, 0},        // blue scaling factor
+                new float[] {       0,       0,       0, 1, 0},        // alpha scaling factor
+                new float[] {       0,       0,       0, 0, 1}         // three translations
+            } ) );
+            #endregion
+            #region Deuteranopia,
+            GrayscaleMatrix.Add( GrayscaleMode.Deuteranopia, new ColorMatrix( new[]{
+                new float[] { 0.800f, 0.258f,      0, 0, 0},        // red scaling factor
+                new float[] { 0.200f, 0.742f, 0.142f, 0, 0},        // green scaling factor
+                new float[] {      0,      0, 0.858f, 0, 0},        // blue scaling factor
+                new float[] {      0,      0,      0, 1, 0},        // alpha scaling factor
+                new float[] {      0,      0,      0, 0, 1}         // three translations
+            } ) );
+            #endregion
+            #region Protanomaly,
+            GrayscaleMatrix.Add( GrayscaleMode.Protanomaly, new ColorMatrix( new[]{
+                new float[] { 0.817f, 0.333f,      0, 0, 0},        // red scaling factor
+                new float[] { 0.183f, 0.667f, 0.125f, 0, 0},        // green scaling factor
+                new float[] {      0,      0, 0.875f, 0, 0},        // blue scaling factor
+                new float[] {      0,      0,      0, 1, 0},        // alpha scaling factor
+                new float[] {      0,      0,      0, 0, 1}         // three translations
+            } ) );
+            #endregion
+            #region Protanopia,
+            GrayscaleMatrix.Add( GrayscaleMode.Protanopia, new ColorMatrix( new[]{
+                new float[] { 0.567f, 0.558f,      0, 0, 0},        // red scaling factor
+                new float[] { 0.433f, 0.442f, 0.242f, 0, 0},        // green scaling factor
+                new float[] {      0,      0, 0.758f, 0, 0},        // blue scaling factor
+                new float[] {      0,      0,      0, 1, 0},        // alpha scaling factor
+                new float[] {      0,      0,      0, 0, 1}         // three translations
+            } ) );
+            #endregion
+            #region Tritanomaly,
+            GrayscaleMatrix.Add( GrayscaleMode.Tritanomaly, new ColorMatrix( new[]{
+                new float[] { 0.967f,      0,      0, 0, 0},        // red scaling factor
+                new float[] { 0.330f, 0.733f, 0.183f, 0, 0},        // green scaling factor
+                new float[] {      0, 0.267f, 0.817f, 0, 0},        // blue scaling factor
+                new float[] {      0,      0,      0, 1, 0},        // alpha scaling factor
+                new float[] {      0,      0,      0, 0, 1}         // three translations
+            } ) );
+            #endregion
+            #region Tritanopia,
+            GrayscaleMatrix.Add( GrayscaleMode.Tritanopia, new ColorMatrix( new[]{
+                new float[] { 0.950f,      0,      0, 0, 0},        // red scaling factor
+                new float[] { 0.050f, 0.433f, 0.475f, 0, 0},        // green scaling factor
+                new float[] {      0, 0.567f, 0.525f, 0, 0},        // blue scaling factor
+                new float[] {      0,      0,      0, 1, 0},        // alpha scaling factor
+                new float[] {      0,      0,      0, 0, 1}         // three translations
             } ) );
             #endregion
             #region Custom
@@ -224,13 +352,13 @@ namespace ColorMatrixTest
                 new float[] {      0,      0,      0, 0, 1}         // three translations
             } ) );
             #endregion
-            #region TawawaBlueN
+            #region TestMatrix
             GrayscaleMatrix.Add( GrayscaleMode.TestMatrix, new ColorMatrix( new[]{
-                new float[] { 0.250f,      0,      0, 0, 0},        // red scaling factor
-                new float[] { 0.250f, 0.650f,      0, 0, 0},        // green scaling factor
-                new float[] { 0.250f,      0, 0.350f, 0, 0},        // blue scaling factor
-                new float[] {      0,      0,      0, 1, 0},        // alpha scaling factor
-                new float[] { 0.075f, 0.075f, 0.075f, 0, 1}         // three translations
+                new float[] {   0.5500f,   0.2500f,   0.4500f,   0.0000f,   0.0000f },        // red scaling factor
+                new float[] {   0.7500f,   0.6300f,   0.4000f,   0.0000f,   0.0000f },        // green scaling factor
+                new float[] {   0.1500f,   0.2500f,   0.9000f,   0.0000f,   0.0000f },        // blue scaling factor
+                new float[] {   0.0000f,   0.0000f,   0.0000f,   1.0000f,   0.0000f },        // alpha scaling factor
+                new float[] {  -0.4330f,   0.0000f,   0.4700f,   0.0000f,   1.0000f }         // three translations
             } ) );
             #endregion
 
@@ -329,6 +457,14 @@ namespace ColorMatrixTest
                 {
                     ImgSrc = Image.FromStream( fs );
                 }
+                if(ImgSrc.Width > imgPreview.ClientSize.Width || ImgSrc.Height > imgPreview.ClientSize.Height )
+                {
+                    imgPreview.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+                else
+                {
+                    imgPreview.SizeMode = PictureBoxSizeMode.CenterImage;
+                }
                 imgPreview.Image = ImgSrc;
             }
         }
@@ -355,7 +491,6 @@ namespace ColorMatrixTest
 
             if ( flist.Length > 0 )
             {
-                //var json = File.ReadAllText( Path.Combine( AppPath, $"{dlgOpen.FileName}" ) );
                 var json = File.ReadAllText( $"{dlgOpen.FileName}" );
 
                 JavaScriptSerializer serializer  = new JavaScriptSerializer();
@@ -514,11 +649,12 @@ namespace ColorMatrixTest
         {
             var grayscaleMode = GrayscaleMode.None;
             Enum.TryParse( cbGrayMode.SelectedValue.ToString(), out grayscaleMode );
-            if( GrayscaleMatrix.ContainsKey( grayscaleMode ) )
+            if ( GrayscaleMatrix.ContainsKey( grayscaleMode ) )
             {
                 var c = GrayscaleMatrix[grayscaleMode];
                 SetMatrix( c );
             }
+            btnTest.PerformClick();
         }
 
         private void btnCopyMatrix_Click( object sender, EventArgs e )
@@ -544,35 +680,52 @@ namespace ColorMatrixTest
 
             var grayscaleMode = GrayscaleMode.None;
             Enum.TryParse( cbGrayMode.SelectedValue.ToString(), out grayscaleMode );
-            switch ( grayscaleMode )
-            {
-                case GrayscaleMode.BT709:
-                case GrayscaleMode.RMY:
-                case GrayscaleMode.Y:
-                case GrayscaleMode.Sepia_1:
-                case GrayscaleMode.Sepia_2:
-                case GrayscaleMode.Sepia_3:
-                case GrayscaleMode.Grayscale_1:
-                case GrayscaleMode.Grayscale_2:
-                case GrayscaleMode.Grayscale_3:
-                case GrayscaleMode.BlackWhite:
-                case GrayscaleMode.ComicHigh:
-                case GrayscaleMode.ComicLow:
-                case GrayscaleMode.HiSat:
-                case GrayscaleMode.LoSat:
-                case GrayscaleMode.LomoGraph:
-                case GrayscaleMode.Invert:
-                case GrayscaleMode.Polaroid:
-                case GrayscaleMode.Custom:
-                    imgPreview.Image = Gray( ImgSrc, grayscaleMode );
-                    break;
-                case GrayscaleMode.TestMatrix:
-                    var cm = GetMatrix();
-                    imgPreview.Image = Gray( ImgSrc, grayscaleMode, cm );
-                    break;
-                default:
-                    break;
-            }
+            var cm = GetMatrix();
+            imgPreview.Image = Gray( ImgSrc, grayscaleMode, cm );
+
+            //switch ( grayscaleMode )
+            //{
+            //    case GrayscaleMode.BT709:
+            //    case GrayscaleMode.BT601:
+            //    case GrayscaleMode.RMY:
+            //    case GrayscaleMode.Y:
+            //    case GrayscaleMode.Sepia_1:
+            //    case GrayscaleMode.Sepia_2:
+            //    case GrayscaleMode.Sepia_3:
+            //    case GrayscaleMode.Grayscale_1:
+            //    case GrayscaleMode.Grayscale_2:
+            //    case GrayscaleMode.Grayscale_3:
+            //    case GrayscaleMode.BlackWhite:
+            //    case GrayscaleMode.ComicHigh:
+            //    case GrayscaleMode.ComicLow:
+            //    case GrayscaleMode.HiSat:
+            //    case GrayscaleMode.LoSat:
+            //    case GrayscaleMode.LomoGraph_1:
+            //    case GrayscaleMode.LomoGraph_2:
+            //    case GrayscaleMode.Invert:
+            //    case GrayscaleMode.Polaroid_1:
+            //    case GrayscaleMode.Polaroid_2:
+            //    case GrayscaleMode.Kodachrome:
+            //    case GrayscaleMode.Custom:
+            //        imgPreview.Image = Gray( ImgSrc, grayscaleMode );
+            //        break;
+            //    case GrayscaleMode.Achromatomaly:
+            //    case GrayscaleMode.Achromatopsia:
+            //    case GrayscaleMode.Deuteranomaly:
+            //    case GrayscaleMode.Deuteranopia:
+            //    case GrayscaleMode.Protanomaly:
+            //    case GrayscaleMode.Protanopia:
+            //    case GrayscaleMode.Tritanomaly:
+            //    case GrayscaleMode.Tritanopia:
+            //        imgPreview.Image = Gray( ImgSrc, grayscaleMode );
+            //        break;
+            //    case GrayscaleMode.TestMatrix:
+            //        var cm = GetMatrix();
+            //        imgPreview.Image = Gray( ImgSrc, grayscaleMode, cm );
+            //        break;
+            //    default:
+            //        break;
+            //}
 
         }
 

@@ -45,11 +45,25 @@ namespace InternalFilters.Effects
                 ParamItem pi = new ParamItem();
                 pi.Name = "ColorMatrix";
                 pi.DisplayName = AddinUtils._( addin, pi.Name );
-                pi.Type = colorMatrix.GetType();
+                pi.Type = colorMatrix is ColorMatrix ? colorMatrix.GetType() : typeof( ColorMatrix );
                 pi.Value = colorMatrix;
                 return ( pi );
             }
             internal set { colorMatrix = (ColorMatrix) value.Value; }
+        }
+        private string colorMatrixFile = "";
+        public ParamItem ParamColorMatrixFile
+        {
+            get
+            {
+                ParamItem pi = new ParamItem();
+                pi.Name = "ColorMatrixFile";
+                pi.DisplayName = AddinUtils._( addin, pi.Name );
+                pi.Type = colorMatrixFile.GetType();
+                pi.Value = colorMatrixFile;
+                return ( pi );
+            }
+            internal set { colorMatrixFile = (string) value.Value; }
         }
 
         public GrayscaleForm()
@@ -88,11 +102,14 @@ namespace InternalFilters.Effects
                 dlgOpen.Filter = "ColorMatrix File( *.cm ) | *.cm";
                 if ( dlgOpen.ShowDialog() == DialogResult.OK )
                 {
-                    var json = File.ReadAllText( $"{dlgOpen.FileName}" );
+                    colorMatrixFile = dlgOpen.FileName;
+                    addin.Params[ParamColorMatrixFile.Name] = ParamColorMatrixFile;
 
-                    JavaScriptSerializer serializer  = new JavaScriptSerializer();
-                    colorMatrix = (ColorMatrix) serializer.Deserialize(json , typeof(ColorMatrix));
-                    addin.Params[ParamColorMatrix.Name] = ParamColorMatrix;
+                    //var json = File.ReadAllText( $"{dlgOpen.FileName}" );
+
+                    //JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                    //colorMatrix = (ColorMatrix) serializer.Deserialize(json , typeof(ColorMatrix));
+                    //addin.Params[ParamColorMatrix.Name] = ParamColorMatrix;
                 }
             }
             imgPreview.Image = addin.Apply( thumb );

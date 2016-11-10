@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle( "ColorMatrixTest" )]
-[assembly: AssemblyDescription( "" )]
+[assembly: AssemblyTitle( "ColorMatrix Test" )]
+[assembly: AssemblyDescription( "Microsoft Windows GDI+ ColorMatrix Test Toolkits" )]
 [assembly: AssemblyConfiguration( "" )]
-[assembly: AssemblyCompany( "" )]
+[assembly: AssemblyCompany( "NetCharm Studio!" )]
 [assembly: AssemblyProduct( "ColorMatrixTest" )]
-[assembly: AssemblyCopyright( "Copyright ©  2016" )]
-[assembly: AssemblyTrademark( "" )]
+[assembly: AssemblyCopyright( "Copyright © NetCharm @ 2016" )]
+[assembly: AssemblyTrademark( "NetCharm Studio!" )]
 [assembly: AssemblyCulture( "" )]
 
 //将 ComVisible 设置为 false 将使此程序集中的类型
