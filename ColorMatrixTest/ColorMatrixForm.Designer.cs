@@ -73,6 +73,7 @@
             this.btnCopyMatrix = new System.Windows.Forms.Button();
             this.btnOriginal = new System.Windows.Forms.Button();
             this.imgPreview = new System.Windows.Forms.PictureBox();
+            this.chkLiveCalc = new System.Windows.Forms.CheckBox();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.dlgSave = new System.Windows.Forms.SaveFileDialog();
             this.colorMatrix.SuspendLayout();
@@ -149,7 +150,7 @@
             this.colorMatrix.Controls.Add(this.edMatrix44, 5, 5);
             this.colorMatrix.Controls.Add(this.edMatrix43, 4, 5);
             this.colorMatrix.Controls.Add(this.edMatrix41, 2, 5);
-            this.colorMatrix.Location = new System.Drawing.Point(12, 454);
+            this.colorMatrix.Location = new System.Drawing.Point(13, 454);
             this.colorMatrix.Name = "colorMatrix";
             this.colorMatrix.RowCount = 6;
             this.colorMatrix.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
@@ -240,6 +241,7 @@
             this.edMatrix42.Size = new System.Drawing.Size(85, 21);
             this.edMatrix42.TabIndex = 22;
             this.edMatrix42.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix42.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix13
             // 
@@ -259,6 +261,7 @@
             this.edMatrix13.Size = new System.Drawing.Size(85, 21);
             this.edMatrix13.TabIndex = 8;
             this.edMatrix13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix13.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix12
             // 
@@ -278,6 +281,7 @@
             this.edMatrix12.Size = new System.Drawing.Size(85, 21);
             this.edMatrix12.TabIndex = 7;
             this.edMatrix12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix12.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix11
             // 
@@ -302,6 +306,7 @@
             0,
             0,
             0});
+            this.edMatrix11.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix10
             // 
@@ -321,6 +326,7 @@
             this.edMatrix10.Size = new System.Drawing.Size(85, 21);
             this.edMatrix10.TabIndex = 5;
             this.edMatrix10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix10.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix04
             // 
@@ -340,6 +346,7 @@
             this.edMatrix04.Size = new System.Drawing.Size(85, 21);
             this.edMatrix04.TabIndex = 4;
             this.edMatrix04.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix04.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix03
             // 
@@ -359,6 +366,7 @@
             this.edMatrix03.Size = new System.Drawing.Size(85, 21);
             this.edMatrix03.TabIndex = 3;
             this.edMatrix03.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix03.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix02
             // 
@@ -378,6 +386,7 @@
             this.edMatrix02.Size = new System.Drawing.Size(85, 21);
             this.edMatrix02.TabIndex = 2;
             this.edMatrix02.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix02.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix01
             // 
@@ -397,6 +406,7 @@
             this.edMatrix01.Size = new System.Drawing.Size(85, 21);
             this.edMatrix01.TabIndex = 1;
             this.edMatrix01.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix01.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix00
             // 
@@ -421,6 +431,7 @@
             0,
             0,
             0});
+            this.edMatrix00.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix20
             // 
@@ -440,6 +451,7 @@
             this.edMatrix20.Size = new System.Drawing.Size(85, 21);
             this.edMatrix20.TabIndex = 10;
             this.edMatrix20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix20.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix21
             // 
@@ -459,6 +471,7 @@
             this.edMatrix21.Size = new System.Drawing.Size(85, 21);
             this.edMatrix21.TabIndex = 11;
             this.edMatrix21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix21.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix14
             // 
@@ -478,6 +491,7 @@
             this.edMatrix14.Size = new System.Drawing.Size(85, 21);
             this.edMatrix14.TabIndex = 9;
             this.edMatrix14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix14.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix24
             // 
@@ -497,6 +511,7 @@
             this.edMatrix24.Size = new System.Drawing.Size(85, 21);
             this.edMatrix24.TabIndex = 14;
             this.edMatrix24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix24.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix23
             // 
@@ -516,6 +531,7 @@
             this.edMatrix23.Size = new System.Drawing.Size(85, 21);
             this.edMatrix23.TabIndex = 13;
             this.edMatrix23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix23.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix22
             // 
@@ -540,6 +556,7 @@
             0,
             0,
             0});
+            this.edMatrix22.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix31
             // 
@@ -559,6 +576,7 @@
             this.edMatrix31.Size = new System.Drawing.Size(85, 21);
             this.edMatrix31.TabIndex = 16;
             this.edMatrix31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix31.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix30
             // 
@@ -578,6 +596,7 @@
             this.edMatrix30.Size = new System.Drawing.Size(85, 21);
             this.edMatrix30.TabIndex = 15;
             this.edMatrix30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix30.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix32
             // 
@@ -597,6 +616,7 @@
             this.edMatrix32.Size = new System.Drawing.Size(85, 21);
             this.edMatrix32.TabIndex = 17;
             this.edMatrix32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix32.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix33
             // 
@@ -621,6 +641,7 @@
             0,
             0,
             0});
+            this.edMatrix33.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix34
             // 
@@ -640,6 +661,7 @@
             this.edMatrix34.Size = new System.Drawing.Size(85, 21);
             this.edMatrix34.TabIndex = 19;
             this.edMatrix34.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix34.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // label1
             // 
@@ -719,6 +741,7 @@
             this.edMatrix40.Size = new System.Drawing.Size(85, 21);
             this.edMatrix40.TabIndex = 20;
             this.edMatrix40.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix40.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix44
             // 
@@ -743,6 +766,7 @@
             0,
             0,
             0});
+            this.edMatrix44.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix43
             // 
@@ -762,6 +786,7 @@
             this.edMatrix43.Size = new System.Drawing.Size(85, 21);
             this.edMatrix43.TabIndex = 23;
             this.edMatrix43.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix43.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // edMatrix41
             // 
@@ -781,6 +806,7 @@
             this.edMatrix41.Size = new System.Drawing.Size(85, 21);
             this.edMatrix41.TabIndex = 21;
             this.edMatrix41.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edMatrix41.ValueChanged += new System.EventHandler(this.edMatrix_ValueChanged);
             // 
             // btnTest
             // 
@@ -871,14 +897,30 @@
             this.imgPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgPreview.Location = new System.Drawing.Point(12, 12);
+            this.imgPreview.Location = new System.Drawing.Point(13, 12);
             this.imgPreview.Name = "imgPreview";
-            this.imgPreview.Size = new System.Drawing.Size(770, 436);
+            this.imgPreview.Size = new System.Drawing.Size(768, 432);
             this.imgPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgPreview.TabIndex = 0;
             this.imgPreview.TabStop = false;
             this.toolTip.SetToolTip(this.imgPreview, "Drag Image File To Here");
             this.imgPreview.DoubleClick += new System.EventHandler(this.imgPreview_DoubleClick);
+            // 
+            // chkLiveCalc
+            // 
+            this.chkLiveCalc.AutoEllipsis = true;
+            this.chkLiveCalc.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkLiveCalc.Checked = true;
+            this.chkLiveCalc.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkLiveCalc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.chkLiveCalc.Location = new System.Drawing.Point(632, 503);
+            this.chkLiveCalc.Name = "chkLiveCalc";
+            this.chkLiveCalc.Size = new System.Drawing.Size(150, 22);
+            this.chkLiveCalc.TabIndex = 7;
+            this.chkLiveCalc.Text = "Live Calc Values";
+            this.chkLiveCalc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip.SetToolTip(this.chkLiveCalc, "Immediate Calc the ColorMatrix & Apply to Image (unchecked for big image)");
+            this.chkLiveCalc.UseVisualStyleBackColor = true;
             // 
             // dlgOpen
             // 
@@ -899,6 +941,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(794, 615);
+            this.Controls.Add(this.chkLiveCalc);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.btnCopyMatrix);
@@ -996,6 +1039,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox chkLiveCalc;
     }
 }
 

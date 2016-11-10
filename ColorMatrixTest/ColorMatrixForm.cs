@@ -465,7 +465,8 @@ namespace ColorMatrixTest
                 {
                     imgPreview.SizeMode = PictureBoxSizeMode.CenterImage;
                 }
-                imgPreview.Image = ImgSrc;
+                btnTest.PerformClick();
+                //imgPreview.Image = ImgSrc;
             }
         }
         /// <summary>
@@ -508,6 +509,19 @@ namespace ColorMatrixTest
             JavaScriptSerializer serializer  = new JavaScriptSerializer();
             var json = serializer.Serialize(cm);
             File.WriteAllText( Path.Combine( AppPath, $"{file}" ), json );
+        }
+
+        private void LoadFile(string[] args)
+        {
+            if ( exts_image.Contains( Path.GetExtension( args[0] ).ToLower() ) )
+            {
+                LoadImage( args );
+            }
+            else if ( exts_cm.Contains( Path.GetExtension( args[0] ).ToLower() ) )
+            {
+                cbGrayMode.Text = "TestMatrix";
+                LoadMatrix( args );
+            }
         }
 
         /// <summary>
@@ -635,7 +649,8 @@ namespace ColorMatrixTest
         {
             string[] flist = (string[])e.Data.GetData( DataFormats.FileDrop, true );
 
-            LoadImage( flist );
+            LoadFile( flist );
+            //LoadImage( flist );
         }
 
         #endregion DragDrop Events
@@ -683,6 +698,7 @@ namespace ColorMatrixTest
             var cm = GetMatrix();
             imgPreview.Image = Gray( ImgSrc, grayscaleMode, cm );
 
+            #region Select Mode to Apply
             //switch ( grayscaleMode )
             //{
             //    case GrayscaleMode.BT709:
@@ -726,6 +742,7 @@ namespace ColorMatrixTest
             //    default:
             //        break;
             //}
+            #endregion
 
         }
 
@@ -771,5 +788,12 @@ namespace ColorMatrixTest
             imgPreview.Image = ImgDst is Image ? ImgDst : ImgSrc;
         }
 
+        private void edMatrix_ValueChanged( object sender, EventArgs e )
+        {
+            if(chkLiveCalc.Checked)
+            {
+                btnTest.PerformClick();
+            }
+        }
     }
 }
