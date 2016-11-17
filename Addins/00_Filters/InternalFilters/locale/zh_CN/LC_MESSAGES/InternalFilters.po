@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#: Actions\PinObject.cs:263 Actions\PinObject.cs:267 Actions\PinObject.cs:271
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-09 00:41+0800\n"
+"POT-Creation-Date: 2016-11-17 17:17+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -20,8 +21,9 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: Actions\ResizeForm.resx:187 -> btnOk.Text.value Effects\BlurForm.resx:424
-#: Effects\GrayscaleForm.resx:139 Effects\HslFilterForm.resx:139
+#: Actions\ResizeForm.resx:187 -> btnOk.Text.value
+#: Actions\PinObjectForm.resx:142 Effects\BlurForm.resx:424
+#: Effects\GrayscaleForm.resx:163 Effects\HslFilterForm.resx:139
 #: Effects\HueFilterForm.resx:191 Effects\InvertForm.resx:214
 #: Effects\SharpenForm.resx:301 Actions\RotateForm.resx:364
 #: Actions\CropForm.Designer.cs:308
@@ -29,10 +31,11 @@ msgid "OK"
 msgstr "确认"
 
 #: Actions\ResizeForm.resx:211 -> btnCancel.Text.value
-#: Effects\BlurForm.resx:451 Effects\GrayscaleForm.resx:166
-#: Effects\HslFilterForm.resx:166 Effects\HueFilterForm.resx:218
-#: Effects\InvertForm.resx:238 Effects\SharpenForm.resx:325
-#: Actions\RotateForm.resx:388 Actions\CropForm.Designer.cs:298
+#: Actions\PinObjectForm.resx:172 Effects\BlurForm.resx:451
+#: Effects\GrayscaleForm.resx:190 Effects\HslFilterForm.resx:166
+#: Effects\HueFilterForm.resx:218 Effects\InvertForm.resx:238
+#: Effects\SharpenForm.resx:325 Actions\RotateForm.resx:388
+#: Actions\CropForm.Designer.cs:298
 msgid "Cancel"
 msgstr "取消"
 
@@ -56,7 +59,44 @@ msgstr "缩放算法:"
 msgid "Resize"
 msgstr "缩放"
 
-#: Effects\BlurForm.resx:164 -> btnOriginal.ToolTip.value
+#: Actions\PinObjectForm.resx:235 -> grpCommonSetting.Text.value
+msgid "Common"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:340 -> chkEnabled.Text.value
+msgid "Enabled"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:373 -> chkTile.Text.value
+msgid "Tile"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:403 -> btnPosRandom.Text.value
+msgid "Random"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:460 -> btnEffectDown.ToolTip.value
+msgid "Move Down Selected Effect"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:490 -> btnEffectUp.ToolTip.value
+msgid "Move Up Selected Effect"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:520 -> btnEffectRemove.ToolTip.value
+#, fuzzy
+#| msgid "Effect"
+msgid "Remove Effect"
+msgstr "效果"
+
+#: Actions\PinObjectForm.resx:550 -> btnEffectAdd.ToolTip.value
+#, fuzzy
+#| msgid "Effect"
+msgid "Add Effect"
+msgstr "效果"
+
+#: Actions\PinObjectForm.resx:626 -> btnOriginal.ToolTip.value
+#: Effects\BlurForm.resx:164 Effects\GrayscaleForm.resx:243
 #: Effects\HslFilterForm.resx:236 Effects\HueFilterForm.resx:164
 #: Effects\InvertForm.resx:161 Effects\SharpenForm.resx:164
 msgid "View Original"
@@ -135,12 +175,12 @@ msgstr "模糊模式"
 msgid "Box Params"
 msgstr "方框参数"
 
-#: Effects\GrayscaleForm.resx:190 -> cbGrayMode.ToolTip.value
+#: Effects\GrayscaleForm.resx:135 -> cbGrayMode.ToolTip.value
 #: Effects\HslFilterForm.resx:260
 msgid "Grayscale Mode"
 msgstr "灰阶化模式"
 
-#: Effects\GrayscaleForm.resx:246 -> $this.Text.value Effects\Grayscale.cs:56
+#: Effects\GrayscaleForm.resx:270 -> $this.Text.value Effects\Grayscale.cs:83
 msgid "Grayscale"
 msgstr "灰度"
 
@@ -195,6 +235,14 @@ msgstr "旋转预览"
 #: Actions\RotateForm.resx:442 -> $this.Text.value Actions\Rotate.cs:40
 msgid "Rotate"
 msgstr "旋转"
+
+#: Actions\PinObjectForm.Designer.cs:189
+msgid "Blend"
+msgstr ""
+
+#: Actions\PinObjectForm.Designer.cs:217
+msgid "Opaque"
+msgstr ""
 
 #: Actions\CropForm.Designer.cs:74
 msgid "Selection"
@@ -316,6 +364,34 @@ msgstr "饱和度"
 msgid "Hue"
 msgstr "色度"
 
+#: Actions\PinObject.cs:73
+msgid "Pin"
+msgstr ""
+
+#: Actions\PinObject.cs:85
+#, fuzzy
+#| msgid "Selection"
+msgid "Decoration"
+msgstr "选区"
+
+#: Actions\PinObject.cs:92
+#, fuzzy
+#| msgid "Rotate Image"
+msgid "Decoration Image"
+msgstr "旋转图像"
+
+#: Actions\PinObject.cs:262
+msgid "Text"
+msgstr ""
+
+#: Actions\PinObject.cs:266
+msgid "Picture"
+msgstr ""
+
+#: Actions\PinObject.cs:270
+msgid "Smart Tag"
+msgstr ""
+
 #: Actions\Crop.cs:41 Actions\Resize.cs:128 Actions\Rotate.cs:56
 msgid "Edit"
 msgstr "编辑"
@@ -352,12 +428,12 @@ msgstr "清晰度"
 msgid "Blur Image"
 msgstr "模糊图像"
 
-#: Effects\Grayscale.cs:72 Effects\HslFilter.cs:48 Effects\HueFilter.cs:47
+#: Effects\Grayscale.cs:99 Effects\HslFilter.cs:48 Effects\HueFilter.cs:47
 #: Effects\Invert.cs:47
 msgid "Color"
 msgstr "色彩"
 
-#: Effects\Grayscale.cs:81
+#: Effects\Grayscale.cs:108
 msgid "Convert Image to Grayscale"
 msgstr "转换为灰度/单色图像"
 
@@ -423,6 +499,3 @@ msgstr "旋转图像"
 
 #~ msgid "Custom"
 #~ msgstr "自定义"
-
-#~ msgid "Effect"
-#~ msgstr "效果"

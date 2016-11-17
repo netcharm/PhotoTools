@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PhotoTool\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-09 00:41+0800\n"
-"PO-Revision-Date: 2016-11-09 00:41+0800\n"
+"POT-Creation-Date: 2016-11-17 17:27+0800\n"
+"PO-Revision-Date: 2016-11-17 17:27+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -251,7 +251,7 @@ msgid "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|A
 msgstr ""
 
 #: MainForm.resx:433 -> dlgSave.Filter.value
-msgid "JPEG File(*.jpg;*.jpeg)|*.jpg;*.jpeg|PNG File(*.png)|*.png|TIFF File(*.tif;*.tiff)|*.tif;*.tiff|Bitmap File(*.png)|*.bmp|GIF File(*.gif)|*.gif|All File(*.*)|*.*"
+msgid "JPEG File(*.jpg;*.jpeg)|*.jpg;*.jpeg|PNG File(*.png)|*.png|TIFF File(*.tif;*.tiff)|*.tif;*.tiff|Bitmap File(*.bmp)|*.bmp|GIF File(*.gif)|*.gif|All File(*.*)|*.*"
 msgstr ""
 
 #: MainForm.resx:490 -> ribOptBtnExit.Text.value
@@ -307,7 +307,7 @@ msgstr ""
 msgid "Photo Tool"
 msgstr ""
 
-#: MainForm.Designer.cs:405
+#: MainForm.Designer.cs:403
 msgid "Recent"
 msgstr ""
 
@@ -315,6 +315,6 @@ msgstr ""
 msgid "NewFile"
 msgstr ""
 
-#: MainFormUtils.cs:714 MainFormUtils.cs:715 MainFormUtils.cs:716
+#: MainFormUtils.cs:872 MainFormUtils.cs:873 MainFormUtils.cs:874
 msgid "None"
 msgstr ""

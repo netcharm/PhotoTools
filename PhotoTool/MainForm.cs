@@ -171,35 +171,8 @@ namespace PhotoTool
                 dlgSave.FileName = string.Format( $"{fname}_{DateTime.Now.Ticks}.{dlgSave.DefaultExt}" );
                 if ( dlgSave.ShowDialog() == DialogResult.OK )
                 {
-                    if ( addins.CurrentApp.ImageData != null )
-                    {
-                        ImageFormat ff = ImageFormat.Jpeg;
-                        string fext = Path.GetExtension(dlgSave.FileName).ToLower();
-                        if ( string.Equals( fext, ".jpg", StringComparison.CurrentCultureIgnoreCase ) || 
-                             string.Equals( fext, ".jpeg", StringComparison.CurrentCultureIgnoreCase ))
-                        {
-                            ff = ImageFormat.Jpeg;
-                        }
-                        else if ( string.Equals( fext, ".tif", StringComparison.CurrentCultureIgnoreCase ) ||
-                             string.Equals( fext, ".tiff", StringComparison.CurrentCultureIgnoreCase ) )
-                        {
-                            ff = ImageFormat.Tiff;
-                        }
-                        else if ( string.Equals( fext, ".bmp", StringComparison.CurrentCultureIgnoreCase ))
-                        {
-                            ff = ImageFormat.Bmp;
-                        }
-                        else if ( string.Equals( fext, ".png", StringComparison.CurrentCultureIgnoreCase ) )
-                        {
-                            ff = ImageFormat.Png;
-                        }
-                        else if ( string.Equals( fext, ".gif", StringComparison.CurrentCultureIgnoreCase ) )
-                        {
-                            ff = ImageFormat.Gif;
-                        }
-                        addins.CurrentApp.ImageData.Save( dlgSave.FileName, ff );
-                        RecentItemAdd( dlgSave.FileName );
-                    }
+                    var result = AddinUtils.SaveImage( dlgSave.FileName, addins.CurrentApp.ImageData, new SaveOption() );
+                    if ( result ) RecentItemAdd( dlgSave.FileName );
                 }
             }
         }

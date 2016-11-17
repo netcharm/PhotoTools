@@ -91,12 +91,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actions\StampObject.cs" />
-    <Compile Include="Actions\StampObjectForm.cs">
+    <Compile Include="Actions\PinObject.cs" />
+    <Compile Include="Actions\PinObjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Actions\StampObjectForm.Designer.cs">
-      <DependentUpon>StampObjectForm.cs</DependentUpon>
+    <Compile Include="Actions\PinObjectForm.Designer.cs">
+      <DependentUpon>PinObjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common.cs" />
     <Compile Include="Actions\Crop.cs" />
@@ -185,8 +185,8 @@
     <EmbeddedResource Include="Actions\ResizeForm.resx">
       <DependentUpon>ResizeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Actions\StampObjectForm.resx">
-      <DependentUpon>StampObjectForm.cs</DependentUpon>
+    <EmbeddedResource Include="Actions\PinObjectForm.resx">
+      <DependentUpon>PinObjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Effects\BlurForm.resx">
       <DependentUpon>BlurForm.cs</DependentUpon>
@@ -293,6 +293,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Compare_32x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SmartTag_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SmartTag_32x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextBlock_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextBlock_32x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureAndText_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureAndText_32x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PinnedItem_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PinnedItem_32x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_32x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Remove_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Remove_32x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\effect_add_24x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\effect_down_24x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\effect_remove_24x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\effect_up_24x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

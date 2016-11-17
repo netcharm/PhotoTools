@@ -101,6 +101,12 @@
     </Compile>
     <Compile Include="Common\AddinType.cs" />
     <Compile Include="Common\AddinUtils.cs" />
+    <Compile Include="Common\SelectAddinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\SelectAddinForm.Designer.cs">
+      <DependentUpon>SelectAddinForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CornerSide.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,6 +118,12 @@
     </Compile>
     <Compile Include="Controls\ImageBox.Designer.cs">
       <DependentUpon>ImageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Slider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Slider.Designer.cs">
+      <DependentUpon>Slider.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\SlideColorLum.cs">
       <SubType>UserControl</SubType>
@@ -153,6 +165,10 @@
   <ItemGroup>
     <EmbeddedResource Include="BaseHost\AddinHost.resx">
       <DependentUpon>AddinHost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\SelectAddinForm.resx">
+      <DependentUpon>SelectAddinForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CornerSide.resx">
       <DependentUpon>CornerSide.cs</DependentUpon>

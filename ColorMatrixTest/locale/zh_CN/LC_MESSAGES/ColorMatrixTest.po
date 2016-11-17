@@ -1,0 +1,101 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ColorMatrixTest\n"
+"Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
+"POT-Creation-Date: 2016-11-15 23:24+0800\n"
+"PO-Revision-Date: 2016-11-15 23:24+0800\n"
+"Last-Translator: netcharm <netcharm@163.com>\n"
+"Language-Team: netcharm <netcharm@163.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: China\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+
+#: ColorMatrixForm.Designer.cs:174
+msgid "T"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:176
+msgid "Liner Transform"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:187
+msgid "N/A"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:199 ColorMatrixForm.Designer.cs:723
+msgid "A"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:211 ColorMatrixForm.Designer.cs:711
+msgid "B"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:223 ColorMatrixForm.Designer.cs:699
+msgid "G"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:675 ColorMatrixForm.Designer.cs:687
+msgid "R"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:818
+msgid "Test"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:819
+msgid "Test Current Color Matrix Value"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:833
+msgid "Select Pre-Defined Color Matrix "
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:849
+msgid "Save ColorMatrix File or Image"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:862
+msgid "Load Image File or ColorMatrix File"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:875
+msgid "Copy Current Color Matrix Value to C# Code"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:890
+msgid "View Original Image"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:906
+msgid "Drag Image File To Here"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:920
+msgid "Live Calc Values"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:922
+msgid "Immediate Calc the ColorMatrix & Apply to Image (unchecked for big image)"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:928
+msgid "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|ColorMatrix File(*.cm)|*.cm|All File(*.*)|*.*"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:934
+msgid "PNG File(*.png)|*.png|ColorMatrix File(*.cm)|*.cm"
+msgstr ""
+
+#: ColorMatrixForm.Designer.cs:958
+msgid "ColorMatrix Test"
+msgstr ""

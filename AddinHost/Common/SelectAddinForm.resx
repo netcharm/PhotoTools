@@ -117,75 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lvAddins.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <metadata name="ilLarge.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnOriginal.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ilLarge.ImageSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="lvAddins.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="lvAddins.Size" type="System.Drawing.Size, System.Drawing">
+    <value>508, 434</value>
+  </data>
+  <metadata name="ilSmall.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>112, 17</value>
+  </metadata>
+  <data name="ilSmall.ImageSize" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnOriginal.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="lvAddins.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="btnOriginal.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
+  <data name="&gt;&gt;lvAddins.Name" xml:space="preserve">
+    <value>lvAddins</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnOriginal.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAWJLR0QPGLoA2QAAAAd0SU1FB+ALBg87
-        Kf1374YAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMTEtMDZUMTU6NTk6NDErMDg6MDADdy/5AAAAJXRF
-        WHRkYXRlOm1vZGlmeQAyMDE2LTExLTA2VDE1OjU5OjQxKzA4OjAwciqXRQAAAB50RVh0cGRmOkhpUmVz
-        Qm91bmRpbmdCb3gAMTZ4MTYrMCswnHvaewAAABZ0RVh0cGRmOlNwb3RDb2xvci0wAFZTIE91dNFAVpsA
-        AAAVdEVYdHBkZjpTcG90Q29sb3ItMQBWUyBCRy9VPo8AAAAVdEVYdHBkZjpTcG90Q29sb3ItMgBWUyBG
-        R3rR4RYAAAAUdEVYdHBkZjpWZXJzaW9uAFBERi0xLjUNQINXTAAAARFJREFUWEftk0EOgjAQRTkbcc1Z
-        8Cy4xXPIBcA7yEpdsVE3bDWfZMjQtJ0OIdQoTd6CTqf/FUqyjeij7/tdTCDwjskoUNf1qnRdNxVI03RV
-        ILGIQJ7vVWRZNvQtJvB8vFRAAn1qAddJbCE+Zgk0zXmyCZ6pRnO3632UAmV5nPQQagFfOOC1EAmVgBQO
-        eB1IEsECZnh7aYdmE76Gr3VJoAdzXgEz3AdtKEESooAmHIQKAEiIAtWpsga50AjgcKIA0EgUxWHY1ITf
-        AUBvFjU8i5fQlDBvN8HXEAjja/hnDRYAIRK8DnzhQCUAJAlek8KBWgCYEvw/53PYnLCFg1kCPmwhPn5P
-        YC7fJxCL+ALb+PORJB9DQAiWCJs7UQAAAABJRU5ErkJggg==
-</value>
+  <data name="&gt;&gt;lvAddins.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnOriginal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnOriginal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 272</value>
-  </data>
-  <data name="btnOriginal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 38</value>
-  </data>
-  <data name="btnOriginal.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="btnOriginal.ToolTip" xml:space="preserve">
-    <value>View Original</value>
-  </data>
-  <data name="&gt;&gt;btnOriginal.Name" xml:space="preserve">
-    <value>btnOriginal</value>
-  </data>
-  <data name="&gt;&gt;btnOriginal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnOriginal.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lvAddins.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;btnOriginal.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="btnOk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;lvAddins.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>343, 282</value>
+    <value>542, 32</value>
   </data>
   <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="btnOk.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="btnOk.Text" xml:space="preserve">
     <value>OK</value>
@@ -202,17 +180,14 @@
   <data name="&gt;&gt;btnOk.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="btnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>253, 282</value>
+    <value>542, 79</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="btnCancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -227,63 +202,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="csSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 81</value>
-  </data>
-  <data name="csSelect.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>64, 64</value>
-  </data>
-  <data name="csSelect.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 0, 0</value>
-  </data>
-  <data name="csSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 64</value>
-  </data>
-  <data name="csSelect.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;csSelect.Name" xml:space="preserve">
-    <value>csSelect</value>
-  </data>
-  <data name="&gt;&gt;csSelect.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.CornerSide, NetCharm.Image.AddinHost, Version=1.0.11.33, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;csSelect.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;csSelect.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="imgPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 12</value>
-  </data>
-  <data name="imgPreview.SelectionRegion" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0
-        dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABlTeXN0ZW0uRHJh
-        d2luZy5SZWN0YW5nbGVGBAAAAAF4AXkFd2lkdGgGaGVpZ2h0AAAAAAsLCwsCAAAAAAAAAAAAAAAAAAAA
-        AAAAAAs=
-</value>
-  </data>
-  <data name="imgPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 256</value>
-  </data>
-  <data name="imgPreview.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;imgPreview.Name" xml:space="preserve">
-    <value>imgPreview</value>
-  </data>
-  <data name="&gt;&gt;imgPreview.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.11.33, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;imgPreview.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;imgPreview.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -292,22 +211,28 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>430, 318</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+    <value>634, 458</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
-  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
-    <value>toolTip</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Selection Addins</value>
   </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ilLarge.Name" xml:space="preserve">
+    <value>ilLarge</value>
+  </data>
+  <data name="&gt;&gt;ilLarge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ilSmall.Name" xml:space="preserve">
+    <value>ilSmall</value>
+  </data>
+  <data name="&gt;&gt;ilSmall.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>StampImageForm</value>
+    <value>SelectAddinForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

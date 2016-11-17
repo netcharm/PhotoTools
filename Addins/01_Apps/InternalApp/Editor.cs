@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
+using System.Windows.Media.Imaging;
 using Mono.Addins;
 using NetCharm.Image.Addins;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Windows.Media.Imaging;
 
 namespace InternalFilters
 {
@@ -19,7 +20,7 @@ namespace InternalFilters
     {
         private FileVersionInfo fv = null;
         private EditorForm fm = null;
-
+        private PropertyItem[] propertyItems = new PropertyItem[]{};
         protected internal Form ParentForm = null;
 
         private string lastImageFileName = null;
@@ -184,7 +185,17 @@ namespace InternalFilters
         {
             get
             {
-                if ( fm == null ) { return EditorForm.GetImage(); }
+                if ( fm == null )
+                {
+                    //if ( propertyItems is PropertyItem[] )
+                    //{
+                    //    foreach ( var pi in propertyItems )
+                    //    {
+                    //        fm.ImageData.SetPropertyItem( pi );
+                    //    }
+                    //}
+                    return EditorForm.GetImage();
+                }
                 else return ( fm.ImageData );
             }
             set
@@ -193,6 +204,16 @@ namespace InternalFilters
                 else fm.ImageData = value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _enabled = true;
+        public bool Enabled { get { return ( _enabled ); } set { _enabled = value; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _visible = true;
+        public bool Visible { get { return ( _visible ); }  }
         /// <summary>
         /// 
         /// </summary>
@@ -262,6 +283,7 @@ namespace InternalFilters
                     {
                         fm.ClearHistory();
                         ImageData = Image.FromStream( fs );
+                        //propertyItems = ImageData.PropertyItems;
                     }
                 }
                 if ( Host.CurrentApp != this )

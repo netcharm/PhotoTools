@@ -177,6 +177,18 @@ namespace InternalFilters.Actions
         /// <summary>
         /// 
         /// </summary>
+        private bool _enabled = true;
+        public bool Enabled { get { return ( _enabled ); } set { _enabled = value; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _visible = true;
+        public bool Visible { get { return ( _visible ); } protected internal set { _visible = value; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public List<IAddin> Filters
         {
             get { return ( null ); }

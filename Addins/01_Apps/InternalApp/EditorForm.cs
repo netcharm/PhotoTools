@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace InternalFilters
         private AddinHost Host = null;
         private IAddin Addin = null;
 
+        private static PropertyItem[] propertyItems = new PropertyItem[]{};
         private static Image ImgSrc = null;
         private static Image ImgDst = null;
         public Image ImageData
@@ -23,12 +25,23 @@ namespace InternalFilters
             get
             {
                 ImgDst = imgEditor.Image;
+                if ( propertyItems is PropertyItem[] )
+                {
+                    foreach ( var pi in propertyItems )
+                    {
+                        ImgDst.SetPropertyItem( pi );
+                    }
+                }
                 return ( ImgDst );
             }
             set
             {
                 if ( imgEditor.Image is Image ) HistoryUndo.Push( imgEditor.Image );
-                else if ( value is Image ) HistoryUndo.Push( value );
+                else if ( value is Image )
+                {
+                    HistoryUndo.Push( value );
+                    propertyItems = value.PropertyItems;
+                }
                 ImgSrc = value;
                 SetSizeMode();
                 imgEditor.Zoom = 100;
@@ -79,6 +92,13 @@ namespace InternalFilters
         /// <returns></returns>
         public static Image GetImage()
         {
+            if ( propertyItems is PropertyItem[] )
+            {
+                foreach ( var pi in propertyItems )
+                {
+                    ImgDst.SetPropertyItem( pi );
+                }
+            }
             return ( ImgDst );
         }
 
@@ -89,6 +109,7 @@ namespace InternalFilters
         public static void SetImage(Image image)
         {
             ImgSrc = image;
+            propertyItems = image.PropertyItems;
         }
 
         /// <summary>

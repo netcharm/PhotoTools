@@ -10,15 +10,53 @@ using NetCharm.Image.Addins;
 
 namespace InternalFilters.Actions
 {
-    public enum StampObjectMode
+    public enum PinObjectMode
     {
-        Normal = 0
+        Text,
+        Picture,
+        Tag
+    }
+
+    public class PinOption
+    {
+        public bool Enabled = true;
+        public bool Tile = false;
+        public float Blend = 100f;
+
+        #region Position
+        public bool RandomPos = false;
+        public CornerRegionType Pos = CornerRegionType.None;
+        #endregion
+
+        #region Transform
+        //public float Rotate = 0f;
+        //public float Scale = 1f;
+        #endregion
+
+        #region Effects
+        public float Opaque = 100f;
+        //public float GradientWidth = 0f;
+        //public Color GradientColor1 = Color.DarkGray;
+        //public Color GradientColor2 = Color.DarkGray;
+        //public Color GradientColor3 = Color.DarkGray;
+        //public float GradientOpaque = 100f;
+        //public float ShadowWidth = 0f;
+        //public Color ShadowColor = Color.DarkGray;
+        //public float ShadowOpaque = 100f;
+        //public float GlowWidth = 0f;
+        //public Color GlowColor = Color.WhiteSmoke;
+        //public float GlowOpaque = 100f;
+        //public float OutlineWidth = 0f;
+        //public Color OutlineColor = Color.WhiteSmoke;
+        //public float OutlineOpaque = 100f;
+        #endregion
+
     }
 
     [Extension]
-    class StampObject : BaseAddinEffect
+    partial class PinObject : BaseAddinEffect
     {
-        StampObjectForm fm = null;
+        PinObjectForm fm = null;
 
         #region Properties override
         public override AddinType Type
@@ -26,13 +64,13 @@ namespace InternalFilters.Actions
             get { return ( AddinType.Action ); }
         }
 
-        private string _name = "StampImage";
+        private string _name = "Pin";
         public override string Name
         {
             get { return _name; }
         }
 
-        private string _displayname = T("StampImage");
+        private string _displayname = T("Pin");
         public override string DisplayName
         {
             get { return _( _displayname ); }
@@ -51,23 +89,29 @@ namespace InternalFilters.Actions
             set { _displayGroupName = value; }
         }
 
-        private string _description = T("Decoration Image with Picture");
+        private string _description = T("Decoration Image");
         public override string Description
         {
             get { return _( _description ); }
             set { _description = value; }
         }
 
-        //public override Image LargeIcon
-        //{
-        //    get { return Properties.Resources.StampImage_32x; }
-        //}
+        public override Image LargeIcon
+        {
+            get { return Properties.Resources.Pin_32x; }
+        }
 
-        //public override Image SmallIcon
-        //{
-        //    get { return Properties.Resources.StampImage_16x; }
-        //}
+        public override Image SmallIcon
+        {
+            get { return Properties.Resources.Pin_16x; }
+        }
 
+        private List<IAddin> _filters = new List<IAddin>();
+        public override List<IAddin> Filters
+        {
+            get { return ( _filters ); }
+            //set { _filters = value; }
+        }
         #endregion
 
         #region Method override
@@ -77,7 +121,8 @@ namespace InternalFilters.Actions
         private void InitParams()
         {
             Dictionary<string, object> kv = new Dictionary<string, object>();
-            kv.Add( "StampObjectMode", StampObjectMode.Normal );
+            kv.Add( "PinObjectMode", PinObjectMode.Picture );
+            kv.Add( "PinObjectList", typeof( List<object> ) );
 
             Params.Clear();
             foreach ( var item in kv )
@@ -100,8 +145,8 @@ namespace InternalFilters.Actions
 
             if ( form is Form && !form.IsDisposed )
             {
-                var cfm = (form as StampObjectForm);
-                Params["StampObjectMode"] = cfm.ParamMode;
+                var cfm = (form as PinObjectForm);
+                Params["PinObjectMode"] = cfm.ParamMode;
             }
         }
 
@@ -116,8 +161,8 @@ namespace InternalFilters.Actions
 
             if ( form is Form && !form.IsDisposed )
             {
-                var cfm = (form as StampObjectForm);
-                cfm.ParamMode = Params["StampObjectMode"];
+                var cfm = (form as PinObjectForm);
+                cfm.ParamMode = Params["PinObjectMode"];
             }
         }
 
@@ -128,9 +173,10 @@ namespace InternalFilters.Actions
         public override void Show( Form parent = null, bool setup = false )
         {
             _success = false;
+            //return;
             if ( fm == null )
             {
-                fm = new StampObjectForm( this );
+                fm = new PinObjectForm( this );
                 fm.host = Host;
                 //Translate( fm );
                 SetParams( fm, ImgSrc );
@@ -161,7 +207,7 @@ namespace InternalFilters.Actions
             Bitmap dst = AddinUtils.CloneImage(image) as Bitmap;
 
             GetParams( fm );
-            StampObjectMode StampObjectMode = (StampObjectMode) Params["StampObjectMode"].Value;
+            PinObjectMode PinObjectMode = (PinObjectMode) Params["PinObjectMode"].Value;
             //
             // Todo filter apply
             //
@@ -183,13 +229,16 @@ namespace InternalFilters.Actions
             switch ( cmd )
             {
                 case AddinCommand.GetImageSelection:
-                    if ( fm is StampObjectForm )
+                    #region Get Selection Region
+                    if ( fm is PinObjectForm )
                     {
                         //result = fm.GetImageSelection();
                     }
+                    #endregion
                     break;
                 case AddinCommand.SetImageSelection:
-                    if ( fm is StampObjectForm )
+                    #region Set Selection Region
+                    if ( fm is PinObjectForm )
                     {
                         if ( args.Length > 0 )
                         {
@@ -202,6 +251,30 @@ namespace InternalFilters.Actions
                                 //fm.SetImageSelection( (RectangleF) args[0] );
                             }
                         }
+                    }
+                    #endregion
+                    break;
+                case AddinCommand.SubItems:
+                    if(args.Length==0)
+                    {
+                        var subitems = new List<AddinSubItem>();
+                        subitems.Add( new AddinSubItem( this, 
+                            "Text", this._( "Text" ), 
+                            "", this._( "" ), 
+                            Properties.Resources.Text_16x, Properties.Resources.Text_32x ) );
+                        subitems.Add( new AddinSubItem( this, 
+                            "Picture", this._( "Picture" ), 
+                            "", this._( "" ), 
+                            Properties.Resources.Picture_16x, Properties.Resources.Picture_16x ) );
+                        subitems.Add( new AddinSubItem( this, 
+                            "Tag", this._( "Smart Tag" ), 
+                            "", this._( "" ), 
+                            Properties.Resources.Tag_16x, Properties.Resources.Tag_32x ) );
+                        result = subitems;
+                    }
+                    else
+                    {
+                        MessageBox.Show( $"Subitem \"{args[0] as string}\" Clicked" );
                     }
                     break;
                 default:

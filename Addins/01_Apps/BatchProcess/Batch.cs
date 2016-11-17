@@ -185,6 +185,19 @@ namespace BatchProcess
             get { return ( _filters ); }
             internal set { _filters = value; }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _enabled = true;
+        public bool Enabled { get { return ( _enabled ); } set { _enabled = value; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _visible = true;
+        public bool Visible { get { return ( _visible ); } }
+
         /// <summary>
         /// 
         /// </summary>

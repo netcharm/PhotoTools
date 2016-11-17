@@ -1,6 +1,6 @@
-﻿namespace InternalFilters.Actions
+﻿namespace NetCharm.Image.Addins.Common
 {
-    partial class StampObjectForm
+    partial class SelectAddinForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,22 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StampObjectForm));
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnOriginal = new System.Windows.Forms.CheckBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectAddinForm));
+            this.lvAddins = new System.Windows.Forms.ListView();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.csSelect = new NetCharm.Image.Addins.Controls.CornerSide();
-            this.imgPreview = new NetCharm.Image.Addins.ImageBox();
+            this.ilLarge = new System.Windows.Forms.ImageList(this.components);
+            this.ilSmall = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
-            // btnOriginal
+            // lvAddins
             // 
-            resources.ApplyResources(this.btnOriginal, "btnOriginal");
-            this.btnOriginal.Name = "btnOriginal";
-            this.toolTip.SetToolTip(this.btnOriginal, resources.GetString("btnOriginal.ToolTip"));
-            this.btnOriginal.UseVisualStyleBackColor = true;
-            this.btnOriginal.Click += new System.EventHandler(this.btnOriginal_Click);
+            resources.ApplyResources(this.lvAddins, "lvAddins");
+            this.lvAddins.LargeImageList = this.ilLarge;
+            this.lvAddins.Name = "lvAddins";
+            this.lvAddins.SmallImageList = this.ilSmall;
+            this.lvAddins.UseCompatibleStateImageBehavior = false;
             // 
             // btnOk
             // 
@@ -60,51 +59,44 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // csSelect
+            // ilLarge
             // 
-            resources.ApplyResources(this.csSelect, "csSelect");
-            this.csSelect.Name = "csSelect";
+            this.ilLarge.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            resources.ApplyResources(this.ilLarge, "ilLarge");
+            this.ilLarge.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // imgPreview
+            // ilSmall
             // 
-            this.imgPreview.Image = null;
-            resources.ApplyResources(this.imgPreview, "imgPreview");
-            this.imgPreview.Name = "imgPreview";
-            this.imgPreview.SelectionColor = System.Drawing.SystemColors.Highlight;
-            this.imgPreview.SelectionKeepAspect = false;
-            this.imgPreview.SelectionRegion = ((System.Drawing.RectangleF)(resources.GetObject("imgPreview.SelectionRegion")));
-            this.imgPreview.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
-            this.imgPreview.Zoom = 100;
+            this.ilSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            resources.ApplyResources(this.ilSmall, "ilSmall");
+            this.ilSmall.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // StampImageForm
+            // SelectAddinForm
             // 
             this.AcceptButton = this.btnOk;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.Controls.Add(this.csSelect);
-            this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOriginal);
-            this.Controls.Add(this.imgPreview);
+            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.lvAddins);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.HelpButton = true;
-            this.Name = "StampImageForm";
+            this.MaximizeBox = false;
+            this.Name = "SelectAddinForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Load += new System.EventHandler(this.StampImageForm_Load);
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.SelectAddinForm_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ToolTip toolTip;
-        private NetCharm.Image.Addins.ImageBox imgPreview;
+        private System.Windows.Forms.ListView lvAddins;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.CheckBox btnOriginal;
-        private NetCharm.Image.Addins.Controls.CornerSide csSelect;
+        private System.Windows.Forms.ImageList ilLarge;
+        private System.Windows.Forms.ImageList ilSmall;
     }
 }
