@@ -138,6 +138,8 @@ namespace PhotoTool
                 btnAddin.Text = I18N._( addin.DisplayName );
                 btnAddin.ToolTip = I18N._( addin.Description );
                 btnAddin.ToolTipTitle = I18N._( addin.Author );
+                btnAddin.Value = addin.Name;
+                btnAddin.Click += AddinAppClick;
 
                 #region fetch subitems of addin
                 object result = null;
@@ -153,8 +155,6 @@ namespace PhotoTool
                     }
                 }
                 #endregion
-                btnAddin.Value = addin.Name;
-                btnAddin.Click += AddinAppClick;
             }
         }
 
@@ -168,6 +168,7 @@ namespace PhotoTool
             RibTabActInternal.Items.Clear();
             RibTabActExternal.Items.Clear();
 
+            #region Clear Custom Actions Panel
             foreach ( var kv in CustomPanelAction )
             {
                 if ( kv.Value is RibbonPanel )
@@ -177,9 +178,13 @@ namespace PhotoTool
                 }
             }
             CustomPanelAction.Clear();
+            #endregion
 
+            #region Add addin to Command Panels
             foreach ( IAddin addin in acts )
             {
+                if ( !addin.Visible ) continue;
+
                 RibbonPanel targetPanel = RibTabActExternal;
                 if ( !string.IsNullOrEmpty( addin.GroupName ) )
                 {
@@ -214,10 +219,34 @@ namespace PhotoTool
                 btnAddin.Text = I18N._( addin.DisplayName );
                 btnAddin.ToolTip = I18N._( addin.Description );
                 btnAddin.ToolTipTitle = I18N._( addin.Author );
-
                 btnAddin.Value = addin.Name;
                 btnAddin.Click += AddinActionClick;
+
+                #region fetch subitems of addin
+                object result = null;
+                addin.Command( AddinCommand.SubItems, out result );
+                if ( result is List<AddinSubItem> && ( result as List<AddinSubItem> ).Count > 0 )
+                {
+                    foreach ( var item in ( result as List<AddinSubItem> ) )
+                    {
+                        var smi = new RibbonButton( item.Name );
+                        smi.Text = item.DisplayName;
+                        smi.Image = item.LargeIcon;
+                        smi.SmallImage = item.SmallIcon;
+                        smi.Value = item.Name;
+                        //smi.Click += AddinActionSubItemClick;
+
+                        btnAddin.DropDownItems.Add( smi );
+                    }
+                    //btnAddin.DrawIconsBar = false;
+                    btnAddin.Style = RibbonButtonStyle.SplitDropDown;
+                    btnAddin.DropDownItemClicked += AddinActionSubItemClick;
+                }
+                #endregion
             }
+            #endregion
+
+            #region Refresh Panels Visible state
             int c = 0;
             foreach ( var kv in CustomPanelAction )
             {
@@ -232,6 +261,7 @@ namespace PhotoTool
                 RibTabActExternal.Visible = false;
             else
                 RibTabActExternal.Visible = true;
+            #endregion
         }
 
         /// <summary>
@@ -244,18 +274,23 @@ namespace PhotoTool
             RibTabEffectInternal.Items.Clear();
             RibTabEffectExternal.Items.Clear();
 
-            foreach(var kv in CustomPanelEffect )
+            #region Clear Custom Actions Panel
+            foreach (var kv in CustomPanelEffect )
             {
-                if( kv.Value is RibbonPanel)
+                if ( kv.Value is RibbonPanel)
                 {
                     RibTabEffect.Panels.Remove( kv.Value );
                     kv.Value.Dispose();
                 }
             }
             CustomPanelEffect.Clear();
+            #endregion
 
+            #region Add addin to Command Panels
             foreach ( IAddin addin in filters )
             {
+                if ( !addin.Visible ) continue;
+
                 RibbonPanel targetPanel = RibTabEffectExternal;
                 if(!string.IsNullOrEmpty(addin.GroupName))
                 {
@@ -288,10 +323,34 @@ namespace PhotoTool
                 btnAddin.Text = I18N._( addin.DisplayName );
                 btnAddin.ToolTip = I18N._( addin.Description );
                 btnAddin.ToolTipTitle = I18N._( addin.Author );
-
                 btnAddin.Value = addin.Name;
                 btnAddin.Click += AddinEffectClick;
+
+                #region fetch subitems of addin
+                object result = null;
+                addin.Command( AddinCommand.SubItems, out result );
+                if ( result is List<AddinSubItem> && ( result as List<AddinSubItem> ).Count > 0 )
+                {
+                    foreach ( var item in ( result as List<AddinSubItem> ) )
+                    {
+                        var smi = new RibbonButton( item.Name );
+                        smi.Text = item.DisplayName;
+                        smi.Image = item.LargeIcon;
+                        smi.SmallImage = item.SmallIcon;
+                        smi.Value = item.Name;
+                        //smi.Click += AddinActionSubItemClick;
+
+                        btnAddin.DropDownItems.Add( smi );
+                    }
+                    //btnAddin.DrawIconsBar = false;
+                    btnAddin.Style = RibbonButtonStyle.SplitDropDown;
+                    btnAddin.DropDownItemClicked += AddinEffectSubItemClick;
+                }
+                #endregion
             }
+            #endregion
+
+            #region Refresh Panels Visible state
             int c = 0;
             foreach ( var kv in CustomPanelEffect )
             {
@@ -306,6 +365,7 @@ namespace PhotoTool
                 RibTabEffectExternal.Visible = false;
             else
                 RibTabEffectExternal.Visible = true;
+            #endregion
         }
 
         /// <summary>
@@ -328,6 +388,29 @@ namespace PhotoTool
             cmdFileApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
             cmdFileApplyAll.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
             cmdFileSepApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
+        }
+
+        public void AddinAppSubItemClick( object sender, EventArgs e )
+        {
+            string an = ( sender as RibbonButton ).Value;
+            string ans = ( sender as RibbonButton ).SelectedValue;
+            if ( addins.CurrentApp != null && addins.Apps.ContainsKey( an ) )
+            {
+                addins.CurrentFilter = addins.Apps[an];
+                if ( addins.CurrentFilter != null )
+                {
+                    addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
+                    object data = null;
+                    addins.CurrentFilter.Command( AddinCommand.SubItems, out data, ans );
+                    if ( addins.CurrentFilter.Success )
+                    {
+                        addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                    }
+
+                    int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
+                    tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height} x {bits}";
+                }
+            }
         }
 
         /// <summary>
@@ -356,6 +439,29 @@ namespace PhotoTool
             }
         }
 
+        public void AddinActionSubItemClick( object sender, EventArgs e )
+        {
+            string an = ( sender as RibbonButton ).Value;
+            string ans = ( sender as RibbonButton ).SelectedValue;
+            if ( addins.CurrentApp != null && addins.Actions.ContainsKey( an ) )
+            {
+                addins.CurrentFilter = addins.Actions[an];
+                if ( addins.CurrentFilter != null )
+                {
+                    addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
+                    object data = null;
+                    addins.CurrentFilter.Command( AddinCommand.SubItems, out data, ans );
+                    if ( addins.CurrentFilter.Success )
+                    {
+                        addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                    }
+
+                    int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
+                    tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height} x {bits}";
+                }
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -371,6 +477,29 @@ namespace PhotoTool
                 {
                     addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
                     addins.CurrentFilter.Show( this, false );
+                    if ( addins.CurrentFilter.Success )
+                    {
+                        addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                    }
+
+                    int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
+                    tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height} x {bits}";
+                }
+            }
+        }
+
+        public void AddinEffectSubItemClick( object sender, EventArgs e )
+        {
+            string an = ( sender as RibbonButton ).Value;
+            string ans = ( sender as RibbonButton ).SelectedValue;
+            if ( addins.CurrentApp != null && addins.Effects.ContainsKey( an ) )
+            {
+                addins.CurrentFilter = addins.Effects[an];
+                if ( addins.CurrentFilter != null )
+                {
+                    addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
+                    object data = null;
+                    addins.CurrentFilter.Command( AddinCommand.SubItems, out data, ans );
                     if ( addins.CurrentFilter.Success )
                     {
                         addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
