@@ -177,6 +177,7 @@
             this.Name = "RotateForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.Load += new System.EventHandler(this.RotateForm_Load);
             this.groupMode.ResumeLayout(false);
             this.groupAngle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numAngle)).EndInit();

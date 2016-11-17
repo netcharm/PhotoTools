@@ -143,6 +143,16 @@ namespace InternalFilters.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Dice_24x {
+            get {
+                object obj = ResourceManager.GetObject("Dice_24x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap effect_add_24x {
             get {
                 object obj = ResourceManager.GetObject("effect_add_24x", resourceCulture);

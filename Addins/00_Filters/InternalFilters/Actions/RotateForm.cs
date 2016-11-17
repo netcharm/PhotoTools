@@ -18,6 +18,7 @@ namespace InternalFilters
 
         private double angle = 0f;
         private RotateFlipType flip = RotateFlipType.RotateNoneFlipNone;
+        private bool keepSize = false;
 
         private Image thumb = null;
 
@@ -50,7 +51,17 @@ namespace InternalFilters
 
             //thumb = CreateThumb( addin.ImageData );
             thumb = AddinUtils.CreateThumb( addin.ImageData, imgPreview.Size );
-            imgPreview.Image = thumb;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RotateForm_Load( object sender, EventArgs e )
+        {
+            //imgPreview.Image = thumb;
+            imgPreview.Image = RotateImage( thumb, flip, angle, keepSize );
         }
 
         /// <summary>
@@ -91,6 +102,38 @@ namespace InternalFilters
             pi.Type = typeof( bool );
             pi.Value = chkKeepSize.Checked;
             return ( pi );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        internal void SetMode( string name, ParamItem value )
+        {
+            flip = (RotateFlipType) value.Value;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        internal void SetKeepSize( string name, ParamItem value )
+        {
+            keepSize = (bool) value.Value;
+            chkKeepSize.Checked = keepSize;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        internal void SetAngle( string name, ParamItem value )
+        {
+            angle = (double) value.Value;
+            numAngle.Value = Convert.ToDecimal( angle );
         }
 
         /// <summary>
@@ -331,7 +374,7 @@ namespace InternalFilters
         {
             //angle = ( angle + 270 ) % 360;
             flip = FlipCalc( RotateFlipType.Rotate270FlipNone );
-            imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
+            imgPreview.Image = RotateImage( thumb, flip, angle, keepSize );
         }
 
         /// <summary>
@@ -343,7 +386,7 @@ namespace InternalFilters
         {
             //angle = ( angle + 90 ) % 360;
             flip = FlipCalc( RotateFlipType.Rotate90FlipNone );
-            imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
+            imgPreview.Image = RotateImage( thumb, flip, angle, keepSize );
         }
 
         /// <summary>
@@ -354,7 +397,7 @@ namespace InternalFilters
         private void btnRotateFlipX_Click( object sender, EventArgs e )
         {
             flip = FlipCalc( RotateFlipType.RotateNoneFlipX );
-            imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
+            imgPreview.Image = RotateImage( thumb, flip, angle, keepSize );
         }
 
         /// <summary>
@@ -365,7 +408,7 @@ namespace InternalFilters
         private void btnRotateFlipY_Click( object sender, EventArgs e )
         {
             flip = FlipCalc( RotateFlipType.RotateNoneFlipY );
-            imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
+            imgPreview.Image = RotateImage( thumb, flip, angle, keepSize );
         }
 
         /// <summary>
@@ -377,7 +420,7 @@ namespace InternalFilters
         {
             angle = (double) numAngle.Value % 360;
             numAngle.Value = Convert.ToDecimal( angle );
-            imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
+            imgPreview.Image = RotateImage( thumb, flip, angle, keepSize );
         }
 
         /// <summary>
@@ -389,7 +432,9 @@ namespace InternalFilters
         {
             angle = (double) numAngle.Value % 360;
             numAngle.Value = Convert.ToDecimal( angle );
-            imgPreview.Image = RotateImage( thumb, flip, angle, chkKeepSize.Checked );
+            keepSize = chkKeepSize.Checked;
+            imgPreview.Image = RotateImage( thumb, flip, angle, keepSize );
         }
+
     }
 }

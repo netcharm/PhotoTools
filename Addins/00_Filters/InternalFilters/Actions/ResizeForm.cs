@@ -16,6 +16,7 @@ namespace InternalFilters
         internal AddinHost host;
         private IAddin addin;
 
+        private int _width = 0;
         public ParamItem ParamWidth
         {
             get
@@ -27,9 +28,14 @@ namespace InternalFilters
                 pi.Value = Convert.ToInt32( edWidth.Value );
                 return ( pi );
             }
-            internal set { edWidth.Value = Convert.ToDecimal( value.Value ); }
+            internal set
+            {
+                _width = (int) value.Value;
+                edWidth.Value = Convert.ToDecimal( value.Value );
+            }
         }
 
+        private int _height = 0;
         public ParamItem ParamHeight
         {
             get
@@ -41,9 +47,14 @@ namespace InternalFilters
                 pi.Value = Convert.ToInt32( edHeight.Value );
                 return ( pi );
             }
-            internal set { edHeight.Value = Convert.ToDecimal( value.Value ); }
+            internal set
+            {
+                _height = (int) value.Value;
+                edHeight.Value = Convert.ToDecimal( value.Value );
+            }
         }
 
+        private bool _aspect = true;
         public ParamItem ParamAspect
         {
             get
@@ -55,9 +66,14 @@ namespace InternalFilters
                 pi.Value = chkAspect.Checked;
                 return ( pi );
             }
-            internal set { edWidth.Value = Convert.ToDecimal( value.Value ); }
+            internal set
+            {
+                _aspect = (bool) value.Value;
+                chkAspect.Checked = (bool) value.Value;
+            }
         }
 
+        private int _method = 0;
         public ParamItem ParamMethod
         {
             get
@@ -73,6 +89,7 @@ namespace InternalFilters
             {
                 if ( 0 <= Convert.ToInt32( value.Value ) && Convert.ToInt32( value.Value ) < cbResizeMethod.Items.Count )
                 {
+                    _method = (int) value.Value;
                     cbResizeMethod.SelectedIndex = Convert.ToInt32( value.Value );
                 }
                 else cbResizeMethod.SelectedIndex = 0;
@@ -103,13 +120,15 @@ namespace InternalFilters
 
         private void ResizeForm_Load( object sender, EventArgs e )
         {
-            chkAspect.Checked = true;
-            cbResizeMethod.SelectedIndex = 0;
+            chkAspect.Checked = _aspect;
+            cbResizeMethod.SelectedIndex = _method;
         }
 
         private void edWidth_ValueChanged( object sender, EventArgs e )
         {
-            if ( addin is IAddin && chkAspect.Checked )
+            if ( (this.Focused || edWidth.Focused || edHeight.Focused) && 
+                addin is IAddin && 
+                chkAspect.Checked )
             {
                 var w = addin.ImageData.Width;
                 var h = addin.ImageData.Height;
@@ -120,12 +139,12 @@ namespace InternalFilters
 
                 if ( sender == edWidth )
                 {
-                    hn = (int) Math.Round( wn * factor_o );
+                    hn = (int) Math.Round( wn / factor_o );
                     edHeight.Value = Convert.ToDecimal( hn );
                 }
                 else if ( sender == edHeight )
                 {
-                    wn = (int) Math.Round( hn / factor_o );
+                    wn = (int) Math.Round( hn * factor_o );
                     edWidth.Value = Convert.ToDecimal( wn );
                 }
             }

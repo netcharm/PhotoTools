@@ -10,6 +10,8 @@ using NetCharm.Image.Addins;
 
 namespace InternalFilters.Actions
 {
+    using ParamList = Dictionary<string, ParamItem>;
+
     public partial class PinObjectForm : Form
     {
         internal AddinHost host;
@@ -33,29 +35,31 @@ namespace InternalFilters.Actions
         }
 
         private List<ListViewItem> effects = new List<ListViewItem>();
+        //private List<Dictionary<string, ParamItem>> effectParams = new List<Dictionary<string, ParamItem>>();
+        private List<ParamList> effectParams = new List<ParamList>();
 
         public PinObjectForm()
         {
             InitializeComponent();
         }
 
-        public PinObjectForm( IAddin filter )
+        public PinObjectForm( IAddin addin )
         {
             InitializeComponent();
 
-            this.addin = filter;
-            this.Text = addin.DisplayName;
+            this.addin = addin;
+            this.Text = this.addin.DisplayName;
             this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = FormStartPosition.CenterParent;
-            toolTip.ToolTipTitle = addin.DisplayName;
-            AddinUtils.Translate( addin, this, toolTip );
+            toolTip.ToolTipTitle = this.addin.DisplayName;
+            AddinUtils.Translate( this.addin, this, toolTip );
         }
 
-        private void StampObjectForm_Load( object sender, EventArgs e )
+        private void PinObjectForm_Load( object sender, EventArgs e )
         {
             thumb = AddinUtils.CreateThumb( addin.ImageData, imgPreview.Size );
             imgPreview.Image = thumb;
@@ -63,13 +67,16 @@ namespace InternalFilters.Actions
 
         private void lvFilters_RetrieveVirtualItem( object sender, RetrieveVirtualItemEventArgs e )
         {
+            //lvFilters.VirtualListSize = effects.Count;
             try
             {
                 if ( effects.Count > 0 && e.ItemIndex >= 0 && e.ItemIndex < effects.Count )
                 {
                     e.Item = effects[e.ItemIndex];
-                    e.Item.BackColor = ( e.ItemIndex % 2 == 1 ) ? Color.AliceBlue : e.Item.BackColor;
-                    e.Item.Selected = effects[e.ItemIndex].Selected;
+                    if(lvFilters.View== View.Details)
+                    {
+                        e.Item.BackColor = ( e.ItemIndex % 2 == 1 ) ? Color.AliceBlue : e.Item.BackColor;
+                    }
                 }
                 else
                 {
@@ -82,33 +89,6 @@ namespace InternalFilters.Actions
                 e.Item = new ListViewItem( new string[] { "Error" } );
                 e.Item.BackColor = Color.LightPink;
             }
-        }
-
-        private void lvFilters_ItemSelectionChanged( object sender, ListViewItemSelectionChangedEventArgs e )
-        {
-            //if ( effects.Count > 0 && e.ItemIndex >= 0 && e.ItemIndex < effects.Count )
-            //{
-            //    effects[e.ItemIndex].Selected = e.IsSelected;
-            //}
-        }
-
-        private void lvFilters_VirtualItemsSelectionRangeChanged( object sender, ListViewVirtualItemsSelectionRangeChangedEventArgs e )
-        {
-        }
-
-        private void lvFilters_SelectedIndexChanged( object sender, EventArgs e )
-        {
-            //foreach(int i in lvFilters.SelectedIndices)
-            //{
-            //    effects[i].Selected = true;
-            //}
-            //for ( int i = 0; i < effects.Count; i++ )
-            //{
-            //    if ( lvFilters.SelectedIndices.Contains( i ) )
-            //        effects[i].Selected = true;
-            //    else
-            //        effects[i].Selected = false;
-            //}
         }
 
         private void btnOriginal_Click( object sender, EventArgs e )
@@ -127,7 +107,8 @@ namespace InternalFilters.Actions
 
         private void btnEffectAdd_Click( object sender, EventArgs e )
         {
-            foreach(IAddin filter in AddinUtils.ShowAddinsDialog())
+            lvFilters.BeginUpdate();
+            foreach ( IAddin filter in AddinUtils.ShowAddinsDialog())
             {
                 addin.Filters.Add( filter );
                 ilLarge.Images.Add( filter.LargeIcon );
@@ -136,70 +117,91 @@ namespace InternalFilters.Actions
                 effects.Last().Selected = false;
                 effects.Last().Tag = filter;
                 effects.Last().ImageIndex = ilLarge.Images.Count;
+
+                effectParams.Add( filter.Params as ParamList );
             }
             lvFilters.VirtualListSize = effects.Count;
+            lvFilters.EndUpdate();
+            //lvFilters.Update();
         }
 
         private void btnEffectRemove_Click( object sender, EventArgs e )
         {
-            //var test = lvFilters.SelectedIndices.Cast<int>().AsEnumerable().Reverse();
-
             List<int> selected = new List<int>();
             foreach ( int i in lvFilters.SelectedIndices )
             {
                 selected.Add( i );
             }
             selected.Reverse();
+            lvFilters.BeginUpdate();
             foreach ( int i in selected )
             {
                 ListViewItem item = effects[i];
 
                 IAddin filter = item.Tag as IAddin;
-                if ( filter is IAddin )
-                {
-                    if ( addin.Filters.IndexOf( filter ) >= 0 )
-                        addin.Filters.Remove( filter );
-                    ilLarge.Images.RemoveAt( item.ImageIndex );
-                    ilSmall.Images.RemoveAt( item.ImageIndex );
-                    effects.Remove( item );
-                }
+                addin.Filters.Remove( filter );
+                ilLarge.Images.RemoveAt( item.ImageIndex );
+                ilSmall.Images.RemoveAt( item.ImageIndex );
+                effects.Remove( item );
+                effectParams.Remove( filter.Params as ParamList );
             }
+            lvFilters.SelectedIndices.Clear();
             lvFilters.VirtualListSize = effects.Count;
+            lvFilters.EndUpdate();
+            //lvFilters.Update();
         }
 
         private void btnEffectUp_Click( object sender, EventArgs e )
         {
-            foreach(int i in lvFilters.SelectedIndices )
+            lvFilters.BeginUpdate();
+            foreach (int i in lvFilters.SelectedIndices )
             {
                 if ( i <= 0 ) continue;
                 var fi = effects[i];
                 effects[i] = effects[i-1];
                 effects[i - 1] = fi;
-                effects[i - 1].Selected = true;
-                effects[i].Selected = false;
                 lvFilters.Items[i - 1].Selected = true;
                 lvFilters.Items[i].Selected = false;
             }
-            //lvFilters.Refresh();
-            lvFilters.Invalidate();
+            lvFilters.EndUpdate();
+            //lvFilters.Update();
         }
 
         private void btnEffectDown_Click( object sender, EventArgs e )
         {
+            List<int> selected = new List<int>();
             foreach ( int i in lvFilters.SelectedIndices )
+            {
+                selected.Add( i );
+            }
+            selected.Reverse();
+            lvFilters.BeginUpdate();
+            foreach ( int i in selected )
             {
                 if ( i >= effects.Count-1 ) continue;
                 var fi = effects[i];
                 effects[i] = effects[i + 1];
                 effects[i + 1] = fi;
-                effects[i + 1].Selected = true;
-                effects[i].Selected = false;
                 lvFilters.Items[i + 1].Selected = true;
                 lvFilters.Items[i].Selected = false;
             }
-            //lvFilters.Refresh();
-            lvFilters.Invalidate();
+            lvFilters.EndUpdate();
+            //lvFilters.Update();
         }
 
+        private void lvFilters_DoubleClick( object sender, EventArgs e )
+        {
+            //lvFilters.GetItemAt();
+            var filter = lvFilters.FocusedItem.Tag as IAddin;
+            filter.ImageData = addin.ImageData;
+            var pilist = effectParams[effectParams.IndexOf( filter.Params )];
+            for (int i=0;i< pilist.Count;i++ )
+            {
+                var pi = pilist.ElementAt(i);
+                filter.Params[pi.Key] = pi.Value;
+            }
+            filter.Show( this, true );
+            effectParams[effectParams.IndexOf( filter.Params )] = filter.Params;
+        }
     }
 }

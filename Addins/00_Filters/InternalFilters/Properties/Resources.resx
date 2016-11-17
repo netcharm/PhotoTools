@@ -241,4 +241,7 @@
   <data name="Remove_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Remove_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Dice_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image_Dice_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

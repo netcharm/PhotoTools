@@ -594,13 +594,18 @@ namespace NetCharm.Image.Addins
         /// <returns></returns>
         public static System.Drawing.Image CreateThumb( System.Drawing.Image source, Size size )
         {
-            double thumbSize = Math.Min(size.Width, size.Height);
-            double factor = Math.Max(source.Width, source.Height) / thumbSize;
-            int w = (int)Math.Round( source.Width / factor );
-            int h = (int)Math.Round( source.Height / factor );
+            if ( source is System.Drawing.Image )
+            {
+                double thumbSize = Math.Min(size.Width, size.Height);
+                double factor = Math.Max(source.Width, source.Height) / thumbSize;
+                int w = (int)Math.Round( source.Width / factor );
+                int h = (int)Math.Round( source.Height / factor );
 
-            ResizeBicubic filter = new ResizeBicubic(w, h);
-            return ( ProcessImage( filter, source ) );
+                ResizeBicubic filter = new ResizeBicubic(w, h);
+                return ( ProcessImage( filter, source ) );
+            }
+            else
+                return ( null );
         }
 
         /// <summary>

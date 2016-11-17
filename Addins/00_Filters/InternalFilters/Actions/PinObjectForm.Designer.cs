@@ -38,20 +38,20 @@
             this.chkEnabled = new System.Windows.Forms.CheckBox();
             this.chkTile = new System.Windows.Forms.CheckBox();
             this.btnPosRandom = new System.Windows.Forms.Button();
-            this.lvFilters = new System.Windows.Forms.ListView();
-            this.pnlEffectTools = new System.Windows.Forms.Panel();
-            this.btnEffectAdd = new System.Windows.Forms.Button();
-            this.btnEffectRemove = new System.Windows.Forms.Button();
-            this.btnEffectUp = new System.Windows.Forms.Button();
-            this.btnEffectDown = new System.Windows.Forms.Button();
-            this.btnOriginal = new System.Windows.Forms.CheckBox();
-            this.pnlCustom = new System.Windows.Forms.Panel();
             this.csSelect = new NetCharm.Image.Addins.Controls.CornerSide();
             this.slideBlend = new NetCharm.Image.Addins.Controls.SlideNumber();
             this.slideOpaque = new NetCharm.Image.Addins.Controls.SlideNumber();
-            this.imgPreview = new NetCharm.Image.Addins.ImageBox();
-            this.ilSmall = new System.Windows.Forms.ImageList(this.components);
+            this.lvFilters = new System.Windows.Forms.ListView();
             this.ilLarge = new System.Windows.Forms.ImageList(this.components);
+            this.ilSmall = new System.Windows.Forms.ImageList(this.components);
+            this.pnlEffectTools = new System.Windows.Forms.Panel();
+            this.pnlCustom = new System.Windows.Forms.Panel();
+            this.imgPreview = new NetCharm.Image.Addins.ImageBox();
+            this.btnEffectDown = new System.Windows.Forms.Button();
+            this.btnEffectUp = new System.Windows.Forms.Button();
+            this.btnEffectRemove = new System.Windows.Forms.Button();
+            this.btnEffectAdd = new System.Windows.Forms.Button();
+            this.btnOriginal = new System.Windows.Forms.CheckBox();
             this.grpCommonSetting.SuspendLayout();
             this.pnlPosMode.SuspendLayout();
             this.pnlEffectTools.SuspendLayout();
@@ -108,84 +108,10 @@
             // btnPosRandom
             // 
             resources.ApplyResources(this.btnPosRandom, "btnPosRandom");
+            this.btnPosRandom.Image = global::InternalFilters.Properties.Resources.Dice_24x;
             this.btnPosRandom.Name = "btnPosRandom";
+            this.toolTip.SetToolTip(this.btnPosRandom, resources.GetString("btnPosRandom.ToolTip"));
             this.btnPosRandom.UseVisualStyleBackColor = true;
-            // 
-            // lvFilters
-            // 
-            resources.ApplyResources(this.lvFilters, "lvFilters");
-            this.lvFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lvFilters.FullRowSelect = true;
-            this.lvFilters.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvFilters.HideSelection = false;
-            this.lvFilters.LargeImageList = this.ilLarge;
-            this.lvFilters.Name = "lvFilters";
-            this.lvFilters.SmallImageList = this.ilSmall;
-            this.lvFilters.UseCompatibleStateImageBehavior = false;
-            this.lvFilters.View = System.Windows.Forms.View.List;
-            this.lvFilters.VirtualMode = true;
-            this.lvFilters.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvFilters_ItemSelectionChanged);
-            this.lvFilters.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvFilters_RetrieveVirtualItem);
-            this.lvFilters.SelectedIndexChanged += new System.EventHandler(this.lvFilters_SelectedIndexChanged);
-            this.lvFilters.VirtualItemsSelectionRangeChanged += new System.Windows.Forms.ListViewVirtualItemsSelectionRangeChangedEventHandler(this.lvFilters_VirtualItemsSelectionRangeChanged);
-            // 
-            // pnlEffectTools
-            // 
-            resources.ApplyResources(this.pnlEffectTools, "pnlEffectTools");
-            this.pnlEffectTools.Controls.Add(this.btnEffectDown);
-            this.pnlEffectTools.Controls.Add(this.btnEffectUp);
-            this.pnlEffectTools.Controls.Add(this.btnEffectRemove);
-            this.pnlEffectTools.Controls.Add(this.btnEffectAdd);
-            this.pnlEffectTools.Name = "pnlEffectTools";
-            // 
-            // btnEffectAdd
-            // 
-            resources.ApplyResources(this.btnEffectAdd, "btnEffectAdd");
-            this.btnEffectAdd.Image = global::InternalFilters.Properties.Resources.effect_add_24x;
-            this.btnEffectAdd.Name = "btnEffectAdd";
-            this.toolTip.SetToolTip(this.btnEffectAdd, resources.GetString("btnEffectAdd.ToolTip"));
-            this.btnEffectAdd.UseVisualStyleBackColor = true;
-            this.btnEffectAdd.Click += new System.EventHandler(this.btnEffectAdd_Click);
-            // 
-            // btnEffectRemove
-            // 
-            resources.ApplyResources(this.btnEffectRemove, "btnEffectRemove");
-            this.btnEffectRemove.Image = global::InternalFilters.Properties.Resources.effect_remove_24x;
-            this.btnEffectRemove.Name = "btnEffectRemove";
-            this.toolTip.SetToolTip(this.btnEffectRemove, resources.GetString("btnEffectRemove.ToolTip"));
-            this.btnEffectRemove.UseVisualStyleBackColor = true;
-            this.btnEffectRemove.Click += new System.EventHandler(this.btnEffectRemove_Click);
-            // 
-            // btnEffectUp
-            // 
-            resources.ApplyResources(this.btnEffectUp, "btnEffectUp");
-            this.btnEffectUp.Image = global::InternalFilters.Properties.Resources.effect_up_24x;
-            this.btnEffectUp.Name = "btnEffectUp";
-            this.toolTip.SetToolTip(this.btnEffectUp, resources.GetString("btnEffectUp.ToolTip"));
-            this.btnEffectUp.UseVisualStyleBackColor = true;
-            this.btnEffectUp.Click += new System.EventHandler(this.btnEffectUp_Click);
-            // 
-            // btnEffectDown
-            // 
-            resources.ApplyResources(this.btnEffectDown, "btnEffectDown");
-            this.btnEffectDown.Image = global::InternalFilters.Properties.Resources.effect_down_24x;
-            this.btnEffectDown.Name = "btnEffectDown";
-            this.toolTip.SetToolTip(this.btnEffectDown, resources.GetString("btnEffectDown.ToolTip"));
-            this.btnEffectDown.UseVisualStyleBackColor = true;
-            this.btnEffectDown.Click += new System.EventHandler(this.btnEffectDown_Click);
-            // 
-            // btnOriginal
-            // 
-            resources.ApplyResources(this.btnOriginal, "btnOriginal");
-            this.btnOriginal.Name = "btnOriginal";
-            this.toolTip.SetToolTip(this.btnOriginal, resources.GetString("btnOriginal.ToolTip"));
-            this.btnOriginal.UseVisualStyleBackColor = true;
-            this.btnOriginal.Click += new System.EventHandler(this.btnOriginal_Click);
-            // 
-            // pnlCustom
-            // 
-            resources.ApplyResources(this.pnlCustom, "pnlCustom");
-            this.pnlCustom.Name = "pnlCustom";
             // 
             // csSelect
             // 
@@ -249,6 +175,49 @@
             0,
             0});
             // 
+            // lvFilters
+            // 
+            resources.ApplyResources(this.lvFilters, "lvFilters");
+            this.lvFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvFilters.FullRowSelect = true;
+            this.lvFilters.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lvFilters.HideSelection = false;
+            this.lvFilters.LargeImageList = this.ilLarge;
+            this.lvFilters.Name = "lvFilters";
+            this.lvFilters.ShowItemToolTips = true;
+            this.lvFilters.SmallImageList = this.ilSmall;
+            this.lvFilters.UseCompatibleStateImageBehavior = false;
+            this.lvFilters.View = System.Windows.Forms.View.List;
+            this.lvFilters.VirtualMode = true;
+            this.lvFilters.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvFilters_RetrieveVirtualItem);
+            this.lvFilters.DoubleClick += new System.EventHandler(this.lvFilters_DoubleClick);
+            // 
+            // ilLarge
+            // 
+            this.ilLarge.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            resources.ApplyResources(this.ilLarge, "ilLarge");
+            this.ilLarge.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // ilSmall
+            // 
+            this.ilSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            resources.ApplyResources(this.ilSmall, "ilSmall");
+            this.ilSmall.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // pnlEffectTools
+            // 
+            resources.ApplyResources(this.pnlEffectTools, "pnlEffectTools");
+            this.pnlEffectTools.Controls.Add(this.btnEffectDown);
+            this.pnlEffectTools.Controls.Add(this.btnEffectUp);
+            this.pnlEffectTools.Controls.Add(this.btnEffectRemove);
+            this.pnlEffectTools.Controls.Add(this.btnEffectAdd);
+            this.pnlEffectTools.Name = "pnlEffectTools";
+            // 
+            // pnlCustom
+            // 
+            resources.ApplyResources(this.pnlCustom, "pnlCustom");
+            this.pnlCustom.Name = "pnlCustom";
+            // 
             // imgPreview
             // 
             resources.ApplyResources(this.imgPreview, "imgPreview");
@@ -260,17 +229,49 @@
             this.imgPreview.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.imgPreview.Zoom = 100;
             // 
-            // ilSmall
+            // btnEffectDown
             // 
-            this.ilSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            resources.ApplyResources(this.ilSmall, "ilSmall");
-            this.ilSmall.TransparentColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnEffectDown, "btnEffectDown");
+            this.btnEffectDown.Image = global::InternalFilters.Properties.Resources.effect_down_24x;
+            this.btnEffectDown.Name = "btnEffectDown";
+            this.toolTip.SetToolTip(this.btnEffectDown, resources.GetString("btnEffectDown.ToolTip"));
+            this.btnEffectDown.UseVisualStyleBackColor = true;
+            this.btnEffectDown.Click += new System.EventHandler(this.btnEffectDown_Click);
             // 
-            // ilLarge
+            // btnEffectUp
             // 
-            this.ilLarge.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            resources.ApplyResources(this.ilLarge, "ilLarge");
-            this.ilLarge.TransparentColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnEffectUp, "btnEffectUp");
+            this.btnEffectUp.Image = global::InternalFilters.Properties.Resources.effect_up_24x;
+            this.btnEffectUp.Name = "btnEffectUp";
+            this.toolTip.SetToolTip(this.btnEffectUp, resources.GetString("btnEffectUp.ToolTip"));
+            this.btnEffectUp.UseVisualStyleBackColor = true;
+            this.btnEffectUp.Click += new System.EventHandler(this.btnEffectUp_Click);
+            // 
+            // btnEffectRemove
+            // 
+            resources.ApplyResources(this.btnEffectRemove, "btnEffectRemove");
+            this.btnEffectRemove.Image = global::InternalFilters.Properties.Resources.effect_remove_24x;
+            this.btnEffectRemove.Name = "btnEffectRemove";
+            this.toolTip.SetToolTip(this.btnEffectRemove, resources.GetString("btnEffectRemove.ToolTip"));
+            this.btnEffectRemove.UseVisualStyleBackColor = true;
+            this.btnEffectRemove.Click += new System.EventHandler(this.btnEffectRemove_Click);
+            // 
+            // btnEffectAdd
+            // 
+            resources.ApplyResources(this.btnEffectAdd, "btnEffectAdd");
+            this.btnEffectAdd.Image = global::InternalFilters.Properties.Resources.effect_add_24x;
+            this.btnEffectAdd.Name = "btnEffectAdd";
+            this.toolTip.SetToolTip(this.btnEffectAdd, resources.GetString("btnEffectAdd.ToolTip"));
+            this.btnEffectAdd.UseVisualStyleBackColor = true;
+            this.btnEffectAdd.Click += new System.EventHandler(this.btnEffectAdd_Click);
+            // 
+            // btnOriginal
+            // 
+            resources.ApplyResources(this.btnOriginal, "btnOriginal");
+            this.btnOriginal.Name = "btnOriginal";
+            this.toolTip.SetToolTip(this.btnOriginal, resources.GetString("btnOriginal.ToolTip"));
+            this.btnOriginal.UseVisualStyleBackColor = true;
+            this.btnOriginal.Click += new System.EventHandler(this.btnOriginal_Click);
             // 
             // PinObjectForm
             // 
@@ -291,7 +292,7 @@
             this.Name = "PinObjectForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Load += new System.EventHandler(this.StampObjectForm_Load);
+            this.Load += new System.EventHandler(this.PinObjectForm_Load);
             this.grpCommonSetting.ResumeLayout(false);
             this.pnlPosMode.ResumeLayout(false);
             this.pnlEffectTools.ResumeLayout(false);

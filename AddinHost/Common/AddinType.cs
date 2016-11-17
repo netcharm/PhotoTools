@@ -8,6 +8,10 @@ using System.Text;
 
 namespace NetCharm.Image.Addins
 {
+    //using ParamList = Dictionary<string, ParamItem>;
+
+    //public class ParamList : Dictionary<string, ParamItem> { }
+
     /// <summary>
     /// 
     /// </summary>

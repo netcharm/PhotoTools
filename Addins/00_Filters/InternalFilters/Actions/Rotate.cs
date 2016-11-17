@@ -101,25 +101,22 @@ namespace InternalFilters.Actions
                 fm.ShowInTaskbar = false;
                 fm.StartPosition = FormStartPosition.CenterParent;
 
+                if ( Params.ContainsKey( "Mode" ) )
+                    fm.SetMode( "Mode", Params["Mode"] );
+                if ( Params.ContainsKey( "Angle" ) )
+                    fm.SetAngle( "Angle", Params["Angle"] );
+                if ( Params.ContainsKey( "KeepSize" ) )
+                    fm.SetKeepSize( "KeepSize", Params["KeepSize"] );
+
                 Translate( fm );
             }
             if ( fm.ShowDialog() == DialogResult.OK )
             {
                 _success = true;
-                if ( Params.ContainsKey( "Mode" ) )
-                    Params["Mode"] = fm.GetMode( "Mode" );
-                else
-                    Params.Add( "Mode", fm.GetMode( "Mode" ) );
 
-                if ( Params.ContainsKey( "Angle" ) )
-                    Params["Angle"] = fm.GetAngle( "Angle" );
-                else
-                    Params.Add( "Angle", fm.GetAngle( "Angle" ) );
-
-                if ( Params.ContainsKey( "KeepSize" ) )
-                    Params["KeepSize"] = fm.GetKeepSize( "KeepSize" );
-                else
-                    Params.Add( "KeepSize", fm.GetKeepSize( "KeepSize" ) );
+                Params["Mode"] = fm.GetMode( "Mode" );
+                Params["Angle"] = fm.GetAngle( "Angle" );
+                Params["KeepSize"] = fm.GetKeepSize( "KeepSize" );
 
                 if ( !setup )
                 {

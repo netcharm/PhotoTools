@@ -283,8 +283,8 @@ namespace InternalFilters.Actions
                 {
                     Name = "Height",
                     DisplayName = AddinUtils._( this, "Height" ),
-                    Type = ImgSrc.Width.GetType(),
-                    Value = ImgSrc.Width
+                    Type = ImgSrc.Height.GetType(),
+                    Value = ImgSrc.Height
                 };
             }
             else
@@ -307,25 +307,10 @@ namespace InternalFilters.Actions
         /// <param name="form"></param>
         private void GetParams( ResizeForm form )
         {
-            if ( Params.ContainsKey( "Width" ) )
-                Params["Width"] = form.ParamWidth;
-            else
-                Params.Add( "Width", form.ParamWidth );
-
-            if ( Params.ContainsKey( "Height" ) )
-                Params["Height"] = form.ParamHeight;
-            else
-                Params.Add( "Height", form.ParamHeight );
-
-            if ( Params.ContainsKey( "Aspect" ) )
-                Params["Aspect"] = form.ParamAspect;
-            else
-                Params.Add( "Aspect", form.ParamAspect );
-
-            if ( Params.ContainsKey( "Method" ) )
-                Params["Method"] = form.ParamMethod;
-            else
-                Params.Add( "Method", form.ParamMethod );
+            Params["Width"] = form.ParamWidth;
+            Params["Height"] = form.ParamHeight;
+            Params["Aspect"] = form.ParamAspect;
+            Params["Method"] = form.ParamMethod;
         }
 
         /// <summary>
@@ -354,7 +339,14 @@ namespace InternalFilters.Actions
 
                 Translate( fm );
 
-                if ( ImgSrc != null )
+                if(setup)
+                {
+                    if(Params.ContainsKey("Width") && Params.ContainsKey( "Height" ) )
+                        SetParams( fm, null );
+                    else
+                        SetParams( fm, ImgSrc );
+                }
+                else if ( ImgSrc != null )
                 {
                     SetParams( fm, ImgSrc );
                 }

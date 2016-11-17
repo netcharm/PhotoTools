@@ -155,7 +155,7 @@ namespace InternalFilters.Actions
         /// </summary>
         /// <param name="form"></param>
         /// <param name="img"></param>
-        protected override void SetParams( Form form, Image img = null )
+        protected override void SetParams( Form form, System.Drawing.Image img = null )
         {
             if ( Params.Count == 0 ) InitParams();
 
@@ -276,6 +276,17 @@ namespace InternalFilters.Actions
                     {
                         MessageBox.Show( $"Subitem \"{args[0] as string}\" Clicked" );
                     }
+                    break;
+                case AddinCommand.GetParams:
+                    GetParams( fm );
+                    result = Params;
+                    break;
+                case AddinCommand.SetParams:
+                    foreach(var item in args[0] as Dictionary<string, ParamItem>)
+                    {
+
+                    }
+                    SetParams( fm, null );
                     break;
                 default:
                     break;

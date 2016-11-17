@@ -129,7 +129,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>588, 401</value>
+    <value>547, 422</value>
   </data>
   <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -160,7 +160,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>498, 401</value>
+    <value>457, 422</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -226,7 +226,7 @@
     <value>12, 12</value>
   </data>
   <data name="grpCommonSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 417</value>
+    <value>194, 438</value>
   </data>
   <data name="grpCommonSetting.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -298,7 +298,7 @@
     <value>Bottom</value>
   </data>
   <data name="pnlPosMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 277</value>
+    <value>3, 298</value>
   </data>
   <data name="pnlPosMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>188, 137</value>
@@ -328,7 +328,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 80</value>
+    <value>9, 110</value>
   </data>
   <data name="chkEnabled.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 24</value>
@@ -361,7 +361,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkTile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 110</value>
+    <value>9, 80</value>
   </data>
   <data name="chkTile.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 24</value>
@@ -387,6 +387,9 @@
   <data name="btnPosRandom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
+  <data name="btnPosRandom.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
   <data name="btnPosRandom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -399,8 +402,8 @@
   <data name="btnPosRandom.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
-  <data name="btnPosRandom.Text" xml:space="preserve">
-    <value>Random</value>
+  <data name="btnPosRandom.ToolTip" xml:space="preserve">
+    <value>Random Put Object To Image</value>
   </data>
   <data name="&gt;&gt;btnPosRandom.Name" xml:space="preserve">
     <value>btnPosRandom</value>
@@ -413,313 +416,6 @@
   </data>
   <data name="&gt;&gt;btnPosRandom.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="lvFilters.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <metadata name="ilLarge.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>207, 17</value>
-  </metadata>
-  <data name="ilLarge.ImageSize" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="lvFilters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 131</value>
-  </data>
-  <data name="lvFilters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 256</value>
-  </data>
-  <metadata name="ilSmall.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>112, 17</value>
-  </metadata>
-  <data name="ilSmall.ImageSize" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="lvFilters.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;lvFilters.Name" xml:space="preserve">
-    <value>lvFilters</value>
-  </data>
-  <data name="&gt;&gt;lvFilters.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lvFilters.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lvFilters.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="pnlEffectTools.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="&gt;&gt;btnEffectDown.Name" xml:space="preserve">
-    <value>btnEffectDown</value>
-  </data>
-  <data name="&gt;&gt;btnEffectDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEffectDown.Parent" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;btnEffectDown.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnEffectUp.Name" xml:space="preserve">
-    <value>btnEffectUp</value>
-  </data>
-  <data name="&gt;&gt;btnEffectUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEffectUp.Parent" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;btnEffectUp.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnEffectRemove.Name" xml:space="preserve">
-    <value>btnEffectRemove</value>
-  </data>
-  <data name="&gt;&gt;btnEffectRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEffectRemove.Parent" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;btnEffectRemove.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;btnEffectAdd.Name" xml:space="preserve">
-    <value>btnEffectAdd</value>
-  </data>
-  <data name="&gt;&gt;btnEffectAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEffectAdd.Parent" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;btnEffectAdd.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlEffectTools.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 391</value>
-  </data>
-  <data name="pnlEffectTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 38</value>
-  </data>
-  <data name="pnlEffectTools.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;pnlEffectTools.Name" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;pnlEffectTools.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlEffectTools.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlEffectTools.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnEffectAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnEffectAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnEffectAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="btnEffectAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="btnEffectAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="btnEffectAdd.ToolTip" xml:space="preserve">
-    <value>Add Effect</value>
-  </data>
-  <data name="&gt;&gt;btnEffectAdd.Name" xml:space="preserve">
-    <value>btnEffectAdd</value>
-  </data>
-  <data name="&gt;&gt;btnEffectAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEffectAdd.Parent" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;btnEffectAdd.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="btnEffectRemove.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnEffectRemove.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnEffectRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>44, 3</value>
-  </data>
-  <data name="btnEffectRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="btnEffectRemove.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="btnEffectRemove.ToolTip" xml:space="preserve">
-    <value>Remove Effect</value>
-  </data>
-  <data name="&gt;&gt;btnEffectRemove.Name" xml:space="preserve">
-    <value>btnEffectRemove</value>
-  </data>
-  <data name="&gt;&gt;btnEffectRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEffectRemove.Parent" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;btnEffectRemove.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="btnEffectUp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnEffectUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnEffectUp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 3</value>
-  </data>
-  <data name="btnEffectUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="btnEffectUp.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="btnEffectUp.ToolTip" xml:space="preserve">
-    <value>Move Up Selected Effect</value>
-  </data>
-  <data name="&gt;&gt;btnEffectUp.Name" xml:space="preserve">
-    <value>btnEffectUp</value>
-  </data>
-  <data name="&gt;&gt;btnEffectUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEffectUp.Parent" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;btnEffectUp.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnEffectDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnEffectDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnEffectDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 3</value>
-  </data>
-  <data name="btnEffectDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="btnEffectDown.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="btnEffectDown.ToolTip" xml:space="preserve">
-    <value>Move Down Selected Effect</value>
-  </data>
-  <data name="&gt;&gt;btnEffectDown.Name" xml:space="preserve">
-    <value>btnEffectDown</value>
-  </data>
-  <data name="&gt;&gt;btnEffectDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEffectDown.Parent" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;btnEffectDown.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnOriginal.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnOriginal.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
-  <data name="btnOriginal.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="btnOriginal.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
-  </data>
-  <data name="btnOriginal.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAWJLR0QPGLoA2QAAAAd0SU1FB+ALBg87
-        Kf1374YAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMTEtMDZUMTU6NTk6NDErMDg6MDADdy/5AAAAJXRF
-        WHRkYXRlOm1vZGlmeQAyMDE2LTExLTA2VDE1OjU5OjQxKzA4OjAwciqXRQAAAB50RVh0cGRmOkhpUmVz
-        Qm91bmRpbmdCb3gAMTZ4MTYrMCswnHvaewAAABZ0RVh0cGRmOlNwb3RDb2xvci0wAFZTIE91dNFAVpsA
-        AAAVdEVYdHBkZjpTcG90Q29sb3ItMQBWUyBCRy9VPo8AAAAVdEVYdHBkZjpTcG90Q29sb3ItMgBWUyBG
-        R3rR4RYAAAAUdEVYdHBkZjpWZXJzaW9uAFBERi0xLjUNQINXTAAAARFJREFUWEftk0EOgjAQRTkbcc1Z
-        8Cy4xXPIBcA7yEpdsVE3bDWfZMjQtJ0OIdQoTd6CTqf/FUqyjeij7/tdTCDwjskoUNf1qnRdNxVI03RV
-        ILGIQJ7vVWRZNvQtJvB8vFRAAn1qAddJbCE+Zgk0zXmyCZ6pRnO3632UAmV5nPQQagFfOOC1EAmVgBQO
-        eB1IEsECZnh7aYdmE76Gr3VJoAdzXgEz3AdtKEESooAmHIQKAEiIAtWpsga50AjgcKIA0EgUxWHY1ITf
-        AUBvFjU8i5fQlDBvN8HXEAjja/hnDRYAIRK8DnzhQCUAJAlek8KBWgCYEvw/53PYnLCFg1kCPmwhPn5P
-        YC7fJxCL+ALb+PORJB9DQAiWCJs7UQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnOriginal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnOriginal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>407, 391</value>
-  </data>
-  <data name="btnOriginal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 38</value>
-  </data>
-  <data name="btnOriginal.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="btnOriginal.ToolTip" xml:space="preserve">
-    <value>View Original</value>
-  </data>
-  <data name="&gt;&gt;btnOriginal.Name" xml:space="preserve">
-    <value>btnOriginal</value>
-  </data>
-  <data name="&gt;&gt;btnOriginal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnOriginal.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnOriginal.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="pnlCustom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="pnlCustom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 12</value>
-  </data>
-  <data name="pnlCustom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 113</value>
-  </data>
-  <data name="pnlCustom.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;pnlCustom.Name" xml:space="preserve">
-    <value>pnlCustom</value>
-  </data>
-  <data name="&gt;&gt;pnlCustom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlCustom.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlCustom.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="csSelect.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -808,11 +504,143 @@
   <data name="&gt;&gt;slideOpaque.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="lvFilters.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <metadata name="ilLarge.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>207, 17</value>
+  </metadata>
+  <data name="ilLarge.ImageSize" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="lvFilters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 152</value>
+  </data>
+  <data name="lvFilters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 256</value>
+  </data>
+  <metadata name="ilSmall.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>112, 17</value>
+  </metadata>
+  <data name="ilSmall.ImageSize" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="lvFilters.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;lvFilters.Name" xml:space="preserve">
+    <value>lvFilters</value>
+  </data>
+  <data name="&gt;&gt;lvFilters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lvFilters.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lvFilters.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnlEffectTools.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="&gt;&gt;btnEffectDown.Name" xml:space="preserve">
+    <value>btnEffectDown</value>
+  </data>
+  <data name="&gt;&gt;btnEffectDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEffectDown.Parent" xml:space="preserve">
+    <value>pnlEffectTools</value>
+  </data>
+  <data name="&gt;&gt;btnEffectDown.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnEffectUp.Name" xml:space="preserve">
+    <value>btnEffectUp</value>
+  </data>
+  <data name="&gt;&gt;btnEffectUp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEffectUp.Parent" xml:space="preserve">
+    <value>pnlEffectTools</value>
+  </data>
+  <data name="&gt;&gt;btnEffectUp.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnEffectRemove.Name" xml:space="preserve">
+    <value>btnEffectRemove</value>
+  </data>
+  <data name="&gt;&gt;btnEffectRemove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEffectRemove.Parent" xml:space="preserve">
+    <value>pnlEffectTools</value>
+  </data>
+  <data name="&gt;&gt;btnEffectRemove.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnEffectAdd.Name" xml:space="preserve">
+    <value>btnEffectAdd</value>
+  </data>
+  <data name="&gt;&gt;btnEffectAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEffectAdd.Parent" xml:space="preserve">
+    <value>pnlEffectTools</value>
+  </data>
+  <data name="&gt;&gt;btnEffectAdd.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pnlEffectTools.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 412</value>
+  </data>
+  <data name="pnlEffectTools.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 38</value>
+  </data>
+  <data name="pnlEffectTools.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;pnlEffectTools.Name" xml:space="preserve">
+    <value>pnlEffectTools</value>
+  </data>
+  <data name="&gt;&gt;pnlEffectTools.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlEffectTools.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlEffectTools.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlCustom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="pnlCustom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 12</value>
+  </data>
+  <data name="pnlCustom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>410, 134</value>
+  </data>
+  <data name="pnlCustom.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;pnlCustom.Name" xml:space="preserve">
+    <value>pnlCustom</value>
+  </data>
+  <data name="&gt;&gt;pnlCustom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlCustom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlCustom.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="imgPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="imgPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>407, 131</value>
+    <value>366, 152</value>
   </data>
   <data name="imgPreview.SelectionRegion" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -840,6 +668,193 @@
   <data name="&gt;&gt;imgPreview.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="btnEffectDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
+  <data name="btnEffectDown.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnEffectDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEffectDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 3</value>
+  </data>
+  <data name="btnEffectDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="btnEffectDown.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="btnEffectDown.ToolTip" xml:space="preserve">
+    <value>Move Down Selected Effect</value>
+  </data>
+  <data name="&gt;&gt;btnEffectDown.Name" xml:space="preserve">
+    <value>btnEffectDown</value>
+  </data>
+  <data name="&gt;&gt;btnEffectDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEffectDown.Parent" xml:space="preserve">
+    <value>pnlEffectTools</value>
+  </data>
+  <data name="&gt;&gt;btnEffectDown.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnEffectUp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
+  <data name="btnEffectUp.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnEffectUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEffectUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 3</value>
+  </data>
+  <data name="btnEffectUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="btnEffectUp.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="btnEffectUp.ToolTip" xml:space="preserve">
+    <value>Move Up Selected Effect</value>
+  </data>
+  <data name="&gt;&gt;btnEffectUp.Name" xml:space="preserve">
+    <value>btnEffectUp</value>
+  </data>
+  <data name="&gt;&gt;btnEffectUp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEffectUp.Parent" xml:space="preserve">
+    <value>pnlEffectTools</value>
+  </data>
+  <data name="&gt;&gt;btnEffectUp.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnEffectRemove.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="btnEffectRemove.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnEffectRemove.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEffectRemove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 3</value>
+  </data>
+  <data name="btnEffectRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="btnEffectRemove.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="btnEffectRemove.ToolTip" xml:space="preserve">
+    <value>Remove Effect</value>
+  </data>
+  <data name="&gt;&gt;btnEffectRemove.Name" xml:space="preserve">
+    <value>btnEffectRemove</value>
+  </data>
+  <data name="&gt;&gt;btnEffectRemove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEffectRemove.Parent" xml:space="preserve">
+    <value>pnlEffectTools</value>
+  </data>
+  <data name="&gt;&gt;btnEffectRemove.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnEffectAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="btnEffectAdd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnEffectAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEffectAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 3</value>
+  </data>
+  <data name="btnEffectAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="btnEffectAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="btnEffectAdd.ToolTip" xml:space="preserve">
+    <value>Add Effect</value>
+  </data>
+  <data name="&gt;&gt;btnEffectAdd.Name" xml:space="preserve">
+    <value>btnEffectAdd</value>
+  </data>
+  <data name="&gt;&gt;btnEffectAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEffectAdd.Parent" xml:space="preserve">
+    <value>pnlEffectTools</value>
+  </data>
+  <data name="&gt;&gt;btnEffectAdd.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnOriginal.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnOriginal.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="btnOriginal.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnOriginal.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnOriginal.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAWJLR0QPGLoA2QAAAAd0SU1FB+ALBg87
+        Kf1374YAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMTEtMDZUMTU6NTk6NDErMDg6MDADdy/5AAAAJXRF
+        WHRkYXRlOm1vZGlmeQAyMDE2LTExLTA2VDE1OjU5OjQxKzA4OjAwciqXRQAAAB50RVh0cGRmOkhpUmVz
+        Qm91bmRpbmdCb3gAMTZ4MTYrMCswnHvaewAAABZ0RVh0cGRmOlNwb3RDb2xvci0wAFZTIE91dNFAVpsA
+        AAAVdEVYdHBkZjpTcG90Q29sb3ItMQBWUyBCRy9VPo8AAAAVdEVYdHBkZjpTcG90Q29sb3ItMgBWUyBG
+        R3rR4RYAAAAUdEVYdHBkZjpWZXJzaW9uAFBERi0xLjUNQINXTAAAARFJREFUWEftk0EOgjAQRTkbcc1Z
+        8Cy4xXPIBcA7yEpdsVE3bDWfZMjQtJ0OIdQoTd6CTqf/FUqyjeij7/tdTCDwjskoUNf1qnRdNxVI03RV
+        ILGIQJ7vVWRZNvQtJvB8vFRAAn1qAddJbCE+Zgk0zXmyCZ6pRnO3632UAmV5nPQQagFfOOC1EAmVgBQO
+        eB1IEsECZnh7aYdmE76Gr3VJoAdzXgEz3AdtKEESooAmHIQKAEiIAtWpsga50AjgcKIA0EgUxWHY1ITf
+        AUBvFjU8i5fQlDBvN8HXEAjja/hnDRYAIRK8DnzhQCUAJAlek8KBWgCYEvw/53PYnLCFg1kCPmwhPn5P
+        YC7fJxCL+ALb+PORJB9DQAiWCJs7UQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnOriginal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnOriginal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>366, 412</value>
+  </data>
+  <data name="btnOriginal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 38</value>
+  </data>
+  <data name="btnOriginal.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="btnOriginal.ToolTip" xml:space="preserve">
+    <value>View Original</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.Name" xml:space="preserve">
+    <value>btnOriginal</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnOriginal.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -847,7 +862,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>675, 437</value>
+    <value>634, 458</value>
   </data>
   <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -861,16 +876,16 @@
   <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ilSmall.Name" xml:space="preserve">
-    <value>ilSmall</value>
-  </data>
-  <data name="&gt;&gt;ilSmall.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;ilLarge.Name" xml:space="preserve">
     <value>ilLarge</value>
   </data>
   <data name="&gt;&gt;ilLarge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ilSmall.Name" xml:space="preserve">
+    <value>ilSmall</value>
+  </data>
+  <data name="&gt;&gt;ilSmall.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

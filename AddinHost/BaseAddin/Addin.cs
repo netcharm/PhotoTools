@@ -405,6 +405,7 @@ namespace NetCharm.Image.Addins
         public Dictionary<string, ParamItem> Params
         {
             get { return ( _params ); }
+            protected internal set { _params = value; }
         }
 
         /// <summary>
@@ -475,7 +476,7 @@ namespace NetCharm.Image.Addins
         /// 
         /// </summary>
         /// <param name="kvlist"></param>
-        public virtual void InitParams( Dictionary<string, object> kvlist )
+        protected virtual void InitParams( Dictionary<string, object> kvlist )
         {
             Params.Clear();
             foreach ( var item in kvlist )
@@ -493,8 +494,9 @@ namespace NetCharm.Image.Addins
         /// </summary>
         /// <param name="form"></param>
         /// <param name="img"></param>
-        protected virtual void SetParams( Form form, System.Drawing.Image img = null )
+        protected internal virtual void SetParams( Form form, System.Drawing.Image img = null )
         {
+            //if ( Params.Count == 0 ) InitParams(new Dictionary<string, object>());
             throw new NotImplementedException();
         }
         /// <summary>
