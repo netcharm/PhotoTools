@@ -124,7 +124,10 @@
             this.lvFilters.UseCompatibleStateImageBehavior = false;
             this.lvFilters.View = System.Windows.Forms.View.List;
             this.lvFilters.VirtualMode = true;
+            this.lvFilters.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvFilters_ItemSelectionChanged);
             this.lvFilters.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvFilters_RetrieveVirtualItem);
+            this.lvFilters.SelectedIndexChanged += new System.EventHandler(this.lvFilters_SelectedIndexChanged);
+            this.lvFilters.VirtualItemsSelectionRangeChanged += new System.Windows.Forms.ListViewVirtualItemsSelectionRangeChangedEventHandler(this.lvFilters_VirtualItemsSelectionRangeChanged);
             // 
             // pnlEffectTools
             // 

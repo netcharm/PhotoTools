@@ -65,10 +65,11 @@ namespace InternalFilters.Actions
         {
             try
             {
-                if ( e.ItemIndex >= 0 && e.ItemIndex < effects.Count && effects.Count > 0 )
+                if ( effects.Count > 0 && e.ItemIndex >= 0 && e.ItemIndex < effects.Count )
                 {
                     e.Item = effects[e.ItemIndex];
                     e.Item.BackColor = ( e.ItemIndex % 2 == 1 ) ? Color.AliceBlue : e.Item.BackColor;
+                    e.Item.Selected = effects[e.ItemIndex].Selected;
                 }
                 else
                 {
@@ -81,6 +82,33 @@ namespace InternalFilters.Actions
                 e.Item = new ListViewItem( new string[] { "Error" } );
                 e.Item.BackColor = Color.LightPink;
             }
+        }
+
+        private void lvFilters_ItemSelectionChanged( object sender, ListViewItemSelectionChangedEventArgs e )
+        {
+            //if ( effects.Count > 0 && e.ItemIndex >= 0 && e.ItemIndex < effects.Count )
+            //{
+            //    effects[e.ItemIndex].Selected = e.IsSelected;
+            //}
+        }
+
+        private void lvFilters_VirtualItemsSelectionRangeChanged( object sender, ListViewVirtualItemsSelectionRangeChangedEventArgs e )
+        {
+        }
+
+        private void lvFilters_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            //foreach(int i in lvFilters.SelectedIndices)
+            //{
+            //    effects[i].Selected = true;
+            //}
+            //for ( int i = 0; i < effects.Count; i++ )
+            //{
+            //    if ( lvFilters.SelectedIndices.Contains( i ) )
+            //        effects[i].Selected = true;
+            //    else
+            //        effects[i].Selected = false;
+            //}
         }
 
         private void btnOriginal_Click( object sender, EventArgs e )
@@ -105,6 +133,7 @@ namespace InternalFilters.Actions
                 ilLarge.Images.Add( filter.LargeIcon );
                 ilSmall.Images.Add( filter.SmallIcon );
                 effects.Add( new ListViewItem( filter.DisplayName ) );
+                effects.Last().Selected = false;
                 effects.Last().Tag = filter;
                 effects.Last().ImageIndex = ilLarge.Images.Count;
             }
@@ -113,7 +142,15 @@ namespace InternalFilters.Actions
 
         private void btnEffectRemove_Click( object sender, EventArgs e )
         {
+            //var test = lvFilters.SelectedIndices.Cast<int>().AsEnumerable().Reverse();
+
+            List<int> selected = new List<int>();
             foreach ( int i in lvFilters.SelectedIndices )
+            {
+                selected.Add( i );
+            }
+            selected.Reverse();
+            foreach ( int i in selected )
             {
                 ListViewItem item = effects[i];
 
@@ -138,7 +175,12 @@ namespace InternalFilters.Actions
                 var fi = effects[i];
                 effects[i] = effects[i-1];
                 effects[i - 1] = fi;
+                effects[i - 1].Selected = true;
+                effects[i].Selected = false;
+                lvFilters.Items[i - 1].Selected = true;
+                lvFilters.Items[i].Selected = false;
             }
+            //lvFilters.Refresh();
             lvFilters.Invalidate();
         }
 
@@ -150,7 +192,12 @@ namespace InternalFilters.Actions
                 var fi = effects[i];
                 effects[i] = effects[i + 1];
                 effects[i + 1] = fi;
+                effects[i + 1].Selected = true;
+                effects[i].Selected = false;
+                lvFilters.Items[i + 1].Selected = true;
+                lvFilters.Items[i].Selected = false;
             }
+            //lvFilters.Refresh();
             lvFilters.Invalidate();
         }
 
