@@ -21,6 +21,8 @@ namespace NetCharm.Image.Addins
     //public class AddinHost : UserControl
     public class AddinHost : Component
     {
+        private static AddinHost Host = null;
+
         #region Addin Host List Properties
         /// <summary>
         /// 
@@ -332,6 +334,7 @@ namespace NetCharm.Image.Addins
         /// </summary>
         public AddinHost()
         {
+            Host = this;
             SetDir( "" );
         }
         /// <summary>
@@ -340,6 +343,7 @@ namespace NetCharm.Image.Addins
         /// <param name="path"></param>
         public AddinHost( string path = "" )
         {
+            Host = this;
             SetDir( path );
         }
 
@@ -423,6 +427,10 @@ namespace NetCharm.Image.Addins
             resources.ApplyResources( this, "$this" );
         }
 
+        internal static AddinHost GetHost()
+        {
+            return ( Host );
+        }
     }
 }
 
