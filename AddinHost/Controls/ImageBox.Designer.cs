@@ -40,7 +40,7 @@
             this.Viewer.Size = new System.Drawing.Size(150, 150);
             this.Viewer.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.Viewer.TabIndex = 0;
-            this.Viewer.Text = "imageBox1";
+            this.Viewer.Text = "";
             this.Viewer.TextDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.None;
             this.Viewer.SelectionRegionChanged += new System.EventHandler(this.Viewer_SelectionRegionChanged);
             this.Viewer.DoubleClick += new System.EventHandler(this.Viewer_DoubleClick);

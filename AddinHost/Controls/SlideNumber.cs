@@ -35,6 +35,10 @@ namespace NetCharm.Image.Addins.Controls
             {
                 edValue.Value = value;
                 slideValue.Value = Convert.ToInt32( (float) value * factor );
+                if ( slideValue.Value < slideValue.Minimum ) slideValue.Value = slideValue.Minimum;
+                if ( slideValue.Value > slideValue.Maximum ) slideValue.Value = slideValue.Maximum;
+                if ( edValue.Value > edValue.Maximum ) edValue.Value = edValue.Maximum;
+                if ( edValue.Value < edValue.Minimum ) edValue.Value = edValue.Minimum;
             }
         }
 
@@ -46,6 +50,10 @@ namespace NetCharm.Image.Addins.Controls
             {
                 edValue.Minimum = value;
                 slideValue.Minimum = Convert.ToInt32( (float) value * factor );
+                if ( slideValue.Value < slideValue.Minimum ) slideValue.Value = slideValue.Minimum;
+                if ( slideValue.Value > slideValue.Maximum ) slideValue.Value = slideValue.Maximum;
+                if ( edValue.Value > edValue.Maximum ) edValue.Value = edValue.Maximum;
+                if ( edValue.Value < edValue.Minimum ) edValue.Value = edValue.Minimum;
             }
         }
 
@@ -57,6 +65,10 @@ namespace NetCharm.Image.Addins.Controls
             {
                 edValue.Maximum = value;
                 slideValue.Maximum = Convert.ToInt32( (float) value * factor );
+                if ( slideValue.Value < slideValue.Minimum ) slideValue.Value = slideValue.Minimum;
+                if ( slideValue.Value > slideValue.Maximum ) slideValue.Value = slideValue.Maximum;
+                if ( edValue.Value > edValue.Maximum ) edValue.Value = edValue.Maximum;
+                if ( edValue.Value < edValue.Minimum ) edValue.Value = edValue.Minimum;
             }
         }
 
@@ -67,8 +79,8 @@ namespace NetCharm.Image.Addins.Controls
             set
             {
                 edValue.Increment = value;
-                slideValue.SmallChange = Convert.ToInt32( (float)value * factor );
-                slideValue.TickFrequency = Convert.ToInt32( (float) value * factor );
+                slideValue.SmallChange = Convert.ToInt32( (float) value * factor );
+                slideValue.LargeChange = Convert.ToInt32( (float) value * factor * 5 );
             }
         }
 
@@ -81,7 +93,7 @@ namespace NetCharm.Image.Addins.Controls
                 edValue.DecimalPlaces = value;
                 factor = Math.Pow( 10, value );
                 slideValue.SmallChange = Convert.ToInt32( (float) edValue.Increment * factor );
-                slideValue.TickFrequency = Convert.ToInt32( (float) edValue.Increment * factor );
+                slideValue.LargeChange = Convert.ToInt32( (float) edValue.Increment * factor * 5 );
                 slideValue.Minimum = Convert.ToInt32( (float) edValue.Minimum * factor );
                 slideValue.Maximum = Convert.ToInt32( (float) edValue.Maximum * factor );
                 slideValue.Value = Convert.ToInt32( (float) edValue.Value * factor );
@@ -101,8 +113,10 @@ namespace NetCharm.Image.Addins.Controls
             //slideValue.DataBindings.Add( new Binding( "TickFrequency", edValue, "Increment" ) );
             //slideValue.DataBindings.Add( new Binding( "Value", edValue, "Value" ) );
 
-            //edValue.DataBindings.Add( new Binding( "Value", slideValue, "Value" ) );
+            //edValue.DataBindings.Add( new Binding( "Value", slideValue, "Value" ) );            
         }
+
+
 
         private void ParamNumber_Load( object sender, EventArgs e )
         {

@@ -30,12 +30,11 @@
         {
             this.edValue = new System.Windows.Forms.NumericUpDown();
             this.lblCaption = new System.Windows.Forms.Label();
-            this.slideValue = new System.Windows.Forms.TrackBar();
+            this.slideValue = new Cyotek.Windows.Forms.ColorSlider();
             this.layout = new System.Windows.Forms.TableLayoutPanel();
             this.lblUnit = new System.Windows.Forms.Label();
             this.lblTextSuffix = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.edValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.slideValue)).BeginInit();
             this.layout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,15 +76,17 @@
             // 
             // slideValue
             // 
+            this.slideValue.BarStyle = Cyotek.Windows.Forms.ColorBarStyle.ThreeColor;
+            this.slideValue.Color1 = System.Drawing.SystemColors.AppWorkspace;
+            this.slideValue.Color2 = System.Drawing.SystemColors.AppWorkspace;
+            this.slideValue.Color3 = System.Drawing.SystemColors.AppWorkspace;
             this.layout.SetColumnSpan(this.slideValue, 4);
             this.slideValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.slideValue.Location = new System.Drawing.Point(0, 29);
-            this.slideValue.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.slideValue.Location = new System.Drawing.Point(3, 29);
             this.slideValue.Name = "slideValue";
-            this.slideValue.Size = new System.Drawing.Size(279, 20);
-            this.slideValue.TabIndex = 3;
-            this.slideValue.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.slideValue.ValueChanged += new System.EventHandler(this.slideValue_ValueChanged);
+            this.slideValue.ShowValueDivider = true;
+            this.slideValue.Size = new System.Drawing.Size(273, 20);
+            this.slideValue.TabIndex = 0;
             // 
             // layout
             // 
@@ -95,11 +96,11 @@
             this.layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.layout.Controls.Add(this.slideValue, 0, 1);
             this.layout.Controls.Add(this.lblCaption, 0, 0);
             this.layout.Controls.Add(this.lblUnit, 3, 0);
             this.layout.Controls.Add(this.edValue, 2, 0);
             this.layout.Controls.Add(this.lblTextSuffix, 1, 0);
+            this.layout.Controls.Add(this.slideValue, 0, 1);
             this.layout.Dock = System.Windows.Forms.DockStyle.Top;
             this.layout.Location = new System.Drawing.Point(0, 0);
             this.layout.Name = "layout";
@@ -146,7 +147,6 @@
             this.Size = new System.Drawing.Size(279, 54);
             this.Load += new System.EventHandler(this.ParamNumber_Load);
             ((System.ComponentModel.ISupportInitialize)(this.edValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.slideValue)).EndInit();
             this.layout.ResumeLayout(false);
             this.layout.PerformLayout();
             this.ResumeLayout(false);
@@ -158,7 +158,7 @@
 
         private System.Windows.Forms.NumericUpDown edValue;
         private System.Windows.Forms.Label lblCaption;
-        private System.Windows.Forms.TrackBar slideValue;
+        private Cyotek.Windows.Forms.ColorSlider slideValue;
         private System.Windows.Forms.TableLayoutPanel layout;
         private System.Windows.Forms.Label lblUnit;
         private System.Windows.Forms.Label lblTextSuffix;
