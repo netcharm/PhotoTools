@@ -162,6 +162,16 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
+        bool Enabled { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        bool Visible { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         bool SupportMultiFile { get; }
 
         /// <summary>
@@ -369,6 +379,21 @@ namespace NetCharm.Image.Addins
             //}
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _enabled = true;
+        public bool Enabled { get { return ( _enabled ); } set { _enabled = value; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _visible = true;
+        public bool Visible { get { return ( _visible ); } protected internal set { _visible = value; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual List<IAddin> Filters
         {
             get { return ( null ); }
