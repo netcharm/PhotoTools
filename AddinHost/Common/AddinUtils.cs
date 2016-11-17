@@ -4,187 +4,19 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Windows.Forms;
 using Accord.Imaging.Filters;
+using NetCharm.Image.Addins.Common;
 using NGettext.WinForm;
 
 namespace NetCharm.Image.Addins
 {
-
-    public enum SideType
-    {
-        //
-        // 摘要:
-        //     该控件未锚定到其容器的任何边缘。
-        None = 0,
-        //
-        // 摘要:
-        //     该控件锚定到其容器的上边缘。
-        Top = 1,
-        //
-        // 摘要:
-        //     该控件锚定到其容器的下边缘。
-        Bottom = 2,
-        //
-        // 摘要:
-        //     该控件锚定到其容器的左边缘。
-        Left = 4,
-        //
-        // 摘要:
-        //     该控件锚定到其容器的右边缘。
-        Right = 8
-    }
-
-    public enum CornerRegionType
-    {
-        None = 0,
-        //
-        // 摘要:
-        //     内容在垂直方向上顶部对齐，在水平方向上左边对齐。
-        TopLeft = 1,
-        //
-        // 摘要:
-        //     内容在垂直方向上顶部对齐，在水平方向上居中对齐。
-        TopCenter = 2,
-        //
-        // 摘要:
-        //     内容在垂直方向上顶部对齐，在水平方向上右边对齐。
-        TopRight = 4,
-        //
-        // 摘要:
-        //     内容在垂直方向上中间对齐，在水平方向上左边对齐。
-        MiddleLeft = 16,
-        //
-        // 摘要:
-        //     内容在垂直方向上中间对齐，在水平方向上居中对齐。
-        MiddleCenter = 32,
-        //
-        // 摘要:
-        //     内容在垂直方向上中间对齐，在水平方向上右边对齐。
-        MiddleRight = 64,
-        //
-        // 摘要:
-        //     内容在垂直方向上底边对齐，在水平方向上左边对齐。
-        BottomLeft = 256,
-        //
-        // 摘要:
-        //     内容在垂直方向上底边对齐，在水平方向上居中对齐。
-        BottomCenter = 512,
-        //
-        // 摘要:
-        //     内容在垂直方向上底边对齐，在水平方向上右边对齐。
-        BottomRight = 1024
-    }
-
-    public class CornerRegion
-    {
-        private RectangleF _tl;
-        public RectangleF TopLeft
-        {
-            get { return ( _tl ); }
-        }
-        private RectangleF _tc;
-        public RectangleF TopCenter
-        {
-            get { return ( _tc ); }
-        }
-        private RectangleF _tr;
-        public RectangleF TopRight
-        {
-            get { return ( _tr ); }
-        }
-        private RectangleF _ml;
-        public RectangleF MiddleLeft
-        {
-            get { return ( _ml ); }
-        }
-        private RectangleF _mc;
-        public RectangleF MiddleCenter
-        {
-            get { return ( _mc ); }
-        }
-        private RectangleF _mr;
-        public RectangleF MiddleRight
-        {
-            get { return ( _mr ); }
-        }
-        private RectangleF _bl;
-        public RectangleF BottomLeft
-        {
-            get { return ( _bl ); }
-        }
-        private RectangleF _bc;
-        public RectangleF BottomCenter
-        {
-            get { return ( _bc ); }
-        }
-        private RectangleF _br;
-        public RectangleF BottomRight
-        {
-            get { return ( _br ); }
-        }
-
-        public CornerRegion()
-        {
-            //
-        }
-
-        public CornerRegion( Rectangle region, float ratio = 8 )
-        {
-            _tl = new RectangleF( region.Left - ratio, region.Top - ratio, ratio * 2, ratio * 2 );
-            _tc = new RectangleF( region.Left + ratio, region.Top - ratio, region.Width - ratio * 2, ratio * 2 );
-            _tr = new RectangleF( region.Right - ratio, region.Top - ratio, ratio * 2, ratio * 2 );
-
-            _ml = new RectangleF( region.Left - ratio, region.Top + ratio, ratio * 2, region.Height - ratio * 2 );
-            _mc = new RectangleF( region.Left + ratio, region.Top + ratio, region.Width - ratio * 2, region.Height - ratio * 2 );
-            _mr = new RectangleF( region.Right - ratio, region.Top + ratio, ratio * 2, region.Height - ratio * 2 );
-
-            _bl = new RectangleF( region.Left - ratio, region.Bottom - ratio, ratio * 2, ratio * 2 );
-            _bc = new RectangleF( region.Left + ratio, region.Bottom - ratio, region.Width - ratio * 2, ratio * 2 );
-            _br = new RectangleF( region.Right - ratio, region.Bottom - ratio, ratio * 2, ratio * 2 );
-        }
-
-        public CornerRegion(RectangleF region, float ratio = 8 )
-        {
-            _tl = new RectangleF( region.Left - ratio, region.Top - ratio, ratio * 2, ratio * 2 );
-            _tc = new RectangleF( region.Left + ratio, region.Top - ratio, region.Width - ratio * 2, ratio * 2 );
-            _tr = new RectangleF( region.Right - ratio, region.Top - ratio, ratio * 2, ratio * 2 );
-
-            _ml = new RectangleF( region.Left - ratio, region.Top + ratio, ratio * 2, region.Height - ratio * 2 );
-            _mc = new RectangleF( region.Left + ratio, region.Top + ratio, region.Width - ratio * 2, region.Height - ratio * 2 );
-            _mr = new RectangleF( region.Right - ratio, region.Top + ratio, ratio * 2, region.Height - ratio * 2 );
-
-            _bl = new RectangleF( region.Left - ratio, region.Bottom - ratio, ratio * 2, ratio * 2 );
-            _bc = new RectangleF( region.Left + ratio, region.Bottom - ratio, region.Width - ratio * 2, ratio * 2 );
-            _br = new RectangleF( region.Right - ratio, region.Bottom - ratio, ratio * 2, ratio * 2 );
-        }
-
-        public CornerRegionType GetRegion(PointF p)
-        {
-            if ( _tl.Contains( p ) )
-                return ( CornerRegionType.TopLeft );
-            else if ( _tc.Contains( p ) )
-                return ( CornerRegionType.TopCenter );
-            else if ( _tr.Contains( p ) )
-                return ( CornerRegionType.TopRight );
-            else if ( _ml.Contains( p ) )
-                return ( CornerRegionType.MiddleLeft );
-            else if ( _mc.Contains( p ) )
-                return ( CornerRegionType.MiddleCenter );
-            else if ( _mr.Contains( p ) )
-                return ( CornerRegionType.MiddleRight );
-            else if ( _bl.Contains( p ) )
-                return ( CornerRegionType.BottomLeft );
-            else if ( _bc.Contains( p ) )
-                return ( CornerRegionType.BottomCenter );
-            else if ( _br.Contains( p ) )
-                return ( CornerRegionType.BottomRight );
-
-            return ( CornerRegionType.None );
-        }
-    }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public static class AddinUtils
     {
         #region PixelFormat catalogs
@@ -255,6 +87,7 @@ namespace NetCharm.Image.Addins
         };
         #endregion
 
+        #region I18N routines
         /// <summary>
         /// Fake function for gettext collection msgid
         /// </summary>
@@ -265,6 +98,12 @@ namespace NetCharm.Image.Addins
             return ( t );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="addin"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public static string _( IAddin addin, string t )
         {
             if ( addin is IAddin)
@@ -273,7 +112,30 @@ namespace NetCharm.Image.Addins
                 I18N i10n = new I18N( addin.Domain, addinRoot );
                 return ( I18N._( i10n.Catalog, t ) );
             }
+            else
+            {
+                string path = Assembly.GetExecutingAssembly().Location;
+                string domain = Path.GetFileNameWithoutExtension(path);
+                string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( path ) ), "locale" );
+                I18N i10n = new I18N( domain, addinRoot );
+                return ( I18N._( i10n.Catalog, t ) );
+            }
             return ( t );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="host"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public static string _( AddinHost host, string t )
+        {
+            string path = Assembly.GetExecutingAssembly().Location;
+            string domain = Path.GetFileNameWithoutExtension(path);
+            string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( path ) ), "locale" );
+            I18N i10n = new I18N( domain, addinRoot );
+            return ( I18N._( i10n.Catalog, t ) );
         }
 
         /// <summary>
@@ -282,12 +144,223 @@ namespace NetCharm.Image.Addins
         /// <param name="form"></param>
         public static void Translate( IAddin addin, Form form, ToolTip tooltip = null, object[] extra = null )
         {
-            if(addin is IAddin && form is Form)
+            if ( addin is IAddin && form is Form )
             {
                 string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( addin.Location ) ), "locale" );
 
                 I18N i10n = new I18N( addin.Domain, addinRoot, form, tooltip, extra );
             }
+            else if ( form is Form )
+            {
+                string path = Assembly.GetExecutingAssembly().Location;
+                string domain = Path.GetFileNameWithoutExtension(path);
+                string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( path ) ), "locale" );
+                I18N i10n = new I18N( domain, addinRoot, form, tooltip, extra );
+            }
+        }
+        #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<IAddin> ShowAddinsDialog()
+        {
+            List<IAddin> result = new List<IAddin>();
+            SelectAddinForm fm = new SelectAddinForm(AddinHost.GetHost());
+            Translate( null, fm );
+            if ( fm.ShowDialog() == DialogResult.OK )
+            {
+                result.AddRange( fm.GetSelectedAddins() );
+            }
+            return ( result );
+        }
+
+        #region Common Image routines
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imageFile"></param>
+        /// <param name="iconFile"></param>
+        public static void BitmapToIcon( string imageFile, string iconFile )
+        {
+            // Create a Bitmap object from an image file.
+            Bitmap bmp = new Bitmap( imageFile );
+
+            Icon newIcon = BitmapToIcon( bmp );
+
+            //Write Icon to File Stream
+            FileStream fs = new FileStream( iconFile, FileMode.OpenOrCreate );
+            newIcon.Save( fs );
+            fs.Close();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        public static Icon BitmapToIcon( System.Drawing.Image image )
+        {
+            // Create a Bitmap object from an image file.
+            Bitmap bmp = image as Bitmap;
+            // Get an Hicon for myBitmap.
+            IntPtr Hicon = bmp.GetHicon();
+            // Create a new icon from the handle.
+            Icon newIcon = Icon.FromHandle(Hicon);
+
+            return ( newIcon );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        private static ImageCodecInfo GetEncoder( ImageFormat format )
+        {
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
+
+            foreach ( ImageCodecInfo codec in codecs )
+            {
+                if ( codec.FormatID == format.Guid )
+                {
+                    return codec;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public static System.Drawing.Image LoadImage( string filename )
+        {
+            System.Drawing.Image result = null;
+
+            if ( File.Exists( filename ) )
+            {
+                using ( FileStream fs = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
+                {
+                    result = AutoRotate( System.Drawing.Image.FromStream( fs ) );
+                }
+            }
+            return ( result );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <param name="image"></param>
+        /// <param name="option"></param>
+        /// <returns></returns>
+        public static bool SaveImage( string filename, System.Drawing.Image image, SaveOption option )
+        {
+            var result = false;
+
+            try
+            {
+                if ( !( image is System.Drawing.Image ) ) return ( result );
+
+                Bitmap dst = CloneImage(image as Bitmap);
+                if ( !option.KeepExif )
+                {
+                    EXIF.Remove( dst );
+                }
+
+                ImageFormat ff = ImageFormat.Jpeg;
+                EncoderParameters codecParams = null;
+
+                string fext = Path.GetExtension(filename).ToLower();
+                if ( string.Equals( fext, ".jpg", StringComparison.CurrentCultureIgnoreCase ) ||
+                     string.Equals( fext, ".jpeg", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    ff = ImageFormat.Jpeg;
+                    codecParams = new EncoderParameters( 1 );
+                    codecParams.Param[0] = new EncoderParameter( System.Drawing.Imaging.Encoder.Quality, (long)option.Quality );
+                }
+                else if ( string.Equals( fext, ".tif", StringComparison.CurrentCultureIgnoreCase ) ||
+                     string.Equals( fext, ".tiff", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    ff = ImageFormat.Tiff;
+                }
+                else if ( string.Equals( fext, ".bmp", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    ff = ImageFormat.Bmp;
+                }
+                else if ( string.Equals( fext, ".png", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    ff = ImageFormat.Png;
+                }
+                else if ( string.Equals( fext, ".gif", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    ff = ImageFormat.Gif;
+                }
+                using ( var fs = new FileStream( filename, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write ) )
+                {
+                    if ( codecParams is EncoderParameters )
+                    {
+                        var codecInfo = GetEncoder( ff );
+                        dst.Save( fs, codecInfo, codecParams );
+                    }
+                    else
+                    {
+                        dst.Save( fs, ff );
+                    }
+                    result = true;
+                }
+            }
+            catch ( Exception ex )
+            {
+                
+            }
+            return ( result );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        public static System.Drawing.Image AutoRotate( System.Drawing.Image image )
+        {
+            System.Drawing.Image result = CloneImage(image);
+            if ( image.PropertyIdList.Contains( EXIF.TagID.Orientation ) )
+            {
+                var pi = image.GetPropertyItem( EXIF.TagID.Orientation );
+                RotateFlipType rft = RotateFlipType.RotateNoneFlipNone;
+                switch ( pi.Value[0] )
+                {
+                    case 2:
+                        rft = RotateFlipType.RotateNoneFlipX;
+                        break;
+                    case 3:
+                        rft = RotateFlipType.Rotate180FlipNone;
+                        break;
+                    case 4:
+                        rft = RotateFlipType.RotateNoneFlipY;
+                        break;
+                    case 5:
+                        rft = RotateFlipType.Rotate270FlipX;
+                        break;
+                    case 6:
+                        rft = RotateFlipType.Rotate90FlipNone;
+                        break;
+                    case 7:
+                        rft = RotateFlipType.Rotate90FlipX;
+                        break;
+                    case 8:
+                        rft = RotateFlipType.Rotate270FlipNone;
+                        break;
+                }
+                result.RotateFlip( rft );
+                pi.Value[0] = (byte) RotateFlipType.RotateNoneFlipNone;
+                result.SetPropertyItem( pi );
+            }
+            return ( result );
         }
 
         /// <summary>
@@ -328,41 +401,6 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="imageFile"></param>
-        /// <param name="iconFile"></param>
-        public static void BitmapToIcon( string imageFile, string iconFile )
-        {
-            // Create a Bitmap object from an image file.
-            Bitmap bmp = new Bitmap( imageFile );
-
-            Icon newIcon = BitmapToIcon( bmp );
-
-            //Write Icon to File Stream
-            FileStream fs = new FileStream( iconFile, FileMode.OpenOrCreate );
-            newIcon.Save( fs );
-            fs.Close();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="image"></param>
-        /// <returns></returns>
-        public static Icon BitmapToIcon( System.Drawing.Image image )
-        {
-            // Create a Bitmap object from an image file.
-            Bitmap bmp = image as Bitmap;
-            // Get an Hicon for myBitmap.
-            IntPtr Hicon = bmp.GetHicon();
-            // Create a new icon from the handle.
-            Icon newIcon = Icon.FromHandle(Hicon);
-
-            return ( newIcon );
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
         public static System.Drawing.Image CloneImage( System.Drawing.Image image)
@@ -383,7 +421,10 @@ namespace NetCharm.Image.Addins
         /// <returns></returns>
         public static Bitmap CloneImage( Bitmap image )
         {
-            return ( CloneImage( image as System.Drawing.Image ) as Bitmap );
+            Bitmap dst = new Bitmap( image );
+            EXIF.Clone( image, dst );
+            return ( dst );
+            //return ( CloneImage( image as System.Drawing.Image ) as Bitmap );
         }
 
         /// <summary>
@@ -846,5 +887,7 @@ namespace NetCharm.Image.Addins
             }
             return ( result );
         }
+        
+        #endregion
     }
 }
