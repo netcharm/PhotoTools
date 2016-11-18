@@ -34,7 +34,8 @@ namespace NetCharm.Image.Addins.Controls
             set
             {
                 edValue.Value = value;
-                slideValue.Value = Convert.ToInt32( (float) value * factor );
+                slideValue.Value = CalcSlideValue();
+
                 if ( slideValue.Value < slideValue.Minimum ) slideValue.Value = slideValue.Minimum;
                 if ( slideValue.Value > slideValue.Maximum ) slideValue.Value = slideValue.Maximum;
                 if ( edValue.Value > edValue.Maximum ) edValue.Value = edValue.Maximum;
@@ -49,7 +50,8 @@ namespace NetCharm.Image.Addins.Controls
             set
             {
                 edValue.Minimum = value;
-                slideValue.Minimum = Convert.ToInt32( (float) value * factor );
+                slideValue.Value = CalcSlideValue();
+
                 if ( slideValue.Value < slideValue.Minimum ) slideValue.Value = slideValue.Minimum;
                 if ( slideValue.Value > slideValue.Maximum ) slideValue.Value = slideValue.Maximum;
                 if ( edValue.Value > edValue.Maximum ) edValue.Value = edValue.Maximum;
@@ -64,7 +66,7 @@ namespace NetCharm.Image.Addins.Controls
             set
             {
                 edValue.Maximum = value;
-                slideValue.Maximum = Convert.ToInt32( (float) value * factor );
+                slideValue.Value = CalcSlideValue();
                 if ( slideValue.Value < slideValue.Minimum ) slideValue.Value = slideValue.Minimum;
                 if ( slideValue.Value > slideValue.Maximum ) slideValue.Value = slideValue.Maximum;
                 if ( edValue.Value > edValue.Maximum ) edValue.Value = edValue.Maximum;
@@ -79,8 +81,8 @@ namespace NetCharm.Image.Addins.Controls
             set
             {
                 edValue.Increment = value;
-                slideValue.SmallChange = Convert.ToInt32( (float) value * factor );
-                slideValue.LargeChange = Convert.ToInt32( (float) value * factor * 5 );
+                slideValue.SmallChange = 1;
+                slideValue.LargeChange = 5;
             }
         }
 
@@ -92,16 +94,30 @@ namespace NetCharm.Image.Addins.Controls
             {
                 edValue.DecimalPlaces = value;
                 factor = Math.Pow( 10, value );
-                slideValue.SmallChange = Convert.ToInt32( (float) edValue.Increment * factor );
-                slideValue.LargeChange = Convert.ToInt32( (float) edValue.Increment * factor * 5 );
-                slideValue.Minimum = Convert.ToInt32( (float) edValue.Minimum * factor );
-                slideValue.Maximum = Convert.ToInt32( (float) edValue.Maximum * factor );
-                slideValue.Value = Convert.ToInt32( (float) edValue.Value * factor );
+                //slideValue.SmallChange = Convert.ToInt32( (float) edValue.Increment * factor );
+                //slideValue.LargeChange = Convert.ToInt32( (float) edValue.Increment * factor * 5 );
+                //slideValue.Minimum = Convert.ToInt32( (float) edValue.Minimum * factor );
+                //slideValue.Maximum = Convert.ToInt32( (float) edValue.Maximum * factor );
+                slideValue.Value = CalcSlideValue();
             }
         }
         private double factor = 1f;
 
         public event EventHandler ValueChanged;
+
+        protected internal float CalcSlideValue()
+        {
+            var v = Convert.ToDouble( edValue.Value - edValue.Minimum);
+            var d = Convert.ToDouble( edValue.Maximum - edValue.Minimum ) / 100f;
+            return ( (float) ( v / d ) );
+        }
+
+        protected internal Decimal CalcNumValue()
+        {
+            var v = slideValue.Value;
+            var d = Convert.ToDouble( edValue.Maximum - edValue.Minimum ) / 100f;
+            return ( Convert.ToDecimal( ( v * d + Convert.ToDouble( edValue.Minimum ) ) ) );
+        }
 
         public SlideNumber()
         {
@@ -137,12 +153,12 @@ namespace NetCharm.Image.Addins.Controls
 
         private void edValue_ValueChanged( object sender, EventArgs e )
         {
-            slideValue.Value = Convert.ToInt32( (float) edValue.Value * factor );
+            slideValue.Value = CalcSlideValue();
         }
 
         private void slideValue_ValueChanged( object sender, EventArgs e )
         {
-            edValue.Value = Convert.ToDecimal( slideValue.Value / factor );
+            edValue.Value = CalcNumValue();
         }
     }
 }

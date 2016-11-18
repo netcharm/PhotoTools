@@ -87,6 +87,7 @@
             this.slideValue.ShowValueDivider = true;
             this.slideValue.Size = new System.Drawing.Size(273, 20);
             this.slideValue.TabIndex = 0;
+            this.slideValue.ValueChanged += new System.EventHandler(this.slideValue_ValueChanged);
             // 
             // layout
             // 
