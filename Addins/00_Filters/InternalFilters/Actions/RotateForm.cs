@@ -132,7 +132,7 @@ namespace InternalFilters
         /// <param name="value"></param>
         internal void SetAngle( string name, ParamItem value )
         {
-            angle = (double) value.Value;
+            angle = Convert.ToDouble( value.Value );
             numAngle.Value = Convert.ToDecimal( angle );
         }
 

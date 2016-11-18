@@ -83,6 +83,25 @@ namespace InternalFilters.Actions
             get { return ( Properties.Resources.Rotate_16x ); }
         }
 
+        private void InitParams()
+        {
+            Dictionary<string, object> kv = new Dictionary<string, object>();
+            kv.Add( "Mode", RotateFlipType.RotateNoneFlipNone );
+            kv.Add( "Angle", 0f );
+            kv.Add( "KeepSize", false );
+
+            Params.Clear();
+            foreach ( var item in kv )
+            {
+                Params.Add( item.Key, new ParamItem() );
+                Params[item.Key].Name = item.Key;
+                Params[item.Key].DisplayName = AddinUtils._( this, item.Key );
+                Params[item.Key].Type = item.Value.GetType();
+                Params[item.Key].Value = item.Value;
+            }
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -100,6 +119,8 @@ namespace InternalFilters.Actions
                 fm.ShowIcon = false;
                 fm.ShowInTaskbar = false;
                 fm.StartPosition = FormStartPosition.CenterParent;
+
+                if ( Params.Count == 0 ) InitParams();
 
                 if ( Params.ContainsKey( "Mode" ) )
                     fm.SetMode( "Mode", Params["Mode"] );
@@ -141,9 +162,11 @@ namespace InternalFilters.Actions
         {
             if ( image != null )
             {
+                if ( Params.Count == 0 ) InitParams();
+
                 RotateFlipType flip = (RotateFlipType)Params["Mode"].Value;
-                double angle = (double)Params["Angle"].Value;
-                bool keep = (bool)Params["KeepSize"].Value;
+                double angle = Convert.ToDouble(Params["Angle"].Value);
+                bool keep = Convert.ToBoolean(Params["KeepSize"].Value);
 
                 Image dst = RotateForm.RotateImage( image, flip, angle, keep );
                 AddinUtils.CloneExif( image, dst );
