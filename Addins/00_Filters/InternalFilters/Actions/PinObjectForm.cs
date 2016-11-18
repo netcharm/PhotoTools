@@ -34,6 +34,21 @@ namespace InternalFilters.Actions
             set { mode = (PinObjectMode) value.Value; }
         }
 
+        private PinOption options = new PinOption();
+        internal ParamItem ParamOption
+        {
+            get
+            {
+                ParamItem pi = new ParamItem();
+                pi.Name = "PinOption";
+                pi.DisplayName = AddinUtils._( addin, pi.Name );
+                pi.Type = options.GetType();
+                pi.Value = options;
+                return ( pi );
+            }
+            set { options = (PinOption) value.Value; }
+        }
+
         private List<ListViewItem> effects = new List<ListViewItem>();
         //private List<Dictionary<string, ParamItem>> effectParams = new List<Dictionary<string, ParamItem>>();
         private List<ParamList> effectParams = new List<ParamList>();
@@ -59,10 +74,40 @@ namespace InternalFilters.Actions
             AddinUtils.Translate( this.addin, this, toolTip );
         }
 
+        internal void GetOptions()
+        {
+            options.Blend = (float) Convert.ToDouble( slideBlend.Value );
+            options.Opaque = (float) Convert.ToDouble( slideOpaque.Value );
+
+            options.Pos = csSelect.CornetRegion;
+
+            options.Enabled = chkEnabled.Checked;
+            options.Tile = chkTile.Checked;
+
+            options.Margin.X = (float) Convert.ToDouble( slideMarginX.Value );
+            options.Margin.Y = (float) Convert.ToDouble( slideMarginY.Value );
+
+            options.Offset.X = (float) Convert.ToDouble( slideOffsetX.Value );
+            options.Offset.Y = (float) Convert.ToDouble( slideOffsetY.Value );
+
+            foreach (IAddin filter in addin.Filters)
+            {
+                options.FilterParams[filter] = effectParams[effectParams.IndexOf( filter.Params )];
+            }
+        }
+
+        internal void Preview()
+        {
+            GetOptions();
+            imgPreview.Image = AddinUtils.CreateThumb( addin.Apply( addin.ImageData ), imgPreview.ClientSize );
+        }
+
         private void PinObjectForm_Load( object sender, EventArgs e )
         {
             thumb = AddinUtils.CreateThumb( addin.ImageData, imgPreview.Size );
             imgPreview.Image = thumb;
+
+            csSelect.CornetRegion = CornerRegionType.BottomCenter;
         }
 
         private void lvFilters_DoubleClick( object sender, EventArgs e )
@@ -73,6 +118,7 @@ namespace InternalFilters.Actions
             AddinUtils.SetParams( filter, pilist );
             filter.Show( this, true );
             effectParams[effectParams.IndexOf( filter.Params )] = filter.Params;
+            Preview();
         }
 
         private void lvFilters_RetrieveVirtualItem( object sender, RetrieveVirtualItemEventArgs e )
@@ -133,6 +179,7 @@ namespace InternalFilters.Actions
             lvFilters.VirtualListSize = effects.Count;
             lvFilters.EndUpdate();
             //lvFilters.Update();
+            Preview();
         }
 
         private void btnEffectRemove_Click( object sender, EventArgs e )
@@ -159,6 +206,7 @@ namespace InternalFilters.Actions
             lvFilters.VirtualListSize = effects.Count;
             lvFilters.EndUpdate();
             //lvFilters.Update();
+            Preview();
         }
 
         private void btnEffectUp_Click( object sender, EventArgs e )
@@ -175,6 +223,7 @@ namespace InternalFilters.Actions
             }
             lvFilters.EndUpdate();
             //lvFilters.Update();
+            Preview();
         }
 
         private void btnEffectDown_Click( object sender, EventArgs e )
@@ -197,7 +246,35 @@ namespace InternalFilters.Actions
             }
             lvFilters.EndUpdate();
             //lvFilters.Update();
+            Preview();
         }
 
+        private void btnPosRandom_Click( object sender, EventArgs e )
+        {
+            csSelect.CornetRegion = CornerRegionType.None;
+
+            options.Pos = csSelect.CornetRegion;
+            options.RandomPos = true;
+
+            Preview();
+        }
+
+        private void csSelect_CornetRegionClick( object sender, EventArgs e )
+        {
+            options.Pos = csSelect.CornetRegion;
+            options.RandomPos = false;
+
+            Preview();
+        }
+
+        private void chkTile_Click( object sender, EventArgs e )
+        {
+            Preview();
+        }
+
+        private void slideValue_ValueChanged( object sender, EventArgs e )
+        {
+            Preview();
+        }
     }
 }

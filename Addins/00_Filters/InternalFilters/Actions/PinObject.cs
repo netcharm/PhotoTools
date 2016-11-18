@@ -10,6 +10,10 @@ using NetCharm.Image.Addins;
 
 namespace InternalFilters.Actions
 {
+    using System.Drawing.Drawing2D;
+    using System.Drawing.Imaging;
+    using ParamList = Dictionary<string, ParamItem>;
+
     public enum PinObjectMode
     {
         Text,
@@ -23,9 +27,16 @@ namespace InternalFilters.Actions
         public bool Tile = false;
         public float Blend = 100f;
 
+        public Bitmap Picture = null;
+        public string Text = string.Empty;
+        public string Tag = string.Empty;
+
         #region Position
         public bool RandomPos = false;
         public CornerRegionType Pos = CornerRegionType.None;
+        public PointF Location = new PointF();
+        public PointF Offset = new PointF();
+        public PointF Margin = new PointF();
         #endregion
 
         #region Transform
@@ -34,6 +45,7 @@ namespace InternalFilters.Actions
         #endregion
 
         #region Effects
+        public Dictionary<IAddin, ParamList> FilterParams = new Dictionary<IAddin, ParamList>();
         public float Opaque = 100f;
         //public float GradientWidth = 0f;
         //public Color GradientColor1 = Color.DarkGray;
@@ -50,7 +62,6 @@ namespace InternalFilters.Actions
         //public Color OutlineColor = Color.WhiteSmoke;
         //public float OutlineOpaque = 100f;
         #endregion
-
     }
 
     [Extension]
@@ -122,6 +133,7 @@ namespace InternalFilters.Actions
         {
             Dictionary<string, object> kv = new Dictionary<string, object>();
             kv.Add( "PinObjectMode", PinObjectMode.Picture );
+            kv.Add( "PinOption", new PinOption() );
             kv.Add( "PinObjectList", typeof( List<object> ) );
 
             Params.Clear();
@@ -147,6 +159,7 @@ namespace InternalFilters.Actions
             {
                 var cfm = (form as PinObjectForm);
                 Params["PinObjectMode"] = cfm.ParamMode;
+                Params["PinOption"] = cfm.ParamOption;
             }
         }
 
@@ -163,6 +176,7 @@ namespace InternalFilters.Actions
             {
                 var cfm = (form as PinObjectForm);
                 cfm.ParamMode = Params["PinObjectMode"];
+                cfm.ParamOption = Params["PinOption"];
             }
         }
 
@@ -211,6 +225,20 @@ namespace InternalFilters.Actions
             //
             // Todo filter apply
             //
+            switch ( PinObjectMode )
+            {
+                case PinObjectMode.Picture:
+                    Bitmap src = AddinUtils.LoadImage("布老虎.png") as Bitmap;
+                    PinOption option = (PinOption) Params["PinOption"].Value;
+                    option.Picture = src;
+                    dst = DrawPicture( dst, option );
+                    break;
+                case PinObjectMode.Text:
+                    break;
+                case PinObjectMode.Tag:
+                    break;
+            }
+
             AddinUtils.CloneExif( image, dst );
             return ( dst );
         }
@@ -290,6 +318,154 @@ namespace InternalFilters.Actions
             }
             return ( true );
         }
+        #endregion
+
+        #region Draw Object routines
+        protected internal Bitmap DrawPicture( Bitmap dst, PinOption option )
+        {
+            Bitmap result = dst;
+            if ( option.Picture is Image )
+            {
+                Bitmap src = new Bitmap(option.Picture);
+
+                #region Calc Margin & Offset
+                PointF margin = new PointF(option.Margin.X/100f*dst.Width, option.Margin.Y/100f*dst.Height);
+                PointF offset = new PointF(option.Offset.X/100f*src.Width, option.Offset.Y/100f*src.Height);
+                #endregion
+
+                #region Calc Location
+                PointF pos = new PointF(0,0);
+                if ( option.RandomPos )
+                {
+                    Random rnd = new Random();
+                    pos.X = (float) rnd.NextDouble() * ( dst.Width - src.Width );
+                    pos.Y = (float) rnd.NextDouble() * ( dst.Height - src.Height );
+                }
+                else
+                {
+                    #region Calc Corner / Side Position
+                    switch ( option.Pos )
+                    {
+                        case CornerRegionType.TopLeft:
+                            pos.X = offset.X;
+                            pos.Y = offset.Y;
+                            break;
+                        case CornerRegionType.TopCenter:
+                            pos.X = offset.X + (dst.Width - src.Width) / 2f;
+                            pos.Y = offset.Y;
+                            break;
+                        case CornerRegionType.TopRight:
+                            pos.X = -offset.X + ( dst.Width - src.Width );
+                            pos.Y = offset.Y;
+                            break;
+
+                        case CornerRegionType.MiddleLeft:
+                            pos.X = offset.X;
+                            pos.Y = offset.Y + (dst.Height - src.Height) / 2f;
+                            break;
+                        case CornerRegionType.MiddleCenter:
+                            pos.X = offset.X + ( dst.Width - src.Width ) / 2f;
+                            pos.Y = offset.Y + ( dst.Height - src.Height ) / 2f;
+                            break;
+                        case CornerRegionType.MiddleRight:
+                            pos.X = -offset.X + ( dst.Width - src.Width );
+                            pos.Y = offset.Y + ( dst.Height - src.Height ) / 2f;
+                            break;
+
+                        case CornerRegionType.BottomLeft:
+                            pos.X = offset.X;
+                            pos.Y = -offset.Y + ( dst.Height - src.Height );
+                            break;
+                        case CornerRegionType.BottomCenter:
+                            pos.X = offset.X + ( dst.Width - src.Width ) / 2f;
+                            pos.Y = -offset.Y + ( dst.Height - src.Height );
+                            break;
+                        case CornerRegionType.BottomRight:
+                            pos.X = -offset.X + ( dst.Width - src.Width );
+                            pos.Y = -offset.Y + ( dst.Height - src.Height );
+                            break;
+
+                        default:
+                            pos.X = option.Location.X + offset.X;
+                            pos.Y = option.Location.Y + offset.Y;
+                            break;
+                    }
+                    pos.X = pos.X >= 0 ? pos.X : 0;
+                    pos.Y = pos.Y >= 0 ? pos.Y : 0;
+                    pos.X = pos.X > dst.Width - option.Picture.Width ? dst.Width - option.Picture.Width : pos.X;
+                    pos.Y = pos.Y > dst.Height - option.Picture.Height ? dst.Height - option.Picture.Height : pos.Y;
+                    #endregion
+                }
+                #endregion
+
+                #region Make Tile Image
+                if ( option.Tile)
+                {
+                    RectangleF rect = new RectangleF(0, 0, src.Width, src.Height);
+                    rect.Inflate( margin.X / 2f, margin.Y / 2f );
+                    //rect = RectangleF.Inflate(rect, margin.X / 2f, margin.Y / 2f );
+
+                    Bitmap tileElement = new Bitmap((int)Math.Round(rect.Width), (int)Math.Round(rect.Height)*2, PixelFormat.Format32bppArgb);
+                    using ( var g = Graphics.FromImage( tileElement ) )
+                    {
+                        PointF p00 = new PointF(margin.X / 2f, margin.Y / 2f);
+                        PointF p10 = new PointF(offset.X - rect.Width, margin.Y / 2f);
+                        PointF p11 = new PointF(margin.X / 2f + offset.X, margin.Y * 1.5f + src.Height);
+
+                        g.DrawImage( src, p00 );
+                        g.DrawImage( src, p10 );
+                        g.DrawImage( src, p11 );
+                    }
+
+                    int nw = (int)Math.Ceiling(Math.Sqrt(Math.Pow(dst.Width,2) + Math.Pow(dst.Height,2)));
+                    Bitmap tile = new Bitmap(nw, nw, PixelFormat.Format32bppArgb);
+                    using ( var g = Graphics.FromImage( tile ) )
+                    {
+                        Brush tb = new TextureBrush(tileElement);
+                        g.FillRectangle( tb, 0, 0, nw, nw );
+                    }
+                    src = tile;
+                }
+                #endregion
+
+                #region Apply Filters
+                foreach ( IAddin filter in Filters)
+                {
+                    AddinUtils.SetParams( filter, option.FilterParams[filter] );                    
+                    src = filter.Apply( src as Image ) as Bitmap;
+                }
+                #endregion
+
+                #region Draw Picture to Image
+                using ( Graphics g = Graphics.FromImage( result ) )
+                {
+                    ColorMatrix c = new ColorMatrix() { Matrix33 = option.Opaque / 100f };
+                    ImageAttributes a = new ImageAttributes();
+                    a.SetColorMatrix( c, ColorMatrixFlag.Default, ColorAdjustType.Bitmap );
+
+                    //Matrix m = new Matrix();
+                    //m.RotateAt( ARotate + factorR, TGPPointF.Create( s.X / 2, s.Y / 2 ) );
+                    //g.MultiplyTransform( m );
+                    if(option.Tile)
+                    {
+                        pos.X = ( dst.Width - src.Width ) / 2f;
+                        pos.Y = ( dst.Height - src.Height ) / 2f;
+                    }
+
+                    g.DrawImage( src,
+                        new Rectangle( (int) Math.Round( pos.X ), (int) Math.Round( pos.Y ), src.Width, src.Height ),
+                        0, 0, src.Width, src.Height,
+                        GraphicsUnit.Pixel,
+                        a );
+                }
+                #endregion
+                return ( result );
+            }
+            return ( result );
+        }
+
+
+
         #endregion
     }
 }
