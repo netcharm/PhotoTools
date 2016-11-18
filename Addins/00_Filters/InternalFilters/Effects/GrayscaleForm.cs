@@ -23,7 +23,7 @@ namespace InternalFilters.Effects
         /// <summary>
         /// 
         /// </summary>
-        private GrayscaleMode grayscaleMode;
+        private GrayscaleMode grayscaleMode = GrayscaleMode.BT709;
         public ParamItem ParamGrayscaleMode
         {
             get
@@ -82,16 +82,20 @@ namespace InternalFilters.Effects
             thumb = AddinUtils.CreateThumb( addin.ImageData, imgPreview.Size );
             imgPreview.Image = thumb;
 
+            cbGrayMode.Tag = false;
             cbGrayMode.DataSource = Enum.GetValues( typeof( GrayscaleMode ) );
+            cbGrayMode.Tag = true;
         }
 
         private void GrayscaleForm_Load( object sender, EventArgs e )
         {
-            cbGrayMode.SelectedIndex = 0;
+            //cbGrayMode.SelectedIndex = 0;
+            cbGrayMode.SelectedIndex = (int) grayscaleMode;
         }
 
         private void cbGrayMode_SelectedIndexChanged( object sender, EventArgs e )
         {
+            if ( !(bool)(sender as Control).Tag ) return;
             //grayscaleMode = (GrayscaleMode) cbGrayMode.SelectedIndex;
             Enum.TryParse( cbGrayMode.SelectedValue.ToString(), out grayscaleMode );
             addin.Params[ParamGrayscaleMode.Name] = ParamGrayscaleMode;
