@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Image.AddinHost\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-17 17:24+0800\n"
+"POT-Creation-Date: 2016-11-18 12:19+0800\n"
 "PO-Revision-Date: 2016-11-17 17:24+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -20,15 +20,32 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: Common\SelectAddinForm.resx:157 -> btnOk.Text.value
+#: Common\SelectAddinForm.resx:169 -> btnOk.Text.value
 msgid "OK"
 msgstr "确认"
 
-#: Common\SelectAddinForm.resx:181 -> btnCancel.Text.value
+#: Common\SelectAddinForm.resx:193 -> btnCancel.Text.value
 msgid "Cancel"
 msgstr "取消"
 
-#: Common\SelectAddinForm.resx:208 -> $this.Text.value
+#: Common\SelectAddinForm.resx:232 -> btnGroupCategory.Text.value
+msgid "Category"
+msgstr "按类别"
+
+#: Common\SelectAddinForm.resx:268 -> btnGroupType.Text.value
+msgid "Type"
+msgstr "按类型"
+
+#: Common\SelectAddinForm.resx:301 -> btnGroupNone.Text.value
+#: Common\SelectAddinForm.cs:78
+msgid "None"
+msgstr "不分组"
+
+#: Common\SelectAddinForm.resx:325 -> grpGroupMode.Text.value
+msgid "Group Mode"
+msgstr "分组模式"
+
+#: Common\SelectAddinForm.resx:352 -> $this.Text.value
 msgid "Selection Addins"
 msgstr "选择扩展插件"
 
@@ -57,3 +74,6 @@ msgstr "参数名"
 #: Controls\SlideNumber.Designer.cs:124
 msgid "%"
 msgstr ""
+
+#~ msgid "Default"
+#~ msgstr "默认"

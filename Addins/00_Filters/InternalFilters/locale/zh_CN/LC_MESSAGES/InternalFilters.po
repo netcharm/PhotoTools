@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: Actions\PinObject.cs:263 Actions\PinObject.cs:267 Actions\PinObject.cs:271
+#: Actions\PinObject.cs:264 Actions\PinObject.cs:268 Actions\PinObject.cs:272
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-17 17:17+0800\n"
+"POT-Creation-Date: 2016-11-18 12:17+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -71,31 +71,31 @@ msgstr ""
 msgid "Tile"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:403 -> btnPosRandom.Text.value
-msgid "Random"
+#: Actions\PinObjectForm.resx:406 -> btnPosRandom.ToolTip.value
+msgid "Random Put Object To Image"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:460 -> btnEffectDown.ToolTip.value
+#: Actions\PinObjectForm.resx:690 -> btnEffectDown.ToolTip.value
 msgid "Move Down Selected Effect"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:490 -> btnEffectUp.ToolTip.value
+#: Actions\PinObjectForm.resx:723 -> btnEffectUp.ToolTip.value
 msgid "Move Up Selected Effect"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:520 -> btnEffectRemove.ToolTip.value
+#: Actions\PinObjectForm.resx:756 -> btnEffectRemove.ToolTip.value
 #, fuzzy
 #| msgid "Effect"
 msgid "Remove Effect"
 msgstr "效果"
 
-#: Actions\PinObjectForm.resx:550 -> btnEffectAdd.ToolTip.value
+#: Actions\PinObjectForm.resx:789 -> btnEffectAdd.ToolTip.value
 #, fuzzy
 #| msgid "Effect"
 msgid "Add Effect"
 msgstr "效果"
 
-#: Actions\PinObjectForm.resx:626 -> btnOriginal.ToolTip.value
+#: Actions\PinObjectForm.resx:844 -> btnOriginal.ToolTip.value
 #: Effects\BlurForm.resx:164 Effects\GrayscaleForm.resx:243
 #: Effects\HslFilterForm.resx:236 Effects\HueFilterForm.resx:164
 #: Effects\InvertForm.resx:161 Effects\SharpenForm.resx:164
@@ -236,11 +236,11 @@ msgstr "旋转预览"
 msgid "Rotate"
 msgstr "旋转"
 
-#: Actions\PinObjectForm.Designer.cs:189
+#: Actions\PinObjectForm.Designer.cs:124
 msgid "Blend"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:217
+#: Actions\PinObjectForm.Designer.cs:152
 msgid "Opaque"
 msgstr ""
 
@@ -380,15 +380,15 @@ msgstr "选区"
 msgid "Decoration Image"
 msgstr "旋转图像"
 
-#: Actions\PinObject.cs:262
+#: Actions\PinObject.cs:263
 msgid "Text"
 msgstr ""
 
-#: Actions\PinObject.cs:266
+#: Actions\PinObject.cs:267
 msgid "Picture"
 msgstr ""
 
-#: Actions\PinObject.cs:270
+#: Actions\PinObject.cs:271
 msgid "Smart Tag"
 msgstr ""
 
@@ -404,15 +404,15 @@ msgstr "裁切图像"
 msgid "Resize Image"
 msgstr "缩放图像"
 
-#: Actions\ResizeForm.cs:99
+#: Actions\ResizeForm.cs:116
 msgid "Bicubic"
 msgstr "双立方"
 
-#: Actions\ResizeForm.cs:100
+#: Actions\ResizeForm.cs:117
 msgid "Bilinear"
 msgstr "双线性"
 
-#: Actions\ResizeForm.cs:101
+#: Actions\ResizeForm.cs:118
 msgid "Nearest"
 msgstr "邻近点"
 

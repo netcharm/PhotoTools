@@ -74,66 +74,32 @@ namespace NetCharm.Image.Addins.Common
             }
             else if ( category == GroupMode.Category )
                 result = GetGroup( filter.CategoryName, filter.DisplayCategoryName );
-
+            else
+                result = GetGroup( "None", AddinUtils._( Host, AddinUtils.T( "None" ) ) );
             return ( result );
         }
 
         private void ListAddins( GroupMode groupMode = GroupMode.Type )
         {
-            if ( Host is AddinHost )
+            #region Add addin to Listview & Category by addin Group
+            lvAddins.BeginUpdate();
+            if( lvAddins.Items.Count<=0 )
             {
-                //ilLarge.Images.Clear();
-                //ilSmall.Images.Clear();
-
-                //var addins = new Dictionary<string, IAddin>[] { Host.Actions, Host.Effects };
-
-                //var addinList = addins.SelectMany(dict => dict)
-                //         .ToDictionary(pair => pair.Key, pair => pair.Value);
-
-                //AddinItems.Clear();
-                //foreach ( var addin in addinList )
-                //{
-                //    if ( string.Equals( Host.CurrentFilter.Name, addin.Value.Name, StringComparison.CurrentCultureIgnoreCase ) ) continue;
-
-                //    ilLarge.Images.Add( addin.Value.LargeIcon );
-                //    ilSmall.Images.Add( addin.Value.SmallIcon );
-
-                //    var lvi = new ListViewItem();
-                //    lvi.Text = addin.Value.DisplayName;
-                //    lvi.Tag = addin.Value;
-                //    lvi.ImageIndex = ilLarge.Images.Count - 1;
-                //    AddinItems.Add( lvi );
-                //}
-                //lvAddins.VirtualListSize = AddinItems.Count;
-
-                #region Add addin to Listview & Category by addin Group
-                lvAddins.BeginUpdate();
-                lvAddins.Groups.Clear();
-                lvAddins.Clear();
                 foreach ( var item in AddinItems )
                 {
                     item.Group = GetGroup( item.Tag as IAddin, categoryMode );
                     lvAddins.Items.Add( item );
                 }
-
-                //foreach ( var addin in addinList )
-                //{
-                //    if ( string.Equals( Host.CurrentFilter.Name, addin.Value.Name, StringComparison.CurrentCultureIgnoreCase ) ) continue;
-
-                //    ilLarge.Images.Add( addin.Value.LargeIcon );
-                //    ilSmall.Images.Add( addin.Value.SmallIcon );
-
-                //    ListViewGroup grp = GetGroup(addin.Value, categoryMode);
-
-                //    var lvi = new ListViewItem(grp);
-                //    lvi.Text = addin.Value.DisplayName;
-                //    lvi.Tag = addin.Value;
-                //    lvi.ImageIndex = ilLarge.Images.Count - 1;
-                //    lvAddins.Items.Add( lvi );
-                //}
-                lvAddins.EndUpdate();
-                #endregion
             }
+            else
+            {
+                foreach ( ListViewItem item in lvAddins.Items )
+                {
+                    item.Group = GetGroup( item.Tag as IAddin, categoryMode );
+                }
+            }
+            lvAddins.EndUpdate();
+            #endregion
         }
 
         private void SelectAddinForm_Load( object sender, EventArgs e )
