@@ -21,6 +21,8 @@ namespace NetCharm.Image.Addins.Controls
             set { SetRegion( value ); }
         }
 
+        public event EventHandler CornetRegionClick;
+
         /// <summary>
         /// 
         /// </summary>
@@ -146,6 +148,7 @@ namespace NetCharm.Image.Addins.Controls
             {
                 _region = CornerRegionType.None;
             }
+            this.CornetRegionClick?.Invoke( this, e );
         }
     }
 }
