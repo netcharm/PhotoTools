@@ -33,13 +33,13 @@ namespace InternalFilters.Actions
             set { _displayname = value; }
         }
 
-        public override string GroupName
+        public override string CategoryName
         {
             get { return ( "Edit"); }
         }
 
         private string _displayGroupName = T("Edit");
-        public override string DisplayGroupName
+        public override string DisplayCategoryName
         {
             get { return _( _displayGroupName ); }
             set { _displayGroupName = value; }

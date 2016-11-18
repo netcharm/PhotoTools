@@ -118,7 +118,7 @@ namespace InternalFilters.Actions
         /// <summary>
         /// 
         /// </summary>
-        public string GroupName
+        public string CategoryName
         {
             get { return ( "Edit" ); }
         }
@@ -126,7 +126,7 @@ namespace InternalFilters.Actions
         /// 
         /// </summary>
         private string _displayGroupName = T("Edit");
-        public string DisplayGroupName
+        public string DisplayCategoryName
         {
             get { return ( _( _displayGroupName ) ); }
             set { _displayGroupName = value; }

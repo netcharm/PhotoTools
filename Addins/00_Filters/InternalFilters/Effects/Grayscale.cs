@@ -89,7 +89,7 @@ namespace InternalFilters.Effects
         /// <summary>
         /// 
         /// </summary>
-        public override string GroupName
+        public override string CategoryName
         {
             get { return ( "Color" ); }
         }
@@ -97,7 +97,7 @@ namespace InternalFilters.Effects
         /// 
         /// </summary>
         private string _displayGroupName = T("Color");
-        public override string DisplayGroupName
+        public override string DisplayCategoryName
         {
             get { return _( _displayGroupName ); }
             set { _displayGroupName = value; }

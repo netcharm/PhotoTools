@@ -65,6 +65,16 @@ namespace InternalFilters.Actions
             imgPreview.Image = thumb;
         }
 
+        private void lvFilters_DoubleClick( object sender, EventArgs e )
+        {
+            var filter = lvFilters.FocusedItem.Tag as IAddin;
+            filter.ImageData = addin.ImageData;
+            var pilist = effectParams[effectParams.IndexOf( filter.Params )];
+            AddinUtils.SetParams( filter, pilist );
+            filter.Show( this, true );
+            effectParams[effectParams.IndexOf( filter.Params )] = filter.Params;
+        }
+
         private void lvFilters_RetrieveVirtualItem( object sender, RetrieveVirtualItemEventArgs e )
         {
             //lvFilters.VirtualListSize = effects.Count;
@@ -189,19 +199,5 @@ namespace InternalFilters.Actions
             //lvFilters.Update();
         }
 
-        private void lvFilters_DoubleClick( object sender, EventArgs e )
-        {
-            //lvFilters.GetItemAt();
-            var filter = lvFilters.FocusedItem.Tag as IAddin;
-            filter.ImageData = addin.ImageData;
-            var pilist = effectParams[effectParams.IndexOf( filter.Params )];
-            for (int i=0;i< pilist.Count;i++ )
-            {
-                var pi = pilist.ElementAt(i);
-                filter.Params[pi.Key] = pi.Value;
-            }
-            filter.Show( this, true );
-            effectParams[effectParams.IndexOf( filter.Params )] = filter.Params;
-        }
     }
 }

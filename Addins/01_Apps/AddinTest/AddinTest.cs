@@ -115,7 +115,7 @@ namespace AddinTest
         /// <summary>
         /// 
         /// </summary>
-        public string GroupName
+        public string CategoryName
         {
             get { return ( "Test" ); }
         }
@@ -123,7 +123,7 @@ namespace AddinTest
         /// 
         /// </summary>
         private string _displayGroupName = AddinUtils.T("Test");
-        public string DisplayGroupName
+        public string DisplayCategoryName
         {
             get { return ( AddinUtils._( this, _displayGroupName ) ); }
             set { _displayGroupName = value; }

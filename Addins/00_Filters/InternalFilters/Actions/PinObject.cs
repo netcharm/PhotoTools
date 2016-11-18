@@ -77,13 +77,13 @@ namespace InternalFilters.Actions
             set { _displayname = value; }
         }
 
-        public override string GroupName
+        public override string CategoryName
         {
             get { return ( "Decoration" ); }
         }
 
         private string _displayGroupName = T("Decoration");
-        public override string DisplayGroupName
+        public override string DisplayCategoryName
         {
             get { return _( _displayGroupName ); }
             set { _displayGroupName = value; }
@@ -224,8 +224,9 @@ namespace InternalFilters.Actions
         /// <returns></returns>
         public override bool Command( AddinCommand cmd, out object result, params object[] args )
         {
-            //return base.Command( cmd, out result, args );
             result = null;
+            //return base.Command( cmd, out result, args );
+            base.Command( cmd, out result, args );
             switch ( cmd )
             {
                 case AddinCommand.GetImageSelection:
@@ -282,10 +283,6 @@ namespace InternalFilters.Actions
                     result = Params;
                     break;
                 case AddinCommand.SetParams:
-                    foreach(var item in args[0] as Dictionary<string, ParamItem>)
-                    {
-
-                    }
                     SetParams( fm, null );
                     break;
                 default:

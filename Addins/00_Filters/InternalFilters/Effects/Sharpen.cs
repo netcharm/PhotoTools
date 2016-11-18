@@ -40,13 +40,13 @@ namespace InternalFilters.Effects
             set { _displayname = value; }
         }
 
-        public override string GroupName
+        public override string CategoryName
         {
             get { return ( "Clearness" ); }
         }
 
         private string _displayGroupName = T("Clearness");
-        public override string DisplayGroupName
+        public override string DisplayCategoryName
         {
             get { return _( _displayGroupName ); }
             set { _displayGroupName = value; }

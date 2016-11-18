@@ -19,6 +19,8 @@ using NGettext.WinForm;
 
 namespace NetCharm.Image.Addins
 {
+    using ParamList = Dictionary<string, ParamItem>;
+
     /// <summary>
     /// 
     /// </summary>
@@ -84,11 +86,11 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        string GroupName { get; }
+        string CategoryName { get; }
         /// <summary>
         /// 
         /// </summary>
-        string DisplayGroupName { get; set; }
+        string DisplayCategoryName { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -306,16 +308,16 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        public virtual string GroupName
+        public virtual string CategoryName
         {
             get { return ( string.Empty ); }
         }
         /// <summary>
         /// 
         /// </summary>
-        public virtual string DisplayGroupName
+        public virtual string DisplayCategoryName
         {
-            get { return ( _( GroupName ) ); }
+            get { return ( _( CategoryName ) ); }
             set { throw new NotImplementedException(); }
         }
         /// <summary>
@@ -499,6 +501,7 @@ namespace NetCharm.Image.Addins
             //if ( Params.Count == 0 ) InitParams(new Dictionary<string, object>());
             throw new NotImplementedException();
         }
+        
         /// <summary>
         /// 
         /// </summary>
@@ -506,6 +509,36 @@ namespace NetCharm.Image.Addins
         protected virtual void GetParams( Form form )
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns></returns>
+        protected internal virtual ParamList GetParams( IAddin filter )
+        {
+            if ( filter is IAddin )
+                return ( filter.Params );
+            else
+                return ( null );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="paramList"></param>
+        protected internal virtual void SetParams( IAddin filter, ParamList paramList )
+        {
+            if ( filter is IAddin )
+            {
+                for ( int i = 0; i < paramList.Count; i++ )
+                {
+                    var pi = paramList.ElementAt(i);
+                    filter.Params[pi.Key] = pi.Value;
+                }
+            }
         }
 
         /// <summary>

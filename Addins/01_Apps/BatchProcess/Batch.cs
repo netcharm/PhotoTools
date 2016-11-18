@@ -126,7 +126,7 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
-        public string GroupName
+        public string CategoryName
         {
             get { return ( "Application" ); }
         }
@@ -134,7 +134,7 @@ namespace BatchProcess
         /// 
         /// </summary>
         private string _displayGroupName = AddinUtils.T("Application");
-        public string DisplayGroupName
+        public string DisplayCategoryName
         {
             get { return ( AddinUtils._( this, _displayGroupName ) ); }
             set { _displayGroupName = value; }

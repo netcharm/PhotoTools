@@ -1121,6 +1121,10 @@ namespace NetCharm.Image.Addins
         ApplyAll = 3003,
         ApplyTiming = 3100,
 
-        Reset = 4001,
+        HasPreview = 9001,
+        SupportMultiFiles = 9002,
+
+
+        Reset = 10001,
     }
 }

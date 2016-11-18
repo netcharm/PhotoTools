@@ -186,11 +186,11 @@ namespace PhotoTool
                 if ( !addin.Visible ) continue;
 
                 RibbonPanel targetPanel = RibTabActExternal;
-                if ( !string.IsNullOrEmpty( addin.GroupName ) )
+                if ( !string.IsNullOrEmpty( addin.CategoryName ) )
                 {
-                    if ( !CustomPanelAction.ContainsKey( addin.GroupName ) )
-                        CustomPanelAction.Add( addin.GroupName, new RibbonPanel( I18N._( addin.DisplayGroupName ) ) );
-                    targetPanel = CustomPanelAction[addin.GroupName];
+                    if ( !CustomPanelAction.ContainsKey( addin.CategoryName ) )
+                        CustomPanelAction.Add( addin.CategoryName, new RibbonPanel( I18N._( addin.DisplayCategoryName ) ) );
+                    targetPanel = CustomPanelAction[addin.CategoryName];
                 }
                 else if ( string.Equals( addin.Author, "netcharm", StringComparison.CurrentCultureIgnoreCase ) ||
                     addin.Author.StartsWith( "NetCharm ", StringComparison.CurrentCultureIgnoreCase ) )
@@ -292,11 +292,11 @@ namespace PhotoTool
                 if ( !addin.Visible ) continue;
 
                 RibbonPanel targetPanel = RibTabEffectExternal;
-                if(!string.IsNullOrEmpty(addin.GroupName))
+                if(!string.IsNullOrEmpty(addin.CategoryName))
                 {
-                    if(!CustomPanelEffect.ContainsKey( addin.GroupName ) )
-                        CustomPanelEffect.Add( addin.GroupName, new RibbonPanel( I18N._(addin.DisplayGroupName) ) );
-                    targetPanel = CustomPanelEffect[addin.GroupName];
+                    if(!CustomPanelEffect.ContainsKey( addin.CategoryName ) )
+                        CustomPanelEffect.Add( addin.CategoryName, new RibbonPanel( I18N._(addin.DisplayCategoryName) ) );
+                    targetPanel = CustomPanelEffect[addin.CategoryName];
                 }
                 else if ( string.Equals( addin.Author, "netcharm", StringComparison.CurrentCultureIgnoreCase ) ||
                     addin.Author.StartsWith( "NetCharm ", StringComparison.CurrentCultureIgnoreCase ) )

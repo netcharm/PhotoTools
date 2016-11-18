@@ -14,6 +14,8 @@ using NGettext.WinForm;
 
 namespace NetCharm.Image.Addins
 {
+    using ParamList = Dictionary<string, ParamItem>;
+
     /// <summary>
     /// 
     /// </summary>
@@ -106,11 +108,12 @@ namespace NetCharm.Image.Addins
         /// <returns></returns>
         public static string _( IAddin addin, string t )
         {
+            string result = t;
             if ( addin is IAddin)
             {
                 string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( addin.Location ) ), "locale" );
                 I18N i10n = new I18N( addin.Domain, addinRoot );
-                return ( I18N._( i10n.Catalog, t ) );
+                result = I18N._( i10n.Catalog, t );
             }
             else
             {
@@ -118,9 +121,17 @@ namespace NetCharm.Image.Addins
                 string domain = Path.GetFileNameWithoutExtension(path);
                 string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( path ) ), "locale" );
                 I18N i10n = new I18N( domain, addinRoot );
-                return ( I18N._( i10n.Catalog, t ) );
+                result = I18N._( i10n.Catalog, t );
             }
-            return ( t );
+            if(string.Equals(result, t, StringComparison.CurrentCulture))
+            {
+                string path = Assembly.GetEntryAssembly().Location;
+                string domain = Path.GetFileNameWithoutExtension(path);
+                string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( path ) ), "locale" );
+                I18N i10n = new I18N( domain, addinRoot );
+                result = I18N._( i10n.Catalog, t );
+            }
+            return ( result );
         }
 
         /// <summary>
@@ -131,11 +142,26 @@ namespace NetCharm.Image.Addins
         /// <returns></returns>
         public static string _( AddinHost host, string t )
         {
-            string path = Assembly.GetExecutingAssembly().Location;
-            string domain = Path.GetFileNameWithoutExtension(path);
-            string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( path ) ), "locale" );
-            I18N i10n = new I18N( domain, addinRoot );
-            return ( I18N._( i10n.Catalog, t ) );
+            string result = t;
+
+            if(host is AddinHost)
+            {
+                string path = Assembly.GetExecutingAssembly().Location;
+                string domain = Path.GetFileNameWithoutExtension(path);
+                string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( path ) ), "locale" );
+                I18N i10n = new I18N( domain, addinRoot );
+                result = I18N._( i10n.Catalog, t );
+            }
+
+            if ( string.Equals( result, t, StringComparison.CurrentCulture ) )
+            {
+                string path = Assembly.GetEntryAssembly().Location;
+                string domain = Path.GetFileNameWithoutExtension(path);
+                string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( path ) ), "locale" );
+                I18N i10n = new I18N( domain, addinRoot );
+                result = I18N._( i10n.Catalog, t );
+            }
+            return ( result );
         }
 
         /// <summary>
@@ -160,6 +186,7 @@ namespace NetCharm.Image.Addins
         }
         #endregion
 
+        #region Select Addin Helper routines
         /// <summary>
         /// 
         /// </summary>
@@ -175,6 +202,21 @@ namespace NetCharm.Image.Addins
             }
             return ( result );
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="paramList"></param>
+        public static void SetParams( IAddin filter, ParamList paramList )
+        //public static void SetParams(Dictionary<string, ParamItem > paramList)
+        {
+            for ( int i = 0; i < paramList.Count; i++ )
+            {
+                var pi = paramList.ElementAt(i);
+                filter.Params[pi.Key] = pi.Value;
+            }
+        }
+        #endregion
 
         #region Common Image routines
         /// <summary>
