@@ -328,14 +328,14 @@ namespace InternalFilters
                 }
                 else
                 {
-                    if( keep )
+                    if ( keep )
                     {
                         double a = Math.Abs(angleNew);
                         if ( 0 < a && a < 45 )
                         {
                             //
                         }
-                        else if( 45 < a && a < 135)
+                        else if ( 45 < a && a < 135 )
                         {
                             RotateFlipType flipT = RotateFlipType.Rotate90FlipNone;
                             dst.RotateFlip( flipT );
@@ -358,6 +358,12 @@ namespace InternalFilters
                     }
                     RotateBicubic filter = new RotateBicubic(-angleNew, keep);
                     dst = AddinUtils.ProcessImage( filter, dst );
+
+                    if( !AddinUtils.AlphaFormat.Contains(dst.PixelFormat))
+                    {
+                        dst = AddinUtils.MakeAlphaRotate( img as Bitmap, dst as Bitmap, (float) angleNew );
+                    }
+
                     AddinUtils.CloneExif( img, dst );
                     return ( dst );
                 }
