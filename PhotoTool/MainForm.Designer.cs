@@ -92,6 +92,7 @@
             this.cmdQSave = new System.Windows.Forms.RibbonButton();
             this.cmdQUndo = new System.Windows.Forms.RibbonButton();
             this.cmdQRedo = new System.Windows.Forms.RibbonButton();
+            this.tssLabelTimeCost = new System.Windows.Forms.ToolStripStatusLabel();
             this.status.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -322,6 +323,7 @@
             this.tssLabelImageName,
             this.tssLabelImageSize,
             this.tssLabelImageZoom,
+            this.tssLabelTimeCost,
             this.tssLabelImageInfo});
             resources.ApplyResources(this.status, "status");
             this.status.Name = "status";
@@ -577,6 +579,15 @@
             this.cmdQRedo.SmallImage = global::PhotoTool.Properties.Resources.Redo_16x;
             this.cmdQRedo.Click += new System.EventHandler(this.cmdEditRedo_Click);
             // 
+            // tssLabelTimeCost
+            // 
+            this.tssLabelTimeCost.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tssLabelTimeCost.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tssLabelTimeCost.Name = "tssLabelTimeCost";
+            resources.ApplyResources(this.tssLabelTimeCost, "tssLabelTimeCost");
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -661,6 +672,7 @@
         private System.Windows.Forms.RibbonButton cmdQSave;
         private System.Windows.Forms.RibbonButton cmdQUndo;
         private System.Windows.Forms.RibbonButton cmdQRedo;
+        private System.Windows.Forms.ToolStripStatusLabel tssLabelTimeCost;
     }
 }
 
