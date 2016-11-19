@@ -390,6 +390,11 @@ namespace PhotoTool
             cmdFileSepApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void AddinAppSubItemClick( object sender, EventArgs e )
         {
             string an = ( sender as RibbonButton ).Value;
@@ -439,6 +444,11 @@ namespace PhotoTool
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void AddinActionSubItemClick( object sender, EventArgs e )
         {
             string an = ( sender as RibbonButton ).Value;
@@ -488,6 +498,11 @@ namespace PhotoTool
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void AddinEffectSubItemClick( object sender, EventArgs e )
         {
             string an = ( sender as RibbonButton ).Value;
@@ -566,6 +581,9 @@ namespace PhotoTool
                     break;
                 case AddinCommand.SetImageSelection:
                     addins.CurrentApp.Command( AddinCommand.SetImageSelection, out data, e.Property );
+                    break;
+                case AddinCommand.ApplyTiming:
+                    tssLabelTimeCost.Text = $"{(float)e.Property:F4}s";
                     break;
                 default:
                     break;
