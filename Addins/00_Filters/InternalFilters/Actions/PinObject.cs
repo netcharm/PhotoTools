@@ -134,7 +134,7 @@ namespace InternalFilters.Actions
             Dictionary<string, object> kv = new Dictionary<string, object>();
             kv.Add( "PinObjectMode", PinObjectMode.Picture );
             kv.Add( "PinOption", new PinOption() );
-            kv.Add( "PinObjectList", typeof( List<object> ) );
+            kv.Add( "PinObjectOnly", false );
 
             Params.Clear();
             foreach ( var item in kv )
@@ -160,6 +160,7 @@ namespace InternalFilters.Actions
                 var cfm = (form as PinObjectForm);
                 Params["PinObjectMode"] = cfm.ParamMode;
                 Params["PinOption"] = cfm.ParamOption;
+                Params["PinObjectOnly"] = cfm.ParamObjectOnly;
             }
         }
 
@@ -177,6 +178,7 @@ namespace InternalFilters.Actions
                 var cfm = (form as PinObjectForm);
                 cfm.ParamMode = Params["PinObjectMode"];
                 cfm.ParamOption = Params["PinOption"];
+                cfm.ParamObjectOnly = Params["PinObjectOnly"];
             }
         }
 
@@ -218,20 +220,22 @@ namespace InternalFilters.Actions
         /// <returns></returns>
         public override Image Apply( Image image )
         {
+            var st = DateTime.Now.Ticks;
             Bitmap dst = AddinUtils.CloneImage(image) as Bitmap;
 
             GetParams( fm );
             PinObjectMode PinObjectMode = (PinObjectMode) Params["PinObjectMode"].Value;
+            bool objectOnly = (bool) Params["PinObjectOnly"].Value;
+
             //
             // Todo filter apply
             //
             switch ( PinObjectMode )
             {
                 case PinObjectMode.Picture:
-                    Bitmap src = AddinUtils.LoadImage("布老虎.png") as Bitmap;
                     PinOption option = (PinOption) Params["PinOption"].Value;
-                    option.Picture = src;
-                    dst = DrawPicture( dst, option );
+                    //option.Picture = AddinUtils.LoadImage("布老虎.png") as Bitmap;
+                    dst = DrawPicture( dst, option, objectOnly );
                     break;
                 case PinObjectMode.Text:
                     break;
@@ -240,6 +244,8 @@ namespace InternalFilters.Actions
             }
 
             AddinUtils.CloneExif( image, dst );
+            float tc = new TimeSpan( DateTime.Now.Ticks - st ).Seconds + new TimeSpan( DateTime.Now.Ticks - st ).Milliseconds / 1000f;
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.ApplyTiming, tc ) );
             return ( dst );
         }
 
@@ -321,9 +327,9 @@ namespace InternalFilters.Actions
         #endregion
 
         #region Draw Object routines
-        protected internal Bitmap DrawPicture( Bitmap dst, PinOption option )
+        protected internal Bitmap DrawPicture( Bitmap dst, PinOption option, bool objectOnly=false )
         {
-            Bitmap result = dst;
+            Bitmap result = new Bitmap(dst);
             if ( option.Picture is Image )
             {
                 Bitmap src = new Bitmap(option.Picture);
@@ -347,47 +353,47 @@ namespace InternalFilters.Actions
                     switch ( option.Pos )
                     {
                         case CornerRegionType.TopLeft:
-                            pos.X = offset.X;
-                            pos.Y = offset.Y;
+                            pos.X = margin.X;
+                            pos.Y = margin.Y;
                             break;
                         case CornerRegionType.TopCenter:
-                            pos.X = offset.X + (dst.Width - src.Width) / 2f;
-                            pos.Y = offset.Y;
+                            pos.X = margin.X + (dst.Width - src.Width) / 2f;
+                            pos.Y = margin.Y;
                             break;
                         case CornerRegionType.TopRight:
-                            pos.X = -offset.X + ( dst.Width - src.Width );
-                            pos.Y = offset.Y;
+                            pos.X = -margin.X + ( dst.Width - src.Width );
+                            pos.Y = margin.Y;
                             break;
 
                         case CornerRegionType.MiddleLeft:
-                            pos.X = offset.X;
-                            pos.Y = offset.Y + (dst.Height - src.Height) / 2f;
+                            pos.X = margin.X;
+                            pos.Y = margin.Y + (dst.Height - src.Height) / 2f;
                             break;
                         case CornerRegionType.MiddleCenter:
-                            pos.X = offset.X + ( dst.Width - src.Width ) / 2f;
-                            pos.Y = offset.Y + ( dst.Height - src.Height ) / 2f;
+                            pos.X = margin.X + ( dst.Width - src.Width ) / 2f;
+                            pos.Y = margin.Y + ( dst.Height - src.Height ) / 2f;
                             break;
                         case CornerRegionType.MiddleRight:
-                            pos.X = -offset.X + ( dst.Width - src.Width );
-                            pos.Y = offset.Y + ( dst.Height - src.Height ) / 2f;
+                            pos.X = -margin.X + ( dst.Width - src.Width );
+                            pos.Y = margin.Y + ( dst.Height - src.Height ) / 2f;
                             break;
 
                         case CornerRegionType.BottomLeft:
-                            pos.X = offset.X;
-                            pos.Y = -offset.Y + ( dst.Height - src.Height );
+                            pos.X = margin.X;
+                            pos.Y = -margin.Y + ( dst.Height - src.Height );
                             break;
                         case CornerRegionType.BottomCenter:
-                            pos.X = offset.X + ( dst.Width - src.Width ) / 2f;
-                            pos.Y = -offset.Y + ( dst.Height - src.Height );
+                            pos.X = margin.X + ( dst.Width - src.Width ) / 2f;
+                            pos.Y = -margin.Y + ( dst.Height - src.Height );
                             break;
                         case CornerRegionType.BottomRight:
-                            pos.X = -offset.X + ( dst.Width - src.Width );
-                            pos.Y = -offset.Y + ( dst.Height - src.Height );
+                            pos.X = -margin.X + ( dst.Width - src.Width );
+                            pos.Y = -margin.Y + ( dst.Height - src.Height );
                             break;
 
                         default:
-                            pos.X = option.Location.X + offset.X;
-                            pos.Y = option.Location.Y + offset.Y;
+                            pos.X = option.Location.X + margin.X;
+                            pos.Y = option.Location.Y + margin.Y;
                             break;
                     }
                     pos.X = pos.X >= 0 ? pos.X : 0;
@@ -405,16 +411,20 @@ namespace InternalFilters.Actions
                     rect.Inflate( margin.X / 2f, margin.Y / 2f );
                     //rect = RectangleF.Inflate(rect, margin.X / 2f, margin.Y / 2f );
 
-                    Bitmap tileElement = new Bitmap((int)Math.Round(rect.Width), (int)Math.Round(rect.Height)*2, PixelFormat.Format32bppArgb);
+                    Bitmap tileElement = new Bitmap((int)Math.Round(rect.Width*2), (int)Math.Round(rect.Height)*2, PixelFormat.Format32bppArgb);
                     using ( var g = Graphics.FromImage( tileElement ) )
                     {
                         PointF p00 = new PointF(margin.X / 2f, margin.Y / 2f);
-                        PointF p10 = new PointF(offset.X - rect.Width, margin.Y / 2f);
-                        PointF p11 = new PointF(margin.X / 2f + offset.X, margin.Y * 1.5f + src.Height);
+                        PointF p01 = new PointF(p00.X + rect.Width, p00.Y);
+                        PointF p10 = new PointF(offset.X - rect.Width, p00.Y+rect.Height);
+                        PointF p11 = new PointF(p10.X + rect.Width, p10.Y);
+                        PointF p12 = new PointF(p11.X + rect.Width, p10.Y);
 
                         g.DrawImage( src, p00 );
+                        g.DrawImage( src, p01 );
                         g.DrawImage( src, p10 );
                         g.DrawImage( src, p11 );
+                        g.DrawImage( src, p12 );
                     }
 
                     int nw = (int)Math.Ceiling(Math.Sqrt(Math.Pow(dst.Width,2) + Math.Pow(dst.Height,2)));
@@ -431,10 +441,14 @@ namespace InternalFilters.Actions
                 #region Apply Filters
                 foreach ( IAddin filter in Filters)
                 {
-                    AddinUtils.SetParams( filter, option.FilterParams[filter] );                    
-                    src = filter.Apply( src as Image ) as Bitmap;
+                    if(filter.Enabled)
+                    {
+                        AddinUtils.SetParams( filter, option.FilterParams[filter] );
+                        src = filter.Apply( src as Image ) as Bitmap;
+                    }
                 }
                 #endregion
+                if ( objectOnly ) return ( src );
 
                 #region Draw Picture to Image
                 using ( Graphics g = Graphics.FromImage( result ) )
@@ -458,14 +472,14 @@ namespace InternalFilters.Actions
                         GraphicsUnit.Pixel,
                         a );
                 }
+
+                //var mask = AddinUtils.MakeOutline( src, 5, Color.DarkBlue );
+
                 #endregion
                 return ( result );
             }
             return ( result );
         }
-
-
-
         #endregion
     }
 }

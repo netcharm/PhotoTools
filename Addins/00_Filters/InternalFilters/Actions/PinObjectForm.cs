@@ -18,6 +18,7 @@ namespace InternalFilters.Actions
         private IAddin addin;
         private Image thumb = null;
         private Image thumbBackup = null;
+        private Image picObject = null;
 
         private PinObjectMode mode = PinObjectMode.Picture;
         internal ParamItem ParamMode
@@ -47,6 +48,21 @@ namespace InternalFilters.Actions
                 return ( pi );
             }
             set { options = (PinOption) value.Value; }
+        }
+
+        private bool objectOnly = false;
+        internal ParamItem ParamObjectOnly
+        {
+            get
+            {
+                ParamItem pi = new ParamItem();
+                pi.Name = "PinObjectOnly";
+                pi.DisplayName = AddinUtils._( addin, pi.Name );
+                pi.Type = objectOnly.GetType();
+                pi.Value = objectOnly;
+                return ( pi );
+            }
+            set { objectOnly = (bool) value.Value; }
         }
 
         private List<ListViewItem> effects = new List<ListViewItem>();
@@ -90,35 +106,45 @@ namespace InternalFilters.Actions
             options.Offset.X = (float) Convert.ToDouble( slideOffsetX.Value );
             options.Offset.Y = (float) Convert.ToDouble( slideOffsetY.Value );
 
-            foreach (IAddin filter in addin.Filters)
+            foreach ( IAddin filter in addin.Filters )
             {
-                options.FilterParams[filter] = effectParams[effectParams.IndexOf( filter.Params )];
+                int pIdx = effectParams.IndexOf( filter.Params );
+                if ( pIdx >= 0 && pIdx < effectParams.Count )
+                {
+                    options.FilterParams[filter] = effectParams[pIdx];
+                }
             }
         }
 
         internal void Preview()
         {
             GetOptions();
-            imgPreview.Image = AddinUtils.CreateThumb( addin.Apply( addin.ImageData ), imgPreview.ClientSize );
+            bool tile = options.Tile;
+            if( addin.ImageData is Image )
+            {
+                objectOnly = false;
+                imgPreview.Image = AddinUtils.CreateThumb( addin.Apply( addin.ImageData ), imgPreview.ClientSize );
+            }
+            if ( picObject is Image)
+            {
+                options.Tile = false;
+                objectOnly = true;
+                imgPicture.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
+                imgPicture.Image = addin.Apply( picObject );
+                options.Tile = tile;
+                objectOnly = false;
+            }
         }
 
         private void PinObjectForm_Load( object sender, EventArgs e )
         {
+            slideOffsetX.Enabled = chkTile.Checked;
+            slideOffsetY.Enabled = chkTile.Checked;
+
             thumb = AddinUtils.CreateThumb( addin.ImageData, imgPreview.Size );
             imgPreview.Image = thumb;
 
             csSelect.CornetRegion = CornerRegionType.BottomCenter;
-        }
-
-        private void lvFilters_DoubleClick( object sender, EventArgs e )
-        {
-            var filter = lvFilters.FocusedItem.Tag as IAddin;
-            filter.ImageData = addin.ImageData;
-            var pilist = effectParams[effectParams.IndexOf( filter.Params )];
-            AddinUtils.SetParams( filter, pilist );
-            filter.Show( this, true );
-            effectParams[effectParams.IndexOf( filter.Params )] = filter.Params;
-            Preview();
         }
 
         private void lvFilters_RetrieveVirtualItem( object sender, RetrieveVirtualItemEventArgs e )
@@ -129,7 +155,7 @@ namespace InternalFilters.Actions
                 if ( effects.Count > 0 && e.ItemIndex >= 0 && e.ItemIndex < effects.Count )
                 {
                     e.Item = effects[e.ItemIndex];
-                    if(lvFilters.View== View.Details)
+                    if ( lvFilters.View == View.Details )
                     {
                         e.Item.BackColor = ( e.ItemIndex % 2 == 1 ) ? Color.AliceBlue : e.Item.BackColor;
                     }
@@ -144,6 +170,65 @@ namespace InternalFilters.Actions
             {
                 e.Item = new ListViewItem( new string[] { "Error" } );
                 e.Item.BackColor = Color.LightPink;
+            }
+        }
+
+        private void lvFilters_DoubleClick( object sender, EventArgs e )
+        {
+            ListView lv = (ListView)sender;
+            if ( lvFilters.FocusedItem is ListViewItem )
+            {
+                var filter = lvFilters.FocusedItem.Tag as IAddin;
+                if ( filter is IAddin )
+                {
+                    lvFilters.FocusedItem.Checked = filter.Enabled;
+
+                    //filter.ImageData = addin.ImageData;
+                    filter.ImageData = picObject;
+                    var pilist = effectParams[effectParams.IndexOf( filter.Params )];
+                    AddinUtils.SetParams( filter, pilist );
+                    filter.Show( this, true );
+                    effectParams[effectParams.IndexOf( filter.Params )] = filter.Params;
+                    Preview();
+                }
+            }
+        }
+
+        private void lvFilters_MouseClick( object sender, MouseEventArgs e )
+        {
+            ListView lv = (ListView)sender;
+            ListViewItem lvi = lv.GetItemAt(e.X, e.Y);
+            if ( lvi is ListViewItem )
+            {
+                if ( e.X < ( lvi.Bounds.Left + 16 ) )
+                {
+                    lvi.Checked = !lvi.Checked;
+                    if( ( lvi.Tag as IAddin ) is IAddin)
+                    {
+                        ( lvi.Tag as IAddin ).Enabled = lvi.Checked;
+                        Preview();
+                    }
+                    lv.Invalidate( lvi.Bounds );
+                }
+            }
+        }
+
+        private void lvFilters_KeyPress( object sender, KeyPressEventArgs e )
+        {
+            if ( e.KeyChar == (char) Keys.Space )
+            {
+                ListView lv = (ListView)sender;
+                ListViewItem lvi = lv.FocusedItem;
+                if ( lvi is ListViewItem )
+                {
+                    lvi.Checked = !lvi.Checked;
+                    if ( ( lvi.Tag as IAddin ) is IAddin )
+                    {
+                        ( lvi.Tag as IAddin ).Enabled = lvi.Checked;
+                        Preview();
+                    }
+                    lv.Invalidate( lvi.Bounds );
+                }
             }
         }
 
@@ -166,6 +251,8 @@ namespace InternalFilters.Actions
             lvFilters.BeginUpdate();
             foreach ( IAddin filter in AddinUtils.ShowAddinsDialog())
             {
+                //filter.Enabled = true;
+
                 addin.Filters.Add( filter );
                 ilLarge.Images.Add( filter.LargeIcon );
                 ilSmall.Images.Add( filter.SmallIcon );
@@ -173,6 +260,7 @@ namespace InternalFilters.Actions
                 effects.Last().Selected = false;
                 effects.Last().Tag = filter;
                 effects.Last().ImageIndex = ilLarge.Images.Count;
+                effects.Last().Checked = true;
 
                 effectParams.Add( filter.Params as ParamList );
             }
@@ -269,12 +357,42 @@ namespace InternalFilters.Actions
 
         private void chkTile_Click( object sender, EventArgs e )
         {
+            slideOffsetX.Enabled = chkTile.Checked;
+            slideOffsetY.Enabled = chkTile.Checked;
             Preview();
         }
 
         private void slideValue_ValueChanged( object sender, EventArgs e )
         {
             Preview();
+        }
+
+        private void imgPicture_DoubleClick( object sender, EventArgs e )
+        {
+            btnOpenPic.PerformClick();
+        }
+
+        private void btnOpenPic_Click( object sender, EventArgs e )
+        {
+            OpenFileDialog dlgOpen = new OpenFileDialog();
+            dlgOpen.Filter = "PNG File(*.png)|*.png|All File(*.*)|*.*";
+            dlgOpen.Multiselect = false;
+            if ( dlgOpen.ShowDialog() == DialogResult.OK )
+            {
+                picObject = AddinUtils.LoadImage( dlgOpen.FileName );
+                options.Picture = picObject as Bitmap;
+                Preview();
+            }
+        }
+
+        private void btnOpenFont_Click( object sender, EventArgs e )
+        {
+            FontDialog dlgFont = new FontDialog();
+            if ( dlgFont.ShowDialog() == DialogResult.OK )
+            {
+                edText.Font = dlgFont.Font;
+                //Preview();
+            }
         }
     }
 }

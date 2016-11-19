@@ -31,12 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PinObjectForm));
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnPosRandom = new System.Windows.Forms.Button();
-            this.btnEffectDown = new System.Windows.Forms.Button();
-            this.btnEffectUp = new System.Windows.Forms.Button();
-            this.btnEffectRemove = new System.Windows.Forms.Button();
-            this.btnEffectAdd = new System.Windows.Forms.Button();
-            this.btnOriginal = new System.Windows.Forms.CheckBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.grpCommonSetting = new System.Windows.Forms.GroupBox();
@@ -48,6 +42,10 @@
             this.ilSmall = new System.Windows.Forms.ImageList(this.components);
             this.pnlEffectTools = new System.Windows.Forms.Panel();
             this.pnlCustom = new System.Windows.Forms.Panel();
+            this.tabObject = new System.Windows.Forms.TabControl();
+            this.tabPagePicture = new System.Windows.Forms.TabPage();
+            this.imgPicture = new Cyotek.Windows.Forms.ImageBox();
+            this.tabPageText = new System.Windows.Forms.TabPage();
             this.slideOffsetY = new NetCharm.Image.Addins.Controls.SlideNumber();
             this.slideOffsetX = new NetCharm.Image.Addins.Controls.SlideNumber();
             this.slideMarginY = new NetCharm.Image.Addins.Controls.SlideNumber();
@@ -56,63 +54,24 @@
             this.slideBlend = new NetCharm.Image.Addins.Controls.SlideNumber();
             this.slideOpaque = new NetCharm.Image.Addins.Controls.SlideNumber();
             this.imgPreview = new NetCharm.Image.Addins.ImageBox();
+            this.btnOpenPic = new System.Windows.Forms.Button();
+            this.btnEffectDown = new System.Windows.Forms.Button();
+            this.btnEffectUp = new System.Windows.Forms.Button();
+            this.btnEffectRemove = new System.Windows.Forms.Button();
+            this.btnEffectAdd = new System.Windows.Forms.Button();
+            this.btnPosRandom = new System.Windows.Forms.Button();
+            this.btnOriginal = new System.Windows.Forms.CheckBox();
+            this.tabPageTag = new System.Windows.Forms.TabPage();
+            this.edText = new System.Windows.Forms.TextBox();
+            this.btnOpenFont = new System.Windows.Forms.Button();
             this.grpCommonSetting.SuspendLayout();
             this.pnlPosMode.SuspendLayout();
             this.pnlEffectTools.SuspendLayout();
+            this.pnlCustom.SuspendLayout();
+            this.tabObject.SuspendLayout();
+            this.tabPagePicture.SuspendLayout();
+            this.tabPageText.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnPosRandom
-            // 
-            resources.ApplyResources(this.btnPosRandom, "btnPosRandom");
-            this.btnPosRandom.Image = global::InternalFilters.Properties.Resources.Dice_24x;
-            this.btnPosRandom.Name = "btnPosRandom";
-            this.toolTip.SetToolTip(this.btnPosRandom, resources.GetString("btnPosRandom.ToolTip"));
-            this.btnPosRandom.UseVisualStyleBackColor = true;
-            this.btnPosRandom.Click += new System.EventHandler(this.btnPosRandom_Click);
-            // 
-            // btnEffectDown
-            // 
-            resources.ApplyResources(this.btnEffectDown, "btnEffectDown");
-            this.btnEffectDown.Image = global::InternalFilters.Properties.Resources.effect_down_24x;
-            this.btnEffectDown.Name = "btnEffectDown";
-            this.toolTip.SetToolTip(this.btnEffectDown, resources.GetString("btnEffectDown.ToolTip"));
-            this.btnEffectDown.UseVisualStyleBackColor = true;
-            this.btnEffectDown.Click += new System.EventHandler(this.btnEffectDown_Click);
-            // 
-            // btnEffectUp
-            // 
-            resources.ApplyResources(this.btnEffectUp, "btnEffectUp");
-            this.btnEffectUp.Image = global::InternalFilters.Properties.Resources.effect_up_24x;
-            this.btnEffectUp.Name = "btnEffectUp";
-            this.toolTip.SetToolTip(this.btnEffectUp, resources.GetString("btnEffectUp.ToolTip"));
-            this.btnEffectUp.UseVisualStyleBackColor = true;
-            this.btnEffectUp.Click += new System.EventHandler(this.btnEffectUp_Click);
-            // 
-            // btnEffectRemove
-            // 
-            resources.ApplyResources(this.btnEffectRemove, "btnEffectRemove");
-            this.btnEffectRemove.Image = global::InternalFilters.Properties.Resources.effect_remove_24x;
-            this.btnEffectRemove.Name = "btnEffectRemove";
-            this.toolTip.SetToolTip(this.btnEffectRemove, resources.GetString("btnEffectRemove.ToolTip"));
-            this.btnEffectRemove.UseVisualStyleBackColor = true;
-            this.btnEffectRemove.Click += new System.EventHandler(this.btnEffectRemove_Click);
-            // 
-            // btnEffectAdd
-            // 
-            resources.ApplyResources(this.btnEffectAdd, "btnEffectAdd");
-            this.btnEffectAdd.Image = global::InternalFilters.Properties.Resources.effect_add_24x;
-            this.btnEffectAdd.Name = "btnEffectAdd";
-            this.toolTip.SetToolTip(this.btnEffectAdd, resources.GetString("btnEffectAdd.ToolTip"));
-            this.btnEffectAdd.UseVisualStyleBackColor = true;
-            this.btnEffectAdd.Click += new System.EventHandler(this.btnEffectAdd_Click);
-            // 
-            // btnOriginal
-            // 
-            resources.ApplyResources(this.btnOriginal, "btnOriginal");
-            this.btnOriginal.Name = "btnOriginal";
-            this.toolTip.SetToolTip(this.btnOriginal, resources.GetString("btnOriginal.ToolTip"));
-            this.btnOriginal.UseVisualStyleBackColor = true;
-            this.btnOriginal.Click += new System.EventHandler(this.btnOriginal_Click);
             // 
             // btnOk
             // 
@@ -171,7 +130,7 @@
             // 
             resources.ApplyResources(this.lvFilters, "lvFilters");
             this.lvFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lvFilters.FullRowSelect = true;
+            this.lvFilters.CheckBoxes = true;
             this.lvFilters.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvFilters.HideSelection = false;
             this.lvFilters.LargeImageList = this.ilLarge;
@@ -183,6 +142,8 @@
             this.lvFilters.VirtualMode = true;
             this.lvFilters.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvFilters_RetrieveVirtualItem);
             this.lvFilters.DoubleClick += new System.EventHandler(this.lvFilters_DoubleClick);
+            this.lvFilters.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvFilters_KeyPress);
+            this.lvFilters.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvFilters_MouseClick);
             // 
             // ilLarge
             // 
@@ -208,7 +169,47 @@
             // pnlCustom
             // 
             resources.ApplyResources(this.pnlCustom, "pnlCustom");
+            this.pnlCustom.Controls.Add(this.tabObject);
             this.pnlCustom.Name = "pnlCustom";
+            // 
+            // tabObject
+            // 
+            resources.ApplyResources(this.tabObject, "tabObject");
+            this.tabObject.Controls.Add(this.tabPagePicture);
+            this.tabObject.Controls.Add(this.tabPageText);
+            this.tabObject.Controls.Add(this.tabPageTag);
+            this.tabObject.Name = "tabObject";
+            this.tabObject.SelectedIndex = 0;
+            this.tabObject.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            // 
+            // tabPagePicture
+            // 
+            this.tabPagePicture.Controls.Add(this.btnOpenPic);
+            this.tabPagePicture.Controls.Add(this.imgPicture);
+            resources.ApplyResources(this.tabPagePicture, "tabPagePicture");
+            this.tabPagePicture.Name = "tabPagePicture";
+            this.tabPagePicture.UseVisualStyleBackColor = true;
+            // 
+            // imgPicture
+            // 
+            this.imgPicture.AllowDoubleClick = true;
+            this.imgPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.imgPicture, "imgPicture");
+            this.imgPicture.ImageBorderStyle = Cyotek.Windows.Forms.ImageBoxBorderStyle.FixedSingleGlowShadow;
+            this.imgPicture.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.imgPicture.Name = "imgPicture";
+            this.imgPicture.ShowPixelGrid = true;
+            this.imgPicture.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
+            this.toolTip.SetToolTip(this.imgPicture, resources.GetString("imgPicture.ToolTip"));
+            this.imgPicture.DoubleClick += new System.EventHandler(this.imgPicture_DoubleClick);
+            // 
+            // tabPageText
+            // 
+            this.tabPageText.Controls.Add(this.btnOpenFont);
+            this.tabPageText.Controls.Add(this.edText);
+            resources.ApplyResources(this.tabPageText, "tabPageText");
+            this.tabPageText.Name = "tabPageText";
+            this.tabPageText.UseVisualStyleBackColor = true;
             // 
             // slideOffsetY
             // 
@@ -402,6 +403,89 @@
             this.imgPreview.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.imgPreview.Zoom = 100;
             // 
+            // btnOpenPic
+            // 
+            resources.ApplyResources(this.btnOpenPic, "btnOpenPic");
+            this.btnOpenPic.Image = global::InternalFilters.Properties.Resources.ImageLoader_24x;
+            this.btnOpenPic.Name = "btnOpenPic";
+            this.toolTip.SetToolTip(this.btnOpenPic, resources.GetString("btnOpenPic.ToolTip"));
+            this.btnOpenPic.UseVisualStyleBackColor = true;
+            this.btnOpenPic.Click += new System.EventHandler(this.btnOpenPic_Click);
+            // 
+            // btnEffectDown
+            // 
+            resources.ApplyResources(this.btnEffectDown, "btnEffectDown");
+            this.btnEffectDown.Image = global::InternalFilters.Properties.Resources.effect_down_24x;
+            this.btnEffectDown.Name = "btnEffectDown";
+            this.toolTip.SetToolTip(this.btnEffectDown, resources.GetString("btnEffectDown.ToolTip"));
+            this.btnEffectDown.UseVisualStyleBackColor = true;
+            this.btnEffectDown.Click += new System.EventHandler(this.btnEffectDown_Click);
+            // 
+            // btnEffectUp
+            // 
+            resources.ApplyResources(this.btnEffectUp, "btnEffectUp");
+            this.btnEffectUp.Image = global::InternalFilters.Properties.Resources.effect_up_24x;
+            this.btnEffectUp.Name = "btnEffectUp";
+            this.toolTip.SetToolTip(this.btnEffectUp, resources.GetString("btnEffectUp.ToolTip"));
+            this.btnEffectUp.UseVisualStyleBackColor = true;
+            this.btnEffectUp.Click += new System.EventHandler(this.btnEffectUp_Click);
+            // 
+            // btnEffectRemove
+            // 
+            resources.ApplyResources(this.btnEffectRemove, "btnEffectRemove");
+            this.btnEffectRemove.Image = global::InternalFilters.Properties.Resources.effect_remove_24x;
+            this.btnEffectRemove.Name = "btnEffectRemove";
+            this.toolTip.SetToolTip(this.btnEffectRemove, resources.GetString("btnEffectRemove.ToolTip"));
+            this.btnEffectRemove.UseVisualStyleBackColor = true;
+            this.btnEffectRemove.Click += new System.EventHandler(this.btnEffectRemove_Click);
+            // 
+            // btnEffectAdd
+            // 
+            resources.ApplyResources(this.btnEffectAdd, "btnEffectAdd");
+            this.btnEffectAdd.Image = global::InternalFilters.Properties.Resources.effect_add_24x;
+            this.btnEffectAdd.Name = "btnEffectAdd";
+            this.toolTip.SetToolTip(this.btnEffectAdd, resources.GetString("btnEffectAdd.ToolTip"));
+            this.btnEffectAdd.UseVisualStyleBackColor = true;
+            this.btnEffectAdd.Click += new System.EventHandler(this.btnEffectAdd_Click);
+            // 
+            // btnPosRandom
+            // 
+            resources.ApplyResources(this.btnPosRandom, "btnPosRandom");
+            this.btnPosRandom.Image = global::InternalFilters.Properties.Resources.Dice_24x;
+            this.btnPosRandom.Name = "btnPosRandom";
+            this.toolTip.SetToolTip(this.btnPosRandom, resources.GetString("btnPosRandom.ToolTip"));
+            this.btnPosRandom.UseVisualStyleBackColor = true;
+            this.btnPosRandom.Click += new System.EventHandler(this.btnPosRandom_Click);
+            // 
+            // btnOriginal
+            // 
+            resources.ApplyResources(this.btnOriginal, "btnOriginal");
+            this.btnOriginal.Name = "btnOriginal";
+            this.toolTip.SetToolTip(this.btnOriginal, resources.GetString("btnOriginal.ToolTip"));
+            this.btnOriginal.UseVisualStyleBackColor = true;
+            this.btnOriginal.Click += new System.EventHandler(this.btnOriginal_Click);
+            // 
+            // tabPageTag
+            // 
+            resources.ApplyResources(this.tabPageTag, "tabPageTag");
+            this.tabPageTag.Name = "tabPageTag";
+            this.tabPageTag.UseVisualStyleBackColor = true;
+            // 
+            // edText
+            // 
+            this.edText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.edText, "edText");
+            this.edText.Name = "edText";
+            // 
+            // btnOpenFont
+            // 
+            resources.ApplyResources(this.btnOpenFont, "btnOpenFont");
+            this.btnOpenFont.Image = global::InternalFilters.Properties.Resources.Font_24x;
+            this.btnOpenFont.Name = "btnOpenFont";
+            this.toolTip.SetToolTip(this.btnOpenFont, resources.GetString("btnOpenFont.ToolTip"));
+            this.btnOpenFont.UseVisualStyleBackColor = true;
+            this.btnOpenFont.Click += new System.EventHandler(this.btnOpenFont_Click);
+            // 
             // PinObjectForm
             // 
             this.AcceptButton = this.btnOk;
@@ -425,6 +509,11 @@
             this.grpCommonSetting.ResumeLayout(false);
             this.pnlPosMode.ResumeLayout(false);
             this.pnlEffectTools.ResumeLayout(false);
+            this.pnlCustom.ResumeLayout(false);
+            this.tabObject.ResumeLayout(false);
+            this.tabPagePicture.ResumeLayout(false);
+            this.tabPageText.ResumeLayout(false);
+            this.tabPageText.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,5 +547,13 @@
         private NetCharm.Image.Addins.Controls.SlideNumber slideOffsetX;
         private NetCharm.Image.Addins.Controls.SlideNumber slideMarginY;
         private NetCharm.Image.Addins.Controls.SlideNumber slideMarginX;
+        private System.Windows.Forms.TabControl tabObject;
+        private System.Windows.Forms.TabPage tabPagePicture;
+        private System.Windows.Forms.TabPage tabPageText;
+        private Cyotek.Windows.Forms.ImageBox imgPicture;
+        private System.Windows.Forms.Button btnOpenPic;
+        private System.Windows.Forms.TabPage tabPageTag;
+        private System.Windows.Forms.TextBox edText;
+        private System.Windows.Forms.Button btnOpenFont;
     }
 }
