@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NetCharm.Image;
 using NetCharm.Image.Addins;
 using NGettext.WinForm;
 

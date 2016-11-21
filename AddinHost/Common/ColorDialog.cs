@@ -6,8 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ExtensionMethods;
 
-namespace NetCharm.Image.Addins.Common
+namespace NetCharm.Common
 {
     public partial class ColorDialog : Form
     {
@@ -28,7 +29,8 @@ namespace NetCharm.Image.Addins.Common
         public ColorDialog()
         {
             InitializeComponent();
-            AddinUtils.Translate( null, this );
+            //AddinUtils.Translate( null, this );
+            this.Translate();
         }
 
         private void ColorDialog_Load( object sender, EventArgs e )

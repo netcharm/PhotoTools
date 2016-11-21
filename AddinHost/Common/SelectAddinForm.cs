@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ExtensionMethods;
 
 namespace NetCharm.Image.Addins.Common
 {
@@ -94,14 +95,16 @@ namespace NetCharm.Image.Addins.Common
         public SelectAddinForm()
         {
             InitializeComponent();
-            AddinUtils.Translate( null, this );
+            //AddinUtils.Translate( null, this );
+            this.Translate();
         }
 
         public SelectAddinForm(AddinHost host)
         {
             Host = host;
             InitializeComponent();
-            AddinUtils.Translate( null, this );
+            //AddinUtils.Translate( null, this );
+            this.Translate();
         }
 
         private void SelectAddinForm_Load( object sender, EventArgs e )

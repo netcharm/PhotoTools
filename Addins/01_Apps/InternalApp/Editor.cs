@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using Mono.Addins;
+using NetCharm.Image;
 using NetCharm.Image.Addins;
 
 namespace InternalFilters
@@ -374,10 +375,10 @@ namespace InternalFilters
                 case AddinCommand.GetImageInfo:
                     if ( fm is EditorForm && fm.ImageData is Image )
                     {
-                        result = new ImageInfo();
-                        ( result as ImageInfo ).EXIF = fm.ImageData.PropertyItems.ToList();
-                        ( result as ImageInfo ).IPTC = new Dictionary<string, string>();
-                        ( result as ImageInfo ).Meta = new BitmapMetadata( "jpg" );
+                        result = new MetaInfo();
+                        ( result as MetaInfo ).EXIF = fm.ImageData.PropertyItems.ToList();
+                        ( result as MetaInfo ).IPTC = new Dictionary<string, string>();
+                        ( result as MetaInfo ).Meta = new BitmapMetadata( "jpg" );
                     }
                     break;
                 case AddinCommand.GetImageColors:

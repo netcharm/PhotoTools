@@ -233,7 +233,7 @@ namespace NetCharm.Image.Addins
         public static DialogResult ShowColorPicker( ref Color color)
         {
             DialogResult result = DialogResult.None;
-            Common.ColorDialog dlgColor = new Common.ColorDialog();
+            NetCharm.Common.ColorDialog dlgColor = new NetCharm.Common.ColorDialog();
             Translate( null, dlgColor );
             dlgColor.Color = color;
             if( dlgColor.ShowDialog() == DialogResult.OK )
@@ -1032,7 +1032,7 @@ namespace NetCharm.Image.Addins
                 var ft = font.Substring(7, font.Length-8).Trim().Split(new char[] { ';', ',', '\n', '\r'}, StringSplitOptions.RemoveEmptyEntries ).Distinct().ToList();
                 Dictionary<string, string> fD = ft.ToDictionary( p => p.Split( '=' )[0].Trim(), p => p.Split( '=' )[1].Trim() );
                 tF = new Font( new FontFamily( fD["Name"] ),
-                    Convert.ToInt16( fD["Size"] ),
+                    (float)Convert.ToDouble( fD["Size"] ),
                     style,
                     (GraphicsUnit) Convert.ToInt16( fD["Units"] ),
                     (byte) Convert.ToInt16( fD["GdiCharSet"] ),
@@ -1096,11 +1096,14 @@ namespace NetCharm.Image.Addins
                 g.TextContrast = 2;
                 g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
+                // Here only for test. The output image is pool outline.
                 //g.DrawString( text, font, new SolidBrush( color ), 0, 0, tFormat );
 
+                // calc right emsize for given fontsize in current canvas dpi
+                float emSize = g.DpiY * font.Size / 72f;
                 var tPath = new GraphicsPath();
                 tPath.StartFigure();
-                tPath.AddString( text, font.FontFamily, (int)font.Style, font.Size,
+                tPath.AddString( text, font.FontFamily, (int) font.Style, emSize,
                                  new PointF( 0, 0 ),
                                  tFormat );
                 tPath.CloseFigure();
@@ -1155,8 +1158,9 @@ namespace NetCharm.Image.Addins
                 g.TextContrast = 2;
                 g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
+                float emSize = g.DpiY * font.Size / 72f;
                 tPath.StartFigure();
-                tPath.AddString( text, font.FontFamily, (int) font.Style, font.Size,
+                tPath.AddString( text, font.FontFamily, (int) font.Style, emSize,
                                  new PointF( 0, 0 ),
                                  tFormat );
                 tPath.CloseFigure();

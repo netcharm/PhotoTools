@@ -24,7 +24,7 @@ namespace InternalFilters.Actions
         private Image picObject = null;
         private Image picText = null;
 
-        private NetCharm.Image.Addins.Common.ColorDialog dlgColor = null;
+        private NetCharm.Common.ColorDialog dlgColor = null;
 
         private PinObjectMode mode = PinObjectMode.Picture;
         internal ParamItem ParamMode
@@ -74,7 +74,6 @@ namespace InternalFilters.Actions
         bool fontApplyTest = false;
 
         private List<ListViewItem> effects = new List<ListViewItem>();
-        //private List<Dictionary<string, ParamItem>> effectParams = new List<Dictionary<string, ParamItem>>();
         private List<ParamList> effectParams = new List<ParamList>();
 
         internal void LoadPicture(string picFile)
@@ -512,7 +511,9 @@ namespace InternalFilters.Actions
 
         private void btnOpenFont_Click( object sender, EventArgs e )
         {
-            FontDialog dlgFont = new FontDialog();
+            //FontDialog dlgFont = new FontDialog();
+            //dlgFont.Apply += new System.EventHandler( dlgFont_Apply );
+
             //dlgFont.ShowColor = true;
             dlgFont.ShowApply = true;
             dlgFont.ShowEffects = true;
@@ -522,7 +523,6 @@ namespace InternalFilters.Actions
             //dlgFont.AllowVerticalFonts = true;
             
             dlgFont.Font = AddinUtils.StrToFont( option.TextFont, option.TextFontStyle );
-            //dlgFont.Color = ColorTranslator.FromHtml( option.TextColor );
             dlgFont.Color = option.TextColor.ToColor();
             if ( dlgFont.ShowDialog() == DialogResult.OK )
             {
@@ -550,7 +550,7 @@ namespace InternalFilters.Actions
             string c = option.TextColor;
             Color color = option.TextColor.ToColor();
 
-            dlgColor = new NetCharm.Image.Addins.Common.ColorDialog();
+            dlgColor = new NetCharm.Common.ColorDialog();
             dlgColor.Apply += new System.EventHandler( dlgColor_Apply );
             dlgColor.Color = color;
             if ( dlgColor.ShowDialog() == DialogResult.OK )
