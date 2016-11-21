@@ -1,4 +1,6 @@
-﻿namespace InternalFilters.Actions
+﻿using NetCharm.Image;
+
+namespace InternalFilters.Actions
 {
     partial class PinObjectForm
     {
@@ -447,7 +449,7 @@
             // csSelect
             // 
             resources.ApplyResources(this.csSelect, "csSelect");
-            this.csSelect.CornetRegion = NetCharm.Image.Addins.CornerRegionType.None;
+            this.csSelect.CornetRegion = CornerRegionType.None;
             this.csSelect.Name = "csSelect";
             this.csSelect.CornetRegionClick += new System.EventHandler(this.csSelect_CornetRegionClick);
             // 

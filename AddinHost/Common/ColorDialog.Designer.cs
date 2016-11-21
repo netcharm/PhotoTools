@@ -72,15 +72,16 @@
             this.colorGrid.CellSize = new System.Drawing.Size(10, 11);
             this.colorGrid.EditMode = Cyotek.Windows.Forms.ColorEditingMode.None;
             this.colorGrid.Location = new System.Drawing.Point(235, 13);
+            this.colorGrid.Margin = new System.Windows.Forms.Padding(0);
             this.colorGrid.Name = "colorGrid";
-            this.colorGrid.Padding = new System.Windows.Forms.Padding(2);
+            this.colorGrid.Padding = new System.Windows.Forms.Padding(0);
             this.colorGrid.Palette = Cyotek.Windows.Forms.ColorPalette.Paint;
-            this.colorGrid.Size = new System.Drawing.Size(217, 159);
+            this.colorGrid.Size = new System.Drawing.Size(217, 160);
             this.colorGrid.TabIndex = 1;
             // 
             // lightnessColorSlider
             // 
-            this.lightnessColorSlider.Location = new System.Drawing.Point(208, 12);
+            this.lightnessColorSlider.Location = new System.Drawing.Point(200, 13);
             this.lightnessColorSlider.Name = "lightnessColorSlider";
             this.lightnessColorSlider.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.lightnessColorSlider.Size = new System.Drawing.Size(21, 160);
@@ -91,7 +92,7 @@
             this.screenColorPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.screenColorPicker.Color = System.Drawing.Color.Black;
             this.screenColorPicker.Image = global::NetCharm.Image.Addins.Properties.Resources.eyedropper;
-            this.screenColorPicker.Location = new System.Drawing.Point(472, 111);
+            this.screenColorPicker.Location = new System.Drawing.Point(472, 109);
             this.screenColorPicker.Name = "screenColorPicker";
             this.screenColorPicker.ShowTextWithSnapshot = true;
             this.screenColorPicker.Size = new System.Drawing.Size(64, 64);
@@ -135,7 +136,7 @@
             // colorPanel
             // 
             this.colorPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorPanel.Location = new System.Drawing.Point(472, 235);
+            this.colorPanel.Location = new System.Drawing.Point(472, 226);
             this.colorPanel.Name = "colorPanel";
             this.colorPanel.Size = new System.Drawing.Size(64, 64);
             this.colorPanel.TabIndex = 9;

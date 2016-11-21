@@ -12,6 +12,7 @@ using ExtensionMethods;
 namespace InternalFilters.Actions
 {
     using System.IO;
+    using NetCharm.Image;
     using ParamList = Dictionary<string, ParamItem>;
 
     public partial class PinObjectForm : Form
@@ -160,7 +161,6 @@ namespace InternalFilters.Actions
                     case PinObjectMode.Text:
                         if ( !string.IsNullOrEmpty( option.Text ) )
                         {
-                            //picText = addin.Apply( AddinUtils.TextToBitmap32( option.Text, option.TextFont, option.TextFontStyle, ColorTranslator.FromHtml( option.TextColor ) ) );
                             picText = addin.Apply( AddinUtils.TextToBitmap32( option.Text, option.TextFont, option.TextFontStyle, option.TextColor.ToColor() ) );
                             if ( picText.Width > imgText.Width || picText.Height > imgText.Height )
                                 imgText.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
@@ -513,7 +513,7 @@ namespace InternalFilters.Actions
         private void btnOpenFont_Click( object sender, EventArgs e )
         {
             FontDialog dlgFont = new FontDialog();
-            dlgFont.ShowColor = true;
+            //dlgFont.ShowColor = true;
             dlgFont.ShowApply = true;
             dlgFont.ShowEffects = true;
             dlgFont.AllowScriptChange = true;
@@ -527,7 +527,7 @@ namespace InternalFilters.Actions
             if ( dlgFont.ShowDialog() == DialogResult.OK )
             {
                 option.TextFont = dlgFont.Font.ToString();
-                option.TextColor = dlgFont.Color.ToHtml();
+                //option.TextColor = dlgFont.Color.ToHtml();
                 option.TextFontStyle = dlgFont.Font.Style;
                 Preview();
             }
@@ -539,7 +539,6 @@ namespace InternalFilters.Actions
             fontApplyTest = true;
 
             option.TextFont = dlgFont.Font.ToString();
-            //option.TextColor = ColorTranslator.ToHtml( dlgFont.Color );
             option.TextFontStyle = dlgFont.Font.Style;
 
             Preview();
@@ -549,21 +548,13 @@ namespace InternalFilters.Actions
         private void btnColorPicker_Click( object sender, EventArgs e )
         {
             string c = option.TextColor;
-            //Color color = ColorTranslator.FromHtml(option.TextColor);
             Color color = option.TextColor.ToColor();
-
-            //if ( AddinUtils.ShowColorPicker( ref color ) == DialogResult.OK )
-            //{
-            //    option.TextColor = ColorTranslator.ToHtml( color );
-            //    Preview();
-            //}
 
             dlgColor = new NetCharm.Image.Addins.Common.ColorDialog();
             dlgColor.Apply += new System.EventHandler( dlgColor_Apply );
             dlgColor.Color = color;
             if ( dlgColor.ShowDialog() == DialogResult.OK )
             {
-                //option.TextColor = ColorTranslator.ToHtml( dlgColor.Color );
                 option.TextColor = dlgColor.Color.ToHtml();
                 Preview();
             }
@@ -580,7 +571,6 @@ namespace InternalFilters.Actions
 
             string c = option.TextColor;
 
-            //option.TextColor = ColorTranslator.ToHtml( dlgColor.Color );
             option.TextColor = dlgColor.Color.ToHtml();
             Preview();
             option.TextColor = c;

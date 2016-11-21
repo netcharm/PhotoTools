@@ -134,6 +134,7 @@
     <Compile Include="Common\FontDialog.Designer.cs">
       <DependentUpon>FontDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\ImageInfo.cs" />
     <Compile Include="Common\SelectAddinForm.cs">
       <SubType>Form</SubType>
     </Compile>
