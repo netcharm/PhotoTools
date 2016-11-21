@@ -117,38 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AddIn_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AddInterface_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Application_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Application_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Action_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Action_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Action_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Action_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AddIn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\AddIn.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Effect_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Effects_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Application_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Application_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Effect_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Effects_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AddIn_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AddInterface_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AddInHost_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AddIn_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eyedropper" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eyedropper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  <metadata name="colorManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

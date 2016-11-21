@@ -44,7 +44,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template", "Template", "{99
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Licenses", "Licenses", "{D4BB2BFC-12C1-46B3-B67D-EF054256CADA}"
 	ProjectSection(SolutionItems) = preProject
-		MIT_License.txt = MIT_License.txt
+		License\BSD.txt = License\BSD.txt
+		License\MIT.txt = License\MIT.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorMatrixTest", "ColorMatrixTest\ColorMatrixTest.csproj", "{E4FA10E9-F2C6-434F-A801-C8C95F42412A}"

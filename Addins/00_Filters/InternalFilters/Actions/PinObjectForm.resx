@@ -121,20 +121,47 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="imgPicture.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="imgPicture.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="imgPicture.Size" type="System.Drawing.Size, System.Drawing">
+    <value>364, 137</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="imgPicture.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="imgPicture.ToolTip" xml:space="preserve">
+    <value>Double-Click to Open Picture</value>
+  </data>
+  <data name="&gt;&gt;imgPicture.Name" xml:space="preserve">
+    <value>imgPicture</value>
+  </data>
+  <data name="&gt;&gt;imgPicture.Type" xml:space="preserve">
+    <value>Cyotek.Windows.Forms.ImageBox, Cyotek.Windows.Forms.ImageBox, Version=1.1.5.1, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
+  </data>
+  <data name="&gt;&gt;imgPicture.Parent" xml:space="preserve">
+    <value>tabPagePicture</value>
+  </data>
+  <data name="&gt;&gt;imgPicture.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="btnOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="btnOk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>547, 422</value>
+    <value>547, 454</value>
   </data>
   <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnOk.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
@@ -160,7 +187,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 422</value>
+    <value>457, 454</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -186,11 +213,26 @@
   <data name="grpCommonSetting.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left</value>
   </data>
+  <data name="slideOffsetY.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="slideOffsetY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 277</value>
+  </data>
+  <data name="slideOffsetY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="slideOffsetY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 52</value>
+  </data>
+  <data name="slideOffsetY.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
   <data name="&gt;&gt;slideOffsetY.Name" xml:space="preserve">
     <value>slideOffsetY</value>
   </data>
   <data name="&gt;&gt;slideOffsetY.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.41, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideOffsetY.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -198,11 +240,26 @@
   <data name="&gt;&gt;slideOffsetY.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="slideOffsetX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="slideOffsetX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 225</value>
+  </data>
+  <data name="slideOffsetX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="slideOffsetX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 52</value>
+  </data>
+  <data name="slideOffsetX.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
   <data name="&gt;&gt;slideOffsetX.Name" xml:space="preserve">
     <value>slideOffsetX</value>
   </data>
   <data name="&gt;&gt;slideOffsetX.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.41, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideOffsetX.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -210,11 +267,26 @@
   <data name="&gt;&gt;slideOffsetX.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="slideMarginY.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="slideMarginY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 173</value>
+  </data>
+  <data name="slideMarginY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="slideMarginY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 52</value>
+  </data>
+  <data name="slideMarginY.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
   <data name="&gt;&gt;slideMarginY.Name" xml:space="preserve">
     <value>slideMarginY</value>
   </data>
   <data name="&gt;&gt;slideMarginY.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.41, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideMarginY.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -222,149 +294,32 @@
   <data name="&gt;&gt;slideMarginY.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="slideMarginX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="slideMarginX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 121</value>
+  </data>
+  <data name="slideMarginX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="slideMarginX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 52</value>
+  </data>
+  <data name="slideMarginX.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
   <data name="&gt;&gt;slideMarginX.Name" xml:space="preserve">
     <value>slideMarginX</value>
   </data>
   <data name="&gt;&gt;slideMarginX.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.41, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideMarginX.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
   </data>
   <data name="&gt;&gt;slideMarginX.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;pnlPosMode.Name" xml:space="preserve">
-    <value>pnlPosMode</value>
-  </data>
-  <data name="&gt;&gt;pnlPosMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlPosMode.Parent" xml:space="preserve">
-    <value>grpCommonSetting</value>
-  </data>
-  <data name="&gt;&gt;pnlPosMode.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;slideBlend.Name" xml:space="preserve">
-    <value>slideBlend</value>
-  </data>
-  <data name="&gt;&gt;slideBlend.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;slideBlend.Parent" xml:space="preserve">
-    <value>grpCommonSetting</value>
-  </data>
-  <data name="&gt;&gt;slideBlend.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;slideOpaque.Name" xml:space="preserve">
-    <value>slideOpaque</value>
-  </data>
-  <data name="&gt;&gt;slideOpaque.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;slideOpaque.Parent" xml:space="preserve">
-    <value>grpCommonSetting</value>
-  </data>
-  <data name="&gt;&gt;slideOpaque.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="grpCommonSetting.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="grpCommonSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 438</value>
-  </data>
-  <data name="grpCommonSetting.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="grpCommonSetting.Text" xml:space="preserve">
-    <value>Common</value>
-  </data>
-  <data name="&gt;&gt;grpCommonSetting.Name" xml:space="preserve">
-    <value>grpCommonSetting</value>
-  </data>
-  <data name="&gt;&gt;grpCommonSetting.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpCommonSetting.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;grpCommonSetting.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;chkEnabled.Name" xml:space="preserve">
-    <value>chkEnabled</value>
-  </data>
-  <data name="&gt;&gt;chkEnabled.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkEnabled.Parent" xml:space="preserve">
-    <value>pnlPosMode</value>
-  </data>
-  <data name="&gt;&gt;chkEnabled.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;chkTile.Name" xml:space="preserve">
-    <value>chkTile</value>
-  </data>
-  <data name="&gt;&gt;chkTile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkTile.Parent" xml:space="preserve">
-    <value>pnlPosMode</value>
-  </data>
-  <data name="&gt;&gt;chkTile.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnPosRandom.Name" xml:space="preserve">
-    <value>btnPosRandom</value>
-  </data>
-  <data name="&gt;&gt;btnPosRandom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPosRandom.Parent" xml:space="preserve">
-    <value>pnlPosMode</value>
-  </data>
-  <data name="&gt;&gt;btnPosRandom.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;csSelect.Name" xml:space="preserve">
-    <value>csSelect</value>
-  </data>
-  <data name="&gt;&gt;csSelect.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.CornerSide, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;csSelect.Parent" xml:space="preserve">
-    <value>pnlPosMode</value>
-  </data>
-  <data name="&gt;&gt;csSelect.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlPosMode.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="pnlPosMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 345</value>
-  </data>
-  <data name="pnlPosMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 90</value>
-  </data>
-  <data name="pnlPosMode.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="&gt;&gt;pnlPosMode.Name" xml:space="preserve">
-    <value>pnlPosMode</value>
-  </data>
-  <data name="&gt;&gt;pnlPosMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlPosMode.Parent" xml:space="preserve">
-    <value>grpCommonSetting</value>
-  </data>
-  <data name="&gt;&gt;pnlPosMode.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="chkEnabled.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -432,6 +387,174 @@
   <data name="&gt;&gt;chkTile.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="btnPosRandom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnPosRandom.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnPosRandom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPosRandom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>83, 55</value>
+  </data>
+  <data name="btnPosRandom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="btnPosRandom.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="btnPosRandom.ToolTip" xml:space="preserve">
+    <value>Random Put Object To Image</value>
+  </data>
+  <data name="&gt;&gt;btnPosRandom.Name" xml:space="preserve">
+    <value>btnPosRandom</value>
+  </data>
+  <data name="&gt;&gt;btnPosRandom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPosRandom.Parent" xml:space="preserve">
+    <value>pnlPosMode</value>
+  </data>
+  <data name="&gt;&gt;btnPosRandom.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="csSelect.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="csSelect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 25</value>
+  </data>
+  <data name="csSelect.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>64, 64</value>
+  </data>
+  <data name="csSelect.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>64, 64</value>
+  </data>
+  <data name="csSelect.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 0, 0</value>
+  </data>
+  <data name="csSelect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 64</value>
+  </data>
+  <data name="csSelect.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;csSelect.Name" xml:space="preserve">
+    <value>csSelect</value>
+  </data>
+  <data name="&gt;&gt;csSelect.Type" xml:space="preserve">
+    <value>NetCharm.Image.Addins.Controls.CornerSide, NetCharm.Image.AddinHost, Version=1.0.13.41, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;csSelect.Parent" xml:space="preserve">
+    <value>pnlPosMode</value>
+  </data>
+  <data name="&gt;&gt;csSelect.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pnlPosMode.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlPosMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 377</value>
+  </data>
+  <data name="pnlPosMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 90</value>
+  </data>
+  <data name="pnlPosMode.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;pnlPosMode.Name" xml:space="preserve">
+    <value>pnlPosMode</value>
+  </data>
+  <data name="&gt;&gt;pnlPosMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlPosMode.Parent" xml:space="preserve">
+    <value>grpCommonSetting</value>
+  </data>
+  <data name="&gt;&gt;pnlPosMode.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="slideBlend.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="slideBlend.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 69</value>
+  </data>
+  <data name="slideBlend.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="slideBlend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 52</value>
+  </data>
+  <data name="slideBlend.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;slideBlend.Name" xml:space="preserve">
+    <value>slideBlend</value>
+  </data>
+  <data name="&gt;&gt;slideBlend.Type" xml:space="preserve">
+    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.41, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;slideBlend.Parent" xml:space="preserve">
+    <value>grpCommonSetting</value>
+  </data>
+  <data name="&gt;&gt;slideBlend.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="slideOpaque.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="slideOpaque.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 17</value>
+  </data>
+  <data name="slideOpaque.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="slideOpaque.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 52</value>
+  </data>
+  <data name="slideOpaque.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;slideOpaque.Name" xml:space="preserve">
+    <value>slideOpaque</value>
+  </data>
+  <data name="&gt;&gt;slideOpaque.Type" xml:space="preserve">
+    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.41, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;slideOpaque.Parent" xml:space="preserve">
+    <value>grpCommonSetting</value>
+  </data>
+  <data name="&gt;&gt;slideOpaque.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="grpCommonSetting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="grpCommonSetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 470</value>
+  </data>
+  <data name="grpCommonSetting.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="grpCommonSetting.Text" xml:space="preserve">
+    <value>Common</value>
+  </data>
+  <data name="&gt;&gt;grpCommonSetting.Name" xml:space="preserve">
+    <value>grpCommonSetting</value>
+  </data>
+  <data name="&gt;&gt;grpCommonSetting.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpCommonSetting.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpCommonSetting.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="lvFilters.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
   </data>
@@ -442,7 +565,7 @@
     <value>16, 16</value>
   </data>
   <data name="lvFilters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 152</value>
+    <value>212, 184</value>
   </data>
   <data name="lvFilters.Size" type="System.Drawing.Size, System.Drawing">
     <value>147, 256</value>
@@ -470,572 +593,6 @@
   </data>
   <data name="pnlEffectTools.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
-  </data>
-  <data name="&gt;&gt;btnEffectDown.Name" xml:space="preserve">
-    <value>btnEffectDown</value>
-  </data>
-  <data name="&gt;&gt;btnEffectDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEffectDown.Parent" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;btnEffectDown.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnEffectUp.Name" xml:space="preserve">
-    <value>btnEffectUp</value>
-  </data>
-  <data name="&gt;&gt;btnEffectUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEffectUp.Parent" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;btnEffectUp.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnEffectRemove.Name" xml:space="preserve">
-    <value>btnEffectRemove</value>
-  </data>
-  <data name="&gt;&gt;btnEffectRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEffectRemove.Parent" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;btnEffectRemove.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;btnEffectAdd.Name" xml:space="preserve">
-    <value>btnEffectAdd</value>
-  </data>
-  <data name="&gt;&gt;btnEffectAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEffectAdd.Parent" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;btnEffectAdd.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlEffectTools.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 412</value>
-  </data>
-  <data name="pnlEffectTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 38</value>
-  </data>
-  <data name="pnlEffectTools.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;pnlEffectTools.Name" xml:space="preserve">
-    <value>pnlEffectTools</value>
-  </data>
-  <data name="&gt;&gt;pnlEffectTools.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlEffectTools.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlEffectTools.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pnlCustom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="tabObject.Appearance" type="System.Windows.Forms.TabAppearance, System.Windows.Forms">
-    <value>FlatButtons</value>
-  </data>
-  <data name="&gt;&gt;btnOpenPic.Name" xml:space="preserve">
-    <value>btnOpenPic</value>
-  </data>
-  <data name="&gt;&gt;btnOpenPic.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnOpenPic.Parent" xml:space="preserve">
-    <value>tabPagePicture</value>
-  </data>
-  <data name="&gt;&gt;btnOpenPic.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;imgPicture.Name" xml:space="preserve">
-    <value>imgPicture</value>
-  </data>
-  <data name="&gt;&gt;imgPicture.Type" xml:space="preserve">
-    <value>Cyotek.Windows.Forms.ImageBox, Cyotek.Windows.Forms.ImageBox, Version=1.1.5.1, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
-  </data>
-  <data name="&gt;&gt;imgPicture.Parent" xml:space="preserve">
-    <value>tabPagePicture</value>
-  </data>
-  <data name="&gt;&gt;imgPicture.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPagePicture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="tabPagePicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 105</value>
-  </data>
-  <data name="tabPagePicture.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPagePicture.Text" xml:space="preserve">
-    <value>Picture</value>
-  </data>
-  <data name="&gt;&gt;tabPagePicture.Name" xml:space="preserve">
-    <value>tabPagePicture</value>
-  </data>
-  <data name="&gt;&gt;tabPagePicture.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPagePicture.Parent" xml:space="preserve">
-    <value>tabObject</value>
-  </data>
-  <data name="&gt;&gt;tabPagePicture.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnOpenFont.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnOpenFont.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
-  </data>
-  <data name="btnOpenFont.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnOpenFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>370, 0</value>
-  </data>
-  <data name="btnOpenFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="btnOpenFont.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="btnOpenFont.ToolTip" xml:space="preserve">
-    <value>Open Picture</value>
-  </data>
-  <data name="&gt;&gt;btnOpenFont.Name" xml:space="preserve">
-    <value>btnOpenFont</value>
-  </data>
-  <data name="&gt;&gt;btnOpenFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnOpenFont.Parent" xml:space="preserve">
-    <value>tabPageText</value>
-  </data>
-  <data name="&gt;&gt;btnOpenFont.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="edText.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="edText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="edText.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="edText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>364, 105</value>
-  </data>
-  <data name="edText.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;edText.Name" xml:space="preserve">
-    <value>edText</value>
-  </data>
-  <data name="&gt;&gt;edText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;edText.Parent" xml:space="preserve">
-    <value>tabPageText</value>
-  </data>
-  <data name="&gt;&gt;edText.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPageText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="tabPageText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 105</value>
-  </data>
-  <data name="tabPageText.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabPageText.Text" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="&gt;&gt;tabPageText.Name" xml:space="preserve">
-    <value>tabPageText</value>
-  </data>
-  <data name="&gt;&gt;tabPageText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageText.Parent" xml:space="preserve">
-    <value>tabObject</value>
-  </data>
-  <data name="&gt;&gt;tabPageText.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPageTag.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="tabPageTag.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageTag.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 105</value>
-  </data>
-  <data name="tabPageTag.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabPageTag.Text" xml:space="preserve">
-    <value>SmartTag</value>
-  </data>
-  <data name="&gt;&gt;tabPageTag.Name" xml:space="preserve">
-    <value>tabPageTag</value>
-  </data>
-  <data name="&gt;&gt;tabPageTag.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageTag.Parent" xml:space="preserve">
-    <value>tabObject</value>
-  </data>
-  <data name="&gt;&gt;tabPageTag.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabObject.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabObject.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tabObject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 134</value>
-  </data>
-  <data name="tabObject.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabObject.Name" xml:space="preserve">
-    <value>tabObject</value>
-  </data>
-  <data name="&gt;&gt;tabObject.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabObject.Parent" xml:space="preserve">
-    <value>pnlCustom</value>
-  </data>
-  <data name="&gt;&gt;tabObject.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="pnlCustom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 12</value>
-  </data>
-  <data name="pnlCustom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 134</value>
-  </data>
-  <data name="pnlCustom.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;pnlCustom.Name" xml:space="preserve">
-    <value>pnlCustom</value>
-  </data>
-  <data name="&gt;&gt;pnlCustom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlCustom.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlCustom.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="imgPicture.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="imgPicture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="imgPicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>364, 105</value>
-  </data>
-  <data name="imgPicture.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="imgPicture.ToolTip" xml:space="preserve">
-    <value>Double-Click to Open Picture</value>
-  </data>
-  <data name="&gt;&gt;imgPicture.Name" xml:space="preserve">
-    <value>imgPicture</value>
-  </data>
-  <data name="&gt;&gt;imgPicture.Type" xml:space="preserve">
-    <value>Cyotek.Windows.Forms.ImageBox, Cyotek.Windows.Forms.ImageBox, Version=1.1.5.1, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
-  </data>
-  <data name="&gt;&gt;imgPicture.Parent" xml:space="preserve">
-    <value>tabPagePicture</value>
-  </data>
-  <data name="&gt;&gt;imgPicture.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="slideOffsetY.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="slideOffsetY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 277</value>
-  </data>
-  <data name="slideOffsetY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
-  </data>
-  <data name="slideOffsetY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 52</value>
-  </data>
-  <data name="slideOffsetY.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="&gt;&gt;slideOffsetY.Name" xml:space="preserve">
-    <value>slideOffsetY</value>
-  </data>
-  <data name="&gt;&gt;slideOffsetY.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;slideOffsetY.Parent" xml:space="preserve">
-    <value>grpCommonSetting</value>
-  </data>
-  <data name="&gt;&gt;slideOffsetY.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="slideOffsetX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="slideOffsetX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 225</value>
-  </data>
-  <data name="slideOffsetX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
-  </data>
-  <data name="slideOffsetX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 52</value>
-  </data>
-  <data name="slideOffsetX.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;slideOffsetX.Name" xml:space="preserve">
-    <value>slideOffsetX</value>
-  </data>
-  <data name="&gt;&gt;slideOffsetX.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;slideOffsetX.Parent" xml:space="preserve">
-    <value>grpCommonSetting</value>
-  </data>
-  <data name="&gt;&gt;slideOffsetX.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="slideMarginY.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="slideMarginY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 173</value>
-  </data>
-  <data name="slideMarginY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
-  </data>
-  <data name="slideMarginY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 52</value>
-  </data>
-  <data name="slideMarginY.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;slideMarginY.Name" xml:space="preserve">
-    <value>slideMarginY</value>
-  </data>
-  <data name="&gt;&gt;slideMarginY.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;slideMarginY.Parent" xml:space="preserve">
-    <value>grpCommonSetting</value>
-  </data>
-  <data name="&gt;&gt;slideMarginY.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="slideMarginX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="slideMarginX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 121</value>
-  </data>
-  <data name="slideMarginX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
-  </data>
-  <data name="slideMarginX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 52</value>
-  </data>
-  <data name="slideMarginX.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;slideMarginX.Name" xml:space="preserve">
-    <value>slideMarginX</value>
-  </data>
-  <data name="&gt;&gt;slideMarginX.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;slideMarginX.Parent" xml:space="preserve">
-    <value>grpCommonSetting</value>
-  </data>
-  <data name="&gt;&gt;slideMarginX.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="csSelect.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="csSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 25</value>
-  </data>
-  <data name="csSelect.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>64, 64</value>
-  </data>
-  <data name="csSelect.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>64, 64</value>
-  </data>
-  <data name="csSelect.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 0, 0</value>
-  </data>
-  <data name="csSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 64</value>
-  </data>
-  <data name="csSelect.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="&gt;&gt;csSelect.Name" xml:space="preserve">
-    <value>csSelect</value>
-  </data>
-  <data name="&gt;&gt;csSelect.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.CornerSide, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;csSelect.Parent" xml:space="preserve">
-    <value>pnlPosMode</value>
-  </data>
-  <data name="&gt;&gt;csSelect.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="slideBlend.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="slideBlend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 69</value>
-  </data>
-  <data name="slideBlend.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
-  </data>
-  <data name="slideBlend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 52</value>
-  </data>
-  <data name="slideBlend.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;slideBlend.Name" xml:space="preserve">
-    <value>slideBlend</value>
-  </data>
-  <data name="&gt;&gt;slideBlend.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;slideBlend.Parent" xml:space="preserve">
-    <value>grpCommonSetting</value>
-  </data>
-  <data name="&gt;&gt;slideBlend.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="slideOpaque.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="slideOpaque.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 17</value>
-  </data>
-  <data name="slideOpaque.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
-  </data>
-  <data name="slideOpaque.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 52</value>
-  </data>
-  <data name="slideOpaque.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;slideOpaque.Name" xml:space="preserve">
-    <value>slideOpaque</value>
-  </data>
-  <data name="&gt;&gt;slideOpaque.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;slideOpaque.Parent" xml:space="preserve">
-    <value>grpCommonSetting</value>
-  </data>
-  <data name="&gt;&gt;slideOpaque.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="imgPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="imgPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>366, 152</value>
-  </data>
-  <data name="imgPreview.SelectionRegion" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0
-        dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABlTeXN0ZW0uRHJh
-        d2luZy5SZWN0YW5nbGVGBAAAAAF4AXkFd2lkdGgGaGVpZ2h0AAAAAAsLCwsCAAAAAAAAAAAAAAAAAAAA
-        AAAAAAs=
-</value>
-  </data>
-  <data name="imgPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 256</value>
-  </data>
-  <data name="imgPreview.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;imgPreview.Name" xml:space="preserve">
-    <value>imgPreview</value>
-  </data>
-  <data name="&gt;&gt;imgPreview.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;imgPreview.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;imgPreview.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="btnOpenPic.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnOpenPic.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
-  </data>
-  <data name="btnOpenPic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnOpenPic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>370, 0</value>
-  </data>
-  <data name="btnOpenPic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="btnOpenPic.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="btnOpenPic.ToolTip" xml:space="preserve">
-    <value>Open Picture</value>
-  </data>
-  <data name="&gt;&gt;btnOpenPic.Name" xml:space="preserve">
-    <value>btnOpenPic</value>
-  </data>
-  <data name="&gt;&gt;btnOpenPic.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnOpenPic.Parent" xml:space="preserve">
-    <value>tabPagePicture</value>
-  </data>
-  <data name="&gt;&gt;btnOpenPic.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="btnEffectDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
@@ -1169,39 +726,306 @@
   <data name="&gt;&gt;btnEffectAdd.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="btnPosRandom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+  <data name="pnlEffectTools.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 444</value>
   </data>
-  <data name="btnPosRandom.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="pnlEffectTools.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 38</value>
+  </data>
+  <data name="pnlEffectTools.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;pnlEffectTools.Name" xml:space="preserve">
+    <value>pnlEffectTools</value>
+  </data>
+  <data name="&gt;&gt;pnlEffectTools.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlEffectTools.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlEffectTools.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlCustom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="tabObject.Appearance" type="System.Windows.Forms.TabAppearance, System.Windows.Forms">
+    <value>FlatButtons</value>
+  </data>
+  <data name="btnOpenPic.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnOpenPic.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
   </data>
-  <data name="btnPosRandom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnOpenPic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnPosRandom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 55</value>
+  <data name="btnOpenPic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>370, 0</value>
   </data>
-  <data name="btnPosRandom.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnOpenPic.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 32</value>
   </data>
-  <data name="btnPosRandom.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="btnPosRandom.ToolTip" xml:space="preserve">
-    <value>Random Put Object To Image</value>
-  </data>
-  <data name="&gt;&gt;btnPosRandom.Name" xml:space="preserve">
-    <value>btnPosRandom</value>
-  </data>
-  <data name="&gt;&gt;btnPosRandom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPosRandom.Parent" xml:space="preserve">
-    <value>pnlPosMode</value>
-  </data>
-  <data name="&gt;&gt;btnPosRandom.ZOrder" xml:space="preserve">
+  <data name="btnOpenPic.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="btnOpenPic.ToolTip" xml:space="preserve">
+    <value>Open Picture</value>
+  </data>
+  <data name="&gt;&gt;btnOpenPic.Name" xml:space="preserve">
+    <value>btnOpenPic</value>
+  </data>
+  <data name="&gt;&gt;btnOpenPic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOpenPic.Parent" xml:space="preserve">
+    <value>tabPagePicture</value>
+  </data>
+  <data name="&gt;&gt;btnOpenPic.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPagePicture.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabPagePicture.Size" type="System.Drawing.Size, System.Drawing">
+    <value>402, 137</value>
+  </data>
+  <data name="tabPagePicture.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPagePicture.Text" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="&gt;&gt;tabPagePicture.Name" xml:space="preserve">
+    <value>tabPagePicture</value>
+  </data>
+  <data name="&gt;&gt;tabPagePicture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPagePicture.Parent" xml:space="preserve">
+    <value>tabObject</value>
+  </data>
+  <data name="&gt;&gt;tabPagePicture.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnColorPicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnColorPicker.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnColorPicker.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnColorPicker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>370, 33</value>
+  </data>
+  <data name="btnColorPicker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="btnColorPicker.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnColorPicker.ToolTip" xml:space="preserve">
+    <value>Select Color</value>
+  </data>
+  <data name="&gt;&gt;btnColorPicker.Name" xml:space="preserve">
+    <value>btnColorPicker</value>
+  </data>
+  <data name="&gt;&gt;btnColorPicker.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnColorPicker.Parent" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;btnColorPicker.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="imgText.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="imgText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 70</value>
+  </data>
+  <data name="imgText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>402, 67</value>
+  </data>
+  <data name="imgText.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;imgText.Name" xml:space="preserve">
+    <value>imgText</value>
+  </data>
+  <data name="&gt;&gt;imgText.Type" xml:space="preserve">
+    <value>Cyotek.Windows.Forms.ImageBox, Cyotek.Windows.Forms.ImageBox, Version=1.1.5.1, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
+  </data>
+  <data name="&gt;&gt;imgText.Parent" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;imgText.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnOpenFont.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnOpenFont.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnOpenFont.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnOpenFont.Location" type="System.Drawing.Point, System.Drawing">
+    <value>370, 0</value>
+  </data>
+  <data name="btnOpenFont.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="btnOpenFont.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnOpenFont.ToolTip" xml:space="preserve">
+    <value>Select Font</value>
+  </data>
+  <data name="&gt;&gt;btnOpenFont.Name" xml:space="preserve">
+    <value>btnOpenFont</value>
+  </data>
+  <data name="&gt;&gt;btnOpenFont.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOpenFont.Parent" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;btnOpenFont.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="edText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>On</value>
+  </data>
+  <data name="edText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="edText.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="edText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>364, 65</value>
+  </data>
+  <data name="edText.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;edText.Name" xml:space="preserve">
+    <value>edText</value>
+  </data>
+  <data name="&gt;&gt;edText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;edText.Parent" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;edText.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabPageText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabPageText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>402, 137</value>
+  </data>
+  <data name="tabPageText.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageText.Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="&gt;&gt;tabPageText.Name" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;tabPageText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageText.Parent" xml:space="preserve">
+    <value>tabObject</value>
+  </data>
+  <data name="&gt;&gt;tabPageText.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageTag.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabPageTag.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageTag.Size" type="System.Drawing.Size, System.Drawing">
+    <value>402, 137</value>
+  </data>
+  <data name="tabPageTag.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageTag.Text" xml:space="preserve">
+    <value>SmartTag</value>
+  </data>
+  <data name="&gt;&gt;tabPageTag.Name" xml:space="preserve">
+    <value>tabPageTag</value>
+  </data>
+  <data name="&gt;&gt;tabPageTag.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageTag.Parent" xml:space="preserve">
+    <value>tabObject</value>
+  </data>
+  <data name="&gt;&gt;tabPageTag.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabObject.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabObject.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabObject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>410, 166</value>
+  </data>
+  <data name="tabObject.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabObject.Name" xml:space="preserve">
+    <value>tabObject</value>
+  </data>
+  <data name="&gt;&gt;tabObject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabObject.Parent" xml:space="preserve">
+    <value>pnlCustom</value>
+  </data>
+  <data name="&gt;&gt;tabObject.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlCustom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 12</value>
+  </data>
+  <data name="pnlCustom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>410, 166</value>
+  </data>
+  <data name="pnlCustom.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;pnlCustom.Name" xml:space="preserve">
+    <value>pnlCustom</value>
+  </data>
+  <data name="&gt;&gt;pnlCustom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlCustom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlCustom.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="dlgFont.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>302, 17</value>
+  </metadata>
   <data name="btnOriginal.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -1234,7 +1058,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnOriginal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>366, 412</value>
+    <value>366, 444</value>
   </data>
   <data name="btnOriginal.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 38</value>
@@ -1257,6 +1081,38 @@
   <data name="&gt;&gt;btnOriginal.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="imgPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="imgPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>366, 184</value>
+  </data>
+  <data name="imgPreview.SelectionRegion" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0
+        dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABlTeXN0ZW0uRHJh
+        d2luZy5SZWN0YW5nbGVGBAAAAAF4AXkFd2lkdGgGaGVpZ2h0AAAAAAsLCwsCAAAAAAAAAAAAAAAAAAAA
+        AAAAAAs=
+</value>
+  </data>
+  <data name="imgPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 256</value>
+  </data>
+  <data name="imgPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;imgPreview.Name" xml:space="preserve">
+    <value>imgPreview</value>
+  </data>
+  <data name="&gt;&gt;imgPreview.Type" xml:space="preserve">
+    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.13.41, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;imgPreview.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;imgPreview.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1264,7 +1120,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>634, 458</value>
+    <value>634, 490</value>
   </data>
   <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1289,6 +1145,12 @@
   </data>
   <data name="&gt;&gt;ilSmall.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dlgFont.Name" xml:space="preserve">
+    <value>dlgFont</value>
+  </data>
+  <data name="&gt;&gt;dlgFont.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FontDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>PinObjectForm</value>

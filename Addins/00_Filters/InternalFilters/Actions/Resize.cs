@@ -19,6 +19,7 @@ using System.Drawing.Imaging;
 namespace InternalFilters.Actions
 {
     [Extension]
+    [Serializable]
     class Resize : IAddin, IFilter, IFilterInformation
     {
         private ICatalog catalog = null;

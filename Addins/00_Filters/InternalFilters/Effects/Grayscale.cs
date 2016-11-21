@@ -15,6 +15,7 @@ using NetCharm.Image.Addins;
 
 namespace InternalFilters.Effects
 {
+    [Serializable]
     public enum GrayscaleMode
     {
         None = 0,

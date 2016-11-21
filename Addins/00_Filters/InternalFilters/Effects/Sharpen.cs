@@ -4,16 +4,19 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GDIPlusX.GDIPlus11.Effects;
 using Mono.Addins;
 using NetCharm.Image.Addins;
 
 
 namespace InternalFilters.Effects
 {
+    [Serializable]
     public enum SharpenMode
     {
         Normal = 0,
-        Gaussian
+        Gaussian,
+        GDI
     }
 
     [Extension]
@@ -82,6 +85,8 @@ namespace InternalFilters.Effects
             kv.Add( "GaussianSigma", (double) 1.4 );
             kv.Add( "GaussianSize", 5 );
             kv.Add( "GaussianThreshold", 0 );
+            kv.Add( "GdiRatio", 1.5f );
+            kv.Add( "GdiAmount", 50f );
 
             Params.Clear();
             foreach ( var item in kv )
@@ -107,9 +112,11 @@ namespace InternalFilters.Effects
                 var cfm = (form as SharpenForm);
 
                 Params["SharpenMode"] = cfm.ParamMode;
-                Params["GaussianSigma"] = cfm.ParmaGaussianSigma;
-                Params["GaussianSize"] = cfm.ParmaGaussianSize;
-                Params["GaussianThreshold"] = cfm.ParmaGaussianThreshold;
+                Params["GaussianSigma"] = cfm.ParamGaussianSigma;
+                Params["GaussianSize"] = cfm.ParamGaussianSize;
+                Params["GaussianThreshold"] = cfm.ParamGaussianThreshold;
+                Params["GdiRatio"] = cfm.ParamGdiRatio;
+                Params["GdiAmount"] = cfm.ParamGdiAmount;
             }
         }
 
@@ -127,9 +134,11 @@ namespace InternalFilters.Effects
                 var cfm = (form as SharpenForm);
 
                 cfm.ParamMode = Params["SharpenMode"];
-                cfm.ParmaGaussianSigma = Params["GaussianSigma"];
-                cfm.ParmaGaussianSize = Params["GaussianSize"];
-                cfm.ParmaGaussianThreshold = Params["GaussianThreshold"];
+                cfm.ParamGaussianSigma = Params["GaussianSigma"];
+                cfm.ParamGaussianSize = Params["GaussianSize"];
+                cfm.ParamGaussianThreshold = Params["GaussianThreshold"];
+                cfm.ParamGdiRatio = Params["GdiRatio"];
+                cfm.ParamGdiAmount = Params["GdiAmount"];
             }
         }
 
@@ -187,6 +196,8 @@ namespace InternalFilters.Effects
             double gaussianSigma = (double) Params["GaussianSigma"].Value;
             int gaussianSize = (int) Params["GaussianSize"].Value;
             int gaussianThreshold = (int) Params["GaussianThreshold"].Value;
+            float gdiRatio = (float) Params["GdiRatio"].Value;
+            float gdiAmount = (float) Params["GdiAmount"].Value;
 
             Accord.Imaging.Filters.IFilter filter = null;
             switch( sharpenMode )
@@ -197,10 +208,14 @@ namespace InternalFilters.Effects
                     break;
                 case SharpenMode.Gaussian:
                     filter = new Accord.Imaging.Filters.GaussianSharpen();
-                    (filter as Accord.Imaging.Filters.GaussianSharpen).Sigma = gaussianSigma;
+                    ( filter as Accord.Imaging.Filters.GaussianSharpen ).Sigma = gaussianSigma;
                     ( filter as Accord.Imaging.Filters.GaussianSharpen ).Size = gaussianSize;
                     ( filter as Accord.Imaging.Filters.GaussianSharpen ).Threshold = gaussianThreshold;
                     dst = filter.Apply( dst );
+                    break;
+                case SharpenMode.GDI:
+                    var effect = new SharpenEffect(gdiRatio, gdiAmount);
+                    dst.ApplyEffect( effect, new Rectangle( 0, 0, dst.Width, dst.Height ) );
                     break;
             }
             AddinUtils.CloneExif( image, dst );

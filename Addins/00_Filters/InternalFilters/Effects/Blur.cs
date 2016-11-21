@@ -4,17 +4,20 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GDIPlusX.GDIPlus11.Effects;
 using Mono.Addins;
 using NetCharm.Image.Addins;
 
 
 namespace InternalFilters.Effects
 {
+    [Serializable]
     public enum BlurMode
     {
         Normal = 0,
         Gaussian,
-        Box
+        Box,
+        GDI
     }
 
     [Extension]
@@ -84,6 +87,7 @@ namespace InternalFilters.Effects
             kv.Add( "GaussianSize", 7 );
             kv.Add( "GaussianThreshold", 0 );
             kv.Add( "BoxSize", 3 );
+            kv.Add( "GdiRatio", 1.5f );
 
             Params.Clear();
             foreach ( var item in kv )
@@ -109,10 +113,11 @@ namespace InternalFilters.Effects
                 var cfm = (form as BlurForm);
 
                 Params["BlurMode"] = cfm.ParamMode;
-                Params["GaussianSigma"] = cfm.ParmaGaussianSigma;
-                Params["GaussianSize"] = cfm.ParmaGaussianSize;
-                Params["GaussianThreshold"] = cfm.ParmaGaussianThreshold;
-                Params["BoxSize"] = cfm.ParmaBoxSize;
+                Params["GaussianSigma"] = cfm.ParamGaussianSigma;
+                Params["GaussianSize"] = cfm.ParamGaussianSize;
+                Params["GaussianThreshold"] = cfm.ParamGaussianThreshold;
+                Params["BoxSize"] = cfm.ParamBoxSize;
+                Params["GdiRatio"] = cfm.ParamGdiRatio;
             }
         }
 
@@ -130,10 +135,11 @@ namespace InternalFilters.Effects
                 var cfm = (form as BlurForm);
 
                 cfm.ParamMode = Params["BlurMode"];
-                cfm.ParmaGaussianSigma = Params["GaussianSigma"];
-                cfm.ParmaGaussianSize = Params["GaussianSize"];
-                cfm.ParmaGaussianThreshold = Params["GaussianThreshold"];
-                cfm.ParmaBoxSize = Params["BoxSize"];
+                cfm.ParamGaussianSigma = Params["GaussianSigma"];
+                cfm.ParamGaussianSize = Params["GaussianSize"];
+                cfm.ParamGaussianThreshold = Params["GaussianThreshold"];
+                cfm.ParamBoxSize = Params["BoxSize"];
+                cfm.ParamGdiRatio = Params["GdiRatio"];
             }
         }
 
@@ -192,6 +198,7 @@ namespace InternalFilters.Effects
             int gaussianSize = (int) Params["GaussianSize"].Value;
             int gaussianThreshold = (int) Params["GaussianThreshold"].Value;
             int boxSize = (int) Params["BoxSize"].Value;
+            float gdiRatio = (float)Params["GdiRatio"].Value;
 
             Accord.Imaging.Filters.IFilter filter = null;
             switch ( blurMode )
@@ -210,6 +217,10 @@ namespace InternalFilters.Effects
                 case BlurMode.Box:
                     filter = new Accord.Imaging.Filters.FastBoxBlur( (byte) boxSize, (byte) boxSize );
                     dst = AddinUtils.ProcessImage( filter, dst, false );
+                    break;
+                case BlurMode.GDI:
+                    var effect = new BlurEffect(gdiRatio, true);
+                    dst.ApplyEffect( effect, new Rectangle(0, 0, dst.Width, dst.Height) );
                     break;
             }
             AddinUtils.CloneExif( image, dst );

@@ -73,8 +73,23 @@
     <Reference Include="Cyotek.Windows.Forms.ImageBox">
       <HintPath>..\..\..\_refs\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
     </Reference>
+    <Reference Include="GDIPlusX">
+      <HintPath>..\..\..\_refs\GDIPlusX.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.Core.1.5.1-beta1\lib\net40-client\HtmlRenderer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlRenderer.WinForms, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.WinForms.1.5.1-beta1\lib\net40-client\HtmlRenderer.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Mono.Addins">
       <HintPath>..\..\..\_refs\Mono.Addins.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="NGettext">
       <HintPath>..\..\..\_refs\NGettext.dll</HintPath>
@@ -83,16 +98,21 @@
       <HintPath>..\..\..\_refs\NGettext.WinForm.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseAddin\Addin.cs" />
@@ -101,6 +121,19 @@
     </Compile>
     <Compile Include="Common\AddinType.cs" />
     <Compile Include="Common\AddinUtils.cs" />
+    <Compile Include="Common\ColorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\ColorDialog.Designer.cs">
+      <DependentUpon>ColorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Extensions.cs" />
+    <Compile Include="Common\FontDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\FontDialog.Designer.cs">
+      <DependentUpon>FontDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\SelectAddinForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +199,12 @@
     <EmbeddedResource Include="BaseHost\AddinHost.resx">
       <DependentUpon>AddinHost.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Common\ColorDialog.resx">
+      <DependentUpon>ColorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\FontDialog.resx">
+      <DependentUpon>FontDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Common\SelectAddinForm.resx">
       <DependentUpon>SelectAddinForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -208,6 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddIn.ico" />
+    <None Include="Resources\eyedropper.png" />
     <None Include="Resources\Application_32x.png" />
     <None Include="Resources\Application_16x.png" />
     <None Include="Resources\Action_32x.png" />
@@ -224,6 +264,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Accord.3.3.0\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.3.0\build\Accord.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY /S /Y "$(ProjectDir)locale\*" "$(SolutionDir)\PhotoTool\$(OutDir)locale"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

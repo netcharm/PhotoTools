@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BatchProcess\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-05 18:52+0800\n"
+"POT-Creation-Date: 2016-11-21 19:32+0800\n"
 "PO-Revision-Date: 2016-10-14 22:58+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -68,14 +68,14 @@ msgstr "加入图像文件"
 msgid "Batch Image Processing"
 msgstr "批量图像处理"
 
-#: Batch.cs:120
+#: Batch.cs:121
 msgid "Batch"
 msgstr "批量"
 
-#: Batch.cs:136
+#: Batch.cs:137
 msgid "Application"
 msgstr "应用模块"
 
-#: Batch.cs:145
+#: Batch.cs:146
 msgid "Batch Image Process"
 msgstr "批量图像处理"

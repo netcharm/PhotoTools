@@ -32,7 +32,7 @@ namespace InternalFilters.Effects
             set { sharpenMode = (SharpenMode) value.Value; }
         }
         private double gaussianSigma = 1.4;
-        internal ParamItem ParmaGaussianSigma
+        internal ParamItem ParamGaussianSigma
         {
             get
             {
@@ -46,7 +46,7 @@ namespace InternalFilters.Effects
             set { gaussianSigma = (double) value.Value; }
         }
         private int gaussianSize = 5;
-        internal ParamItem ParmaGaussianSize
+        internal ParamItem ParamGaussianSize
         {
             get
             {
@@ -60,7 +60,7 @@ namespace InternalFilters.Effects
             set { gaussianSize = (int) value.Value; }
         }
         private int gaussianThreshold = 0;
-        internal ParamItem ParmaGaussianThreshold
+        internal ParamItem ParamGaussianThreshold
         {
             get
             {
@@ -72,6 +72,34 @@ namespace InternalFilters.Effects
                 return ( pi );
             }
             set { gaussianThreshold = (int) value.Value; }
+        }
+        private float gdiRatio = 1.5f;
+        internal ParamItem ParamGdiRatio
+        {
+            get
+            {
+                ParamItem pi = new ParamItem();
+                pi.Name = "GdiRatio";
+                pi.DisplayName = AddinUtils._( addin, pi.Name );
+                pi.Type = gdiRatio.GetType();
+                pi.Value = gdiRatio;
+                return ( pi );
+            }
+            set { gdiRatio = (float) value.Value; }
+        }
+        private float gdiAmount = 50f;
+        internal ParamItem ParamGdiAmount
+        {
+            get
+            {
+                ParamItem pi = new ParamItem();
+                pi.Name = "GdiAmount";
+                pi.DisplayName = AddinUtils._( addin, pi.Name );
+                pi.Type = gdiAmount.GetType();
+                pi.Value = gdiAmount;
+                return ( pi );
+            }
+            set { gdiAmount = (float) value.Value; }
         }
 
         public SharpenForm()
@@ -95,18 +123,23 @@ namespace InternalFilters.Effects
 
             if ( sharpenMode == SharpenMode.Normal )
             {
-                btnModeNormal.Checked = true;
-                grpGaussianParams.Enabled = false;
+                btnModeNormal.PerformClick();
             }
-            else
+            else if ( sharpenMode == SharpenMode.Gaussian )
             {
-                btnModeGaussian.Checked = true;
-                grpGaussianParams.Enabled = true;
+                btnModeGaussian.PerformClick();
+            }
+            else if ( sharpenMode == SharpenMode.GDI )
+            {
+                btnModeGdi.PerformClick();
             }
 
             edGaussianSigma.Value = Convert.ToDecimal( gaussianSigma );
             edGaussianSize.Value = Convert.ToDecimal( gaussianSize );
             edGaussianThreshold.Value = Convert.ToDecimal( gaussianThreshold );
+
+            edGdiRatio.Value = Convert.ToDecimal( gdiRatio );
+            edGdiAmount.Value = Convert.ToDecimal( gdiAmount );
         }
 
         private void btnOriginal_Click( object sender, EventArgs e )
@@ -129,20 +162,39 @@ namespace InternalFilters.Effects
             {
                 sharpenMode = SharpenMode.Normal;
                 grpGaussianParams.Enabled = false;
+                grpGdiParams.Enabled = false;
+
+                grpGaussianParams.Visible = false;
+                grpGdiParams.Visible = false;
             }
-            else
+            else if ( sender == btnModeGaussian )
             {
                 sharpenMode = SharpenMode.Gaussian;
                 grpGaussianParams.Enabled = true;
+                grpGdiParams.Enabled = false;
+
+                grpGaussianParams.Visible = true;
+                grpGdiParams.Visible = false;
+            }
+            else if ( sender == btnModeGdi )
+            {
+                sharpenMode = SharpenMode.GDI;
+                grpGaussianParams.Enabled = false;
+                grpGdiParams.Enabled = true;
+
+                grpGaussianParams.Visible = false;
+                grpGdiParams.Visible = true;
             }
             imgPreview.Image = addin.Apply( thumb );
         }
 
-        private void edGaussian_ValueChanged( object sender, EventArgs e )
+        private void edMode_ValueChanged( object sender, EventArgs e )
         {
             gaussianSigma = Convert.ToDouble(edGaussianSigma.Value);
             gaussianSize = Convert.ToInt32( edGaussianSize.Value );
             gaussianThreshold = Convert.ToInt32( edGaussianThreshold.Value );
+            gdiRatio = (float)Convert.ToDouble( edGdiRatio.Value );
+            gdiAmount = (float) Convert.ToDouble( edGdiAmount.Value );
 
             imgPreview.Image = addin.Apply( thumb );
         }

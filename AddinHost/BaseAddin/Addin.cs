@@ -24,6 +24,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public class ParamItem : object
     {
         /// <summary>
@@ -189,6 +190,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public class BaseAddinEffect : IAddin, IFilter, IInPlaceFilter, IInPlacePartialFilter, IFilterInformation
     {
         #region Private object

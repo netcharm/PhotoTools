@@ -103,6 +103,16 @@ namespace InternalFilters.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap ColorPicker_24x {
+            get {
+                object obj = ResourceManager.GetObject("ColorPicker_24x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Compare_16x {
             get {
                 object obj = ResourceManager.GetObject("Compare_16x", resourceCulture);
@@ -243,6 +253,16 @@ namespace InternalFilters.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Font_24x {
+            get {
+                object obj = ResourceManager.GetObject("Font_24x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Grayscale_16x {
             get {
                 object obj = ResourceManager.GetObject("Grayscale_16x", resourceCulture);
@@ -256,6 +276,26 @@ namespace InternalFilters.Properties {
         internal static System.Drawing.Bitmap Grayscale_32x {
             get {
                 object obj = ResourceManager.GetObject("Grayscale_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ImageLoader_16x {
+            get {
+                object obj = ResourceManager.GetObject("ImageLoader_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ImageLoader_24x {
+            get {
+                object obj = ResourceManager.GetObject("ImageLoader_24x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

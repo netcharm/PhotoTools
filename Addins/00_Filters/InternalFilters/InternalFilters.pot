@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: Actions\PinObject.cs:264 Actions\PinObject.cs:268 Actions\PinObject.cs:272
+#: Actions\PinObject.cs:322 Actions\PinObject.cs:327 Actions\PinObject.cs:332
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-18 12:19+0800\n"
-"PO-Revision-Date: 2016-11-18 12:19+0800\n"
+"POT-Creation-Date: 2016-11-21 19:32+0800\n"
+"PO-Revision-Date: 2016-11-21 19:32+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -22,19 +22,19 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 
 #: Actions\ResizeForm.resx:187 -> btnOk.Text.value
-#: Actions\PinObjectForm.resx:142 Effects\BlurForm.resx:424
+#: Actions\PinObjectForm.resx:169 Effects\BlurForm.resx:481
 #: Effects\GrayscaleForm.resx:163 Effects\HslFilterForm.resx:139
 #: Effects\HueFilterForm.resx:191 Effects\InvertForm.resx:214
-#: Effects\SharpenForm.resx:301 Actions\RotateForm.resx:364
+#: Effects\SharpenForm.resx:337 Actions\RotateForm.resx:364
 #: Actions\CropForm.Designer.cs:308
 msgid "OK"
 msgstr ""
 
 #: Actions\ResizeForm.resx:211 -> btnCancel.Text.value
-#: Actions\PinObjectForm.resx:172 Effects\BlurForm.resx:451
+#: Actions\PinObjectForm.resx:199 Effects\BlurForm.resx:508
 #: Effects\GrayscaleForm.resx:190 Effects\HslFilterForm.resx:166
 #: Effects\HueFilterForm.resx:218 Effects\InvertForm.resx:238
-#: Effects\SharpenForm.resx:325 Actions\RotateForm.resx:388
+#: Effects\SharpenForm.resx:364 Actions\RotateForm.resx:388
 #: Actions\CropForm.Designer.cs:298
 msgid "Cancel"
 msgstr ""
@@ -55,120 +55,165 @@ msgstr ""
 msgid "Method:"
 msgstr ""
 
-#: Actions\ResizeForm.resx:382 -> $this.Text.value Actions\Resize.cs:112
+#: Actions\ResizeForm.resx:382 -> $this.Text.value Actions\Resize.cs:113
 msgid "Resize"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:235 -> grpCommonSetting.Text.value
-msgid "Common"
+#: Actions\PinObjectForm.resx:139 -> imgPicture.ToolTip.value
+msgid "Double-Click to Open Picture"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:340 -> chkEnabled.Text.value
+#: Actions\PinObjectForm.resx:343 -> chkEnabled.Text.value
 msgid "Enabled"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:373 -> chkTile.Text.value
+#: Actions\PinObjectForm.resx:376 -> chkTile.Text.value
 msgid "Tile"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:406 -> btnPosRandom.ToolTip.value
+#: Actions\PinObjectForm.resx:409 -> btnPosRandom.ToolTip.value
 msgid "Random Put Object To Image"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:690 -> btnEffectDown.ToolTip.value
+#: Actions\PinObjectForm.resx:544 -> grpCommonSetting.Text.value
+msgid "Common"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:616 -> btnEffectDown.ToolTip.value
 msgid "Move Down Selected Effect"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:723 -> btnEffectUp.ToolTip.value
+#: Actions\PinObjectForm.resx:649 -> btnEffectUp.ToolTip.value
 msgid "Move Up Selected Effect"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:756 -> btnEffectRemove.ToolTip.value
+#: Actions\PinObjectForm.resx:682 -> btnEffectRemove.ToolTip.value
 msgid "Remove Effect"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:789 -> btnEffectAdd.ToolTip.value
+#: Actions\PinObjectForm.resx:715 -> btnEffectAdd.ToolTip.value
 msgid "Add Effect"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:844 -> btnOriginal.ToolTip.value
+#: Actions\PinObjectForm.resx:775 -> btnOpenPic.ToolTip.value
+msgid "Open Picture"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:799 -> tabPagePicture.Text.value
+#: Actions\PinObject.cs:326 Actions\PinObject.cs:328
+msgid "Picture"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:832 -> btnColorPicker.ToolTip.value
+msgid "Select Color"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:889 -> btnOpenFont.ToolTip.value
+msgid "Select Font"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:940 -> tabPageText.Text.value
+#: Actions\PinObject.cs:321
+msgid "Text"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:967 -> tabPageTag.Text.value
+msgid "SmartTag"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:1070 -> btnOriginal.ToolTip.value
 #: Effects\BlurForm.resx:164 Effects\GrayscaleForm.resx:243
 #: Effects\HslFilterForm.resx:236 Effects\HueFilterForm.resx:164
-#: Effects\InvertForm.resx:161 Effects\SharpenForm.resx:164
+#: Effects\InvertForm.resx:161 Effects\SharpenForm.resx:167
 msgid "View Original"
 msgstr ""
 
-#: Effects\BlurForm.resx:191 -> edGaussianSize.ToolTip.value
-#: Effects\SharpenForm.resx:218
-msgid "Gaussian Kernel Size"
-msgstr ""
-
-#: Effects\BlurForm.resx:221 -> edGaussianSigma.ToolTip.value
-#: Effects\SharpenForm.resx:248
-msgid "Gaussian Sigma Value"
-msgstr ""
-
-#: Effects\BlurForm.resx:248 -> edGaussianThreshold.ToolTip.value
-#: Effects\SharpenForm.resx:191
-msgid "Gaussian Threshold Value"
-msgstr ""
-
-#: Effects\BlurForm.resx:275 -> edBoxSize.ToolTip.value
-msgid "Box Size"
-msgstr ""
-
-#: Effects\BlurForm.resx:302 -> btnModeBox.Text.value
+#: Effects\BlurForm.resx:191 -> btnModeBox.Text.value
 msgid "Box"
 msgstr ""
 
-#: Effects\BlurForm.resx:305 -> btnModeBox.ToolTip.value
+#: Effects\BlurForm.resx:194 -> btnModeBox.ToolTip.value
+#: Effects\BlurForm.resx:284 btnModeGdi.ToolTip.value
 msgid "Fast Box Blur"
 msgstr ""
 
-#: Effects\BlurForm.resx:332 -> btnModeGaussian.Text.value
-#: Effects\SharpenForm.resx:400
+#: Effects\BlurForm.resx:221 -> btnModeGaussian.Text.value
+#: Effects\SharpenForm.resx:478
 msgid "Gaussian"
 msgstr ""
 
-#: Effects\BlurForm.resx:335 -> btnModeGaussian.ToolTip.value
+#: Effects\BlurForm.resx:224 -> btnModeGaussian.ToolTip.value
 msgid "Gaussian Blur"
 msgstr ""
 
-#: Effects\BlurForm.resx:362 -> btnModeNormal.Text.value
-#: Effects\SharpenForm.resx:424
+#: Effects\BlurForm.resx:251 -> btnModeNormal.Text.value
+#: Effects\SharpenForm.resx:502
 msgid "Normal"
 msgstr ""
 
-#: Effects\BlurForm.resx:365 -> btnModeNormal.ToolTip.value
+#: Effects\BlurForm.resx:254 -> btnModeNormal.ToolTip.value
 msgid "Normal Blur"
 msgstr ""
 
-#: Effects\BlurForm.resx:478 -> lblGaussianThreshold.Text.value
-#: Effects\SharpenForm.resx:511
-msgid "Threshold:"
+#: Effects\BlurForm.resx:281 -> btnModeGdi.Text.value
+#: Effects\SharpenForm.resx:451
+msgid "GDI"
 msgstr ""
 
-#: Effects\BlurForm.resx:508 -> lblGaussianSize.Text.value
-#: Effects\SharpenForm.resx:541
-msgid "Size:"
+#: Effects\BlurForm.resx:311 -> edGaussianThreshold.ToolTip.value
+#: Effects\SharpenForm.resx:194
+msgid "Gaussian Threshold Value"
 msgstr ""
 
-#: Effects\BlurForm.resx:538 -> lblGaussianSigma.Text.value
-#: Effects\SharpenForm.resx:571
-msgid "Sigma:"
+#: Effects\BlurForm.resx:338 -> edGaussianSize.ToolTip.value
+#: Effects\SharpenForm.resx:221
+msgid "Gaussian Kernel Size"
 msgstr ""
 
-#: Effects\BlurForm.resx:565 -> grpGaussianParams.Text.value
-#: Effects\SharpenForm.resx:484
-msgid "Gaussian Params"
+#: Effects\BlurForm.resx:368 -> edGaussianSigma.ToolTip.value
+#: Effects\SharpenForm.resx:251
+msgid "Gaussian Sigma Value"
 msgstr ""
 
-#: Effects\BlurForm.resx:589 -> grpMode.Text.value
+#: Effects\BlurForm.resx:395 -> edBoxSize.ToolTip.value
+msgid "Box Size"
+msgstr ""
+
+#: Effects\BlurForm.resx:422 -> edGdiRatio.ToolTip.value
+msgid "GdiPlus Blur Ratio"
+msgstr ""
+
+#: Effects\BlurForm.resx:532 -> grpMode.Text.value
 msgid "Blur Mode"
 msgstr ""
 
-#: Effects\BlurForm.resx:613 -> grpBoxParams.Text.value
+#: Effects\BlurForm.resx:592 -> grpGaussianParams.Text.value
+#: Effects\SharpenForm.resx:562
+msgid "Gaussian Params"
+msgstr ""
+
+#: Effects\BlurForm.resx:616 -> grpBoxParams.Text.value
 msgid "Box Params"
+msgstr ""
+
+#: Effects\BlurForm.resx:640 -> grpGdiParams.Text.value
+#: Effects\SharpenForm.resx:673
+msgid "GDI Params"
+msgstr ""
+
+#: Effects\BlurForm.resx:688 -> lblGaussianThreshold.Text.value
+#: Effects\SharpenForm.resx:721
+msgid "Threshold:"
+msgstr ""
+
+#: Effects\BlurForm.resx:718 -> lblGaussianSize.Text.value
+#: Effects\SharpenForm.resx:751
+msgid "Size:"
+msgstr ""
+
+#: Effects\BlurForm.resx:748 -> lblGaussianSigma.Text.value
+#: Effects\SharpenForm.resx:781
+msgid "Sigma:"
 msgstr ""
 
 #: Effects\GrayscaleForm.resx:135 -> cbGrayMode.ToolTip.value
@@ -176,12 +221,28 @@ msgstr ""
 msgid "Grayscale Mode"
 msgstr ""
 
-#: Effects\GrayscaleForm.resx:270 -> $this.Text.value Effects\Grayscale.cs:83
+#: Effects\GrayscaleForm.resx:270 -> $this.Text.value Effects\Grayscale.cs:84
 msgid "Grayscale"
 msgstr ""
 
-#: Effects\SharpenForm.resx:373 -> grpMode.Text.value
+#: Effects\SharpenForm.resx:278 -> edGdiRatio.ToolTip.value
+msgid "GdiPlus Sharpen Amount"
+msgstr ""
+
+#: Effects\SharpenForm.resx:424 -> grpMode.Text.value
 msgid "Sharpen Mode"
+msgstr ""
+
+#: Effects\SharpenForm.resx:589 -> label1.Text.value
+msgid "Amount:"
+msgstr ""
+
+#: Effects\SharpenForm.resx:619 -> edGdiAmount.ToolTip.value
+msgid "GdiPlus Sharpen Ratio"
+msgstr ""
+
+#: Effects\SharpenForm.resx:646 -> label2.Text.value
+msgid "Ratio:"
 msgstr ""
 
 #: Actions\RotateForm.resx:142 -> btnRotateFlipY.ToolTip.value
@@ -232,11 +293,27 @@ msgstr ""
 msgid "Rotate"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:124
+#: Actions\PinObjectForm.Designer.cs:333
+msgid "Offset Y"
+msgstr ""
+
+#: Actions\PinObjectForm.Designer.cs:362
+msgid "Offset X"
+msgstr ""
+
+#: Actions\PinObjectForm.Designer.cs:391
+msgid "Margin Y"
+msgstr ""
+
+#: Actions\PinObjectForm.Designer.cs:420
+msgid "Margin X"
+msgstr ""
+
+#: Actions\PinObjectForm.Designer.cs:456
 msgid "Blend"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:152
+#: Actions\PinObjectForm.Designer.cs:485
 msgid "Opaque"
 msgstr ""
 
@@ -360,31 +437,31 @@ msgstr ""
 msgid "Hue"
 msgstr ""
 
-#: Actions\PinObject.cs:73
+#: Actions\PinObject.cs:109
 msgid "Pin"
 msgstr ""
 
-#: Actions\PinObject.cs:85
+#: Actions\PinObject.cs:121
 msgid "Decoration"
 msgstr ""
 
-#: Actions\PinObject.cs:92
+#: Actions\PinObject.cs:128
 msgid "Decoration Image"
 msgstr ""
 
-#: Actions\PinObject.cs:263
-msgid "Text"
+#: Actions\PinObject.cs:323
+msgid "Simple Text"
 msgstr ""
 
-#: Actions\PinObject.cs:267
-msgid "Picture"
-msgstr ""
-
-#: Actions\PinObject.cs:271
+#: Actions\PinObject.cs:331
 msgid "Smart Tag"
 msgstr ""
 
-#: Actions\Crop.cs:41 Actions\Resize.cs:128 Actions\Rotate.cs:56
+#: Actions\PinObject.cs:333
+msgid "Rich-Contents Text"
+msgstr ""
+
+#: Actions\Crop.cs:41 Actions\Resize.cs:129 Actions\Rotate.cs:56
 msgid "Edit"
 msgstr ""
 
@@ -392,7 +469,7 @@ msgstr ""
 msgid "Crop Image"
 msgstr ""
 
-#: Actions\Resize.cs:137
+#: Actions\Resize.cs:138
 msgid "Resize Image"
 msgstr ""
 
@@ -408,56 +485,56 @@ msgstr ""
 msgid "Nearest"
 msgstr ""
 
-#: Effects\Blur.cs:37
+#: Effects\Blur.cs:40
 msgid "Blur"
 msgstr ""
 
-#: Effects\Blur.cs:49 Effects\Sharpen.cs:48
+#: Effects\Blur.cs:52 Effects\Sharpen.cs:51
 msgid "Clearness"
 msgstr ""
 
-#: Effects\Blur.cs:56
+#: Effects\Blur.cs:59
 msgid "Blur Image"
 msgstr ""
 
-#: Effects\Grayscale.cs:99 Effects\HslFilter.cs:48 Effects\HueFilter.cs:47
-#: Effects\Invert.cs:47
+#: Effects\Grayscale.cs:100 Effects\HslFilter.cs:49 Effects\HueFilter.cs:48
+#: Effects\Invert.cs:48
 msgid "Color"
 msgstr ""
 
-#: Effects\Grayscale.cs:108
+#: Effects\Grayscale.cs:109
 msgid "Convert Image to Grayscale"
 msgstr ""
 
-#: Effects\HslFilter.cs:36
+#: Effects\HslFilter.cs:37
 msgid "HslFilter"
 msgstr ""
 
-#: Effects\HslFilter.cs:55
+#: Effects\HslFilter.cs:56
 msgid "Using HSL Value Filter Image"
 msgstr ""
 
-#: Effects\HueFilter.cs:35
+#: Effects\HueFilter.cs:36
 msgid "HueFilter"
 msgstr ""
 
-#: Effects\HueFilter.cs:54
+#: Effects\HueFilter.cs:55
 msgid "Using Hue value filtering image color"
 msgstr ""
 
-#: Effects\Invert.cs:35
+#: Effects\Invert.cs:36
 msgid "Invert"
 msgstr ""
 
-#: Effects\Invert.cs:54
+#: Effects\Invert.cs:55
 msgid "Invert Image Color"
 msgstr ""
 
-#: Effects\Sharpen.cs:36
+#: Effects\Sharpen.cs:39
 msgid "Sharpen"
 msgstr ""
 
-#: Effects\Sharpen.cs:55
+#: Effects\Sharpen.cs:58
 msgid "Sharpen Image"
 msgstr ""
 

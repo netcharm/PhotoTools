@@ -32,7 +32,7 @@ namespace InternalFilters.Effects
             set { blurMode = (BlurMode) value.Value; }
         }
         private double gaussianSigma = 1.4;
-        internal ParamItem ParmaGaussianSigma
+        internal ParamItem ParamGaussianSigma
         {
             get
             {
@@ -46,7 +46,7 @@ namespace InternalFilters.Effects
             set { gaussianSigma = (double) value.Value; }
         }
         private int gaussianSize = 5;
-        internal ParamItem ParmaGaussianSize
+        internal ParamItem ParamGaussianSize
         {
             get
             {
@@ -60,7 +60,7 @@ namespace InternalFilters.Effects
             set { gaussianSize = (int) value.Value; }
         }
         private int gaussianThreshold = 0;
-        internal ParamItem ParmaGaussianThreshold
+        internal ParamItem ParamGaussianThreshold
         {
             get
             {
@@ -74,7 +74,7 @@ namespace InternalFilters.Effects
             set { gaussianThreshold = (int) value.Value; }
         }
         private int boxSize = 3;
-        internal ParamItem ParmaBoxSize
+        internal ParamItem ParamBoxSize
         {
             get
             {
@@ -86,6 +86,20 @@ namespace InternalFilters.Effects
                 return ( pi );
             }
             set { boxSize = (int) value.Value; }
+        }
+        private float gdiRatio = 1.5f;
+        internal ParamItem ParamGdiRatio
+        {
+            get
+            {
+                ParamItem pi = new ParamItem();
+                pi.Name = "GdiRatio";
+                pi.DisplayName = AddinUtils._( addin, pi.Name );
+                pi.Type = gdiRatio.GetType();
+                pi.Value = gdiRatio;
+                return ( pi );
+            }
+            set { gdiRatio = (float) value.Value; }
         }
 
         public BlurForm()
@@ -109,27 +123,26 @@ namespace InternalFilters.Effects
         {
             if ( blurMode == BlurMode.Normal )
             {
-                btnModeNormal.Checked = true;
-                grpGaussianParams.Enabled = false;
-                grpBoxParams.Enabled = false;
+                btnModeNormal.PerformClick();
             }
             else if (blurMode == BlurMode.Gaussian)
             {
-                btnModeGaussian.Checked = true;
-                grpGaussianParams.Enabled = true;
-                grpBoxParams.Enabled = false;
+                btnModeGaussian.PerformClick();
             }
             else if ( blurMode == BlurMode.Box )
             {
-                btnModeBox.Checked = true;
-                grpGaussianParams.Enabled = false;
-                grpBoxParams.Enabled = true;
+                btnModeBox.PerformClick();
+            }
+            else if ( blurMode == BlurMode.GDI )
+            {
+                btnModeGdi.PerformClick();
             }
 
             edGaussianSigma.Value = Convert.ToDecimal( gaussianSigma );
             edGaussianSize.Value = Convert.ToDecimal( gaussianSize );
             edGaussianThreshold.Value = Convert.ToDecimal( gaussianThreshold );
             edBoxSize.Value = Convert.ToDecimal( boxSize );
+            edGdiRatio.Value = Convert.ToDecimal( gdiRatio );
         }
 
         private void btnOriginal_Click( object sender, EventArgs e )
@@ -148,25 +161,55 @@ namespace InternalFilters.Effects
 
         private void btnMode_Click( object sender, EventArgs e )
         {
+            layoutParams.SuspendLayout();
             if ( sender == btnModeNormal )
             {
                 blurMode = BlurMode.Normal;
+
                 grpGaussianParams.Enabled = false;
                 grpBoxParams.Enabled = false;
+                grpGdiParams.Enabled = false;
+
+                grpGaussianParams.Visible = false;
+                grpBoxParams.Visible = false;
+                grpGdiParams.Visible = false;
             }
             else if ( sender == btnModeGaussian )
             {
                 blurMode = BlurMode.Gaussian;
+
                 grpGaussianParams.Enabled = true;
                 grpBoxParams.Enabled = false;
+                grpGdiParams.Enabled = false;
+
+                grpGaussianParams.Visible = true;
+                grpBoxParams.Visible = false;
+                grpGdiParams.Visible = false;
             }
             else if ( sender == btnModeBox )
             {
                 blurMode = BlurMode.Box;
+
                 grpGaussianParams.Enabled = false;
                 grpBoxParams.Enabled = true;
-            }
+                grpGdiParams.Enabled = false;
 
+                grpGaussianParams.Visible = false;
+                grpBoxParams.Visible = true;
+                grpGdiParams.Visible = false;
+            }
+            else if ( sender == btnModeGdi )
+            {
+                blurMode = BlurMode.GDI;
+                grpGaussianParams.Enabled = false;
+                grpBoxParams.Enabled = false;
+                grpGdiParams.Enabled = true;
+
+                grpGaussianParams.Visible = false;
+                grpBoxParams.Visible = false;
+                grpGdiParams.Visible = true;
+            }
+            layoutParams.ResumeLayout();
             imgPreview.Image = addin.Apply( thumb );
         }
 
@@ -176,6 +219,7 @@ namespace InternalFilters.Effects
             gaussianSize = Convert.ToInt32( edGaussianSize.Value );
             gaussianThreshold = Convert.ToInt32( edGaussianThreshold.Value );
             boxSize = Convert.ToInt32( edBoxSize.Value );
+            gdiRatio = (float)Convert.ToDouble( edGdiRatio.Value );
 
             imgPreview.Image = addin.Apply( thumb );
         }

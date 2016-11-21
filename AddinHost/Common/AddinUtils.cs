@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using Accord.Imaging.Filters;
 using NetCharm.Image.Addins.Common;
 using NGettext.WinForm;
+using GDIPlusX;
+using GDIPlusX.GDIPlus11.Effects;
+using ExtensionMethods;
 
 namespace NetCharm.Image.Addins
 {
@@ -19,8 +24,10 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
-    public static class AddinUtils
+    public static partial class AddinUtils
     {
+        //private static string AppPath = Assembly.GetExecutingAssembly().Location;
+
         #region PixelFormat catalogs
         /// <summary>
         /// 
@@ -195,7 +202,6 @@ namespace NetCharm.Image.Addins
         {
             List<IAddin> result = new List<IAddin>();
             SelectAddinForm fm = new SelectAddinForm(AddinHost.GetHost());
-            Translate( null, fm );
             if ( fm.ShowDialog() == DialogResult.OK )
             {
                 result.AddRange( fm.GetSelectedAddins() );
@@ -216,6 +222,28 @@ namespace NetCharm.Image.Addins
                 filter.Params[pi.Key] = pi.Value;
             }
         }
+        #endregion
+
+        #region Show ColorPicker
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static DialogResult ShowColorPicker( ref Color color)
+        {
+            DialogResult result = DialogResult.None;
+            Common.ColorDialog dlgColor = new Common.ColorDialog();
+            Translate( null, dlgColor );
+            dlgColor.Color = color;
+            if( dlgColor.ShowDialog() == DialogResult.OK )
+            {
+                color = dlgColor.Color;
+                result = DialogResult.OK;
+            }
+            return ( result );
+        }
+
         #endregion
 
         #region Common Image routines
@@ -447,13 +475,18 @@ namespace NetCharm.Image.Addins
         /// <returns></returns>
         public static System.Drawing.Image CloneImage( System.Drawing.Image image)
         {
-            Bitmap dst = new Bitmap(image.Width, image.Height, image.PixelFormat);
-            using ( var g = Graphics.FromImage( dst ) )
+            if ( image is System.Drawing.Image )
             {
-                g.DrawImage( image, 0, 0, image.Width, image.Height );
+                Bitmap dst = new Bitmap(image.Width, image.Height, image.PixelFormat);
+                using ( var g = Graphics.FromImage( dst ) )
+                {
+                    g.DrawImage( image, 0, 0, image.Width, image.Height );
+                }
+                CloneExif( image, dst );
+                return ( dst );
             }
-            CloneExif( image, dst );
-            return (dst);
+            else
+                return ( image );
         }
 
         /// <summary>
@@ -934,7 +967,432 @@ namespace NetCharm.Image.Addins
             }
             return ( result );
         }
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="dst"></param>
+        /// <param name="angle"></param>
+        /// <returns></returns>
+        public static Bitmap MakeAlphaRotate(Bitmap src, Bitmap dst, float angle )
+        {
+            Bitmap result = new Bitmap(dst);
+
+            Rectangle rect = new Rectangle(0, 0, dst.Width, dst.Height);
+            Bitmap mask = new Bitmap(dst.Width, dst.Height, PixelFormat.Format32bppArgb);
+            using ( var g = Graphics.FromImage( mask ) )
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.FillRectangle( new SolidBrush( Color.Transparent ), rect );
+
+                Matrix tM = new Matrix();
+                tM.RotateAt( (float) angle, new PointF( rect.Width / 2f, rect.Height / 2f ) );
+                g.MultiplyTransform( tM );
+
+                RectangleF rectImg = new RectangleF(
+                    (rect.Width-src.Width)/2f, ( rect.Height - src.Height) / 2f, 
+                    src.Width, src.Height);
+                g.FillRectangle( new SolidBrush( Color.Black ), rectImg );
+            }
+
+            dst = Accord.Imaging.Image.Clone( dst as Bitmap, PixelFormat.Format32bppArgb );
+            Accord.Imaging.UnmanagedImage uiMask = Accord.Imaging.UnmanagedImage.FromManagedImage(mask);
+            Accord.Imaging.UnmanagedImage uiDst = Accord.Imaging.UnmanagedImage.FromManagedImage(dst as Bitmap);
+            for ( int y = 0; y < uiMask.Height; y++ )
+            {
+                for ( int x = 0; x < uiMask.Width; x++ )
+                {
+                    Color pMask = uiMask.GetPixel(x, y);
+                    Color pDst = uiDst.GetPixel(x, y);
+                    pDst = Color.FromArgb( pMask.A, pDst.R, pDst.G, pDst.B );
+                    uiDst.SetPixel( x, y, pDst );
+                }
+            }
+            uiMask.Dispose();
+            mask.Dispose();
+
+            result = uiDst.ToManagedImage();
+            uiDst.Dispose();
+
+            return ( result );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="font"></param>
+        /// <param name="style"></param>
+        /// <returns></returns>
+        public static Font StrToFont( string font, FontStyle style )
+        {
+            Font tF = SystemFonts.DefaultFont;
+            if ( !string.IsNullOrEmpty( font ) )
+            {
+                var ft = font.Substring(7, font.Length-8).Trim().Split(new char[] { ';', ',', '\n', '\r'}, StringSplitOptions.RemoveEmptyEntries ).Distinct().ToList();
+                Dictionary<string, string> fD = ft.ToDictionary( p => p.Split( '=' )[0].Trim(), p => p.Split( '=' )[1].Trim() );
+                tF = new Font( new FontFamily( fD["Name"] ),
+                    Convert.ToInt16( fD["Size"] ),
+                    style,
+                    (GraphicsUnit) Convert.ToInt16( fD["Units"] ),
+                    (byte) Convert.ToInt16( fD["GdiCharSet"] ),
+                    Convert.ToBoolean( fD["GdiVerticalFont"] ) );
+            }
+            return ( tF );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="font"></param>
+        /// <param name="style"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static Bitmap TextToBitmap32( string text, string font, FontStyle style, Color color )
+        {
+            return ( TextToBitmap32( text, StrToFont( font, style ), color ) );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="font"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static Bitmap TextToBitmap32( string text, Font font, Color color )
+        {
+            #region Text Style Setting
+            StringFormat tFormat = new StringFormat(StringFormatFlags.DisplayFormatControl | StringFormatFlags.MeasureTrailingSpaces);
+            #endregion
+
+            #region Measure String Size
+            SizeF sizeF = new Size();
+            using ( var g = Graphics.FromImage( new Bitmap( 10, 10, PixelFormat.Format32bppPArgb ) ) )
+            {
+                g.CompositingMode = CompositingMode.SourceOver;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TextContrast = 2;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                sizeF = g.MeasureString( text, font, new PointF( 0, 0 ), tFormat );
+            }
+            #endregion
+
+            #region Make Text Picture
+            Size size = sizeF.ToSize();
+            Bitmap textImg = new Bitmap(size.Width, size.Height, PixelFormat.Format32bppArgb);
+            using ( var g = Graphics.FromImage( textImg ) )
+            {
+                g.CompositingMode = CompositingMode.SourceOver;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TextContrast = 2;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                //g.DrawString( text, font, new SolidBrush( color ), 0, 0, tFormat );
+
+                var tPath = new GraphicsPath();
+                tPath.StartFigure();
+                tPath.AddString( text, font.FontFamily, (int)font.Style, font.Size,
+                                 new PointF( 0, 0 ),
+                                 tFormat );
+                tPath.CloseFigure();
+                //g.DrawPath( new Pen( color, 1f ), tPath );
+                g.FillPath( new SolidBrush( color ), tPath );
+            }
+            #endregion
+
+            return ( textImg );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="font"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static GraphicsPath TextToPath( string text, Font font, Color color )
+        {
+            #region Text Style Setting
+            StringFormat tFormat = new StringFormat(StringFormatFlags.DisplayFormatControl | StringFormatFlags.MeasureTrailingSpaces);
+            #endregion
+
+            #region Measure String Size
+            SizeF sizeF = new Size();
+            using ( var g = Graphics.FromImage( new Bitmap( 10, 10, PixelFormat.Format32bppPArgb ) ) )
+            {
+                g.CompositingMode = CompositingMode.SourceOver;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TextContrast = 2;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                sizeF = g.MeasureString( text, font, new PointF( 0, 0 ), tFormat );
+            }
+            #endregion
+
+            #region Make Text String Path
+            var tPath = new GraphicsPath();
+            Size size = sizeF.ToSize();
+            Bitmap textImg = new Bitmap(size.Width, size.Height, PixelFormat.Format32bppArgb);
+            using ( var g = Graphics.FromImage( textImg ) )
+            {
+                g.CompositingMode = CompositingMode.SourceOver;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TextContrast = 2;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                tPath.StartFigure();
+                tPath.AddString( text, font.FontFamily, (int) font.Style, font.Size,
+                                 new PointF( 0, 0 ),
+                                 tFormat );
+                tPath.CloseFigure();
+            }
+            #endregion
+            return ( tPath );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="width"></param>
+        /// <param name="fillcolor"></param>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        public static Bitmap GetImageMask( Bitmap image, Color fillcolor = default( Color ), OpaqueMode mode = OpaqueMode.Alpha )
+        {
+            bool alpha = AlphaFormat.Contains( image.PixelFormat );
+            if ( !alpha && mode == OpaqueMode.Alpha )
+            {
+                Bitmap dst = new Bitmap(image);
+                using ( var g = Graphics.FromImage( dst ) )
+                {
+                    g.FillRectangle( new SolidBrush( fillcolor ), new RectangleF( 0, 0, dst.Width, dst.Height ) );
+                }
+                return ( dst );
+            }
+            else
+            {
+                Accord.Imaging.UnmanagedImage uiSrc = Accord.Imaging.UnmanagedImage.FromManagedImage(image);
+                Color pTL = uiSrc.GetPixel(0, 0);
+                Color pBR = uiSrc.GetPixel(uiSrc.Width-1, uiSrc.Height-1);
+                for ( int y = 0; y < image.Height; y++ )
+                {
+                    for ( int x = 0; x < image.Width; x++ )
+                    {
+                        Color p = uiSrc.GetPixel(x,y);
+                        if ( mode == OpaqueMode.Alpha && p.A != 0 )
+                        {
+                            uiSrc.SetPixel( x, y, fillcolor );
+                        }
+                        else if ( mode == OpaqueMode.TopLeft && (p.R != pTL.R || p.G != pTL.G || p.B != pTL.B ))
+                        {
+                            uiSrc.SetPixel( x, y, fillcolor );
+                        }
+                        else if ( mode == OpaqueMode.BottomRight && (p.R != pBR.R || p.G != pBR.G || p.B != pBR.B ))
+                        {
+                            uiSrc.SetPixel( x, y, fillcolor );
+                        }
+                    }
+                }
+                Bitmap dst = uiSrc.ToManagedImage();
+                var effect = new BlurEffect(1.5f, true);
+                dst.ApplyEffect( effect, new Rectangle( 0, 0, dst.Width + 3, dst.Height + 3 ) );
+                return ( dst );
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="width"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static Bitmap MakeOutline( Bitmap image, int width = 2, Color color = default( Color ) )
+        {
+            Bitmap mask = GetImageMask(image, color);
+
+            //var rect = Rectangle.Round(GetOpaqueBound( image, OpaqueMode.Alpha ));
+            var rect = new Rectangle(0, 0, image.Width, image.Height);
+            rect.Inflate( width, width );
+
+            Bitmap dst = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
+            using ( var g = Graphics.FromImage( dst ) )
+            {
+                g.CompositingMode = CompositingMode.SourceOver;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TextContrast = 2;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                PointF pOo = new PointF((rect.Width - mask.Width)/2f, (rect.Height - mask.Height)/2f);
+                PointF pU = new PointF(pOo.X, pOo.Y-width);
+                PointF pD = new PointF(pOo.X, pOo.Y+width);
+                PointF pL = new PointF(pOo.X-width, pOo.Y);
+                PointF pR = new PointF(pOo.X+width, pOo.Y);
+
+                g.DrawImage( mask, pU );
+                g.DrawImage( mask, pD );
+                g.DrawImage( mask, pL );
+                g.DrawImage( mask, pR );
+
+                PointF pOs = new PointF((rect.Width - image.Width)/2f, (rect.Height - image.Height)/2f);
+                g.DrawImage( image, pOs );
+            }
+            CloneExif( image, dst );
+            return ( dst );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="width"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static Bitmap MakeGlow( Bitmap image, int width = 2, Color color = default( Color ) )
+        {
+
+            Bitmap mask = GetImageMask(image, color);
+
+            //var rect = Rectangle.Round(GetOpaqueBound( image, OpaqueMode.Alpha ));
+            var rect = new Rectangle(0, 0, image.Width, image.Height);
+            rect.Inflate( width, width );
+
+            var effect = new BlurEffect(width, true);
+            mask.ApplyEffect( effect, new Rectangle( 0, 0, mask.Width + width * 2, mask.Height + width * 2 ) );
+
+            Bitmap dst = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
+            using ( var g = Graphics.FromImage( dst ) )
+            {
+                g.CompositingMode = CompositingMode.SourceOver;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TextContrast = 2;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                PointF pOo = new PointF((rect.Width - mask.Width)/2f, (rect.Height - mask.Height)/2f);
+
+                g.DrawImage( mask, pOo );
+
+                PointF pOs = new PointF((rect.Width - image.Width)/2f, (rect.Height - image.Height)/2f);
+                g.DrawImage( image, pOs );
+            }
+            CloneExif( image, dst );
+            return ( dst );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="width"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static Bitmap MakeFakeShadow( Bitmap image, int width = 2, Color color = default( Color ) )
+        {
+
+            Bitmap mask = GetImageMask(image, color);
+
+            //var rect = Rectangle.Round(GetOpaqueBound( image, OpaqueMode.Alpha ));
+            var rect = new Rectangle(0, 0, image.Width, image.Height);
+            rect.Inflate( width, width );
+
+            var effect = new BlurEffect(width+5, true);
+            mask.ApplyEffect( effect, new Rectangle( 0, 0, mask.Width + width * 2, mask.Height + width * 2 ) );
+
+            Bitmap dst = new Bitmap(rect.Width+width, rect.Height+width, PixelFormat.Format32bppArgb);
+            using ( var g = Graphics.FromImage( dst ) )
+            {
+                g.CompositingMode = CompositingMode.SourceOver;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TextContrast = 2;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                PointF pOo = new PointF((rect.Width - mask.Width)/2f+width, (rect.Height - mask.Height)/2f+width);
+
+                g.DrawImage( mask, pOo );
+
+                PointF pOs = new PointF(0, 0);
+                g.DrawImage( image, pOs );
+            }
+            CloneExif( image, dst );
+            return ( dst );
+        }
+
+
+        #endregion
+
+        #region JSON Config Save / Load routines
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="addin"></param>
+        /// <param name="jsonFile"></param>
+        /// <returns></returns>
+        public static T LoadJSON<T>( IAddin addin, string jsonFile )
+        {
+            T config = default(T);
+            if ( addin is IAddin )
+            {
+                string addinRoot = Path.GetDirectoryName( Path.GetFullPath( addin.Location ) );
+                string configFile = Path.Combine(addinRoot, jsonFile);
+                if ( File.Exists( configFile ) )
+                {
+                    string json = File.ReadAllText( configFile );
+                    JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                    config = (T) serializer.Deserialize( json, typeof( T ) );
+                }
+            }
+            return ( config );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="addin"></param>
+        /// <param name="jsonFile"></param>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public static bool SaveJSON<T>( IAddin addin, string jsonFile, T config )
+        {
+            bool result = false;
+            if ( addin is IAddin )
+            {
+                string addinRoot = Path.GetDirectoryName( Path.GetFullPath( addin.Location ) );
+                string configFile = Path.Combine(addinRoot, jsonFile);
+
+                JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                var json = serializer.Serialize(config);
+                File.WriteAllText( configFile, json );
+            }
+            return ( result );
+        }
+
         #endregion
     }
 }

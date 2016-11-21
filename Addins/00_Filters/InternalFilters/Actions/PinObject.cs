@@ -12,24 +12,47 @@ namespace InternalFilters.Actions
 {
     using System.Drawing.Drawing2D;
     using System.Drawing.Imaging;
+    using System.Web.Script.Serialization;
     using ParamList = Dictionary<string, ParamItem>;
 
+    [Serializable]
     public enum PinObjectMode
     {
+        None,
         Text,
         Picture,
         Tag
     }
 
+    [Serializable]
     public class PinOption
     {
         public bool Enabled = true;
         public bool Tile = false;
         public float Blend = 100f;
+        public PinObjectMode Mode = PinObjectMode.None;
 
-        public Bitmap Picture = null;
+        [NonSerialized]
+        [ScriptIgnore]
+        internal Bitmap ImageCache = null;
+
+        /// <summary>
+        /// Pin Picture Options
+        /// </summary>
+        public string PictureFile = null;
+
+        /// <summary>
+        /// Pin Simple Text Options
+        /// </summary>
         public string Text = string.Empty;
-        public string Tag = string.Empty;
+        public string TextColor = ColorTranslator.ToHtml( Color.Transparent );
+        public string TextFont = string.Empty;
+        public FontStyle TextFontStyle = FontStyle.Regular;
+
+        /// <summary>
+        /// Pin Tag Options
+        /// </summary>
+        public string TagFile = string.Empty;
 
         #region Position
         public bool RandomPos = false;
@@ -45,6 +68,8 @@ namespace InternalFilters.Actions
         #endregion
 
         #region Effects
+        [NonSerialized]
+        [ScriptIgnore]
         public Dictionary<IAddin, ParamList> FilterParams = new Dictionary<IAddin, ParamList>();
         public float Opaque = 100f;
         //public float GradientWidth = 0f;
@@ -221,23 +246,21 @@ namespace InternalFilters.Actions
         public override Image Apply( Image image )
         {
             var st = DateTime.Now.Ticks;
+
             Bitmap dst = AddinUtils.CloneImage(image) as Bitmap;
 
             GetParams( fm );
             PinObjectMode PinObjectMode = (PinObjectMode) Params["PinObjectMode"].Value;
             bool objectOnly = (bool) Params["PinObjectOnly"].Value;
+            PinOption option = (PinOption) Params["PinOption"].Value;
 
-            //
-            // Todo filter apply
-            //
             switch ( PinObjectMode )
             {
                 case PinObjectMode.Picture:
-                    PinOption option = (PinOption) Params["PinOption"].Value;
-                    //option.Picture = AddinUtils.LoadImage("布老虎.png") as Bitmap;
                     dst = DrawPicture( dst, option, objectOnly );
                     break;
                 case PinObjectMode.Text:
+                    dst = DrawText( dst, option, objectOnly );
                     break;
                 case PinObjectMode.Tag:
                     break;
@@ -292,20 +315,25 @@ namespace InternalFilters.Actions
                 case AddinCommand.SubItems:
                     if(args.Length==0)
                     {
+                        #region Return subitems info
                         var subitems = new List<AddinSubItem>();
                         subitems.Add( new AddinSubItem( this, 
                             "Text", this._( "Text" ), 
                             "", this._( "" ), 
+                            this._("Simple Text"),
                             Properties.Resources.Text_16x, Properties.Resources.Text_32x ) );
                         subitems.Add( new AddinSubItem( this, 
                             "Picture", this._( "Picture" ), 
-                            "", this._( "" ), 
+                            "", this._( "" ),
+                            this._( "Picture" ),
                             Properties.Resources.Picture_16x, Properties.Resources.Picture_16x ) );
                         subitems.Add( new AddinSubItem( this, 
                             "Tag", this._( "Smart Tag" ), 
-                            "", this._( "" ), 
+                            "", this._( "" ),
+                            this._( "Rich-Contents Text" ),
                             Properties.Resources.Tag_16x, Properties.Resources.Tag_32x ) );
                         result = subitems;
+                        #endregion
                     }
                     else
                     {
@@ -330,9 +358,9 @@ namespace InternalFilters.Actions
         protected internal Bitmap DrawPicture( Bitmap dst, PinOption option, bool objectOnly=false )
         {
             Bitmap result = new Bitmap(dst);
-            if ( option.Picture is Image )
+            if ( option.ImageCache is Image )
             {
-                Bitmap src = new Bitmap(option.Picture);
+                Bitmap src = new Bitmap(option.ImageCache);
 
                 #region Calc Margin & Offset
                 PointF margin = new PointF(option.Margin.X/100f*dst.Width, option.Margin.Y/100f*dst.Height);
@@ -398,8 +426,8 @@ namespace InternalFilters.Actions
                     }
                     pos.X = pos.X >= 0 ? pos.X : 0;
                     pos.Y = pos.Y >= 0 ? pos.Y : 0;
-                    pos.X = pos.X > dst.Width - option.Picture.Width ? dst.Width - option.Picture.Width : pos.X;
-                    pos.Y = pos.Y > dst.Height - option.Picture.Height ? dst.Height - option.Picture.Height : pos.Y;
+                    pos.X = pos.X > dst.Width - option.ImageCache.Width ? dst.Width - option.ImageCache.Width : pos.X;
+                    pos.Y = pos.Y > dst.Height - option.ImageCache.Height ? dst.Height - option.ImageCache.Height : pos.Y;
                     #endregion
                 }
                 #endregion
@@ -453,6 +481,13 @@ namespace InternalFilters.Actions
                 #region Draw Picture to Image
                 using ( Graphics g = Graphics.FromImage( result ) )
                 {
+                    g.CompositingMode = CompositingMode.SourceOver;
+                    g.CompositingQuality = CompositingQuality.HighQuality;
+                    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    g.SmoothingMode = SmoothingMode.AntiAlias;
+                    g.TextContrast = 2;
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
                     ColorMatrix c = new ColorMatrix() { Matrix33 = option.Opaque / 100f };
                     ImageAttributes a = new ImageAttributes();
                     a.SetColorMatrix( c, ColorMatrixFlag.Default, ColorAdjustType.Bitmap );
@@ -473,13 +508,32 @@ namespace InternalFilters.Actions
                         a );
                 }
 
-                //var mask = AddinUtils.MakeOutline( src, 5, Color.DarkBlue );
+                #if DEBUG
+                var outline = AddinUtils.MakeOutline( src, 5, Color.DarkBlue );
+                var glow = AddinUtils.MakeGlow( src, 5, Color.DarkRed );
+                var shadow = AddinUtils.MakeFakeShadow( src, 5, Color.DarkGray );
+                outline.Save( "t_outline.png" );
+                glow.Save( "t_glow.png" );
+                shadow.Save( "t_shadow.png" );
+                #endif
 
                 #endregion
                 return ( result );
             }
             return ( result );
         }
+
+        protected internal Bitmap DrawText( Bitmap dst, PinOption option, bool objectOnly = false )
+        {
+            Bitmap result = new Bitmap(dst);
+            if ( !string.IsNullOrEmpty( option.Text ) )
+            {
+                option.ImageCache = AddinUtils.TextToBitmap32( option.Text, option.TextFont, option.TextFontStyle, ColorTranslator.FromHtml( option.TextColor ) );
+                result = DrawPicture( dst, option, objectOnly );
+            }
+            return ( result );
+        }
+
         #endregion
     }
 }

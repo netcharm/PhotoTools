@@ -10,6 +10,7 @@ using NetCharm.Image.Addins;
 
 namespace InternalFilters.Effects
 {
+    [Serializable]
     public enum HueFilterMode
     {
         Normal = 0

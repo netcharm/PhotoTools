@@ -16,6 +16,7 @@ using NetCharm.Image.Addins;
 namespace InternalFilters
 {
     [Extension]
+    [Serializable]
     public class ImageEditor : IAddin
     {
         private FileVersionInfo fv = null;

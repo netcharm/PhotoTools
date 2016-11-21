@@ -14,6 +14,7 @@ using System.IO;
 namespace BatchProcess
 {
     [Extension]
+    [Serializable]
     public class Batch : IAddin
     {
         private FileVersionInfo fv = null;

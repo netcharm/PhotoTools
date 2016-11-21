@@ -35,21 +35,32 @@
             this.edGaussianThreshold = new System.Windows.Forms.NumericUpDown();
             this.edGaussianSize = new System.Windows.Forms.NumericUpDown();
             this.edGaussianSigma = new System.Windows.Forms.NumericUpDown();
+            this.edGdiRatio = new System.Windows.Forms.NumericUpDown();
             this.imgPreview = new NetCharm.Image.Addins.ImageBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.grpMode = new System.Windows.Forms.GroupBox();
+            this.btnModeGdi = new System.Windows.Forms.RadioButton();
             this.btnModeGaussian = new System.Windows.Forms.RadioButton();
             this.btnModeNormal = new System.Windows.Forms.RadioButton();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.grpGaussianParams = new System.Windows.Forms.GroupBox();
             this.lblGaussianThreshold = new System.Windows.Forms.Label();
             this.lblGaussianSize = new System.Windows.Forms.Label();
             this.lblGaussianSigma = new System.Windows.Forms.Label();
+            this.grpGdiParams = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.edGdiAmount = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.edGaussianThreshold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edGaussianSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edGaussianSigma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edGdiRatio)).BeginInit();
             this.grpMode.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.grpGaussianParams.SuspendLayout();
+            this.grpGdiParams.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.edGdiAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOriginal
@@ -66,7 +77,7 @@
             resources.ApplyResources(this.edGaussianThreshold, "edGaussianThreshold");
             this.edGaussianThreshold.Name = "edGaussianThreshold";
             this.toolTip.SetToolTip(this.edGaussianThreshold, resources.GetString("edGaussianThreshold.ToolTip"));
-            this.edGaussianThreshold.ValueChanged += new System.EventHandler(this.edGaussian_ValueChanged);
+            this.edGaussianThreshold.ValueChanged += new System.EventHandler(this.edMode_ValueChanged);
             // 
             // edGaussianSize
             // 
@@ -89,7 +100,7 @@
             0,
             0,
             0});
-            this.edGaussianSize.ValueChanged += new System.EventHandler(this.edGaussian_ValueChanged);
+            this.edGaussianSize.ValueChanged += new System.EventHandler(this.edMode_ValueChanged);
             // 
             // edGaussianSigma
             // 
@@ -118,12 +129,36 @@
             0,
             0,
             65536});
-            this.edGaussianSigma.ValueChanged += new System.EventHandler(this.edGaussian_ValueChanged);
+            this.edGaussianSigma.ValueChanged += new System.EventHandler(this.edMode_ValueChanged);
+            // 
+            // edGdiRatio
+            // 
+            this.edGdiRatio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.edGdiRatio.DecimalPlaces = 2;
+            this.edGdiRatio.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            resources.ApplyResources(this.edGdiRatio, "edGdiRatio");
+            this.edGdiRatio.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.edGdiRatio.Name = "edGdiRatio";
+            this.toolTip.SetToolTip(this.edGdiRatio, resources.GetString("edGdiRatio.ToolTip"));
+            this.edGdiRatio.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            65536});
+            this.edGdiRatio.ValueChanged += new System.EventHandler(this.edMode_ValueChanged);
             // 
             // imgPreview
             // 
-            this.imgPreview.Image = null;
             resources.ApplyResources(this.imgPreview, "imgPreview");
+            this.imgPreview.Image = null;
             this.imgPreview.Name = "imgPreview";
             this.imgPreview.SelectionColor = System.Drawing.SystemColors.Highlight;
             this.imgPreview.SelectionKeepAspect = false;
@@ -133,26 +168,35 @@
             // 
             // btnOk
             // 
-            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             resources.ApplyResources(this.btnOk, "btnOk");
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.Name = "btnOk";
             this.btnOk.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.btnCancel, "btnCancel");
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // grpMode
             // 
+            this.grpMode.Controls.Add(this.btnModeGdi);
             this.grpMode.Controls.Add(this.btnModeGaussian);
             this.grpMode.Controls.Add(this.btnModeNormal);
             this.grpMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             resources.ApplyResources(this.grpMode, "grpMode");
             this.grpMode.Name = "grpMode";
             this.grpMode.TabStop = false;
+            // 
+            // btnModeGdi
+            // 
+            resources.ApplyResources(this.btnModeGdi, "btnModeGdi");
+            this.btnModeGdi.Name = "btnModeGdi";
+            this.btnModeGdi.TabStop = true;
+            this.btnModeGdi.UseVisualStyleBackColor = true;
+            this.btnModeGdi.Click += new System.EventHandler(this.btnMode_Click);
             // 
             // btnModeGaussian
             // 
@@ -169,6 +213,13 @@
             this.btnModeNormal.TabStop = true;
             this.btnModeNormal.UseVisualStyleBackColor = true;
             this.btnModeNormal.Click += new System.EventHandler(this.btnMode_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.grpGaussianParams);
+            this.flowLayoutPanel1.Controls.Add(this.grpGdiParams);
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // grpGaussianParams
             // 
@@ -198,13 +249,56 @@
             resources.ApplyResources(this.lblGaussianSigma, "lblGaussianSigma");
             this.lblGaussianSigma.Name = "lblGaussianSigma";
             // 
+            // grpGdiParams
+            // 
+            this.grpGdiParams.Controls.Add(this.label1);
+            this.grpGdiParams.Controls.Add(this.edGdiAmount);
+            this.grpGdiParams.Controls.Add(this.label2);
+            this.grpGdiParams.Controls.Add(this.edGdiRatio);
+            resources.ApplyResources(this.grpGdiParams, "grpGdiParams");
+            this.grpGdiParams.Name = "grpGdiParams";
+            this.grpGdiParams.TabStop = false;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // edGdiAmount
+            // 
+            this.edGdiAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.edGdiAmount.DecimalPlaces = 2;
+            resources.ApplyResources(this.edGdiAmount, "edGdiAmount");
+            this.edGdiAmount.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.edGdiAmount.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.edGdiAmount.Name = "edGdiAmount";
+            this.toolTip.SetToolTip(this.edGdiAmount, resources.GetString("edGdiAmount.ToolTip"));
+            this.edGdiAmount.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
             // SharpenForm
             // 
             this.AcceptButton = this.btnOk;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.Controls.Add(this.grpGaussianParams);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnOriginal);
             this.Controls.Add(this.grpMode);
             this.Controls.Add(this.btnOk);
@@ -219,8 +313,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.edGaussianThreshold)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edGaussianSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edGaussianSigma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edGdiRatio)).EndInit();
             this.grpMode.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.grpGaussianParams.ResumeLayout(false);
+            this.grpGdiParams.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.edGdiAmount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,6 +334,8 @@
         private System.Windows.Forms.RadioButton btnModeGaussian;
         private System.Windows.Forms.RadioButton btnModeNormal;
         private System.Windows.Forms.CheckBox btnOriginal;
+        private System.Windows.Forms.RadioButton btnModeGdi;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.GroupBox grpGaussianParams;
         private System.Windows.Forms.Label lblGaussianThreshold;
         private System.Windows.Forms.NumericUpDown edGaussianThreshold;
@@ -243,5 +343,10 @@
         private System.Windows.Forms.NumericUpDown edGaussianSize;
         private System.Windows.Forms.Label lblGaussianSigma;
         private System.Windows.Forms.NumericUpDown edGaussianSigma;
+        private System.Windows.Forms.GroupBox grpGdiParams;
+        private System.Windows.Forms.NumericUpDown edGdiRatio;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown edGdiAmount;
+        private System.Windows.Forms.Label label2;
     }
 }

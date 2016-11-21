@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using NetCharm.Image.Addins;
+using ExtensionMethods;
 
 namespace InternalFilters.Actions
 {
+    using System.IO;
     using ParamList = Dictionary<string, ParamItem>;
 
     public partial class PinObjectForm : Form
@@ -19,6 +21,9 @@ namespace InternalFilters.Actions
         private Image thumb = null;
         private Image thumbBackup = null;
         private Image picObject = null;
+        private Image picText = null;
+
+        private NetCharm.Image.Addins.Common.ColorDialog dlgColor = null;
 
         private PinObjectMode mode = PinObjectMode.Picture;
         internal ParamItem ParamMode
@@ -35,7 +40,7 @@ namespace InternalFilters.Actions
             set { mode = (PinObjectMode) value.Value; }
         }
 
-        private PinOption options = new PinOption();
+        private PinOption option = new PinOption();
         internal ParamItem ParamOption
         {
             get
@@ -43,11 +48,11 @@ namespace InternalFilters.Actions
                 ParamItem pi = new ParamItem();
                 pi.Name = "PinOption";
                 pi.DisplayName = AddinUtils._( addin, pi.Name );
-                pi.Type = options.GetType();
-                pi.Value = options;
+                pi.Type = option.GetType();
+                pi.Value = option;
                 return ( pi );
             }
-            set { options = (PinOption) value.Value; }
+            set { option = (PinOption) value.Value; }
         }
 
         private bool objectOnly = false;
@@ -65,9 +70,120 @@ namespace InternalFilters.Actions
             set { objectOnly = (bool) value.Value; }
         }
 
+        bool fontApplyTest = false;
+
         private List<ListViewItem> effects = new List<ListViewItem>();
         //private List<Dictionary<string, ParamItem>> effectParams = new List<Dictionary<string, ParamItem>>();
         private List<ParamList> effectParams = new List<ParamList>();
+
+        internal void LoadPicture(string picFile)
+        {
+            if(File.Exists(picFile))
+            {
+                picObject = AddinUtils.LoadImage( picFile );
+                option.ImageCache = picObject as Bitmap;
+                option.PictureFile = picFile;
+                Preview();
+            }
+        }
+
+        internal void GetOptions()
+        {
+            option.Blend = (float) Convert.ToDouble( slideBlend.Value );
+            option.Opaque = (float) Convert.ToDouble( slideOpaque.Value );
+
+            option.Pos = csSelect.CornetRegion;
+
+            option.Enabled = chkEnabled.Checked;
+            option.Tile = chkTile.Checked;
+
+            option.Margin.X = (float) Convert.ToDouble( slideMarginX.Value );
+            option.Margin.Y = (float) Convert.ToDouble( slideMarginY.Value );
+
+            option.Offset.X = (float) Convert.ToDouble( slideOffsetX.Value );
+            option.Offset.Y = (float) Convert.ToDouble( slideOffsetY.Value );
+
+            foreach ( IAddin filter in addin.Filters )
+            {
+                int pIdx = effectParams.IndexOf( filter.Params );
+                if ( pIdx >= 0 && pIdx < effectParams.Count )
+                {
+                    option.FilterParams[filter] = effectParams[pIdx];
+                }
+            }
+
+            option.Text = edText.Text;
+
+            switch ( tabObject.SelectedIndex )
+            {
+                case 0:
+                    mode = PinObjectMode.Picture;
+                    break;
+                case 1:
+                    mode = PinObjectMode.Text;
+                    break;
+                case 2:
+                    mode = PinObjectMode.Tag;
+                    break;
+            }
+            option.Mode = mode;
+
+            if ( !fontApplyTest )
+            {
+                AddinUtils.SaveJSON<PinOption>( addin, $"latest_{addin.Name}.json", option );
+            }
+        }
+
+        internal void Preview()
+        {
+            if ( this.Tag is bool && (bool) this.Tag )
+            {
+                GetOptions();
+                bool tile = option.Tile;
+
+                #region Draw Picture / Text Preview
+                option.Tile = false;
+                objectOnly = true;
+                switch ( mode )
+                {
+                    case PinObjectMode.Picture:
+                        if ( picObject is Image )
+                        {
+                            if ( picObject.Width > imgPicture.Width || picObject.Height > imgPicture.Height )
+                                imgPicture.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
+                            else
+                                imgPicture.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Normal;
+                            option.ImageCache = picObject as Bitmap;
+                            imgPicture.Image = addin.Apply( picObject );
+                        }
+                        break;
+                    case PinObjectMode.Text:
+                        if ( !string.IsNullOrEmpty( option.Text ) )
+                        {
+                            //picText = addin.Apply( AddinUtils.TextToBitmap32( option.Text, option.TextFont, option.TextFontStyle, ColorTranslator.FromHtml( option.TextColor ) ) );
+                            picText = addin.Apply( AddinUtils.TextToBitmap32( option.Text, option.TextFont, option.TextFontStyle, option.TextColor.ToColor() ) );
+                            if ( picText.Width > imgText.Width || picText.Height > imgText.Height )
+                                imgText.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
+                            else
+                                imgText.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Normal;
+                            imgText.Image = picText;
+                            toolTip.SetToolTip( imgText, $"{imgText.Image.Width}x{imgText.Image.Height}" );
+                        }
+                        break;
+                }
+                option.Tile = tile;
+                objectOnly = false;
+                #endregion
+
+                #region Draw Image Preview
+                if ( addin.ImageData is Image )
+                {
+                    objectOnly = false;
+                    imgPreview.Image = AddinUtils.CreateThumb( addin.Apply( addin.ImageData ), imgPreview.ClientSize );
+                }
+                #endregion
+            }
+        }
 
         public PinObjectForm()
         {
@@ -90,54 +206,56 @@ namespace InternalFilters.Actions
             AddinUtils.Translate( this.addin, this, toolTip );
         }
 
-        internal void GetOptions()
+        #region DrapDrop Events
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _DragEnter( object sender, DragEventArgs e )
         {
-            options.Blend = (float) Convert.ToDouble( slideBlend.Value );
-            options.Opaque = (float) Convert.ToDouble( slideOpaque.Value );
-
-            options.Pos = csSelect.CornetRegion;
-
-            options.Enabled = chkEnabled.Checked;
-            options.Tile = chkTile.Checked;
-
-            options.Margin.X = (float) Convert.ToDouble( slideMarginX.Value );
-            options.Margin.Y = (float) Convert.ToDouble( slideMarginY.Value );
-
-            options.Offset.X = (float) Convert.ToDouble( slideOffsetX.Value );
-            options.Offset.Y = (float) Convert.ToDouble( slideOffsetY.Value );
-
-            foreach ( IAddin filter in addin.Filters )
+            string[] flist = (string[])e.Data.GetData( DataFormats.FileDrop, true );
+            if ( flist.Length > 0 && File.Exists( flist[0] ) && 
+                string.Equals(Path.GetExtension(flist[0]), ".png", StringComparison.CurrentCultureIgnoreCase))
             {
-                int pIdx = effectParams.IndexOf( filter.Params );
-                if ( pIdx >= 0 && pIdx < effectParams.Count )
-                {
-                    options.FilterParams[filter] = effectParams[pIdx];
-                }
+                e.Effect = DragDropEffects.Move;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
             }
         }
 
-        internal void Preview()
+        /// <summary>
+        ///         
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _DragDrop( object sender, DragEventArgs e )
         {
-            GetOptions();
-            bool tile = options.Tile;
-            if( addin.ImageData is Image )
+            string[] flist = (string[])e.Data.GetData( DataFormats.FileDrop, true );
+            if ( flist.Length > 0 && File.Exists( flist[0] ) )
             {
-                objectOnly = false;
-                imgPreview.Image = AddinUtils.CreateThumb( addin.Apply( addin.ImageData ), imgPreview.ClientSize );
-            }
-            if ( picObject is Image)
-            {
-                options.Tile = false;
-                objectOnly = true;
-                imgPicture.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
-                imgPicture.Image = addin.Apply( picObject );
-                options.Tile = tile;
-                objectOnly = false;
+                picObject = AddinUtils.LoadImage( flist[0] );
+                option.ImageCache = picObject as Bitmap;
+                Preview();
             }
         }
+        #endregion DragDrop Events
 
         private void PinObjectForm_Load( object sender, EventArgs e )
         {
+            this.Tag = false;
+
+            PinOption kv = AddinUtils.LoadJSON<PinOption>( addin, $"latest_{addin.Name}.json" );
+            LoadPicture( kv.PictureFile );
+
+            option.TextFont = kv.TextFont;
+            option.TextFontStyle = kv.TextFontStyle;
+            option.TextColor = kv.TextColor;
+
+            edText.Text = kv.Text;
+
             slideOffsetX.Enabled = chkTile.Checked;
             slideOffsetY.Enabled = chkTile.Checked;
 
@@ -145,6 +263,9 @@ namespace InternalFilters.Actions
             imgPreview.Image = thumb;
 
             csSelect.CornetRegion = CornerRegionType.BottomCenter;
+
+            this.Tag = true;
+            Preview();
         }
 
         private void lvFilters_RetrieveVirtualItem( object sender, RetrieveVirtualItemEventArgs e )
@@ -184,7 +305,18 @@ namespace InternalFilters.Actions
                     lvFilters.FocusedItem.Checked = filter.Enabled;
 
                     //filter.ImageData = addin.ImageData;
-                    filter.ImageData = picObject;
+                    switch(mode)
+                    {
+                        case PinObjectMode.Picture:
+                            filter.ImageData = picObject;
+                            break;
+                        case PinObjectMode.Text:
+                            filter.ImageData = picText;
+                            break;
+                        case PinObjectMode.Tag:
+                            break;
+                    }
+                    //filter.ImageData = picObject;
                     var pilist = effectParams[effectParams.IndexOf( filter.Params )];
                     AddinUtils.SetParams( filter, pilist );
                     filter.Show( this, true );
@@ -341,16 +473,16 @@ namespace InternalFilters.Actions
         {
             csSelect.CornetRegion = CornerRegionType.None;
 
-            options.Pos = csSelect.CornetRegion;
-            options.RandomPos = true;
+            option.Pos = csSelect.CornetRegion;
+            option.RandomPos = true;
 
             Preview();
         }
 
         private void csSelect_CornetRegionClick( object sender, EventArgs e )
         {
-            options.Pos = csSelect.CornetRegion;
-            options.RandomPos = false;
+            option.Pos = csSelect.CornetRegion;
+            option.RandomPos = false;
 
             Preview();
         }
@@ -367,11 +499,6 @@ namespace InternalFilters.Actions
             Preview();
         }
 
-        private void imgPicture_DoubleClick( object sender, EventArgs e )
-        {
-            btnOpenPic.PerformClick();
-        }
-
         private void btnOpenPic_Click( object sender, EventArgs e )
         {
             OpenFileDialog dlgOpen = new OpenFileDialog();
@@ -379,20 +506,102 @@ namespace InternalFilters.Actions
             dlgOpen.Multiselect = false;
             if ( dlgOpen.ShowDialog() == DialogResult.OK )
             {
-                picObject = AddinUtils.LoadImage( dlgOpen.FileName );
-                options.Picture = picObject as Bitmap;
-                Preview();
+                LoadPicture( dlgOpen.FileName );
             }
         }
 
         private void btnOpenFont_Click( object sender, EventArgs e )
         {
             FontDialog dlgFont = new FontDialog();
+            dlgFont.ShowColor = true;
+            dlgFont.ShowApply = true;
+            dlgFont.ShowEffects = true;
+            dlgFont.AllowScriptChange = true;
+            dlgFont.AllowSimulations = true;
+            dlgFont.AllowVectorFonts = true;
+            //dlgFont.AllowVerticalFonts = true;
+            
+            dlgFont.Font = AddinUtils.StrToFont( option.TextFont, option.TextFontStyle );
+            //dlgFont.Color = ColorTranslator.FromHtml( option.TextColor );
+            dlgFont.Color = option.TextColor.ToColor();
             if ( dlgFont.ShowDialog() == DialogResult.OK )
             {
-                edText.Font = dlgFont.Font;
-                //Preview();
+                option.TextFont = dlgFont.Font.ToString();
+                option.TextColor = dlgFont.Color.ToHtml();
+                option.TextFontStyle = dlgFont.Font.Style;
+                Preview();
+            }
+            fontApplyTest = false;
+        }
+
+        private void dlgFont_Apply( object sender, EventArgs e )
+        {
+            fontApplyTest = true;
+
+            option.TextFont = dlgFont.Font.ToString();
+            //option.TextColor = ColorTranslator.ToHtml( dlgFont.Color );
+            option.TextFontStyle = dlgFont.Font.Style;
+
+            Preview();
+            fontApplyTest = false;
+        }
+
+        private void btnColorPicker_Click( object sender, EventArgs e )
+        {
+            string c = option.TextColor;
+            //Color color = ColorTranslator.FromHtml(option.TextColor);
+            Color color = option.TextColor.ToColor();
+
+            //if ( AddinUtils.ShowColorPicker( ref color ) == DialogResult.OK )
+            //{
+            //    option.TextColor = ColorTranslator.ToHtml( color );
+            //    Preview();
+            //}
+
+            dlgColor = new NetCharm.Image.Addins.Common.ColorDialog();
+            dlgColor.Apply += new System.EventHandler( dlgColor_Apply );
+            dlgColor.Color = color;
+            if ( dlgColor.ShowDialog() == DialogResult.OK )
+            {
+                //option.TextColor = ColorTranslator.ToHtml( dlgColor.Color );
+                option.TextColor = dlgColor.Color.ToHtml();
+                Preview();
+            }
+            else
+            {
+                option.TextColor = c;
+                Preview();
             }
         }
+
+        private void dlgColor_Apply( object sender, EventArgs e )
+        {
+            fontApplyTest = true;
+
+            string c = option.TextColor;
+
+            //option.TextColor = ColorTranslator.ToHtml( dlgColor.Color );
+            option.TextColor = dlgColor.Color.ToHtml();
+            Preview();
+            option.TextColor = c;
+
+            fontApplyTest = false;
+        }
+
+        private void imgPicture_DoubleClick( object sender, EventArgs e )
+        {
+            btnOpenPic.PerformClick();
+        }
+
+        private void edText_TextChanged( object sender, EventArgs e )
+        {
+            Preview();
+        }
+
+        private void tabObject_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            Preview();
+        }
+
     }
 }

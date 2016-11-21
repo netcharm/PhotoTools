@@ -66,8 +66,23 @@
     <Reference Include="Cyotek.Windows.Forms.ColorPicker">
       <HintPath>..\..\..\..\..\_refs\Cyotek.Windows.Forms.ColorPicker.dll</HintPath>
     </Reference>
+    <Reference Include="Cyotek.Windows.Forms.FontDialog">
+      <HintPath>..\..\..\..\..\_refs\Cyotek.Windows.Forms.FontDialog.dll</HintPath>
+    </Reference>
     <Reference Include="Cyotek.Windows.Forms.ImageBox">
       <HintPath>..\..\..\..\..\_refs\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
+    </Reference>
+    <Reference Include="GDIPlusX, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\_refs\GDIPlusX.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\HtmlRenderer.Core.1.5.1-beta1\lib\net40-client\HtmlRenderer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlRenderer.WinForms, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\HtmlRenderer.WinForms.1.5.1-beta1\lib\net40-client\HtmlRenderer.WinForms.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Mono.Addins">
       <HintPath>..\..\..\..\..\_refs\Mono.Addins.dll</HintPath>
@@ -344,6 +359,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Image_Dice_24x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImageLoader_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImageLoader_24x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Font_24x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorPicker_24x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

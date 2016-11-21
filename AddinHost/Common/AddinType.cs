@@ -15,6 +15,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public enum OpaqueMode
     {
         Alpha = 0,
@@ -25,6 +26,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public enum CropMode
     {
         Selection = 0,
@@ -37,6 +39,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public enum SideType
     {
         //
@@ -64,6 +67,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public enum CornerRegionType
     {
         None = 0,
@@ -108,6 +112,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// These constants come from the CIPA DC-008 standard for EXIF 2.3
     /// </summary>
+    [Serializable]
     public static class EXIF
     {
         #region EXIF Data Type
@@ -523,6 +528,7 @@ namespace NetCharm.Image.Addins
     /// all used the bitmapmetadata.getquery("[INSERT BELOW]")... warning data type that is returned is not always the same
     /// "they" could have made it much easier...I would still have some hair left in if they did !!
     ///
+    [Serializable]
     public static class META
     {
         #region Query Path
@@ -654,6 +660,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public class CornerRegion
     {
         #region public properties
@@ -820,6 +827,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public class AddinSubItem
     {
         private IAddin addin = null;
@@ -850,6 +858,13 @@ namespace NetCharm.Image.Addins
         {
             get { return ( AddinUtils._( addin, _displayName ) ); }
             protected internal set { _displayName = value; }
+        }
+
+        private string _tooltipText=string.Empty;
+        public virtual string TooltipText
+        {
+            get { return ( AddinUtils._( addin, _tooltipText ) ); }
+            protected internal set { _tooltipText = value; }
         }
 
         private System.Drawing.Image _smallIcon = null;
@@ -902,21 +917,23 @@ namespace NetCharm.Image.Addins
             protected internal set { _largeIcon = value; }
         }
 
-        public AddinSubItem( IAddin addin, string name, string displayname, string group, string displaygroup, System.Drawing.Image smallicon, System.Drawing.Image largeicon )
+        public AddinSubItem( IAddin addin, string name, string displayname, string group, string displaygroup, string tooltip, System.Drawing.Image smallicon, System.Drawing.Image largeicon )
         {
             this.addin = addin;
             _name = name;
             _displayName = displayname;
             _groupName = group;
             _displayGroupName = displaygroup;
+            _tooltipText = tooltip;
             _smallIcon = smallicon;
             _largeIcon = largeicon;
         }
     }
-    
+
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public class ImageInfo
     {
         public List<PropertyItem> EXIF;
@@ -924,6 +941,7 @@ namespace NetCharm.Image.Addins
         public System.Windows.Media.Imaging.BitmapMetadata Meta;
     }
 
+    [Serializable]
     public class SaveOption
     {
         public bool KeepExif = true;
@@ -936,6 +954,7 @@ namespace NetCharm.Image.Addins
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
+    [Serializable]
     public class CircularStack<T>
     {
         private List<T> _items = new List<T>();
@@ -1002,6 +1021,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public class CommandPropertiesChangeEventArgs : EventArgs
     {
         /// <summary>
@@ -1053,6 +1073,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public enum AddinType
     {
         Unknown = 0,
@@ -1067,6 +1088,7 @@ namespace NetCharm.Image.Addins
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public enum AddinCommand
     {
         Unknown = 0,

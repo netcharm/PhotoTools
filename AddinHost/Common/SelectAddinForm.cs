@@ -23,21 +23,10 @@ namespace NetCharm.Image.Addins.Common
         private List<ListViewItem> AddinItems = new List<ListViewItem>();
         private GroupMode categoryMode = GroupMode.None;
 
-        public SelectAddinForm()
-        {
-            InitializeComponent();
-        }
-
-        public SelectAddinForm(AddinHost host)
-        {
-            Host = host;
-            InitializeComponent();
-        }
-
         internal List<IAddin> GetSelectedAddins()
         {
             var result = new List<IAddin>();
-            foreach ( ListViewItem item in lvAddins.SelectedItems)
+            foreach ( ListViewItem item in lvAddins.SelectedItems )
             {
                 result.Add( item.Tag as IAddin );
             }
@@ -83,7 +72,7 @@ namespace NetCharm.Image.Addins.Common
         {
             #region Add addin to Listview & Category by addin Group
             lvAddins.BeginUpdate();
-            if( lvAddins.Items.Count<=0 )
+            if ( lvAddins.Items.Count <= 0 )
             {
                 foreach ( var item in AddinItems )
                 {
@@ -100,6 +89,19 @@ namespace NetCharm.Image.Addins.Common
             }
             lvAddins.EndUpdate();
             #endregion
+        }
+
+        public SelectAddinForm()
+        {
+            InitializeComponent();
+            AddinUtils.Translate( null, this );
+        }
+
+        public SelectAddinForm(AddinHost host)
+        {
+            Host = host;
+            InitializeComponent();
+            AddinUtils.Translate( null, this );
         }
 
         private void SelectAddinForm_Load( object sender, EventArgs e )

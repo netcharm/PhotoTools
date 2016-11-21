@@ -11,6 +11,7 @@ using NetCharm.Image.Addins;
 
 namespace InternalFilters.Effects
 {
+    [Serializable]
     public enum HslFilterMode
     {
         Normal = 0

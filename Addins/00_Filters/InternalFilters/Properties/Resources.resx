@@ -118,130 +118,142 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Blur_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Blur_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Blur_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Blur_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Crop_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImageCrop_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Crop_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImageCrop_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eyedropper" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eyedropper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlipX_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlipHorizontal_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlipX_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlipHorizontal_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlipY_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlipVertical_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlipY_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlipVertical_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Grayscale_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColorScale_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Grayscale_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColorScale_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Invert_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Invert_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Invert_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Invert_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Resize_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Resize_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Resize_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Resize_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RotateL_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RotateLeft_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RotateL_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RotateLeft_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RotateR_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RotateRight_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RotateR_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RotateRight_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Rotate_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Rotate_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Rotate_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Rotate_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sharpen_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sharpen_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sharpen_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sharpen_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Compare_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Compare_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Compare_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Compare_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Picture_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PictureAndText_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Picture_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PictureAndText_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tag_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SmartTag_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tag_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SmartTag_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Text_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TextBlock_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Text_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TextBlock_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Pin_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PinnedItem_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Pin_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PinnedItem_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Add_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Add_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="effect_add_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\effect_add_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="effect_down_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\effect_down_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="effect_remove_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\effect_remove_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Font_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Font_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grayscale_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ColorScale_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="effect_up_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\effect_up_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Remove_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Remove_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Picture_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PictureAndText_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Crop_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ImageCrop_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RotateR_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RotateRight_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blur_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Blur_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eyedropper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eyedropper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RotateL_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RotateLeft_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FlipY_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlipVertical_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Resize_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Resize_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FlipX_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlipHorizontal_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="effect_down_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\effect_down_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dice_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image_Dice_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grayscale_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ColorScale_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Compare_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Compare_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tag_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SmartTag_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ImageLoader_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ImageLoader_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FlipX_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlipHorizontal_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Invert_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Invert_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blur_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Blur_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Invert_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Invert_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Crop_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ImageCrop_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pin_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PinnedItem_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ImageLoader_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ImageLoader_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rotate_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rotate_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RotateL_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RotateLeft_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Picture_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PictureAndText_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Remove_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Remove_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Dice_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Image_Dice_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RotateR_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RotateRight_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FlipY_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlipVertical_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Text_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TextBlock_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tag_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SmartTag_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rotate_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rotate_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Resize_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Resize_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sharpen_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sharpen_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Remove_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Remove_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sharpen_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sharpen_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pin_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PinnedItem_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Compare_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Compare_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ColorPicker_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ColorPicker_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
