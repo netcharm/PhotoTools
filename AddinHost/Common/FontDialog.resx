@@ -125,236 +125,332 @@
   <data name="layoutFont.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="textBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="edFamily.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="edFamily.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 21</value>
+  <data name="edFamily.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 21</value>
   </data>
-  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="edFamily.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
+  <data name="&gt;&gt;edFamily.Name" xml:space="preserve">
+    <value>edFamily</value>
   </data>
-  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;edFamily.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;edFamily.Parent" xml:space="preserve">
     <value>layoutFont</value>
   </data>
-  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;edFamily.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="listBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="lvFamily.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="listBox1.ItemHeight" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="lvFamily.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 16pt</value>
   </data>
-  <data name="listBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lvFamily.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 30</value>
   </data>
-  <data name="listBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 163</value>
+  <data name="lvFamily.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 163</value>
   </data>
-  <data name="listBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="lvFamily.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;listBox1.Name" xml:space="preserve">
-    <value>listBox1</value>
+  <data name="&gt;&gt;lvFamily.Name" xml:space="preserve">
+    <value>lvFamily</value>
   </data>
-  <data name="&gt;&gt;listBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lvFamily.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;listBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lvFamily.Parent" xml:space="preserve">
     <value>layoutFont</value>
   </data>
-  <data name="&gt;&gt;listBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lvFamily.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="textBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="edStyle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 3</value>
+  <data name="edStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 3</value>
   </data>
-  <data name="textBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 21</value>
+  <data name="edStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
   </data>
-  <data name="textBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="edStyle.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;textBox2.Name" xml:space="preserve">
-    <value>textBox2</value>
+  <data name="&gt;&gt;edStyle.Name" xml:space="preserve">
+    <value>edStyle</value>
   </data>
-  <data name="&gt;&gt;textBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;edStyle.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;edStyle.Parent" xml:space="preserve">
     <value>layoutFont</value>
   </data>
-  <data name="&gt;&gt;textBox2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;edStyle.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="listBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="lvStyle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="listBox2.ItemHeight" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="lvStyle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 16pt</value>
   </data>
-  <data name="listBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 30</value>
+  <data name="lvStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 30</value>
   </data>
-  <data name="listBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 163</value>
+  <data name="lvStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 163</value>
   </data>
-  <data name="listBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="lvStyle.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;listBox2.Name" xml:space="preserve">
-    <value>listBox2</value>
+  <data name="&gt;&gt;lvStyle.Name" xml:space="preserve">
+    <value>lvStyle</value>
   </data>
-  <data name="&gt;&gt;listBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lvStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;listBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lvStyle.Parent" xml:space="preserve">
     <value>layoutFont</value>
   </data>
-  <data name="&gt;&gt;listBox2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lvStyle.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="textBox3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="edSize.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="textBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>356, 3</value>
+  <data name="edSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>344, 3</value>
   </data>
-  <data name="textBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 21</value>
+  <data name="edSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 21</value>
   </data>
-  <data name="textBox3.TabIndex" type="System.Int32, mscorlib">
+  <data name="edSize.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;textBox3.Name" xml:space="preserve">
-    <value>textBox3</value>
+  <data name="&gt;&gt;edSize.Name" xml:space="preserve">
+    <value>edSize</value>
   </data>
-  <data name="&gt;&gt;textBox3.Type" xml:space="preserve">
+  <data name="&gt;&gt;edSize.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;edSize.Parent" xml:space="preserve">
     <value>layoutFont</value>
   </data>
-  <data name="&gt;&gt;textBox3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;edSize.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="listBox3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="lbSize.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="listBox3.ItemHeight" type="System.Int32, mscorlib">
+  <data name="lbSize.ItemHeight" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="listBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>356, 30</value>
+  <data name="lbSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>344, 30</value>
   </data>
-  <data name="listBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 163</value>
+  <data name="lbSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 163</value>
   </data>
-  <data name="listBox3.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbSize.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;listBox3.Name" xml:space="preserve">
-    <value>listBox3</value>
+  <data name="&gt;&gt;lbSize.Name" xml:space="preserve">
+    <value>lbSize</value>
   </data>
-  <data name="&gt;&gt;listBox3.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbSize.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;listBox3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbSize.Parent" xml:space="preserve">
     <value>layoutFont</value>
   </data>
-  <data name="&gt;&gt;listBox3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbSize.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="colorGrid.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colorGrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 43</value>
+  </data>
+  <data name="colorGrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 111</value>
+  </data>
+  <data name="colorGrid.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;colorGrid.Name" xml:space="preserve">
+    <value>colorGrid</value>
+  </data>
+  <data name="&gt;&gt;colorGrid.Type" xml:space="preserve">
+    <value>Cyotek.Windows.Forms.ColorGrid, Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
+  </data>
+  <data name="&gt;&gt;colorGrid.Parent" xml:space="preserve">
+    <value>grpEffect</value>
+  </data>
+  <data name="&gt;&gt;colorGrid.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkEffectUnderline.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 16</value>
+  </data>
+  <data name="chkEffectUnderline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 24</value>
+  </data>
+  <data name="chkEffectUnderline.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="chkEffectUnderline.Text" xml:space="preserve">
+    <value>Underline</value>
+  </data>
+  <data name="&gt;&gt;chkEffectUnderline.Name" xml:space="preserve">
+    <value>chkEffectUnderline</value>
+  </data>
+  <data name="&gt;&gt;chkEffectUnderline.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkEffectUnderline.Parent" xml:space="preserve">
+    <value>grpEffect</value>
+  </data>
+  <data name="&gt;&gt;chkEffectUnderline.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkEffectStrikeout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 16</value>
+  </data>
+  <data name="chkEffectStrikeout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 24</value>
+  </data>
+  <data name="chkEffectStrikeout.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="chkEffectStrikeout.Text" xml:space="preserve">
+    <value>Strikeout</value>
+  </data>
+  <data name="&gt;&gt;chkEffectStrikeout.Name" xml:space="preserve">
+    <value>chkEffectStrikeout</value>
+  </data>
+  <data name="&gt;&gt;chkEffectStrikeout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkEffectStrikeout.Parent" xml:space="preserve">
+    <value>grpEffect</value>
+  </data>
+  <data name="&gt;&gt;chkEffectStrikeout.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grpEffect.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="grpEffect.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 199</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 160</value>
+  <data name="grpEffect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 160</value>
   </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="grpEffect.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="grpEffect.Text" xml:space="preserve">
+    <value>Effect</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;grpEffect.Name" xml:space="preserve">
+    <value>grpEffect</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;grpEffect.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;grpEffect.Parent" xml:space="preserve">
     <value>layoutFont</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grpEffect.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="groupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="picPreview.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 199</value>
+  <data name="picPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 17</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 139</value>
+  <data name="picPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 112</value>
   </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="picPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;picPreview.Name" xml:space="preserve">
+    <value>picPreview</value>
+  </data>
+  <data name="&gt;&gt;picPreview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;picPreview.Parent" xml:space="preserve">
+    <value>grpSample</value>
+  </data>
+  <data name="&gt;&gt;picPreview.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="grpSample.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="grpSample.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 199</value>
+  </data>
+  <data name="grpSample.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 132</value>
+  </data>
+  <data name="grpSample.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="grpSample.Text" xml:space="preserve">
+    <value>Sample</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="&gt;&gt;grpSample.Name" xml:space="preserve">
+    <value>grpSample</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;grpSample.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;grpSample.Parent" xml:space="preserve">
     <value>layoutFont</value>
   </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grpSample.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="comboBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="cbCharset.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 344</value>
+  <data name="cbCharset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 337</value>
   </data>
-  <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 20</value>
+  <data name="cbCharset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 20</value>
   </data>
-  <data name="comboBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="cbCharset.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;comboBox1.Name" xml:space="preserve">
-    <value>comboBox1</value>
+  <data name="&gt;&gt;cbCharset.Name" xml:space="preserve">
+    <value>cbCharset</value>
   </data>
-  <data name="&gt;&gt;comboBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;cbCharset.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cbCharset.Parent" xml:space="preserve">
     <value>layoutFont</value>
   </data>
-  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbCharset.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
   <data name="layoutFont.Location" type="System.Drawing.Point, System.Drawing">
@@ -382,7 +478,7 @@
     <value>3</value>
   </data>
   <data name="layoutFont.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="textBox1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="listBox1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="textBox2" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="listBox2" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="textBox3" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="listBox3" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="2" RowSpan="2" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox2" Row="2" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="comboBox1" Row="3" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,35,Percent,15" /&gt;&lt;Rows Styles="Percent,14.09692,Percent,85.90308,Absolute,145,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="edFamily" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lvFamily" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="edStyle" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lvStyle" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="edSize" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="lbSize" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="grpEffect" Row="2" RowSpan="2" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="grpSample" Row="2" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="cbCharset" Row="3" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,51.68269,Percent,30.28846,Percent,17.78846" /&gt;&lt;Rows Styles="Percent,14.09692,Percent,85.90308,Absolute,138,Absolute,27" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="btnOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -473,6 +569,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>531, 387</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Font</value>

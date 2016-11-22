@@ -1,4 +1,4 @@
-﻿namespace NetCharm.Image.Addins.Common
+﻿namespace NetCharm.Common
 {
     partial class FontDialog
     {
@@ -30,92 +30,141 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FontDialog));
             this.layoutFont = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.edFamily = new System.Windows.Forms.TextBox();
+            this.lvFamily = new System.Windows.Forms.ListView();
+            this.edStyle = new System.Windows.Forms.TextBox();
+            this.lvStyle = new System.Windows.Forms.ListView();
+            this.edSize = new System.Windows.Forms.TextBox();
+            this.lbSize = new System.Windows.Forms.ListBox();
+            this.grpEffect = new System.Windows.Forms.GroupBox();
+            this.colorGrid = new Cyotek.Windows.Forms.ColorGrid();
+            this.chkEffectUnderline = new System.Windows.Forms.CheckBox();
+            this.chkEffectStrikeout = new System.Windows.Forms.CheckBox();
+            this.grpSample = new System.Windows.Forms.GroupBox();
+            this.cbCharset = new System.Windows.Forms.ComboBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
+            this.picPreview = new System.Windows.Forms.PictureBox();
             this.layoutFont.SuspendLayout();
+            this.grpEffect.SuspendLayout();
+            this.grpSample.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutFont
             // 
             resources.ApplyResources(this.layoutFont, "layoutFont");
-            this.layoutFont.Controls.Add(this.textBox1, 0, 0);
-            this.layoutFont.Controls.Add(this.listBox1, 0, 1);
-            this.layoutFont.Controls.Add(this.textBox2, 1, 0);
-            this.layoutFont.Controls.Add(this.listBox2, 1, 1);
-            this.layoutFont.Controls.Add(this.textBox3, 2, 0);
-            this.layoutFont.Controls.Add(this.listBox3, 2, 1);
-            this.layoutFont.Controls.Add(this.groupBox1, 0, 2);
-            this.layoutFont.Controls.Add(this.groupBox2, 1, 2);
-            this.layoutFont.Controls.Add(this.comboBox1, 1, 3);
+            this.layoutFont.Controls.Add(this.edFamily, 0, 0);
+            this.layoutFont.Controls.Add(this.lvFamily, 0, 1);
+            this.layoutFont.Controls.Add(this.edStyle, 1, 0);
+            this.layoutFont.Controls.Add(this.lvStyle, 1, 1);
+            this.layoutFont.Controls.Add(this.edSize, 2, 0);
+            this.layoutFont.Controls.Add(this.lbSize, 2, 1);
+            this.layoutFont.Controls.Add(this.grpEffect, 0, 2);
+            this.layoutFont.Controls.Add(this.grpSample, 1, 2);
+            this.layoutFont.Controls.Add(this.cbCharset, 1, 3);
             this.layoutFont.Name = "layoutFont";
             // 
-            // textBox1
+            // edFamily
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            resources.ApplyResources(this.edFamily, "edFamily");
+            this.edFamily.Name = "edFamily";
             // 
-            // listBox1
+            // lvFamily
             // 
-            resources.ApplyResources(this.listBox1, "listBox1");
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Name = "listBox1";
+            resources.ApplyResources(this.lvFamily, "lvFamily");
+            this.lvFamily.FullRowSelect = true;
+            this.lvFamily.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lvFamily.HideSelection = false;
+            this.lvFamily.Name = "lvFamily";
+            this.lvFamily.OwnerDraw = true;
+            this.lvFamily.ShowItemToolTips = true;
+            this.lvFamily.UseCompatibleStateImageBehavior = false;
+            this.lvFamily.View = System.Windows.Forms.View.Details;
+            this.lvFamily.VirtualMode = true;
+            this.lvFamily.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.lvFamily_DrawItem);
+            this.lvFamily.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvFamily_RetrieveVirtualItem);
+            this.lvFamily.SelectedIndexChanged += new System.EventHandler(this.lvFamily_SelectedIndexChanged);
             // 
-            // textBox2
+            // edStyle
             // 
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.Name = "textBox2";
+            resources.ApplyResources(this.edStyle, "edStyle");
+            this.edStyle.Name = "edStyle";
             // 
-            // listBox2
+            // lvStyle
             // 
-            resources.ApplyResources(this.listBox2, "listBox2");
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Name = "listBox2";
+            resources.ApplyResources(this.lvStyle, "lvStyle");
+            this.lvStyle.FullRowSelect = true;
+            this.lvStyle.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lvStyle.HideSelection = false;
+            this.lvStyle.Name = "lvStyle";
+            this.lvStyle.OwnerDraw = true;
+            this.lvStyle.UseCompatibleStateImageBehavior = false;
+            this.lvStyle.View = System.Windows.Forms.View.Details;
+            this.lvStyle.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.lvStyle_DrawItem);
+            this.lvStyle.SelectedIndexChanged += new System.EventHandler(this.lvStyle_SelectedIndexChanged);
             // 
-            // textBox3
+            // edSize
             // 
-            resources.ApplyResources(this.textBox3, "textBox3");
-            this.textBox3.Name = "textBox3";
+            resources.ApplyResources(this.edSize, "edSize");
+            this.edSize.Name = "edSize";
             // 
-            // listBox3
+            // lbSize
             // 
-            resources.ApplyResources(this.listBox3, "listBox3");
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Name = "listBox3";
+            resources.ApplyResources(this.lbSize, "lbSize");
+            this.lbSize.FormattingEnabled = true;
+            this.lbSize.Name = "lbSize";
+            this.lbSize.SelectedIndexChanged += new System.EventHandler(this.lbSize_SelectedIndexChanged);
             // 
-            // groupBox1
+            // grpEffect
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.layoutFont.SetRowSpan(this.groupBox1, 2);
-            this.groupBox1.TabStop = false;
+            this.grpEffect.Controls.Add(this.colorGrid);
+            this.grpEffect.Controls.Add(this.chkEffectUnderline);
+            this.grpEffect.Controls.Add(this.chkEffectStrikeout);
+            resources.ApplyResources(this.grpEffect, "grpEffect");
+            this.grpEffect.Name = "grpEffect";
+            this.layoutFont.SetRowSpan(this.grpEffect, 2);
+            this.grpEffect.TabStop = false;
             // 
-            // groupBox2
+            // colorGrid
             // 
-            this.layoutFont.SetColumnSpan(this.groupBox2, 2);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            resources.ApplyResources(this.colorGrid, "colorGrid");
+            this.colorGrid.Columns = 12;
+            this.colorGrid.Name = "colorGrid";
+            this.colorGrid.Palette = Cyotek.Windows.Forms.ColorPalette.Paint;
             // 
-            // comboBox1
+            // chkEffectUnderline
             // 
-            this.layoutFont.SetColumnSpan(this.comboBox1, 2);
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Name = "comboBox1";
+            resources.ApplyResources(this.chkEffectUnderline, "chkEffectUnderline");
+            this.chkEffectUnderline.Name = "chkEffectUnderline";
+            this.chkEffectUnderline.UseVisualStyleBackColor = true;
+            // 
+            // chkEffectStrikeout
+            // 
+            resources.ApplyResources(this.chkEffectStrikeout, "chkEffectStrikeout");
+            this.chkEffectStrikeout.Name = "chkEffectStrikeout";
+            this.chkEffectStrikeout.UseVisualStyleBackColor = true;
+            // 
+            // grpSample
+            // 
+            this.layoutFont.SetColumnSpan(this.grpSample, 2);
+            this.grpSample.Controls.Add(this.picPreview);
+            resources.ApplyResources(this.grpSample, "grpSample");
+            this.grpSample.Name = "grpSample";
+            this.grpSample.TabStop = false;
+            // 
+            // cbCharset
+            // 
+            this.layoutFont.SetColumnSpan(this.cbCharset, 2);
+            resources.ApplyResources(this.cbCharset, "cbCharset");
+            this.cbCharset.FormattingEnabled = true;
+            this.cbCharset.Name = "cbCharset";
             // 
             // btnOk
             // 
             resources.ApplyResources(this.btnOk, "btnOk");
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.Name = "btnOk";
             this.btnOk.UseVisualStyleBackColor = true;
             // 
@@ -129,8 +178,15 @@
             // btnApply
             // 
             resources.ApplyResources(this.btnApply, "btnApply");
+            this.btnApply.DialogResult = System.Windows.Forms.DialogResult.Retry;
             this.btnApply.Name = "btnApply";
             this.btnApply.UseVisualStyleBackColor = true;
+            // 
+            // picPreview
+            // 
+            resources.ApplyResources(this.picPreview, "picPreview");
+            this.picPreview.Name = "picPreview";
+            this.picPreview.TabStop = false;
             // 
             // FontDialog
             // 
@@ -142,11 +198,18 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.layoutFont);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FontDialog";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.Load += new System.EventHandler(this.FontDialog_Load);
             this.layoutFont.ResumeLayout(false);
             this.layoutFont.PerformLayout();
+            this.grpEffect.ResumeLayout(false);
+            this.grpSample.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picPreview)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -154,17 +217,21 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel layoutFont;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox edFamily;
+        private System.Windows.Forms.ListView lvFamily;
+        private System.Windows.Forms.TextBox edStyle;
+        private System.Windows.Forms.ListView lvStyle;
+        private System.Windows.Forms.TextBox edSize;
+        private System.Windows.Forms.ListBox lbSize;
+        private System.Windows.Forms.GroupBox grpEffect;
+        private System.Windows.Forms.GroupBox grpSample;
+        private System.Windows.Forms.ComboBox cbCharset;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.CheckBox chkEffectUnderline;
+        private System.Windows.Forms.CheckBox chkEffectStrikeout;
+        private Cyotek.Windows.Forms.ColorGrid colorGrid;
+        private System.Windows.Forms.PictureBox picPreview;
     }
 }

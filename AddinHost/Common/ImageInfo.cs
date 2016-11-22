@@ -449,7 +449,7 @@ namespace NetCharm.Image
                     image.SetPropertyItem( pi );
                 }
             }
-            catch ( ArgumentException ex )
+            catch ( ArgumentException )
             {
                 return;
             }

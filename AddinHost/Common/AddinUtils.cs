@@ -383,7 +383,7 @@ namespace NetCharm.Image.Addins
                     result = true;
                 }
             }
-            catch ( Exception ex )
+            catch ( Exception )
             {
                 
             }
@@ -1027,16 +1027,23 @@ namespace NetCharm.Image.Addins
         public static Font StrToFont( string font, FontStyle style )
         {
             Font tF = SystemFonts.DefaultFont;
-            if ( !string.IsNullOrEmpty( font ) )
+            try
             {
-                var ft = font.Substring(7, font.Length-8).Trim().Split(new char[] { ';', ',', '\n', '\r'}, StringSplitOptions.RemoveEmptyEntries ).Distinct().ToList();
-                Dictionary<string, string> fD = ft.ToDictionary( p => p.Split( '=' )[0].Trim(), p => p.Split( '=' )[1].Trim() );
-                tF = new Font( new FontFamily( fD["Name"] ),
-                    (float)Convert.ToDouble( fD["Size"] ),
-                    style,
-                    (GraphicsUnit) Convert.ToInt16( fD["Units"] ),
-                    (byte) Convert.ToInt16( fD["GdiCharSet"] ),
-                    Convert.ToBoolean( fD["GdiVerticalFont"] ) );
+                if ( !string.IsNullOrEmpty( font ) )
+                {
+                    var ft = font.Substring(7, font.Length-8).Trim().Split(new char[] { ';', ',', '\n', '\r'}, StringSplitOptions.RemoveEmptyEntries ).Distinct().ToList();
+                    Dictionary<string, string> fD = ft.ToDictionary( p => p.Split( '=' )[0].Trim(), p => p.Split( '=' )[1].Trim() );
+                    tF = new Font( new FontFamily( fD["Name"] ),
+                        (float) Convert.ToDouble( fD["Size"] ),
+                        style,
+                        (GraphicsUnit) Convert.ToInt16( fD["Units"] ),
+                        (byte) Convert.ToInt16( fD["GdiCharSet"] ),
+                        Convert.ToBoolean( fD["GdiVerticalFont"] ) );
+                }
+            }
+            catch( ArgumentException )
+            {
+
             }
             return ( tF );
         }

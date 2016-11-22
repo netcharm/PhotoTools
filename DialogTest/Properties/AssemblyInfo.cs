@@ -5,22 +5,22 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("AddinHost")]
-[assembly: AssemblyDescription( "Addin Host for image addins" )]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany( "NetCharm Studio!" )]
-[assembly: AssemblyProduct("AddinHost")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
-[assembly: AssemblyTrademark( "NetCharm" )]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyTitle( "DialogTest" )]
+[assembly: AssemblyDescription( "" )]
+[assembly: AssemblyConfiguration( "" )]
+[assembly: AssemblyCompany( "" )]
+[assembly: AssemblyProduct( "DialogTest" )]
+[assembly: AssemblyCopyright( "Copyright ©  2016" )]
+[assembly: AssemblyTrademark( "" )]
+[assembly: AssemblyCulture( "" )]
 
 //将 ComVisible 设置为 false 将使此程序集中的类型
 //对 COM 组件不可见。  如果需要从 COM 访问此程序集中的类型，
 //请将此类型的 ComVisible 特性设置为 true。
-[assembly: ComVisible(false)]
+[assembly: ComVisible( false )]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("c2275eb5-e68a-42d5-b285-0083b1b7840c")]
+[assembly: Guid( "a0c5b517-5e74-43ce-a75f-f5d34692cf0f" )]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion( "1.0.16.54" )]
-[assembly: AssemblyFileVersion( "1.0.16.54" )]
+[assembly: AssemblyVersion( "1.0.0.0" )]
+[assembly: AssemblyFileVersion( "1.0.0.0" )]

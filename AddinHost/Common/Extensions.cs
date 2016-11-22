@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Markup;
 using NetCharm.Image;
 using NGettext.WinForm;
+
+using Media = System.Windows.Media;
 
 namespace ExtensionMethods
 {
@@ -72,6 +76,17 @@ namespace ExtensionMethods
                 I18N i10n = new I18N( domain, addinRoot, form, tooltip, extra );
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string _( this Form form, string text )
+        {
+            return(_( text ));
+        }
         #endregion
 
         #region Color Extension Methods
@@ -114,6 +129,27 @@ namespace ExtensionMethods
         {
             return ( FromHtml( html ) );
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static Media.Color ToMediaColor( this Color color )
+        {
+            return ( Media.Color.FromArgb( color.A, color.R, color.G, color.B ) );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static Color ToDrawingColor( this Media.Color color )
+        {
+            return ( Color.FromArgb( color.A, color.R, color.G, color.B ) );
+        }
+
         #endregion
 
         #region Bitmap Extension Methods
@@ -246,7 +282,7 @@ namespace ExtensionMethods
 
         #endregion
 
-        #region Image Convert Routine
+        #region Image Convert Routines
         /// <summary>
         /// 
         /// </summary>
@@ -286,9 +322,9 @@ namespace ExtensionMethods
         /// </summary>
         /// <param name="text"></param>
         /// <param name="font"></param>
-        /// <param name="color"></param>
+        /// <param name="fgColor"></param>
         /// <returns></returns>
-        public static Bitmap ToBitmap( this string text, Font font, Color color )
+        public static Bitmap ToBitmap( this string text, Font font, Color fgColor, Color bgColor )
         {
             #region Text Style Setting
             StringFormat tFormat = new StringFormat(StringFormatFlags.DisplayFormatControl | StringFormatFlags.MeasureTrailingSpaces);
@@ -326,6 +362,8 @@ namespace ExtensionMethods
                 // Here only for test. The output image is pool outline.
                 //g.DrawString( text, font, new SolidBrush( color ), 0, 0, tFormat );
 
+                g.FillRectangle( new SolidBrush( bgColor ), new RectangleF( 0, 0, size.Width, size.Height ) );
+
                 // calc right emsize for given fontsize in current canvas dpi
                 float emSize = g.DpiY * font.Size / 72f;
                 var tPath = new GraphicsPath();
@@ -335,11 +373,113 @@ namespace ExtensionMethods
                                  tFormat );
                 tPath.CloseFigure();
                 //g.DrawPath( new Pen( color, 1f ), tPath );
-                g.FillPath( new SolidBrush( color ), tPath );
+                g.FillPath( new SolidBrush( fgColor ), tPath );
             }
             #endregion
 
             return ( textImg );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="font"></param>
+        /// <param name="fgColor"></param>
+        /// <returns></returns>
+        public static Bitmap ToBitmap( this string text, Font font, Color fgColor)
+        {
+            return ( ToBitmap( text, font, fgColor, Color.Transparent ) );
+        }
+
+        public static Bitmap ToBitmap( this string text, Media.Typeface fontface, float fontsize, Color fgColor )
+        {
+            #region Calc fontface screen size
+            float dpiX = 96f;
+            float dpiY = 96f;
+            //using ( Graphics g = Graphics.FromHwnd( IntPtr.Zero ) )
+            //{
+            //    dpiX = g.DpiX;
+            //    dpiY = g.DpiY;
+            //}
+
+            float emSize = fontsize * dpiY / 72f;
+            #endregion
+
+            #region Create FormattedText
+            var locale_enkey = XmlLanguage.GetLanguage("en-us");
+            var locale_uikey = XmlLanguage.GetLanguage(CultureInfo.InstalledUICulture.TextInfo.CultureName.ToLower());
+
+            var culture = CultureInfo.InstalledUICulture;
+            if(!fontface.FaceNames.ContainsKey( locale_uikey ) )
+                culture = new CultureInfo("en-us");
+            var flow = culture.TextInfo.IsRightToLeft ? System.Windows.FlowDirection.RightToLeft : System.Windows.FlowDirection.LeftToRight;
+
+            Media.Brush foreground = new  Media.SolidColorBrush(fgColor.ToMediaColor());
+
+            Media.FormattedText formattedText = new Media.FormattedText( text,
+                culture, flow,
+                fontface, emSize, foreground);
+                //new Media.NumberSubstitution(Media.NumberCultureSource.Text,
+                //    culture,
+                //    Media.NumberSubstitutionMethod.AsCulture)
+            //);
+            #endregion
+
+            #region Set FontStyle
+            var fontStyle = System.Windows.FontStyles.Normal;
+            var fontWeight = System.Windows.FontWeights.Normal;
+            var textDecorations  = System.Windows.TextDecorations.Baseline;
+
+            #endregion
+
+            #region FormattedText Style
+            //formattedText.SetFontStyle( fontStyle );
+            //formattedText.SetFontWeight( fontWeight );
+            //formattedText.SetTextDecorations( textDecorations );
+            #endregion
+
+            #region Draw the FormattedText on a Drawing Visual
+            //formattedText.MaxTextWidth = rectangle.Width / ( dpiX / 96.0 );
+            //formattedText.MaxTextHeight = rectangle.Height / ( dpiY / 96.0 );
+            formattedText.MaxTextWidth = 200;
+            formattedText.MaxTextHeight = ( emSize + 4 ) / ( dpiY / 96.0 );
+
+            Media.DrawingVisual drawingVisual = new Media.DrawingVisual();
+            using ( var drawingContext = drawingVisual.RenderOpen() )
+            {
+                drawingContext.DrawText( formattedText, new System.Windows.Point( 0, 0 ) );
+                drawingContext.Close();
+            }
+            #endregion
+
+            #region Render the DrawingVisual into a RenderTargetBitmap 
+            var pixelWidth = Convert.ToInt32( Math.Ceiling(formattedText.Width * (dpiX / 96.0)));
+            var pixelHeight = Convert.ToInt32( Math.Ceiling(formattedText.Height * (dpiY / 96.0)));
+            if ( pixelWidth == 0 || pixelHeight == 0 )
+                return (new Bitmap(1,1));
+
+            var rtb = new Media.Imaging.RenderTargetBitmap(
+              pixelWidth, pixelHeight,
+              dpiX, dpiY,
+              Media.PixelFormats.Pbgra32 );
+            rtb.Render( drawingVisual );
+            #endregion
+
+            #region Create a System.Drawing.Bitmap 
+            var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppPArgb );
+            #endregion
+
+            #region Copy the RenderTargetBitmap pixels into the bitmap's pixel buffer
+            var pdata = bitmap.LockBits(
+                new Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                ImageLockMode.WriteOnly,
+                bitmap.PixelFormat);
+            rtb.CopyPixels( System.Windows.Int32Rect.Empty,
+                pdata.Scan0, pdata.Stride * pdata.Height, pdata.Stride );
+            bitmap.UnlockBits( pdata );
+            #endregion
+            return ( bitmap );
         }
 
         /// <summary>
@@ -396,9 +536,83 @@ namespace ExtensionMethods
             return ( tPath );
         }
 
+        /// <summary>
+        /// Convert Media BitmapSource to Bitmap32
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static Bitmap ToBitmap( this Media.Imaging.BitmapSource source, bool copyMethod=false )
+        {
+            if(copyMethod)
+            {
+                Bitmap bmp = new Bitmap(
+                source.PixelWidth,
+                source.PixelHeight,
+                PixelFormat.Format32bppPArgb);
+                BitmapData data = bmp.LockBits(
+                new Rectangle(Point.Empty, bmp.Size),
+                ImageLockMode.WriteOnly,
+                PixelFormat.Format32bppPArgb);
+                source.CopyPixels(
+                  System.Windows.Int32Rect.Empty,
+                  data.Scan0,
+                  data.Height * data.Stride,
+                  data.Stride );
+                bmp.UnlockBits( data );
+                return ( bmp );
+
+            }
+            else
+            {
+                Bitmap bitmap;
+                using ( var outStream = new MemoryStream() )
+                {
+                    Media.Imaging.BitmapEncoder enc = new Media.Imaging.BmpBitmapEncoder();
+                    enc.Frames.Add( Media.Imaging.BitmapFrame.Create( source ) );
+                    enc.Save( outStream );
+                    bitmap = new Bitmap( outStream );
+                }
+                return bitmap;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static Media.Imaging.BitmapSource ToBitmapSource( this Bitmap source )
+        {
+            return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                          source.GetHbitmap(),
+                          IntPtr.Zero,
+                          System.Windows.Int32Rect.Empty,
+                          Media.Imaging.BitmapSizeOptions.FromEmptyOptions() );
+        }
+
         #endregion
 
         #region Image Opration Routine
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dst"></param>
+        /// <param name="src"></param>
+        public static void CloneExif( this Image dst, Image src )
+        {
+            if ( src is Image && dst is Image )
+            {
+                if ( ExifFormat.Contains( src.RawFormat ) && ExifFormat.Contains( dst.RawFormat ) )
+                {
+                    foreach ( var item in src.PropertyItems )
+                    {
+                        dst.SetPropertyItem( item );
+                    }
+                }
+            }
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -440,6 +654,48 @@ namespace ExtensionMethods
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="InPlace"></param>
+        /// <returns></returns>
+        public static Image Invert( this Image image, bool InPlace = false )
+        {
+            Bitmap dst = null;
+            if ( InPlace )
+            {
+                dst = image as Bitmap;
+            }
+            else
+            {
+                dst = new Bitmap( image.Width, image.Height, image.PixelFormat );
+                dst.CloneExif( image );
+            }
+            using ( var g = Graphics.FromImage( dst ) )
+            {
+                ImageAttributes a = new ImageAttributes();
+                ColorMatrix c = new ColorMatrix( new[]{                 // Invert Matrix
+                    new float[] { -1.00f,      0,      0, 0, 0},        // red scaling factor
+                    new float[] {      0, -1.00f,      0, 0, 0},        // green scaling factor
+                    new float[] {      0,      0, -1.00f, 0, 0},        // blue scaling factor
+                    new float[] {      0,      0,      0, 1, 0},        // alpha scaling factor
+                    new float[] { 1.000f, 1.000f, 1.000f, 0, 1}         // three translations
+                } );
+                a.SetColorMatrix( c, ColorMatrixFlag.Default, ColorAdjustType.Bitmap );
+
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.PixelOffsetMode = PixelOffsetMode.Half;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+                g.DrawImage( image,
+                             new Rectangle( 0, 0, image.Width, image.Height ),
+                             0, 0, image.Width, image.Height,
+                             GraphicsUnit.Pixel,
+                             a );
+            }
+            return ( dst );
+        }
         #endregion
 
         #endregion
