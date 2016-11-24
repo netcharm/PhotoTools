@@ -51,7 +51,7 @@ namespace DialogTest
 
         private void btnFontDialog_Click( object sender, EventArgs e )
         {
-            NetCharm.Common.FontDialogEx dlgFont = new NetCharm.Common.FontDialogEx();
+            NetCharm.Common.FontDialog dlgFont = new NetCharm.Common.FontDialog();
             dlgFont.Apply += new System.EventHandler( dlgFont_Apply );
             //dlgFont.Color = color;
             if ( dlgFont.ShowDialog() == DialogResult.OK )

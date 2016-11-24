@@ -154,13 +154,13 @@
     <value>Fill</value>
   </data>
   <data name="lvFamily.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 16pt</value>
+    <value>宋体, 12pt</value>
   </data>
   <data name="lvFamily.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 30</value>
+    <value>3, 28</value>
   </data>
   <data name="lvFamily.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 163</value>
+    <value>209, 149</value>
   </data>
   <data name="lvFamily.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -205,13 +205,13 @@
     <value>Fill</value>
   </data>
   <data name="lvStyle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 16pt</value>
+    <value>宋体, 14pt</value>
   </data>
   <data name="lvStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 30</value>
+    <value>218, 28</value>
   </data>
   <data name="lvStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 163</value>
+    <value>120, 149</value>
   </data>
   <data name="lvStyle.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -259,10 +259,10 @@
     <value>12</value>
   </data>
   <data name="lbSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>344, 30</value>
+    <value>344, 28</value>
   </data>
   <data name="lbSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 163</value>
+    <value>69, 149</value>
   </data>
   <data name="lbSize.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -355,7 +355,7 @@
     <value>Fill</value>
   </data>
   <data name="grpEffect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 199</value>
+    <value>3, 183</value>
   </data>
   <data name="grpEffect.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 160</value>
@@ -409,7 +409,7 @@
     <value>Fill</value>
   </data>
   <data name="grpSample.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 199</value>
+    <value>218, 183</value>
   </data>
   <data name="grpSample.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 132</value>
@@ -436,7 +436,7 @@
     <value>Fill</value>
   </data>
   <data name="cbCharset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 337</value>
+    <value>218, 321</value>
   </data>
   <data name="cbCharset.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 20</value>
@@ -457,13 +457,13 @@
     <value>8</value>
   </data>
   <data name="layoutFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 13</value>
+    <value>8, 8</value>
   </data>
   <data name="layoutFont.RowCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="layoutFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 362</value>
+    <value>416, 346</value>
   </data>
   <data name="layoutFont.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -571,7 +571,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>531, 387</value>
+    <value>531, 371</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
@@ -580,7 +580,7 @@
     <value>Font</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FontDialogEx</value>
+    <value>FontDialog</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

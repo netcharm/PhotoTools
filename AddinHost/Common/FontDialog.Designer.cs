@@ -1,6 +1,6 @@
 ﻿namespace NetCharm.Common
 {
-    partial class FontDialogEx
+    partial class FontDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FontDialogEx));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FontDialog));
             this.layoutFont = new System.Windows.Forms.TableLayoutPanel();
             this.edFamily = new System.Windows.Forms.TextBox();
             this.lvFamily = new System.Windows.Forms.ListView();
@@ -77,6 +77,7 @@
             this.lvFamily.FullRowSelect = true;
             this.lvFamily.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvFamily.HideSelection = false;
+            this.lvFamily.MultiSelect = false;
             this.lvFamily.Name = "lvFamily";
             this.lvFamily.OwnerDraw = true;
             this.lvFamily.ShowItemToolTips = true;
@@ -85,12 +86,15 @@
             this.lvFamily.VirtualMode = true;
             this.lvFamily.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.lvFamily_DrawItem);
             this.lvFamily.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvFamily_RetrieveVirtualItem);
+            this.lvFamily.SearchForVirtualItem += new System.Windows.Forms.SearchForVirtualItemEventHandler(this.lvFamily_SearchForVirtualItem);
             this.lvFamily.SelectedIndexChanged += new System.EventHandler(this.lvFamily_SelectedIndexChanged);
+            this.lvFamily.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvFamily_KeyPress);
             // 
             // edStyle
             // 
             resources.ApplyResources(this.edStyle, "edStyle");
             this.edStyle.Name = "edStyle";
+            this.edStyle.ReadOnly = true;
             // 
             // lvStyle
             // 
@@ -98,8 +102,10 @@
             this.lvStyle.FullRowSelect = true;
             this.lvStyle.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvStyle.HideSelection = false;
+            this.lvStyle.MultiSelect = false;
             this.lvStyle.Name = "lvStyle";
             this.lvStyle.OwnerDraw = true;
+            this.lvStyle.ShowItemToolTips = true;
             this.lvStyle.UseCompatibleStateImageBehavior = false;
             this.lvStyle.View = System.Windows.Forms.View.Details;
             this.lvStyle.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.lvStyle_DrawItem);
@@ -140,14 +146,14 @@
             resources.ApplyResources(this.chkEffectUnderline, "chkEffectUnderline");
             this.chkEffectUnderline.Name = "chkEffectUnderline";
             this.chkEffectUnderline.UseVisualStyleBackColor = true;
-            this.chkEffectUnderline.CheckedChanged += new System.EventHandler(this.chkEffectUnderline_CheckedChanged);
+            this.chkEffectUnderline.CheckedChanged += new System.EventHandler(this.chkEffect_CheckedChanged);
             // 
             // chkEffectStrikeout
             // 
             resources.ApplyResources(this.chkEffectStrikeout, "chkEffectStrikeout");
             this.chkEffectStrikeout.Name = "chkEffectStrikeout";
             this.chkEffectStrikeout.UseVisualStyleBackColor = true;
-            this.chkEffectStrikeout.CheckedChanged += new System.EventHandler(this.chkEffectUnderline_CheckedChanged);
+            this.chkEffectStrikeout.CheckedChanged += new System.EventHandler(this.chkEffect_CheckedChanged);
             // 
             // grpSample
             // 
@@ -191,7 +197,7 @@
             this.btnApply.Name = "btnApply";
             this.btnApply.UseVisualStyleBackColor = true;
             // 
-            // FontDialogEx
+            // FontDialog
             // 
             this.AcceptButton = this.btnOk;
             resources.ApplyResources(this, "$this");
@@ -204,7 +210,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FontDialogEx";
+            this.Name = "FontDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.FontDialog_Load);

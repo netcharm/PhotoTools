@@ -17,7 +17,168 @@ using Media = System.Windows.Media;
 
 namespace ExtensionMethods
 {
-    public static class NetCharmExtensionMethods
+    /// <summary>
+    /// Source code copy from
+    /// http://www.cnblogs.com/bomo/archive/2013/02/26/2934055.html
+    /// </summary>
+    public class LockBitmap
+    {
+        Bitmap source = null;
+        IntPtr Iptr = IntPtr.Zero;
+        BitmapData bitmapData = null;
+
+        public byte[] Pixels { get; set; }
+        public int Depth { get; private set; }
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+
+        public LockBitmap( Bitmap source )
+        {
+            this.source = source;
+        }
+
+        /// <summary>
+        /// Lock bitmap data
+        /// </summary>
+        public void LockBits()
+        {
+            try
+            {
+                // Get width and height of bitmap
+                Width = source.Width;
+                Height = source.Height;
+
+                // get total locked pixels count
+                int PixelCount = Width * Height;
+
+                // Create rectangle to lock
+                Rectangle rect = new Rectangle(0, 0, Width, Height);
+
+                // get source bitmap pixel format size
+                Depth = System.Drawing.Bitmap.GetPixelFormatSize( source.PixelFormat );
+
+                // Check if bpp (Bits Per Pixel) is 8, 24, or 32
+                if ( Depth != 8 && Depth != 24 && Depth != 32 )
+                {
+                    throw new ArgumentException( "Only 8, 24 and 32 bpp images are supported." );
+                }
+
+                // Lock bitmap and return bitmap data
+                bitmapData = source.LockBits( rect, ImageLockMode.ReadWrite,
+                                             source.PixelFormat );
+
+                // create byte array to copy pixel values
+                int step = Depth / 8;
+                Pixels = new byte[PixelCount * step];
+                Iptr = bitmapData.Scan0;
+
+                // Copy data from pointer to array
+                System.Runtime.InteropServices.Marshal.Copy( Iptr, Pixels, 0, Pixels.Length );
+            }
+            catch ( Exception ex )
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Unlock bitmap data
+        /// </summary>
+        public void UnlockBits()
+        {
+            try
+            {
+                // Copy data from byte array to pointer
+                System.Runtime.InteropServices.Marshal.Copy( Pixels, 0, Iptr, Pixels.Length );
+
+                // Unlock bitmap data
+                source.UnlockBits( bitmapData );
+            }
+            catch ( Exception ex )
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Get the color of the specified pixel
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public Color GetPixel( int x, int y )
+        {
+            Color clr = Color.Empty;
+
+            // Get color components count
+            int cCount = Depth / 8;
+
+            // Get start index of the specified pixel
+            int i = ((y * Width) + x) * cCount;
+
+            if ( i > Pixels.Length - cCount )
+                throw new IndexOutOfRangeException();
+
+            if ( Depth == 32 ) // For 32 bpp get Red, Green, Blue and Alpha
+            {
+                byte b = Pixels[i];
+                byte g = Pixels[i + 1];
+                byte r = Pixels[i + 2];
+                byte a = Pixels[i + 3]; // a
+                clr = Color.FromArgb( a, r, g, b );
+            }
+            if ( Depth == 24 ) // For 24 bpp get Red, Green and Blue
+            {
+                byte b = Pixels[i];
+                byte g = Pixels[i + 1];
+                byte r = Pixels[i + 2];
+                clr = Color.FromArgb( r, g, b );
+            }
+            if ( Depth == 8 )
+            // For 8 bpp get color value (Red, Green and Blue values are the same)
+            {
+                byte c = Pixels[i];
+                clr = Color.FromArgb( c, c, c );
+            }
+            return clr;
+        }
+
+        /// <summary>
+        /// Set the color of the specified pixel
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="color"></param>
+        public void SetPixel( int x, int y, Color color )
+        {
+            // Get color components count
+            int cCount = Depth / 8;
+
+            // Get start index of the specified pixel
+            int i = ((y * Width) + x) * cCount;
+
+            if ( Depth == 32 ) // For 32 bpp set Red, Green, Blue and Alpha
+            {
+                Pixels[i] = color.B;
+                Pixels[i + 1] = color.G;
+                Pixels[i + 2] = color.R;
+                Pixels[i + 3] = color.A;
+            }
+            if ( Depth == 24 ) // For 24 bpp set Red, Green and Blue
+            {
+                Pixels[i] = color.B;
+                Pixels[i + 1] = color.G;
+                Pixels[i + 2] = color.R;
+            }
+            if ( Depth == 8 )
+            // For 8 bpp set color value (Red, Green and Blue values are the same)
+            {
+                Pixels[i] = color.B;
+            }
+        }
+    }
+
+    public static class NetCharmExtensions
     {
         #region CultrueInfo Pre-Defined
         private static string locale_en = "en-us";
@@ -293,6 +454,13 @@ namespace ExtensionMethods
         #region Image Convert Routines
         static private Dictionary<string, Media.Typeface> TypefaceList = new Dictionary<string, Media.Typeface>();
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="face"></param>
+        /// <param name="underline"></param>
+        /// <param name="strikeout"></param>
+        /// <returns></returns>
         public static FontStyle GetFontStyle(this Media.Typeface face, bool underline=false, bool strikeout=false)
         {
             FontStyle result = FontStyle.Regular;
@@ -317,6 +485,87 @@ namespace ExtensionMethods
             }
             if ( underline ) result |= FontStyle.Underline;
             if ( strikeout ) result |= FontStyle.Strikeout;
+
+            return ( result );
+        }
+
+        public static Rectangle GetOpaqueBound(this Bitmap image, OpaqueMode mode = OpaqueMode.Alpha )
+        {
+            Rectangle result = new Rectangle(0, 0, image.Width, image.Height);
+
+            LockBitmap lockbmp = new LockBitmap(image);
+            //锁定Bitmap，通过Pixel访问颜色
+            lockbmp.LockBits();
+
+            Color cRef = lockbmp.GetPixel(0, 0);
+            switch ( mode )
+            {
+                case OpaqueMode.Alpha:
+                    cRef = Color.Transparent;
+                    break;
+                case OpaqueMode.TopLeft:
+                    cRef = lockbmp.GetPixel( 0, 0 );
+                    break;
+                case OpaqueMode.BottomRight:
+                    cRef = lockbmp.GetPixel( lockbmp.Width - 1, lockbmp.Height - 1 );
+                    break;
+            }
+
+            bool content = false;
+            int xMax = 0;
+            int xMin = lockbmp.Width-1;
+            int yMax = 0;
+            int yMin = lockbmp.Height-1;
+            Color c = lockbmp.GetPixel( 0, 0 );
+            for ( var y = 1; y < lockbmp.Height; y++ )
+            {
+                content = false;
+                for ( var x = 1; x < lockbmp.Width; x++ )
+                {
+                    c = lockbmp.GetPixel( x, y );
+                    switch ( mode )
+                    {
+                        case OpaqueMode.Alpha:
+                            if ( !content && c.A != cRef.A )
+                            {
+                                if ( x < xMin ) xMin = x - 1;
+                                if ( y < yMin ) yMin = y - 1;
+                                content = true;
+                            }
+                            else if ( content && c.A != cRef.A )
+                            {
+                                if ( x > xMax ) xMax = x + 1;
+                                if ( y > yMax ) yMax = y + 1;
+                            }
+                            break;
+                        case OpaqueMode.TopLeft:
+                        case OpaqueMode.BottomRight:
+                            if ( !content && ( c.R != cRef.R || c.G != cRef.G || c.B != cRef.B ) )
+                            {
+                                if ( x < xMin ) xMin = x - 1;
+                                if ( y < yMin ) yMin = y - 1;
+                                content = true;
+                            }
+                            else if ( content && ( c.R != cRef.R || c.G != cRef.G || c.B != cRef.B ) )
+                            {
+                                if ( x > xMax ) xMax = x + 1;
+                                if ( y > yMax ) yMax = y + 1;
+                            }
+                            break;
+                    }
+                }
+            }
+            xMin = xMin < 0 ? 0 : xMin;
+            xMax = xMax >= lockbmp.Width ? lockbmp.Width - 1 : xMax;
+            yMin = yMin < 0 ? 0 : yMin;
+            yMax = yMax >= lockbmp.Height ? lockbmp.Height - 1 : yMax;
+            result.X = xMin;
+            result.Y = yMin;
+            result.Width = xMax - xMin;
+            result.Height = yMax - yMin;
+
+            //从内存解锁Bitmap
+            lockbmp.UnlockBits();
 
             return ( result );
         }
@@ -427,7 +676,18 @@ namespace ExtensionMethods
             }
             #endregion
 
-            return ( textImg );
+            #region Crop Opaque
+            var rect = textImg.GetOpaqueBound();
+            rect.Height += 2;
+            rect.Width += 10;
+            var dst =  new Bitmap(rect.Width, rect.Height, textImg.PixelFormat);
+            using ( var g = Graphics.FromImage( dst ) )
+            {
+                g.DrawImage( textImg, 0, 0, rect, GraphicsUnit.Pixel );
+            }
+            #endregion
+
+            return ( dst );
         }
 
         /// <summary>
@@ -514,9 +774,9 @@ namespace ExtensionMethods
             #region Draw the FormattedText on a Drawing Visual
             //formattedText.MaxTextWidth = rectangle.Width / ( dpiX / 96.0 );
             //formattedText.MaxTextHeight = rectangle.Height / ( dpiY / 96.0 );
+            //formattedText.MaxTextHeight = ( emSize + 4 ) / ( dpiY / 96.0 );
             formattedText.MaxTextWidth = 1280;
             formattedText.MaxTextHeight = 700;
-            //formattedText.MaxTextHeight = ( emSize + 4 ) / ( dpiY / 96.0 );
 
             Media.DrawingVisual drawingVisual = new Media.DrawingVisual();
             using ( var drawingContext = drawingVisual.RenderOpen() )
@@ -557,7 +817,18 @@ namespace ExtensionMethods
                 pdata.Scan0, pdata.Stride * pdata.Height, pdata.Stride );
             bitmap.UnlockBits( pdata );
             #endregion
-            return ( bitmap );
+
+            #region Crop Opaque
+            var rect = bitmap.GetOpaqueBound();
+            rect.Height += 2;
+            rect.Width += 10;
+            var dst =  new Bitmap(rect.Width, rect.Height, bitmap.PixelFormat);
+            using ( var g = Graphics.FromImage( dst ) )
+            {
+                g.DrawImage( bitmap, 0, 0, rect, GraphicsUnit.Pixel );
+            }
+            #endregion
+            return ( dst );
         }
 
         /// <summary>
