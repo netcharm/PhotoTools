@@ -643,6 +643,7 @@ namespace ExtensionMethods
 
                 sizeF = g.MeasureString( text, font, new PointF( 0, 0 ), tFormat );
             }
+            sizeF.Width *= 1.05f;
             #endregion
 
             #region Make Text Picture
@@ -679,7 +680,7 @@ namespace ExtensionMethods
             #region Crop Opaque
             var rect = textImg.GetOpaqueBound();
             rect.Height += 2;
-            rect.Width += 10;
+            rect.Width += 2;
             var dst =  new Bitmap(rect.Width, rect.Height, textImg.PixelFormat);
             using ( var g = Graphics.FromImage( dst ) )
             {
@@ -787,7 +788,9 @@ namespace ExtensionMethods
             #endregion
 
             #region Render the DrawingVisual into a RenderTargetBitmap 
-            var pixelWidth = Convert.ToInt32( Math.Ceiling(formattedText.Width * (dpiX / 96.0)));
+            double offset = 1.0f;
+            if ( fontface.Style == System.Windows.FontStyles.Italic || fontface.Style == System.Windows.FontStyles.Oblique ) offset = 1.5f;
+            var pixelWidth = Convert.ToInt32( Math.Ceiling(formattedText.Width * (dpiX / 96.0)) * offset);
             var pixelHeight = Convert.ToInt32( Math.Ceiling(formattedText.Height * (dpiY / 96.0)));
             if ( pixelWidth == 0 || pixelHeight == 0 )
                 return ( new Bitmap( 1, 1 ) );
@@ -820,8 +823,8 @@ namespace ExtensionMethods
 
             #region Crop Opaque
             var rect = bitmap.GetOpaqueBound();
-            rect.Height += 2;
-            rect.Width += 10;
+            rect.Width = rect.Width < 0 ? 1 : rect.Width + 2;
+            rect.Height = rect.Height < 0 ? 1 : rect.Height + 2;
             var dst =  new Bitmap(rect.Width, rect.Height, bitmap.PixelFormat);
             using ( var g = Graphics.FromImage( dst ) )
             {
@@ -914,25 +917,42 @@ namespace ExtensionMethods
                 Media.FontFamily fallback = new Media.FontFamily(SystemFonts.DefaultFont.FontFamily.Name);
 
                 Media.Typeface face = null;
-
-                var key = $"{fontfamily}-{fontstyle}";
+                fontstyle = fontstyle.Replace( "250", "Thin" ).Replace( "350", "Regular" );
+                fontstyle = fontstyle.Replace( "SemiBold", "W6" ).Trim();
+                var key = $"{fontfamily}*{fontstyle}";
                 if( TypefaceList.Count<=0)
                 {
-                    TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames[locale_enkey]}-{o.FaceNames[locale_enkey]}", o => o );
+                    TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames[locale_enkey]}*{o.FaceNames[locale_enkey]}", o => o );
                 }
-                else if(TypefaceList.ContainsKey(key))
+
+                if(TypefaceList.ContainsKey(key))
                 {
                     face = TypefaceList[key];
                 }
                 else
                 {
-                    var faces = Media.Fonts.SystemTypefaces.AsParallel().Where( o => { return($"{o.FontFamily}-{o.FaceNames[locale_enkey]}" == key); } );
+                    var faces = Media.Fonts.SystemTypefaces.AsParallel().Where( o => { return($"{o.FontFamily}*{o.FaceNames[locale_enkey]}" == key); } );
                     if ( faces.Count() > 0 )
                         face = faces.First();
                     else
-                        face = new Media.Typeface( family, style, weight, familytypeface.Stretch, fallback );
+                    {
+                        var key0 = $"{family.FamilyNames[locale_enkey]}*{fontstyle}";
 
+                        faces = Media.Fonts.SystemTypefaces.AsParallel().Where( o =>
+                        {
+                            return ( $"{o.FontFamily}*{o.FaceNames[locale_enkey]}" == key0 );
+                        } );
+                        if ( faces.Count() > 0 )
+                            face = faces.First();
+                        else
+                            face = new Media.Typeface( family, style, weight, familytypeface.Stretch, fallback );
+
+                        TypefaceList[key0] = face;
+                    }
                     TypefaceList[key] = face;
+
+                    //Media.GlyphTypeface gtf;
+                    //face.TryGetGlyphTypeface( out gtf );
                 }
 
                 return ( ToBitmap( text, face, emSize, fgColor, bgColor ) );

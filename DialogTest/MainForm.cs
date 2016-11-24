@@ -21,7 +21,7 @@ namespace DialogTest
 
         private void btnColorDialog_Click( object sender, EventArgs e )
         {
-            NetCharm.Common.ColorDialogEx dlgColor = new NetCharm.Common.ColorDialogEx();
+            NetCharm.Common.ColorDialog dlgColor = new NetCharm.Common.ColorDialog();
             dlgColor.Apply += new System.EventHandler( dlgColor_Apply );
             dlgColor.Color = Color.Red;
             if ( dlgColor.ShowDialog() == DialogResult.OK )
@@ -54,6 +54,8 @@ namespace DialogTest
             NetCharm.Common.FontDialog dlgFont = new NetCharm.Common.FontDialog();
             dlgFont.Apply += new System.EventHandler( dlgFont_Apply );
             //dlgFont.Color = color;
+            dlgFont.Font = SystemFonts.DefaultFont;
+            dlgFont.FontSize = 12;
             if ( dlgFont.ShowDialog() == DialogResult.OK )
             {
                 //option.TextColor = dlgColor.Color.ToHtml();

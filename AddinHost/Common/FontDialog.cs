@@ -46,7 +46,8 @@ namespace NetCharm.Common
                 {
                     lvFamily.SelectedIndices.Add( 0 );
                 }
-
+                lbSize.Text = value.Size.ToString();
+                _fontsize = value.Size;
             }
         }
 
@@ -138,7 +139,12 @@ namespace NetCharm.Common
                 _fontsize = FontSizeList.ContainsKey( edSize.Text) ? FontSizeList[edSize.Text] : 12f;
                 return ( (float) _fontsize );
             }
-            set { _fontsize = (double) value; }
+            set
+            {
+                _fontsize = (double) value;
+                edSize.Text = value.ToString();
+                lbSize.Text = value.ToString();
+            }
         }
 
         private Color _fontcolor = Color.Black;
@@ -156,7 +162,7 @@ namespace NetCharm.Common
             }
         }
 
-        public bool IsLoading { get; private set; }
+        internal bool IsLoading { get; private set; }
 
         private string locale_en = "en-us";
         private string locale_ui = CultureInfo.InstalledUICulture.Name.ToLower();
@@ -167,6 +173,7 @@ namespace NetCharm.Common
 
         private List<ListViewItem> families = new List<ListViewItem>();
         private Dictionary<string, Bitmap> familiySamples = new Dictionary<string, Bitmap>();
+        private Dictionary<string, Bitmap> styleSamples = new Dictionary<string, Bitmap>();
 
         private float[] FontSizeList_En = new float[]
         {
@@ -175,8 +182,6 @@ namespace NetCharm.Common
 
         private Dictionary< string, string> FontStyleList = new Dictionary<string, string>();
         private Dictionary<string, float> FontSizeList = new Dictionary<string, float>();
-        private Dictionary<string, Media.Typeface> TypefaceList = new Dictionary<string, Media.Typeface>();
-        private Dictionary<string, TypefaceInfo> TypefaceInfoList = new Dictionary<string, TypefaceInfo>();
 
         private Media.FontFamily curFamily = Media.Fonts.SystemFontFamilies.FirstOrDefault();
         private string curFamilyName = SystemFonts.DefaultFont.FontFamily.Name;
@@ -196,7 +201,7 @@ namespace NetCharm.Common
                 style.Add( "Strikeout" );
 
             string text = "AaBbYyZz";
-            string text_ui = this._("Microsoft Text Test");
+            string text_ui = this._("Culture Text");
             if ( curFamily.FamilyNames.ContainsKey( locale_uikey ) )
             {
                 picPreview.Image = text_ui.ToBitmap( curFamilyName, string.Join(" ", style), FontSize, FontColor, Color.Transparent );
@@ -207,54 +212,49 @@ namespace NetCharm.Common
             }
         }
 
-        public FontDialog()
+        private void lvDrawItem( DrawListViewItemEventArgs e, Bitmap src, Color fgColor, Color bgColor )
         {
-            InitializeComponent();
-            this.Translate();
-
-            locale_enkey = XmlLanguage.GetLanguage( locale_en );
-            locale_uikey = XmlLanguage.GetLanguage( locale_ui );
-
-            #region Add Face locale Dict
-            FontStyleList.Clear();
-            FontStyleList[this._( "250" )] = "Thin";
-            FontStyleList[this._( "350" )] = "Regular";
-            FontStyleList[this._( "Light" )] = "Light";
-            FontStyleList[this._( "Regular" )] = "Regular";
-            FontStyleList[this._( "Medium" )] = "Medium";
-            FontStyleList[this._( "Bold" )] = "Bold";
-            FontStyleList[this._( "Black" )] = "Black";
-            FontStyleList[this._( "Oblique" )] = "Oblique";
-            FontStyleList[this._( "Italic" )] = "Italic";
-            #endregion
-
-            #region Add font sizes
-            if ( locale_uiinfo.TwoLetterISOLanguageName.ToLower().StartsWith( "zh" ) )
+            using ( var g = e.Graphics )
             {
-                FontSizeList["初号"] = 42f;
-                FontSizeList["小初"] = 36f;
-                FontSizeList["一号"] = 26f;
-                FontSizeList["小一"] = 24f;
-                FontSizeList["二号"] = 22f;
-                FontSizeList["小二"] = 18f;
-                FontSizeList["三号"] = 16f;
-                FontSizeList["小三"] = 15f;
-                FontSizeList["四号"] = 14f;
-                FontSizeList["小四"] = 12f;
-                FontSizeList["五号"] = 10.5f;
-                FontSizeList["小五"] = 9f;
-                FontSizeList["六号"] = 7.5f;
-                FontSizeList["小六"] = 6.5f;
-                FontSizeList["七号"] = 5.5f;
-                FontSizeList["八号"] = 5;
-            }
-            foreach(var size in FontSizeList_En)
-            {
-                FontSizeList[size.ToString()] = size;
-            }
-            lbSize.DataSource = FontSizeList.Keys.ToList();
-            #endregion
+                g.CompositingMode = CompositingMode.SourceOver;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TextContrast = 2;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
+                float dpiX = g.DpiX;
+                float dpiY = g.DpiY;
+
+                float aspect = (float)src.Width / src.Height;
+                var dstSize = new SizeF((e.Bounds.Height-6)*aspect, e.Bounds.Height - 6);
+                if ( src.Height <= dstSize.Height )
+                {
+                    dstSize.Width = src.Width;
+                    dstSize.Height = src.Height;
+                }
+                RectangleF fgRect = new RectangleF(e.Bounds.X+4, e.Bounds.Y+3, dstSize.Width, dstSize.Height);
+                RectangleF bgRect = new RectangleF(e.Bounds.X+3, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
+
+                if ( e.State.HasFlag( ListViewItemStates.Focused ) )
+                {
+                    g.FillRectangle( new SolidBrush( SystemColors.Highlight ), bgRect );
+                    //g.DrawImage( sample, fgRect );
+                    g.DrawImage( src.Invert(), fgRect );
+                    //e.DrawFocusRectangle();
+                }
+                else if ( e.Item.Selected )
+                {
+                    g.FillRectangle( new SolidBrush( SystemColors.Highlight ), bgRect );
+                    g.DrawImage( src.Invert(), fgRect );
+                }
+                else
+                {
+                    g.FillRectangle( new SolidBrush( bgColor ), bgRect );
+                    g.DrawImage( src, fgRect );
+                }
+            }
         }
 
         private static int CompareItemText( ListViewItem x, ListViewItem y )
@@ -293,6 +293,59 @@ namespace NetCharm.Common
             }
         }
 
+        public FontDialog()
+        {
+            InitializeComponent();
+            this.Translate();
+            IsLoading = true;
+
+            locale_enkey = XmlLanguage.GetLanguage( locale_en );
+            locale_uikey = XmlLanguage.GetLanguage( locale_ui );
+
+            #region Add Face locale Dict
+            FontStyleList.Clear();
+            FontStyleList[this._( "250" )] = "Thin";
+            FontStyleList[this._( "350" )] = "Regular";
+            FontStyleList[this._( "Thin" )] = "Thin";
+            FontStyleList[this._( "Light" )] = "Light";
+            FontStyleList[this._( "Regular" )] = "Regular";
+            FontStyleList[this._( "Medium" )] = "Medium";
+            FontStyleList[this._( "SemiBold" )] = "SemiBold";
+            FontStyleList[this._( "Bold" )] = "Bold";
+            FontStyleList[this._( "Black" )] = "Black";
+            FontStyleList[this._( "Oblique" )] = "Oblique";
+            FontStyleList[this._( "Italic" )] = "Italic";
+            #endregion
+
+            #region Add font sizes
+            if ( locale_uiinfo.TwoLetterISOLanguageName.ToLower().StartsWith( "zh" ) )
+            {
+                FontSizeList["初号"] = 42f;
+                FontSizeList["小初"] = 36f;
+                FontSizeList["一号"] = 26f;
+                FontSizeList["小一"] = 24f;
+                FontSizeList["二号"] = 22f;
+                FontSizeList["小二"] = 18f;
+                FontSizeList["三号"] = 16f;
+                FontSizeList["小三"] = 15f;
+                FontSizeList["四号"] = 14f;
+                FontSizeList["小四"] = 12f;
+                FontSizeList["五号"] = 10.5f;
+                FontSizeList["小五"] = 9f;
+                FontSizeList["六号"] = 7.5f;
+                FontSizeList["小六"] = 6.5f;
+                FontSizeList["七号"] = 5.5f;
+                FontSizeList["八号"] = 5;
+            }
+            foreach(var size in FontSizeList_En)
+            {
+                FontSizeList[size.ToString()] = size;
+            }
+            lbSize.DataSource = FontSizeList.Keys.ToList();
+            #endregion
+
+        }
+
         private void FontDialog_Load( object sender, EventArgs e )
         {
             IsLoading = true;
@@ -317,33 +370,11 @@ namespace NetCharm.Common
             //{
             //    var family = tf.FontFamily.FamilyNames[locale_enkey];
             //    var face = tf.FaceNames[locale_enkey];
-            //    TypefaceList[$"{family}-{face}"] = tf;
+            //    TypefaceList[$"{family}*{face}"] = tf;
             //}
-            //TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames[locale_enkey]}-{o.FaceNames[locale_enkey]}", o => o );
+            //TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames[locale_enkey]}*{o.FaceNames[locale_enkey]}", o => o );
 
-            //TypefaceList = (Dictionary < string, Media.Typeface > )Media.Fonts.SystemTypefaces.Select( face => new { Key = $"{face.FontFamily.FamilyNames[locale_enkey]}-{face.FaceNames[locale_enkey]}", Value = face } );
-            #endregion
-
-            #region Init Font Family List
-            lvFamily.Clear();
-            if ( lvFamily.Columns.Count==0)
-            {
-                lvFamily.Columns.Add( "Font Family" );
-                lvFamily.Columns[0].Width = lvFamily.ClientSize.Width - 16;
-            }
-            lvFamily.View = View.Details;
-            lvFamily.VirtualListSize = families.Count;
-            lvFamily.VirtualMode = true;
-            #endregion
-
-            #region Init Font Style List
-            lvStyle.Items.Clear();
-            if ( lvStyle.Columns.Count == 0 )
-            {
-                lvStyle.Columns.Add( "Font Style" );
-                lvStyle.Columns[0].Width = lvStyle.ClientSize.Width - 16;
-            }
-            lvStyle.View = View.Details;
+            //TypefaceList = (Dictionary < string, Media.Typeface > )Media.Fonts.SystemTypefaces.Select( face => new { Key = $"{face.FontFamily.FamilyNames[locale_enkey]}*{face.FaceNames[locale_enkey]}", Value = face } );
             #endregion
 
             #region Init Font Color
@@ -351,10 +382,77 @@ namespace NetCharm.Common
             #endregion
 
             #region Init Font Size List
-            //lbSize.Items.Clear();
-            lbSize.SelectedIndex = 0;
+            lbSize.Text = FontSize.ToString();
             #endregion
+
+            #region Init Font Style List
+            lvStyle.Items.Clear();
+            if ( lvStyle.Columns.Count == 0 )
+            {
+                lvStyle.Columns.Add( "Font Style" );
+                lvStyle.Columns[0].Width = lvStyle.ClientSize.Width;
+                //lvStyle.Columns[0].AutoResize( ColumnHeaderAutoResizeStyle.HeaderSize );
+            }
+            lvStyle.View = View.Details;
+            #endregion
+
+            #region Init Font Family List
+            lvFamily.Clear();
+            if ( lvFamily.Columns.Count==0)
+            {
+                lvFamily.Columns.Add( "Font Family" );
+                lvFamily.Columns[0].Width = lvFamily.ClientSize.Width;
+                //lvStyle.Columns[0].AutoResize( ColumnHeaderAutoResizeStyle.ColumnContent );
+            }
+            lvFamily.View = View.Details;
+            lvFamily.VirtualListSize = families.Count;
+            lvFamily.VirtualMode = true;
+            #endregion
+
+            #region Selected default font 
+            int idx = 0;
+            var lvis = families.AsParallel().Where(o => { return ( string.Equals( o.Text, Font.Name, StringComparison.CurrentCultureIgnoreCase )); } );
+            if ( lvis.Count() > 0 )
+            {
+                ListViewItem lvi = lvis.First();
+                idx = families.IndexOf( lvi );
+                lvFamily.Select();
+                lvFamily.EnsureVisible( idx );
+                lvFamily.FocusedItem = lvFamily.FindItemWithText( Font.Name, false, idx );
+            }
+            #endregion
+
+            #region Add family supported styles
+            var ffc = (Media.FontFamily)families[idx].Tag;
+
+            curFamily = ffc;
+            curFamilyName = lvFamily.FocusedItem.Text;
+
+            styleSamples.Clear();
+            lvStyle.Items.Clear();
+            foreach ( var typeface in ffc.FamilyTypefaces )
+            {
+                foreach ( var kv in typeface.AdjustedFaceNames )
+                {
+                    var facename = kv.Value.Replace( "250", "Thin" ).Replace( "350", "Regular" );
+                    var item = new ListViewItem(kv.Value);
+                    item.Text = string.Join( " ", facename.Split().Select( o => o._() ) );
+                    item.Tag = facename;
+                    lvStyle.Items.Add( item );
+                }
+            }
+            if ( lvStyle.Items.Count > 0 )
+            {
+                lvStyle.Items[0].Selected = true;
+                edStyle.Text = lvStyle.Items[0].Text;
+                curFaceName = (string) lvStyle.Items[0].Tag;
+            }
+            lvStyle.Update();
+            lvFamily.Select();
+            #endregion
+
             IsLoading = false;
+            Preview();
         }
 
         private void lvFamily_DrawItem( object sender, DrawListViewItemEventArgs e )
@@ -365,59 +463,22 @@ namespace NetCharm.Common
                 var familyName = familyItem.Text;
                 var family = (Media.FontFamily)familyItem.Tag;
 
-                using ( var g = e.Graphics )
+                Bitmap sample = null;
+                Color fgColor = e.Item.ForeColor;
+                Color bgColor = e.Item.BackColor;
+                if ( familiySamples.ContainsKey( familyName ) )
                 {
-                    g.CompositingMode = CompositingMode.SourceOver;
-                    g.CompositingQuality = CompositingQuality.HighQuality;
-                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                    g.SmoothingMode = SmoothingMode.AntiAlias;
-                    g.TextContrast = 2;
-                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-
-                    Bitmap sample = null;
-                    Color fgColor = e.Item.ForeColor;
-                    Color bgColor = e.Item.BackColor;
-                    if ( familiySamples.ContainsKey( familyName ) )
-                    {
-                        sample = familiySamples[familyName];
-                    }
-                    else
-                    {
-                        var face = family.FamilyTypefaces.First().AdjustedFaceNames[locale_enkey];
-                        sample = e.Item.Text.ToBitmap( familyName, face, 12, fgColor);
-
-                        familiySamples[familyName] = sample;
-                    }
-
-                    float aspect = (float)sample.Width / sample.Height;
-                    var dstSize = new SizeF((e.Bounds.Height-6)*aspect, e.Bounds.Height - 6);
-                    if(sample.Height <= dstSize.Height)
-                    {
-                        dstSize.Width = sample.Width;
-                        dstSize.Height = sample.Height;
-                    }
-                    RectangleF fgRect = new RectangleF(e.Bounds.X+4, e.Bounds.Y+3, dstSize.Width, dstSize.Height);
-                    RectangleF bgRect = new RectangleF(e.Bounds.X+3, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
-
-                    if ( e.State.HasFlag( ListViewItemStates.Focused ) )
-                    {                        
-                        g.FillRectangle( new SolidBrush( SystemColors.Highlight ), bgRect );
-                        //g.DrawImage( sample, fgRect );
-                        g.DrawImage( sample.Invert(), fgRect );
-                        //e.DrawFocusRectangle();
-                    }
-                    //else if ( e.Item.Selected )
-                    //{
-                    //    g.FillRectangle( new SolidBrush( SystemColors.Highlight ), bgRect );
-                    //    g.DrawImage( sample.Invert(), fgRect );
-                    //}
-                    else
-                    {
-                        g.FillRectangle( new SolidBrush( familyItem.BackColor ), bgRect );
-                        g.DrawImage( sample, fgRect );
-                    }
+                    sample = familiySamples[familyName];
                 }
+                else
+                {
+                    var face = family.FamilyTypefaces.First().AdjustedFaceNames[locale_enkey];
+                    sample = e.Item.Text.ToBitmap( familyName, face, 12, fgColor );
+                    //sample = e.Item.Text.ToBitmap( family.Source, face, 12, fgColor );
+
+                    familiySamples[familyName] = sample;
+                }
+                lvDrawItem( e, sample, fgColor, bgColor );
             }
         }
 
@@ -434,15 +495,19 @@ namespace NetCharm.Common
         {
             if(lvFamily.FocusedItem is ListViewItem)
             {
-                #region Add family supported styles
+                //lvFamily.FocusedItem.EnsureVisible();
 
                 int idx = lvFamily.FocusedItem.Index;
 
+                #region Add family supported styles
                 var ff = (Media.FontFamily)families[idx].Tag;
 
                 curFamily = ff;
-                curFamilyName = ff.FamilyNames.ContainsKey( locale_uikey ) ? ff.FamilyNames[locale_uikey] : ff.FamilyNames[locale_enkey];
+                //curFamilyName = ff.FamilyNames.ContainsKey( locale_uikey ) ? ff.FamilyNames[locale_uikey] : ff.FamilyNames[locale_enkey];
+                //curFamilyName = ff.FamilyNames[locale_enkey];
+                curFamilyName = lvFamily.FocusedItem.Text;
 
+                styleSamples.Clear();
                 lvStyle.Items.Clear();
                 foreach ( var typeface in ff.FamilyTypefaces )
                 {
@@ -450,9 +515,8 @@ namespace NetCharm.Common
                     {
                         var facename = kv.Value.Replace( "250", "Thin" ).Replace( "350", "Regular" );
                         var item = new ListViewItem(kv.Value);
-                        item.Text = facename._();
+                        item.Text = string.Join( " ", facename.Split().Select( o => o._() ) );
                         item.Tag = facename;
-                        //item.Tag = new Media.Typeface( curFamily, typeface.Style, typeface.Weight, typeface.Stretch );
                         lvStyle.Items.Add( item );
                     }
                 }
@@ -460,12 +524,9 @@ namespace NetCharm.Common
                 {
                     lvStyle.Items[0].Selected = true;
                     edStyle.Text = lvStyle.Items[0].Text;
-                    //curFace = (Media.Typeface) lvStyle.Items[0].Tag;
-                    //curFaceName = ff.FamilyTypefaces[0].AdjustedFaceNames[locale_enkey];
                     curFaceName = (string) lvStyle.Items[0].Tag;
                 }
-                //else
-                //    curFace = null;
+                lvStyle.Update();
                 #endregion
 
                 #region Add family sizes
@@ -473,11 +534,28 @@ namespace NetCharm.Common
                 #endregion
 
                 #region Add family charsets
+                List<string> charsets = new List<string>();
+                foreach(var kv in ff.FamilyNames )
+                {
+                    charsets.Add( kv.Key.IetfLanguageTag );
+                }
                 cbCharset.Items.Clear();
+                cbCharset.Items.AddRange( charsets.Distinct().ToArray() );
+                cbCharset.SelectedIndex = 0;
 
                 #endregion
+
+                if(!lvFamily.FocusedItem.Text.StartsWith(edFamily.Text, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    edFamily.Text = lvFamily.FocusedItem.Text;
+                }
+
                 Preview();
             }
+            //else if( lvFamily.SelectedIndices.Count <= 0 && e.Item.Selected )
+            //{
+            //    lvFamily.EnsureVisible( e.ItemIndex );
+            //}
         }
 
         private void lvFamily_SearchForVirtualItem( object sender, SearchForVirtualItemEventArgs e )
@@ -494,63 +572,28 @@ namespace NetCharm.Common
         {
             if ( e.KeyChar == (char) Keys.Back )
                 edFamily.Text = edFamily.Text.Substring( 0, edFamily.Text.Length - 1 );
-            //            else if( string.is e.KeyChar )
             else
                 edFamily.Text += e.KeyChar;
-            lvFamily.FindItemWithText( edFamily.Text );
         }
 
         private void lvStyle_DrawItem( object sender, DrawListViewItemEventArgs e )
         {
-            if ( e.ItemIndex >= 0 && e.ItemIndex < lvFamily.VirtualListSize )
+            if ( e.ItemIndex >= 0 && e.ItemIndex < lvStyle.Items.Count )
             {
-                using ( var g = e.Graphics )
+                Color fgColor = e.Item.ForeColor;
+                Color bgColor = e.Item.BackColor;
+
+                var facename = (string)e.Item.Tag;
+                Bitmap sample = null;
+                if ( styleSamples.ContainsKey( facename ) )
+                    sample = styleSamples[facename];
+                else
                 {
-                    g.CompositingMode = CompositingMode.SourceOver;
-                    g.CompositingQuality = CompositingQuality.HighQuality;
-                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                    g.SmoothingMode = SmoothingMode.AntiAlias;
-                    g.TextContrast = 2;
-                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-
-                    float dpiX = g.DpiX;
-                    float dpiY = g.DpiY;
-
-                    Color fgColor = e.Item.ForeColor;
-                    Color bgColor = e.Item.BackColor;
-
-                    //Bitmap sample = "[Unspported Font]".ToBitmap( new Font("Arial", 14), fgColor );
-                    Bitmap sample = e.Item.Text.ToBitmap( curFamilyName, (string)e.Item.Tag, 14, fgColor);
-
-                    float aspect = (float)sample.Width / sample.Height;
-                    var dstSize = new SizeF((e.Bounds.Height-6)*aspect, e.Bounds.Height - 6);
-                    if ( sample.Height <= dstSize.Height )
-                    {
-                        dstSize.Width = sample.Width;
-                        dstSize.Height = sample.Height;
-                    }
-                    RectangleF fgRect = new RectangleF(e.Bounds.X+4, e.Bounds.Y+3, dstSize.Width, dstSize.Height);
-                    RectangleF bgRect = new RectangleF(e.Bounds.X+3, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
-
-                    if ( e.State.HasFlag( ListViewItemStates.Focused ) )
-                    {
-                        g.FillRectangle( new SolidBrush( Color.CornflowerBlue ), bgRect );
-                        //g.DrawImage( sample, fgRect );
-                        g.DrawImage( sample.Invert(), fgRect );
-                        e.DrawFocusRectangle();
-                    }
-                    else if ( e.Item.Selected )
-                    {
-                        g.FillRectangle( new SolidBrush( Color.CornflowerBlue ), bgRect );
-                        g.DrawImage( sample.Invert(), fgRect );
-                    }
-                    else
-                    {
-                        g.FillRectangle( new SolidBrush( e.Item.BackColor ), bgRect );
-                        g.DrawImage( sample, fgRect );
-                    }
+                    sample = e.Item.Text.ToBitmap( curFamilyName, facename, 14.0f, fgColor );
+                    styleSamples[facename] = sample;
                 }
+                //Bitmap sample = "[Unspported Style]".ToBitmap( new Font("Arial", 14), fgColor );
+                lvDrawItem( e, sample, fgColor, bgColor );
             }
         }
 
@@ -559,16 +602,7 @@ namespace NetCharm.Common
             if( lvStyle.FocusedItem is ListViewItem)
             {
                 curFaceName = (string)lvStyle.FocusedItem.Tag;
-
-                //curFace = face;
-                edStyle.Text = this._( curFaceName );
-
-                //if ( curFace.Style == System.Windows.FontStyles.Italic )
-                //    _fontstyle |= FontStyle.Italic;
-                //if ( curFace.Weight == System.Windows.FontWeights.Bold )
-                //    _fontstyle |= FontStyle.Bold;
-
-                lvStyle.Invalidate();
+                edStyle.Text = lvStyle.FocusedItem.Text;//this._( curFaceName );
                 Preview();
             }
         }
@@ -595,6 +629,28 @@ namespace NetCharm.Common
             Preview();
         }
 
+        private void edFamily_TextChanged( object sender, EventArgs e )
+        {
+            var lvis = families.AsParallel().Where(o => { return ( o.Text.StartsWith(edFamily.Text, StringComparison.CurrentCultureIgnoreCase )); } );
+            if ( lvis.Count() > 0 )
+            {
+                ListViewItem lvi = lvis.First();
+                int idx = families.IndexOf( lvi );
+                lvFamily.Select();
+                lvFamily.EnsureVisible( idx );
+                lvFamily.FocusedItem = lvFamily.FindItemWithText( edFamily.Text, false, idx );
+                lvFamily.FocusedItem.Selected = true;
+            }
+        }
+
+        private void edSize_TextChanged( object sender, EventArgs e )
+        {
+            edSize.Text = edSize.Text.Trim();
+            if (FontSizeList.ContainsKey(edSize.Text.Trim()))
+            {
+                FontSize = FontSizeList[edSize.Text.Trim()];
+            }
+        }
     }
 
     internal class TypefaceInfo

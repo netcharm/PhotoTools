@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Image.AddinHost\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-21 19:32+0800\n"
-"PO-Revision-Date: 2016-11-21 19:32+0800\n"
+"POT-Creation-Date: 2016-11-24 22:38+0800\n"
+"PO-Revision-Date: 2016-11-24 22:38+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,30 +20,54 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: Common\FontDialog.resx:295 -> groupBox1.Text.value
-msgid "groupBox1"
-msgstr ""
-
-#: Common\FontDialog.resx:322 -> groupBox2.Text.value
-msgid "groupBox2"
-msgstr ""
-
-#: Common\FontDialog.resx:400 -> btnOk.Text.value
-#: Common\SelectAddinForm.resx:169 Common\ColorDialog.Designer.cs:130
-msgid "OK"
-msgstr ""
-
-#: Common\FontDialog.resx:427 -> btnCancel.Text.value
-#: Common\SelectAddinForm.resx:193 Common\ColorDialog.Designer.cs:118
-msgid "Cancel"
-msgstr ""
-
-#: Common\FontDialog.resx:454 -> btnApply.Text.value
-#: Common\ColorDialog.Designer.cs:105
+#: Common\ColorDialog.resx:256 -> btnApply.Text.value
+#: Common\FontDialog.resx:643
 msgid "Apply"
 msgstr ""
 
-#: Common\FontDialog.resx:478 -> $this.Text.value
+#: Common\ColorDialog.resx:286 -> btnCancel.Text.value
+#: Common\FontDialog.resx:616 Common\SelectAddinForm.resx:193
+msgid "Cancel"
+msgstr ""
+
+#: Common\ColorDialog.resx:316 -> btnOk.Text.value Common\FontDialog.resx:589
+#: Common\SelectAddinForm.resx:169
+msgid "OK"
+msgstr ""
+
+#: Common\ColorDialog.resx:367 -> $this.Text.value
+msgid "Color Picker"
+msgstr ""
+
+#: Common\FontDialog.resx:316 -> chkEffectUnderline.Text.value
+msgid "Underline"
+msgstr ""
+
+#: Common\FontDialog.resx:340 -> chkEffectStrikeout.Text.value
+msgid "Strikeout"
+msgstr ""
+
+#: Common\FontDialog.resx:367 -> grpEffect.Text.value
+msgid "Effect"
+msgstr ""
+
+#: Common\FontDialog.resx:421 -> grpSample.Text.value
+msgid "Sample"
+msgstr ""
+
+#: Common\FontDialog.resx:472 -> lblFamily.Text.value
+msgid "Font Family"
+msgstr ""
+
+#: Common\FontDialog.resx:502 -> lblFace.Text.value
+msgid "Font Face"
+msgstr ""
+
+#: Common\FontDialog.resx:532 -> lblSize.Text.value
+msgid "Font Size"
+msgstr ""
+
+#: Common\FontDialog.resx:670 -> $this.Text.value
 msgid "Font"
 msgstr ""
 
@@ -56,7 +80,7 @@ msgid "Type"
 msgstr ""
 
 #: Common\SelectAddinForm.resx:301 -> btnGroupNone.Text.value
-#: Common\SelectAddinForm.cs:78
+#: Common\SelectAddinForm.cs:68
 msgid "None"
 msgstr ""
 
@@ -66,10 +90,6 @@ msgstr ""
 
 #: Common\SelectAddinForm.resx:352 -> $this.Text.value
 msgid "Selection Addins"
-msgstr ""
-
-#: Common\ColorDialog.Designer.cs:163
-msgid "Color Picker"
 msgstr ""
 
 #: Controls\SlideColorLum.Designer.cs:80
@@ -96,4 +116,52 @@ msgstr ""
 
 #: Controls\SlideNumber.Designer.cs:125
 msgid "%"
+msgstr ""
+
+#: Common\FontDialog.cs:198
+msgid "Culture Text"
+msgstr ""
+
+#: Common\FontDialog.cs:219
+msgid "250"
+msgstr ""
+
+#: Common\FontDialog.cs:220
+msgid "350"
+msgstr ""
+
+#: Common\FontDialog.cs:221
+msgid "Thin"
+msgstr ""
+
+#: Common\FontDialog.cs:222
+msgid "Light"
+msgstr ""
+
+#: Common\FontDialog.cs:223
+msgid "Regular"
+msgstr ""
+
+#: Common\FontDialog.cs:224
+msgid "Medium"
+msgstr ""
+
+#: Common\FontDialog.cs:225
+msgid "SemiBold"
+msgstr ""
+
+#: Common\FontDialog.cs:226
+msgid "Bold"
+msgstr ""
+
+#: Common\FontDialog.cs:227
+msgid "Black"
+msgstr ""
+
+#: Common\FontDialog.cs:228
+msgid "Oblique"
+msgstr ""
+
+#: Common\FontDialog.cs:229
+msgid "Italic"
 msgstr ""

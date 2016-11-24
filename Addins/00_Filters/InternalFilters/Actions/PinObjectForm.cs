@@ -24,7 +24,7 @@ namespace InternalFilters.Actions
         private Image picObject = null;
         private Image picText = null;
 
-        private NetCharm.Common.ColorDialogEx dlgColor = null;
+        private NetCharm.Common.ColorDialog dlgColor = null;
 
         private PinObjectMode mode = PinObjectMode.Picture;
         internal ParamItem ParamMode
@@ -564,7 +564,7 @@ namespace InternalFilters.Actions
             string c = option.TextColor;
             Color color = option.TextColor.ToColor();
 
-            dlgColor = new NetCharm.Common.ColorDialogEx();
+            dlgColor = new NetCharm.Common.ColorDialog();
             dlgColor.Apply += new System.EventHandler( dlgColor_Apply );
             dlgColor.Color = color;
             if ( dlgColor.ShowDialog() == DialogResult.OK )

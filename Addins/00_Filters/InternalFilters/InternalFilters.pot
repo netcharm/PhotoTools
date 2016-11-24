@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: Actions\PinObject.cs:322 Actions\PinObject.cs:327 Actions\PinObject.cs:332
+#: Actions\PinObject.cs:323 Actions\PinObject.cs:328 Actions\PinObject.cs:333
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-21 19:32+0800\n"
-"PO-Revision-Date: 2016-11-21 19:32+0800\n"
+"POT-Creation-Date: 2016-11-24 22:38+0800\n"
+"PO-Revision-Date: 2016-11-24 22:38+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -100,7 +100,7 @@ msgid "Open Picture"
 msgstr ""
 
 #: Actions\PinObjectForm.resx:799 -> tabPagePicture.Text.value
-#: Actions\PinObject.cs:326 Actions\PinObject.cs:328
+#: Actions\PinObject.cs:327 Actions\PinObject.cs:329
 msgid "Picture"
 msgstr ""
 
@@ -113,7 +113,7 @@ msgid "Select Font"
 msgstr ""
 
 #: Actions\PinObjectForm.resx:940 -> tabPageText.Text.value
-#: Actions\PinObject.cs:321
+#: Actions\PinObject.cs:322
 msgid "Text"
 msgstr ""
 
@@ -293,27 +293,27 @@ msgstr ""
 msgid "Rotate"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:333
+#: Actions\PinObjectForm.Designer.cs:335
 msgid "Offset Y"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:362
+#: Actions\PinObjectForm.Designer.cs:364
 msgid "Offset X"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:391
+#: Actions\PinObjectForm.Designer.cs:393
 msgid "Margin Y"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:420
+#: Actions\PinObjectForm.Designer.cs:422
 msgid "Margin X"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:456
+#: Actions\PinObjectForm.Designer.cs:458
 msgid "Blend"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:485
+#: Actions\PinObjectForm.Designer.cs:487
 msgid "Opaque"
 msgstr ""
 
@@ -417,7 +417,7 @@ msgstr ""
 msgid "x"
 msgstr ""
 
-#: Actions\CropForm.Designer.cs:352 Actions\Crop.cs:29
+#: Actions\CropForm.Designer.cs:352 Actions\Crop.cs:30
 msgid "Crop"
 msgstr ""
 
@@ -437,35 +437,35 @@ msgstr ""
 msgid "Hue"
 msgstr ""
 
-#: Actions\PinObject.cs:109
+#: Actions\PinObject.cs:110
 msgid "Pin"
 msgstr ""
 
-#: Actions\PinObject.cs:121
+#: Actions\PinObject.cs:122
 msgid "Decoration"
 msgstr ""
 
-#: Actions\PinObject.cs:128
+#: Actions\PinObject.cs:129
 msgid "Decoration Image"
 msgstr ""
 
-#: Actions\PinObject.cs:323
+#: Actions\PinObject.cs:324
 msgid "Simple Text"
 msgstr ""
 
-#: Actions\PinObject.cs:331
+#: Actions\PinObject.cs:332
 msgid "Smart Tag"
 msgstr ""
 
-#: Actions\PinObject.cs:333
+#: Actions\PinObject.cs:334
 msgid "Rich-Contents Text"
 msgstr ""
 
-#: Actions\Crop.cs:41 Actions\Resize.cs:129 Actions\Rotate.cs:56
+#: Actions\Crop.cs:42 Actions\Resize.cs:129 Actions\Rotate.cs:56
 msgid "Edit"
 msgstr ""
 
-#: Actions\Crop.cs:48
+#: Actions\Crop.cs:49
 msgid "Crop Image"
 msgstr ""
 

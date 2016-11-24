@@ -233,7 +233,7 @@ namespace NetCharm.Image.Addins
         public static DialogResult ShowColorPicker( ref Color color)
         {
             DialogResult result = DialogResult.None;
-            NetCharm.Common.ColorDialogEx dlgColor = new NetCharm.Common.ColorDialogEx();
+            NetCharm.Common.ColorDialog dlgColor = new NetCharm.Common.ColorDialog();
             Translate( null, dlgColor );
             dlgColor.Color = color;
             if( dlgColor.ShowDialog() == DialogResult.OK )

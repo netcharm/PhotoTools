@@ -43,6 +43,9 @@
             this.grpSample = new System.Windows.Forms.GroupBox();
             this.picPreview = new System.Windows.Forms.PictureBox();
             this.cbCharset = new System.Windows.Forms.ComboBox();
+            this.lblFamily = new System.Windows.Forms.Label();
+            this.lblFace = new System.Windows.Forms.Label();
+            this.lblSize = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
@@ -55,21 +58,25 @@
             // layoutFont
             // 
             resources.ApplyResources(this.layoutFont, "layoutFont");
-            this.layoutFont.Controls.Add(this.edFamily, 0, 0);
-            this.layoutFont.Controls.Add(this.lvFamily, 0, 1);
-            this.layoutFont.Controls.Add(this.edStyle, 1, 0);
-            this.layoutFont.Controls.Add(this.lvStyle, 1, 1);
-            this.layoutFont.Controls.Add(this.edSize, 2, 0);
-            this.layoutFont.Controls.Add(this.lbSize, 2, 1);
-            this.layoutFont.Controls.Add(this.grpEffect, 0, 2);
-            this.layoutFont.Controls.Add(this.grpSample, 1, 2);
-            this.layoutFont.Controls.Add(this.cbCharset, 1, 3);
+            this.layoutFont.Controls.Add(this.edFamily, 0, 1);
+            this.layoutFont.Controls.Add(this.lvFamily, 0, 2);
+            this.layoutFont.Controls.Add(this.edStyle, 1, 1);
+            this.layoutFont.Controls.Add(this.lvStyle, 1, 2);
+            this.layoutFont.Controls.Add(this.edSize, 2, 1);
+            this.layoutFont.Controls.Add(this.lbSize, 2, 2);
+            this.layoutFont.Controls.Add(this.grpEffect, 0, 3);
+            this.layoutFont.Controls.Add(this.grpSample, 1, 3);
+            this.layoutFont.Controls.Add(this.cbCharset, 1, 4);
+            this.layoutFont.Controls.Add(this.lblFamily, 0, 0);
+            this.layoutFont.Controls.Add(this.lblFace, 1, 0);
+            this.layoutFont.Controls.Add(this.lblSize, 2, 0);
             this.layoutFont.Name = "layoutFont";
             // 
             // edFamily
             // 
             resources.ApplyResources(this.edFamily, "edFamily");
             this.edFamily.Name = "edFamily";
+            this.edFamily.TextChanged += new System.EventHandler(this.edFamily_TextChanged);
             // 
             // lvFamily
             // 
@@ -115,6 +122,7 @@
             // 
             resources.ApplyResources(this.edSize, "edSize");
             this.edSize.Name = "edSize";
+            this.edSize.TextChanged += new System.EventHandler(this.edSize_TextChanged);
             // 
             // lbSize
             // 
@@ -173,8 +181,30 @@
             // 
             this.layoutFont.SetColumnSpan(this.cbCharset, 2);
             resources.ApplyResources(this.cbCharset, "cbCharset");
+            this.cbCharset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCharset.FormattingEnabled = true;
             this.cbCharset.Name = "cbCharset";
+            // 
+            // lblFamily
+            // 
+            this.lblFamily.AutoEllipsis = true;
+            resources.ApplyResources(this.lblFamily, "lblFamily");
+            this.lblFamily.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblFamily.Name = "lblFamily";
+            // 
+            // lblFace
+            // 
+            this.lblFace.AutoEllipsis = true;
+            resources.ApplyResources(this.lblFace, "lblFace");
+            this.lblFace.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblFace.Name = "lblFace";
+            // 
+            // lblSize
+            // 
+            this.lblSize.AutoEllipsis = true;
+            resources.ApplyResources(this.lblSize, "lblSize");
+            this.lblSize.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblSize.Name = "lblSize";
             // 
             // btnOk
             // 
@@ -242,5 +272,8 @@
         private System.Windows.Forms.CheckBox chkEffectStrikeout;
         private Cyotek.Windows.Forms.ColorGrid colorGrid;
         private System.Windows.Forms.PictureBox picPreview;
+        private System.Windows.Forms.Label lblFamily;
+        private System.Windows.Forms.Label lblFace;
+        private System.Windows.Forms.Label lblSize;
     }
 }
