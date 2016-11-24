@@ -453,7 +453,7 @@ namespace ExtensionMethods
 
         #region Image Convert Routines
         static private Dictionary<string, Media.Typeface> TypefaceList = new Dictionary<string, Media.Typeface>();
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -461,18 +461,18 @@ namespace ExtensionMethods
         /// <param name="underline"></param>
         /// <param name="strikeout"></param>
         /// <returns></returns>
-        public static FontStyle GetFontStyle(this Media.Typeface face, bool underline=false, bool strikeout=false)
+        public static FontStyle GetFontStyle( this Media.Typeface face, bool underline = false, bool strikeout = false )
         {
             FontStyle result = FontStyle.Regular;
             var regular = false;
-            if(face is Media.Typeface )
+            if ( face is Media.Typeface )
             {
                 //if ( face.Style == System.Windows.FontStyles.Italic )
                 //    result |= FontStyle.Italic;
                 //if ( face.Weight == System.Windows.FontWeights.Bold )
                 //    result |= FontStyle.Bold;
-                
-                foreach(var s in face.FaceNames[locale_enkey].Split())
+
+                foreach ( var s in face.FaceNames[locale_enkey].Split() )
                 {
                     if ( string.Equals( s, "Bold" ) )
                         result |= FontStyle.Bold;
@@ -489,7 +489,7 @@ namespace ExtensionMethods
             return ( result );
         }
 
-        public static Rectangle GetOpaqueBound(this Bitmap image, OpaqueMode mode = OpaqueMode.Alpha )
+        public static Rectangle GetOpaqueBound( this Bitmap image, OpaqueMode mode = OpaqueMode.Alpha )
         {
             Rectangle result = new Rectangle(0, 0, image.Width, image.Height);
 
@@ -860,37 +860,43 @@ namespace ExtensionMethods
         /// <returns></returns>
         public static Bitmap ToBitmap( this string text, string fontfamily, string fontstyle, float fontsize, Color fgColor, Color bgColor )
         {
-            var styleFont = FontStyle.Regular;
-            //var underline = false;
-            //var strikeout = false;
+            //var styleFont = FontStyle.Regular;
+            var styleFont = fontstyle.ToFontStyle();
 
             #region Set font style
-            string[] styles = fontstyle.Split();
-            foreach ( var style in styles )
-            {
-                if ( string.Equals( style.Trim(), "Italic", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    styleFont |= FontStyle.Italic;
-                }
-                else if ( string.Equals( style.Trim(), "Oblique", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    styleFont |= FontStyle.Italic;
-                }
-                else if ( string.Equals( style.Trim(), "Bold", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    styleFont |= FontStyle.Bold;
-                }
-                else if ( string.Equals( style.Trim(), "Underline", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    styleFont |= FontStyle.Underline;
-                    //underline = true;
-                }
-                else if ( string.Equals( style.Trim(), "Strikeout", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    styleFont |= FontStyle.Strikeout;
-                    //strikeout = true;
-                }
-            }
+            //styleFont = fontstyle.ToFontStyle();
+            //var regular = false;
+            //string[] styles = fontstyle.Split();
+            //foreach ( var style in styles )
+            //{
+            //    if ( string.Equals( style.Trim(), "Italic", StringComparison.CurrentCultureIgnoreCase ) )
+            //    {
+            //        styleFont |= FontStyle.Italic;
+            //    }
+            //    else if ( string.Equals( style.Trim(), "Oblique", StringComparison.CurrentCultureIgnoreCase ) )
+            //    {
+            //        styleFont |= FontStyle.Italic;
+            //    }
+            //    else if ( string.Equals( style.Trim(), "Bold", StringComparison.CurrentCultureIgnoreCase ) )
+            //    {
+            //        styleFont |= FontStyle.Bold;
+            //    }
+            //    else if ( string.Equals( style.Trim(), "Underline", StringComparison.CurrentCultureIgnoreCase ) )
+            //    {
+            //        styleFont |= FontStyle.Underline;
+            //        //underline = true;
+            //    }
+            //    else if ( string.Equals( style.Trim(), "Strikeout", StringComparison.CurrentCultureIgnoreCase ) )
+            //    {
+            //        styleFont |= FontStyle.Strikeout;
+            //        //strikeout = true;
+            //    }
+            //    else if( string.Equals( style.Trim(), "Regular", StringComparison.CurrentCultureIgnoreCase ) )
+            //    {
+            //        regular = true;
+            //    }
+            //}
+            //if ( !regular ) styleFont &= ~FontStyle.Regular;
             #endregion
 
             var emSize = fontsize * 96/72f;
@@ -920,12 +926,12 @@ namespace ExtensionMethods
                 fontstyle = fontstyle.Replace( "250", "Thin" ).Replace( "350", "Regular" );
                 fontstyle = fontstyle.Replace( "SemiBold", "W6" ).Trim();
                 var key = $"{fontfamily}*{fontstyle}";
-                if( TypefaceList.Count<=0)
+                if ( TypefaceList.Count <= 0 )
                 {
                     TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames[locale_enkey]}*{o.FaceNames[locale_enkey]}", o => o );
                 }
 
-                if(TypefaceList.ContainsKey(key))
+                if ( TypefaceList.ContainsKey( key ) )
                 {
                     face = TypefaceList[key];
                 }
@@ -1009,6 +1015,72 @@ namespace ExtensionMethods
             var emSize = size * 72/96f;
 
             Font result = new Font(family, emSize, style);
+            return ( result );
+        }
+
+        #region Add Face locale Dict
+        private static Dictionary<string, string> FontStyleList = new Dictionary<string, string>()
+        {
+            //{ _( "250" ), "Thin" },
+            //{ _( "350" ), "Regular" },
+            { _( "Thin" ), "Thin" },
+            { _( "Light" ), "Light" },
+            { _( "Regular" ), "Regular" },
+            { _( "Medium" ), "Medium" },
+            { _( "SemiBold" ), "SemiBold" },
+            { _( "Bold" ), "Bold" },
+            { _( "Black" ), "Black" },
+            { _( "Oblique" ), "Oblique" },
+            { _( "Italic" ), "Italic" }
+        };
+        #endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="facename"></param>
+        /// <param name="underline"></param>
+        /// <param name="strikeout"></param>
+        /// <returns></returns>
+        public static FontStyle ToFontStyle( this string facename, bool underline = false, bool strikeout = false )
+        {
+            FontStyle result = FontStyle.Regular;
+
+            var regular = false;
+            foreach ( var style in facename.Split() )
+            {
+                var s = style;
+                if ( FontStyleList.ContainsKey( style ) )
+                    s = FontStyleList[style];
+                if ( string.Equals( s, "Bold", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    result |= FontStyle.Bold;
+                }
+                else if ( string.Equals( s, "Italic", StringComparison.CurrentCultureIgnoreCase ) ||
+                    string.Equals( s, "Oblique", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    result |= FontStyle.Italic;
+                }
+                else if ( string.Equals( style.Trim(), "Underline", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    result |= FontStyle.Underline;
+                }
+                else if ( string.Equals( style.Trim(), "Strikeout", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    result |= FontStyle.Strikeout;
+                }
+                else if ( string.Equals( s, "Regular", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    regular = true;
+                }
+            }
+            if ( !regular )
+                result &= ~FontStyle.Regular;
+
+            if ( underline )
+                result |= FontStyle.Underline;
+            if ( strikeout )
+                result |= FontStyle.Strikeout;
+
             return ( result );
         }
 

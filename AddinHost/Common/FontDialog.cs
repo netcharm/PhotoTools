@@ -68,14 +68,14 @@ namespace NetCharm.Common
         }
 
         private string _familyName = "";
-        public string FamilyName
+        public string FontFamily
         {
             get { return ( _familyName ); }
             set { _familyName = value; }
         }
 
         private string _typefaceName = "";
-        public string TypeFaceName
+        public string FontFace
         {
             get
             {
@@ -194,7 +194,7 @@ namespace NetCharm.Common
             //if ( curFace == null ) return;
 
             List<string> style = new List<string>();
-            style.AddRange( TypeFaceName.Split() );
+            style.AddRange( FontFace.Split() );
             if ( chkEffectUnderline.Checked )
                 style.Add( "Underline" );
             if ( chkEffectStrikeout.Checked )
@@ -210,6 +210,41 @@ namespace NetCharm.Common
             {
                 picPreview.Image = text.ToBitmap( curFamilyName, string.Join( " ", style ), FontSize, FontColor, Color.Transparent );
             }
+        }
+
+        private FontStyle GetStyle(string facename, bool underline=false, bool strikeout=false)
+        {
+            FontStyle result = FontStyle.Regular;
+
+            var regular = false;
+            foreach(var style in facename.Split())
+            {
+                var s = style;
+                if ( FontStyleList.ContainsKey( style ) )
+                    s = FontStyleList[style];
+                if ( string.Equals( s, "Bold", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    result |= FontStyle.Bold;
+                }
+                else if ( string.Equals( s, "Italic", StringComparison.CurrentCultureIgnoreCase ) ||
+                    string.Equals( s, "Oblique", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    result |= FontStyle.Italic;
+                }
+                else if ( string.Equals( s, "Regular", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    regular = true;
+                }
+            }
+            if ( !regular )
+                result &= ~FontStyle.Regular;
+
+            if ( underline )
+                result |= FontStyle.Underline;
+            if ( strikeout )
+                result |= FontStyle.Strikeout;
+
+            return ( result );
         }
 
         private void lvDrawItem( DrawListViewItemEventArgs e, Bitmap src, Color fgColor, Color bgColor )
@@ -602,7 +637,8 @@ namespace NetCharm.Common
             if( lvStyle.FocusedItem is ListViewItem)
             {
                 curFaceName = (string)lvStyle.FocusedItem.Tag;
-                edStyle.Text = lvStyle.FocusedItem.Text;//this._( curFaceName );
+                edStyle.Text = lvStyle.FocusedItem.Text;
+                //FontStyle = curFaceName.
                 Preview();
             }
         }
