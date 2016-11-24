@@ -15,7 +15,7 @@ using Media = System.Windows.Media;
 
 namespace NetCharm.Common
 {
-    public partial class FontDialog : Form
+    public partial class FontDialogEx : Form
     {
         public event EventHandler Apply;
 
@@ -30,19 +30,40 @@ namespace NetCharm.Common
         {
             get
             {
-                //_font = 
+                var font = new Font(curFamilyName, FontSize, FontStyle);
                 return ( _font );
             }
             set
             {
                 _font = value;
+                var item = lvFamily.FindItemWithText( _font.FontFamily.Name );
+                lvFamily.SelectedIndices.Clear();
+                if ( item is ListViewItem)
+                {
+                    item.Selected = true;
+                }
+                else if( lvFamily.Items.Count>0)
+                {
+                    lvFamily.SelectedIndices.Add( 0 );
+                }
+
             }
         }
 
         private bool _isTTF = true;
         public bool IsTTF
         {
-            get { return ( _isTTF ); }
+            get
+            {
+                if ( string.IsNullOrEmpty( curFamilyName ) )
+                    _isTTF = false;
+                else
+                {
+                    var font = new Font(curFamilyName, 12);
+                    _isTTF = string.Equals( font.Name, curFamilyName, StringComparison.CurrentCultureIgnoreCase ) ? true : false;
+                }
+                return ( _isTTF );
+            }
         }
 
         private string _familyName = "";
@@ -55,38 +76,87 @@ namespace NetCharm.Common
         private string _typefaceName = "";
         public string TypeFaceName
         {
-            get { return ( _typefaceName ); }
+            get
+            {
+                var styles = edStyle.Text.Split();
+                _typefaceName = string.Empty;
+                var typefacename = new List<string>();
+                foreach(var style in styles)
+                {
+                    if ( FontStyleList.ContainsKey( style ) )
+                        typefacename.Add( FontStyleList[style] );
+                    else
+                        typefacename.Add( style );
+                }
+                _typefaceName = string.Join( " ", typefacename );
+                return ( _typefaceName );
+            }
             set { _typefaceName = value; }
         }
 
-        //private FontStyle _style = FontStyle.Regular;
-        //public FontStyle Style
-        //{
-        //    get { return ( _style ); }
-        //    set { _style = value; }
-        //}
-
-        //private double _size = 10;
-        //public float Size
-        //{
-        //    get { return ( (float) _size ); }
-        //    set { _size = (double) value; }
-        //}
-
-        private Color _color = default(Color);
-        public Color Color
+        private FontStyle _fontstyle = FontStyle.Regular;
+        public FontStyle FontStyle
         {
             get
             {
-                _color = colorGrid.Color;
-                return ( _color );
+                var styles = edStyle.Text.Split();
+                _fontstyle = FontStyle.Regular;
+                bool regular = false;
+                foreach (var style in styles)
+                {
+                    var name = style;
+                    if ( FontStyleList.ContainsKey( style ) )
+                        name = FontStyleList[style];
+                    if ( string.Equals( name, "Bold" ) )
+                        _fontstyle |= FontStyle.Bold;
+                    else if ( string.Equals( name, "Italic" ) )
+                        _fontstyle |= FontStyle.Italic;
+                    else if ( string.Equals( name, "Regular" ) )
+                        regular = true;
+                }
+                if(!regular) _fontstyle &= ~FontStyle.Regular;
+
+                if ( chkEffectUnderline.Checked ) _fontstyle |= FontStyle.Underline;
+                if ( chkEffectStrikeout.Checked ) _fontstyle |= FontStyle.Strikeout;
+
+                return ( _fontstyle );
             }
             set
             {
-                _color = value;
+                chkEffectUnderline.Checked = value.HasFlag( FontStyle.Underline ) ? true : false;
+                chkEffectStrikeout.Checked = value.HasFlag( FontStyle.Strikeout ) ? true : false;
+
+                _fontstyle = value;
+            }
+        }
+
+        private double _fontsize = 12;
+        public float FontSize
+        {
+            get
+            {                
+                _fontsize = FontSizeList.ContainsKey( edSize.Text) ? FontSizeList[edSize.Text] : 12f;
+                return ( (float) _fontsize );
+            }
+            set { _fontsize = (double) value; }
+        }
+
+        private Color _fontcolor = Color.Black;
+        public Color FontColor
+        {
+            get
+            {
+                _fontcolor = colorGrid.Color;
+                return ( _fontcolor );
+            }
+            set
+            {
+                _fontcolor = value;
                 colorGrid.Color = value;
             }
         }
+
+        public bool IsLoading { get; private set; }
 
         private string locale_en = "en-us";
         private string locale_ui = CultureInfo.InstalledUICulture.Name.ToLower();
@@ -103,20 +173,77 @@ namespace NetCharm.Common
             8f, 9f, 10f, 11f, 12f, 14f, 16f, 18f, 20f, 22f, 24f, 26f, 28f, 36f, 48f, 72f
         };
 
+        private Dictionary< string, string> FontStyleList = new Dictionary<string, string>();
         private Dictionary<string, float> FontSizeList = new Dictionary<string, float>();
+        private Dictionary<string, Media.Typeface> TypefaceList = new Dictionary<string, Media.Typeface>();
+        private Dictionary<string, TypefaceInfo> TypefaceInfoList = new Dictionary<string, TypefaceInfo>();
 
         private Media.FontFamily curFamily = Media.Fonts.SystemFontFamilies.FirstOrDefault();
         private string curFamilyName = SystemFonts.DefaultFont.FontFamily.Name;
+        private Media.Typeface curFace = null;
         private string curFaceName = "";
         private float curSize = 12;
 
-        public FontDialog()
+        private void Preview()
+        {
+            if ( IsLoading ) return;
+            if ( curFamily == null ) return;
+            if ( curFace == null ) return;
+
+            List<string> style = new List<string>();
+            style.AddRange( TypeFaceName.Split() );
+            if ( chkEffectUnderline.Checked )
+                style.Add( "Underline" );
+            if ( chkEffectStrikeout.Checked )
+                style.Add( "Strikeout" );
+
+            //foreach(var f in Media.Fonts.SystemFontFamilies)
+            //{
+            //    f.FamilyTypefaces[0]
+            //}
+            //var key = $"{curFamilyName}-{string.Join(" ", style)}";
+            //if( TypefaceInfoList.ContainsKey(key) )
+            //{
+            //    var value = TypefaceInfoList[key].FaceNameLong;
+            //    var face = Media.Fonts.SystemTypefaces.Where( o => { return($"{o.FontFamily}-{o.FaceNames[locale_enkey]}" == value); } );
+            //}
+            //else
+            //{
+            //    var face = Media.Fonts.SystemTypefaces.Where( o => { return($"{o.FontFamily}-{o.FaceNames[locale_enkey]}" == key); } );
+            //}
+
+            string text = "AaBbYyZz";
+            string text_ui = this._("Microsoft Text Test");
+            if ( curFamily.FamilyNames.ContainsKey( locale_uikey ) )
+            {
+                picPreview.Image = text_ui.ToBitmap( curFamilyName, string.Join(" ", style), FontSize, FontColor, Color.Transparent );
+            }
+            else
+            {
+                picPreview.Image = text.ToBitmap( curFamilyName, string.Join( " ", style ), FontSize, FontColor, Color.Transparent );
+            }
+        }
+
+        public FontDialogEx()
         {
             InitializeComponent();
             this.Translate();
 
             locale_enkey = XmlLanguage.GetLanguage( locale_en );
             locale_uikey = XmlLanguage.GetLanguage( locale_ui );
+
+            #region Add Face locale Dict
+            FontStyleList.Clear();
+            FontStyleList[this._( "250" )] = "Thin";
+            FontStyleList[this._( "350" )] = "Regular";
+            FontStyleList[this._( "Light" )] = "Light";
+            FontStyleList[this._( "Regular" )] = "Regular";
+            FontStyleList[this._( "Medium" )] = "Medium";
+            FontStyleList[this._( "Bold" )] = "Bold";
+            FontStyleList[this._( "Black" )] = "Black";
+            FontStyleList[this._( "Oblique" )] = "Oblique";
+            FontStyleList[this._( "Italic" )] = "Italic";
+            #endregion
 
             #region Add font sizes
             if ( locale_uiinfo.TwoLetterISOLanguageName.ToLower().StartsWith( "zh" ) )
@@ -185,6 +312,8 @@ namespace NetCharm.Common
 
         private void FontDialog_Load( object sender, EventArgs e )
         {
+            IsLoading = true;
+
             #region Fetch Font List
             families.Clear();
             foreach ( var ff in Media.Fonts.SystemFontFamilies )
@@ -197,6 +326,19 @@ namespace NetCharm.Common
                 families.Add( item );
             }
             families.Sort( CompareItemText );
+            #endregion
+
+            #region Fetch All Typeface List
+            //TypefaceList.Clear();
+            //foreach(var tf in Media.Fonts.SystemTypefaces)
+            //{
+            //    var family = tf.FontFamily.FamilyNames[locale_enkey];
+            //    var face = tf.FaceNames[locale_enkey];
+            //    TypefaceList[$"{family}-{face}"] = tf;
+            //}
+            //TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames[locale_enkey]}-{o.FaceNames[locale_enkey]}", o => o );
+
+            //TypefaceList = (Dictionary < string, Media.Typeface > )Media.Fonts.SystemTypefaces.Select( face => new { Key = $"{face.FontFamily.FamilyNames[locale_enkey]}-{face.FaceNames[locale_enkey]}", Value = face } );
             #endregion
 
             #region Init Font Family List
@@ -221,9 +363,15 @@ namespace NetCharm.Common
             lvStyle.View = View.Details;
             #endregion
 
+            #region Init Font Color
+            colorGrid.Color = FontColor;
+            #endregion
+
             #region Init Font Size List
             //lbSize.Items.Clear();
+            lbSize.SelectedIndex = 0;
             #endregion
+            IsLoading = false;
         }
 
         private void lvFamily_DrawItem( object sender, DrawListViewItemEventArgs e )
@@ -268,28 +416,24 @@ namespace NetCharm.Common
                         }
                         catch ( Exception )
                         {
-                            //fgColor = Color.LightGray;
-                            //bgColor = Color.LightSalmon;
-
-                            //family.BackColor = bgColor;
                         }
-                        //if(string.Equals(font.Name, familyName, StringComparison.CurrentCultureIgnoreCase))
-                        //{
-                        //    sample = familyName.ToBitmap( font, fgColor );
-                        //}
-                        //else
-                        //{
-                        //    Media.Typeface face = new Media.Typeface( (Media.FontFamily) family.Tag,
-                        //                System.Windows.FontStyles.Normal,
-                        //                System.Windows.FontWeights.Normal,
-                        //                System.Windows.FontStretches.Normal );
-                        //    sample = familyName.ToBitmap( face, 16, fgColor );
-                        //}
-                        Media.Typeface face = new Media.Typeface( (Media.FontFamily) family.Tag,
-                                    System.Windows.FontStyles.Normal,
-                                    System.Windows.FontWeights.Normal,
-                                    System.Windows.FontStretches.Normal );
-                        sample = familyName.ToBitmap( face, 16, fgColor );
+                        if ( string.Equals( font.Name, familyName, StringComparison.CurrentCultureIgnoreCase ) )
+                        {
+                            sample = familyName.ToBitmap( font, fgColor );
+                        }
+                        else
+                        {
+                            Media.Typeface face = new Media.Typeface( (Media.FontFamily) family.Tag,
+                                        System.Windows.FontStyles.Normal,
+                                        System.Windows.FontWeights.Normal,
+                                        System.Windows.FontStretches.Normal );
+                            sample = familyName.ToBitmap( face, 16, fgColor );
+                        }
+                        //Media.Typeface face = new Media.Typeface( (Media.FontFamily) family.Tag,
+                        //            System.Windows.FontStyles.Normal,
+                        //            System.Windows.FontWeights.Normal,
+                        //            System.Windows.FontStretches.Normal );
+                        //sample = familyName.ToBitmap( face, 16, fgColor );
                         if( sample.Width == 1 || sample.Height == 1)
                             sample = familyName.ToBitmap( font, fgColor );
                         familiySamples[familyName] = sample;
@@ -310,6 +454,11 @@ namespace NetCharm.Common
                         //g.DrawImage( sample, fgRect );
                         g.DrawImage( sample.Invert(), fgRect );
                         e.DrawFocusRectangle();
+                    }
+                    else if ( e.Item.Selected )
+                    {
+                        g.FillRectangle( new SolidBrush( Color.BlueViolet ), bgRect );
+                        g.DrawImage( sample.Invert(), fgRect );
                     }
                     else
                     {
@@ -342,40 +491,29 @@ namespace NetCharm.Common
                 curFamily = ff;
                 curFamilyName = ff.FamilyNames.ContainsKey( locale_uikey ) ? ff.FamilyNames[locale_uikey] : ff.FamilyNames[locale_enkey];
 
-                //var typefaces = ff.GetTypefaces();
                 lvStyle.Items.Clear();
                 foreach ( var typeface in ff.FamilyTypefaces )
                 {
                     foreach ( var kv in typeface.AdjustedFaceNames )
                     {
+                        var facename = kv.Value.Replace( "250", "Thin" ).Replace( "350", "Regular" );
                         var item = new ListViewItem(kv.Value);
-                        item.Text = kv.Value;
-                        item.Tag = new Media.Typeface( curFamily, typeface.Style, typeface.Weight, typeface.Stretch );
+                        item.Text = facename._();
+                        item.Tag = facename;
+                        //item.Tag = new Media.Typeface( curFamily, typeface.Style, typeface.Weight, typeface.Stretch );
                         lvStyle.Items.Add( item );
                     }
                 }
-
-                //System.Drawing.FontFamily family = System.Drawing.FontFamily.Families[idx];
-
-                //lbStyle.Items.Clear();
-
-                //if (family.IsStyleAvailable(FontStyle.Underline))
-                //    chkEffectUnderline.Enabled = true;
+                if ( lvStyle.Items.Count > 0 )
+                {
+                    lvStyle.Items[0].Selected = true;
+                    edStyle.Text = lvStyle.Items[0].Text;
+                    //curFace = (Media.Typeface) lvStyle.Items[0].Tag;
+                    //curFaceName = ff.FamilyTypefaces[0].AdjustedFaceNames[locale_enkey];
+                    curFaceName = (string) lvStyle.Items[0].Tag;
+                }
                 //else
-                //    chkEffectUnderline.Enabled = false;
-
-                //if ( family.IsStyleAvailable( FontStyle.Strikeout ) )
-                //    chkEffectStrikeout.Enabled = true;
-                //else
-                //    chkEffectStrikeout.Enabled = false;
-
-                //if ( family.IsStyleAvailable( FontStyle.Regular ) )
-                //    lbStyle.Items.Add( this._("Regular") );
-                //if ( family.IsStyleAvailable( FontStyle.Italic ) )
-                //    lbStyle.Items.Add( this._( "Italic" ) );
-                //if ( family.IsStyleAvailable( FontStyle.Bold ) )
-                //    lbStyle.Items.Add( this._( "Bold" ) );
-
+                //    curFace = null;
                 #endregion
 
                 #region Add family sizes
@@ -385,9 +523,8 @@ namespace NetCharm.Common
                 #region Add family charsets
                 cbCharset.Items.Clear();
 
-
                 #endregion
-
+                Preview();
             }
         }
 
@@ -411,47 +548,38 @@ namespace NetCharm.Common
                     Color fgColor = Color.Black;
                     Color bgColor = Color.AntiqueWhite;
 
-                    var face = (Media.Typeface)e.Item.Tag;
-                    Bitmap sample = e.Item.Text.ToBitmap( face, 16, fgColor );
-                    if ( sample.Width == 1 || sample.Height == 1 )
-                    {
-                        //Font font = new Font(face.FaceNames[XmlLanguage.GetLanguage("en-us")], 16);
-                        var locale = XmlLanguage.GetLanguage("en-us");
-                        var fontname = face.FontFamily.FamilyNames[locale];
-                        var fontstyle = FontStyle.Regular;
-                        var fontstyle_ = face.Style;
-                        var facename = face.FaceNames[locale];
-                        if(face.Weight == System.Windows.FontWeights.Bold)
-                            fontstyle |= FontStyle.Bold;
-                        if( face.Style == System.Windows.FontStyles.Italic || face.Style == System.Windows.FontStyles.Oblique )
-                            fontstyle |= FontStyle.Italic;
-                        //if ( face.Style == System.Windows.TextDecorations.Strikethrough )
-                        //    fontstyle |= FontStyle.Italic;
+                    //Bitmap sample = "[Unspported Font]".ToBitmap( new Font("Arial", 14), fgColor );
+                    Bitmap sample = e.Item.Text.ToBitmap( curFamilyName, (string)e.Item.Tag, 14, fgColor);
 
-                        //if(string.Equals(facename, "Regular", StringComparison.CurrentCultureIgnoreCase))
-                        //{
-                        //    fontstyle |= FontStyle.Regular;
-                        //}
-                        //if ( string.Equals( facename, "Italic", StringComparison.CurrentCultureIgnoreCase ) )
-                        //{
-                        //    fontstyle |= FontStyle.Italic;
-                        //}
-                        //if ( string.Equals( facename, "Bold", StringComparison.CurrentCultureIgnoreCase ) )
-                        //{
-                        //    fontstyle |= FontStyle.Bold;
-                        //}
-                        //if ( string.Equals( facename, "Strikeout", StringComparison.CurrentCultureIgnoreCase ) )
-                        //{
-                        //    fontstyle |= FontStyle.Strikeout;
-                        //}
-                        //if ( string.Equals( facename, "Underline", StringComparison.CurrentCultureIgnoreCase ) )
-                        //{
-                        //    fontstyle |= FontStyle.Underline;
-                        //}
+                    //var face = (Media.Typeface)e.Item.Tag;
 
-                        Font font = new Font(fontname, 16, fontstyle);
-                        sample = e.Item.Text.ToBitmap( font, fgColor );
-                    }
+                    //#region First try using GDI Plus
+                    //var locale = XmlLanguage.GetLanguage("en-us");
+                    //if ( face.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
+                    //    locale = locale_uikey;
+                    //var fontname = face.FontFamily.FamilyNames[locale];
+                    //var fontstyle = FontStyle.Regular;
+                    //var fontstyle_ = face.Style;
+                    //var facename = face.FaceNames[locale_enkey];
+                    //if ( face.Weight == System.Windows.FontWeights.Bold )
+                    //    fontstyle |= FontStyle.Bold;
+                    //if ( face.Style == System.Windows.FontStyles.Italic || face.Style == System.Windows.FontStyles.Oblique )
+                    //    fontstyle |= FontStyle.Italic;
+                    //Font font = new Font(fontname, 16, fontstyle);
+                    //#endregion
+
+                    //if (string.Equals(font.Name, fontname, StringComparison.CurrentCultureIgnoreCase ))
+                    //{
+                    //    sample = e.Item.Text.ToBitmap( font, fgColor );
+                    //}
+                    //else
+                    //{
+                    //    sample = e.Item.Text.ToBitmap( face, 16, fgColor );
+                    //    if ( sample.Width == 1 || sample.Height == 1 )
+                    //    {
+                    //        sample = e.Item.Text.ToBitmap( font, fgColor );
+                    //    }
+                    //}
 
                     RectangleF fgRect = new RectangleF(e.Bounds.X+2, e.Bounds.Y+2, sample.Width-4, e.Bounds.Height-4);
                     if ( sample.Height > fgRect.Height )
@@ -469,47 +597,67 @@ namespace NetCharm.Common
                         g.DrawImage( sample.Invert(), fgRect );
                         e.DrawFocusRectangle();
                     }
+                    else if ( e.Item.Selected )
+                    {
+                        g.FillRectangle( new SolidBrush( Color.BlueViolet ), bgRect );
+                        g.DrawImage( sample.Invert(), fgRect );
+                    }
                     else
                     {
-                        g.FillRectangle( new SolidBrush( bgColor ), bgRect );
+                        g.FillRectangle( new SolidBrush( e.Item.BackColor ), bgRect );
                         g.DrawImage( sample, fgRect );
                     }
                 }
             }
-
-            //float emSize = dpiY * 16 / 72f;
-            //FontStyle style = FontStyle.Regular;
-
-            ////curFamily.FamilyMaps
-
-            //_font = new Font( curFamilyName, emSize, style );
-
-            ////option 1
-            //Media.FontFamily mfont = new Media.FontFamily(_font.Name);
-            ////option 2 does the same thing
-            //Media.FontFamilyConverter conv = new Media.FontFamilyConverter();
-            //Media.FontFamily mfont1 = conv.ConvertFromString(_font.Name) as Media.FontFamily;
-            //conv.ConvertToInvariantString( curFamily );
-            ////option 3
-            //Media.FontFamily mfont2 = Media.Fonts.SystemFontFamilies.Where(x => x.Source == _font.Name).FirstOrDefault();
-
         }
 
         private void lvStyle_SelectedIndexChanged( object sender, EventArgs e )
         {
-            var face = (Media.Typeface)lvStyle.FocusedItem.Tag;
-            if ( face.FaceNames.ContainsKey( locale_uikey ) )
-                curFaceName = face.FaceNames[locale_uikey];
-            else
-                curFaceName = face.FaceNames[locale_enkey];
+            if( lvStyle.FocusedItem is ListViewItem)
+            {
+                curFaceName = (string)lvStyle.FocusedItem.Tag;
 
-            edStyle.Text = this._( curFaceName );
+                //curFace = face;
+                edStyle.Text = this._( curFaceName );
+
+                //if ( curFace.Style == System.Windows.FontStyles.Italic )
+                //    _fontstyle |= FontStyle.Italic;
+                //if ( curFace.Weight == System.Windows.FontWeights.Bold )
+                //    _fontstyle |= FontStyle.Bold;
+
+                Preview();
+            }
         }
 
         private void lbSize_SelectedIndexChanged( object sender, EventArgs e )
         {
             if( lbSize.SelectedItem != null)
                 edSize.Text = (string) lbSize.SelectedItem;
+            FontSize = FontSizeList[edSize.Text];
+            Preview();
+        }
+
+        private void colorGrid_ColorChanged( object sender, EventArgs e )
+        {
+            _fontcolor = colorGrid.Color;
+            Preview();
+        }
+
+        private void chkEffectUnderline_CheckedChanged( object sender, EventArgs e )
+        {
+            if ( chkEffectUnderline.Checked ) _fontstyle &= ~FontStyle.Underline;
+            if ( chkEffectStrikeout.Checked ) _fontstyle &= ~FontStyle.Strikeout;
+
+            Preview();
         }
     }
+
+    internal class TypefaceInfo
+    {
+        internal string FamilyName;
+        internal string FaceName;
+        internal string AdjustFaceName;
+        internal string FaceNameLong;
+    }
+
 }

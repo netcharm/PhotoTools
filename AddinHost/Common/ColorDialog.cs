@@ -10,7 +10,7 @@ using ExtensionMethods;
 
 namespace NetCharm.Common
 {
-    public partial class ColorDialog : Form
+    public partial class ColorDialogEx : Form
     {
         public event EventHandler Apply;
 
@@ -26,7 +26,7 @@ namespace NetCharm.Common
             set { btnApply.Visible = value; }
         }
 
-        public ColorDialog()
+        public ColorDialogEx()
         {
             InitializeComponent();
             //AddinUtils.Translate( null, this );

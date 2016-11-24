@@ -387,6 +387,9 @@
   <data name="picPreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 112</value>
   </data>
+  <data name="picPreview.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>CenterImage</value>
+  </data>
   <data name="picPreview.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -577,7 +580,7 @@
     <value>Font</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FontDialog</value>
+    <value>FontDialogEx</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

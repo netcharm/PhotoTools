@@ -1,6 +1,6 @@
 ﻿namespace NetCharm.Common
 {
-    partial class FontDialog
+    partial class FontDialogEx
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FontDialog));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FontDialogEx));
             this.layoutFont = new System.Windows.Forms.TableLayoutPanel();
             this.edFamily = new System.Windows.Forms.TextBox();
             this.lvFamily = new System.Windows.Forms.ListView();
@@ -41,11 +41,11 @@
             this.chkEffectUnderline = new System.Windows.Forms.CheckBox();
             this.chkEffectStrikeout = new System.Windows.Forms.CheckBox();
             this.grpSample = new System.Windows.Forms.GroupBox();
+            this.picPreview = new System.Windows.Forms.PictureBox();
             this.cbCharset = new System.Windows.Forms.ComboBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
-            this.picPreview = new System.Windows.Forms.PictureBox();
             this.layoutFont.SuspendLayout();
             this.grpEffect.SuspendLayout();
             this.grpSample.SuspendLayout();
@@ -133,18 +133,21 @@
             this.colorGrid.Columns = 12;
             this.colorGrid.Name = "colorGrid";
             this.colorGrid.Palette = Cyotek.Windows.Forms.ColorPalette.Paint;
+            this.colorGrid.ColorChanged += new System.EventHandler(this.colorGrid_ColorChanged);
             // 
             // chkEffectUnderline
             // 
             resources.ApplyResources(this.chkEffectUnderline, "chkEffectUnderline");
             this.chkEffectUnderline.Name = "chkEffectUnderline";
             this.chkEffectUnderline.UseVisualStyleBackColor = true;
+            this.chkEffectUnderline.CheckedChanged += new System.EventHandler(this.chkEffectUnderline_CheckedChanged);
             // 
             // chkEffectStrikeout
             // 
             resources.ApplyResources(this.chkEffectStrikeout, "chkEffectStrikeout");
             this.chkEffectStrikeout.Name = "chkEffectStrikeout";
             this.chkEffectStrikeout.UseVisualStyleBackColor = true;
+            this.chkEffectStrikeout.CheckedChanged += new System.EventHandler(this.chkEffectUnderline_CheckedChanged);
             // 
             // grpSample
             // 
@@ -153,6 +156,12 @@
             resources.ApplyResources(this.grpSample, "grpSample");
             this.grpSample.Name = "grpSample";
             this.grpSample.TabStop = false;
+            // 
+            // picPreview
+            // 
+            resources.ApplyResources(this.picPreview, "picPreview");
+            this.picPreview.Name = "picPreview";
+            this.picPreview.TabStop = false;
             // 
             // cbCharset
             // 
@@ -182,13 +191,7 @@
             this.btnApply.Name = "btnApply";
             this.btnApply.UseVisualStyleBackColor = true;
             // 
-            // picPreview
-            // 
-            resources.ApplyResources(this.picPreview, "picPreview");
-            this.picPreview.Name = "picPreview";
-            this.picPreview.TabStop = false;
-            // 
-            // FontDialog
+            // FontDialogEx
             // 
             this.AcceptButton = this.btnOk;
             resources.ApplyResources(this, "$this");
@@ -201,7 +204,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FontDialog";
+            this.Name = "FontDialogEx";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.FontDialog_Load);

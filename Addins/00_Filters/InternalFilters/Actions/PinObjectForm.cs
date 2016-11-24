@@ -24,7 +24,7 @@ namespace InternalFilters.Actions
         private Image picObject = null;
         private Image picText = null;
 
-        private NetCharm.Common.ColorDialog dlgColor = null;
+        private NetCharm.Common.ColorDialogEx dlgColor = null;
 
         private PinObjectMode mode = PinObjectMode.Picture;
         internal ParamItem ParamMode
@@ -511,7 +511,7 @@ namespace InternalFilters.Actions
 
         private void btnOpenFont_Click( object sender, EventArgs e )
         {
-            NetCharm.Common.FontDialog dlgFont = new NetCharm.Common.FontDialog();
+            NetCharm.Common.FontDialogEx dlgFont = new NetCharm.Common.FontDialogEx();
             dlgFont.Apply += new System.EventHandler( dlgFont_Apply );
             //dlgFont.Color = color;
             if ( dlgFont.ShowDialog() == DialogResult.OK )
@@ -564,7 +564,7 @@ namespace InternalFilters.Actions
             string c = option.TextColor;
             Color color = option.TextColor.ToColor();
 
-            dlgColor = new NetCharm.Common.ColorDialog();
+            dlgColor = new NetCharm.Common.ColorDialogEx();
             dlgColor.Apply += new System.EventHandler( dlgColor_Apply );
             dlgColor.Color = color;
             if ( dlgColor.ShowDialog() == DialogResult.OK )

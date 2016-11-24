@@ -30,6 +30,7 @@
         {
             this.btnFontDialog = new System.Windows.Forms.Button();
             this.btnColorDialog = new System.Windows.Forms.Button();
+            this.btnFontDialogSystem = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnFontDialog
@@ -52,11 +53,22 @@
             this.btnColorDialog.UseVisualStyleBackColor = true;
             this.btnColorDialog.Click += new System.EventHandler(this.btnColorDialog_Click);
             // 
+            // btnFontDialogSystem
+            // 
+            this.btnFontDialogSystem.Location = new System.Drawing.Point(160, 131);
+            this.btnFontDialogSystem.Name = "btnFontDialogSystem";
+            this.btnFontDialogSystem.Size = new System.Drawing.Size(75, 42);
+            this.btnFontDialogSystem.TabIndex = 3;
+            this.btnFontDialogSystem.Text = "Font Dialog";
+            this.btnFontDialogSystem.UseVisualStyleBackColor = true;
+            this.btnFontDialogSystem.Click += new System.EventHandler(this.btnFontDialogSystem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 273);
+            this.Controls.Add(this.btnFontDialogSystem);
             this.Controls.Add(this.btnColorDialog);
             this.Controls.Add(this.btnFontDialog);
             this.Name = "MainForm";
@@ -69,6 +81,7 @@
 
         private System.Windows.Forms.Button btnFontDialog;
         private System.Windows.Forms.Button btnColorDialog;
+        private System.Windows.Forms.Button btnFontDialogSystem;
     }
 }
 

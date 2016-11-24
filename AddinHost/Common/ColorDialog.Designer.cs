@@ -1,6 +1,6 @@
 ﻿namespace NetCharm.Common
 {
-    partial class ColorDialog
+    partial class ColorDialogEx
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorDialog));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorDialogEx));
             this.colorWheel = new Cyotek.Windows.Forms.ColorWheel();
             this.colorManager = new Cyotek.Windows.Forms.ColorEditorManager();
             this.colorEditor = new Cyotek.Windows.Forms.ColorEditor();

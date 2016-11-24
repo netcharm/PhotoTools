@@ -233,7 +233,7 @@ namespace NetCharm.Image.Addins
         public static DialogResult ShowColorPicker( ref Color color)
         {
             DialogResult result = DialogResult.None;
-            NetCharm.Common.ColorDialog dlgColor = new NetCharm.Common.ColorDialog();
+            NetCharm.Common.ColorDialogEx dlgColor = new NetCharm.Common.ColorDialogEx();
             Translate( null, dlgColor );
             dlgColor.Color = color;
             if( dlgColor.ShowDialog() == DialogResult.OK )
@@ -1378,6 +1378,20 @@ namespace NetCharm.Image.Addins
                     config = (T) serializer.Deserialize( json, typeof( T ) );
                 }
             }
+            else
+            {
+                string path = Assembly.GetEntryAssembly().Location;
+                string domain = Path.GetFileNameWithoutExtension(path);
+                string addinRoot = Path.GetDirectoryName( Path.GetFullPath( path ) );
+                string configFile = Path.Combine(addinRoot, jsonFile);
+                if ( File.Exists( configFile ) )
+                {
+                    string json = File.ReadAllText( configFile );
+                    JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                    config = (T) serializer.Deserialize( json, typeof( T ) );
+                }
+
+            }
             return ( config );
         }
 
@@ -1395,6 +1409,17 @@ namespace NetCharm.Image.Addins
             if ( addin is IAddin )
             {
                 string addinRoot = Path.GetDirectoryName( Path.GetFullPath( addin.Location ) );
+                string configFile = Path.Combine(addinRoot, jsonFile);
+
+                JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                var json = serializer.Serialize(config);
+                File.WriteAllText( configFile, json );
+            }
+            else
+            {
+                string path = Assembly.GetEntryAssembly().Location;
+                string domain = Path.GetFileNameWithoutExtension(path);
+                string addinRoot = Path.GetDirectoryName( Path.GetFullPath( path ) );
                 string configFile = Path.Combine(addinRoot, jsonFile);
 
                 JavaScriptSerializer serializer  = new JavaScriptSerializer();

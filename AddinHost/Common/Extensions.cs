@@ -19,6 +19,14 @@ namespace ExtensionMethods
 {
     public static class NetCharmExtensionMethods
     {
+        #region CultrueInfo Pre-Defined
+        private static string locale_en = "en-us";
+        private static string locale_ui = CultureInfo.InstalledUICulture.Name.ToLower();
+
+        private static XmlLanguage locale_enkey = XmlLanguage.GetLanguage( locale_en );
+        private static XmlLanguage locale_uikey = XmlLanguage.GetLanguage( locale_ui );
+        #endregion
+
         #region Form I18N Extension
         /// <summary>
         /// Fake function for gettext collection msgid
@@ -85,7 +93,7 @@ namespace ExtensionMethods
         /// <returns></returns>
         public static string _( this Form form, string text )
         {
-            return(_( text ));
+            return ( _( text ) );
         }
         #endregion
 
@@ -223,7 +231,7 @@ namespace ExtensionMethods
         #endregion
 
         #region Test Image Color Info
-        public static bool IsAlpha(this Image image)
+        public static bool IsAlpha( this Image image )
         {
             return ( AlphaFormat.Contains( image.PixelFormat ) );
         }
@@ -276,13 +284,43 @@ namespace ExtensionMethods
 
         #region Image EXIF info
         public static bool IsExif( this Image image )
-        {            
+        {
             return ( ExifFormat.Contains( image.RawFormat ) );
         }
 
         #endregion
 
         #region Image Convert Routines
+        static private Dictionary<string, Media.Typeface> TypefaceList = new Dictionary<string, Media.Typeface>();
+        
+        public static FontStyle GetFontStyle(this Media.Typeface face, bool underline=false, bool strikeout=false)
+        {
+            FontStyle result = FontStyle.Regular;
+            var regular = false;
+            if(face is Media.Typeface )
+            {
+                //if ( face.Style == System.Windows.FontStyles.Italic )
+                //    result |= FontStyle.Italic;
+                //if ( face.Weight == System.Windows.FontWeights.Bold )
+                //    result |= FontStyle.Bold;
+                
+                foreach(var s in face.FaceNames[locale_enkey].Split())
+                {
+                    if ( string.Equals( s, "Bold" ) )
+                        result |= FontStyle.Bold;
+                    else if ( string.Equals( s, "Italic" ) )
+                        result |= FontStyle.Italic;
+                    else if ( string.Equals( s, "Regular" ) )
+                        regular = true;
+                }
+                if ( !regular ) result &= ~FontStyle.Regular;
+            }
+            if ( underline ) result |= FontStyle.Underline;
+            if ( strikeout ) result |= FontStyle.Strikeout;
+
+            return ( result );
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -315,6 +353,18 @@ namespace ExtensionMethods
             Icon newIcon = Icon.FromHandle(Hicon);
 
             return ( newIcon );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="font"></param>
+        /// <param name="fgColor"></param>
+        /// <returns></returns>
+        public static Bitmap ToBitmap( this string text, Font font, Color fgColor )
+        {
+            return ( ToBitmap( text, font, fgColor, Color.Transparent ) );
         }
 
         /// <summary>
@@ -384,16 +434,28 @@ namespace ExtensionMethods
         /// 
         /// </summary>
         /// <param name="text"></param>
-        /// <param name="font"></param>
+        /// <param name="fontface"></param>
+        /// <param name="fontsize"></param>
         /// <param name="fgColor"></param>
         /// <returns></returns>
-        public static Bitmap ToBitmap( this string text, Font font, Color fgColor)
-        {
-            return ( ToBitmap( text, font, fgColor, Color.Transparent ) );
-        }
-
         public static Bitmap ToBitmap( this string text, Media.Typeface fontface, float fontsize, Color fgColor )
         {
+            return ( ToBitmap( text, fontface, fontsize, fgColor, Color.Transparent ) );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="fontface"></param>
+        /// <param name="fontsize"></param>
+        /// <param name="fgColor"></param>
+        /// <param name="bgColor"></param>
+        /// <returns></returns>
+        public static Bitmap ToBitmap( this string text, Media.Typeface fontface, float fontsize, Color fgColor, Color bgColor, bool underline = false, bool strikeout = false )
+        {
+            if ( !( fontface is Media.Typeface ) ) return ( null );
+
             #region Calc fontface screen size
             float dpiX = 96f;
             float dpiY = 96f;
@@ -404,46 +466,57 @@ namespace ExtensionMethods
             //}
 
             float emSize = fontsize * dpiY / 72f;
+            //float emSize = 12 * dpiY / 72f;
             #endregion
 
             #region Create FormattedText
-            var locale_enkey = XmlLanguage.GetLanguage("en-us");
-            var locale_uikey = XmlLanguage.GetLanguage(CultureInfo.InstalledUICulture.TextInfo.CultureName.ToLower());
-
             var culture = CultureInfo.InstalledUICulture;
-            if(!fontface.FaceNames.ContainsKey( locale_uikey ) )
-                culture = new CultureInfo("en-us");
+            //if ( !fontface.FaceNames.ContainsKey( locale_uikey ) )
+            if ( !fontface.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
+                culture = new CultureInfo( "en-us" );
             var flow = culture.TextInfo.IsRightToLeft ? System.Windows.FlowDirection.RightToLeft : System.Windows.FlowDirection.LeftToRight;
 
             Media.Brush foreground = new  Media.SolidColorBrush(fgColor.ToMediaColor());
 
             Media.FormattedText formattedText = new Media.FormattedText( text,
-                culture, flow,
+                //CultureInfo.InvariantCulture,
+                CultureInfo.CurrentUICulture,
+                flow,
                 fontface, emSize, foreground);
-                //new Media.NumberSubstitution(Media.NumberCultureSource.Text,
-                //    culture,
-                //    Media.NumberSubstitutionMethod.AsCulture)
+            //new Media.NumberSubstitution(Media.NumberCultureSource.Text,
+            //    culture,
+            //    Media.NumberSubstitutionMethod.AsCulture)
             //);
+            formattedText.Trimming = System.Windows.TextTrimming.None;
+            //formattedText.TextAlignment = System.Windows.TextAlignment.Right;
+            formattedText.TextAlignment = System.Windows.TextAlignment.Left;
             #endregion
 
             #region Set FontStyle
             var fontStyle = System.Windows.FontStyles.Normal;
             var fontWeight = System.Windows.FontWeights.Normal;
-            var textDecorations  = System.Windows.TextDecorations.Baseline;
+            var textDecorations = new System.Windows.TextDecorationCollection();
+            if ( underline )
+                textDecorations.Add( System.Windows.TextDecorations.Underline );
+            if ( strikeout )
+                textDecorations.Add( System.Windows.TextDecorations.Strikethrough );
 
+            fontStyle = fontface.Style;
+            fontWeight = fontface.Weight;
             #endregion
 
             #region FormattedText Style
-            //formattedText.SetFontStyle( fontStyle );
-            //formattedText.SetFontWeight( fontWeight );
-            //formattedText.SetTextDecorations( textDecorations );
+            formattedText.SetFontStyle( fontStyle );
+            formattedText.SetFontWeight( fontWeight );
+            formattedText.SetTextDecorations( textDecorations );
             #endregion
 
             #region Draw the FormattedText on a Drawing Visual
             //formattedText.MaxTextWidth = rectangle.Width / ( dpiX / 96.0 );
             //formattedText.MaxTextHeight = rectangle.Height / ( dpiY / 96.0 );
-            formattedText.MaxTextWidth = 200;
-            formattedText.MaxTextHeight = ( emSize + 4 ) / ( dpiY / 96.0 );
+            formattedText.MaxTextWidth = 1280;
+            formattedText.MaxTextHeight = 700;
+            //formattedText.MaxTextHeight = ( emSize + 4 ) / ( dpiY / 96.0 );
 
             Media.DrawingVisual drawingVisual = new Media.DrawingVisual();
             using ( var drawingContext = drawingVisual.RenderOpen() )
@@ -457,7 +530,7 @@ namespace ExtensionMethods
             var pixelWidth = Convert.ToInt32( Math.Ceiling(formattedText.Width * (dpiX / 96.0)));
             var pixelHeight = Convert.ToInt32( Math.Ceiling(formattedText.Height * (dpiY / 96.0)));
             if ( pixelWidth == 0 || pixelHeight == 0 )
-                return (new Bitmap(1,1));
+                return ( new Bitmap( 1, 1 ) );
 
             var rtb = new Media.Imaging.RenderTargetBitmap(
               pixelWidth, pixelHeight,
@@ -468,6 +541,11 @@ namespace ExtensionMethods
 
             #region Create a System.Drawing.Bitmap 
             var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppPArgb );
+            // Draw background color
+            using ( var g = Graphics.FromImage( bitmap ) )
+            {
+                g.FillRectangle( new SolidBrush( bgColor ), new Rectangle( 0, 0, bitmap.Width, bitmap.Height ) );
+            }
             #endregion
 
             #region Copy the RenderTargetBitmap pixels into the bitmap's pixel buffer
@@ -480,6 +558,167 @@ namespace ExtensionMethods
             bitmap.UnlockBits( pdata );
             #endregion
             return ( bitmap );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="fontfamily"></param>
+        /// <param name="fontstyle"></param>
+        /// <param name="fontsize"></param>
+        /// <param name="fgColor"></param>
+        /// <returns></returns>
+        public static Bitmap ToBitmap( this string text, string fontfamily, string fontstyle, float fontsize, Color fgColor )
+        {
+            return ( ToBitmap( text, fontfamily, fontstyle, fontsize, fgColor, Color.Transparent ) );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="fontfamily"></param>
+        /// <param name="fontstyle"></param>
+        /// <param name="fontsize"></param>
+        /// <param name="fgColor"></param>
+        /// <param name="bgColor"></param>
+        /// <returns></returns>
+        public static Bitmap ToBitmap( this string text, string fontfamily, string fontstyle, float fontsize, Color fgColor, Color bgColor )
+        {
+            var styleFont = FontStyle.Regular;
+            //var underline = false;
+            //var strikeout = false;
+
+            #region Set font style
+            string[] styles = fontstyle.Split();
+            foreach ( var style in styles )
+            {
+                if ( string.Equals( style.Trim(), "Italic", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    styleFont |= FontStyle.Italic;
+                }
+                else if ( string.Equals( style.Trim(), "Oblique", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    styleFont |= FontStyle.Italic;
+                }
+                else if ( string.Equals( style.Trim(), "Bold", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    styleFont |= FontStyle.Bold;
+                }
+                else if ( string.Equals( style.Trim(), "Underline", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    styleFont |= FontStyle.Underline;
+                    //underline = true;
+                }
+                else if ( string.Equals( style.Trim(), "Strikeout", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    styleFont |= FontStyle.Strikeout;
+                    //strikeout = true;
+                }
+            }
+            #endregion
+
+            var emSize = fontsize * 96/72f;
+
+            #region Draw Text to Bitmap
+            Font font = new Font(fontfamily, emSize, styleFont);
+            if ( string.Equals( font.Name, fontfamily, StringComparison.CurrentCultureIgnoreCase ) )
+            {
+                return ( ToBitmap( text, font, fgColor, bgColor ) );
+            }
+            else
+            {
+                var family = new Media.FontFamily(fontfamily);
+                var familytypeface = family.FamilyTypefaces[0];
+
+                var style = styleFont.HasFlag( FontStyle.Italic ) ? System.Windows.FontStyles.Italic : System.Windows.FontStyles.Normal;
+                var weight = styleFont.HasFlag( FontStyle.Bold ) ? System.Windows.FontWeights.Bold : System.Windows.FontWeights.Normal;
+                var textDecorations = new System.Windows.TextDecorationCollection();
+                if ( styleFont.HasFlag( FontStyle.Strikeout ) )
+                    textDecorations.Add( System.Windows.TextDecorations.Strikethrough );
+                if ( styleFont.HasFlag( FontStyle.Underline ) )
+                    textDecorations.Add( System.Windows.TextDecorations.Underline );
+
+                Media.FontFamily fallback = new Media.FontFamily(SystemFonts.DefaultFont.FontFamily.Name);
+
+                Media.Typeface face = null;
+
+                var key = $"{fontfamily}-{fontstyle}";
+                if( TypefaceList.Count<=0)
+                {
+                    TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames[locale_enkey]}-{o.FaceNames[locale_enkey]}", o => o );
+                }
+                else if(TypefaceList.ContainsKey(key))
+                {
+                    face = TypefaceList[key];
+                }
+                else
+                {
+                    var faces = Media.Fonts.SystemTypefaces.AsParallel().Where( o => { return($"{o.FontFamily}-{o.FaceNames[locale_enkey]}" == key); } );
+                    if ( faces.Count() > 0 )
+                        face = faces.First();
+                    else
+                        face = new Media.Typeface( family, style, weight, familytypeface.Stretch, fallback );
+
+                    TypefaceList[key] = face;
+                }
+
+                return ( ToBitmap( text, face, emSize, fgColor, bgColor ) );
+            }
+            #endregion
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="font"></param>
+        /// <returns></returns>
+        public static Media.Typeface ToTypeface( this Font font )
+        {
+            var family = new Media.FontFamily(font.FontFamily.Name);
+
+            var style = font.Style.HasFlag( FontStyle.Italic ) ? System.Windows.FontStyles.Italic : System.Windows.FontStyles.Normal;
+            var weight = font.Style.HasFlag( FontStyle.Bold ) ? System.Windows.FontWeights.Bold : System.Windows.FontWeights.Normal;
+            var textDecorations = new System.Windows.TextDecorationCollection();
+            if ( font.Style.HasFlag( FontStyle.Strikeout ) )
+                textDecorations.Add( System.Windows.TextDecorations.Strikethrough );
+            if ( font.Style.HasFlag( FontStyle.Underline ) )
+                textDecorations.Add( System.Windows.TextDecorations.Underline );
+
+            Media.FontFamily fallback = new Media.FontFamily(SystemFonts.DefaultFont.FontFamily.Name);
+            Media.Typeface result = new Media.Typeface(family, style, weight, System.Windows.FontStretches.Medium, fallback);
+            return ( result );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fontface"></param>
+        /// <param name="size"></param>
+        /// <param name="underline"></param>
+        /// <param name="strikeout"></param>
+        /// <returns></returns>
+        public static Font ToFont( this Media.Typeface fontface, float size, bool underline = false, bool strikeout = false )
+        {
+            var family = fontface.FontFamily.FamilyNames.ContainsKey(locale_uikey) ?
+                         fontface.FontFamily.FamilyNames[locale_uikey] :
+                         fontface.FontFamily.FamilyNames[locale_enkey];
+
+            var style = FontStyle.Regular;
+            if ( fontface.Style != System.Windows.FontStyles.Normal )
+                style |= FontStyle.Italic;
+            if ( fontface.Weight != System.Windows.FontWeights.Normal )
+                style |= FontStyle.Bold;
+            if ( underline )
+                style |= FontStyle.Underline;
+            if ( strikeout )
+                style |= FontStyle.Strikeout;
+
+            var emSize = size * 72/96f;
+
+            Font result = new Font(family, emSize, style);
+            return ( result );
         }
 
         /// <summary>
@@ -541,9 +780,9 @@ namespace ExtensionMethods
         /// </summary>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static Bitmap ToBitmap( this Media.Imaging.BitmapSource source, bool copyMethod=false )
+        public static Bitmap ToBitmap( this Media.Imaging.BitmapSource source, bool copyMethod = false )
         {
-            if(copyMethod)
+            if ( copyMethod )
             {
                 Bitmap bmp = new Bitmap(
                 source.PixelWidth,
