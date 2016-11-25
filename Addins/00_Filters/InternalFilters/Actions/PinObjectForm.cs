@@ -160,7 +160,14 @@ namespace InternalFilters.Actions
                     case PinObjectMode.Text:
                         if ( !string.IsNullOrEmpty( option.Text ) )
                         {
-                            picText = addin.Apply( AddinUtils.TextToBitmap32( option.Text, option.TextFont, option.TextFontStyle, option.TextColor.ToColor() ) );
+                            picText = option.Text.ToBitmap(
+                                option.TextFont,
+                                option.TextFace,
+                                option.TextSize,
+                                option.TextColor.ToColor()
+                            ) as Image;
+
+                            //picText = addin.Apply( AddinUtils.TextToBitmap32( option.Text, option.TextFont, option.TextFontStyle, option.TextColor.ToColor() ) );
                             if ( picText.Width > imgText.Width || picText.Height > imgText.Height )
                                 imgText.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
                             else
@@ -511,40 +518,26 @@ namespace InternalFilters.Actions
 
         private void btnOpenFont_Click( object sender, EventArgs e )
         {
-            NetCharm.Common.FontDialog dlgFont = new NetCharm.Common.FontDialog();
-            dlgFont.Apply += new System.EventHandler( dlgFont_Apply );
-            //dlgFont.Color = color;
-            if ( dlgFont.ShowDialog() == DialogResult.OK )
+            dlgFontEx.UseFont = false;
+            dlgFontEx.FamilyName = option.TextFont;
+            dlgFontEx.TypefaceName = option.TextFace;
+            dlgFontEx.Size = option.TextSize;
+            dlgFontEx.Color = option.TextColor.ToColor();
+            if ( dlgFontEx.ShowDialog() == DialogResult.OK )
             {
-                //option.TextColor = dlgColor.Color.ToHtml();
+                fontApplyTest = false;
+
+                option.TextFont = dlgFontEx.FamilyName;
+                option.TextFace = dlgFontEx.TypefaceName;
+                option.TextSize = dlgFontEx.Size;
+                option.TextColor = dlgFontEx.Color.ToHtml();
+
                 Preview();
             }
             else
             {
-                //option.TextColor = c;
                 Preview();
             }
-
-            //FontDialog dlgFont = new FontDialog();
-            //dlgFont.Apply += new System.EventHandler( dlgFont_Apply );
-
-            ////dlgFont.ShowColor = true;
-            //dlgFont.ShowApply = true;
-            //dlgFont.ShowEffects = true;
-            //dlgFont.AllowScriptChange = true;
-            //dlgFont.AllowSimulations = true;
-            //dlgFont.AllowVectorFonts = true;
-            ////dlgFont.AllowVerticalFonts = true;
-            
-            //dlgFont.Font = AddinUtils.StrToFont( option.TextFont, option.TextFontStyle );
-            //dlgFont.Color = option.TextColor.ToColor();
-            //if ( dlgFont.ShowDialog() == DialogResult.OK )
-            //{
-            //    option.TextFont = dlgFont.Font.ToString();
-            //    //option.TextColor = dlgFont.Color.ToHtml();
-            //    option.TextFontStyle = dlgFont.Font.Style;
-            //    Preview();
-            //}
             fontApplyTest = false;
         }
 
@@ -552,10 +545,12 @@ namespace InternalFilters.Actions
         {
             fontApplyTest = true;
 
-            option.TextFont = dlgFont.Font.ToString();
-            option.TextFontStyle = dlgFont.Font.Style;
-
+            option.TextFont = dlgFontEx.FamilyName;
+            option.TextFace = dlgFontEx.TypefaceName;
+            option.TextSize = dlgFontEx.Size;
+            option.TextColor = dlgFontEx.Color.ToHtml();
             Preview();
+
             fontApplyTest = false;
         }
 

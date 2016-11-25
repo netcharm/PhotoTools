@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Mono.Addins;
+using ExtensionMethods;
 using NetCharm.Image.Addins;
 
 
@@ -48,6 +49,8 @@ namespace InternalFilters.Actions
         public string Text = string.Empty;
         public string TextColor = ColorTranslator.ToHtml( Color.Transparent );
         public string TextFont = string.Empty;
+        public string TextFace = string.Empty;
+        public float TextSize = 12f;
         public FontStyle TextFontStyle = FontStyle.Regular;
 
         /// <summary>
@@ -529,7 +532,8 @@ namespace InternalFilters.Actions
             Bitmap result = new Bitmap(dst);
             if ( !string.IsNullOrEmpty( option.Text ) )
             {
-                option.ImageCache = AddinUtils.TextToBitmap32( option.Text, option.TextFont, option.TextFontStyle, ColorTranslator.FromHtml( option.TextColor ) );
+                //option.ImageCache = AddinUtils.TextToBitmap32( option.Text, option.TextFont, option.TextFontStyle, ColorTranslator.FromHtml( option.TextColor ) );
+                option.ImageCache = option.Text.ToBitmap( option.TextFont, option.TextFace, option.TextSize, option.TextColor.ToColor() );
                 result = DrawPicture( dst, option, objectOnly );
             }
             return ( result );

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Image.AddinHost\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-25 13:04+0800\n"
-"PO-Revision-Date: 2016-11-25 13:04+0800\n"
+"POT-Creation-Date: 2016-11-26 00:06+0800\n"
+"PO-Revision-Date: 2016-11-26 00:06+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -122,50 +122,50 @@ msgstr ""
 msgid "%"
 msgstr ""
 
-#: Common\Extensions.cs:1004 Common\FontDialog.cs:344
+#: Common\Extensions.cs:1011 Common\FontDialog.cs:351
 msgid "Thin"
 msgstr ""
 
-#: Common\Extensions.cs:1005 Common\FontDialog.cs:345
+#: Common\Extensions.cs:1012 Common\FontDialog.cs:352
 msgid "Light"
 msgstr ""
 
-#: Common\Extensions.cs:1006 Common\FontDialog.cs:346
+#: Common\Extensions.cs:1013 Common\FontDialog.cs:353
 msgid "Regular"
 msgstr ""
 
-#: Common\Extensions.cs:1007 Common\FontDialog.cs:347
+#: Common\Extensions.cs:1014 Common\FontDialog.cs:354
 msgid "Medium"
 msgstr ""
 
-#: Common\Extensions.cs:1008 Common\FontDialog.cs:348
+#: Common\Extensions.cs:1015 Common\FontDialog.cs:355
 msgid "SemiBold"
 msgstr ""
 
-#: Common\Extensions.cs:1009 Common\FontDialog.cs:349
+#: Common\Extensions.cs:1016 Common\FontDialog.cs:356
 msgid "Bold"
 msgstr ""
 
-#: Common\Extensions.cs:1010 Common\FontDialog.cs:350
+#: Common\Extensions.cs:1017 Common\FontDialog.cs:357
 msgid "Black"
 msgstr ""
 
-#: Common\Extensions.cs:1011 Common\FontDialog.cs:351
+#: Common\Extensions.cs:1018 Common\FontDialog.cs:358
 msgid "Oblique"
 msgstr ""
 
-#: Common\Extensions.cs:1012 Common\FontDialog.cs:352
+#: Common\Extensions.cs:1019 Common\FontDialog.cs:359
 msgid "Italic"
 msgstr ""
 
-#: Common\FontDialog.cs:204
+#: Common\FontDialog.cs:211
 msgid "Culture Text"
 msgstr ""
 
-#: Common\FontDialog.cs:342
+#: Common\FontDialog.cs:349
 msgid "250"
 msgstr ""
 
-#: Common\FontDialog.cs:343
+#: Common\FontDialog.cs:350
 msgid "350"
 msgstr ""

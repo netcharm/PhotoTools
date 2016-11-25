@@ -22,39 +22,39 @@ msgstr ""
 
 #: MainForm.Designer.cs:101
 msgid "File Name"
-msgstr "ÎÄ¼şÃû³Æ"
+msgstr "æ–‡ä»¶åç§°"
 
 #: MainForm.Designer.cs:106
 msgid "File Path"
-msgstr "ÎÄ¼şÂ·¾¶"
+msgstr "æ–‡ä»¶è·¯å¾„"
 
 #: MainForm.Designer.cs:126
 msgid "Add"
-msgstr "Ìí¼Ó"
+msgstr "æ·»åŠ "
 
 #: MainForm.Designer.cs:138
 msgid "Remove"
-msgstr "ÒÆ³ı"
+msgstr "ç§»é™¤"
 
 #: MainForm.Designer.cs:145
 msgid "Clear"
-msgstr "Çå¿Õ"
+msgstr "æ¸…ç©º"
 
 #: MainForm.Designer.cs:157
 msgid "Mask Selected"
-msgstr "Ñ¡¶¨µÄÎÄ¼şÖ´ĞĞ²Ù×÷"
+msgstr "é€‰å®šçš„æ–‡ä»¶æ‰§è¡Œæ“ä½œ"
 
 #: MainForm.Designer.cs:164
 msgid "Mask All"
-msgstr "È«²¿ÎÄ¼şÖ®ĞÄ²Ù×÷"
+msgstr "å…¨éƒ¨æ–‡ä»¶æ‰§è¡Œæ“ä½œ"
 
 #: MainForm.Designer.cs:186
 msgid "Face Mask Current Selected Image"
-msgstr "Ñ¡ÖĞµÄÍ¼ÏñÕÚÁ³"
+msgstr "é€‰ä¸­çš„å›¾åƒé®è„¸"
 
 #: MainForm.Designer.cs:198
 msgid "Save Current Preview"
-msgstr "±£´æµ±Ç°Ô¤ÀÀ"
+msgstr "ä¿å­˜å½“å‰é¢„è§ˆ"
 
 #: MainForm.Designer.cs:212
 msgid "Erase some error mask or display required face in preview box"

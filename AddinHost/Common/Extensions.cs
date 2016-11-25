@@ -499,17 +499,17 @@ namespace ExtensionMethods
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="image"></param>
+        /// <param name="src"></param>
         /// <param name="mode"></param>
         /// <returns></returns>
-        public static Rectangle GetOpaqueBound( this Bitmap image, OpaqueMode mode = OpaqueMode.Alpha )
+        public static Rectangle GetOpaqueBound( this Bitmap src, OpaqueMode mode = OpaqueMode.Alpha )
         {
-            Rectangle result = new Rectangle(0, 0, image.Width, image.Height);
+            Rectangle result = new Rectangle(0, 0, src.Width, src.Height);
 
-            LockBitmap lockbmp = new LockBitmap(image);
+            LockBitmap lockbmp = new LockBitmap(src);
             //锁定Bitmap，通过Pixel访问颜色
             lockbmp.LockBits();
-
+            #region Get Ref Color value
             Color cRef = lockbmp.GetPixel(0, 0);
             switch ( mode )
             {
@@ -523,17 +523,19 @@ namespace ExtensionMethods
                     cRef = lockbmp.GetPixel( lockbmp.Width - 1, lockbmp.Height - 1 );
                     break;
             }
+            #endregion
 
+            #region Check pixels value with Ref Value
             bool content = false;
             int xMax = 0;
             int xMin = lockbmp.Width-1;
             int yMax = 0;
             int yMin = lockbmp.Height-1;
             Color c = lockbmp.GetPixel( 0, 0 );
-            for ( var y = 1; y < lockbmp.Height; y++ )
+            for ( var y = 0; y < lockbmp.Height; y++ )
             {
                 content = false;
-                for ( var x = 1; x < lockbmp.Width; x++ )
+                for ( var x = 0; x < lockbmp.Width; x++ )
                 {
                     c = lockbmp.GetPixel( x, y );
                     switch ( mode )
@@ -568,17 +570,21 @@ namespace ExtensionMethods
                     }
                 }
             }
-            xMin = xMin < 0 ? 0 : xMin;
-            xMax = xMax >= lockbmp.Width ? lockbmp.Width - 1 : xMax;
-            yMin = yMin < 0 ? 0 : yMin;
-            yMax = yMax >= lockbmp.Height ? lockbmp.Height - 1 : yMax;
-            result.X = xMin;
-            result.Y = yMin;
-            result.Width = xMax - xMin;
-            result.Height = yMax - yMin;
+            #endregion
 
             //从内存解锁Bitmap
             lockbmp.UnlockBits();
+
+            #region adjust bound size
+            xMin = xMin < 0 ? 0 : xMin;
+            xMax = xMax >= src.Width ? src.Width - 1 : xMax;
+            yMin = yMin < 0 ? 0 : yMin;
+            yMax = yMax >= src.Height ? src.Height - 1 : yMax;
+            result.X = xMin;
+            result.Y = yMin;
+            result.Width = ( xMax - xMin ) < 0 ? 0 : xMax - xMin;
+            result.Height = ( yMax - yMin ) < 0 ? 0 : yMax - yMin;
+            #endregion
 
             return ( result );
         }
@@ -733,11 +739,11 @@ namespace ExtensionMethods
             #region Calc fontface screen size
             float dpiX = 96f;
             float dpiY = 96f;
-            //using ( Graphics g = Graphics.FromHwnd( IntPtr.Zero ) )
-            //{
-            //    dpiX = g.DpiX;
-            //    dpiY = g.DpiY;
-            //}
+            using ( Graphics g = Graphics.FromHwnd( IntPtr.Zero ) )
+            {
+                dpiX = g.DpiX;
+                dpiY = g.DpiY;
+            }
 
             float emSize = fontsize * dpiY / 72f;
             //float emSize = 12 * dpiY / 72f;
@@ -795,6 +801,7 @@ namespace ExtensionMethods
             Media.DrawingVisual drawingVisual = new Media.DrawingVisual();
             using ( var drawingContext = drawingVisual.RenderOpen() )
             {
+                //drawingContext.PushEffect( new Media.Effects.BlurBitmapEffect(), null );
                 drawingContext.DrawText( formattedText, new System.Windows.Point( 0, 0 ) );
                 drawingContext.Close();
             }
@@ -904,18 +911,37 @@ namespace ExtensionMethods
                 fontstyle = fontstyle.Replace( "250", "Thin" ).Replace( "350", "Regular" );
                 fontstyle = fontstyle.Replace( "SemiBold", "W6" ).Trim();
                 var key = $"{fontfamily}*{fontstyle}";
+                //var key = $"{family.FamilyNames.First().Value}*{fontstyle}*{family.FamilyTypefaces.Last().AdjustedFaceNames.First().Value}";
                 if ( TypefaceList.Count <= 0 )
                 {
-                    TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames[locale_enkey]}*{o.FaceNames[locale_enkey]}", o => o );
+                    //TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames[locale_enkey]}*{o.FaceNames[locale_enkey]}", o => o );
+                    //TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames.First().Value}*{o.FaceNames.First().Value}*{o.FontFamily.FamilyTypefaces.Last().AdjustedFaceNames.First().Value}", o => o );
+                    //TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames.First().Value}*{o.FaceNames.First().Value}*{o.Weight}*{o.Style}", o => o );
+                    StringBuilder sb = new StringBuilder();
+                    foreach ( var f in Media.Fonts.SystemTypefaces )
+                    {
+                        var keyf = $"{f.FontFamily.FamilyNames.First().Value}*{f.FaceNames.First().Value}";
+                        //if( TypefaceList.ContainsKey(keyf))
+                        sb.AppendLine( keyf );
+                        TypefaceList[keyf] = f;
+                    }
+                    File.WriteAllText( "typefaces.txt", sb.ToString() );
                 }
 
                 if ( TypefaceList.ContainsKey( key ) )
                 {
                     face = TypefaceList[key];
                 }
+
+                //if(face == null)
+                //{
+                //    var faces = TypefaceList.Where( o => {return( o.Key.StartsWith($"{key}*{o.Value.Weight}*{o.Value.Style}")); } );
+                //    if ( faces.Count() > 0 ) face = faces.First().Value;
+                //}
                 else
                 {
-                    var faces = Media.Fonts.SystemTypefaces.AsParallel().Where( o => { return($"{o.FontFamily}*{o.FaceNames[locale_enkey]}" == key); } );
+                    //var faces = Media.Fonts.SystemTypefaces.AsParallel().Where( o => { return($"{o.FontFamily}*{o.FaceNames[locale_enkey]}" == key); } );
+                    var faces = Media.Fonts.SystemTypefaces.AsParallel().Where( o => { return($"{o.FontFamily}*{o.FaceNames.First().Value}" == key); } );
                     if ( faces.Count() > 0 )
                         face = faces.First();
                     else
@@ -924,7 +950,8 @@ namespace ExtensionMethods
 
                         faces = Media.Fonts.SystemTypefaces.AsParallel().Where( o =>
                         {
-                            return ( $"{o.FontFamily}*{o.FaceNames[locale_enkey]}" == key0 );
+                            //return ( $"{o.FontFamily}*{o.FaceNames[locale_enkey]}" == key0 );
+                            return ( $"{o.FontFamily}*{o.FaceNames.First().Value}" == key0 );
                         } );
                         if ( faces.Count() > 0 )
                             face = faces.First();
@@ -1192,7 +1219,6 @@ namespace ExtensionMethods
             }
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -1275,6 +1301,83 @@ namespace ExtensionMethods
                              a );
             }
             return ( dst );
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="color"></param>
+        /// <param name="width"></param>
+        /// <returns></returns>
+        public static Bitmap Shadow(this Bitmap src, Color color, int width)
+        {
+            Bitmap result = new Bitmap(src);
+            #region Get DPI 
+            float dpiX = 96f;
+            float dpiY = 96f;
+
+            using ( Graphics g = Graphics.FromHwnd( IntPtr.Zero ) )
+            {
+                dpiX = g.DpiX;
+                dpiY = g.DpiY;
+            }
+            #endregion
+
+            int offset = 4*width;
+
+            #region Draw source bitmap to DrawingVisual
+            Media.DrawingVisual drawingVisual = new Media.DrawingVisual();
+            var effect = new Media.Effects.DropShadowEffect();
+            effect.BlurRadius = 50;
+            effect.Color = Media.Colors.Lime;
+            effect.Opacity = 0.67;
+            effect.ShadowDepth = width;
+            drawingVisual.Effect = effect;
+            using ( var drawingContext = drawingVisual.RenderOpen() )
+            {
+                //drawingContext.PushEffect( new Media.Effects.BlurBitmapEffect(), null );
+                System.Windows.Rect dRect = new System.Windows.Rect(2*width, 2*width, src.Width, src.Height);
+                drawingContext.DrawImage( src.ToBitmapSource(), dRect );
+                drawingContext.Close();
+            }
+            #endregion
+
+            #region Render the DrawingVisual into a RenderTargetBitmap 
+            var rtb = new Media.Imaging.RenderTargetBitmap(
+              src.Width + offset, src.Height * offset,
+              dpiX, dpiY,
+              Media.PixelFormats.Pbgra32 );
+            rtb.Render( drawingVisual );
+            #endregion
+
+            #region Create a System.Drawing.Bitmap 
+            var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppPArgb );
+            #endregion
+
+            #region Copy the RenderTargetBitmap pixels into the bitmap's pixel buffer
+            var pdata = bitmap.LockBits(
+                new Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                ImageLockMode.WriteOnly,
+                bitmap.PixelFormat);
+            rtb.CopyPixels( System.Windows.Int32Rect.Empty,
+                pdata.Scan0, pdata.Stride * pdata.Height, pdata.Stride );
+            bitmap.UnlockBits( pdata );
+            #endregion
+
+            #region Crop Opaque
+            var rect = bitmap.GetOpaqueBound();
+            rect.Width = rect.Width < 0 ? 1 : rect.Width + 2;
+            rect.Height = rect.Height < 0 ? 1 : rect.Height + 2;
+            var dst =  new Bitmap(rect.Width, rect.Height, bitmap.PixelFormat);
+            using ( var g = Graphics.FromImage( dst ) )
+            {
+                g.DrawImage( bitmap, 0, 0, rect, GraphicsUnit.Pixel );
+            }
+            #endregion
+
+
+            return ( result );
         }
         #endregion
 

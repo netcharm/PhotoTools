@@ -51,6 +51,13 @@ namespace NetCharm.Common.Controls
             }
         }
 
+        private bool _usefont = true;
+        public bool UseFont
+        {
+            get { return ( _usefont ); }
+            set { _usefont = value; }
+        }
+
         [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
         [EditorBrowsable( EditorBrowsableState.Never)]
         [Browsable( false )]
@@ -89,6 +96,7 @@ namespace NetCharm.Common.Controls
                 //return ( _family.FamilyNames[locale_uikey] ); 
             }
             //set { _family = new Media.FontFamily( value ); }
+            set { dialog.FontFamily = value; }
         }
 
         [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
@@ -102,6 +110,15 @@ namespace NetCharm.Common.Controls
                 _typeface = font.ToTypeface();
                 return ( _typeface ); }
             set { _typeface = value; }
+        }
+
+        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [EditorBrowsable( EditorBrowsableState.Never )]
+        [Browsable( false )]
+        public string TypefaceName
+        {
+            get { return ( dialog.FontFace ); }
+            set { dialog.FontFace = value; }
         }
 
         [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
@@ -121,6 +138,15 @@ namespace NetCharm.Common.Controls
                 _size = value;
                 dialog.FontSize = value;
             }
+        }
+
+        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [EditorBrowsable( EditorBrowsableState.Never)]
+        [Browsable( false )]
+        public Color Color
+        {
+            get { return (dialog.FontColor); }
+            set { dialog.FontColor = value; }
         }
 
         [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
@@ -168,6 +194,7 @@ namespace NetCharm.Common.Controls
             {
                 dialog.Apply += new System.EventHandler( this.Apply );
             }
+            dialog.UseFont = UseFont;
             dialog.ShowApply = _apply;
             dialog.Font = _font;
             dialog.FontSize = (float)_size;

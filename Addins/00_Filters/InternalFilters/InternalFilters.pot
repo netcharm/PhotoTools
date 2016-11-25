@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: Actions\PinObject.cs:323 Actions\PinObject.cs:328 Actions\PinObject.cs:333
+#: Actions\PinObject.cs:326 Actions\PinObject.cs:331 Actions\PinObject.cs:336
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-25 13:04+0800\n"
-"PO-Revision-Date: 2016-11-25 13:04+0800\n"
+"POT-Creation-Date: 2016-11-26 00:06+0800\n"
+"PO-Revision-Date: 2016-11-26 00:06+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 
 #: Actions\ResizeForm.resx:187 -> btnOk.Text.value
-#: Actions\PinObjectForm.resx:169 Effects\BlurForm.resx:481
+#: Actions\PinObjectForm.resx:488 Effects\BlurForm.resx:481
 #: Effects\GrayscaleForm.resx:163 Effects\HslFilterForm.resx:139
 #: Effects\HueFilterForm.resx:191 Effects\InvertForm.resx:214
 #: Effects\SharpenForm.resx:337 Actions\RotateForm.resx:364
@@ -31,7 +31,7 @@ msgid "OK"
 msgstr ""
 
 #: Actions\ResizeForm.resx:211 -> btnCancel.Text.value
-#: Actions\PinObjectForm.resx:199 Effects\BlurForm.resx:508
+#: Actions\PinObjectForm.resx:518 Effects\BlurForm.resx:508
 #: Effects\GrayscaleForm.resx:190 Effects\HslFilterForm.resx:166
 #: Effects\HueFilterForm.resx:218 Effects\InvertForm.resx:238
 #: Effects\SharpenForm.resx:364 Actions\RotateForm.resx:388
@@ -63,69 +63,69 @@ msgstr ""
 msgid "Double-Click to Open Picture"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:343 -> chkEnabled.Text.value
-msgid "Enabled"
-msgstr ""
-
-#: Actions\PinObjectForm.resx:376 -> chkTile.Text.value
-msgid "Tile"
-msgstr ""
-
-#: Actions\PinObjectForm.resx:409 -> btnPosRandom.ToolTip.value
-msgid "Random Put Object To Image"
-msgstr ""
-
-#: Actions\PinObjectForm.resx:544 -> grpCommonSetting.Text.value
-msgid "Common"
-msgstr ""
-
-#: Actions\PinObjectForm.resx:616 -> btnEffectDown.ToolTip.value
-msgid "Move Down Selected Effect"
-msgstr ""
-
-#: Actions\PinObjectForm.resx:649 -> btnEffectUp.ToolTip.value
-msgid "Move Up Selected Effect"
-msgstr ""
-
-#: Actions\PinObjectForm.resx:682 -> btnEffectRemove.ToolTip.value
-msgid "Remove Effect"
-msgstr ""
-
-#: Actions\PinObjectForm.resx:715 -> btnEffectAdd.ToolTip.value
-msgid "Add Effect"
-msgstr ""
-
-#: Actions\PinObjectForm.resx:775 -> btnOpenPic.ToolTip.value
+#: Actions\PinObjectForm.resx:172 -> btnOpenPic.ToolTip.value
 msgid "Open Picture"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:799 -> tabPagePicture.Text.value
-#: Actions\PinObject.cs:327 Actions\PinObject.cs:329
-msgid "Picture"
-msgstr ""
-
-#: Actions\PinObjectForm.resx:832 -> btnColorPicker.ToolTip.value
+#: Actions\PinObjectForm.resx:205 -> btnColorPicker.ToolTip.value
 msgid "Select Color"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:889 -> btnOpenFont.ToolTip.value
+#: Actions\PinObjectForm.resx:238 -> btnOpenFont.ToolTip.value
 msgid "Select Font"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:940 -> tabPageText.Text.value
-#: Actions\PinObject.cs:322
-msgid "Text"
+#: Actions\PinObjectForm.resx:271 -> btnEffectDown.ToolTip.value
+msgid "Move Down Selected Effect"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:967 -> tabPageTag.Text.value
-msgid "SmartTag"
+#: Actions\PinObjectForm.resx:304 -> btnEffectUp.ToolTip.value
+msgid "Move Up Selected Effect"
 msgstr ""
 
-#: Actions\PinObjectForm.resx:1070 -> btnOriginal.ToolTip.value
+#: Actions\PinObjectForm.resx:337 -> btnEffectRemove.ToolTip.value
+msgid "Remove Effect"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:370 -> btnEffectAdd.ToolTip.value
+msgid "Add Effect"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:403 -> btnPosRandom.ToolTip.value
+msgid "Random Put Object To Image"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:458 -> btnOriginal.ToolTip.value
 #: Effects\BlurForm.resx:164 Effects\GrayscaleForm.resx:243
 #: Effects\HslFilterForm.resx:236 Effects\HueFilterForm.resx:164
 #: Effects\InvertForm.resx:161 Effects\SharpenForm.resx:167
 msgid "View Original"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:662 -> chkEnabled.Text.value
+msgid "Enabled"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:695 -> chkTile.Text.value
+msgid "Tile"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:830 -> grpCommonSetting.Text.value
+msgid "Common"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:920 -> tabPagePicture.Text.value
+#: Actions\PinObject.cs:330 Actions\PinObject.cs:332
+msgid "Picture"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:995 -> tabPageText.Text.value
+#: Actions\PinObject.cs:325
+msgid "Text"
+msgstr ""
+
+#: Actions\PinObjectForm.resx:1022 -> tabPageTag.Text.value
+msgid "SmartTag"
 msgstr ""
 
 #: Effects\BlurForm.resx:191 -> btnModeBox.Text.value
@@ -293,27 +293,27 @@ msgstr ""
 msgid "Rotate"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:335
+#: Actions\PinObjectForm.Designer.cs:331
 msgid "Offset Y"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:364
+#: Actions\PinObjectForm.Designer.cs:360
 msgid "Offset X"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:393
+#: Actions\PinObjectForm.Designer.cs:389
 msgid "Margin Y"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:422
+#: Actions\PinObjectForm.Designer.cs:418
 msgid "Margin X"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:458
+#: Actions\PinObjectForm.Designer.cs:454
 msgid "Blend"
 msgstr ""
 
-#: Actions\PinObjectForm.Designer.cs:487
+#: Actions\PinObjectForm.Designer.cs:483
 msgid "Opaque"
 msgstr ""
 
@@ -437,27 +437,27 @@ msgstr ""
 msgid "Hue"
 msgstr ""
 
-#: Actions\PinObject.cs:110
+#: Actions\PinObject.cs:113
 msgid "Pin"
 msgstr ""
 
-#: Actions\PinObject.cs:122
+#: Actions\PinObject.cs:125
 msgid "Decoration"
 msgstr ""
 
-#: Actions\PinObject.cs:129
+#: Actions\PinObject.cs:132
 msgid "Decoration Image"
 msgstr ""
 
-#: Actions\PinObject.cs:324
+#: Actions\PinObject.cs:327
 msgid "Simple Text"
 msgstr ""
 
-#: Actions\PinObject.cs:332
+#: Actions\PinObject.cs:335
 msgid "Smart Tag"
 msgstr ""
 
-#: Actions\PinObject.cs:334
+#: Actions\PinObject.cs:337
 msgid "Rich-Contents Text"
 msgstr ""
 
