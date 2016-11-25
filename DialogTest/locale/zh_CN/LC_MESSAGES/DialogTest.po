@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DialogTest\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-24 17:27+0800\n"
+"POT-Creation-Date: 2016-11-25 13:04+0800\n"
 "PO-Revision-Date: 2016-11-24 17:27+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -20,14 +20,30 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: MainForm.Designer.cs:42 MainForm.Designer.cs:62
+#: MainForm.Designer.cs:46
 msgid "Font Dialog"
 msgstr ""
 
-#: MainForm.Designer.cs:52
+#: MainForm.Designer.cs:56
 msgid "Color Dialog"
 msgstr ""
 
-#: MainForm.Designer.cs:75
+#: MainForm.Designer.cs:66
+msgid "System Font Dialog"
+msgstr ""
+
+#: MainForm.Designer.cs:76
+msgid "Color Dialog Ex"
+msgstr ""
+
+#: MainForm.Designer.cs:92
+msgid "Font Dialog Ex"
+msgstr ""
+
+#: MainForm.Designer.cs:102
+msgid "System Color Dialog"
+msgstr ""
+
+#: MainForm.Designer.cs:120
 msgid "Dialog Test"
 msgstr ""

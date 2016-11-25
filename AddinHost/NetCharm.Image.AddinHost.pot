@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Image.AddinHost\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-24 22:38+0800\n"
-"PO-Revision-Date: 2016-11-24 22:38+0800\n"
+"POT-Creation-Date: 2016-11-25 13:04+0800\n"
+"PO-Revision-Date: 2016-11-25 13:04+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,54 +20,58 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: Common\ColorDialog.resx:256 -> btnApply.Text.value
-#: Common\FontDialog.resx:643
+#: Common\ColorDialog.resx:268 -> btnApply.Text.value
+#: Common\FontDialog.resx:649
 msgid "Apply"
 msgstr ""
 
-#: Common\ColorDialog.resx:286 -> btnCancel.Text.value
-#: Common\FontDialog.resx:616 Common\SelectAddinForm.resx:193
+#: Common\ColorDialog.resx:298 -> btnCancel.Text.value
+#: Common\FontDialog.resx:622 Common\SelectAddinForm.resx:193
 msgid "Cancel"
 msgstr ""
 
-#: Common\ColorDialog.resx:316 -> btnOk.Text.value Common\FontDialog.resx:589
+#: Common\ColorDialog.resx:328 -> btnOk.Text.value Common\FontDialog.resx:595
 #: Common\SelectAddinForm.resx:169
 msgid "OK"
 msgstr ""
 
-#: Common\ColorDialog.resx:367 -> $this.Text.value
+#: Common\ColorDialog.resx:376 -> btnPalette.Text.value
+msgid "Palette"
+msgstr ""
+
+#: Common\ColorDialog.resx:403 -> $this.Text.value
 msgid "Color Picker"
 msgstr ""
 
-#: Common\FontDialog.resx:316 -> chkEffectUnderline.Text.value
+#: Common\FontDialog.resx:319 -> chkEffectUnderline.Text.value
 msgid "Underline"
 msgstr ""
 
-#: Common\FontDialog.resx:340 -> chkEffectStrikeout.Text.value
+#: Common\FontDialog.resx:343 -> chkEffectStrikeout.Text.value
 msgid "Strikeout"
 msgstr ""
 
-#: Common\FontDialog.resx:367 -> grpEffect.Text.value
+#: Common\FontDialog.resx:370 -> grpEffect.Text.value
 msgid "Effect"
 msgstr ""
 
-#: Common\FontDialog.resx:421 -> grpSample.Text.value
+#: Common\FontDialog.resx:427 -> grpSample.Text.value
 msgid "Sample"
 msgstr ""
 
-#: Common\FontDialog.resx:472 -> lblFamily.Text.value
+#: Common\FontDialog.resx:478 -> lblFamily.Text.value
 msgid "Font Family"
 msgstr ""
 
-#: Common\FontDialog.resx:502 -> lblFace.Text.value
+#: Common\FontDialog.resx:508 -> lblFace.Text.value
 msgid "Font Face"
 msgstr ""
 
-#: Common\FontDialog.resx:532 -> lblSize.Text.value
+#: Common\FontDialog.resx:538 -> lblSize.Text.value
 msgid "Font Size"
 msgstr ""
 
-#: Common\FontDialog.resx:670 -> $this.Text.value
+#: Common\FontDialog.resx:676 -> $this.Text.value
 msgid "Font"
 msgstr ""
 
@@ -118,50 +122,50 @@ msgstr ""
 msgid "%"
 msgstr ""
 
-#: Common\FontDialog.cs:198
-msgid "Culture Text"
-msgstr ""
-
-#: Common\FontDialog.cs:219
-msgid "250"
-msgstr ""
-
-#: Common\FontDialog.cs:220
-msgid "350"
-msgstr ""
-
-#: Common\FontDialog.cs:221
+#: Common\Extensions.cs:1004 Common\FontDialog.cs:344
 msgid "Thin"
 msgstr ""
 
-#: Common\FontDialog.cs:222
+#: Common\Extensions.cs:1005 Common\FontDialog.cs:345
 msgid "Light"
 msgstr ""
 
-#: Common\FontDialog.cs:223
+#: Common\Extensions.cs:1006 Common\FontDialog.cs:346
 msgid "Regular"
 msgstr ""
 
-#: Common\FontDialog.cs:224
+#: Common\Extensions.cs:1007 Common\FontDialog.cs:347
 msgid "Medium"
 msgstr ""
 
-#: Common\FontDialog.cs:225
+#: Common\Extensions.cs:1008 Common\FontDialog.cs:348
 msgid "SemiBold"
 msgstr ""
 
-#: Common\FontDialog.cs:226
+#: Common\Extensions.cs:1009 Common\FontDialog.cs:349
 msgid "Bold"
 msgstr ""
 
-#: Common\FontDialog.cs:227
+#: Common\Extensions.cs:1010 Common\FontDialog.cs:350
 msgid "Black"
 msgstr ""
 
-#: Common\FontDialog.cs:228
+#: Common\Extensions.cs:1011 Common\FontDialog.cs:351
 msgid "Oblique"
 msgstr ""
 
-#: Common\FontDialog.cs:229
+#: Common\Extensions.cs:1012 Common\FontDialog.cs:352
 msgid "Italic"
+msgstr ""
+
+#: Common\FontDialog.cs:204
+msgid "Culture Text"
+msgstr ""
+
+#: Common\FontDialog.cs:342
+msgid "250"
+msgstr ""
+
+#: Common\FontDialog.cs:343
+msgid "350"
 msgstr ""

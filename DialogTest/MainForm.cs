@@ -19,14 +19,30 @@ namespace DialogTest
             InitializeComponent();
         }
 
+        private void btnColorDialogSystem_Click( object sender, EventArgs e )
+        {
+            ColorDialog dlgColor = new ColorDialog();
+            if ( dlgColor.ShowDialog() == DialogResult.OK )
+            {
+                btnColorDialogSystem.BackColor = dlgColor.Color;
+            }
+        }
+
+        private void dlgColor_Apply( object sender, EventArgs e )
+        {
+            fontApplyTest = true;
+
+            //string c = option.TextColor;
+
+            //option.TextColor = dlgColor.Color.ToHtml();
+            //Preview();
+            //option.TextColor = c;
+
+            fontApplyTest = false;
+        }
+
         private void btnColorDialog_Click( object sender, EventArgs e )
         {
-            //NetCharm.Common.Controls.ColorDialogEx dlgColorEx = new NetCharm.Common.Controls.ColorDialogEx();
-            if(dlgColorEx.ShowDialog() == DialogResult.OK)
-            {
-
-            }
-
             NetCharm.Common.ColorDialog dlgColor = new NetCharm.Common.ColorDialog();
             dlgColor.Apply += new System.EventHandler( dlgColor_Apply );
             dlgColor.Color = Color.Red;
@@ -42,16 +58,34 @@ namespace DialogTest
             }
         }
 
-        private void dlgColor_Apply( object sender, EventArgs e )
+        private void dlgColorEx_Apply( object sender, EventArgs e )
+        {
+            MessageBox.Show( "Color Apply" );
+        }
+
+        private void btnColorDilogEx_Click( object sender, EventArgs e )
+        {
+            //NetCharm.Common.Controls.ColorDialogEx dlgColorEx = new NetCharm.Common.Controls.ColorDialogEx();
+            if ( dlgColorEx.ShowDialog( Color.Blue ) == DialogResult.OK )
+            {
+                var colors = dlgColorEx.CustomColors;
+            }
+        }
+
+        private void btnFontDialogSystem_Click( object sender, EventArgs e )
+        {
+            FontDialog dlgFont = new FontDialog();
+            dlgFont.ShowDialog();
+        }
+
+        private void dlgFont_Apply( object sender, EventArgs e )
         {
             fontApplyTest = true;
 
-            //string c = option.TextColor;
-
-            //option.TextColor = dlgColor.Color.ToHtml();
+            //option.TextFont = dlgFont.Font.ToString();
+            //option.TextFontStyle = dlgFont.Font.Style;
+            MessageBox.Show( "Font Apply" );
             //Preview();
-            //option.TextColor = c;
-
             fontApplyTest = false;
         }
 
@@ -75,26 +109,21 @@ namespace DialogTest
             return;
         }
 
-        private void dlgFont_Apply( object sender, EventArgs e )
+        private void btnFontDialogEx_Click( object sender, EventArgs e )
         {
-            fontApplyTest = true;
-
-            //option.TextFont = dlgFont.Font.ToString();
-            //option.TextFontStyle = dlgFont.Font.Style;
-
-            //Preview();
-            fontApplyTest = false;
+            dlgFontEx.Font = SystemFonts.DefaultFont;
+            dlgFontEx.Size = 12;
+            if ( dlgFontEx.ShowDialog() == DialogResult.OK )
+            {
+                //option.TextColor = dlgColor.Color.ToHtml();
+                //Preview();
+            }
+            else
+            {
+                //option.TextColor = c;
+                //Preview();
+            }
         }
 
-        private void btnFontDialogSystem_Click( object sender, EventArgs e )
-        {
-            FontDialog dlgFont = new FontDialog();
-            dlgFont.ShowDialog();
-        }
-
-        private void dlgColorEx_Apply( object sender, EventArgs e )
-        {
-            MessageBox.Show( "Apply" );
-        }
     }
 }

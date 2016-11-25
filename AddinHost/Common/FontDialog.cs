@@ -490,6 +490,11 @@ namespace NetCharm.Common
             Preview();
         }
 
+        private void btnApply_Click( object sender, EventArgs e )
+        {
+            this.Apply?.Invoke( this, e );
+        }
+
         private void lvFamily_DrawItem( object sender, DrawListViewItemEventArgs e )
         {
             if(e.ItemIndex>=0 && e.ItemIndex<lvFamily.VirtualListSize)
@@ -647,7 +652,8 @@ namespace NetCharm.Common
         {
             if( lbSize.SelectedItem != null)
                 edSize.Text = (string) lbSize.SelectedItem;
-            FontSize = FontSizeList[edSize.Text];
+            if( FontSizeList.ContainsKey( edSize.Text ) )
+                FontSize = FontSizeList[edSize.Text];
             Preview();
         }
 

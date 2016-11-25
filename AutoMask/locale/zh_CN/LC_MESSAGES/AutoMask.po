@@ -22,39 +22,39 @@ msgstr ""
 
 #: MainForm.Designer.cs:101
 msgid "File Name"
-msgstr ""
+msgstr "文件名称"
 
 #: MainForm.Designer.cs:106
 msgid "File Path"
-msgstr ""
+msgstr "文件路径"
 
 #: MainForm.Designer.cs:126
 msgid "Add"
-msgstr ""
+msgstr "添加"
 
 #: MainForm.Designer.cs:138
 msgid "Remove"
-msgstr ""
+msgstr "移除"
 
 #: MainForm.Designer.cs:145
 msgid "Clear"
-msgstr ""
+msgstr "清空"
 
 #: MainForm.Designer.cs:157
 msgid "Mask Selected"
-msgstr ""
+msgstr "选定的文件执行操作"
 
 #: MainForm.Designer.cs:164
 msgid "Mask All"
-msgstr ""
+msgstr "全部文件之心操作"
 
 #: MainForm.Designer.cs:186
 msgid "Face Mask Current Selected Image"
-msgstr ""
+msgstr "选中的图像遮脸"
 
 #: MainForm.Designer.cs:198
 msgid "Save Current Preview"
-msgstr ""
+msgstr "保存当前预览"
 
 #: MainForm.Designer.cs:212
 msgid "Erase some error mask or display required face in preview box"

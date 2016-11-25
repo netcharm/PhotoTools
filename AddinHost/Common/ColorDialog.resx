@@ -138,7 +138,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorWheel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <metadata name="colorManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -162,10 +162,22 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorEditor.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="colorGrid.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <metadata name="cmPalette.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>143, 17</value>
+  </metadata>
+  <data name="cmPalette.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 4</value>
+  </data>
+  <data name="&gt;&gt;cmPalette.Name" xml:space="preserve">
+    <value>cmPalette</value>
+  </data>
+  <data name="&gt;&gt;cmPalette.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorGrid.Location" type="System.Drawing.Point, System.Drawing">
     <value>235, 13</value>
@@ -193,7 +205,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorGrid.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="lightnessColorSlider.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 13</value>
@@ -214,13 +226,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lightnessColorSlider.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="screenColorPicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="screenColorPicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>472, 109</value>
+    <value>472, 156</value>
   </data>
   <data name="screenColorPicker.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 64</value>
@@ -235,7 +247,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;screenColorPicker.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="btnApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -244,7 +256,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnApply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>467, 73</value>
+    <value>467, 72</value>
   </data>
   <data name="btnApply.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -265,7 +277,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnApply.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -295,7 +307,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="btnOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -325,7 +337,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOk.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="colorPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -349,7 +361,31 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
+  </data>
+  <data name="btnPalette.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 101</value>
+  </data>
+  <data name="btnPalette.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnPalette.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="btnPalette.Text" xml:space="preserve">
+    <value>Palette</value>
+  </data>
+  <data name="&gt;&gt;btnPalette.Name" xml:space="preserve">
+    <value>btnPalette</value>
+  </data>
+  <data name="&gt;&gt;btnPalette.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPalette.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnPalette.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

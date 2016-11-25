@@ -160,10 +160,10 @@
     <value>宋体, 12pt</value>
   </data>
   <data name="lvFamily.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 45</value>
+    <value>3, 47</value>
   </data>
   <data name="lvFamily.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 132</value>
+    <value>209, 140</value>
   </data>
   <data name="lvFamily.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -211,10 +211,10 @@
     <value>宋体, 14pt</value>
   </data>
   <data name="lvStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 45</value>
+    <value>218, 47</value>
   </data>
   <data name="lvStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 132</value>
+    <value>120, 140</value>
   </data>
   <data name="lvStyle.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -262,10 +262,10 @@
     <value>12</value>
   </data>
   <data name="lbSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>344, 45</value>
+    <value>344, 47</value>
   </data>
   <data name="lbSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 132</value>
+    <value>69, 140</value>
   </data>
   <data name="lbSize.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -289,7 +289,7 @@
     <value>10, 43</value>
   </data>
   <data name="colorGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 111</value>
+    <value>188, 110</value>
   </data>
   <data name="colorGrid.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -358,10 +358,10 @@
     <value>Fill</value>
   </data>
   <data name="grpEffect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 183</value>
+    <value>3, 193</value>
   </data>
   <data name="grpEffect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 160</value>
+    <value>209, 158</value>
   </data>
   <data name="grpEffect.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -415,7 +415,7 @@
     <value>Fill</value>
   </data>
   <data name="grpSample.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 183</value>
+    <value>218, 193</value>
   </data>
   <data name="grpSample.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 132</value>
@@ -442,7 +442,7 @@
     <value>Fill</value>
   </data>
   <data name="cbCharset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 321</value>
+    <value>218, 331</value>
   </data>
   <data name="cbCharset.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 20</value>
@@ -559,7 +559,7 @@
     <value>5</value>
   </data>
   <data name="layoutFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 346</value>
+    <value>416, 354</value>
   </data>
   <data name="layoutFont.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -577,7 +577,7 @@
     <value>3</value>
   </data>
   <data name="layoutFont.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="edFamily" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lvFamily" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="edStyle" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lvStyle" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="edSize" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="lbSize" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="grpEffect" Row="3" RowSpan="2" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="grpSample" Row="3" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="cbCharset" Row="4" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="lblFamily" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lblFace" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblSize" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,51.80723,Percent,30.36145,Percent,17.83133" /&gt;&lt;Rows Styles="Absolute,20,Percent,14.09692,Percent,85.90308,Absolute,138,Absolute,27" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="edFamily" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lvFamily" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="edStyle" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lvStyle" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="edSize" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="lbSize" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="grpEffect" Row="3" RowSpan="2" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="grpSample" Row="3" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="cbCharset" Row="4" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="lblFamily" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lblFace" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblSize" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,51.80722,Percent,30.36145,Percent,17.83133" /&gt;&lt;Rows Styles="Absolute,20,Percent,14.09692,Percent,85.90308,Absolute,138,Absolute,25" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="btnOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -667,7 +667,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>531, 371</value>
+    <value>531, 374</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

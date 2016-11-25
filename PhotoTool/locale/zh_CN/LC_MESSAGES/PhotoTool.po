@@ -239,14 +239,12 @@ msgid "Image Zoom Level"
 msgstr "图像缩放比例"
 
 #: MainForm.resx:390 -> tssLabelTimeCost.Text.value
-#, fuzzy
-#| msgid "Theme"
 msgid "Time"
-msgstr "主题颜色"
+msgstr "时间"
 
 #: MainForm.resx:393 -> tssLabelTimeCost.ToolTipText.value
 msgid "Effect Cost Times"
-msgstr ""
+msgstr "滤镜消耗时间"
 
 #: MainForm.resx:399 -> tssLabelImageInfo.Text.value
 msgid "Ready"

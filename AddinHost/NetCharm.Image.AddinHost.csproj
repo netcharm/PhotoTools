@@ -157,6 +157,12 @@
     <Compile Include="Controls\CornerSide.Designer.cs">
       <DependentUpon>CornerSide.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FontDialogEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FontDialogEx.Designer.cs">
+      <DependentUpon>FontDialogEx.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ImageBox.cs">
       <SubType>UserControl</SubType>
     </Compile>

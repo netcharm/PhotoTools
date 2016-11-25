@@ -31,7 +31,11 @@
             this.btnFontDialog = new System.Windows.Forms.Button();
             this.btnColorDialog = new System.Windows.Forms.Button();
             this.btnFontDialogSystem = new System.Windows.Forms.Button();
+            this.btnColorDialogEx = new System.Windows.Forms.Button();
+            this.btnFontDialogEx = new System.Windows.Forms.Button();
+            this.btnColorDialogSystem = new System.Windows.Forms.Button();
             this.dlgColorEx = new NetCharm.Common.Controls.ColorDialogEx();
+            this.dlgFontEx = new NetCharm.Common.Controls.FontDialogEx();
             this.SuspendLayout();
             // 
             // btnFontDialog
@@ -56,26 +60,72 @@
             // 
             // btnFontDialogSystem
             // 
-            this.btnFontDialogSystem.Location = new System.Drawing.Point(160, 131);
+            this.btnFontDialogSystem.Location = new System.Drawing.Point(160, 179);
             this.btnFontDialogSystem.Name = "btnFontDialogSystem";
-            this.btnFontDialogSystem.Size = new System.Drawing.Size(75, 42);
+            this.btnFontDialogSystem.Size = new System.Drawing.Size(75, 53);
             this.btnFontDialogSystem.TabIndex = 3;
-            this.btnFontDialogSystem.Text = "Font Dialog";
+            this.btnFontDialogSystem.Text = "System Font Dialog";
             this.btnFontDialogSystem.UseVisualStyleBackColor = true;
             this.btnFontDialogSystem.Click += new System.EventHandler(this.btnFontDialogSystem_Click);
             // 
-            // colorDialogEx1
+            // btnColorDialogEx
             // 
+            this.btnColorDialogEx.Location = new System.Drawing.Point(32, 80);
+            this.btnColorDialogEx.Name = "btnColorDialogEx";
+            this.btnColorDialogEx.Size = new System.Drawing.Size(75, 42);
+            this.btnColorDialogEx.TabIndex = 4;
+            this.btnColorDialogEx.Text = "Color Dialog Ex";
+            this.btnColorDialogEx.UseVisualStyleBackColor = true;
+            this.btnColorDialogEx.Click += new System.EventHandler(this.btnColorDilogEx_Click);
+            // 
+            // btnFontDialogEx
+            // 
+            this.btnFontDialogEx.Location = new System.Drawing.Point(160, 80);
+            this.btnFontDialogEx.Name = "btnFontDialogEx";
+            this.btnFontDialogEx.Size = new System.Drawing.Size(75, 42);
+            this.btnFontDialogEx.TabIndex = 5;
+            this.btnFontDialogEx.Text = "Font Dialog Ex";
+            this.btnFontDialogEx.UseVisualStyleBackColor = true;
+            this.btnFontDialogEx.Click += new System.EventHandler(this.btnFontDialogEx_Click);
+            // 
+            // btnColorDialogSystem
+            // 
+            this.btnColorDialogSystem.Location = new System.Drawing.Point(32, 179);
+            this.btnColorDialogSystem.Name = "btnColorDialogSystem";
+            this.btnColorDialogSystem.Size = new System.Drawing.Size(75, 53);
+            this.btnColorDialogSystem.TabIndex = 6;
+            this.btnColorDialogSystem.Text = "System Color Dialog";
+            this.btnColorDialogSystem.UseVisualStyleBackColor = true;
+            this.btnColorDialogSystem.Click += new System.EventHandler(this.btnColorDialogSystem_Click);
+            // 
+            // dlgColorEx
+            // 
+            this.dlgColorEx.Color = System.Drawing.Color.Red;
+            this.dlgColorEx.ShowApply = true;
             this.dlgColorEx.Apply += new System.EventHandler(this.dlgColorEx_Apply);
+            // 
+            // dlgFontEx
+            // 
+            this.dlgFontEx.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dlgFontEx.ShowApply = true;
+            this.dlgFontEx.Size = 9F;
+            this.dlgFontEx.Strikeout = false;
+            this.dlgFontEx.Underline = false;
+            this.dlgFontEx.Apply += new System.EventHandler(this.dlgFont_Apply);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 273);
+            this.ClientSize = new System.Drawing.Size(270, 260);
+            this.Controls.Add(this.btnColorDialogSystem);
+            this.Controls.Add(this.btnFontDialogEx);
+            this.Controls.Add(this.btnColorDialogEx);
             this.Controls.Add(this.btnFontDialogSystem);
             this.Controls.Add(this.btnColorDialog);
             this.Controls.Add(this.btnFontDialog);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Dialog Test";
             this.ResumeLayout(false);
@@ -88,6 +138,10 @@
         private System.Windows.Forms.Button btnColorDialog;
         private System.Windows.Forms.Button btnFontDialogSystem;
         private NetCharm.Common.Controls.ColorDialogEx dlgColorEx;
+        private System.Windows.Forms.Button btnColorDialogEx;
+        private System.Windows.Forms.Button btnFontDialogEx;
+        private System.Windows.Forms.Button btnColorDialogSystem;
+        private NetCharm.Common.Controls.FontDialogEx dlgFontEx;
     }
 }
 

@@ -223,9 +223,9 @@
             // btnApply
             // 
             resources.ApplyResources(this.btnApply, "btnApply");
-            this.btnApply.DialogResult = System.Windows.Forms.DialogResult.Retry;
             this.btnApply.Name = "btnApply";
             this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // FontDialog
             // 

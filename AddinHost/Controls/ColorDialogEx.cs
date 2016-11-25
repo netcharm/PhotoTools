@@ -9,25 +9,43 @@ using System.Windows.Forms;
 
 namespace NetCharm.Common.Controls
 {
+    [ToolboxBitmap( typeof( ColorDialog ) )]
+    [ToolboxItem( true )]
     public partial class ColorDialogEx : Component
     {
         private NetCharm.Common.ColorDialog dialog = new NetCharm.Common.ColorDialog();
 
         public event EventHandler Apply;
 
+        private bool _apply = true;
         public bool ShowApply
+        {
+            get { return ( _apply ); }
+            set { _apply = value; }
+        }
+
+        private Color _color = default(Color);
+        public Color Color
+        {
+            get { return ( _color ); }
+            set { _color = value; }
+        }
+
+        private Color[] _colors = new Color[] { };
+        [Browsable( false )]
+        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        public Color[] CustomColors
         {
             get
             {
-                return ( dialog is ColorDialog ? dialog.ShowApply : true );
+                _colors = dialog.CustomColors;
+                return ( _colors );
             }
-            set { dialog.ShowApply = value; }
-        }
-
-        public Color Color
-        {
-            get { return ( dialog is ColorDialog ? dialog.Color : default(Color) ); }
-            set { dialog.Color = value; }
+            set
+            {
+                _colors = value;
+                dialog.CustomColors = value;
+            }
         }
 
         public ColorDialogEx()
@@ -37,6 +55,8 @@ namespace NetCharm.Common.Controls
             {
                 dialog.Apply += new System.EventHandler( this.Apply );
             }
+            dialog.Color = _color;
+            dialog.ShowApply = _apply;
         }
 
         public ColorDialogEx(Color color)
@@ -47,6 +67,8 @@ namespace NetCharm.Common.Controls
             {
                 dialog.Apply += new System.EventHandler( this.Apply );
             }
+            dialog.Color = _color;
+            dialog.ShowApply = _apply;
         }
 
         public DialogResult ShowDialog()
@@ -55,8 +77,8 @@ namespace NetCharm.Common.Controls
             {
                 dialog.Apply += new System.EventHandler( this.Apply );
             }
-
-            dialog.Color = Color;
+            dialog.Color = _color;
+            dialog.ShowApply = _apply;
             return ( dialog.ShowDialog() );
         }
 
@@ -66,8 +88,7 @@ namespace NetCharm.Common.Controls
             {
                 dialog.Apply += new System.EventHandler( this.Apply );
             }
-
-            Color = color;
+            _color = color;
             return ( ShowDialog() );
         }
     }
