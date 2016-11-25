@@ -31,6 +31,7 @@
             this.btnFontDialog = new System.Windows.Forms.Button();
             this.btnColorDialog = new System.Windows.Forms.Button();
             this.btnFontDialogSystem = new System.Windows.Forms.Button();
+            this.dlgColorEx = new NetCharm.Common.Controls.ColorDialogEx();
             this.SuspendLayout();
             // 
             // btnFontDialog
@@ -63,6 +64,10 @@
             this.btnFontDialogSystem.UseVisualStyleBackColor = true;
             this.btnFontDialogSystem.Click += new System.EventHandler(this.btnFontDialogSystem_Click);
             // 
+            // colorDialogEx1
+            // 
+            this.dlgColorEx.Apply += new System.EventHandler(this.dlgColorEx_Apply);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -82,6 +87,7 @@
         private System.Windows.Forms.Button btnFontDialog;
         private System.Windows.Forms.Button btnColorDialog;
         private System.Windows.Forms.Button btnFontDialogSystem;
+        private NetCharm.Common.Controls.ColorDialogEx dlgColorEx;
     }
 }
 

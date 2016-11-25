@@ -21,7 +21,11 @@ namespace DialogTest
 
         private void btnColorDialog_Click( object sender, EventArgs e )
         {
-            NetCharm.Common.Controls.ColorDialogEx dlgColorEx = new NetCharm.Common.Controls.ColorDialogEx();
+            //NetCharm.Common.Controls.ColorDialogEx dlgColorEx = new NetCharm.Common.Controls.ColorDialogEx();
+            if(dlgColorEx.ShowDialog() == DialogResult.OK)
+            {
+
+            }
 
             NetCharm.Common.ColorDialog dlgColor = new NetCharm.Common.ColorDialog();
             dlgColor.Apply += new System.EventHandler( dlgColor_Apply );
@@ -86,6 +90,11 @@ namespace DialogTest
         {
             FontDialog dlgFont = new FontDialog();
             dlgFont.ShowDialog();
+        }
+
+        private void dlgColorEx_Apply( object sender, EventArgs e )
+        {
+            MessageBox.Show( "Apply" );
         }
     }
 }

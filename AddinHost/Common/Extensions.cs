@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -12,7 +13,6 @@ using System.Windows.Forms;
 using System.Windows.Markup;
 using NetCharm.Image;
 using NGettext.WinForm;
-
 using Media = System.Windows.Media;
 
 namespace ExtensionMethods
@@ -189,6 +189,8 @@ namespace ExtensionMethods
         #endregion
 
         #region Form I18N Extension
+        public static bool InDesignMode = (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
+
         /// <summary>
         /// Fake function for gettext collection msgid
         /// </summary>
@@ -207,6 +209,7 @@ namespace ExtensionMethods
         /// <returns></returns>
         public static string _( this string t )
         {
+            if ( InDesignMode ) return ( t );
             string result = t;
 
             if ( !string.IsNullOrEmpty( t ) )
@@ -237,6 +240,7 @@ namespace ExtensionMethods
         /// <param name="form"></param>
         public static void Translate( this Form form, ToolTip tooltip = null, object[] extra = null )
         {
+            if ( InDesignMode ) return;
             if ( form is Form )
             {
                 string path = Assembly.GetExecutingAssembly().Location;

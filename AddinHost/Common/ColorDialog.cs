@@ -29,16 +29,17 @@ namespace NetCharm.Common
         public ColorDialog()
         {
             InitializeComponent();
+
             //AddinUtils.Translate( null, this );
             this.Translate();
         }
 
-        public ColorDialog(Color color)
+        public ColorDialog( Color color )
         {
             InitializeComponent();
+
             //AddinUtils.Translate( null, this );
             this.Translate();
-
             Color = color;
         }
 
