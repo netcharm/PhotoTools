@@ -6,8 +6,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using NetCharm.Image;
 
-namespace NetCharm.Image.Addins.Controls
+namespace NetCharm.Common.Controls
 {
     public partial class CornerSide : UserControl
     {

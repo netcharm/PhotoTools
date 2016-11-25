@@ -33,6 +33,15 @@ namespace NetCharm.Common
             this.Translate();
         }
 
+        public ColorDialog(Color color)
+        {
+            InitializeComponent();
+            //AddinUtils.Translate( null, this );
+            this.Translate();
+
+            Color = color;
+        }
+
         private void ColorDialog_Load( object sender, EventArgs e )
         {
             colorPanel.BackColor = colorManager.Color;

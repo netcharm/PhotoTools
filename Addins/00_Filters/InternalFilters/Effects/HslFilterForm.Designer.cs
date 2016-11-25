@@ -36,11 +36,11 @@
             this.scpPicker = new Cyotek.Windows.Forms.ScreenColorPicker();
             this.btnOriginal = new System.Windows.Forms.CheckBox();
             this.cbGrayMode = new System.Windows.Forms.ComboBox();
-            this.edTol = new NetCharm.Image.Addins.Controls.SlideNumber();
-            this.edLum = new NetCharm.Image.Addins.Controls.SlideColorLum();
-            this.edSat = new NetCharm.Image.Addins.Controls.SlideColorSat();
-            this.edHue = new NetCharm.Image.Addins.Controls.SlideColorHue();
-            this.imgPreview = new NetCharm.Image.Addins.ImageBox();
+            this.edTol = new NetCharm.Common.Controls.SlideNumber();
+            this.edLum = new NetCharm.Common.Controls.SlideColorLum();
+            this.edSat = new NetCharm.Common.Controls.SlideColorSat();
+            this.edHue = new NetCharm.Common.Controls.SlideColorHue();
+            this.imgPreview = new NetCharm.Common.Controls.ImageBox();
             this.SuspendLayout();
             // 
             // btnOk
@@ -226,14 +226,14 @@
         #endregion
 
         private System.Windows.Forms.ToolTip toolTip;
-        private NetCharm.Image.Addins.ImageBox imgPreview;
+        private NetCharm.Common.Controls.ImageBox imgPreview;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox btnOriginal;
-        private NetCharm.Image.Addins.Controls.SlideColorHue edHue;
-        private NetCharm.Image.Addins.Controls.SlideColorSat edSat;
-        private NetCharm.Image.Addins.Controls.SlideColorLum edLum;
-        private NetCharm.Image.Addins.Controls.SlideNumber edTol;
+        private NetCharm.Common.Controls.SlideColorHue edHue;
+        private NetCharm.Common.Controls.SlideColorSat edSat;
+        private NetCharm.Common.Controls.SlideColorLum edLum;
+        private NetCharm.Common.Controls.SlideNumber edTol;
         private Cyotek.Windows.Forms.ScreenColorPicker scpPicker;
         private System.Windows.Forms.ComboBox cbGrayMode;
     }

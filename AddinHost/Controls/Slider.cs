@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace NetCharm.Image.Addins.Controls
+namespace NetCharm.Common.Controls
 {
     [ToolboxBitmap( typeof( TrackBar ) )]
     public partial class Slider : TrackBar

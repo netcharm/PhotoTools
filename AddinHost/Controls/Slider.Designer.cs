@@ -1,4 +1,4 @@
-﻿namespace NetCharm.Image.Addins.Controls
+﻿namespace NetCharm.Common.Controls
 {
     partial class Slider
     {

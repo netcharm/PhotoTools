@@ -1,4 +1,4 @@
-﻿using NetCharm.Image;
+﻿using NetCharm.Common;
 
 namespace InternalFilters.Actions
 {
@@ -61,14 +61,14 @@ namespace InternalFilters.Actions
             this.btnEffectAdd = new System.Windows.Forms.Button();
             this.btnPosRandom = new System.Windows.Forms.Button();
             this.btnOriginal = new System.Windows.Forms.CheckBox();
-            this.slideOffsetY = new NetCharm.Image.Addins.Controls.SlideNumber();
-            this.slideOffsetX = new NetCharm.Image.Addins.Controls.SlideNumber();
-            this.slideMarginY = new NetCharm.Image.Addins.Controls.SlideNumber();
-            this.slideMarginX = new NetCharm.Image.Addins.Controls.SlideNumber();
-            this.csSelect = new NetCharm.Image.Addins.Controls.CornerSide();
-            this.slideBlend = new NetCharm.Image.Addins.Controls.SlideNumber();
-            this.slideOpaque = new NetCharm.Image.Addins.Controls.SlideNumber();
-            this.imgPreview = new NetCharm.Image.Addins.ImageBox();
+            this.slideOffsetY = new NetCharm.Common.Controls.SlideNumber();
+            this.slideOffsetX = new NetCharm.Common.Controls.SlideNumber();
+            this.slideMarginY = new NetCharm.Common.Controls.SlideNumber();
+            this.slideMarginX = new NetCharm.Common.Controls.SlideNumber();
+            this.csSelect = new NetCharm.Common.Controls.CornerSide();
+            this.slideBlend = new NetCharm.Common.Controls.SlideNumber();
+            this.slideOpaque = new NetCharm.Common.Controls.SlideNumber();
+            this.imgPreview = new NetCharm.Common.Controls.ImageBox();
             this.grpCommonSetting.SuspendLayout();
             this.pnlPosMode.SuspendLayout();
             this.pnlEffectTools.SuspendLayout();
@@ -449,7 +449,7 @@ namespace InternalFilters.Actions
             // csSelect
             // 
             resources.ApplyResources(this.csSelect, "csSelect");
-            this.csSelect.CornetRegion = CornerRegionType.None;
+            this.csSelect.CornetRegion = NetCharm.Image.CornerRegionType.None;
             this.csSelect.Name = "csSelect";
             this.csSelect.CornetRegionClick += new System.EventHandler(this.csSelect_CornetRegionClick);
             // 
@@ -558,18 +558,18 @@ namespace InternalFilters.Actions
         #endregion
 
         private System.Windows.Forms.ToolTip toolTip;
-        private NetCharm.Image.Addins.ImageBox imgPreview;
+        private NetCharm.Common.Controls.ImageBox imgPreview;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox btnOriginal;
         private System.Windows.Forms.GroupBox grpCommonSetting;
-        private NetCharm.Image.Addins.Controls.SlideNumber slideBlend;
-        private NetCharm.Image.Addins.Controls.SlideNumber slideOpaque;
+        private NetCharm.Common.Controls.SlideNumber slideBlend;
+        private NetCharm.Common.Controls.SlideNumber slideOpaque;
         private System.Windows.Forms.Panel pnlPosMode;
         private System.Windows.Forms.CheckBox chkEnabled;
         private System.Windows.Forms.CheckBox chkTile;
         private System.Windows.Forms.Button btnPosRandom;
-        private NetCharm.Image.Addins.Controls.CornerSide csSelect;
+        private NetCharm.Common.Controls.CornerSide csSelect;
         private System.Windows.Forms.ListView lvFilters;
         private System.Windows.Forms.Panel pnlEffectTools;
         private System.Windows.Forms.Button btnEffectDown;
@@ -579,10 +579,10 @@ namespace InternalFilters.Actions
         private System.Windows.Forms.Panel pnlCustom;
         private System.Windows.Forms.ImageList ilSmall;
         private System.Windows.Forms.ImageList ilLarge;
-        private NetCharm.Image.Addins.Controls.SlideNumber slideOffsetY;
-        private NetCharm.Image.Addins.Controls.SlideNumber slideOffsetX;
-        private NetCharm.Image.Addins.Controls.SlideNumber slideMarginY;
-        private NetCharm.Image.Addins.Controls.SlideNumber slideMarginX;
+        private NetCharm.Common.Controls.SlideNumber slideOffsetY;
+        private NetCharm.Common.Controls.SlideNumber slideOffsetX;
+        private NetCharm.Common.Controls.SlideNumber slideMarginY;
+        private NetCharm.Common.Controls.SlideNumber slideMarginX;
         private System.Windows.Forms.TabControl tabObject;
         private System.Windows.Forms.TabPage tabPagePicture;
         private System.Windows.Forms.TabPage tabPageText;

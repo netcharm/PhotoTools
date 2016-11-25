@@ -452,6 +452,9 @@ namespace ExtensionMethods
         #endregion
 
         #region Image Convert Routines
+        /// <summary>
+        /// 
+        /// </summary>
         static private Dictionary<string, Media.Typeface> TypefaceList = new Dictionary<string, Media.Typeface>();
 
         /// <summary>
@@ -489,6 +492,12 @@ namespace ExtensionMethods
             return ( result );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="mode"></param>
+        /// <returns></returns>
         public static Rectangle GetOpaqueBound( this Bitmap image, OpaqueMode mode = OpaqueMode.Alpha )
         {
             Rectangle result = new Rectangle(0, 0, image.Width, image.Height);
@@ -860,43 +869,8 @@ namespace ExtensionMethods
         /// <returns></returns>
         public static Bitmap ToBitmap( this string text, string fontfamily, string fontstyle, float fontsize, Color fgColor, Color bgColor )
         {
-            //var styleFont = FontStyle.Regular;
-            var styleFont = fontstyle.ToFontStyle();
-
             #region Set font style
-            //styleFont = fontstyle.ToFontStyle();
-            //var regular = false;
-            //string[] styles = fontstyle.Split();
-            //foreach ( var style in styles )
-            //{
-            //    if ( string.Equals( style.Trim(), "Italic", StringComparison.CurrentCultureIgnoreCase ) )
-            //    {
-            //        styleFont |= FontStyle.Italic;
-            //    }
-            //    else if ( string.Equals( style.Trim(), "Oblique", StringComparison.CurrentCultureIgnoreCase ) )
-            //    {
-            //        styleFont |= FontStyle.Italic;
-            //    }
-            //    else if ( string.Equals( style.Trim(), "Bold", StringComparison.CurrentCultureIgnoreCase ) )
-            //    {
-            //        styleFont |= FontStyle.Bold;
-            //    }
-            //    else if ( string.Equals( style.Trim(), "Underline", StringComparison.CurrentCultureIgnoreCase ) )
-            //    {
-            //        styleFont |= FontStyle.Underline;
-            //        //underline = true;
-            //    }
-            //    else if ( string.Equals( style.Trim(), "Strikeout", StringComparison.CurrentCultureIgnoreCase ) )
-            //    {
-            //        styleFont |= FontStyle.Strikeout;
-            //        //strikeout = true;
-            //    }
-            //    else if( string.Equals( style.Trim(), "Regular", StringComparison.CurrentCultureIgnoreCase ) )
-            //    {
-            //        regular = true;
-            //    }
-            //}
-            //if ( !regular ) styleFont &= ~FontStyle.Regular;
+            var styleFont = fontstyle.ToFontStyle();
             #endregion
 
             var emSize = fontsize * 96/72f;

@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvertForm));
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnOriginal = new System.Windows.Forms.CheckBox();
-            this.imgPreview = new NetCharm.Image.Addins.ImageBox();
+            this.imgPreview = new NetCharm.Common.Controls.ImageBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -94,7 +94,7 @@
         #endregion
 
         private System.Windows.Forms.ToolTip toolTip;
-        private NetCharm.Image.Addins.ImageBox imgPreview;
+        private NetCharm.Common.Controls.ImageBox imgPreview;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox btnOriginal;

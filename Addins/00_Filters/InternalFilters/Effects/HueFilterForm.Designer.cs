@@ -34,8 +34,8 @@
             this.btnOriginal = new System.Windows.Forms.CheckBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.imgPreview = new NetCharm.Image.Addins.ImageBox();
-            this.edHue = new NetCharm.Image.Addins.Controls.SlideColorHue();
+            this.imgPreview = new NetCharm.Common.Controls.ImageBox();
+            this.edHue = new NetCharm.Common.Controls.SlideColorHue();
             this.SuspendLayout();
             // 
             // btnOriginal
@@ -119,10 +119,10 @@
         #endregion
 
         private System.Windows.Forms.ToolTip toolTip;
-        private NetCharm.Image.Addins.ImageBox imgPreview;
+        private NetCharm.Common.Controls.ImageBox imgPreview;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox btnOriginal;
-        private NetCharm.Image.Addins.Controls.SlideColorHue edHue;
+        private NetCharm.Common.Controls.SlideColorHue edHue;
     }
 }

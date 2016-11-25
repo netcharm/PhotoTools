@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Cyotek.Windows.Forms;
 
-namespace NetCharm.Image.Addins.Controls
+namespace NetCharm.Common.Controls
 {
     [ToolboxBitmap( typeof( TrackBar ), "SlideColor.bmp" )]
     [ToolboxItem( true )]

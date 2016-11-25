@@ -145,6 +145,12 @@
     <Compile Include="Common\SelectAddinForm.Designer.cs">
       <DependentUpon>SelectAddinForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ColorDialogEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ColorDialogEx.Designer.cs">
+      <DependentUpon>ColorDialogEx.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CornerSide.cs">
       <SubType>UserControl</SubType>
     </Compile>

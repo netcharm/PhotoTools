@@ -36,7 +36,7 @@
             this.edGaussianSize = new System.Windows.Forms.NumericUpDown();
             this.edGaussianSigma = new System.Windows.Forms.NumericUpDown();
             this.edGdiRatio = new System.Windows.Forms.NumericUpDown();
-            this.imgPreview = new NetCharm.Image.Addins.ImageBox();
+            this.imgPreview = new NetCharm.Common.Controls.ImageBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.grpMode = new System.Windows.Forms.GroupBox();
@@ -327,7 +327,7 @@
         #endregion
 
         private System.Windows.Forms.ToolTip toolTip;
-        private NetCharm.Image.Addins.ImageBox imgPreview;
+        private NetCharm.Common.Controls.ImageBox imgPreview;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox grpMode;

@@ -1,4 +1,4 @@
-﻿namespace NetCharm.Image.Addins
+﻿namespace NetCharm.Common.Controls
 {
     partial class ImageBox
     {

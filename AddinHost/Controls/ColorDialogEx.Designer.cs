@@ -1,6 +1,6 @@
 ﻿namespace NetCharm.Common.Controls
 {
-    partial class SlideControl
+    partial class ColorDialogEx
     {
         /// <summary>
         /// 必需的设计器变量。

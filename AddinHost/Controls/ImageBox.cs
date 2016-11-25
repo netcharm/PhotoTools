@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Cyotek.Windows.Forms;
+using NetCharm.Image;
+using NetCharm.Image.Addins;
 
-namespace NetCharm.Image.Addins
+namespace NetCharm.Common.Controls
 {
     [ToolboxBitmap(typeof( Cyotek.Windows.Forms.ImageBox ), "ImageBox.bmp")]
     [ToolboxItem(true)]

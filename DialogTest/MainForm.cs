@@ -21,6 +21,8 @@ namespace DialogTest
 
         private void btnColorDialog_Click( object sender, EventArgs e )
         {
+            NetCharm.Common.Controls.ColorDialogEx dlgColorEx = new NetCharm.Common.Controls.ColorDialogEx();
+
             NetCharm.Common.ColorDialog dlgColor = new NetCharm.Common.ColorDialog();
             dlgColor.Apply += new System.EventHandler( dlgColor_Apply );
             dlgColor.Color = Color.Red;

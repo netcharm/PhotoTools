@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-namespace NetCharm.Image.Addins.Controls
+namespace NetCharm.Common.Controls
 {
     //[DefaultValue( "Value" ), DefaultEvent( "ValueChanged" ), ToolboxBitmap( typeof( TrackBar ) )]
     [ToolboxBitmap( typeof( TrackBar ) )]

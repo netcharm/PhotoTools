@@ -6,8 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using NetCharm.Image.Addins;
 using ExtensionMethods;
+using NetCharm.Image.Addins;
 
 namespace InternalFilters.Actions
 {
