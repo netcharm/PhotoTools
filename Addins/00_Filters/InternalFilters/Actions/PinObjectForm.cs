@@ -22,6 +22,7 @@ namespace InternalFilters.Actions
         private Image thumb = null;
         private Image thumbBackup = null;
         private Image picObject = null;
+        private Image picObjectBackup = null;
         private Image picText = null;
 
         private NetCharm.Common.ColorDialog dlgColor = null;
@@ -370,18 +371,16 @@ namespace InternalFilters.Actions
             }
         }
 
-        private void btnOriginal_Click( object sender, EventArgs e )
+        private void btnOriginal_MouseDown( object sender, MouseEventArgs e )
         {
-            if ( btnOriginal.Checked )
-            {
-                thumbBackup = imgPreview.Image;
-                imgPreview.Image = thumb;
-            }
-            else
-            {
-                if ( thumbBackup is Image )
-                    imgPreview.Image = thumbBackup;
-            }
+            thumbBackup = imgPreview.Image;
+            imgPreview.Image = thumb;
+        }
+
+        private void btnOriginal_MouseUp( object sender, MouseEventArgs e )
+        {
+            if ( thumbBackup is Image )
+                imgPreview.Image = thumbBackup;
         }
 
         private void btnEffectAdd_Click( object sender, EventArgs e )
@@ -514,6 +513,17 @@ namespace InternalFilters.Actions
             {
                 LoadPicture( dlgOpen.FileName );
             }
+        }
+
+        private void btnOriginalPic_MouseDown( object sender, MouseEventArgs e )
+        {
+            picObjectBackup = imgPicture.Image;
+            imgPicture.Image = picObject;
+        }
+
+        private void btnOriginalPic_MouseUp( object sender, MouseEventArgs e )
+        {
+            imgPicture.Image = picObjectBackup;
         }
 
         private void btnOpenFont_Click( object sender, EventArgs e )

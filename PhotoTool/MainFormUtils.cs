@@ -108,8 +108,13 @@ namespace PhotoTool
 
         internal void FixedMdiSize()
         {
-            this.Height -= 1;
-            this.Height += 1;
+            if( this.MdiChildren.Length > 0)
+            {
+                this.MdiChildren.First().WindowState = FormWindowState.Minimized;
+                //this.Height -= 1;
+                //this.Height += 1;
+                this.MdiChildren.First().WindowState = FormWindowState.Maximized;
+            }
         }
 
         /// <summary>

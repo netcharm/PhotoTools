@@ -124,11 +124,17 @@
   <data name="effect_add_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\effect_add_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Compare_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Compare_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="effect_remove_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\effect_remove_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Font_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Font_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Grayscale_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ColorScale_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -153,6 +159,9 @@
   </data>
   <data name="RotateL_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RotateLeft_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ColorPicker_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ColorPicker_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Add_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Add_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,12 +196,6 @@
   <data name="FlipX_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlipHorizontal_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Invert_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Invert_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Blur_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Blur_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Invert_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Invert_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -220,8 +223,8 @@
   <data name="RotateR_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RotateRight_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Blur_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Blur_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FlipY_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlipVertical_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,10 +253,10 @@
   <data name="Pin_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PinnedItem_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Compare_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Compare_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Invert_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Invert_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ColorPicker_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColorPicker_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Compare_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Compare_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

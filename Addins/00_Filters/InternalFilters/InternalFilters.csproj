@@ -370,6 +370,9 @@
   <ItemGroup>
     <None Include="Resources\ColorPicker_24x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Compare_24x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>XCOPY /Y "$(TargetPath)" "$(SolutionDir)\PhotoTool\$(OutDir)\addins\filter"
