@@ -184,6 +184,9 @@ namespace ExtensionMethods
         private static string locale_en = "en-us";
         private static string locale_ui = CultureInfo.InstalledUICulture.Name.ToLower();
 
+        private static CultureInfo locale_eninfo = CultureInfo.GetCultureInfo("en-US");
+        private static CultureInfo locale_uiinfo = CultureInfo.InstalledUICulture;
+
         private static XmlLanguage locale_enkey = XmlLanguage.GetLanguage( locale_en );
         private static XmlLanguage locale_uikey = XmlLanguage.GetLanguage( locale_ui );
         #endregion
@@ -455,11 +458,128 @@ namespace ExtensionMethods
 
         #endregion
 
-        #region Image Convert Routines
+        #region Typeface Routines
         /// <summary>
         /// 
         /// </summary>
         static private Dictionary<string, Media.Typeface> TypefaceList = new Dictionary<string, Media.Typeface>();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        static private Dictionary<string, Dictionary<string, Media.Typeface>> FamilyList = new Dictionary<string, Dictionary<string, Media.Typeface>>();
+
+        static public Dictionary<string, Dictionary<string, Media.Typeface>> GetFamilies()
+        {
+            #region Fetch All Typefaces
+            if ( FamilyList.Count > 0 ) return ( FamilyList );
+
+            foreach ( var f in Media.Fonts.SystemTypefaces )
+            {
+                var f_key = f.FontFamily.FamilyNames.ContainsKey(locale_enkey) ? f.FontFamily.FamilyNames[locale_enkey] : f.FontFamily.FamilyNames.First().Value;
+                var locale_key = f.FontFamily.FamilyNames.ContainsKey(locale_enkey) ? locale_enkey : f.FontFamily.FamilyNames.Keys.First();
+
+                try
+                {
+                    Media.GlyphTypeface gtf = null;
+                    f.TryGetGlyphTypeface( out gtf );
+
+                    var facelist = new Dictionary<string, Media.Typeface>();
+                    if ( FamilyList.ContainsKey( f_key ))
+                        facelist = FamilyList[f_key];
+
+                    if ( f.FaceNames.ContainsKey( locale_key ) )
+                        facelist[f.FaceNames[locale_key]] = f;
+
+                    if ( f.FaceNames.ContainsKey( locale_uikey ) )
+                        facelist[f.FaceNames[locale_uikey]] = f;
+
+                    //if ( gtf != null )
+                    //{
+                    //    //gtf.Win32FaceNames
+                    //    if ( gtf.Win32FaceNames.ContainsKey( locale_eninfo ) )
+                    //        facelist[gtf.Win32FaceNames[locale_eninfo]] = f;
+                    //    else
+                    //        facelist[gtf.Win32FaceNames.First().Value] = f;
+
+                    //    if ( gtf.Win32FaceNames.ContainsKey( locale_uiinfo ) )
+                    //        facelist[gtf.Win32FaceNames[locale_uiinfo]] = f;
+                    //}
+
+                    //FamilyList[f_key] = facelist;
+                    //if ( gtf != null )
+                    //{
+                    //    //gtf.Win32FamilyNames
+                    //    foreach ( var wfn in gtf.Win32FamilyNames )
+                    //    {
+                    //        if ( !FamilyList.ContainsKey( wfn.Value ) )
+                    //            FamilyList[wfn.Value] = facelist;
+                    //    }
+                    //}
+                    //else
+
+                    FamilyList[f_key] = facelist;
+
+                    //if ( f.FontFamily.FamilyNames.ContainsKey( locale_enkey ) )
+                    //{
+                    //    var familyname = f.FontFamily.FamilyNames[locale_enkey];
+                    //    if ( !FamilyList.ContainsKey( familyname ) || FamilyList[familyname] == null )
+                    //        FamilyList[familyname] = facelist;
+                    //    else
+                    //    {
+                    //        foreach(var fi in facelist)
+                    //        {
+                    //            if ( FamilyList[familyname].ContainsKey( fi.Key ) ) continue;
+                    //            FamilyList[familyname].Add( fi.Key, fi.Value );
+                    //        }
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    var familyname = f.FontFamily.FamilyNames[locale_key];
+                    //    if ( !FamilyList.ContainsKey( familyname ) || FamilyList[familyname] == null )
+                    //        FamilyList[familyname] = facelist;
+                    //    else
+                    //    {
+                    //        foreach ( var fi in facelist )
+                    //        {
+                    //            if ( FamilyList[familyname].ContainsKey( fi.Key ) ) continue;
+                    //            FamilyList[familyname].Add( fi.Key, fi.Value );
+                    //        }
+                    //    }
+                    //}
+
+                    if ( f.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
+                    {
+                        var familyname = f.FontFamily.FamilyNames[locale_uikey];
+                        FamilyList[familyname] = facelist;
+                    }
+
+                }
+                catch ( Exception )
+                {
+                    FamilyList[f_key] = null;
+                }
+            }
+            #endregion
+
+            #region Save Typeface list to Text file
+            StringBuilder sb = new StringBuilder();
+            foreach ( var f in FamilyList )
+            {
+                sb.AppendLine( f.Key.ToString() );
+                foreach ( var ff in f.Value )
+                {
+                    sb.AppendLine( $"  {ff.Key}*{ff.Value.ToString()}" );
+                }
+            }
+            sb.AppendLine( "--------------------------------------------------" );
+            sb.AppendLine( $"Total {FamilyList.Count} Families" );
+            System.IO.File.WriteAllText( "typefaces.txt", sb.ToString() );
+            #endregion
+
+            return ( FamilyList );
+        }
 
         /// <summary>
         /// 
@@ -496,6 +616,9 @@ namespace ExtensionMethods
             return ( result );
         }
 
+        #endregion
+
+        #region Image Convert Routines
         /// <summary>
         /// 
         /// </summary>
@@ -910,63 +1033,71 @@ namespace ExtensionMethods
                 Media.Typeface face = null;
                 fontstyle = fontstyle.Replace( "250", "Thin" ).Replace( "350", "Regular" );
                 fontstyle = fontstyle.Replace( "SemiBold", "W6" ).Trim();
-                var key = $"{fontfamily}*{fontstyle}";
-                //var key = $"{family.FamilyNames.First().Value}*{fontstyle}*{family.FamilyTypefaces.Last().AdjustedFaceNames.First().Value}";
-                if ( TypefaceList.Count <= 0 )
+
+                if(FamilyList.Count>0)
                 {
-                    //TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames[locale_enkey]}*{o.FaceNames[locale_enkey]}", o => o );
-                    //TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames.First().Value}*{o.FaceNames.First().Value}*{o.FontFamily.FamilyTypefaces.Last().AdjustedFaceNames.First().Value}", o => o );
-                    //TypefaceList = Media.Fonts.SystemTypefaces.AsParallel().ToDictionary( o => $"{o.FontFamily.FamilyNames.First().Value}*{o.FaceNames.First().Value}*{o.Weight}*{o.Style}", o => o );
-                    StringBuilder sb = new StringBuilder();
-                    foreach ( var f in Media.Fonts.SystemTypefaces )
+                    if( FamilyList.ContainsKey( fontfamily ) )
+                        if( FamilyList[fontfamily].ContainsKey( fontstyle ) )
+                            face = FamilyList[fontfamily][fontstyle];                   
+                }
+
+                if ( face == null )
+                {
+                    #region Make alt-typeface list
+                    if ( TypefaceList.Count <= 0 )
                     {
-                        var keyf = $"{f.FontFamily.FamilyNames.First().Value}*{f.FaceNames.First().Value}";
-                        //if( TypefaceList.ContainsKey(keyf))
-                        sb.AppendLine( keyf );
-                        TypefaceList[keyf] = f;
+                        StringBuilder sb = new StringBuilder();
+                        foreach ( var f in Media.Fonts.SystemTypefaces )
+                        {
+                            if ( f.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
+                            {
+                                var keyf = $"{f.FontFamily.FamilyNames[locale_uikey]}*{f.FaceNames.First().Value}";
+                                sb.AppendLine( keyf );
+                                TypefaceList[keyf] = f;
+                            }
+                            if ( f.FontFamily.FamilyNames.ContainsKey( locale_enkey ) )
+                            {
+                                var keyf = $"{f.FontFamily.FamilyNames[locale_enkey]}*{f.FaceNames.First().Value}";
+                                sb.AppendLine( keyf );
+                                TypefaceList[keyf] = f;
+                            }
+                            else
+                            {
+                                var keyf = $"{f.FontFamily.FamilyNames.First().Value}*{f.FaceNames.First().Value}";
+                                sb.AppendLine( keyf );
+                                TypefaceList[keyf] = f;
+                            }
+                            Media.GlyphTypeface gtf = null;
+                            f.TryGetGlyphTypeface( out gtf );
+                            if ( gtf != null )
+                            {
+                                //gtf.Win32FamilyNames
+                                //gtf.Win32FaceNames
+                            }
+                        }
+                        File.WriteAllText( "typefaces-alt.txt", sb.ToString() );
                     }
-                    File.WriteAllText( "typefaces.txt", sb.ToString() );
-                }
+                    #endregion
 
-                if ( TypefaceList.ContainsKey( key ) )
-                {
-                    face = TypefaceList[key];
-                }
-
-                //if(face == null)
-                //{
-                //    var faces = TypefaceList.Where( o => {return( o.Key.StartsWith($"{key}*{o.Value.Weight}*{o.Value.Style}")); } );
-                //    if ( faces.Count() > 0 ) face = faces.First().Value;
-                //}
-                else
-                {
-                    //var faces = Media.Fonts.SystemTypefaces.AsParallel().Where( o => { return($"{o.FontFamily}*{o.FaceNames[locale_enkey]}" == key); } );
-                    var faces = Media.Fonts.SystemTypefaces.AsParallel().Where( o => { return($"{o.FontFamily}*{o.FaceNames.First().Value}" == key); } );
-                    if ( faces.Count() > 0 )
-                        face = faces.First();
+                    #region Get typeface from alt-typeface list
+                    var key = $"{fontfamily}*{fontstyle}";
+                    if ( TypefaceList.ContainsKey( key ) )
+                    {
+                        face = TypefaceList[key];
+                    }
                     else
                     {
-                        var key0 = $"{family.FamilyNames[locale_enkey]}*{fontstyle}";
+                        var locale_key = family.FamilyNames.ContainsKey(locale_enkey) ? locale_enkey : family.FamilyNames.First().Key;
 
-                        faces = Media.Fonts.SystemTypefaces.AsParallel().Where( o =>
-                        {
-                            //return ( $"{o.FontFamily}*{o.FaceNames[locale_enkey]}" == key0 );
-                            return ( $"{o.FontFamily}*{o.FaceNames.First().Value}" == key0 );
-                        } );
-                        if ( faces.Count() > 0 )
-                            face = faces.First();
-                        else
-                            face = new Media.Typeface( family, style, weight, familytypeface.Stretch, fallback );
+                        var key0 = $"{family.FamilyNames[locale_key]}*{fontstyle}";
 
+                        face = new Media.Typeface( family, style, weight, familytypeface.Stretch, fallback );
                         TypefaceList[key0] = face;
+                        TypefaceList[key] = face;
                     }
-                    TypefaceList[key] = face;
-
-                    //Media.GlyphTypeface gtf;
-                    //face.TryGetGlyphTypeface( out gtf );
+                    #endregion
                 }
-
-                return ( ToBitmap( text, face, emSize, fgColor, bgColor ) );
+                return ( text.ToBitmap( face, emSize, fgColor, bgColor ) );
             }
             #endregion
         }

@@ -86,7 +86,9 @@ namespace NetCharm.Common
         {
             get
             {
-                var styles = edStyle.Text.Split();
+                if ( edStyle.Tag == null ) return ( "Regular" );
+                //var styles = edStyle.Text.Split();
+                var styles = ((string)edStyle.Tag).Split();
                 _typefaceName = string.Empty;
                 var typefacename = new List<string>();
                 foreach(var style in styles)
@@ -190,7 +192,7 @@ namespace NetCharm.Common
         private Dictionary< string, string> FontStyleList = new Dictionary<string, string>();
         private Dictionary<string, float> FontSizeList = new Dictionary<string, float>();
 
-        private Media.FontFamily curFamily = Media.Fonts.SystemFontFamilies.FirstOrDefault();
+        private Media.Typeface curFamily = Media.Fonts.SystemTypefaces.FirstOrDefault();
         private string curFamilyName = SystemFonts.DefaultFont.FontFamily.Name;
         private string curFaceName = "";
 
@@ -198,8 +200,7 @@ namespace NetCharm.Common
         {
             if ( IsLoading ) return;
             if ( curFamily == null ) return;
-            //if ( curFace == null ) return;
-
+            
             List<string> style = new List<string>();
             style.AddRange( FontFace.Split() );
             if ( chkEffectUnderline.Checked )
@@ -209,7 +210,7 @@ namespace NetCharm.Common
 
             string text = "AaBbYyZz";
             string text_ui = this._("Culture Text");
-            if ( curFamily.FamilyNames.ContainsKey( locale_uikey ) )
+            if ( curFamily.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
             {
                 picPreview.Image = text_ui.ToBitmap( curFamilyName, string.Join(" ", style), FontSize, FontColor, Color.Transparent );
             }
@@ -346,17 +347,33 @@ namespace NetCharm.Common
 
             #region Add Face locale Dict
             FontStyleList.Clear();
-            FontStyleList[this._( "250" )] = "Thin";
-            FontStyleList[this._( "350" )] = "Regular";
             FontStyleList[this._( "Thin" )] = "Thin";
             FontStyleList[this._( "Light" )] = "Light";
             FontStyleList[this._( "Regular" )] = "Regular";
             FontStyleList[this._( "Medium" )] = "Medium";
-            FontStyleList[this._( "SemiBold" )] = "SemiBold";
             FontStyleList[this._( "Bold" )] = "Bold";
             FontStyleList[this._( "Black" )] = "Black";
             FontStyleList[this._( "Oblique" )] = "Oblique";
             FontStyleList[this._( "Italic" )] = "Italic";
+
+            FontStyleList[this._( "SemiBold" )] = "SemiBold";
+            FontStyleList[this._( "SemiCondensed" )] = "SemiCondensed";
+            FontStyleList[this._( "Condensed" )] = "Condensed";
+            FontStyleList[this._( "Expanded" )] = "Expanded";
+            FontStyleList[this._( "Extended" )] = "Extended";
+            FontStyleList[this._( "Heavy" )] = "Heavy";
+            FontStyleList[this._( "ExtraBlack" )] = "Extra Black";
+            FontStyleList[this._( "Ultra Light" )] = "Ultra Light";
+            FontStyleList[this._( "Ultra" )] = "Ultra";
+            FontStyleList[this._( "Roman" )] = "Roman";
+
+            FontStyleList[this._( "250" )] = "Thin";
+            FontStyleList[this._( "350" )] = "Regular";
+            FontStyleList[this._( "275" )] = "Ultra Light";
+            FontStyleList[this._( "750" )] = "Heavy";
+
+            FontStyleList[this._( "W3" )] = "Light";
+            FontStyleList[this._( "W6" )] = "SemiBold";
             //FontStyleList["常规体"] = "Regular";
             #endregion
 
@@ -393,7 +410,77 @@ namespace NetCharm.Common
         {
             IsLoading = true;
 
-            #region Fetch Font List
+            #region Fetch All Typefaces
+            var FamilyList = ExtensionMethods.NetCharmExtensions.GetFamilies();
+            //var FamilyList = ExtensionMethods.NetCharmExtensions.FamilyList;
+            //foreach ( var f in Media.Fonts.SystemTypefaces )
+            //{
+            //    var f_key = f.FontFamily.FamilyNames.ContainsKey(locale_enkey)? f.FontFamily.FamilyNames[locale_enkey] : f.FontFamily.FamilyNames.First().Value;
+
+            //    try
+            //    {
+            //        Media.GlyphTypeface gtf = null;
+            //        f.TryGetGlyphTypeface( out gtf );
+
+            //        var facelist = new Dictionary<string, Media.Typeface>();
+            //        if(f.FaceNames.ContainsKey(locale_enkey))
+            //            facelist[f.FaceNames[locale_enkey]] = f;
+            //        else
+            //            facelist[f.FaceNames.First().Value] = f;
+
+            //        if ( f.FaceNames.ContainsKey( locale_uikey ) )
+            //            facelist[f.FaceNames[locale_uikey]] = f;
+
+            //        if ( gtf != null )
+            //        {
+            //            //gtf.Win32FaceNames
+            //            if ( gtf.Win32FaceNames.ContainsKey( locale_eninfo ) )
+            //                facelist[gtf.Win32FaceNames[locale_eninfo]] = f;
+            //            else
+            //                facelist[gtf.Win32FaceNames.First().Value] = f;
+
+            //            if ( gtf.Win32FaceNames.ContainsKey( locale_uiinfo ) )
+            //                facelist[gtf.Win32FaceNames[locale_uiinfo]] = f;
+            //        }
+
+            //        FamilyList[f_key] = facelist;
+            //        if ( f.FontFamily.FamilyNames.ContainsKey( locale_enkey ) )
+            //            FamilyList[f.FontFamily.FamilyNames[locale_enkey]] = facelist;
+            //        else
+            //            FamilyList[f.FontFamily.FamilyNames.First().Value] = facelist;
+
+            //        if ( f.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
+            //            FamilyList[f.FontFamily.FamilyNames[locale_uikey]] = facelist;
+
+            //        if ( gtf != null )
+            //        {
+            //            //gtf.Win32FamilyNames
+            //            foreach ( var wfn in gtf.Win32FamilyNames )
+            //            {
+            //                if ( !FamilyList.ContainsKey( wfn.Value ) )
+            //                    FamilyList[wfn.Value] = facelist;
+            //            }
+            //        }
+            //    }
+            //    catch ( Exception )
+            //    {
+            //        FamilyList[f_key] = null;
+            //    }
+            //}
+
+            //StringBuilder sb = new StringBuilder();
+            //foreach(var f in FamilyList )
+            //{
+            //    sb.AppendLine( f.Key.ToString() );
+            //    foreach(var ff in f.Value)
+            //    {
+            //        sb.AppendLine( $"  {ff.Key}*{ff.Value.ToString()}");
+            //    }
+            //}
+            //System.IO.File.WriteAllText( "typefaces.txt", sb.ToString() );
+            #endregion
+
+            #region Make Font List
             families.Clear();
             foreach ( var ff in Media.Fonts.SystemFontFamilies )
             {
@@ -404,7 +491,8 @@ namespace NetCharm.Common
 
                 var item = new ListViewItem(familyName);
                 item.Text = familyName;
-                item.Tag = ff;
+                //item.Tag = ff;
+                item.Tag = FamilyList[familyName];
                 families.Add( item );
             }
             families.Sort( CompareItemText );
@@ -462,26 +550,24 @@ namespace NetCharm.Common
             #endregion
 
             #region Add family supported styles
-            var ffc = (Media.FontFamily)families[idx].Tag;
+            var ffc = (Dictionary<string, Media.Typeface>)families[idx].Tag;
 
-            curFamily = ffc;
-            var ffcn = ffc.FamilyNames.ContainsKey(locale_uikey) ? ffc.FamilyNames[locale_uikey] : ffc.FamilyNames[locale_enkey];
-            curFamilyName = lvFamily.FocusedItem is ListViewItem ? lvFamily.FocusedItem.Text : ffcn;
+            //curFamily = ffc;
+//            var ffcn = ffc.FamilyNames.ContainsKey(locale_uikey) ? ffc.FamilyNames[locale_uikey] : ffc.FamilyNames[locale_enkey];
+            curFamilyName = lvFamily.FocusedItem is ListViewItem ? lvFamily.FocusedItem.Text : families[idx].Text;
             //curFamilyName = lvFamily.FocusedItem.Text;
 
             styleSamples.Clear();
             lvStyle.Items.Clear();
-            foreach ( var typeface in ffc.FamilyTypefaces )
+            foreach ( var f in ffc)//.Reverse() )
             {
-                foreach ( var kv in typeface.AdjustedFaceNames )
-                {
-                    var facename = kv.Value.Replace( "250", "Thin" ).Replace( "350", "Regular" );
-                    var item = new ListViewItem(kv.Value);
-                    item.Text = string.Join( " ", facename.Split().Select( o => o._() ) );
-                    item.Tag = facename;
-                    lvStyle.Items.Add( item );
-                }
+                var facename = f.Key.Replace( "250", "Thin" ).Replace( "350", "Regular" );
+                var item = new ListViewItem(f.Key);
+                item.Text = string.Join( " ", facename.Split().Select( o => o._() ) );
+                item.Tag = facename;
+                lvStyle.Items.Add( item );
             }
+
             if ( lvStyle.Items.Count > 0 )
             {
                 if(!UseFont && !string.IsNullOrEmpty(_typefaceName ))
@@ -542,8 +628,10 @@ namespace NetCharm.Common
             if(e.ItemIndex>=0 && e.ItemIndex<lvFamily.VirtualListSize)
             {
                 var familyItem = families[e.ItemIndex];
+
                 var familyName = familyItem.Text;
-                var family = (Media.FontFamily)familyItem.Tag;
+                //var family = (Media.FontFamily)familyItem.Tag;
+                var family = (Dictionary<string, Media.Typeface>)familyItem.Tag;
 
                 Bitmap sample = null;
                 Color fgColor = e.Item.ForeColor;
@@ -554,7 +642,9 @@ namespace NetCharm.Common
                 }
                 else
                 {
-                    var face = family.FamilyTypefaces.First().AdjustedFaceNames[locale_enkey];
+                    //var face = family.Last().Key;
+                    //var face = family.Reverse().First().Key;
+                    var face = family.First().Key;
                     sample = e.Item.Text.ToBitmap( familyName, face, 12, fgColor );
                     //sample = e.Item.Text.ToBitmap( family.Source, face, 12, fgColor );
 
@@ -568,7 +658,7 @@ namespace NetCharm.Common
         {
             if ( e.ItemIndex >= 0 && e.ItemIndex < lvFamily.VirtualListSize )
             {
-                System.Drawing.FontFamily family = System.Drawing.FontFamily.Families[e.ItemIndex];                   
+                System.Drawing.FontFamily family = System.Drawing.FontFamily.Families[e.ItemIndex];
                 e.Item = families[e.ItemIndex];
             }
         }
@@ -581,37 +671,37 @@ namespace NetCharm.Common
 
                 int idx = lvFamily.FocusedItem.Index;
 
-                lvStyle.BeginUpdate();
-
-                #region Add family supported styles
-                var ff = (Media.FontFamily)families[idx].Tag;
-
-                curFamily = ff;
+                //var ff = (Media.FontFamily)families[idx].Tag;
+                var ff = (Dictionary<string, Media.Typeface>)families[idx].Tag;
+                curFamily = ff.First().Value;
+                //curFamily = ff;
                 //curFamilyName = ff.FamilyNames.ContainsKey( locale_uikey ) ? ff.FamilyNames[locale_uikey] : ff.FamilyNames[locale_enkey];
                 //curFamilyName = ff.FamilyNames[locale_enkey];
                 curFamilyName = lvFamily.FocusedItem.Text;
 
+                lvStyle.BeginUpdate();
+                #region Add family supported styles
+
                 styleSamples.Clear();
                 lvStyle.Items.Clear();
-                foreach ( var typeface in ff.FamilyTypefaces )
+                //foreach ( var typeface in ff.FamilyTypefaces )
+                foreach ( var f in ff)//.Reverse() )
                 {
-                    foreach ( var kv in typeface.AdjustedFaceNames )
-                    {
-                        var facename = kv.Value.Replace( "250", "Thin" ).Replace( "350", "Regular" );
-                        var item = new ListViewItem(kv.Value);
-                        item.Text = string.Join( " ", facename.Split().Select( o => o._() ) );
-                        item.Tag = facename;
-                        lvStyle.Items.Add( item );
-                    }
+                    var facename = f.Key.Replace( "250", "Thin" ).Replace( "350", "Regular" ).Replace("W3", "Light").Replace("W6","SemiBold");
+                    var item = new ListViewItem(f.Key);
+                    item.Text = string.Join( " ", facename.Split().Select( o => o._() ) );
+                    item.Tag = facename;
+                    lvStyle.Items.Add( item );
                 }
                 if ( lvStyle.Items.Count > 0 )
                 {
                     lvStyle.Items[0].Selected = true;
                     edStyle.Text = lvStyle.Items[0].Text;
+                    edStyle.Tag = lvStyle.Items[0].Tag;
                     curFaceName = (string) lvStyle.Items[0].Tag;
                 }
-                lvStyle.Update();
                 #endregion
+                lvStyle.EndUpdate();
 
                 #region Add family sizes
 
@@ -619,21 +709,22 @@ namespace NetCharm.Common
 
                 #region Add family charsets
                 List<string> charsets = new List<string>();
-                foreach(var kv in ff.FamilyNames )
+                foreach(var kv in ff.Values.First().FontFamily.FamilyNames )
                 {
                     charsets.Add( kv.Key.IetfLanguageTag );
                 }
                 cbCharset.Items.Clear();
                 cbCharset.Items.AddRange( charsets.Distinct().ToArray() );
-                cbCharset.SelectedIndex = 0;
-
+                //cbCharset.SelectedIndex = 0;
+                cbCharset.Text = locale_ui;
+                cbCharset.SelectedIndex = cbCharset.SelectedIndex < 0 ? 0 : cbCharset.SelectedIndex;
                 #endregion
 
-                if(!lvFamily.FocusedItem.Text.StartsWith(edFamily.Text, StringComparison.CurrentCultureIgnoreCase))
+                if (!lvFamily.FocusedItem.Text.StartsWith(edFamily.Text, StringComparison.CurrentCultureIgnoreCase))
                 {
                     edFamily.Text = lvFamily.FocusedItem.Text;
                 }
-                lvStyle.EndUpdate();
+
                 _familyName = curFamilyName;
                 Preview();
             }
@@ -684,6 +775,7 @@ namespace NetCharm.Common
             {
                 curFaceName = (string)lvStyle.FocusedItem.Tag;
                 edStyle.Text = lvStyle.FocusedItem.Text;
+                edStyle.Tag = lvStyle.FocusedItem.Tag;
                 //FontStyle = curFaceName.
                 Preview();
             }

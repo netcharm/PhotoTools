@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Image.AddinHost\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-26 00:06+0800\n"
-"PO-Revision-Date: 2016-11-26 00:06+0800\n"
+"POT-Creation-Date: 2016-11-26 14:56+0800\n"
+"PO-Revision-Date: 2016-11-26 14:56+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -122,50 +122,102 @@ msgstr ""
 msgid "%"
 msgstr ""
 
-#: Common\Extensions.cs:1011 Common\FontDialog.cs:351
+#: Common\Extensions.cs:1162 Common\FontDialog.cs:350
 msgid "Thin"
 msgstr ""
 
-#: Common\Extensions.cs:1012 Common\FontDialog.cs:352
+#: Common\Extensions.cs:1163 Common\FontDialog.cs:351
 msgid "Light"
 msgstr ""
 
-#: Common\Extensions.cs:1013 Common\FontDialog.cs:353
+#: Common\Extensions.cs:1164 Common\FontDialog.cs:352
 msgid "Regular"
 msgstr ""
 
-#: Common\Extensions.cs:1014 Common\FontDialog.cs:354
+#: Common\Extensions.cs:1165 Common\FontDialog.cs:353
 msgid "Medium"
 msgstr ""
 
-#: Common\Extensions.cs:1015 Common\FontDialog.cs:355
+#: Common\Extensions.cs:1166 Common\FontDialog.cs:359
 msgid "SemiBold"
 msgstr ""
 
-#: Common\Extensions.cs:1016 Common\FontDialog.cs:356
+#: Common\Extensions.cs:1167 Common\FontDialog.cs:354
 msgid "Bold"
 msgstr ""
 
-#: Common\Extensions.cs:1017 Common\FontDialog.cs:357
+#: Common\Extensions.cs:1168 Common\FontDialog.cs:355
 msgid "Black"
 msgstr ""
 
-#: Common\Extensions.cs:1018 Common\FontDialog.cs:358
+#: Common\Extensions.cs:1169 Common\FontDialog.cs:356
 msgid "Oblique"
 msgstr ""
 
-#: Common\Extensions.cs:1019 Common\FontDialog.cs:359
+#: Common\Extensions.cs:1170 Common\FontDialog.cs:357
 msgid "Italic"
 msgstr ""
 
-#: Common\FontDialog.cs:211
+#: Common\FontDialog.cs:212
 msgid "Culture Text"
 msgstr ""
 
-#: Common\FontDialog.cs:349
+#: Common\FontDialog.cs:360
+msgid "SemiCondensed"
+msgstr ""
+
+#: Common\FontDialog.cs:361
+msgid "Condensed"
+msgstr ""
+
+#: Common\FontDialog.cs:362
+msgid "Expanded"
+msgstr ""
+
+#: Common\FontDialog.cs:363
+msgid "Extended"
+msgstr ""
+
+#: Common\FontDialog.cs:364
+msgid "Heavy"
+msgstr ""
+
+#: Common\FontDialog.cs:365
+msgid "ExtraBlack"
+msgstr ""
+
+#: Common\FontDialog.cs:366
+msgid "Ultra Light"
+msgstr ""
+
+#: Common\FontDialog.cs:367
+msgid "Ultra"
+msgstr ""
+
+#: Common\FontDialog.cs:368
+msgid "Roman"
+msgstr ""
+
+#: Common\FontDialog.cs:370
 msgid "250"
 msgstr ""
 
-#: Common\FontDialog.cs:350
+#: Common\FontDialog.cs:371
 msgid "350"
+msgstr ""
+
+#: Common\FontDialog.cs:372
+msgid "275"
+msgstr ""
+
+#: Common\FontDialog.cs:373
+msgid "750"
+msgstr ""
+
+#: Common\FontDialog.cs:375
+msgid "W3"
+msgstr ""
+
+#: Common\FontDialog.cs:376
+msgid "W6"
 msgstr ""
