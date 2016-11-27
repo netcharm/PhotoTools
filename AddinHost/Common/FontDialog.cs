@@ -545,7 +545,8 @@ namespace NetCharm.Common
                 idx = families.IndexOf( lvi );
                 lvFamily.Select();
                 lvFamily.EnsureVisible( idx );
-                lvFamily.FocusedItem = lvFamily.FindItemWithText( Font.Name, false, idx );
+                lvFamily.FocusedItem = lvFamily.FindItemWithText( ffn, false, idx );
+                lvFamily.FocusedItem.Selected = true;
             }
             #endregion
 
