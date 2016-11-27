@@ -34,7 +34,7 @@ namespace InternalFilters
 
         private CornerRegionType mPos = CornerRegionType.None;
 
-        ContentMode opaqueMode = ContentMode.Alpha;
+        ContentMaskMode opaqueMode = ContentMaskMode.Alpha;
 
         private CropMode cropMode = CropMode.AspectRatio;
         private SideType cropSide = (SideType.Top | SideType.Bottom | SideType.Left | SideType.Right);
@@ -252,21 +252,21 @@ namespace InternalFilters
                 {
                     if ( sender == btnModeTrans )
                     {
-                        opaqueMode = ContentMode.Alpha;
+                        opaqueMode = ContentMaskMode.Alpha;
                         cropMode = CropMode.Opaque;
                     }
                     else if ( sender == btnModeTopLeft )
                     {
-                        opaqueMode = ContentMode.TopLeft;
+                        opaqueMode = ContentMaskMode.TopLeft;
                         cropMode = CropMode.TopLeft;
                     }
                     else if ( sender == btnModeBottomRight )
                     {
-                        opaqueMode = ContentMode.BottomRight;
+                        opaqueMode = ContentMaskMode.BottomRight;
                         cropMode = CropMode.BottomRight;
                     }
 
-                    selectionSrc = AddinUtils.AdjustRegion( AddinUtils.GetOpaqueBound( addin.ImageData, opaqueMode ), addin.ImageData, cropSide );
+                    selectionSrc = AddinUtils.AdjustRegion( AddinUtils.GetContentBound( addin.ImageData, opaqueMode ), addin.ImageData, cropSide );
                     imgPreview.SelectionRegion = AddinUtils.RemapRegion( selectionSrc, addin.ImageData, thumb );
                 }
             }

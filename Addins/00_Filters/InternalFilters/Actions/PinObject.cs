@@ -546,15 +546,8 @@ namespace InternalFilters.Actions
                 #endregion
 
                 #if DEBUG
-                //var outline = AddinUtils.MakeOutline( src, 5, Color.DarkBlue );
-                //var glow = AddinUtils.MakeGlow( src, 5, Color.DarkRed );
-                //var shadow = AddinUtils.MakeFakeShadow( src, 5, Color.DarkGray );
-                //outline.Save( "t_outline.png" );
-                //glow.Save( "t_glow.png" );
-                //shadow.Save( "t_shadow.png" );
+
                 #endif
-
-
                 return ( result );
             }
             return ( result );
@@ -565,10 +558,8 @@ namespace InternalFilters.Actions
             Bitmap result = new Bitmap(dst);
             if ( !string.IsNullOrEmpty( option.Text ) )
             {
-                //option.ImageCache = AddinUtils.TextToBitmap32( option.Text, option.TextFont, option.TextFontStyle, ColorTranslator.FromHtml( option.TextColor ) );
                 option.ImageCache = option.Text.ToBitmap( option.TextFont, option.TextFace, option.TextSize, option.TextColor.ToColor() );
                 result = DrawPicture( dst, option, objectOnly );
-                //result = result.Shadow( Color.DarkGray, 1 );
             }
             return ( result );
         }

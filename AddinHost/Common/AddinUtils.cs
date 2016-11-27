@@ -689,7 +689,7 @@ namespace NetCharm.Image.Addins
         /// <param name="img"></param>
         /// <param name="mode"></param>
         /// <returns></returns>
-        public static RectangleF GetOpaqueBound( System.Drawing.Image img, ContentMode mode )
+        public static RectangleF GetOpaqueBound( System.Drawing.Image img, ContentMaskMode mode )
         {
             RectangleF result = new RectangleF(0, 0, img.Width, img.Height);
 
@@ -697,13 +697,13 @@ namespace NetCharm.Image.Addins
             Color cRef = src.GetPixel(0, 0);
             switch ( mode )
             {
-                case ContentMode.Alpha:
+                case ContentMaskMode.Alpha:
                     cRef = Color.Transparent;
                     break;
-                case ContentMode.TopLeft:
+                case ContentMaskMode.TopLeft:
                     cRef = src.GetPixel( 0, 0 );
                     break;
-                case ContentMode.BottomRight:
+                case ContentMaskMode.BottomRight:
                     cRef = src.GetPixel( src.Width - 1, src.Height - 1 );
                     break;
             }
@@ -722,7 +722,7 @@ namespace NetCharm.Image.Addins
                     c = src.GetPixel( x, y );
                     switch ( mode )
                     {
-                        case ContentMode.Alpha:
+                        case ContentMaskMode.Alpha:
                             if ( !content && c.A != cRef.A )
                             {
                                 if ( x < xMin ) xMin = x - 1;
@@ -735,8 +735,8 @@ namespace NetCharm.Image.Addins
                                 if ( y > yMax ) yMax = y + 1;
                             }
                             break;
-                        case ContentMode.TopLeft:
-                        case ContentMode.BottomRight:
+                        case ContentMaskMode.TopLeft:
+                        case ContentMaskMode.BottomRight:
                             if ( !content && ( c.R != cRef.R || c.G != cRef.G || c.B != cRef.B ) )
                             {
                                 if ( x < xMin ) xMin = x - 1;
@@ -765,6 +765,28 @@ namespace NetCharm.Image.Addins
             #endregion
 
             return ( result );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        public static Rectangle GetContentBound( Bitmap src, ContentMaskMode mode = ContentMaskMode.Alpha )
+        {
+            return ( src.ContentBound( mode ) );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        public static Rectangle GetContentBound( System.Drawing.Image src, ContentMaskMode mode = ContentMaskMode.Alpha )
+        {
+            return ( (src as Bitmap).ContentBound( mode ) );
         }
 
         /// <summary>
@@ -1188,10 +1210,10 @@ namespace NetCharm.Image.Addins
         /// <param name="fillcolor"></param>
         /// <param name="mode"></param>
         /// <returns></returns>
-        public static Bitmap GetImageMask( Bitmap image, Color fillcolor = default( Color ), ContentMode mode = ContentMode.Alpha )
+        public static Bitmap GetImageMask( Bitmap image, Color fillcolor = default( Color ), ContentMaskMode mode = ContentMaskMode.Alpha )
         {
             bool alpha = AlphaFormat.Contains( image.PixelFormat );
-            if ( !alpha && mode == ContentMode.Alpha )
+            if ( !alpha && mode == ContentMaskMode.Alpha )
             {
                 Bitmap dst = new Bitmap(image);
                 using ( var g = Graphics.FromImage( dst ) )
@@ -1210,15 +1232,15 @@ namespace NetCharm.Image.Addins
                     for ( int x = 0; x < image.Width; x++ )
                     {
                         Color p = uiSrc.GetPixel(x,y);
-                        if ( mode == ContentMode.Alpha && p.A != 0 )
+                        if ( mode == ContentMaskMode.Alpha && p.A != 0 )
                         {
                             uiSrc.SetPixel( x, y, fillcolor );
                         }
-                        else if ( mode == ContentMode.TopLeft && (p.R != pTL.R || p.G != pTL.G || p.B != pTL.B ))
+                        else if ( mode == ContentMaskMode.TopLeft && (p.R != pTL.R || p.G != pTL.G || p.B != pTL.B ))
                         {
                             uiSrc.SetPixel( x, y, fillcolor );
                         }
-                        else if ( mode == ContentMode.BottomRight && (p.R != pBR.R || p.G != pBR.G || p.B != pBR.B ))
+                        else if ( mode == ContentMaskMode.BottomRight && (p.R != pBR.R || p.G != pBR.G || p.B != pBR.B ))
                         {
                             uiSrc.SetPixel( x, y, fillcolor );
                         }

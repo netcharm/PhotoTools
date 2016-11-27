@@ -12,7 +12,7 @@ namespace NetCharm.Image
     /// 
     /// </summary>
     [Serializable]
-    public enum ContentMode
+    public enum ContentMaskMode
     {
         Alpha = 0,
         TopLeft = 1,

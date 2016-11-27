@@ -122,7 +122,8 @@ namespace DialogTest
                 //option.TextColor = dlgColor.Color.ToHtml();
                 //Preview();
                 var sample = "中文Text".ToBitmap( dlgFontEx.FamilyName, dlgFontEx.TypefaceName, dlgFontEx.Size, dlgFontEx.Color );
-                picBox.Image = Shadow( sample, Color.DarkGray, 5 );
+                //picBox.Image = Shadow( sample, Color.DarkGray, 5 );
+                picBox.Image = Outline( sample, Color.DarkGray, 5 );
             }
             else
             {
@@ -271,10 +272,11 @@ namespace DialogTest
             var srcRect1 = ContentBound( bitmap );
             var ste1 = DateTime.Now.Ticks - sts1;
 
-            result = new Bitmap( srcRect.Width, srcRect.Height, bitmap.PixelFormat );
+            //result = new Bitmap( srcRect.Width, srcRect.Height, bitmap.PixelFormat );
+            result = new Bitmap( srcRect1.Width, srcRect1.Height, bitmap.PixelFormat );
             using ( var g = Graphics.FromImage( result ) )
             {
-                g.DrawImage( bitmap, 0, 0, srcRect, GraphicsUnit.Pixel );
+                g.DrawImage( bitmap, 0, 0, srcRect1, GraphicsUnit.Pixel );
             }
             #endregion
 
@@ -456,55 +458,85 @@ namespace DialogTest
             int yMax = lockbmp.Height-1;
             var w = lockbmp.Width-1;
             var h = lockbmp.Height-1;
-            var hh = (int)Math.Ceiling(lockbmp.Height / 2.0f);
+            var hh = (int)Math.Ceiling(lockbmp.Height / 2.0f)+1;
+            var wh = (int)Math.Ceiling(lockbmp.Width / 2.0f)+1;
 
+            #region Get Bound Top & Bottom
             for ( var y = 0; y < hh; y++ )
             {
-                for ( var x = xMin; x < xMax; x++ )
+                for ( var x = 0; x < w + 1; x++ )
                 {
-                    var xc = xMax - x;
-                    var yc = yMax - y;
+                    var yc = h - y;
 
-                    Color ctl = lockbmp.GetPixel( x, y );
-                    Color ctr = lockbmp.GetPixel( xc, y );
-                    Color cbr = lockbmp.GetPixel( xc, yc );
-                    Color cbl = lockbmp.GetPixel( x, yc );
-
+                    Color ct = lockbmp.GetPixel( x, y );
+                    Color cb = lockbmp.GetPixel( x, yc );
                     switch ( mode )
                     {
                         case RefColorMode.Alpha:
-                            if ( ctl.A == cRef.A && cbl.A == cRef.A )
+                            if ( ct.A != cRef.A )
                             {
-                                if ( x > xMin ) xMin = x;
+                                if ( yMin == 0 ) yMin = y - 1;
                             }
-                            if ( ctr.A == cRef.A && cbr.A == cRef.A )
+                            if ( cb.A != cRef.A )
                             {
-                                if ( xc < xMax ) xMax = xc;
-                            }
-                            if ( ctl.A == cRef.A && ctr.A == cRef.A )
-                            {
-                                if ( y > yMin ) yMin = y;
-                            }
-                            if ( cbl.A == cRef.A && cbr.A == cRef.A )
-                            {
-                                if ( yc < yMax ) yMax = yc;
+                                if ( yMax == h ) yMax = yc + 1;
                             }
                             break;
                         default:
-                            if ( ctl.A == cRef.A || ctl.R == cRef.R || ctl.G == cRef.G || ctl.B == cRef.B  )
+                            if ( ct.A != cRef.A || ct.R != cRef.R || ct.G != cRef.G || ct.B != cRef.B )
                             {
-                                if ( x > xMin ) xMin = x;
-                                if ( y > yMin ) yMin = y;
+                                if ( yMin == 0 ) yMin = y - 1;
                             }
-                            if ( cbr.A == cRef.A || cbr.R == cRef.R || cbr.G == cRef.G || cbr.B == cRef.B )
+                            if ( cb.A != cRef.A || cb.R != cRef.R || cb.G != cRef.G || cb.B != cRef.B )
                             {
-                                if ( xc < xMax ) xMax = xc;
-                                if ( yc < yMax ) yMax = yc;
+                                if ( yMax == h ) yMax = yc + 1;
                             }
                             break;
                     }
+                    if ( yMin != 0 && yMax != h ) break;
                 }
+                if ( yMin != 0 && yMax != h ) break;
             }
+            #endregion
+
+            #region Get Bound Left & Right
+            for ( var x = 0; x < wh; x++ )
+            {
+                for ( var y = yMin + 1; y < yMax; y++ )
+                {
+                    var xc = w - x;
+
+                    Color cl = lockbmp.GetPixel( x, y );
+                    Color cr = lockbmp.GetPixel( xc, y );
+                    switch ( mode )
+                    {
+                        case RefColorMode.Alpha:
+                            if ( cl.A != cRef.A )
+                            {
+                                if ( xMin == 0 ) xMin = x - 1;
+                            }
+                            if ( cr.A != cRef.A )
+                            {
+                                if ( xMax == w ) xMax = xc + 1;
+                            }
+                            break;
+                        default:
+                            if ( cl.A != cRef.A || cl.R != cRef.R || cl.G != cRef.G || cl.B != cRef.B )
+                            {
+                                if ( xMin == 0 ) xMin = x - 1;
+                            }
+                            if ( cr.A != cRef.A || cr.R != cRef.R || cr.G != cRef.G || cr.B != cRef.B )
+                            {
+                                if ( xMax == w ) xMax = xc + 1;
+                            }
+                            break;
+                    }
+                    if ( xMin != 0 && xMax != w ) break;
+                }
+                if ( xMin != 0 && xMax != w ) break;
+            }
+            #endregion
+
             #endregion
 
             //从内存解锁Bitmap

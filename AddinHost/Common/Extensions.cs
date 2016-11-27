@@ -576,7 +576,7 @@ namespace ExtensionMethods
         /// <param name="src"></param>
         /// <param name="mode"></param>
         /// <returns></returns>
-        public static Rectangle ContentBound( this Bitmap src, ContentMode mode = ContentMode.Alpha )
+        public static Rectangle ContentBound( this Bitmap src, ContentMaskMode mode = ContentMaskMode.Alpha, bool fastmode=true )
         {
             Rectangle result = new Rectangle(0, 0, src.Width, src.Height);
 
@@ -587,64 +587,158 @@ namespace ExtensionMethods
             Color cRef = lockbmp.GetPixel(0, 0);
             switch ( mode )
             {
-                case ContentMode.Alpha:
+                case ContentMaskMode.Alpha:
                     cRef = Color.Transparent;
                     break;
-                case ContentMode.TopLeft:
+                case ContentMaskMode.TopLeft:
                     cRef = lockbmp.GetPixel( 0, 0 );
                     break;
-                case ContentMode.BottomRight:
+                case ContentMaskMode.BottomRight:
                     cRef = lockbmp.GetPixel( lockbmp.Width - 1, lockbmp.Height - 1 );
                     break;
             }
             #endregion
 
-            #region Check pixels value with Ref Value
-            bool content = false;
-            int xMax = 0;
-            int xMin = lockbmp.Width-1;
-            int yMax = 0;
-            int yMin = lockbmp.Height-1;
-            Color c = lockbmp.GetPixel( 0, 0 );
-            for ( var y = 0; y < lockbmp.Height; y++ )
+            int xMin = 0;
+            int xMax = lockbmp.Width-1;
+            int yMin = 0;
+            int yMax = lockbmp.Height-1;
+
+            if ( fastmode)
             {
-                content = false;
-                for ( var x = 0; x < lockbmp.Width; x++ )
+                #region Check pixels value with Ref Value
+                var w = lockbmp.Width-1;
+                var h = lockbmp.Height-1;
+                var hh = (int)Math.Ceiling(lockbmp.Height / 2.0f)+1;
+                var wh = (int)Math.Ceiling(lockbmp.Width / 2.0f)+1;
+
+                #region Get Bound Top & Bottom
+                for ( var y = 0; y < hh; y++ )
                 {
-                    c = lockbmp.GetPixel( x, y );
-                    switch ( mode )
+                    for ( var x = 0; x < w + 1; x++ )
                     {
-                        case ContentMode.Alpha:
-                            if ( !content && c.A != cRef.A )
-                            {
-                                if ( x < xMin ) xMin = x - 1;
-                                if ( y < yMin ) yMin = y - 1;
-                                content = true;
-                            }
-                            else if ( content && c.A != cRef.A )
-                            {
-                                if ( x > xMax ) xMax = x + 1;
-                                if ( y > yMax ) yMax = y + 1;
-                            }
-                            break;
-                        case ContentMode.TopLeft:
-                        case ContentMode.BottomRight:
-                            if ( !content && ( c.R != cRef.R || c.G != cRef.G || c.B != cRef.B ) )
-                            {
-                                if ( x < xMin ) xMin = x - 1;
-                                if ( y < yMin ) yMin = y - 1;
-                                content = true;
-                            }
-                            else if ( content && ( c.R != cRef.R || c.G != cRef.G || c.B != cRef.B ) )
-                            {
-                                if ( x > xMax ) xMax = x + 1;
-                                if ( y > yMax ) yMax = y + 1;
-                            }
-                            break;
+                        var yc = h - y;
+
+                        Color ct = lockbmp.GetPixel( x, y );
+                        Color cb = lockbmp.GetPixel( x, yc );
+                        switch ( mode )
+                        {
+                            case ContentMaskMode.Alpha:
+                                if ( ct.A != cRef.A )
+                                {
+                                    if ( yMin == 0 ) yMin = y - 1;
+                                }
+                                if ( cb.A != cRef.A )
+                                {
+                                    if ( yMax == h ) yMax = yc + 1;
+                                }
+                                break;
+                            default:
+                                if ( ct.A != cRef.A || ct.R != cRef.R || ct.G != cRef.G || ct.B != cRef.B )
+                                {
+                                    if ( yMin == 0 ) yMin = y - 1;
+                                }
+                                if ( cb.A != cRef.A || cb.R != cRef.R || cb.G != cRef.G || cb.B != cRef.B )
+                                {
+                                    if ( yMax == h ) yMax = yc + 1;
+                                }
+                                break;
+                        }
+                        if ( yMin != 0 && yMax != h ) break;
+                    }
+                    if ( yMin != 0 && yMax != h ) break;
+                }
+                #endregion
+
+                #region Get Bound Left & Right
+                for ( var x = 0; x < wh; x++ )
+                {
+                    for ( var y = yMin + 1; y < yMax; y++ )
+                    {
+                        var xc = w - x;
+
+                        Color cl = lockbmp.GetPixel( x, y );
+                        Color cr = lockbmp.GetPixel( xc, y );
+                        switch ( mode )
+                        {
+                            case ContentMaskMode.Alpha:
+                                if ( cl.A != cRef.A )
+                                {
+                                    if ( xMin == 0 ) xMin = x - 1;
+                                }
+                                if ( cr.A != cRef.A )
+                                {
+                                    if ( xMax == w ) xMax = xc + 1;
+                                }
+                                break;
+                            default:
+                                if ( cl.A != cRef.A || cl.R != cRef.R || cl.G != cRef.G || cl.B != cRef.B )
+                                {
+                                    if ( xMin == 0 ) xMin = x - 1;
+                                }
+                                if ( cr.A != cRef.A || cr.R != cRef.R || cr.G != cRef.G || cr.B != cRef.B )
+                                {
+                                    if ( xMax == w ) xMax = xc + 1;
+                                }
+                                break;
+                        }
+                        if ( xMin != 0 && xMax != w ) break;
+                    }
+                    if ( xMin != 0 && xMax != w ) break;
+                }
+                #endregion
+
+                #endregion
+            }
+            else
+            {
+                #region Check pixels value with Ref Value
+                bool content = false;
+                xMin = lockbmp.Width - 1;
+                xMax = 0;
+                yMin = lockbmp.Height - 1;
+                yMax = 0;
+                Color c = lockbmp.GetPixel( 0, 0 );
+                for ( var y = 0; y < lockbmp.Height; y++ )
+                {
+                    content = false;
+                    for ( var x = 0; x < lockbmp.Width; x++ )
+                    {
+                        c = lockbmp.GetPixel( x, y );
+                        switch ( mode )
+                        {
+                            case ContentMaskMode.Alpha:
+                                if ( !content && c.A != cRef.A )
+                                {
+                                    if ( x < xMin ) xMin = x - 1;
+                                    if ( y < yMin ) yMin = y - 1;
+                                    content = true;
+                                }
+                                else if ( content && c.A != cRef.A )
+                                {
+                                    if ( x > xMax ) xMax = x + 1;
+                                    if ( y > yMax ) yMax = y + 1;
+                                }
+                                break;
+                            case ContentMaskMode.TopLeft:
+                            case ContentMaskMode.BottomRight:
+                                if ( !content && ( c.R != cRef.R || c.G != cRef.G || c.B != cRef.B ) )
+                                {
+                                    if ( x < xMin ) xMin = x - 1;
+                                    if ( y < yMin ) yMin = y - 1;
+                                    content = true;
+                                }
+                                else if ( content && ( c.R != cRef.R || c.G != cRef.G || c.B != cRef.B ) )
+                                {
+                                    if ( x > xMax ) xMax = x + 1;
+                                    if ( y > yMax ) yMax = y + 1;
+                                }
+                                break;
+                        }
                     }
                 }
+                #endregion
             }
-            #endregion
 
             //从内存解锁Bitmap
             lockbmp.UnlockBits();
