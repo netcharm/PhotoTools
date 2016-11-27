@@ -558,6 +558,8 @@ namespace InternalFilters
                 selection = imgPreview.SelectionRegion;
                 selectionCorner = new CornerRegion( selection );
             }
+            selectionSrc = AddinUtils.RemapRegion( imgPreview.SelectionRegion, thumb, addin.ImageData );
+            toolTip.SetToolTip( imgPreview, $"X:{selectionSrc.X}, Y:{selectionSrc.Y}, W:{selectionSrc.Width}, H:{selectionSrc.Height}]" );
         }
 
     }

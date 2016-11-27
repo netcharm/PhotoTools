@@ -626,21 +626,21 @@ namespace ExtensionMethods
                             case ContentMaskMode.Alpha:
                                 if ( ct.A != cRef.A )
                                 {
-                                    if ( yMin == 0 ) yMin = y - 1;
+                                    if ( yMin == 0 ) yMin = y;
                                 }
                                 if ( cb.A != cRef.A )
                                 {
-                                    if ( yMax == h ) yMax = yc + 1;
+                                    if ( yMax == h ) yMax = yc;
                                 }
                                 break;
                             default:
                                 if ( ct.A != cRef.A || ct.R != cRef.R || ct.G != cRef.G || ct.B != cRef.B )
                                 {
-                                    if ( yMin == 0 ) yMin = y - 1;
+                                    if ( yMin == 0 ) yMin = y;
                                 }
                                 if ( cb.A != cRef.A || cb.R != cRef.R || cb.G != cRef.G || cb.B != cRef.B )
                                 {
-                                    if ( yMax == h ) yMax = yc + 1;
+                                    if ( yMax == h ) yMax = yc;
                                 }
                                 break;
                         }
@@ -664,21 +664,21 @@ namespace ExtensionMethods
                             case ContentMaskMode.Alpha:
                                 if ( cl.A != cRef.A )
                                 {
-                                    if ( xMin == 0 ) xMin = x - 1;
+                                    if ( xMin == 0 ) xMin = x;
                                 }
                                 if ( cr.A != cRef.A )
                                 {
-                                    if ( xMax == w ) xMax = xc + 1;
+                                    if ( xMax == w ) xMax = xc;
                                 }
                                 break;
                             default:
                                 if ( cl.A != cRef.A || cl.R != cRef.R || cl.G != cRef.G || cl.B != cRef.B )
                                 {
-                                    if ( xMin == 0 ) xMin = x - 1;
+                                    if ( xMin == 0 ) xMin = x;
                                 }
                                 if ( cr.A != cRef.A || cr.R != cRef.R || cr.G != cRef.G || cr.B != cRef.B )
                                 {
-                                    if ( xMax == w ) xMax = xc + 1;
+                                    if ( xMax == w ) xMax = xc;
                                 }
                                 break;
                         }
@@ -750,11 +750,23 @@ namespace ExtensionMethods
             yMax = yMax >= src.Height ? src.Height - 1 : yMax;
             result.X = xMin;
             result.Y = yMin;
-            result.Width = ( xMax - xMin ) < 0 ? src.Width : xMax - xMin;
-            result.Height = ( yMax - yMin ) < 0 ? src.Height : yMax - yMin;
+            result.Width = ( xMax - xMin + 1) < 0 ? src.Width : xMax - xMin + 1;
+            result.Height = ( yMax - yMin + 1) < 0 ? src.Height : yMax - yMin + 1;
             #endregion
 
             return ( result );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="mode"></param>
+        /// <param name="fastmode"></param>
+        /// <returns></returns>
+        public static Rectangle ContentBound( this System.Drawing.Image src, ContentMaskMode mode = ContentMaskMode.Alpha, bool fastmode = true )
+        {
+            return ( ContentBound( src as Bitmap, mode, fastmode ) );
         }
 
         /// <summary>
