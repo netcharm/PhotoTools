@@ -180,6 +180,12 @@ namespace ExtensionMethods
 
     public static class NetCharmExtensions
     {
+        #region GDI32 API function
+        [System.Runtime.InteropServices.DllImport( "gdi32.dll" )]
+        public static extern bool DeleteObject( IntPtr hObject );
+
+        #endregion
+
         #region CultrueInfo Pre-Defined
         private static string locale_en = "en-us";
         private static string locale_ui = CultureInfo.InstalledUICulture.Name.ToLower();
@@ -570,7 +576,7 @@ namespace ExtensionMethods
         /// <param name="src"></param>
         /// <param name="mode"></param>
         /// <returns></returns>
-        public static Rectangle GetOpaqueBound( this Bitmap src, OpaqueMode mode = OpaqueMode.Alpha )
+        public static Rectangle ContentBound( this Bitmap src, ContentMode mode = ContentMode.Alpha )
         {
             Rectangle result = new Rectangle(0, 0, src.Width, src.Height);
 
@@ -581,13 +587,13 @@ namespace ExtensionMethods
             Color cRef = lockbmp.GetPixel(0, 0);
             switch ( mode )
             {
-                case OpaqueMode.Alpha:
+                case ContentMode.Alpha:
                     cRef = Color.Transparent;
                     break;
-                case OpaqueMode.TopLeft:
+                case ContentMode.TopLeft:
                     cRef = lockbmp.GetPixel( 0, 0 );
                     break;
-                case OpaqueMode.BottomRight:
+                case ContentMode.BottomRight:
                     cRef = lockbmp.GetPixel( lockbmp.Width - 1, lockbmp.Height - 1 );
                     break;
             }
@@ -608,7 +614,7 @@ namespace ExtensionMethods
                     c = lockbmp.GetPixel( x, y );
                     switch ( mode )
                     {
-                        case OpaqueMode.Alpha:
+                        case ContentMode.Alpha:
                             if ( !content && c.A != cRef.A )
                             {
                                 if ( x < xMin ) xMin = x - 1;
@@ -621,8 +627,8 @@ namespace ExtensionMethods
                                 if ( y > yMax ) yMax = y + 1;
                             }
                             break;
-                        case OpaqueMode.TopLeft:
-                        case OpaqueMode.BottomRight:
+                        case ContentMode.TopLeft:
+                        case ContentMode.BottomRight:
                             if ( !content && ( c.R != cRef.R || c.G != cRef.G || c.B != cRef.B ) )
                             {
                                 if ( x < xMin ) xMin = x - 1;
@@ -650,8 +656,8 @@ namespace ExtensionMethods
             yMax = yMax >= src.Height ? src.Height - 1 : yMax;
             result.X = xMin;
             result.Y = yMin;
-            result.Width = ( xMax - xMin ) < 0 ? 0 : xMax - xMin;
-            result.Height = ( yMax - yMin ) < 0 ? 0 : yMax - yMin;
+            result.Width = ( xMax - xMin ) < 0 ? src.Width : xMax - xMin;
+            result.Height = ( yMax - yMin ) < 0 ? src.Height : yMax - yMin;
             #endregion
 
             return ( result );
@@ -718,7 +724,7 @@ namespace ExtensionMethods
 
             #region Measure String Size
             SizeF sizeF = new Size();
-            using ( var g = Graphics.FromImage( new Bitmap( 10, 10, PixelFormat.Format32bppPArgb ) ) )
+            using ( var g = Graphics.FromImage( new Bitmap( 10, 10, PixelFormat.Format32bppArgb ) ) )
             {
                 g.CompositingMode = CompositingMode.SourceOver;
                 g.CompositingQuality = CompositingQuality.HighQuality;
@@ -764,14 +770,12 @@ namespace ExtensionMethods
             }
             #endregion
 
-            #region Crop Opaque
-            var rect = textImg.GetOpaqueBound();
-            rect.Height += 2;
-            rect.Width += 2;
-            var dst =  new Bitmap(rect.Width, rect.Height, textImg.PixelFormat);
+            #region Crop Transparent Area
+            var dstRect = textImg.ContentBound();
+            var dst =  new Bitmap(dstRect.Width, dstRect.Height, textImg.PixelFormat);
             using ( var g = Graphics.FromImage( dst ) )
             {
-                g.DrawImage( textImg, 0, 0, rect, GraphicsUnit.Pixel );
+                g.DrawImage( textImg, 0, 0, dstRect, GraphicsUnit.Pixel );
             }
             #endregion
 
@@ -817,6 +821,19 @@ namespace ExtensionMethods
             //float emSize = 12 * dpiY / 72f;
             #endregion
 
+            #region Set FontStyle
+            var fontStyle = System.Windows.FontStyles.Normal;
+            var fontWeight = System.Windows.FontWeights.Normal;
+            var textDecorations = new System.Windows.TextDecorationCollection();
+            if ( underline )
+                textDecorations.Add( System.Windows.TextDecorations.Underline );
+            if ( strikeout )
+                textDecorations.Add( System.Windows.TextDecorations.Strikethrough );
+
+            fontStyle = fontface.Style;
+            fontWeight = fontface.Weight;
+            #endregion
+
             #region Create FormattedText
             var culture = CultureInfo.InstalledUICulture;
             //if ( !fontface.FaceNames.ContainsKey( locale_uikey ) )
@@ -840,32 +857,21 @@ namespace ExtensionMethods
             formattedText.TextAlignment = System.Windows.TextAlignment.Left;
             #endregion
 
-            #region Set FontStyle
-            var fontStyle = System.Windows.FontStyles.Normal;
-            var fontWeight = System.Windows.FontWeights.Normal;
-            var textDecorations = new System.Windows.TextDecorationCollection();
-            if ( underline )
-                textDecorations.Add( System.Windows.TextDecorations.Underline );
-            if ( strikeout )
-                textDecorations.Add( System.Windows.TextDecorations.Strikethrough );
-
-            fontStyle = fontface.Style;
-            fontWeight = fontface.Weight;
-            #endregion
-
-            #region FormattedText Style
+            #region Set FormattedText Style
             formattedText.SetFontStyle( fontStyle );
             formattedText.SetFontWeight( fontWeight );
             formattedText.SetTextDecorations( textDecorations );
             #endregion
 
-            #region Draw the FormattedText on a Drawing Visual
+            #region Set FormattedText Max Size
             //formattedText.MaxTextWidth = rectangle.Width / ( dpiX / 96.0 );
             //formattedText.MaxTextHeight = rectangle.Height / ( dpiY / 96.0 );
             //formattedText.MaxTextHeight = ( emSize + 4 ) / ( dpiY / 96.0 );
             formattedText.MaxTextWidth = 1280;
             formattedText.MaxTextHeight = 700;
+            #endregion
 
+            #region Draw the FormattedText on a Drawing Visual
             Media.DrawingVisual drawingVisual = new Media.DrawingVisual();
             using ( var drawingContext = drawingVisual.RenderOpen() )
             {
@@ -891,7 +897,8 @@ namespace ExtensionMethods
             #endregion
 
             #region Create a System.Drawing.Bitmap 
-            var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppPArgb );
+            //var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppPArgb );
+            var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppArgb );
             // Draw background color
             using ( var g = Graphics.FromImage( bitmap ) )
             {
@@ -909,14 +916,12 @@ namespace ExtensionMethods
             bitmap.UnlockBits( pdata );
             #endregion
 
-            #region Crop Opaque
-            var rect = bitmap.GetOpaqueBound();
-            rect.Width = rect.Width < 0 ? 1 : rect.Width + 2;
-            rect.Height = rect.Height < 0 ? 1 : rect.Height + 2;
-            var dst =  new Bitmap(rect.Width, rect.Height, bitmap.PixelFormat);
+            #region Crop Transparent Area
+            var srcRect = bitmap.ContentBound();
+            var dst =  new Bitmap(srcRect.Width, srcRect.Height, bitmap.PixelFormat);
             using ( var g = Graphics.FromImage( dst ) )
             {
-                g.DrawImage( bitmap, 0, 0, rect, GraphicsUnit.Pixel );
+                g.DrawImage( bitmap, 0, 0, srcRect, GraphicsUnit.Pixel );
             }
             #endregion
             return ( dst );
@@ -1147,7 +1152,7 @@ namespace ExtensionMethods
 
             #region Measure String Size
             SizeF sizeF = new Size();
-            using ( var g = Graphics.FromImage( new Bitmap( 10, 10, PixelFormat.Format32bppPArgb ) ) )
+            using ( var g = Graphics.FromImage( new Bitmap( 10, 10, PixelFormat.Format32bppArgb ) ) )
             {
                 g.CompositingMode = CompositingMode.SourceOver;
                 g.CompositingQuality = CompositingQuality.HighQuality;
@@ -1195,14 +1200,11 @@ namespace ExtensionMethods
         {
             if ( copyMethod )
             {
-                Bitmap bmp = new Bitmap(
-                source.PixelWidth,
-                source.PixelHeight,
-                PixelFormat.Format32bppPArgb);
-                BitmapData data = bmp.LockBits(
-                new Rectangle(Point.Empty, bmp.Size),
-                ImageLockMode.WriteOnly,
-                PixelFormat.Format32bppPArgb);
+                Bitmap bmp = new Bitmap( source.PixelWidth, source.PixelHeight, 
+                    PixelFormat.Format32bppArgb);
+                BitmapData data = bmp.LockBits( new Rectangle(Point.Empty, bmp.Size), 
+                    ImageLockMode.WriteOnly, 
+                    PixelFormat.Format32bppArgb);
                 source.CopyPixels(
                   System.Windows.Int32Rect.Empty,
                   data.Scan0,
@@ -1210,7 +1212,6 @@ namespace ExtensionMethods
                   data.Stride );
                 bmp.UnlockBits( data );
                 return ( bmp );
-
             }
             else
             {
@@ -1233,11 +1234,14 @@ namespace ExtensionMethods
         /// <returns></returns>
         public static Media.Imaging.BitmapSource ToBitmapSource( this Bitmap source )
         {
-            return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                          source.GetHbitmap(),
+            var hBmp = source.GetHbitmap();
+            var result = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                          hBmp,
                           IntPtr.Zero,
                           System.Windows.Int32Rect.Empty,
                           Media.Imaging.BitmapSizeOptions.FromEmptyOptions() );
+            DeleteObject( hBmp );
+            return ( result );
         }
 
         #endregion
@@ -1345,15 +1349,17 @@ namespace ExtensionMethods
             }
             return ( dst );
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="src"></param>
         /// <param name="color"></param>
         /// <param name="width"></param>
+        /// <param name="opacity"></param>
+        /// <param name="angle"></param>
         /// <returns></returns>
-        public static Bitmap Shadow(this Bitmap src, Color color, int width)
+        public static Bitmap Shadow(this Bitmap src, Color color, int width, double opacity = 0.6f, double angle = 315 )
         {
             Bitmap result = new Bitmap(src);
             #region Get DPI 
@@ -1369,13 +1375,20 @@ namespace ExtensionMethods
 
             int offset = 4*width;
 
+            #region Create Effect
+            var effect = new Media.Effects.DropShadowEffect();
+            effect.BlurRadius = width;
+            effect.Color = color.ToMediaColor();
+            effect.Direction = angle;
+            effect.Opacity = opacity;
+            effect.ShadowDepth = width;
+
+            //var effect = new Media.Effects.BlurEffect();
+            //effect.Radius = 50;
+            #endregion
+
             #region Draw source bitmap to DrawingVisual
             Media.DrawingVisual drawingVisual = new Media.DrawingVisual();
-            var effect = new Media.Effects.DropShadowEffect();
-            effect.BlurRadius = 50;
-            effect.Color = Media.Colors.Lime;
-            effect.Opacity = 0.67;
-            effect.ShadowDepth = width;
             drawingVisual.Effect = effect;
             using ( var drawingContext = drawingVisual.RenderOpen() )
             {
@@ -1388,14 +1401,14 @@ namespace ExtensionMethods
 
             #region Render the DrawingVisual into a RenderTargetBitmap 
             var rtb = new Media.Imaging.RenderTargetBitmap(
-              src.Width + offset, src.Height * offset,
+              src.Width + offset, src.Height + offset,
               dpiX, dpiY,
               Media.PixelFormats.Pbgra32 );
             rtb.Render( drawingVisual );
             #endregion
 
             #region Create a System.Drawing.Bitmap 
-            var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppPArgb );
+            var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppArgb );
             #endregion
 
             #region Copy the RenderTargetBitmap pixels into the bitmap's pixel buffer
@@ -1408,17 +1421,88 @@ namespace ExtensionMethods
             bitmap.UnlockBits( pdata );
             #endregion
 
-            #region Crop Opaque
-            var rect = bitmap.GetOpaqueBound();
-            rect.Width = rect.Width < 0 ? 1 : rect.Width + 2;
-            rect.Height = rect.Height < 0 ? 1 : rect.Height + 2;
-            var dst =  new Bitmap(rect.Width, rect.Height, bitmap.PixelFormat);
-            using ( var g = Graphics.FromImage( dst ) )
+            #region Crop Transparent Area
+            var srcRect = bitmap.ContentBound();
+            result =  new Bitmap(srcRect.Width, srcRect.Height, bitmap.PixelFormat);
+            using ( var g = Graphics.FromImage( result ) )
             {
-                g.DrawImage( bitmap, 0, 0, rect, GraphicsUnit.Pixel );
+                g.DrawImage( bitmap, 0, 0, srcRect, GraphicsUnit.Pixel );
             }
             #endregion
 
+            return ( result );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="radius"></param>
+        /// <returns></returns>
+        public static Bitmap Blur( this Bitmap src, double radius=20 )
+        {
+            Bitmap result = new Bitmap(src);
+            #region Get DPI 
+            float dpiX = 96f;
+            float dpiY = 96f;
+
+            using ( Graphics g = Graphics.FromHwnd( IntPtr.Zero ) )
+            {
+                dpiX = g.DpiX;
+                dpiY = g.DpiY;
+            }
+            #endregion
+
+            int width = (int)Math.Ceiling(radius);
+            int offset = 4*width;
+
+            #region Create Effect
+            var effect = new Media.Effects.BlurEffect();
+            effect.Radius = radius;
+            #endregion
+
+            #region Draw source bitmap to DrawingVisual
+            Media.DrawingVisual drawingVisual = new Media.DrawingVisual();
+            drawingVisual.Effect = effect;
+            using ( var drawingContext = drawingVisual.RenderOpen() )
+            {
+                //drawingContext.PushEffect( new Media.Effects.BlurBitmapEffect(), null );
+                System.Windows.Rect dRect = new System.Windows.Rect(2*width, 2*width, src.Width, src.Height);
+                drawingContext.DrawImage( src.ToBitmapSource(), dRect );
+                drawingContext.Close();
+            }
+            #endregion
+
+            #region Render the DrawingVisual into a RenderTargetBitmap 
+            var rtb = new Media.Imaging.RenderTargetBitmap(
+              src.Width + offset, src.Height + offset,
+              dpiX, dpiY,
+              Media.PixelFormats.Pbgra32 );
+            rtb.Render( drawingVisual );
+            #endregion
+
+            #region Create a System.Drawing.Bitmap 
+            var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppArgb );
+            #endregion
+
+            #region Copy the RenderTargetBitmap pixels into the bitmap's pixel buffer
+            var pdata = bitmap.LockBits(
+                new Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                ImageLockMode.WriteOnly,
+                bitmap.PixelFormat);
+            rtb.CopyPixels( System.Windows.Int32Rect.Empty,
+                pdata.Scan0, pdata.Stride * pdata.Height, pdata.Stride );
+            bitmap.UnlockBits( pdata );
+            #endregion
+
+            #region Crop Transparent Area
+            var srcRect = bitmap.ContentBound();
+            result = new Bitmap( srcRect.Width, srcRect.Height, bitmap.PixelFormat );
+            using ( var g = Graphics.FromImage( result ) )
+            {
+                g.DrawImage( bitmap, 0, 0, srcRect, GraphicsUnit.Pixel );
+            }
+            #endregion
 
             return ( result );
         }

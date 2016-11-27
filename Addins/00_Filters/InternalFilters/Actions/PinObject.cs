@@ -75,7 +75,7 @@ namespace InternalFilters.Actions
         [NonSerialized]
         [ScriptIgnore]
         public Dictionary<IAddin, ParamList> FilterParams = new Dictionary<IAddin, ParamList>();
-        public float Opaque = 100f;
+        public float Opacity = 100f;
         //public float GradientWidth = 0f;
         //public Color GradientColor1 = Color.DarkGray;
         //public Color GradientColor2 = Color.DarkGray;
@@ -91,6 +91,38 @@ namespace InternalFilters.Actions
         //public Color OutlineColor = Color.WhiteSmoke;
         //public float OutlineOpaque = 100f;
         #endregion
+
+        public PinOption Clone()
+        {
+            var result = new PinOption();
+
+            result.Enabled = this.Enabled;
+            result.Mode = this.Mode;
+
+            result.Tile = this.Tile;
+            result.Blend = this.Blend;
+            result.Opacity = this.Opacity;
+
+            result.Location = this.Location;
+            result.Offset = this.Offset;
+            result.Pos = this.Pos;
+            result.RandomPos = this.RandomPos;
+
+            result.FilterParams = this.FilterParams;
+
+            result.Text = this.Text;
+            result.TextColor = this.TextColor;
+            result.TextFace = this.TextFace;
+            result.TextFont = this.TextFont;
+            result.TextFontStyle = this.TextFontStyle;
+            result.TextSize = this.TextSize;
+
+            result.PictureFile = this.PictureFile;
+
+            result.TagFile = this.TagFile;
+
+            return ( result );
+        }
     }
 
     [Extension]
@@ -492,7 +524,7 @@ namespace InternalFilters.Actions
                     g.TextContrast = 2;
                     g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-                    ColorMatrix c = new ColorMatrix() { Matrix33 = option.Opaque / 100f };
+                    ColorMatrix c = new ColorMatrix() { Matrix33 = option.Opacity / 100f };
                     ImageAttributes a = new ImageAttributes();
                     a.SetColorMatrix( c, ColorMatrixFlag.Default, ColorAdjustType.Bitmap );
 
@@ -511,17 +543,18 @@ namespace InternalFilters.Actions
                         GraphicsUnit.Pixel,
                         a );
                 }
+                #endregion
 
                 #if DEBUG
-                var outline = AddinUtils.MakeOutline( src, 5, Color.DarkBlue );
-                var glow = AddinUtils.MakeGlow( src, 5, Color.DarkRed );
-                var shadow = AddinUtils.MakeFakeShadow( src, 5, Color.DarkGray );
-                outline.Save( "t_outline.png" );
-                glow.Save( "t_glow.png" );
-                shadow.Save( "t_shadow.png" );
+                //var outline = AddinUtils.MakeOutline( src, 5, Color.DarkBlue );
+                //var glow = AddinUtils.MakeGlow( src, 5, Color.DarkRed );
+                //var shadow = AddinUtils.MakeFakeShadow( src, 5, Color.DarkGray );
+                //outline.Save( "t_outline.png" );
+                //glow.Save( "t_glow.png" );
+                //shadow.Save( "t_shadow.png" );
                 #endif
 
-                #endregion
+
                 return ( result );
             }
             return ( result );
@@ -535,6 +568,7 @@ namespace InternalFilters.Actions
                 //option.ImageCache = AddinUtils.TextToBitmap32( option.Text, option.TextFont, option.TextFontStyle, ColorTranslator.FromHtml( option.TextColor ) );
                 option.ImageCache = option.Text.ToBitmap( option.TextFont, option.TextFace, option.TextSize, option.TextColor.ToColor() );
                 result = DrawPicture( dst, option, objectOnly );
+                //result = result.Shadow( Color.DarkGray, 1 );
             }
             return ( result );
         }

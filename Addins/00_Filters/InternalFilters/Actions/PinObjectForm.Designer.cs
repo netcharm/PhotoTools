@@ -47,16 +47,9 @@ namespace InternalFilters.Actions
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.grpCommonSetting = new System.Windows.Forms.GroupBox();
-            this.slideOffsetY = new NetCharm.Common.Controls.SlideNumber();
-            this.slideOffsetX = new NetCharm.Common.Controls.SlideNumber();
-            this.slideMarginY = new NetCharm.Common.Controls.SlideNumber();
-            this.slideMarginX = new NetCharm.Common.Controls.SlideNumber();
             this.pnlPosMode = new System.Windows.Forms.Panel();
             this.chkEnabled = new System.Windows.Forms.CheckBox();
             this.chkTile = new System.Windows.Forms.CheckBox();
-            this.csSelect = new NetCharm.Common.Controls.CornerSide();
-            this.slideBlend = new NetCharm.Common.Controls.SlideNumber();
-            this.slideOpaque = new NetCharm.Common.Controls.SlideNumber();
             this.lvFilters = new System.Windows.Forms.ListView();
             this.ilLarge = new System.Windows.Forms.ImageList(this.components);
             this.ilSmall = new System.Windows.Forms.ImageList(this.components);
@@ -68,6 +61,13 @@ namespace InternalFilters.Actions
             this.imgText = new Cyotek.Windows.Forms.ImageBox();
             this.edText = new System.Windows.Forms.TextBox();
             this.tabPageTag = new System.Windows.Forms.TabPage();
+            this.slideOffsetY = new NetCharm.Common.Controls.SlideNumber();
+            this.slideOffsetX = new NetCharm.Common.Controls.SlideNumber();
+            this.slideMarginY = new NetCharm.Common.Controls.SlideNumber();
+            this.slideMarginX = new NetCharm.Common.Controls.SlideNumber();
+            this.csSelect = new NetCharm.Common.Controls.CornerSide();
+            this.slideBlend = new NetCharm.Common.Controls.SlideNumber();
+            this.slideOpacity = new NetCharm.Common.Controls.SlideNumber();
             this.imgPreview = new NetCharm.Common.Controls.ImageBox();
             this.dlgFontEx = new NetCharm.Common.Controls.FontDialogEx();
             this.grpCommonSetting.SuspendLayout();
@@ -209,9 +209,135 @@ namespace InternalFilters.Actions
             this.grpCommonSetting.Controls.Add(this.slideMarginX);
             this.grpCommonSetting.Controls.Add(this.pnlPosMode);
             this.grpCommonSetting.Controls.Add(this.slideBlend);
-            this.grpCommonSetting.Controls.Add(this.slideOpaque);
+            this.grpCommonSetting.Controls.Add(this.slideOpacity);
             this.grpCommonSetting.Name = "grpCommonSetting";
             this.grpCommonSetting.TabStop = false;
+            // 
+            // pnlPosMode
+            // 
+            this.pnlPosMode.Controls.Add(this.chkEnabled);
+            this.pnlPosMode.Controls.Add(this.chkTile);
+            this.pnlPosMode.Controls.Add(this.btnPosRandom);
+            this.pnlPosMode.Controls.Add(this.csSelect);
+            resources.ApplyResources(this.pnlPosMode, "pnlPosMode");
+            this.pnlPosMode.Name = "pnlPosMode";
+            // 
+            // chkEnabled
+            // 
+            resources.ApplyResources(this.chkEnabled, "chkEnabled");
+            this.chkEnabled.AutoEllipsis = true;
+            this.chkEnabled.Checked = true;
+            this.chkEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkEnabled.Name = "chkEnabled";
+            this.chkEnabled.UseVisualStyleBackColor = true;
+            // 
+            // chkTile
+            // 
+            resources.ApplyResources(this.chkTile, "chkTile");
+            this.chkTile.AutoEllipsis = true;
+            this.chkTile.Name = "chkTile";
+            this.chkTile.UseVisualStyleBackColor = true;
+            this.chkTile.Click += new System.EventHandler(this.chkTile_Click);
+            // 
+            // lvFilters
+            // 
+            resources.ApplyResources(this.lvFilters, "lvFilters");
+            this.lvFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvFilters.CheckBoxes = true;
+            this.lvFilters.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lvFilters.HideSelection = false;
+            this.lvFilters.LargeImageList = this.ilLarge;
+            this.lvFilters.Name = "lvFilters";
+            this.lvFilters.ShowItemToolTips = true;
+            this.lvFilters.SmallImageList = this.ilSmall;
+            this.lvFilters.UseCompatibleStateImageBehavior = false;
+            this.lvFilters.View = System.Windows.Forms.View.List;
+            this.lvFilters.VirtualMode = true;
+            this.lvFilters.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvFilters_RetrieveVirtualItem);
+            this.lvFilters.DoubleClick += new System.EventHandler(this.lvFilters_DoubleClick);
+            this.lvFilters.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvFilters_KeyPress);
+            this.lvFilters.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvFilters_MouseClick);
+            // 
+            // ilLarge
+            // 
+            this.ilLarge.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            resources.ApplyResources(this.ilLarge, "ilLarge");
+            this.ilLarge.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // ilSmall
+            // 
+            this.ilSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            resources.ApplyResources(this.ilSmall, "ilSmall");
+            this.ilSmall.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // pnlEffectTools
+            // 
+            resources.ApplyResources(this.pnlEffectTools, "pnlEffectTools");
+            this.pnlEffectTools.Controls.Add(this.btnEffectDown);
+            this.pnlEffectTools.Controls.Add(this.btnEffectUp);
+            this.pnlEffectTools.Controls.Add(this.btnEffectRemove);
+            this.pnlEffectTools.Controls.Add(this.btnEffectAdd);
+            this.pnlEffectTools.Name = "pnlEffectTools";
+            // 
+            // pnlCustom
+            // 
+            resources.ApplyResources(this.pnlCustom, "pnlCustom");
+            this.pnlCustom.Controls.Add(this.tabObject);
+            this.pnlCustom.Name = "pnlCustom";
+            // 
+            // tabObject
+            // 
+            resources.ApplyResources(this.tabObject, "tabObject");
+            this.tabObject.Controls.Add(this.tabPagePicture);
+            this.tabObject.Controls.Add(this.tabPageText);
+            this.tabObject.Controls.Add(this.tabPageTag);
+            this.tabObject.Name = "tabObject";
+            this.tabObject.SelectedIndex = 0;
+            this.tabObject.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.tabObject.SelectedIndexChanged += new System.EventHandler(this.tabObject_SelectedIndexChanged);
+            // 
+            // tabPagePicture
+            // 
+            this.tabPagePicture.Controls.Add(this.btnOriginalPic);
+            this.tabPagePicture.Controls.Add(this.btnOpenPic);
+            this.tabPagePicture.Controls.Add(this.imgPicture);
+            resources.ApplyResources(this.tabPagePicture, "tabPagePicture");
+            this.tabPagePicture.Name = "tabPagePicture";
+            this.tabPagePicture.UseVisualStyleBackColor = true;
+            // 
+            // tabPageText
+            // 
+            this.tabPageText.Controls.Add(this.btnColorPicker);
+            this.tabPageText.Controls.Add(this.imgText);
+            this.tabPageText.Controls.Add(this.edText);
+            this.tabPageText.Controls.Add(this.btnOpenFont);
+            resources.ApplyResources(this.tabPageText, "tabPageText");
+            this.tabPageText.Name = "tabPageText";
+            this.tabPageText.UseVisualStyleBackColor = true;
+            // 
+            // imgText
+            // 
+            this.imgText.AllowDoubleClick = true;
+            this.imgText.AllowDrop = true;
+            this.imgText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.imgText, "imgText");
+            this.imgText.ImageBorderStyle = Cyotek.Windows.Forms.ImageBoxBorderStyle.FixedSingleGlowShadow;
+            this.imgText.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.imgText.Name = "imgText";
+            this.imgText.ShowPixelGrid = true;
+            // 
+            // edText
+            // 
+            this.edText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.edText, "edText");
+            this.edText.Name = "edText";
+            this.edText.TextChanged += new System.EventHandler(this.edText_TextChanged);
+            // 
+            // tabPageTag
+            // 
+            resources.ApplyResources(this.tabPageTag, "tabPageTag");
+            this.tabPageTag.Name = "tabPageTag";
+            this.tabPageTag.UseVisualStyleBackColor = true;
             // 
             // slideOffsetY
             // 
@@ -329,32 +455,6 @@ namespace InternalFilters.Actions
             0});
             this.slideMarginX.ValueChanged += new System.EventHandler(this.slideValue_ValueChanged);
             // 
-            // pnlPosMode
-            // 
-            this.pnlPosMode.Controls.Add(this.chkEnabled);
-            this.pnlPosMode.Controls.Add(this.chkTile);
-            this.pnlPosMode.Controls.Add(this.btnPosRandom);
-            this.pnlPosMode.Controls.Add(this.csSelect);
-            resources.ApplyResources(this.pnlPosMode, "pnlPosMode");
-            this.pnlPosMode.Name = "pnlPosMode";
-            // 
-            // chkEnabled
-            // 
-            resources.ApplyResources(this.chkEnabled, "chkEnabled");
-            this.chkEnabled.AutoEllipsis = true;
-            this.chkEnabled.Checked = true;
-            this.chkEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkEnabled.Name = "chkEnabled";
-            this.chkEnabled.UseVisualStyleBackColor = true;
-            // 
-            // chkTile
-            // 
-            resources.ApplyResources(this.chkTile, "chkTile");
-            this.chkTile.AutoEllipsis = true;
-            this.chkTile.Name = "chkTile";
-            this.chkTile.UseVisualStyleBackColor = true;
-            this.chkTile.Click += new System.EventHandler(this.chkTile_Click);
-            // 
             // csSelect
             // 
             resources.ApplyResources(this.csSelect, "csSelect");
@@ -391,134 +491,34 @@ namespace InternalFilters.Actions
             0});
             this.slideBlend.ValueChanged += new System.EventHandler(this.slideValue_ValueChanged);
             // 
-            // slideOpaque
+            // slideOpacity
             // 
-            this.slideOpaque.Caption = "Opaque";
-            this.slideOpaque.DecimalPlaces = 0;
-            resources.ApplyResources(this.slideOpaque, "slideOpaque");
-            this.slideOpaque.Maximum = new decimal(new int[] {
+            this.slideOpacity.Caption = "Opacity";
+            this.slideOpacity.DecimalPlaces = 0;
+            resources.ApplyResources(this.slideOpacity, "slideOpacity");
+            this.slideOpacity.Maximum = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.slideOpaque.Minimum = new decimal(new int[] {
+            this.slideOpacity.Minimum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.slideOpaque.Name = "slideOpaque";
-            this.slideOpaque.Step = new decimal(new int[] {
+            this.slideOpacity.Name = "slideOpacity";
+            this.slideOpacity.Step = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.slideOpaque.Unit = "%";
-            this.slideOpaque.Value = new decimal(new int[] {
+            this.slideOpacity.Unit = "%";
+            this.slideOpacity.Value = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.slideOpaque.ValueChanged += new System.EventHandler(this.slideValue_ValueChanged);
-            // 
-            // lvFilters
-            // 
-            resources.ApplyResources(this.lvFilters, "lvFilters");
-            this.lvFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lvFilters.CheckBoxes = true;
-            this.lvFilters.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvFilters.HideSelection = false;
-            this.lvFilters.LargeImageList = this.ilLarge;
-            this.lvFilters.Name = "lvFilters";
-            this.lvFilters.ShowItemToolTips = true;
-            this.lvFilters.SmallImageList = this.ilSmall;
-            this.lvFilters.UseCompatibleStateImageBehavior = false;
-            this.lvFilters.View = System.Windows.Forms.View.List;
-            this.lvFilters.VirtualMode = true;
-            this.lvFilters.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvFilters_RetrieveVirtualItem);
-            this.lvFilters.DoubleClick += new System.EventHandler(this.lvFilters_DoubleClick);
-            this.lvFilters.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvFilters_KeyPress);
-            this.lvFilters.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvFilters_MouseClick);
-            // 
-            // ilLarge
-            // 
-            this.ilLarge.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            resources.ApplyResources(this.ilLarge, "ilLarge");
-            this.ilLarge.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // ilSmall
-            // 
-            this.ilSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            resources.ApplyResources(this.ilSmall, "ilSmall");
-            this.ilSmall.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // pnlEffectTools
-            // 
-            resources.ApplyResources(this.pnlEffectTools, "pnlEffectTools");
-            this.pnlEffectTools.Controls.Add(this.btnEffectDown);
-            this.pnlEffectTools.Controls.Add(this.btnEffectUp);
-            this.pnlEffectTools.Controls.Add(this.btnEffectRemove);
-            this.pnlEffectTools.Controls.Add(this.btnEffectAdd);
-            this.pnlEffectTools.Name = "pnlEffectTools";
-            // 
-            // pnlCustom
-            // 
-            resources.ApplyResources(this.pnlCustom, "pnlCustom");
-            this.pnlCustom.Controls.Add(this.tabObject);
-            this.pnlCustom.Name = "pnlCustom";
-            // 
-            // tabObject
-            // 
-            resources.ApplyResources(this.tabObject, "tabObject");
-            this.tabObject.Controls.Add(this.tabPagePicture);
-            this.tabObject.Controls.Add(this.tabPageText);
-            this.tabObject.Controls.Add(this.tabPageTag);
-            this.tabObject.Name = "tabObject";
-            this.tabObject.SelectedIndex = 0;
-            this.tabObject.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
-            this.tabObject.SelectedIndexChanged += new System.EventHandler(this.tabObject_SelectedIndexChanged);
-            // 
-            // tabPagePicture
-            // 
-            this.tabPagePicture.Controls.Add(this.btnOriginalPic);
-            this.tabPagePicture.Controls.Add(this.btnOpenPic);
-            this.tabPagePicture.Controls.Add(this.imgPicture);
-            resources.ApplyResources(this.tabPagePicture, "tabPagePicture");
-            this.tabPagePicture.Name = "tabPagePicture";
-            this.tabPagePicture.UseVisualStyleBackColor = true;
-            // 
-            // tabPageText
-            // 
-            this.tabPageText.Controls.Add(this.btnColorPicker);
-            this.tabPageText.Controls.Add(this.imgText);
-            this.tabPageText.Controls.Add(this.edText);
-            this.tabPageText.Controls.Add(this.btnOpenFont);
-            resources.ApplyResources(this.tabPageText, "tabPageText");
-            this.tabPageText.Name = "tabPageText";
-            this.tabPageText.UseVisualStyleBackColor = true;
-            // 
-            // imgText
-            // 
-            this.imgText.AllowDoubleClick = true;
-            this.imgText.AllowDrop = true;
-            this.imgText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.imgText, "imgText");
-            this.imgText.ImageBorderStyle = Cyotek.Windows.Forms.ImageBoxBorderStyle.FixedSingleGlowShadow;
-            this.imgText.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.imgText.Name = "imgText";
-            this.imgText.ShowPixelGrid = true;
-            // 
-            // edText
-            // 
-            this.edText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.edText, "edText");
-            this.edText.Name = "edText";
-            this.edText.TextChanged += new System.EventHandler(this.edText_TextChanged);
-            // 
-            // tabPageTag
-            // 
-            resources.ApplyResources(this.tabPageTag, "tabPageTag");
-            this.tabPageTag.Name = "tabPageTag";
-            this.tabPageTag.UseVisualStyleBackColor = true;
+            this.slideOpacity.ValueChanged += new System.EventHandler(this.slideValue_ValueChanged);
             // 
             // imgPreview
             // 
@@ -583,7 +583,7 @@ namespace InternalFilters.Actions
         private System.Windows.Forms.Button btnOriginal;
         private System.Windows.Forms.GroupBox grpCommonSetting;
         private NetCharm.Common.Controls.SlideNumber slideBlend;
-        private NetCharm.Common.Controls.SlideNumber slideOpaque;
+        private NetCharm.Common.Controls.SlideNumber slideOpacity;
         private System.Windows.Forms.Panel pnlPosMode;
         private System.Windows.Forms.CheckBox chkEnabled;
         private System.Windows.Forms.CheckBox chkTile;

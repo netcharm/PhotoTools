@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ExtensionMethods;
+using Media = System.Windows.Media;
 
 namespace DialogTest
 {
@@ -82,10 +85,11 @@ namespace DialogTest
         {
             fontApplyTest = true;
 
-            //option.TextFont = dlgFont.Font.ToString();
-            //option.TextFontStyle = dlgFont.Font.Style;
-            MessageBox.Show( "Font Apply" );
-            //Preview();
+            var sample = "中文Text".ToBitmap( dlgFontEx.FamilyName, dlgFontEx.TypefaceName, dlgFontEx.Size, dlgFontEx.Color );
+            //picBox.Image = Shadow( sample, Color.DarkGray, 5 );
+            //picBox.Image = Blur( sample, 15 );
+            picBox.Image = Outline( sample, Color.Black, 5, 1.5 );
+
             fontApplyTest = false;
         }
 
@@ -112,11 +116,13 @@ namespace DialogTest
         private void btnFontDialogEx_Click( object sender, EventArgs e )
         {
             dlgFontEx.Font = SystemFonts.DefaultFont;
-            dlgFontEx.Size = 12;
+            dlgFontEx.Size = 24;
             if ( dlgFontEx.ShowDialog() == DialogResult.OK )
             {
                 //option.TextColor = dlgColor.Color.ToHtml();
                 //Preview();
+                var sample = "中文Text".ToBitmap( dlgFontEx.FamilyName, dlgFontEx.TypefaceName, dlgFontEx.Size, dlgFontEx.Color );
+                picBox.Image = Shadow( sample, Color.DarkGray, 5 );
             }
             else
             {
@@ -125,5 +131,567 @@ namespace DialogTest
             }
         }
 
+        public Bitmap Blur( Bitmap src, double radius = 10 )
+        {
+            Bitmap result = new Bitmap(src);
+            #region Get DPI 
+            float dpiX = 96f;
+            float dpiY = 96f;
+
+            using ( Graphics g = Graphics.FromHwnd( IntPtr.Zero ) )
+            {
+                dpiX = g.DpiX;
+                dpiY = g.DpiY;
+            }
+            #endregion
+
+            int width = (int)Math.Ceiling(radius);
+            int offset = 4*width;
+
+            #region Create Effect
+            var effect = new Media.Effects.BlurEffect();
+            effect.Radius = radius;
+            #endregion
+
+            #region Draw source bitmap to DrawingVisual
+            Media.DrawingVisual drawingVisual = new Media.DrawingVisual();
+            drawingVisual.Effect = effect;
+            using ( var drawingContext = drawingVisual.RenderOpen() )
+            {
+                //drawingContext.PushEffect( new Media.Effects.BlurBitmapEffect(), null );
+                System.Windows.Rect dRect = new System.Windows.Rect(2*width, 2*width, src.Width, src.Height);
+                drawingContext.DrawImage( src.ToBitmapSource(), dRect );
+                drawingContext.Close();
+            }
+            #endregion
+
+            #region Render the DrawingVisual into a RenderTargetBitmap 
+            var rtb = new Media.Imaging.RenderTargetBitmap(
+              src.Width + offset, src.Height * offset,
+              dpiX, dpiY,
+              Media.PixelFormats.Pbgra32 );
+            rtb.Render( drawingVisual );
+            #endregion
+
+            #region Create a System.Drawing.Bitmap 
+            var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppArgb );
+            #endregion
+
+            #region Copy the RenderTargetBitmap pixels into the bitmap's pixel buffer
+            var pdata = bitmap.LockBits(
+                new Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                ImageLockMode.WriteOnly,
+                bitmap.PixelFormat);
+            rtb.CopyPixels( System.Windows.Int32Rect.Empty,
+                pdata.Scan0, pdata.Stride * pdata.Height, pdata.Stride );
+            bitmap.UnlockBits( pdata );
+            #endregion
+
+            #region Crop Opaque
+            var rect = bitmap.ContentBound();
+            rect.Width = rect.Width < 0 ? 1 : rect.Width + 2;
+            rect.Height = rect.Height < 0 ? 1 : rect.Height + 2;
+            result = new Bitmap( rect.Width, rect.Height, bitmap.PixelFormat );
+            using ( var g = Graphics.FromImage( result ) )
+            {
+                g.DrawImage( bitmap, 0, 0, rect, GraphicsUnit.Pixel );
+            }
+            #endregion
+
+            return ( result );
+        }
+
+        public Bitmap Outline( Bitmap src, Color color, int width, double opacity = 1.0f )
+        {
+            Bitmap result = new Bitmap(src);
+            #region Get DPI 
+            float dpiX = 96f;
+            float dpiY = 96f;
+
+            using ( Graphics g = Graphics.FromHwnd( IntPtr.Zero ) )
+            {
+                dpiX = g.DpiX;
+                dpiY = g.DpiY;
+            }
+            #endregion
+
+            int offset = 4*width;
+
+            #region Create Effect
+            var effect = new Media.Effects.DropShadowEffect();
+            effect.BlurRadius = width;
+            effect.Color = color.ToMediaColor();
+            effect.Opacity = opacity;
+            effect.ShadowDepth = 0;
+
+            //var effect = new Media.Effects.BlurEffect();
+            //effect.Radius = 50;
+            #endregion
+
+            #region Draw source bitmap to DrawingVisual
+            Media.DrawingVisual drawingVisual = new Media.DrawingVisual();
+
+            drawingVisual.Effect = effect;
+            using ( var drawingContext = drawingVisual.RenderOpen() )
+            {
+                System.Windows.Rect dRect = new System.Windows.Rect(2*width, 2*width, src.Width, src.Height);
+                drawingContext.DrawImage( src.ToBitmapSource(), dRect );
+                drawingContext.Close();
+            }
+            #endregion
+
+            #region Render the DrawingVisual into a RenderTargetBitmap 
+            var rtb = new Media.Imaging.RenderTargetBitmap(
+              src.Width + offset, src.Height + offset,
+              dpiX, dpiY,
+              Media.PixelFormats.Pbgra32 );
+            rtb.Render( drawingVisual );
+            #endregion
+
+            #region Create a System.Drawing.Bitmap 
+            var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppArgb );
+            #endregion
+
+            #region Copy the RenderTargetBitmap pixels into the bitmap's pixel buffer
+            var pdata = bitmap.LockBits(
+                new Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                ImageLockMode.WriteOnly,
+                bitmap.PixelFormat);
+            rtb.CopyPixels( System.Windows.Int32Rect.Empty,
+                pdata.Scan0, pdata.Stride * pdata.Height, pdata.Stride );
+            bitmap.UnlockBits( pdata );
+            #endregion
+
+            #region Crop Transparent Area
+            var sts0 = DateTime.Now.Ticks;
+            var srcRect = bitmap.ContentBound();
+            var ste0 = DateTime.Now.Ticks - sts0;
+
+            var sts1 = DateTime.Now.Ticks;
+            var srcRect1 = ContentBound( bitmap );
+            var ste1 = DateTime.Now.Ticks - sts1;
+
+            result = new Bitmap( srcRect.Width, srcRect.Height, bitmap.PixelFormat );
+            using ( var g = Graphics.FromImage( result ) )
+            {
+                g.DrawImage( bitmap, 0, 0, srcRect, GraphicsUnit.Pixel );
+            }
+            #endregion
+
+            return ( result );
+        }
+
+        public Bitmap Shadow( Bitmap src, Color color, int width, double opacity = 0.6f, double angle = 315 )
+        {
+            Bitmap result = new Bitmap(src);
+            #region Get DPI 
+            float dpiX = 96f;
+            float dpiY = 96f;
+
+            using ( Graphics g = Graphics.FromHwnd( IntPtr.Zero ) )
+            {
+                dpiX = g.DpiX;
+                dpiY = g.DpiY;
+            }
+            #endregion
+
+            int offset = 4*width;
+
+            #region Create Effect
+            var effect = new Media.Effects.DropShadowEffect();
+            effect.BlurRadius = width;
+            effect.Color = color.ToMediaColor();
+            effect.Direction = angle;
+            effect.Opacity = opacity;
+            effect.ShadowDepth = width;
+
+            //var effect = new Media.Effects.BlurEffect();
+            //effect.Radius = 50;
+            #endregion
+
+            #region Draw source bitmap to DrawingVisual
+            Media.DrawingVisual drawingVisual = new Media.DrawingVisual();
+
+            drawingVisual.Effect = effect;
+            using ( var drawingContext = drawingVisual.RenderOpen() )
+            {
+                System.Windows.Rect dRect = new System.Windows.Rect(2*width, 2*width, src.Width, src.Height);
+                drawingContext.DrawImage( src.ToBitmapSource(), dRect );
+                drawingContext.Close();
+            }
+            #endregion
+
+            #region Render the DrawingVisual into a RenderTargetBitmap 
+            var rtb = new Media.Imaging.RenderTargetBitmap(
+              src.Width + offset, src.Height + offset,
+              dpiX, dpiY,
+              Media.PixelFormats.Pbgra32 );
+            rtb.Render( drawingVisual );
+            #endregion
+
+            #region Create a System.Drawing.Bitmap 
+            var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppArgb );
+            #endregion
+
+            #region Copy the RenderTargetBitmap pixels into the bitmap's pixel buffer
+            var pdata = bitmap.LockBits(
+                new Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                ImageLockMode.WriteOnly,
+                bitmap.PixelFormat);
+            rtb.CopyPixels( System.Windows.Int32Rect.Empty,
+                pdata.Scan0, pdata.Stride * pdata.Height, pdata.Stride );
+            bitmap.UnlockBits( pdata );
+            #endregion
+
+            #region Crop Transparent Area
+            var rect = bitmap.ContentBound();
+            result = new Bitmap( rect.Width, rect.Height, bitmap.PixelFormat );
+            using ( var g = Graphics.FromImage( result ) )
+            {
+                g.DrawImage( bitmap, 0, 0, rect, GraphicsUnit.Pixel );
+            }
+            #endregion
+
+            return ( result );
+        }
+
+        public Bitmap Shader( Bitmap src, double radius = 10 )
+        {
+            Bitmap result = new Bitmap(src);
+            #region Get DPI 
+            float dpiX = 96f;
+            float dpiY = 96f;
+
+            using ( Graphics g = Graphics.FromHwnd( IntPtr.Zero ) )
+            {
+                dpiX = g.DpiX;
+                dpiY = g.DpiY;
+            }
+            #endregion
+
+            int width = (int)Math.Ceiling(radius);
+            int offset = 4*width;
+
+            #region Create Effect
+            var effect = new MyShaderEffect();
+            //Media.Effects.ShaderRenderMode = Media.Effects.ShaderRenderMode.Auto;
+            //effect.
+            #endregion
+
+            #region Draw source bitmap to DrawingVisual
+            Media.DrawingVisual drawingVisual = new Media.DrawingVisual();
+            drawingVisual.Effect = effect;
+            using ( var drawingContext = drawingVisual.RenderOpen() )
+            {
+                //drawingContext.PushEffect( new Media.Effects.BlurBitmapEffect(), null );
+                System.Windows.Rect dRect = new System.Windows.Rect(2*width, 2*width, src.Width, src.Height);
+                drawingContext.DrawImage( src.ToBitmapSource(), dRect );
+                drawingContext.Close();
+            }
+            #endregion
+
+            #region Render the DrawingVisual into a RenderTargetBitmap 
+            var rtb = new Media.Imaging.RenderTargetBitmap(
+              src.Width + offset, src.Height * offset,
+              dpiX, dpiY,
+              Media.PixelFormats.Pbgra32 );
+            rtb.Render( drawingVisual );
+            #endregion
+
+            #region Create a System.Drawing.Bitmap 
+            var bitmap = new Bitmap( rtb.PixelWidth, rtb.PixelHeight, PixelFormat.Format32bppArgb );
+            #endregion
+
+            #region Copy the RenderTargetBitmap pixels into the bitmap's pixel buffer
+            var pdata = bitmap.LockBits(
+                new Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                ImageLockMode.WriteOnly,
+                bitmap.PixelFormat);
+            rtb.CopyPixels( System.Windows.Int32Rect.Empty,
+                pdata.Scan0, pdata.Stride * pdata.Height, pdata.Stride );
+            bitmap.UnlockBits( pdata );
+            #endregion
+
+            #region Crop Opaque
+            var rect = bitmap.ContentBound();
+            rect.Width = rect.Width < 0 ? 1 : rect.Width + 2;
+            rect.Height = rect.Height < 0 ? 1 : rect.Height + 2;
+            result = new Bitmap( rect.Width, rect.Height, bitmap.PixelFormat );
+            using ( var g = Graphics.FromImage( result ) )
+            {
+                g.DrawImage( bitmap, 0, 0, rect, GraphicsUnit.Pixel );
+            }
+            #endregion
+
+            return ( result );
+        }
+
+        public Rectangle ContentBound( Bitmap src, RefColorMode mode = RefColorMode.Alpha)
+        {
+            Rectangle result = new Rectangle(0, 0, src.Width, src.Height);
+
+            LockBitmap lockbmp = new LockBitmap(src);
+            //锁定Bitmap，通过Pixel访问颜色
+            lockbmp.LockBits();
+            #region Get Ref Color value
+            Color cRef = lockbmp.GetPixel(0, 0);
+            switch ( mode )
+            {
+                case RefColorMode.Alpha:
+                    cRef = Color.Transparent;
+                    break;
+                case RefColorMode.TopLeft:
+                    cRef = lockbmp.GetPixel( 0, 0 );
+                    break;
+                case RefColorMode.BottomRight:
+                    cRef = lockbmp.GetPixel( lockbmp.Width - 1, lockbmp.Height - 1 );
+                    break;
+            }
+            #endregion
+
+            #region Check pixels value with Ref Value
+            int xMin = 0;
+            int xMax = lockbmp.Width-1;
+            int yMin = 0;
+            int yMax = lockbmp.Height-1;
+            var w = lockbmp.Width-1;
+            var h = lockbmp.Height-1;
+            var hh = (int)Math.Ceiling(lockbmp.Height / 2.0f);
+
+            for ( var y = 0; y < hh; y++ )
+            {
+                for ( var x = xMin; x < xMax; x++ )
+                {
+                    var xc = xMax - x;
+                    var yc = yMax - y;
+
+                    Color ctl = lockbmp.GetPixel( x, y );
+                    Color ctr = lockbmp.GetPixel( xc, y );
+                    Color cbr = lockbmp.GetPixel( xc, yc );
+                    Color cbl = lockbmp.GetPixel( x, yc );
+
+                    switch ( mode )
+                    {
+                        case RefColorMode.Alpha:
+                            if ( ctl.A == cRef.A && cbl.A == cRef.A )
+                            {
+                                if ( x > xMin ) xMin = x;
+                            }
+                            if ( ctr.A == cRef.A && cbr.A == cRef.A )
+                            {
+                                if ( xc < xMax ) xMax = xc;
+                            }
+                            if ( ctl.A == cRef.A && ctr.A == cRef.A )
+                            {
+                                if ( y > yMin ) yMin = y;
+                            }
+                            if ( cbl.A == cRef.A && cbr.A == cRef.A )
+                            {
+                                if ( yc < yMax ) yMax = yc;
+                            }
+                            break;
+                        default:
+                            if ( ctl.A == cRef.A || ctl.R == cRef.R || ctl.G == cRef.G || ctl.B == cRef.B  )
+                            {
+                                if ( x > xMin ) xMin = x;
+                                if ( y > yMin ) yMin = y;
+                            }
+                            if ( cbr.A == cRef.A || cbr.R == cRef.R || cbr.G == cRef.G || cbr.B == cRef.B )
+                            {
+                                if ( xc < xMax ) xMax = xc;
+                                if ( yc < yMax ) yMax = yc;
+                            }
+                            break;
+                    }
+                }
+            }
+            #endregion
+
+            //从内存解锁Bitmap
+            lockbmp.UnlockBits();
+
+            #region adjust bound size
+            xMin = xMin < 0 ? 0 : xMin;
+            xMax = xMax >= src.Width ? src.Width - 1 : xMax;
+            yMin = yMin < 0 ? 0 : yMin;
+            yMax = yMax >= src.Height ? src.Height - 1 : yMax;
+            result.X = xMin;
+            result.Y = yMin;
+            result.Width = ( xMax - xMin ) < 0 ? src.Width : xMax - xMin;
+            result.Height = ( yMax - yMin ) < 0 ? src.Height : yMax - yMin;
+            #endregion
+
+            return ( result );
+        }
     }
+
+    public class MyShaderEffect : Media.Effects.ShaderEffect
+    {
+
+    }
+
+    public enum RefColorMode
+    {
+        Alpha = 0,
+        TopLeft = 1,
+        BottomRight = 2
+    }
+
+    public class LockBitmap
+    {
+        Bitmap source = null;
+        IntPtr Iptr = IntPtr.Zero;
+        BitmapData bitmapData = null;
+
+        public byte[] Pixels { get; set; }
+        public int Depth { get; private set; }
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+
+        public LockBitmap( Bitmap source )
+        {
+            this.source = source;
+        }
+
+        /// <summary>
+        /// Lock bitmap data
+        /// </summary>
+        public void LockBits()
+        {
+            try
+            {
+                // Get width and height of bitmap
+                Width = source.Width;
+                Height = source.Height;
+
+                // get total locked pixels count
+                int PixelCount = Width * Height;
+
+                // Create rectangle to lock
+                Rectangle rect = new Rectangle(0, 0, Width, Height);
+
+                // get source bitmap pixel format size
+                Depth = System.Drawing.Bitmap.GetPixelFormatSize( source.PixelFormat );
+
+                // Check if bpp (Bits Per Pixel) is 8, 24, or 32
+                if ( Depth != 8 && Depth != 24 && Depth != 32 )
+                {
+                    throw new ArgumentException( "Only 8, 24 and 32 bpp images are supported." );
+                }
+
+                // Lock bitmap and return bitmap data
+                bitmapData = source.LockBits( rect, ImageLockMode.ReadWrite,
+                                             source.PixelFormat );
+
+                // create byte array to copy pixel values
+                int step = Depth / 8;
+                Pixels = new byte[PixelCount * step];
+                Iptr = bitmapData.Scan0;
+
+                // Copy data from pointer to array
+                System.Runtime.InteropServices.Marshal.Copy( Iptr, Pixels, 0, Pixels.Length );
+            }
+            catch ( Exception ex )
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Unlock bitmap data
+        /// </summary>
+        public void UnlockBits()
+        {
+            try
+            {
+                // Copy data from byte array to pointer
+                System.Runtime.InteropServices.Marshal.Copy( Pixels, 0, Iptr, Pixels.Length );
+
+                // Unlock bitmap data
+                source.UnlockBits( bitmapData );
+            }
+            catch ( Exception ex )
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Get the color of the specified pixel
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public Color GetPixel( int x, int y )
+        {
+            Color clr = Color.Empty;
+
+            // Get color components count
+            int cCount = Depth / 8;
+
+            // Get start index of the specified pixel
+            int i = ((y * Width) + x) * cCount;
+
+            if ( i > Pixels.Length - cCount )
+                throw new IndexOutOfRangeException();
+
+            if ( Depth == 32 ) // For 32 bpp get Red, Green, Blue and Alpha
+            {
+                byte b = Pixels[i];
+                byte g = Pixels[i + 1];
+                byte r = Pixels[i + 2];
+                byte a = Pixels[i + 3]; // a
+                clr = Color.FromArgb( a, r, g, b );
+            }
+            if ( Depth == 24 ) // For 24 bpp get Red, Green and Blue
+            {
+                byte b = Pixels[i];
+                byte g = Pixels[i + 1];
+                byte r = Pixels[i + 2];
+                clr = Color.FromArgb( r, g, b );
+            }
+            if ( Depth == 8 )
+            // For 8 bpp get color value (Red, Green and Blue values are the same)
+            {
+                byte c = Pixels[i];
+                clr = Color.FromArgb( c, c, c );
+            }
+            return clr;
+        }
+
+        /// <summary>
+        /// Set the color of the specified pixel
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="color"></param>
+        public void SetPixel( int x, int y, Color color )
+        {
+            // Get color components count
+            int cCount = Depth / 8;
+
+            // Get start index of the specified pixel
+            int i = ((y * Width) + x) * cCount;
+
+            if ( Depth == 32 ) // For 32 bpp set Red, Green, Blue and Alpha
+            {
+                Pixels[i] = color.B;
+                Pixels[i + 1] = color.G;
+                Pixels[i + 2] = color.R;
+                Pixels[i + 3] = color.A;
+            }
+            if ( Depth == 24 ) // For 24 bpp set Red, Green and Blue
+            {
+                Pixels[i] = color.B;
+                Pixels[i + 1] = color.G;
+                Pixels[i + 2] = color.R;
+            }
+            if ( Depth == 8 )
+            // For 8 bpp set color value (Red, Green and Blue values are the same)
+            {
+                Pixels[i] = color.B;
+            }
+        }
+    }
+
 }

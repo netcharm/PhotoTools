@@ -34,13 +34,15 @@
             this.btnColorDialogEx = new System.Windows.Forms.Button();
             this.btnFontDialogEx = new System.Windows.Forms.Button();
             this.btnColorDialogSystem = new System.Windows.Forms.Button();
+            this.picBox = new System.Windows.Forms.PictureBox();
             this.dlgColorEx = new NetCharm.Common.Controls.ColorDialogEx();
             this.dlgFontEx = new NetCharm.Common.Controls.FontDialogEx();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.SuspendLayout();
             // 
             // btnFontDialog
             // 
-            this.btnFontDialog.Location = new System.Drawing.Point(160, 32);
+            this.btnFontDialog.Location = new System.Drawing.Point(160, 12);
             this.btnFontDialog.Name = "btnFontDialog";
             this.btnFontDialog.Size = new System.Drawing.Size(75, 42);
             this.btnFontDialog.TabIndex = 1;
@@ -50,7 +52,7 @@
             // 
             // btnColorDialog
             // 
-            this.btnColorDialog.Location = new System.Drawing.Point(32, 32);
+            this.btnColorDialog.Location = new System.Drawing.Point(32, 12);
             this.btnColorDialog.Name = "btnColorDialog";
             this.btnColorDialog.Size = new System.Drawing.Size(75, 42);
             this.btnColorDialog.TabIndex = 2;
@@ -60,7 +62,7 @@
             // 
             // btnFontDialogSystem
             // 
-            this.btnFontDialogSystem.Location = new System.Drawing.Point(160, 179);
+            this.btnFontDialogSystem.Location = new System.Drawing.Point(160, 195);
             this.btnFontDialogSystem.Name = "btnFontDialogSystem";
             this.btnFontDialogSystem.Size = new System.Drawing.Size(75, 53);
             this.btnFontDialogSystem.TabIndex = 3;
@@ -70,7 +72,7 @@
             // 
             // btnColorDialogEx
             // 
-            this.btnColorDialogEx.Location = new System.Drawing.Point(32, 80);
+            this.btnColorDialogEx.Location = new System.Drawing.Point(32, 60);
             this.btnColorDialogEx.Name = "btnColorDialogEx";
             this.btnColorDialogEx.Size = new System.Drawing.Size(75, 42);
             this.btnColorDialogEx.TabIndex = 4;
@@ -80,7 +82,7 @@
             // 
             // btnFontDialogEx
             // 
-            this.btnFontDialogEx.Location = new System.Drawing.Point(160, 80);
+            this.btnFontDialogEx.Location = new System.Drawing.Point(160, 60);
             this.btnFontDialogEx.Name = "btnFontDialogEx";
             this.btnFontDialogEx.Size = new System.Drawing.Size(75, 42);
             this.btnFontDialogEx.TabIndex = 5;
@@ -90,13 +92,23 @@
             // 
             // btnColorDialogSystem
             // 
-            this.btnColorDialogSystem.Location = new System.Drawing.Point(32, 179);
+            this.btnColorDialogSystem.Location = new System.Drawing.Point(32, 195);
             this.btnColorDialogSystem.Name = "btnColorDialogSystem";
             this.btnColorDialogSystem.Size = new System.Drawing.Size(75, 53);
             this.btnColorDialogSystem.TabIndex = 6;
             this.btnColorDialogSystem.Text = "System Color Dialog";
             this.btnColorDialogSystem.UseVisualStyleBackColor = true;
             this.btnColorDialogSystem.Click += new System.EventHandler(this.btnColorDialogSystem_Click);
+            // 
+            // picBox
+            // 
+            this.picBox.BackColor = System.Drawing.Color.White;
+            this.picBox.Location = new System.Drawing.Point(32, 109);
+            this.picBox.Name = "picBox";
+            this.picBox.Size = new System.Drawing.Size(203, 80);
+            this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picBox.TabIndex = 7;
+            this.picBox.TabStop = false;
             // 
             // dlgColorEx
             // 
@@ -111,6 +123,7 @@
             this.dlgFontEx.Size = 9F;
             this.dlgFontEx.Strikeout = false;
             this.dlgFontEx.Underline = false;
+            this.dlgFontEx.UseFont = true;
             this.dlgFontEx.Apply += new System.EventHandler(this.dlgFont_Apply);
             // 
             // MainForm
@@ -118,6 +131,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(270, 260);
+            this.Controls.Add(this.picBox);
             this.Controls.Add(this.btnColorDialogSystem);
             this.Controls.Add(this.btnFontDialogEx);
             this.Controls.Add(this.btnColorDialogEx);
@@ -128,6 +142,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Dialog Test";
+            ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -142,6 +157,7 @@
         private System.Windows.Forms.Button btnFontDialogEx;
         private System.Windows.Forms.Button btnColorDialogSystem;
         private NetCharm.Common.Controls.FontDialogEx dlgFontEx;
+        private System.Windows.Forms.PictureBox picBox;
     }
 }
 

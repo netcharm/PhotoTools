@@ -34,7 +34,7 @@ namespace InternalFilters
 
         private CornerRegionType mPos = CornerRegionType.None;
 
-        OpaqueMode opaqueMode = OpaqueMode.Alpha;
+        ContentMode opaqueMode = ContentMode.Alpha;
 
         private CropMode cropMode = CropMode.AspectRatio;
         private SideType cropSide = (SideType.Top | SideType.Bottom | SideType.Left | SideType.Right);
@@ -252,17 +252,17 @@ namespace InternalFilters
                 {
                     if ( sender == btnModeTrans )
                     {
-                        opaqueMode = OpaqueMode.Alpha;
+                        opaqueMode = ContentMode.Alpha;
                         cropMode = CropMode.Opaque;
                     }
                     else if ( sender == btnModeTopLeft )
                     {
-                        opaqueMode = OpaqueMode.TopLeft;
+                        opaqueMode = ContentMode.TopLeft;
                         cropMode = CropMode.TopLeft;
                     }
                     else if ( sender == btnModeBottomRight )
                     {
-                        opaqueMode = OpaqueMode.BottomRight;
+                        opaqueMode = ContentMode.BottomRight;
                         cropMode = CropMode.BottomRight;
                     }
 

@@ -689,7 +689,7 @@ namespace NetCharm.Image.Addins
         /// <param name="img"></param>
         /// <param name="mode"></param>
         /// <returns></returns>
-        public static RectangleF GetOpaqueBound( System.Drawing.Image img, OpaqueMode mode )
+        public static RectangleF GetOpaqueBound( System.Drawing.Image img, ContentMode mode )
         {
             RectangleF result = new RectangleF(0, 0, img.Width, img.Height);
 
@@ -697,13 +697,13 @@ namespace NetCharm.Image.Addins
             Color cRef = src.GetPixel(0, 0);
             switch ( mode )
             {
-                case OpaqueMode.Alpha:
+                case ContentMode.Alpha:
                     cRef = Color.Transparent;
                     break;
-                case OpaqueMode.TopLeft:
+                case ContentMode.TopLeft:
                     cRef = src.GetPixel( 0, 0 );
                     break;
-                case OpaqueMode.BottomRight:
+                case ContentMode.BottomRight:
                     cRef = src.GetPixel( src.Width - 1, src.Height - 1 );
                     break;
             }
@@ -722,7 +722,7 @@ namespace NetCharm.Image.Addins
                     c = src.GetPixel( x, y );
                     switch ( mode )
                     {
-                        case OpaqueMode.Alpha:
+                        case ContentMode.Alpha:
                             if ( !content && c.A != cRef.A )
                             {
                                 if ( x < xMin ) xMin = x - 1;
@@ -735,8 +735,8 @@ namespace NetCharm.Image.Addins
                                 if ( y > yMax ) yMax = y + 1;
                             }
                             break;
-                        case OpaqueMode.TopLeft:
-                        case OpaqueMode.BottomRight:
+                        case ContentMode.TopLeft:
+                        case ContentMode.BottomRight:
                             if ( !content && ( c.R != cRef.R || c.G != cRef.G || c.B != cRef.B ) )
                             {
                                 if ( x < xMin ) xMin = x - 1;
@@ -752,14 +752,18 @@ namespace NetCharm.Image.Addins
                     }
                 }
             }
+
+            #region adjust bound size
             xMin = xMin < 0 ? 0 : xMin;
             xMax = xMax >= src.Width ? src.Width - 1 : xMax;
             yMin = yMin < 0 ? 0 : yMin;
             yMax = yMax >= src.Height ? src.Height - 1 : yMax;
             result.X = xMin;
             result.Y = yMin;
-            result.Width = xMax - xMin;
-            result.Height = yMax - yMin;
+            result.Width = ( xMax - xMin ) < 0 ? src.Width : xMax - xMin;
+            result.Height = ( yMax - yMin ) < 0 ? src.Height : yMax - yMin;
+            #endregion
+
             return ( result );
         }
 
@@ -1076,7 +1080,7 @@ namespace NetCharm.Image.Addins
 
             #region Measure String Size
             SizeF sizeF = new Size();
-            using ( var g = Graphics.FromImage( new Bitmap( 10, 10, PixelFormat.Format32bppPArgb ) ) )
+            using ( var g = Graphics.FromImage( new Bitmap( 10, 10, PixelFormat.Format32bppArgb ) ) )
             {
                 g.CompositingMode = CompositingMode.SourceOver;
                 g.CompositingQuality = CompositingQuality.HighQuality;
@@ -1137,7 +1141,7 @@ namespace NetCharm.Image.Addins
 
             #region Measure String Size
             SizeF sizeF = new Size();
-            using ( var g = Graphics.FromImage( new Bitmap( 10, 10, PixelFormat.Format32bppPArgb ) ) )
+            using ( var g = Graphics.FromImage( new Bitmap( 10, 10, PixelFormat.Format32bppArgb ) ) )
             {
                 g.CompositingMode = CompositingMode.SourceOver;
                 g.CompositingQuality = CompositingQuality.HighQuality;
@@ -1184,10 +1188,10 @@ namespace NetCharm.Image.Addins
         /// <param name="fillcolor"></param>
         /// <param name="mode"></param>
         /// <returns></returns>
-        public static Bitmap GetImageMask( Bitmap image, Color fillcolor = default( Color ), OpaqueMode mode = OpaqueMode.Alpha )
+        public static Bitmap GetImageMask( Bitmap image, Color fillcolor = default( Color ), ContentMode mode = ContentMode.Alpha )
         {
             bool alpha = AlphaFormat.Contains( image.PixelFormat );
-            if ( !alpha && mode == OpaqueMode.Alpha )
+            if ( !alpha && mode == ContentMode.Alpha )
             {
                 Bitmap dst = new Bitmap(image);
                 using ( var g = Graphics.FromImage( dst ) )
@@ -1206,15 +1210,15 @@ namespace NetCharm.Image.Addins
                     for ( int x = 0; x < image.Width; x++ )
                     {
                         Color p = uiSrc.GetPixel(x,y);
-                        if ( mode == OpaqueMode.Alpha && p.A != 0 )
+                        if ( mode == ContentMode.Alpha && p.A != 0 )
                         {
                             uiSrc.SetPixel( x, y, fillcolor );
                         }
-                        else if ( mode == OpaqueMode.TopLeft && (p.R != pTL.R || p.G != pTL.G || p.B != pTL.B ))
+                        else if ( mode == ContentMode.TopLeft && (p.R != pTL.R || p.G != pTL.G || p.B != pTL.B ))
                         {
                             uiSrc.SetPixel( x, y, fillcolor );
                         }
-                        else if ( mode == OpaqueMode.BottomRight && (p.R != pBR.R || p.G != pBR.G || p.B != pBR.B ))
+                        else if ( mode == ContentMode.BottomRight && (p.R != pBR.R || p.G != pBR.G || p.B != pBR.B ))
                         {
                             uiSrc.SetPixel( x, y, fillcolor );
                         }

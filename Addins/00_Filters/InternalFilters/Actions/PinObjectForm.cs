@@ -91,7 +91,7 @@ namespace InternalFilters.Actions
         internal void GetOptions()
         {
             option.Blend = (float) Convert.ToDouble( slideBlend.Value );
-            option.Opaque = (float) Convert.ToDouble( slideOpaque.Value );
+            option.Opacity = (float) Convert.ToDouble( slideOpacity.Value );
 
             option.Pos = csSelect.CornetRegion;
 
@@ -161,12 +161,12 @@ namespace InternalFilters.Actions
                     case PinObjectMode.Text:
                         if ( !string.IsNullOrEmpty( option.Text ) )
                         {
-                            picText = option.Text.ToBitmap(
+                            picText = addin.Apply( option.Text.ToBitmap(
                                 option.TextFont,
                                 option.TextFace,
                                 option.TextSize,
                                 option.TextColor.ToColor()
-                            ) as Image;
+                            ) as Image );
 
                             //picText = addin.Apply( AddinUtils.TextToBitmap32( option.Text, option.TextFont, option.TextFontStyle, option.TextColor.ToColor() ) );
                             if ( picText.Width > imgText.Width || picText.Height > imgText.Height )
@@ -528,6 +528,8 @@ namespace InternalFilters.Actions
 
         private void btnOpenFont_Click( object sender, EventArgs e )
         {
+            var optionBackup = option.Clone();
+
             dlgFontEx.UseFont = false;
             dlgFontEx.FamilyName = option.TextFont;
             dlgFontEx.TypefaceName = option.TextFace;
@@ -546,6 +548,7 @@ namespace InternalFilters.Actions
             }
             else
             {
+                option = optionBackup;
                 Preview();
             }
             fontApplyTest = false;
