@@ -538,7 +538,7 @@ namespace InternalFilters.Actions
             this.dlgFontEx.Size = 12F;
             this.dlgFontEx.Strikeout = false;
             this.dlgFontEx.Underline = false;
-            this.dlgFontEx.UseFont = true;
+            this.dlgFontEx.UseFont = false;
             this.dlgFontEx.Apply += new System.EventHandler(this.dlgFont_Apply);
             // 
             // PinObjectForm

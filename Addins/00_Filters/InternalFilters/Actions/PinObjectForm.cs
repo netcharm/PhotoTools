@@ -258,8 +258,10 @@ namespace InternalFilters.Actions
             LoadPicture( kv.PictureFile );
 
             option.TextFont = kv.TextFont;
-            option.TextFontStyle = kv.TextFontStyle;
+            option.TextFace = kv.TextFace;
+            option.TextSize = kv.TextSize;
             option.TextColor = kv.TextColor;
+            option.TextFontStyle = kv.TextFontStyle;
 
             edText.Text = kv.Text;
 
