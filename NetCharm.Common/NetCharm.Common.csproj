@@ -7,8 +7,8 @@
     <ProjectGuid>{C8B45D69-1FE5-43C5-9063-952E6691FC61}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NetCharm.Common.Controls</RootNamespace>
-    <AssemblyName>NetCharm.Common.Controls</AssemblyName>
+    <RootNamespace>NetCharm.Common</RootNamespace>
+    <AssemblyName>NetCharm.Common</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -190,8 +190,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="locale\zh_CN\LC_MESSAGES\NetCharm.Common.Controls.mo" />
-    <None Include="locale\zh_CN\LC_MESSAGES\NetCharm.Common.Controls.po" />
+    <None Include="locale\zh_CN\LC_MESSAGES\NetCharm.Common.mo" />
+    <None Include="locale\zh_CN\LC_MESSAGES\NetCharm.Common.po" />
     <None Include="Resources\Compare_16x.png" />
   </ItemGroup>
   <ItemGroup>

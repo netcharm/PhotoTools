@@ -42,7 +42,8 @@
             // 
             // btnFontDialog
             // 
-            this.btnFontDialog.Location = new System.Drawing.Point(160, 12);
+            this.btnFontDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFontDialog.Location = new System.Drawing.Point(284, 12);
             this.btnFontDialog.Name = "btnFontDialog";
             this.btnFontDialog.Size = new System.Drawing.Size(75, 42);
             this.btnFontDialog.TabIndex = 1;
@@ -62,7 +63,8 @@
             // 
             // btnFontDialogSystem
             // 
-            this.btnFontDialogSystem.Location = new System.Drawing.Point(160, 195);
+            this.btnFontDialogSystem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFontDialogSystem.Location = new System.Drawing.Point(284, 310);
             this.btnFontDialogSystem.Name = "btnFontDialogSystem";
             this.btnFontDialogSystem.Size = new System.Drawing.Size(75, 53);
             this.btnFontDialogSystem.TabIndex = 3;
@@ -82,7 +84,8 @@
             // 
             // btnFontDialogEx
             // 
-            this.btnFontDialogEx.Location = new System.Drawing.Point(160, 60);
+            this.btnFontDialogEx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFontDialogEx.Location = new System.Drawing.Point(284, 60);
             this.btnFontDialogEx.Name = "btnFontDialogEx";
             this.btnFontDialogEx.Size = new System.Drawing.Size(75, 42);
             this.btnFontDialogEx.TabIndex = 5;
@@ -92,7 +95,8 @@
             // 
             // btnColorDialogSystem
             // 
-            this.btnColorDialogSystem.Location = new System.Drawing.Point(32, 195);
+            this.btnColorDialogSystem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnColorDialogSystem.Location = new System.Drawing.Point(32, 310);
             this.btnColorDialogSystem.Name = "btnColorDialogSystem";
             this.btnColorDialogSystem.Size = new System.Drawing.Size(75, 53);
             this.btnColorDialogSystem.TabIndex = 6;
@@ -102,10 +106,13 @@
             // 
             // picBox
             // 
+            this.picBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.picBox.BackColor = System.Drawing.Color.White;
             this.picBox.Location = new System.Drawing.Point(32, 109);
             this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(203, 80);
+            this.picBox.Size = new System.Drawing.Size(327, 195);
             this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picBox.TabIndex = 7;
             this.picBox.TabStop = false;
@@ -130,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(270, 260);
+            this.ClientSize = new System.Drawing.Size(394, 375);
             this.Controls.Add(this.picBox);
             this.Controls.Add(this.btnColorDialogSystem);
             this.Controls.Add(this.btnFontDialogEx);
@@ -138,10 +145,11 @@
             this.Controls.Add(this.btnFontDialogSystem);
             this.Controls.Add(this.btnColorDialog);
             this.Controls.Add(this.btnFontDialog);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Dialog Test";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
             this.ResumeLayout(false);
 

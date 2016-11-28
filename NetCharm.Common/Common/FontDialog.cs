@@ -366,6 +366,8 @@ namespace NetCharm.Common
             FontStyleList[this._( "Ultra Light" )] = "Ultra Light";
             FontStyleList[this._( "Ultra" )] = "Ultra";
             FontStyleList[this._( "Roman" )] = "Roman";
+            FontStyleList[this._( "Normal" )] = "Regular";
+            FontStyleList[this._( "regular" )] = "Regular";
 
             FontStyleList[this._( "250" )] = "Thin";
             FontStyleList[this._( "350" )] = "Regular";
@@ -626,32 +628,40 @@ namespace NetCharm.Common
 
         private void lvFamily_DrawItem( object sender, DrawListViewItemEventArgs e )
         {
-            if(e.ItemIndex>=0 && e.ItemIndex<lvFamily.VirtualListSize)
+            try
             {
-                var familyItem = families[e.ItemIndex];
 
-                var familyName = familyItem.Text;
-                //var family = (Media.FontFamily)familyItem.Tag;
-                var family = (Dictionary<string, Media.Typeface>)familyItem.Tag;
-
-                Bitmap sample = null;
-                Color fgColor = e.Item.ForeColor;
-                Color bgColor = e.Item.BackColor;
-                if ( familiySamples.ContainsKey( familyName ) )
+                if ( e.ItemIndex >= 0 && e.ItemIndex < lvFamily.VirtualListSize )
                 {
-                    sample = familiySamples[familyName];
-                }
-                else
-                {
-                    //var face = family.Last().Key;
-                    //var face = family.Reverse().First().Key;
-                    var face = family.First().Key;
-                    sample = e.Item.Text.ToBitmap( familyName, face, 12, fgColor );
-                    //sample = e.Item.Text.ToBitmap( family.Source, face, 12, fgColor );
+                    var familyItem = families[e.ItemIndex];
 
-                    familiySamples[familyName] = sample;
+                    var familyName = familyItem.Text;
+                    //var family = (Media.FontFamily)familyItem.Tag;
+                    var family = (Dictionary<string, Media.Typeface>)familyItem.Tag;
+
+                    Bitmap sample = null;
+                    Color fgColor = e.Item.ForeColor;
+                    Color bgColor = e.Item.BackColor;
+                    if ( familiySamples.ContainsKey( familyName ) )
+                    {
+                        sample = familiySamples[familyName];
+                    }
+                    else
+                    {
+                        //var face = family.Last().Key;
+                        //var face = family.Reverse().First().Key;
+                        var face = family.First().Key;
+                        sample = e.Item.Text.ToBitmap( familyName, face, 12, fgColor );
+                        //sample = e.Item.Text.ToBitmap( family.Source, face, 12, fgColor );
+
+                        familiySamples[familyName] = sample;
+                    }
+                    lvDrawItem( e, sample, fgColor, bgColor );
                 }
-                lvDrawItem( e, sample, fgColor, bgColor );
+            }
+            catch ( Exception )
+            {
+
             }
         }
 
@@ -751,22 +761,29 @@ namespace NetCharm.Common
 
         private void lvStyle_DrawItem( object sender, DrawListViewItemEventArgs e )
         {
-            if ( e.ItemIndex >= 0 && e.ItemIndex < lvStyle.Items.Count )
+            try
             {
-                Color fgColor = e.Item.ForeColor;
-                Color bgColor = e.Item.BackColor;
-
-                var facename = (string)e.Item.Tag;
-                Bitmap sample = null;
-                if ( styleSamples.ContainsKey( facename ) )
-                    sample = styleSamples[facename];
-                else
+                if ( e.ItemIndex >= 0 && e.ItemIndex < lvStyle.Items.Count )
                 {
-                    sample = e.Item.Text.ToBitmap( curFamilyName, facename, 14.0f, fgColor );
-                    styleSamples[facename] = sample;
+                    Color fgColor = e.Item.ForeColor;
+                    Color bgColor = e.Item.BackColor;
+
+                    var facename = (string)e.Item.Tag;
+                    Bitmap sample = null;
+                    if ( styleSamples.ContainsKey( facename ) )
+                        sample = styleSamples[facename];
+                    else
+                    {
+                        sample = e.Item.Text.ToBitmap( curFamilyName, facename, 14.0f, fgColor );
+                        styleSamples[facename] = sample;
+                    }
+                    //Bitmap sample = "[Unspported Style]".ToBitmap( new Font("Arial", 14), fgColor );
+                    lvDrawItem( e, sample, fgColor, bgColor );
                 }
-                //Bitmap sample = "[Unspported Style]".ToBitmap( new Font("Arial", 14), fgColor );
-                lvDrawItem( e, sample, fgColor, bgColor );
+            }
+            catch ( Exception )
+            {
+
             }
         }
 

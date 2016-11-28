@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-28 22:17+0800\n"
+"POT-Creation-Date: 2016-11-29 00:35+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -103,29 +103,29 @@ msgstr "随机放置到图像某处"
 msgid "View Original"
 msgstr "查看原图"
 
-#: Actions\PinObjectForm.resx:532 -> chkEnabled.Text.value
+#: Actions\PinObjectForm.resx:628 -> chkEnabled.Text.value
 msgid "Enabled"
 msgstr "启用"
 
-#: Actions\PinObjectForm.resx:565 -> chkTile.Text.value
+#: Actions\PinObjectForm.resx:661 -> chkTile.Text.value
 msgid "Tile"
 msgstr "平铺"
 
-#: Actions\PinObjectForm.resx:613 -> grpCommonSetting.Text.value
+#: Actions\PinObjectForm.resx:787 -> grpCommonSetting.Text.value
 msgid "Common"
 msgstr "公共"
 
-#: Actions\PinObjectForm.resx:703 -> tabPagePicture.Text.value
+#: Actions\PinObjectForm.resx:877 -> tabPagePicture.Text.value
 #: Actions\PinObject.cs:363 Actions\PinObject.cs:365
 msgid "Picture"
 msgstr "图像"
 
-#: Actions\PinObjectForm.resx:781 -> tabPageText.Text.value
+#: Actions\PinObjectForm.resx:955 -> tabPageText.Text.value
 #: Actions\PinObject.cs:358
 msgid "Text"
 msgstr "文本"
 
-#: Actions\PinObjectForm.resx:808 -> tabPageTag.Text.value
+#: Actions\PinObjectForm.resx:982 -> tabPageTag.Text.value
 msgid "SmartTag"
 msgstr "标签"
 
@@ -294,27 +294,27 @@ msgstr "旋转预览"
 msgid "Rotate"
 msgstr "旋转"
 
-#: Actions\PinObjectForm.Designer.cs:361
+#: Actions\PinObjectForm.Designer.cs:211
 msgid "Offset Y"
 msgstr "Y偏移"
 
-#: Actions\PinObjectForm.Designer.cs:390
+#: Actions\PinObjectForm.Designer.cs:240
 msgid "Offset X"
 msgstr "X偏移"
 
-#: Actions\PinObjectForm.Designer.cs:419
+#: Actions\PinObjectForm.Designer.cs:269
 msgid "Margin Y"
 msgstr "Y边界"
 
-#: Actions\PinObjectForm.Designer.cs:448
+#: Actions\PinObjectForm.Designer.cs:298
 msgid "Margin X"
 msgstr "X边界"
 
-#: Actions\PinObjectForm.Designer.cs:484
+#: Actions\PinObjectForm.Designer.cs:360
 msgid "Blend"
 msgstr "混合"
 
-#: Actions\PinObjectForm.Designer.cs:513
+#: Actions\PinObjectForm.Designer.cs:389
 msgid "Opacity"
 msgstr "不透明度"
 

@@ -91,7 +91,7 @@
             // 
             resources.ApplyResources(this.screenColorPicker, "screenColorPicker");
             this.screenColorPicker.Color = System.Drawing.Color.Black;
-            this.screenColorPicker.Image = global::NetCharm.Common.Controls.Properties.Resources.eyedropper;
+            this.screenColorPicker.Image = global::NetCharm.Common.Properties.Resources.eyedropper;
             this.screenColorPicker.Name = "screenColorPicker";
             this.screenColorPicker.ShowTextWithSnapshot = true;
             // 

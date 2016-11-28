@@ -12,7 +12,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Markup;
 using NetCharm.Common;
-using NetCharm.Common.Controls;
 using NGettext.WinForm;
 using Media = System.Windows.Media;
 
@@ -488,18 +487,15 @@ namespace ExtensionMethods
 
                 try
                 {
-                    //Media.GlyphTypeface gtf = null;
-                    //f.TryGetGlyphTypeface( out gtf );
-
                     var facelist = new Dictionary<string, Media.Typeface>();
                     if ( FamilyList.ContainsKey( f_key ))
                         facelist = FamilyList[f_key];
 
                     if ( f.FaceNames.ContainsKey( locale_key ) )
-                        facelist[f.FaceNames[locale_key]] = f;
+                        facelist[f.FaceNames[locale_key].Replace( f_key, "" ).Trim()] = f;
 
                     if ( f.FaceNames.ContainsKey( locale_uikey ) )
-                        facelist[f.FaceNames[locale_uikey]] = f;
+                        facelist[f.FaceNames[locale_uikey].Replace( f_key, "" ).Trim()] = f;
 
                     FamilyList[f_key] = facelist;
                     if ( f.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
@@ -522,7 +518,8 @@ namespace ExtensionMethods
                 sb.AppendLine( f.Key.ToString() );
                 foreach ( var ff in f.Value )
                 {
-                    sb.AppendLine( $"  {ff.Key}*{ff.Value.ToString()}" );
+                    //sb.AppendLine( $"  {ff.Key}*{ff.Value.ToString()}" );
+                    sb.AppendLine( $"  {ff.Key}" );
                 }
             }
             sb.AppendLine( "--------------------------------------------------" );
@@ -614,12 +611,11 @@ namespace ExtensionMethods
                 var wh = (int)Math.Ceiling(lockbmp.Width / 2.0f)+1;
 
                 #region Get Bound Top & Bottom
-                for ( var y = 0; y < hh; y++ )
+                for ( var y = 0; y < h; y++ )
                 {
+                    var yc = h - y;
                     for ( var x = 0; x < w + 1; x++ )
                     {
-                        var yc = h - y;
-
                         Color ct = lockbmp.GetPixel( x, y );
                         Color cb = lockbmp.GetPixel( x, yc );
                         switch ( mode )
@@ -647,17 +643,17 @@ namespace ExtensionMethods
                         }
                         if ( yMin != 0 && yMax != h ) break;
                     }
+                    if ( yc <= yMin ) break;
                     if ( yMin != 0 && yMax != h ) break;
                 }
                 #endregion
 
                 #region Get Bound Left & Right
-                for ( var x = 0; x < wh; x++ )
+                for ( var x = 0; x < w; x++ )
                 {
+                    var xc = w - x;
                     for ( var y = yMin + 1; y < yMax; y++ )
                     {
-                        var xc = w - x;
-
                         Color cl = lockbmp.GetPixel( x, y );
                         Color cr = lockbmp.GetPixel( xc, y );
                         switch ( mode )
@@ -685,6 +681,7 @@ namespace ExtensionMethods
                         }
                         if ( xMin != 0 && xMax != w ) break;
                     }
+                    if ( xc <= xMin ) break;
                     if ( xMin != 0 && xMax != w ) break;
                 }
                 #endregion
@@ -848,6 +845,7 @@ namespace ExtensionMethods
 
             #region Make Text Picture
             Size size = sizeF.ToSize();
+            size.Height *= 2;
             Bitmap textImg = new Bitmap(size.Width, size.Height, PixelFormat.Format32bppArgb);
             using ( var g = Graphics.FromImage( textImg ) )
             {
@@ -869,7 +867,7 @@ namespace ExtensionMethods
                 var tPath = new GraphicsPath();
                 tPath.StartFigure();
                 tPath.AddString( text, font.FontFamily, (int) font.Style, emSize,
-                                 new PointF( 0, 0 ),
+                                 new PointF( 0, size.Height /4.0f ),
                                  tFormat );
                 tPath.CloseFigure();
                 //g.DrawPath( new Pen( color, 1f ), tPath );
@@ -989,10 +987,10 @@ namespace ExtensionMethods
             #endregion
 
             #region Render the DrawingVisual into a RenderTargetBitmap 
-            double offset = 1.0f;
-            if ( fontface.Style == System.Windows.FontStyles.Italic || fontface.Style == System.Windows.FontStyles.Oblique ) offset = 1.5f;
+            double offset = 1.5f;
+            if ( fontface.Style == System.Windows.FontStyles.Italic || fontface.Style == System.Windows.FontStyles.Oblique ) offset = 2.0f;
             var pixelWidth = Convert.ToInt32( Math.Ceiling(formattedText.Width * (dpiX / 96.0)) * offset);
-            var pixelHeight = Convert.ToInt32( Math.Ceiling(formattedText.Height * (dpiY / 96.0)));
+            var pixelHeight = Convert.ToInt32( Math.Ceiling(formattedText.Height * (dpiY / 96.0))* offset);
             if ( pixelWidth == 0 || pixelHeight == 0 )
                 return ( new Bitmap( 1, 1 ) );
 
@@ -1067,8 +1065,16 @@ namespace ExtensionMethods
             var emSize = fontsize * 96/72f;
 
             #region Draw Text to Bitmap
-            Font font = new Font(fontfamily, emSize, styleFont);
-            if ( string.Equals( font.Name, fontfamily, StringComparison.CurrentCultureIgnoreCase ) )
+            Font font = null; // new Font(fontfamily, emSize);
+            try
+            {
+                font = new Font( fontfamily, emSize, styleFont );
+            }
+            catch(Exception)
+            {
+
+            }
+            if ( font is Font && string.Equals( font.Name, fontfamily, StringComparison.CurrentCultureIgnoreCase ) )
             {
                 return ( ToBitmap( text, font, fgColor, bgColor ) );
             }

@@ -15,7 +15,7 @@ namespace InternalFilters.Actions
     using System.Drawing.Drawing2D;
     using System.Drawing.Imaging;
     using System.Web.Script.Serialization;
-    using NetCharm.Image;
+
     using ParamList = Dictionary<string, ParamItem>;
 
     [Serializable]

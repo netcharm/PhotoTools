@@ -67,7 +67,7 @@
             // tsbtnOriginal
             // 
             this.tsbtnOriginal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnOriginal.Image = global::NetCharm.Common.Controls.Properties.Resources.Compare_16x;
+            this.tsbtnOriginal.Image = global::NetCharm.Common.Properties.Resources.Compare_16x;
             this.tsbtnOriginal.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnOriginal.Name = "tsbtnOriginal";
             this.tsbtnOriginal.Size = new System.Drawing.Size(23, 22);
@@ -83,7 +83,7 @@
             // tsbtnZoomOut
             // 
             this.tsbtnZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnZoomOut.Image = global::NetCharm.Common.Controls.Properties.Resources.ZoomOut_16x;
+            this.tsbtnZoomOut.Image = global::NetCharm.Common.Properties.Resources.ZoomOut_16x;
             this.tsbtnZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnZoomOut.Name = "tsbtnZoomOut";
             this.tsbtnZoomOut.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
@@ -105,7 +105,7 @@
             // tsbtnZoomIn
             // 
             this.tsbtnZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnZoomIn.Image = global::NetCharm.Common.Controls.Properties.Resources.ZoomIn_16x;
+            this.tsbtnZoomIn.Image = global::NetCharm.Common.Properties.Resources.ZoomIn_16x;
             this.tsbtnZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnZoomIn.Name = "tsbtnZoomIn";
             this.tsbtnZoomIn.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;

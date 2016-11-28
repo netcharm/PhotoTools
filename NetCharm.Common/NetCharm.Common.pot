@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: NetCharm.Common.Controls\n"
+"Project-Id-Version: NetCharm.Common\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-28 22:17+0800\n"
-"PO-Revision-Date: 2016-11-28 22:17+0800\n"
+"POT-Creation-Date: 2016-11-29 01:18+0800\n"
+"PO-Revision-Date: 2016-11-29 01:18+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -21,78 +21,78 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 
 #: Common\ColorDialog.resx:268 -> btnApply.Text.value
-#: Common\FontDialog.resx:649
+#: Common\FontDialog.resx:655
 msgid "Apply"
-msgstr "应用"
+msgstr ""
 
 #: Common\ColorDialog.resx:298 -> btnCancel.Text.value
-#: Common\FontDialog.resx:622
+#: Common\FontDialog.resx:628
 msgid "Cancel"
-msgstr "取消"
+msgstr ""
 
-#: Common\ColorDialog.resx:328 -> btnOk.Text.value Common\FontDialog.resx:595
+#: Common\ColorDialog.resx:328 -> btnOk.Text.value Common\FontDialog.resx:601
 msgid "OK"
-msgstr "确认"
+msgstr ""
 
 #: Common\ColorDialog.resx:376 -> btnPalette.Text.value
 msgid "Palette"
-msgstr "色盘"
+msgstr ""
 
 #: Common\ColorDialog.resx:403 -> $this.Text.value
 msgid "Color Picker"
-msgstr "色彩选择"
+msgstr ""
 
-#: Common\FontDialog.resx:319 -> chkEffectUnderline.Text.value
+#: Common\FontDialog.resx:325 -> chkEffectUnderline.Text.value
 msgid "Underline"
-msgstr "下划线"
+msgstr ""
 
-#: Common\FontDialog.resx:343 -> chkEffectStrikeout.Text.value
+#: Common\FontDialog.resx:349 -> chkEffectStrikeout.Text.value
 msgid "Strikeout"
-msgstr "删除线"
+msgstr ""
 
-#: Common\FontDialog.resx:370 -> grpEffect.Text.value
+#: Common\FontDialog.resx:376 -> grpEffect.Text.value
 msgid "Effect"
-msgstr "效果"
+msgstr ""
 
-#: Common\FontDialog.resx:427 -> grpSample.Text.value
+#: Common\FontDialog.resx:433 -> grpSample.Text.value
 msgid "Sample"
-msgstr "示例"
+msgstr ""
 
-#: Common\FontDialog.resx:478 -> lblFamily.Text.value
+#: Common\FontDialog.resx:484 -> lblFamily.Text.value
 msgid "Font Family"
-msgstr "字体名称"
+msgstr ""
 
-#: Common\FontDialog.resx:508 -> lblFace.Text.value
+#: Common\FontDialog.resx:514 -> lblFace.Text.value
 msgid "Font Face"
-msgstr "字体形状"
+msgstr ""
 
-#: Common\FontDialog.resx:538 -> lblSize.Text.value
+#: Common\FontDialog.resx:544 -> lblSize.Text.value
 msgid "Font Size"
-msgstr "字体大小"
+msgstr ""
 
-#: Common\FontDialog.resx:676 -> $this.Text.value
+#: Common\FontDialog.resx:682 -> $this.Text.value
 msgid "Font"
-msgstr "字体"
+msgstr ""
 
 #: Controls\ImageActions.Designer.cs:74
 msgid "View Original"
-msgstr "查看原图"
+msgstr ""
 
 #: Controls\ImageActions.Designer.cs:91
 msgid "Zoom Out"
-msgstr "缩小"
+msgstr ""
 
 #: Controls\ImageActions.Designer.cs:101
 msgid "Zoom Levels"
-msgstr "缩放级别"
+msgstr ""
 
 #: Controls\ImageActions.Designer.cs:113
 msgid "Zoom In"
-msgstr "放大"
+msgstr ""
 
 #: Controls\SlideColorHue.Designer.cs:74
 msgid "Hue"
-msgstr "色度"
+msgstr ""
 
 #: Controls\SlideColorHue.Designer.cs:134
 #: Controls\SlideColorLum.Designer.cs:141
@@ -102,116 +102,124 @@ msgstr ""
 
 #: Controls\SlideColorLum.Designer.cs:80
 msgid "Luminance"
-msgstr "明度"
+msgstr ""
 
 #: Controls\SlideColorSat.Designer.cs:80
 msgid "Saturation"
-msgstr "饱和度"
+msgstr ""
 
 #: Controls\SlideNumber.Designer.cs:74
 msgid "ParamName"
-msgstr "参数名"
+msgstr ""
 
 #: Controls\SlideNumber.Designer.cs:125
 msgid "%"
 msgstr ""
 
-#: Common\Extensions.cs:1186 Common\FontDialog.cs:350
+#: Common\Extensions.cs:1194 Common\FontDialog.cs:350
 msgid "Thin"
-msgstr "细体"
+msgstr ""
 
-#: Common\Extensions.cs:1187 Common\FontDialog.cs:351
+#: Common\Extensions.cs:1195 Common\FontDialog.cs:351
 msgid "Light"
-msgstr "淡"
+msgstr ""
 
-#: Common\Extensions.cs:1188 Common\FontDialog.cs:352
+#: Common\Extensions.cs:1196 Common\FontDialog.cs:352
 msgid "Regular"
-msgstr "常规"
+msgstr ""
 
-#: Common\Extensions.cs:1189 Common\FontDialog.cs:353
+#: Common\Extensions.cs:1197 Common\FontDialog.cs:353
 msgid "Medium"
-msgstr "中等"
+msgstr ""
 
-#: Common\Extensions.cs:1190 Common\FontDialog.cs:359
+#: Common\Extensions.cs:1198 Common\FontDialog.cs:359
 msgid "SemiBold"
-msgstr "半粗体"
+msgstr ""
 
-#: Common\Extensions.cs:1191 Common\FontDialog.cs:354
+#: Common\Extensions.cs:1199 Common\FontDialog.cs:354
 msgid "Bold"
-msgstr "粗体"
+msgstr ""
 
-#: Common\Extensions.cs:1192 Common\FontDialog.cs:355
+#: Common\Extensions.cs:1200 Common\FontDialog.cs:355
 msgid "Black"
-msgstr "黑体"
+msgstr ""
 
-#: Common\Extensions.cs:1193 Common\FontDialog.cs:356
+#: Common\Extensions.cs:1201 Common\FontDialog.cs:356
 msgid "Oblique"
-msgstr "倾斜"
+msgstr ""
 
-#: Common\Extensions.cs:1194 Common\FontDialog.cs:357
+#: Common\Extensions.cs:1202 Common\FontDialog.cs:357
 msgid "Italic"
-msgstr "斜体"
+msgstr ""
 
 #: Common\FontDialog.cs:212
 msgid "Culture Text"
-msgstr "中文文本示例"
+msgstr ""
 
 #: Common\FontDialog.cs:360
 msgid "SemiCondensed"
-msgstr "半紧缩"
+msgstr ""
 
 #: Common\FontDialog.cs:361
 msgid "Condensed"
-msgstr "紧缩"
+msgstr ""
 
 #: Common\FontDialog.cs:362
 msgid "Expanded"
-msgstr "展开"
+msgstr ""
 
 #: Common\FontDialog.cs:363
 msgid "Extended"
-msgstr "展开"
+msgstr ""
 
 #: Common\FontDialog.cs:364
 msgid "Heavy"
-msgstr "重黑"
+msgstr ""
 
 #: Common\FontDialog.cs:365
 msgid "ExtraBlack"
-msgstr "超黑体"
+msgstr ""
 
 #: Common\FontDialog.cs:366
 msgid "Ultra Light"
-msgstr "特淡"
+msgstr ""
 
 #: Common\FontDialog.cs:367
 msgid "Ultra"
-msgstr "特"
+msgstr ""
 
 #: Common\FontDialog.cs:368
 msgid "Roman"
-msgstr "罗马体"
+msgstr ""
+
+#: Common\FontDialog.cs:369
+msgid "Normal"
+msgstr ""
 
 #: Common\FontDialog.cs:370
-msgid "250"
-msgstr "细体"
-
-#: Common\FontDialog.cs:371
-msgid "350"
-msgstr "常规"
+msgid "regular"
+msgstr ""
 
 #: Common\FontDialog.cs:372
-msgid "275"
-msgstr "特淡"
+msgid "250"
+msgstr ""
 
 #: Common\FontDialog.cs:373
-msgid "750"
-msgstr "黑体"
+msgid "350"
+msgstr ""
+
+#: Common\FontDialog.cs:374
+msgid "275"
+msgstr ""
 
 #: Common\FontDialog.cs:375
-msgid "W3"
-msgstr "淡"
+msgid "750"
+msgstr ""
 
-#: Common\FontDialog.cs:376
+#: Common\FontDialog.cs:377
+msgid "W3"
+msgstr ""
+
+#: Common\FontDialog.cs:378
 msgid "W6"
-msgstr "半粗体"
+msgstr ""

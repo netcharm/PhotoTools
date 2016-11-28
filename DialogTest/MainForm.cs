@@ -87,7 +87,8 @@ namespace DialogTest
         {
             fontApplyTest = true;
 
-            var sample = "中文Text".ToBitmap( dlgFontEx.FamilyName, dlgFontEx.TypefaceName, dlgFontEx.Size, dlgFontEx.Color );
+            var face = dlgFontEx.TypefaceName + (dlgFontEx.Underline? " Underline" : "") + (dlgFontEx.Strikeout? " Strikeout" : "");
+            var sample = "中文Text".ToBitmap( dlgFontEx.FamilyName, face, dlgFontEx.Size, dlgFontEx.Color);
             //picBox.Image = Shadow( sample, Color.DarkGray, 5 );
             //picBox.Image = Blur( sample, 15 );
             picBox.Image = Outline( sample, Color.Black, 5, 1.5 );
@@ -104,8 +105,7 @@ namespace DialogTest
             dlgFont.FontSize = 12;
             if ( dlgFont.ShowDialog() == DialogResult.OK )
             {
-                //option.TextColor = dlgColor.Color.ToHtml();
-                //Preview();
+                //
             }
             else
             {
@@ -121,16 +121,14 @@ namespace DialogTest
             dlgFontEx.Size = 24;
             if ( dlgFontEx.ShowDialog() == DialogResult.OK )
             {
-                //option.TextColor = dlgColor.Color.ToHtml();
-                //Preview();
-                var sample = "中文Text".ToBitmap( dlgFontEx.FamilyName, dlgFontEx.TypefaceName, dlgFontEx.Size, dlgFontEx.Color );
+                var face = dlgFontEx.TypefaceName + (dlgFontEx.Underline? " Underline" : "") + (dlgFontEx.Strikeout? " Strikeout" : "");
+                var sample = "中文Text".ToBitmap( dlgFontEx.FamilyName, face, dlgFontEx.Size, dlgFontEx.Color );
                 //picBox.Image = Shadow( sample, Color.DarkGray, 5 );
                 picBox.Image = Outline( sample, Color.DarkGray, 5 );
             }
             else
             {
-                //option.TextColor = c;
-                //Preview();
+                //
             }
         }
 
@@ -556,6 +554,13 @@ namespace DialogTest
             #endregion
 
             return ( result );
+        }
+
+        private void MainForm_Load( object sender, EventArgs e )
+        {
+            #region extracting icon from application to this form window
+            Icon = Icon.ExtractAssociatedIcon( Application.ExecutablePath );
+            #endregion
         }
     }
 

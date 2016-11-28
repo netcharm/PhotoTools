@@ -216,9 +216,9 @@
       <Project>{c2275eb5-e68a-42d5-b285-0083b1b7840c}</Project>
       <Name>NetCharm.Image.AddinHost</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NetCharm.Common.Controls\NetCharm.Common.Controls.csproj">
+    <ProjectReference Include="..\NetCharm.Common\NetCharm.Common.csproj">
       <Project>{c8b45d69-1fe5-43c5-9063-952e6691fc61}</Project>
-      <Name>NetCharm.Common.Controls</Name>
+      <Name>NetCharm.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
