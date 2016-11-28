@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("AddinHost")]
-[assembly: AssemblyDescription( "Addin Host for image addins" )]
+[assembly: AssemblyTitle("NetCharm.Common.Controls")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany( "NetCharm Studio!" )]
-[assembly: AssemblyProduct("AddinHost")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("NetCharm.Common.Controls")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
-[assembly: AssemblyTrademark( "NetCharm" )]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 //将 ComVisible 设置为 false 将使此程序集中的类型
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("c2275eb5-e68a-42d5-b285-0083b1b7840c")]
+[assembly: Guid("c8b45d69-1fe5-43c5-9063-952e6691fc61")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion( "1.0.20.75" )]
-[assembly: AssemblyFileVersion( "1.0.20.75" )]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

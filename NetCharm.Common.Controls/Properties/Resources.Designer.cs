@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NetCharm.Image.Addins.Properties {
+namespace NetCharm.Common.Controls.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace NetCharm.Image.Addins.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NetCharm.Image.Addins.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NetCharm.Common.Controls.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,86 +63,6 @@ namespace NetCharm.Image.Addins.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap Action_16x {
-            get {
-                object obj = ResourceManager.GetObject("Action_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap Action_32x {
-            get {
-                object obj = ResourceManager.GetObject("Action_32x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Icon AddIn {
-            get {
-                object obj = ResourceManager.GetObject("AddIn", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap AddIn_16x {
-            get {
-                object obj = ResourceManager.GetObject("AddIn_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap AddIn_32x {
-            get {
-                object obj = ResourceManager.GetObject("AddIn_32x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap AddInHost_16x {
-            get {
-                object obj = ResourceManager.GetObject("AddInHost_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap Application_16x {
-            get {
-                object obj = ResourceManager.GetObject("Application_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap Application_32x {
-            get {
-                object obj = ResourceManager.GetObject("Application_32x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap Compare_16x {
             get {
                 object obj = ResourceManager.GetObject("Compare_16x", resourceCulture);
@@ -153,19 +73,9 @@ namespace NetCharm.Image.Addins.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap Effect_16x {
+        internal static System.Drawing.Bitmap Compare_32x {
             get {
-                object obj = ResourceManager.GetObject("Effect_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap Effect_32x {
-            get {
-                object obj = ResourceManager.GetObject("Effect_32x", resourceCulture);
+                object obj = ResourceManager.GetObject("Compare_32x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +103,9 @@ namespace NetCharm.Image.Addins.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap ZoomOut_15x {
+        internal static System.Drawing.Bitmap ZoomIn_32x {
             get {
-                object obj = ResourceManager.GetObject("ZoomOut_15x", resourceCulture);
+                object obj = ResourceManager.GetObject("ZoomIn_32x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -206,6 +116,16 @@ namespace NetCharm.Image.Addins.Properties {
         internal static System.Drawing.Bitmap ZoomOut_16x {
             get {
                 object obj = ResourceManager.GetObject("ZoomOut_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ZoomOut_32x {
+            get {
+                object obj = ResourceManager.GetObject("ZoomOut_32x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

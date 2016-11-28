@@ -32,6 +32,7 @@ namespace InternalFilters.Actions
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PinObjectForm));
+            Cyotek.Windows.Forms.ZoomLevelCollection zoomLevelCollection1 = new Cyotek.Windows.Forms.ZoomLevelCollection();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.imgPicture = new Cyotek.Windows.Forms.ImageBox();
             this.btnOpenPic = new System.Windows.Forms.Button();
@@ -42,7 +43,6 @@ namespace InternalFilters.Actions
             this.btnEffectRemove = new System.Windows.Forms.Button();
             this.btnEffectAdd = new System.Windows.Forms.Button();
             this.btnPosRandom = new System.Windows.Forms.Button();
-            this.btnOriginal = new System.Windows.Forms.Button();
             this.btnOriginalPic = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -61,6 +61,8 @@ namespace InternalFilters.Actions
             this.imgText = new Cyotek.Windows.Forms.ImageBox();
             this.edText = new System.Windows.Forms.TextBox();
             this.tabPageTag = new System.Windows.Forms.TabPage();
+            this.imgPreview = new Cyotek.Windows.Forms.ImageBox();
+            this.imageActions = new NetCharm.Common.Controls.ImageActions();
             this.slideOffsetY = new NetCharm.Common.Controls.SlideNumber();
             this.slideOffsetX = new NetCharm.Common.Controls.SlideNumber();
             this.slideMarginY = new NetCharm.Common.Controls.SlideNumber();
@@ -68,7 +70,6 @@ namespace InternalFilters.Actions
             this.csSelect = new NetCharm.Common.Controls.CornerSide();
             this.slideBlend = new NetCharm.Common.Controls.SlideNumber();
             this.slideOpacity = new NetCharm.Common.Controls.SlideNumber();
-            this.imgPreview = new NetCharm.Common.Controls.ImageBox();
             this.dlgFontEx = new NetCharm.Common.Controls.FontDialogEx();
             this.grpCommonSetting.SuspendLayout();
             this.pnlPosMode.SuspendLayout();
@@ -83,8 +84,9 @@ namespace InternalFilters.Actions
             // 
             this.imgPicture.AllowDoubleClick = true;
             this.imgPicture.AllowDrop = true;
-            this.imgPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imgPicture.AllowUnfocusedMouseWheel = true;
             resources.ApplyResources(this.imgPicture, "imgPicture");
+            this.imgPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imgPicture.ImageBorderStyle = Cyotek.Windows.Forms.ImageBoxBorderStyle.FixedSingleGlowShadow;
             this.imgPicture.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.imgPicture.Name = "imgPicture";
@@ -166,15 +168,6 @@ namespace InternalFilters.Actions
             this.toolTip.SetToolTip(this.btnPosRandom, resources.GetString("btnPosRandom.ToolTip"));
             this.btnPosRandom.UseVisualStyleBackColor = true;
             this.btnPosRandom.Click += new System.EventHandler(this.btnPosRandom_Click);
-            // 
-            // btnOriginal
-            // 
-            resources.ApplyResources(this.btnOriginal, "btnOriginal");
-            this.btnOriginal.Name = "btnOriginal";
-            this.toolTip.SetToolTip(this.btnOriginal, resources.GetString("btnOriginal.ToolTip"));
-            this.btnOriginal.UseVisualStyleBackColor = true;
-            this.btnOriginal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnOriginal_MouseDown);
-            this.btnOriginal.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnOriginal_MouseUp);
             // 
             // btnOriginalPic
             // 
@@ -328,8 +321,8 @@ namespace InternalFilters.Actions
             // 
             // edText
             // 
-            this.edText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.edText, "edText");
+            this.edText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.edText.Name = "edText";
             this.edText.TextChanged += new System.EventHandler(this.edText_TextChanged);
             // 
@@ -338,6 +331,30 @@ namespace InternalFilters.Actions
             resources.ApplyResources(this.tabPageTag, "tabPageTag");
             this.tabPageTag.Name = "tabPageTag";
             this.tabPageTag.UseVisualStyleBackColor = true;
+            // 
+            // imgPreview
+            // 
+            this.imgPreview.AllowUnfocusedMouseWheel = true;
+            resources.ApplyResources(this.imgPreview, "imgPreview");
+            this.imgPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imgPreview.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.imgPreview.Name = "imgPreview";
+            this.imgPreview.ShowPixelGrid = true;
+            // 
+            // imageActions
+            // 
+            this.imageActions.BackColor = System.Drawing.SystemColors.Control;
+            this.imageActions.ImageBox = this.imgPreview;
+            resources.ApplyResources(this.imageActions, "imageActions");
+            this.imageActions.Name = "imageActions";
+            this.imageActions.Source = null;
+            this.imageActions.Zoom = 100;
+            this.imageActions.ZoomLevels = zoomLevelCollection1;
+            this.imageActions.ZoomOut += new System.EventHandler(this.imageActions_ZoomOut);
+            this.imageActions.ZoomIn += new System.EventHandler(this.imageActions_ZoomIn);
+            this.imageActions.ZoomChanged += new System.EventHandler(this.imageActions_ZoomChanged);
+            this.imageActions.ViewOriginalDown += new System.EventHandler(this.imageActions_ViewOriginalDown);
+            this.imageActions.ViewOriginalUp += new System.EventHandler(this.imageActions_ViewOriginalUp);
             // 
             // slideOffsetY
             // 
@@ -520,17 +537,6 @@ namespace InternalFilters.Actions
             0});
             this.slideOpacity.ValueChanged += new System.EventHandler(this.slideValue_ValueChanged);
             // 
-            // imgPreview
-            // 
-            resources.ApplyResources(this.imgPreview, "imgPreview");
-            this.imgPreview.Image = null;
-            this.imgPreview.Name = "imgPreview";
-            this.imgPreview.SelectionColor = System.Drawing.SystemColors.Highlight;
-            this.imgPreview.SelectionKeepAspect = false;
-            this.imgPreview.SelectionRegion = ((System.Drawing.RectangleF)(resources.GetObject("imgPreview.SelectionRegion")));
-            this.imgPreview.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
-            this.imgPreview.Zoom = 100;
-            // 
             // dlgFontEx
             // 
             this.dlgFontEx.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -547,14 +553,14 @@ namespace InternalFilters.Actions
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.imgPreview);
+            this.Controls.Add(this.imageActions);
             this.Controls.Add(this.pnlCustom);
             this.Controls.Add(this.pnlEffectTools);
             this.Controls.Add(this.lvFilters);
             this.Controls.Add(this.grpCommonSetting);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOriginal);
-            this.Controls.Add(this.imgPreview);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.HelpButton = true;
             this.Name = "PinObjectForm";
@@ -570,17 +576,14 @@ namespace InternalFilters.Actions
             this.tabPageText.ResumeLayout(false);
             this.tabPageText.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.ToolTip toolTip;
-        private NetCharm.Common.Controls.ImageBox imgPreview;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnOriginal;
         private System.Windows.Forms.GroupBox grpCommonSetting;
         private NetCharm.Common.Controls.SlideNumber slideBlend;
         private NetCharm.Common.Controls.SlideNumber slideOpacity;
@@ -614,5 +617,7 @@ namespace InternalFilters.Actions
         private System.Windows.Forms.Button btnColorPicker;
         private NetCharm.Common.Controls.FontDialogEx dlgFontEx;
         private System.Windows.Forms.Button btnOriginalPic;
+        private NetCharm.Common.Controls.ImageActions imageActions;
+        private Cyotek.Windows.Forms.ImageBox imgPreview;
     }
 }

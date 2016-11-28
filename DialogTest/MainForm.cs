@@ -5,8 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using ExtensionMethods;
 using Media = System.Windows.Media;
@@ -559,6 +561,78 @@ namespace DialogTest
 
     public class MyShaderEffect : Media.Effects.ShaderEffect
     {
+        private static Media.Effects.PixelShader _pixelShader =
+            new Media.Effects.PixelShader() { UriSource = MakePackUri("shaders/ThresholdEffect.fx.ps") };
+
+        public MyShaderEffect()
+        {
+            PixelShader = _pixelShader;
+
+            UpdateShaderValue( InputProperty );
+            UpdateShaderValue( ThresholdProperty );
+            UpdateShaderValue( BlankColorProperty );
+        }
+
+        // MakePackUri is a utility method for computing a pack uri
+        // for the given resource. 
+        public static Uri MakePackUri( string relativeFile )
+        {
+            Assembly a = typeof(MyShaderEffect).Assembly;
+
+            // Extract the short name.
+            string assemblyShortName = a.ToString().Split(',')[0];
+
+            string uriString = "pack://application:,,,/" +
+                assemblyShortName +
+                ";component/" +
+                relativeFile;
+
+            return new Uri( uriString );
+        }
+
+        ///////////////////////////////////////////////////////////////////////
+        #region Input dependency property
+
+        public Brush Input
+        {
+            get { return (Brush) GetValue( InputProperty ); }
+            set { SetValue( InputProperty, value ); }
+        }
+
+        public static readonly DependencyProperty InputProperty =
+            Media.Effects.ShaderEffect.RegisterPixelShaderSamplerProperty("Input", typeof(MyShaderEffect), 0);
+
+        #endregion
+
+        ///////////////////////////////////////////////////////////////////////
+        #region Threshold dependency property
+
+        public double Threshold
+        {
+            get { return (double) GetValue( ThresholdProperty ); }
+            set { SetValue( ThresholdProperty, value ); }
+        }
+
+        public static readonly DependencyProperty ThresholdProperty =
+            DependencyProperty.Register("Threshold", typeof(double), typeof(MyShaderEffect),
+                    new UIPropertyMetadata(0.5, PixelShaderConstantCallback(0)));
+
+        #endregion
+
+        ///////////////////////////////////////////////////////////////////////
+        #region BlankColor dependency property
+
+        public Color BlankColor
+        {
+            get { return (Color) GetValue( BlankColorProperty ); }
+            set { SetValue( BlankColorProperty, value ); }
+        }
+
+        public static readonly DependencyProperty BlankColorProperty =
+            DependencyProperty.Register("BlankColor", typeof(Color), typeof(MyShaderEffect),
+                    new UIPropertyMetadata(Media.Colors.Transparent, PixelShaderConstantCallback(1)));
+
+        #endregion
 
     }
 

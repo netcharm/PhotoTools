@@ -169,6 +169,18 @@
     <Compile Include="Controls\ImageBox.Designer.cs">
       <DependentUpon>ImageBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ImageActions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageActions.Designer.cs">
+      <DependentUpon>ImageActions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PreviewBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PreviewBox.Designer.cs">
+      <DependentUpon>PreviewBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Slider.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -232,6 +244,12 @@
     <EmbeddedResource Include="Controls\ImageBox.resx">
       <DependentUpon>ImageBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ImageActions.resx">
+      <DependentUpon>ImageActions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PreviewBox.resx">
+      <DependentUpon>PreviewBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\SlideColorLum.resx">
       <DependentUpon>SlideColorLum.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -264,6 +282,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddIn.ico" />
+    <None Include="Resources\Compare_16x.png" />
+    <None Include="Resources\ZoomIn_16x.png" />
+    <None Include="Resources\ZoomOut_16x.png" />
+    <None Include="Resources\ZoomOut_15x.png" />
     <None Include="Resources\eyedropper.png" />
     <None Include="Resources\Application_32x.png" />
     <None Include="Resources\Application_16x.png" />

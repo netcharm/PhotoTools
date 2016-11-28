@@ -420,10 +420,7 @@ namespace InternalFilters
                     pL.X = pN.X;
                     pL.Y = pN.Y;
 
-                    float max = 0;
                     float min = 0;
-                    float nw = 0;
-                    float nh = 0;
 
                     if ( cropMode == CropMode.AspectRatio )
                     {

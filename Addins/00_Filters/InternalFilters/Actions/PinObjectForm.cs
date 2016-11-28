@@ -186,7 +186,8 @@ namespace InternalFilters.Actions
                 if ( addin.ImageData is Image )
                 {
                     objectOnly = false;
-                    imgPreview.Image = AddinUtils.CreateThumb( addin.Apply( addin.ImageData ), imgPreview.ClientSize );
+                    //imgPreview.Image = AddinUtils.CreateThumb( addin.Apply( addin.ImageData ), imgPreview.ClientSize );
+                    imgPreview.Image = addin.Apply( addin.ImageData );
                 }
                 #endregion
             }
@@ -268,10 +269,15 @@ namespace InternalFilters.Actions
             slideOffsetX.Enabled = chkTile.Checked;
             slideOffsetY.Enabled = chkTile.Checked;
 
-            thumb = AddinUtils.CreateThumb( addin.ImageData, imgPreview.Size );
-            imgPreview.Image = thumb;
+            //thumb = AddinUtils.CreateThumb( addin.ImageData, imgPreview.Size );
+            thumb = addin.ImageData;
+            imgPreview.Image = thumb;            
+            imgPreview.ZoomToFit();
+            imageActions.Source = thumb;
 
             csSelect.CornetRegion = CornerRegionType.BottomCenter;
+
+            imageActions.ZoomLevels = imgPicture.ZoomLevels;
 
             this.Tag = true;
             Preview();
@@ -371,18 +377,6 @@ namespace InternalFilters.Actions
                     lv.Invalidate( lvi.Bounds );
                 }
             }
-        }
-
-        private void btnOriginal_MouseDown( object sender, MouseEventArgs e )
-        {
-            thumbBackup = imgPreview.Image;
-            imgPreview.Image = thumb;
-        }
-
-        private void btnOriginal_MouseUp( object sender, MouseEventArgs e )
-        {
-            if ( thumbBackup is Image )
-                imgPreview.Image = thumbBackup;
         }
 
         private void btnEffectAdd_Click( object sender, EventArgs e )
@@ -617,5 +611,39 @@ namespace InternalFilters.Actions
             Preview();
         }
 
+        private void imageActions_ViewOriginalDown( object sender, EventArgs e )
+        {
+            thumbBackup = imgPreview.Image;
+            imgPreview.Image = thumb;
+        }
+
+        private void imageActions_ViewOriginalUp( object sender, EventArgs e )
+        {
+            if ( thumbBackup is Image )
+                imgPreview.Image = thumbBackup;
+        }
+
+        private void imageActions_ZoomChanged( object sender, EventArgs e )
+        {
+            if ( imageActions.Zoom <= 0 )
+            {
+                imgPreview.ZoomToFit();
+                imageActions.Zoom = imgPreview.Zoom;
+            }
+            else
+                imgPreview.Zoom = imageActions.Zoom;
+        }
+
+        private void imageActions_ZoomIn( object sender, EventArgs e )
+        {
+            imgPreview.ZoomIn();
+            imageActions.Zoom = imgPreview.Zoom;
+        }
+
+        private void imageActions_ZoomOut( object sender, EventArgs e )
+        {
+            imgPreview.ZoomOut();
+            imageActions.Zoom = imgPreview.Zoom;
+        }
     }
 }

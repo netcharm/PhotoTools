@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Cyotek.Windows.Forms;
 using NetCharm.Image;
 using NetCharm.Image.Addins;
+using ExtensionMethods;
 
 namespace NetCharm.Common.Controls
 {
@@ -335,7 +336,7 @@ namespace NetCharm.Common.Controls
                 {
                     #region Detect Mouse Role
                     Cursor cur = Cursors.Default;
-                    mCornerSide = AddinUtils.GetPosOfRegion( selection, pN, out mPos, out cur );
+                    mCornerSide = selection.GetPosOfRegion( pN, out mPos, out cur );
                     Viewer.Cursor = cur;
                     #endregion
                 }
