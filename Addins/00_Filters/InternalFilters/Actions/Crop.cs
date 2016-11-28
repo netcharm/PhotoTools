@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Mono.Addins;
+using NetCharm.Common;
 using NetCharm.Image;
 using NetCharm.Image.Addins;
 

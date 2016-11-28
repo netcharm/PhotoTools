@@ -11,7 +11,7 @@ using System.Text;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using Accord.Imaging.Filters;
-using NetCharm.Image.Addins.Common;
+using NetCharm.Common;
 using NGettext.WinForm;
 using GDIPlusX;
 using GDIPlusX.GDIPlus11.Effects;
@@ -19,6 +19,8 @@ using ExtensionMethods;
 
 namespace NetCharm.Image.Addins
 {
+    using Common;
+    using NetCharm.Common.Controls;
     using ParamList = Dictionary<string, ParamItem>;
 
     /// <summary>

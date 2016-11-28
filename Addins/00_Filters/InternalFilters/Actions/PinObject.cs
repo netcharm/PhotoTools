@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using Mono.Addins;
 using ExtensionMethods;
+using NetCharm.Common;
 using NetCharm.Image.Addins;
 
 

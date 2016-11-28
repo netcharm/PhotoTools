@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Image.AddinHost\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-27 02:24+0800\n"
+"POT-Creation-Date: 2016-11-28 22:17+0800\n"
 "PO-Revision-Date: 2016-11-17 17:24+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -20,60 +20,13 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: Common\ColorDialog.resx:268 -> btnApply.Text.value
-#: Common\FontDialog.resx:649
-msgid "Apply"
-msgstr "应用"
-
-#: Common\ColorDialog.resx:298 -> btnCancel.Text.value
-#: Common\FontDialog.resx:622 Common\SelectAddinForm.resx:193
-msgid "Cancel"
-msgstr "取消"
-
-#: Common\ColorDialog.resx:328 -> btnOk.Text.value Common\FontDialog.resx:595
-#: Common\SelectAddinForm.resx:169
+#: Common\SelectAddinForm.resx:169 -> btnOk.Text.value
 msgid "OK"
 msgstr "确认"
 
-#: Common\ColorDialog.resx:376 -> btnPalette.Text.value
-msgid "Palette"
-msgstr "色盘"
-
-#: Common\ColorDialog.resx:403 -> $this.Text.value
-msgid "Color Picker"
-msgstr "色彩选择"
-
-#: Common\FontDialog.resx:319 -> chkEffectUnderline.Text.value
-msgid "Underline"
-msgstr "下划线"
-
-#: Common\FontDialog.resx:343 -> chkEffectStrikeout.Text.value
-msgid "Strikeout"
-msgstr "删除线"
-
-#: Common\FontDialog.resx:370 -> grpEffect.Text.value
-msgid "Effect"
-msgstr "效果"
-
-#: Common\FontDialog.resx:427 -> grpSample.Text.value
-msgid "Sample"
-msgstr "示例"
-
-#: Common\FontDialog.resx:478 -> lblFamily.Text.value
-msgid "Font Family"
-msgstr "字体名称"
-
-#: Common\FontDialog.resx:508 -> lblFace.Text.value
-msgid "Font Face"
-msgstr "字体形状"
-
-#: Common\FontDialog.resx:538 -> lblSize.Text.value
-msgid "Font Size"
-msgstr "字体大小"
-
-#: Common\FontDialog.resx:676 -> $this.Text.value
-msgid "Font"
-msgstr "字体"
+#: Common\SelectAddinForm.resx:193 -> btnCancel.Text.value
+msgid "Cancel"
+msgstr "取消"
 
 #: Common\SelectAddinForm.resx:232 -> btnGroupCategory.Text.value
 msgid "Category"
@@ -84,7 +37,7 @@ msgid "Type"
 msgstr "按类型"
 
 #: Common\SelectAddinForm.resx:301 -> btnGroupNone.Text.value
-#: Common\SelectAddinForm.cs:68
+#: Common\SelectAddinForm.cs:64
 msgid "None"
 msgstr "不分组"
 
@@ -96,131 +49,125 @@ msgstr "分组模式"
 msgid "Selection Addins"
 msgstr "选择扩展插件"
 
-#: Controls\SlideColorLum.Designer.cs:80
-msgid "Luminance"
-msgstr "明度"
+#~ msgid "Apply"
+#~ msgstr "应用"
 
-#: Controls\SlideColorLum.Designer.cs:141
-#: Controls\SlideColorSat.Designer.cs:140
-#: Controls\SlideColorHue.Designer.cs:134 Controls\SlideNumber.Designer.cs:139
-msgid ":"
-msgstr ""
+#~ msgid "Palette"
+#~ msgstr "色盘"
 
-#: Controls\SlideColorSat.Designer.cs:80
-msgid "Saturation"
-msgstr "饱和度"
+#~ msgid "Color Picker"
+#~ msgstr "色彩选择"
 
-#: Controls\SlideColorHue.Designer.cs:74
-msgid "Hue"
-msgstr "色度"
+#~ msgid "Underline"
+#~ msgstr "下划线"
 
-#: Controls\SlideNumber.Designer.cs:74
-msgid "ParamName"
-msgstr "参数名"
+#~ msgid "Strikeout"
+#~ msgstr "删除线"
 
-#: Controls\SlideNumber.Designer.cs:125
-msgid "%"
-msgstr ""
+#~ msgid "Effect"
+#~ msgstr "效果"
 
-#: Common\Extensions.cs:1075 Common\FontDialog.cs:350
-msgid "Thin"
-msgstr "细体"
+#~ msgid "Sample"
+#~ msgstr "示例"
 
-#: Common\Extensions.cs:1076 Common\FontDialog.cs:351
-msgid "Light"
-msgstr "淡"
+#~ msgid "Font Family"
+#~ msgstr "字体名称"
 
-#: Common\Extensions.cs:1077 Common\FontDialog.cs:352
-msgid "Regular"
-msgstr "常规"
+#~ msgid "Font Face"
+#~ msgstr "字体形状"
 
-#: Common\Extensions.cs:1078 Common\FontDialog.cs:353
-msgid "Medium"
-msgstr "中等"
+#~ msgid "Font Size"
+#~ msgstr "字体大小"
 
-#: Common\Extensions.cs:1079 Common\FontDialog.cs:359
-msgid "SemiBold"
-msgstr "半粗体"
+#~ msgid "Font"
+#~ msgstr "字体"
 
-#: Common\Extensions.cs:1080 Common\FontDialog.cs:354
-msgid "Bold"
-msgstr "粗体"
+#~ msgid "Luminance"
+#~ msgstr "明度"
 
-#: Common\Extensions.cs:1081 Common\FontDialog.cs:355
-msgid "Black"
-msgstr "黑体"
+#~ msgid "Saturation"
+#~ msgstr "饱和度"
 
-#: Common\Extensions.cs:1082 Common\FontDialog.cs:356
-msgid "Oblique"
-msgstr "倾斜"
+#~ msgid "Hue"
+#~ msgstr "色度"
 
-#: Common\Extensions.cs:1083 Common\FontDialog.cs:357
-msgid "Italic"
-msgstr "斜体"
+#~ msgid "ParamName"
+#~ msgstr "参数名"
 
-#: Common\FontDialog.cs:212
-msgid "Culture Text"
-msgstr "中文文本示例"
+#~ msgid "Thin"
+#~ msgstr "细体"
 
-#: Common\FontDialog.cs:360
-msgid "SemiCondensed"
-msgstr "半紧缩"
+#~ msgid "Light"
+#~ msgstr "淡"
 
-#: Common\FontDialog.cs:361
-msgid "Condensed"
-msgstr "紧缩"
+#~ msgid "Regular"
+#~ msgstr "常规"
 
-#: Common\FontDialog.cs:362
-msgid "Expanded"
-msgstr "展开"
+#~ msgid "Medium"
+#~ msgstr "中等"
 
-#: Common\FontDialog.cs:363
-msgid "Extended"
-msgstr "展开"
+#~ msgid "SemiBold"
+#~ msgstr "半粗体"
 
-#: Common\FontDialog.cs:364
-msgid "Heavy"
-msgstr "重黑"
+#~ msgid "Bold"
+#~ msgstr "粗体"
 
-#: Common\FontDialog.cs:365
-msgid "ExtraBlack"
-msgstr "超黑体"
+#~ msgid "Black"
+#~ msgstr "黑体"
 
-#: Common\FontDialog.cs:366
-msgid "Ultra Light"
-msgstr "特淡"
+#~ msgid "Oblique"
+#~ msgstr "倾斜"
 
-#: Common\FontDialog.cs:367
-msgid "Ultra"
-msgstr "特"
+#~ msgid "Italic"
+#~ msgstr "斜体"
 
-#: Common\FontDialog.cs:368
-msgid "Roman"
-msgstr "罗马体"
+#~ msgid "Culture Text"
+#~ msgstr "中文文本示例"
 
-#: Common\FontDialog.cs:370
-msgid "250"
-msgstr "细体"
+#~ msgid "SemiCondensed"
+#~ msgstr "半紧缩"
 
-#: Common\FontDialog.cs:371
-msgid "350"
-msgstr "常规"
+#~ msgid "Condensed"
+#~ msgstr "紧缩"
 
-#: Common\FontDialog.cs:372
-msgid "275"
-msgstr "特淡"
+#~ msgid "Expanded"
+#~ msgstr "展开"
 
-#: Common\FontDialog.cs:373
-msgid "750"
-msgstr "黑体"
+#~ msgid "Extended"
+#~ msgstr "展开"
 
-#: Common\FontDialog.cs:375
-msgid "W3"
-msgstr "淡"
+#~ msgid "Heavy"
+#~ msgstr "重黑"
 
-#: Common\FontDialog.cs:376
-msgid "W6"
-msgstr "半粗体"
+#~ msgid "ExtraBlack"
+#~ msgstr "超黑体"
+
+#~ msgid "Ultra Light"
+#~ msgstr "特淡"
+
+#~ msgid "Ultra"
+#~ msgstr "特"
+
+#~ msgid "Roman"
+#~ msgstr "罗马体"
+
+#~ msgid "250"
+#~ msgstr "细体"
+
+#~ msgid "350"
+#~ msgstr "常规"
+
+#~ msgid "275"
+#~ msgstr "特淡"
+
+#~ msgid "750"
+#~ msgstr "黑体"
+
+#~ msgid "W3"
+#~ msgstr "淡"
+
+#~ msgid "W6"
+#~ msgstr "半粗体"
 
 #~ msgid "Default"
 #~ msgstr "默认"

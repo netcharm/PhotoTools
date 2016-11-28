@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ExtensionMethods;
+using NetCharm.Common.Controls;
 using NetCharm.Image.Addins;
 
 namespace InternalFilters.Actions
 {
     using System.IO;
+    using NetCharm.Common;
     using NetCharm.Image;
     using ParamList = Dictionary<string, ParamItem>;
 

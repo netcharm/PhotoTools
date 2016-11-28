@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: Actions\PinObject.cs:358 Actions\PinObject.cs:363 Actions\PinObject.cs:368
+#: Actions\PinObject.cs:359 Actions\PinObject.cs:364 Actions\PinObject.cs:369
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-27 02:24+0800\n"
+"POT-Creation-Date: 2016-11-28 22:17+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 
 #: Actions\ResizeForm.resx:187 -> btnOk.Text.value
-#: Actions\PinObjectForm.resx:518 Effects\BlurForm.resx:481
+#: Actions\PinObjectForm.resx:466 Effects\BlurForm.resx:481
 #: Effects\GrayscaleForm.resx:163 Effects\HslFilterForm.resx:139
 #: Effects\HueFilterForm.resx:191 Effects\InvertForm.resx:214
 #: Effects\SharpenForm.resx:337 Actions\RotateForm.resx:364
@@ -31,7 +31,7 @@ msgid "OK"
 msgstr "确认"
 
 #: Actions\ResizeForm.resx:211 -> btnCancel.Text.value
-#: Actions\PinObjectForm.resx:548 Effects\BlurForm.resx:508
+#: Actions\PinObjectForm.resx:496 Effects\BlurForm.resx:508
 #: Effects\GrayscaleForm.resx:190 Effects\HslFilterForm.resx:166
 #: Effects\HueFilterForm.resx:218 Effects\InvertForm.resx:238
 #: Effects\SharpenForm.resx:364 Actions\RotateForm.resx:388
@@ -95,37 +95,37 @@ msgstr "添加滤镜"
 msgid "Random Put Object To Image"
 msgstr "随机放置到图像某处"
 
-#: Actions\PinObjectForm.resx:455 -> btnOriginal.ToolTip.value
-#: Actions\PinObjectForm.resx:488 btnOriginalPic.ToolTip.value
-#: Effects\BlurForm.resx:164 Effects\GrayscaleForm.resx:243
-#: Effects\HslFilterForm.resx:236 Effects\HueFilterForm.resx:164
-#: Effects\InvertForm.resx:161 Effects\SharpenForm.resx:167
+#: Actions\PinObjectForm.resx:436 -> btnOriginalPic.ToolTip.value
+#: Effects\BlurForm.resx:164 btnOriginal.ToolTip.value
+#: Effects\GrayscaleForm.resx:243 Effects\HslFilterForm.resx:236
+#: Effects\HueFilterForm.resx:164 Effects\InvertForm.resx:161
+#: Effects\SharpenForm.resx:167
 msgid "View Original"
 msgstr "查看原图"
 
-#: Actions\PinObjectForm.resx:797 -> grpCommonSetting.Text.value
-msgid "Common"
-msgstr "公共"
-
-#: Actions\PinObjectForm.resx:830 -> chkEnabled.Text.value
+#: Actions\PinObjectForm.resx:532 -> chkEnabled.Text.value
 msgid "Enabled"
 msgstr "启用"
 
-#: Actions\PinObjectForm.resx:863 -> chkTile.Text.value
+#: Actions\PinObjectForm.resx:565 -> chkTile.Text.value
 msgid "Tile"
 msgstr "平铺"
 
-#: Actions\PinObjectForm.resx:1046 -> tabPagePicture.Text.value
-#: Actions\PinObject.cs:362 Actions\PinObject.cs:364
+#: Actions\PinObjectForm.resx:613 -> grpCommonSetting.Text.value
+msgid "Common"
+msgstr "公共"
+
+#: Actions\PinObjectForm.resx:703 -> tabPagePicture.Text.value
+#: Actions\PinObject.cs:363 Actions\PinObject.cs:365
 msgid "Picture"
 msgstr "图像"
 
-#: Actions\PinObjectForm.resx:1094 -> tabPageText.Text.value
-#: Actions\PinObject.cs:357
+#: Actions\PinObjectForm.resx:781 -> tabPageText.Text.value
+#: Actions\PinObject.cs:358
 msgid "Text"
 msgstr "文本"
 
-#: Actions\PinObjectForm.resx:1172 -> tabPageTag.Text.value
+#: Actions\PinObjectForm.resx:808 -> tabPageTag.Text.value
 msgid "SmartTag"
 msgstr "标签"
 
@@ -294,27 +294,27 @@ msgstr "旋转预览"
 msgid "Rotate"
 msgstr "旋转"
 
-#: Actions\PinObjectForm.Designer.cs:344
+#: Actions\PinObjectForm.Designer.cs:361
 msgid "Offset Y"
 msgstr "Y偏移"
 
-#: Actions\PinObjectForm.Designer.cs:373
+#: Actions\PinObjectForm.Designer.cs:390
 msgid "Offset X"
 msgstr "X偏移"
 
-#: Actions\PinObjectForm.Designer.cs:402
+#: Actions\PinObjectForm.Designer.cs:419
 msgid "Margin Y"
 msgstr "Y边界"
 
-#: Actions\PinObjectForm.Designer.cs:431
+#: Actions\PinObjectForm.Designer.cs:448
 msgid "Margin X"
 msgstr "X边界"
 
-#: Actions\PinObjectForm.Designer.cs:467
+#: Actions\PinObjectForm.Designer.cs:484
 msgid "Blend"
 msgstr "混合"
 
-#: Actions\PinObjectForm.Designer.cs:496
+#: Actions\PinObjectForm.Designer.cs:513
 msgid "Opacity"
 msgstr "不透明度"
 
@@ -418,7 +418,7 @@ msgstr "裁切比例"
 msgid "x"
 msgstr "比"
 
-#: Actions\CropForm.Designer.cs:352 Actions\Crop.cs:30
+#: Actions\CropForm.Designer.cs:352 Actions\Crop.cs:31
 msgid "Crop"
 msgstr "裁切"
 
@@ -438,35 +438,35 @@ msgstr "饱和度"
 msgid "Hue"
 msgstr "色度"
 
-#: Actions\PinObject.cs:145
+#: Actions\PinObject.cs:146
 msgid "Pin"
 msgstr "图钉"
 
-#: Actions\PinObject.cs:157
+#: Actions\PinObject.cs:158
 msgid "Decoration"
 msgstr "装饰"
 
-#: Actions\PinObject.cs:164
+#: Actions\PinObject.cs:165
 msgid "Decoration Image"
 msgstr "装饰图像"
 
-#: Actions\PinObject.cs:359
+#: Actions\PinObject.cs:360
 msgid "Simple Text"
 msgstr "简单文本"
 
-#: Actions\PinObject.cs:367
+#: Actions\PinObject.cs:368
 msgid "Smart Tag"
 msgstr "场景标签"
 
-#: Actions\PinObject.cs:369
+#: Actions\PinObject.cs:370
 msgid "Rich-Contents Text"
 msgstr "丰富内容文本"
 
-#: Actions\Crop.cs:42 Actions\Resize.cs:129 Actions\Rotate.cs:56
+#: Actions\Crop.cs:43 Actions\Resize.cs:129 Actions\Rotate.cs:56
 msgid "Edit"
 msgstr "编辑"
 
-#: Actions\Crop.cs:49
+#: Actions\Crop.cs:50
 msgid "Crop Image"
 msgstr "裁切图像"
 

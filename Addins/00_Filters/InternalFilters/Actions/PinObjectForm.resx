@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>124, 17</value>
   </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="imgPicture.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -454,7 +454,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>607, 454</value>
+    <value>603, 455</value>
   </data>
   <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -484,7 +484,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>517, 454</value>
+    <value>519, 455</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -514,22 +514,19 @@
     <value>Top</value>
   </data>
   <data name="slideOffsetY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 277</value>
-  </data>
-  <data name="slideOffsetY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
+    <value>3, 287</value>
   </data>
   <data name="slideOffsetY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 52</value>
+    <value>188, 54</value>
   </data>
   <data name="slideOffsetY.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;slideOffsetY.Name" xml:space="preserve">
     <value>slideOffsetY</value>
   </data>
   <data name="&gt;&gt;slideOffsetY.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.20.75, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideOffsetY.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -541,22 +538,19 @@
     <value>Top</value>
   </data>
   <data name="slideOffsetX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 225</value>
-  </data>
-  <data name="slideOffsetX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
+    <value>3, 233</value>
   </data>
   <data name="slideOffsetX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 52</value>
+    <value>188, 54</value>
   </data>
   <data name="slideOffsetX.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;slideOffsetX.Name" xml:space="preserve">
     <value>slideOffsetX</value>
   </data>
   <data name="&gt;&gt;slideOffsetX.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.20.75, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideOffsetX.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -568,22 +562,19 @@
     <value>Top</value>
   </data>
   <data name="slideMarginY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 173</value>
-  </data>
-  <data name="slideMarginY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
+    <value>3, 179</value>
   </data>
   <data name="slideMarginY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 52</value>
+    <value>188, 54</value>
   </data>
   <data name="slideMarginY.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;slideMarginY.Name" xml:space="preserve">
     <value>slideMarginY</value>
   </data>
   <data name="&gt;&gt;slideMarginY.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.20.75, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideMarginY.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -595,22 +586,19 @@
     <value>Top</value>
   </data>
   <data name="slideMarginX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 121</value>
-  </data>
-  <data name="slideMarginX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
+    <value>3, 125</value>
   </data>
   <data name="slideMarginX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 52</value>
+    <value>188, 54</value>
   </data>
   <data name="slideMarginX.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;slideMarginX.Name" xml:space="preserve">
     <value>slideMarginX</value>
   </data>
   <data name="&gt;&gt;slideMarginX.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.20.75, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideMarginX.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -688,7 +676,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="csSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 11</value>
+    <value>121, 9</value>
   </data>
   <data name="csSelect.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>64, 64</value>
@@ -696,20 +684,17 @@
   <data name="csSelect.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>64, 64</value>
   </data>
-  <data name="csSelect.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 0, 0</value>
-  </data>
   <data name="csSelect.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 64</value>
   </data>
   <data name="csSelect.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
+    <value>32</value>
   </data>
   <data name="&gt;&gt;csSelect.Name" xml:space="preserve">
     <value>csSelect</value>
   </data>
   <data name="&gt;&gt;csSelect.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.CornerSide, NetCharm.Image.AddinHost, Version=1.0.20.75, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.CornerSide, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;csSelect.Parent" xml:space="preserve">
     <value>pnlPosMode</value>
@@ -745,22 +730,19 @@
     <value>Top</value>
   </data>
   <data name="slideBlend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 69</value>
-  </data>
-  <data name="slideBlend.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
+    <value>3, 71</value>
   </data>
   <data name="slideBlend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 52</value>
+    <value>188, 54</value>
   </data>
   <data name="slideBlend.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
+    <value>29</value>
   </data>
   <data name="&gt;&gt;slideBlend.Name" xml:space="preserve">
     <value>slideBlend</value>
   </data>
   <data name="&gt;&gt;slideBlend.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.20.75, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideBlend.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -774,20 +756,17 @@
   <data name="slideOpacity.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 17</value>
   </data>
-  <data name="slideOpacity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
-  </data>
   <data name="slideOpacity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 52</value>
+    <value>188, 54</value>
   </data>
   <data name="slideOpacity.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+    <value>30</value>
   </data>
   <data name="&gt;&gt;slideOpacity.Name" xml:space="preserve">
     <value>slideOpacity</value>
   </data>
   <data name="&gt;&gt;slideOpacity.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Image.AddinHost, Version=1.0.20.75, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideOpacity.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -823,19 +802,19 @@
     <value>Bottom, Left, Right</value>
   </data>
   <metadata name="ilLarge.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>207, 17</value>
+    <value>314, 17</value>
   </metadata>
   <data name="ilLarge.ImageSize" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
   </data>
   <data name="lvFilters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 184</value>
+    <value>216, 184</value>
   </data>
   <data name="lvFilters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 256</value>
+    <value>143, 256</value>
   </data>
   <metadata name="ilSmall.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>112, 17</value>
+    <value>219, 17</value>
   </metadata>
   <data name="ilSmall.ImageSize" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
@@ -1066,7 +1045,7 @@
     <value>366, 185</value>
   </data>
   <data name="imgPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>316, 255</value>
+    <value>312, 255</value>
   </data>
   <data name="imgPreview.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -1083,8 +1062,11 @@
   <data name="&gt;&gt;imgPreview.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="imageActions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
   <data name="imageActions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>365, 453</value>
+    <value>366, 453</value>
   </data>
   <data name="imageActions.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>156, 24</value>
@@ -1096,13 +1078,13 @@
     <value>138, 24</value>
   </data>
   <data name="imageActions.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
+    <value>34</value>
   </data>
   <data name="&gt;&gt;imageActions.Name" xml:space="preserve">
     <value>imageActions</value>
   </data>
   <data name="&gt;&gt;imageActions.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.ImageActions, NetCharm.Image.AddinHost, Version=1.0.20.75, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.ImageActions, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imageActions.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1111,7 +1093,7 @@
     <value>1</value>
   </data>
   <metadata name="dlgFontEx.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>397, 17</value>
+    <value>17, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1121,9 +1103,6 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>694, 490</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
@@ -1150,7 +1129,7 @@
     <value>dlgFontEx</value>
   </data>
   <data name="&gt;&gt;dlgFontEx.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.FontDialogEx, NetCharm.Image.AddinHost, Version=1.0.20.75, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.FontDialogEx, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>PinObjectForm</value>

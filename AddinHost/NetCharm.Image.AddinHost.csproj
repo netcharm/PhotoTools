@@ -125,97 +125,12 @@
     </Compile>
     <Compile Include="Common\AddinType.cs" />
     <Compile Include="Common\AddinUtils.cs" />
-    <Compile Include="Common\ColorDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Common\ColorDialog.Designer.cs">
-      <DependentUpon>ColorDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Common\Extensions.cs" />
-    <Compile Include="Common\FontDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Common\FontDialog.Designer.cs">
-      <DependentUpon>FontDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Common\ImageInfo.cs" />
     <Compile Include="Common\SelectAddinForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Common\SelectAddinForm.Designer.cs">
       <DependentUpon>SelectAddinForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ColorDialogEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\ColorDialogEx.Designer.cs">
-      <DependentUpon>ColorDialogEx.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CornerSide.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\CornerSide.Designer.cs">
-      <DependentUpon>CornerSide.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\FontDialogEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\FontDialogEx.Designer.cs">
-      <DependentUpon>FontDialogEx.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ImageBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ImageBox.Designer.cs">
-      <DependentUpon>ImageBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ImageActions.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ImageActions.Designer.cs">
-      <DependentUpon>ImageActions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\PreviewBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\PreviewBox.Designer.cs">
-      <DependentUpon>PreviewBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Slider.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\Slider.Designer.cs">
-      <DependentUpon>Slider.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SlideColorLum.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\SlideColorLum.Designer.cs">
-      <DependentUpon>SlideColorLum.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SlideColorSat.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\SlideColorSat.Designer.cs">
-      <DependentUpon>SlideColorSat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SlideColorHue.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\SlideColorHue.Designer.cs">
-      <DependentUpon>SlideColorHue.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SlideNumber.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\SlideNumber.Designer.cs">
-      <DependentUpon>SlideNumber.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SlideControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\SlideControl.Designer.cs">
-      <DependentUpon>SlideControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -228,42 +143,9 @@
     <EmbeddedResource Include="BaseHost\AddinHost.resx">
       <DependentUpon>AddinHost.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Common\ColorDialog.resx">
-      <DependentUpon>ColorDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Common\FontDialog.resx">
-      <DependentUpon>FontDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Common\SelectAddinForm.resx">
       <DependentUpon>SelectAddinForm.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\CornerSide.resx">
-      <DependentUpon>CornerSide.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ImageBox.resx">
-      <DependentUpon>ImageBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ImageActions.resx">
-      <DependentUpon>ImageActions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PreviewBox.resx">
-      <DependentUpon>PreviewBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SlideColorLum.resx">
-      <DependentUpon>SlideColorLum.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SlideColorSat.resx">
-      <DependentUpon>SlideColorSat.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SlideColorHue.resx">
-      <DependentUpon>SlideColorHue.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SlideNumber.resx">
-      <DependentUpon>SlideNumber.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -294,6 +176,12 @@
     <None Include="Resources\Effects_32x.png" />
     <None Include="Resources\Effects_16x.png" />
     <None Include="Resources\AddIn_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetCharm.Common.Controls\NetCharm.Common.Controls.csproj">
+      <Project>{c8b45d69-1fe5-43c5-9063-952e6691fc61}</Project>
+      <Name>NetCharm.Common.Controls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Accord.3.3.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.3.0\build\Accord.targets')" />

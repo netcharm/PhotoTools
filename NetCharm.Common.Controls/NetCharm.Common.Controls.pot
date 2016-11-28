@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: NetCharm.Common.Controls\n"
+"Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
+"POT-Creation-Date: 2016-11-28 22:17+0800\n"
+"PO-Revision-Date: 2016-11-28 22:17+0800\n"
+"Last-Translator: netcharm <netcharm@163.com>\n"
+"Language-Team: netcharm <netcharm@163.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: China\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+
+#: Common\ColorDialog.resx:268 -> btnApply.Text.value
+#: Common\FontDialog.resx:649
+msgid "Apply"
+msgstr ""
+
+#: Common\ColorDialog.resx:298 -> btnCancel.Text.value
+#: Common\FontDialog.resx:622
+msgid "Cancel"
+msgstr ""
+
+#: Common\ColorDialog.resx:328 -> btnOk.Text.value Common\FontDialog.resx:595
+msgid "OK"
+msgstr ""
+
+#: Common\ColorDialog.resx:376 -> btnPalette.Text.value
+msgid "Palette"
+msgstr ""
+
+#: Common\ColorDialog.resx:403 -> $this.Text.value
+msgid "Color Picker"
+msgstr ""
+
+#: Common\FontDialog.resx:319 -> chkEffectUnderline.Text.value
+msgid "Underline"
+msgstr ""
+
+#: Common\FontDialog.resx:343 -> chkEffectStrikeout.Text.value
+msgid "Strikeout"
+msgstr ""
+
+#: Common\FontDialog.resx:370 -> grpEffect.Text.value
+msgid "Effect"
+msgstr ""
+
+#: Common\FontDialog.resx:427 -> grpSample.Text.value
+msgid "Sample"
+msgstr ""
+
+#: Common\FontDialog.resx:478 -> lblFamily.Text.value
+msgid "Font Family"
+msgstr ""
+
+#: Common\FontDialog.resx:508 -> lblFace.Text.value
+msgid "Font Face"
+msgstr ""
+
+#: Common\FontDialog.resx:538 -> lblSize.Text.value
+msgid "Font Size"
+msgstr ""
+
+#: Common\FontDialog.resx:676 -> $this.Text.value
+msgid "Font"
+msgstr ""
+
+#: Controls\ImageActions.Designer.cs:74
+msgid "View Original"
+msgstr ""
+
+#: Controls\ImageActions.Designer.cs:91
+msgid "Zoom Out"
+msgstr ""
+
+#: Controls\ImageActions.Designer.cs:101
+msgid "Zoom Levels"
+msgstr ""
+
+#: Controls\ImageActions.Designer.cs:113
+msgid "Zoom In"
+msgstr ""
+
+#: Controls\SlideColorHue.Designer.cs:74
+msgid "Hue"
+msgstr ""
+
+#: Controls\SlideColorHue.Designer.cs:134
+#: Controls\SlideColorLum.Designer.cs:141
+#: Controls\SlideColorSat.Designer.cs:140 Controls\SlideNumber.Designer.cs:139
+msgid ":"
+msgstr ""
+
+#: Controls\SlideColorLum.Designer.cs:80
+msgid "Luminance"
+msgstr ""
+
+#: Controls\SlideColorSat.Designer.cs:80
+msgid "Saturation"
+msgstr ""
+
+#: Controls\SlideNumber.Designer.cs:74
+msgid "ParamName"
+msgstr ""
+
+#: Controls\SlideNumber.Designer.cs:125
+msgid "%"
+msgstr ""
+
+#: Common\Extensions.cs:1186 Common\FontDialog.cs:350
+msgid "Thin"
+msgstr ""
+
+#: Common\Extensions.cs:1187 Common\FontDialog.cs:351
+msgid "Light"
+msgstr ""
+
+#: Common\Extensions.cs:1188 Common\FontDialog.cs:352
+msgid "Regular"
+msgstr ""
+
+#: Common\Extensions.cs:1189 Common\FontDialog.cs:353
+msgid "Medium"
+msgstr ""
+
+#: Common\Extensions.cs:1190 Common\FontDialog.cs:359
+msgid "SemiBold"
+msgstr ""
+
+#: Common\Extensions.cs:1191 Common\FontDialog.cs:354
+msgid "Bold"
+msgstr ""
+
+#: Common\Extensions.cs:1192 Common\FontDialog.cs:355
+msgid "Black"
+msgstr ""
+
+#: Common\Extensions.cs:1193 Common\FontDialog.cs:356
+msgid "Oblique"
+msgstr ""
+
+#: Common\Extensions.cs:1194 Common\FontDialog.cs:357
+msgid "Italic"
+msgstr ""
+
+#: Common\FontDialog.cs:212
+msgid "Culture Text"
+msgstr ""
+
+#: Common\FontDialog.cs:360
+msgid "SemiCondensed"
+msgstr ""
+
+#: Common\FontDialog.cs:361
+msgid "Condensed"
+msgstr ""
+
+#: Common\FontDialog.cs:362
+msgid "Expanded"
+msgstr ""
+
+#: Common\FontDialog.cs:363
+msgid "Extended"
+msgstr ""
+
+#: Common\FontDialog.cs:364
+msgid "Heavy"
+msgstr ""
+
+#: Common\FontDialog.cs:365
+msgid "ExtraBlack"
+msgstr ""
+
+#: Common\FontDialog.cs:366
+msgid "Ultra Light"
+msgstr ""
+
+#: Common\FontDialog.cs:367
+msgid "Ultra"
+msgstr ""
+
+#: Common\FontDialog.cs:368
+msgid "Roman"
+msgstr ""
+
+#: Common\FontDialog.cs:370
+msgid "250"
+msgstr ""
+
+#: Common\FontDialog.cs:371
+msgid "350"
+msgstr ""
+
+#: Common\FontDialog.cs:372
+msgid "275"
+msgstr ""
+
+#: Common\FontDialog.cs:373
+msgid "750"
+msgstr ""
+
+#: Common\FontDialog.cs:375
+msgid "W3"
+msgstr ""
+
+#: Common\FontDialog.cs:376
+msgid "W6"
+msgstr ""
