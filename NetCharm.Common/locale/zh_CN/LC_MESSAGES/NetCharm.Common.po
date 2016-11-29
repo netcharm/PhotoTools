@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Common.Controls\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-30 01:12+0800\n"
+"POT-Creation-Date: 2016-11-30 01:59+0800\n"
 "PO-Revision-Date: 2016-11-28 22:17+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -116,107 +116,107 @@ msgstr "参数名"
 msgid "%"
 msgstr ""
 
-#: Common\Extensions.cs:539 Common\FontDialog.cs:379
+#: Common\Extensions.cs:537
 msgid "Thin"
 msgstr "细体"
 
-#: Common\Extensions.cs:540 Common\FontDialog.cs:380
+#: Common\Extensions.cs:538
 msgid "Light"
 msgstr "淡"
 
-#: Common\Extensions.cs:541 Common\FontDialog.cs:381
+#: Common\Extensions.cs:539
 msgid "Regular"
 msgstr "常规"
 
-#: Common\Extensions.cs:542 Common\FontDialog.cs:382
+#: Common\Extensions.cs:540
 msgid "Medium"
 msgstr "中等"
 
-#: Common\Extensions.cs:543 Common\FontDialog.cs:383
+#: Common\Extensions.cs:541
 msgid "Bold"
 msgstr "粗体"
 
-#: Common\Extensions.cs:544 Common\FontDialog.cs:384
+#: Common\Extensions.cs:542
 msgid "Black"
 msgstr "黑体"
 
-#: Common\Extensions.cs:545 Common\FontDialog.cs:385
+#: Common\Extensions.cs:543
 msgid "Oblique"
 msgstr "倾斜"
 
-#: Common\Extensions.cs:546 Common\FontDialog.cs:386
+#: Common\Extensions.cs:544
 msgid "Italic"
 msgstr "斜体"
 
-#: Common\Extensions.cs:547 Common\Extensions.cs:548 Common\FontDialog.cs:388
+#: Common\Extensions.cs:546
 msgid "SemiBold"
 msgstr "半粗体"
 
-#: Common\Extensions.cs:549 Common\FontDialog.cs:389
+#: Common\Extensions.cs:547
 msgid "SemiCondensed"
 msgstr "半紧缩"
 
-#: Common\Extensions.cs:550 Common\FontDialog.cs:390
+#: Common\Extensions.cs:548
 msgid "Condensed"
 msgstr "紧缩"
 
-#: Common\Extensions.cs:551 Common\FontDialog.cs:391
+#: Common\Extensions.cs:549
 msgid "Expanded"
 msgstr "展开"
 
-#: Common\Extensions.cs:552 Common\FontDialog.cs:392
+#: Common\Extensions.cs:550
 msgid "Extended"
 msgstr "展开"
 
-#: Common\Extensions.cs:553 Common\FontDialog.cs:393
+#: Common\Extensions.cs:551
 msgid "Heavy"
 msgstr "重黑"
 
-#: Common\Extensions.cs:554 Common\FontDialog.cs:394
+#: Common\Extensions.cs:552
 msgid "ExtraBlack"
 msgstr "超黑体"
 
-#: Common\Extensions.cs:555 Common\FontDialog.cs:395
+#: Common\Extensions.cs:553
 msgid "Ultra Light"
 msgstr "特淡"
 
-#: Common\Extensions.cs:556 Common\FontDialog.cs:396
+#: Common\Extensions.cs:554
 msgid "Ultra"
 msgstr "特"
 
-#: Common\Extensions.cs:557 Common\FontDialog.cs:397
+#: Common\Extensions.cs:555
 msgid "Roman"
 msgstr "罗马体"
 
-#: Common\Extensions.cs:558 Common\FontDialog.cs:398
+#: Common\Extensions.cs:556
 msgid "Normal"
 msgstr "常规"
 
-#: Common\Extensions.cs:559 Common\FontDialog.cs:399
+#: Common\Extensions.cs:557
 msgid "regular"
 msgstr "常规"
 
-#: Common\FontDialog.cs:401
+#: Common\Extensions.cs:559
 msgid "250"
 msgstr "细体"
 
-#: Common\FontDialog.cs:402
+#: Common\Extensions.cs:560
 msgid "350"
 msgstr "常规"
 
-#: Common\FontDialog.cs:403
+#: Common\Extensions.cs:561
 msgid "275"
 msgstr "特淡"
 
-#: Common\FontDialog.cs:404
+#: Common\Extensions.cs:562
 msgid "750"
 msgstr "黑体"
 
-#: Common\FontDialog.cs:406
+#: Common\Extensions.cs:564
 msgid "W3"
 msgstr "淡"
 
-#: Common\FontDialog.cs:407
+#: Common\Extensions.cs:565
 msgid "W6"
 msgstr "半粗体"
 

@@ -88,7 +88,7 @@ namespace NetCharm.Common
             {
                 if ( edStyle.Tag == null ) return ( "Regular" );
                 //var styles = edStyle.Text.Split();
-                var styles = ((string)edStyle.Tag).Split();
+                var styles = edStyle.Tag is string ? ((string)edStyle.Tag).Split() : new string[] { };
                 _typefaceName = string.Empty;
                 var typefacename = new List<string>();
                 foreach(var style in styles)
@@ -109,7 +109,7 @@ namespace NetCharm.Common
         {
             get
             {
-                var styles = edStyle.Text.Split();
+                var styles = edStyle.Tag is string ? ((string)edStyle.Tag).Split() : new string[] { };
                 _fontstyle = FontStyle.Regular;
                 bool regular = false;
                 foreach (var style in styles)
@@ -375,37 +375,7 @@ namespace NetCharm.Common
             locale_uikey = XmlLanguage.GetLanguage( locale_ui );
 
             #region Init Face locale Dict
-            FontStyleList.Clear();
-            FontStyleList[this._( "Thin" )] = "Thin";
-            FontStyleList[this._( "Light" )] = "Light";
-            FontStyleList[this._( "Regular" )] = "Regular";
-            FontStyleList[this._( "Medium" )] = "Medium";
-            FontStyleList[this._( "Bold" )] = "Bold";
-            FontStyleList[this._( "Black" )] = "Black";
-            FontStyleList[this._( "Oblique" )] = "Oblique";
-            FontStyleList[this._( "Italic" )] = "Italic";
-
-            FontStyleList[this._( "SemiBold" )] = "SemiBold";
-            FontStyleList[this._( "SemiCondensed" )] = "SemiCondensed";
-            FontStyleList[this._( "Condensed" )] = "Condensed";
-            FontStyleList[this._( "Expanded" )] = "Expanded";
-            FontStyleList[this._( "Extended" )] = "Extended";
-            FontStyleList[this._( "Heavy" )] = "Heavy";
-            FontStyleList[this._( "ExtraBlack" )] = "Extra Black";
-            FontStyleList[this._( "Ultra Light" )] = "Ultra Light";
-            FontStyleList[this._( "Ultra" )] = "Ultra";
-            FontStyleList[this._( "Roman" )] = "Roman";
-            FontStyleList[this._( "Normal" )] = "Regular";
-            FontStyleList[this._( "regular" )] = "Regular";
-
-            FontStyleList[this._( "250" )] = "Thin";
-            FontStyleList[this._( "350" )] = "Regular";
-            FontStyleList[this._( "275" )] = "Ultra Light";
-            FontStyleList[this._( "750" )] = "Heavy";
-
-            FontStyleList[this._( "W3" )] = "Light";
-            FontStyleList[this._( "W6" )] = "SemiBold";
-            //FontStyleList["常规体"] = "Regular";
+            FontStyleList = FontStyleList.FaceNameList();
             #endregion
 
             #region Init font sizes

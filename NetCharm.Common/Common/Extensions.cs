@@ -534,31 +534,47 @@ namespace ExtensionMethods
         /// </summary>
         private static Dictionary<string, string> FontStyleList = new Dictionary<string, string>()
         {
-            //{ _( "250" ), "Thin" },
-            //{ _( "350" ), "Regular" },
-            { _( "Thin" ), "Thin" },
-            { _( "Light" ), "Light" },
-            { _( "Regular" ), "Regular" },
-            { _( "Medium" ), "Medium" },
-            { _( "Bold" ), "Bold" },
-            { _( "Black" ), "Black" },
-            { _( "Oblique" ), "Oblique" },
-            { _( "Italic" ), "Italic" },
-            { _( "SemiBold" ), "SemiBold" },
-            { _( "SemiBold" ), "SemiBold" },
-            { _( "SemiCondensed" ), "SemiCondensed" },
-            { _( "Condensed" ), "Condensed" },
-            { _( "Expanded" ), "Expanded" },
-            { _( "Extended" ), "Extended" },
-            { _( "Heavy" ), "Heavy" },
-            { _( "ExtraBlack" ), "Extra Black" },
-            { _( "Ultra Light" ), "Ultra Light" },
-            { _( "Ultra" ), "Ultra" },
-            { _( "Roman" ), "Roman" },
-            { _( "Normal" ), "Regular" },
-            { _( "regular" ), "Regular" }
+            { T( "Thin" ), "Thin" },
+            { T( "Light" ), "Light" },
+            { T( "Regular" ), "Regular" },
+            { T( "Medium" ), "Medium" },
+            { T( "Bold" ), "Bold" },
+            { T( "Black" ), "Black" },
+            { T( "Oblique" ), "Oblique" },
+            { T( "Italic" ), "Italic" },
+
+            { T( "SemiBold" ), "SemiBold" },
+            { T( "SemiCondensed" ), "SemiCondensed" },
+            { T( "Condensed" ), "Condensed" },
+            { T( "Expanded" ), "Expanded" },
+            { T( "Extended" ), "Extended" },
+            { T( "Heavy" ), "Heavy" },
+            { T( "ExtraBlack" ), "Extra Black" },
+            { T( "Ultra Light" ), "Ultra Light" },
+            { T( "Ultra" ), "Ultra" },
+            { T( "Roman" ), "Roman" },
+            { T( "Normal" ), "Regular" },
+            { T( "regular" ), "Regular" },
+
+            { T( "250" ), "Thin" },
+            { T( "350" ), "Regular" },
+            { T( "275" ), "Ultra Light" },
+            { T( "750" ), "Heavy" },
+
+            { T( "W3" ), "Light" },
+            { T( "W6" ), "SemiBold" }
         };
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="facenames"></param>
+        /// <returns></returns>
+        static public Dictionary<string, string> FaceNameList(this Dictionary<string, string> facenames )
+        {
+            return ( FontStyleList );
+        }
 
         /// <summary>
         /// 

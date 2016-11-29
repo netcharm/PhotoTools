@@ -45,9 +45,6 @@ namespace NetCharm.Common
             InitializeComponent();
             colorGrid.CustomColors.Clear();
             //this.DesignMode
-
-            //AddinUtils.Translate( null, this );
-            this.Translate();
         }
 
         public ColorDialog( Color color )
@@ -55,13 +52,13 @@ namespace NetCharm.Common
             InitializeComponent();
             colorGrid.CustomColors.Clear();
 
-            //AddinUtils.Translate( null, this );
-            this.Translate();
             Color = color;
         }
 
         private void ColorDialog_Load( object sender, EventArgs e )
         {
+            this.Translate();
+
             colorPanel.BackColor = colorManager.Color;
 
             btnOk.DialogResult = DialogResult.OK;
