@@ -461,10 +461,10 @@ namespace InternalFilters.Actions
                             pos.Y = option.Location.Y + margin.Y;
                             break;
                     }
-                    pos.X = pos.X >= 0 ? pos.X : 0;
-                    pos.Y = pos.Y >= 0 ? pos.Y : 0;
-                    pos.X = pos.X > dst.Width - option.ImageCache.Width ? dst.Width - option.ImageCache.Width : pos.X;
-                    pos.Y = pos.Y > dst.Height - option.ImageCache.Height ? dst.Height - option.ImageCache.Height : pos.Y;
+                    //pos.X = pos.X >= 0 ? pos.X : 0;
+                    //pos.Y = pos.Y >= 0 ? pos.Y : 0;
+                    //pos.X = pos.X > dst.Width - option.ImageCache.Width ? dst.Width - option.ImageCache.Width : pos.X;
+                    //pos.Y = pos.Y > dst.Height - option.ImageCache.Height ? dst.Height - option.ImageCache.Height : pos.Y;
                     #endregion
                 }
                 #endregion
@@ -559,7 +559,14 @@ namespace InternalFilters.Actions
             Bitmap result = new Bitmap(dst);
             if ( !string.IsNullOrEmpty( option.Text ) )
             {
-                option.ImageCache = option.Text.ToBitmap( option.TextFont, option.TextFace, option.TextSize, option.TextColor.ToColor() );
+                var align = string.Empty;
+                //if ( option.Pos == CornerRegionType.TopLeft || option.Pos == CornerRegionType.MiddleLeft || option.Pos == CornerRegionType.BottomLeft )
+                //    align = "Left";
+                //else if ( option.Pos == CornerRegionType.TopCenter || option.Pos == CornerRegionType.MiddleCenter || option.Pos == CornerRegionType.BottomCenter )
+                //    align = "Center";
+                //else if ( option.Pos == CornerRegionType.TopRight || option.Pos == CornerRegionType.MiddleRight || option.Pos == CornerRegionType.BottomRight )
+                //    align = "Right";
+                option.ImageCache = option.Text.ToBitmap( option.TextFont, (option.TextFace + $" {align}").Trim(), option.TextSize, option.TextColor.ToColor() );
                 result = DrawPicture( dst, option, objectOnly );
             }
             return ( result );

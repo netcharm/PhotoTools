@@ -123,6 +123,7 @@
     <Compile Include="BaseHost\AddinHost.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Common\AddinExtensions.cs" />
     <Compile Include="Common\AddinType.cs" />
     <Compile Include="Common\AddinUtils.cs" />
     <Compile Include="Common\ImageInfo.cs" />

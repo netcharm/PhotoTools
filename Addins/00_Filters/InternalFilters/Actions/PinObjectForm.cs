@@ -133,7 +133,7 @@ namespace InternalFilters.Actions
 
             if ( !fontApplyTest )
             {
-                AddinUtils.SaveJSON<PinOption>( addin, $"latest_{addin.Name}.json", option );
+                addin.SaveJSON( $"latest_{addin.Name}.json", option );
             }
         }
 
@@ -257,7 +257,7 @@ namespace InternalFilters.Actions
         {
             this.Tag = false;
 
-            PinOption kv = AddinUtils.LoadJSON<PinOption>( addin, $"latest_{addin.Name}.json" );
+            PinOption kv = addin.LoadJSON<PinOption>($"latest_{addin.Name}.json");
             LoadPicture( kv.PictureFile );
 
             option.TextFont = kv.TextFont;
