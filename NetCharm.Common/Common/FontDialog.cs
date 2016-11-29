@@ -156,6 +156,29 @@ namespace NetCharm.Common
             }
         }
 
+        private string _locale = "en-us";
+        public string LocaleName
+        {
+            get
+            {
+                try
+                {
+                    List<string> locales = (List<string>)cbCharset.Tag;
+                    var idx = cbCharset.SelectedIndex;
+                    idx = idx >= cbCharset.Items.Count ? cbCharset.Items.Count - 1 : idx;
+                    idx = idx < 0 ? 0 : idx;
+                    _locale = locales[idx];
+                }
+                catch(Exception)
+                { }
+                return ( _locale );
+            }
+            set {
+                _locale = value;
+                cbCharset.Text = CultureInfo.GetCultureInfo( _locale ).DisplayName;
+            }
+        }
+
         private Color _fontcolor = Color.Black;
         public Color FontColor
         {
@@ -196,6 +219,8 @@ namespace NetCharm.Common
         private string curFamilyName = SystemFonts.DefaultFont.FontFamily.Name;
         private string curFaceName = "";
 
+        private Dictionary<string, string> LocaleTextList = new Dictionary<string, string>();
+
         private void Preview()
         {
             if ( IsLoading ) return;
@@ -209,15 +234,19 @@ namespace NetCharm.Common
                 style.Add( "Strikeout" );
 
             string text = "AaBbYyZz";
-            string text_ui = this._("Culture Text");
-            if ( curFamily.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
-            {
-                picPreview.Image = text_ui.ToBitmap( curFamilyName, string.Join(" ", style), FontSize, FontColor, Color.Transparent );
-            }
-            else
-            {
-                picPreview.Image = text.ToBitmap( curFamilyName, string.Join( " ", style ), FontSize, FontColor, Color.Transparent );
-            }
+            if( LocaleTextList.ContainsKey(LocaleName) )
+                text = LocaleTextList[LocaleName];
+            picPreview.Image = text.ToBitmap( curFamilyName, string.Join( " ", style ), FontSize, LocaleName, FontColor, Color.Transparent );
+
+            //string text_ui = this._("Culture Text");
+            //if ( curFamily.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
+            //{
+            //    picPreview.Image = text_ui.ToBitmap( curFamilyName, string.Join(" ", style), FontSize, LocaleName, FontColor, Color.Transparent );
+            //}
+            //else
+            //{
+            //    picPreview.Image = text.ToBitmap( curFamilyName, string.Join( " ", style ), FontSize, LocaleName, FontColor, Color.Transparent );
+            //}
         }
 
         private FontStyle GetStyle(string facename, bool underline=false, bool strikeout=false)
@@ -345,7 +374,7 @@ namespace NetCharm.Common
             locale_enkey = XmlLanguage.GetLanguage( locale_en );
             locale_uikey = XmlLanguage.GetLanguage( locale_ui );
 
-            #region Add Face locale Dict
+            #region Init Face locale Dict
             FontStyleList.Clear();
             FontStyleList[this._( "Thin" )] = "Thin";
             FontStyleList[this._( "Light" )] = "Light";
@@ -379,7 +408,7 @@ namespace NetCharm.Common
             //FontStyleList["常规体"] = "Regular";
             #endregion
 
-            #region Add font sizes
+            #region Init font sizes
             if ( locale_uiinfo.TwoLetterISOLanguageName.ToLower().StartsWith( "zh" ) )
             {
                 FontSizeList["初号"] = 42f;
@@ -406,6 +435,28 @@ namespace NetCharm.Common
             lbSize.DataSource = FontSizeList.Keys.ToList();
             #endregion
 
+            #region Init Locale Text for sample
+            foreach(var locale in CultureInfo.CurrentUICulture.SystemLocales())
+            {
+                if ( string.IsNullOrEmpty( locale ) ) continue;
+                LocaleTextList[locale.ToLower()] = "AaBbYyZz";
+            }
+            LocaleTextList["zh"] = "简体中文 Text";
+            LocaleTextList["zh-cn"] = "简体中文 Text";
+            LocaleTextList["zh-chs"] = "简体中文 Text";
+            LocaleTextList["zh-hans"] = "简体中文 Text";
+            LocaleTextList["zh-sg"] = "简体中文 Text";
+            LocaleTextList["zh-mo"] = "简体中文 Text";
+
+            LocaleTextList["zh-hk"] = "繁體中文 Text";
+            LocaleTextList["zh-tw"] = "繁體中文 Text";
+            LocaleTextList["zh-cht"] = "繁體中文 Text";
+            LocaleTextList["zh-hant"] = "繁體中文 Text";
+
+            LocaleTextList["ja"] = "日本語 亜あぁアァ Text";
+            LocaleTextList["ja-jp"] = "日本語 亜あぁアァ Text";
+
+            #endregion
         }
 
         private void FontDialog_Load( object sender, EventArgs e )
@@ -692,7 +743,6 @@ namespace NetCharm.Common
 
                 lvStyle.BeginUpdate();
                 #region Add family supported styles
-
                 styleSamples.Clear();
                 lvStyle.Items.Clear();
                 //foreach ( var typeface in ff.FamilyTypefaces )
@@ -720,15 +770,21 @@ namespace NetCharm.Common
 
                 #region Add family charsets
                 List<string> charsets = new List<string>();
-                foreach(var kv in ff.Values.First().FontFamily.FamilyNames )
+                List<string> charsets_ui = new List<string>();
+                foreach (var kv in ff.Values.First().FontFamily.FamilyNames )
                 {
+                    //charsets.Add( kv.Key.IetfLanguageTag );
+                    //var charset = CultureInfo.GetCultureInfoByIetfLanguageTag( kv.Key.IetfLanguageTag ).DisplayName;
+                    var charset = CultureInfo.GetCultureInfo( kv.Key.IetfLanguageTag ).DisplayName;
+                    charsets_ui.Add( charset );
                     charsets.Add( kv.Key.IetfLanguageTag );
                 }
                 cbCharset.Items.Clear();
-                cbCharset.Items.AddRange( charsets.Distinct().ToArray() );
-                //cbCharset.SelectedIndex = 0;
-                cbCharset.Text = locale_ui;
+                cbCharset.Tag = charsets;
+                cbCharset.Items.AddRange( charsets_ui.Distinct().ToArray() );
+                cbCharset.Text = CultureInfo.CurrentUICulture.DisplayName;
                 cbCharset.SelectedIndex = cbCharset.SelectedIndex < 0 ? 0 : cbCharset.SelectedIndex;
+                _locale = charsets[cbCharset.SelectedIndex];
                 #endregion
 
                 if (!lvFamily.FocusedItem.Text.StartsWith(edFamily.Text, StringComparison.CurrentCultureIgnoreCase))
@@ -843,6 +899,11 @@ namespace NetCharm.Common
             {
                 FontSize = FontSizeList[edSize.Text.Trim()];
             }
+        }
+
+        private void cbCharset_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            Preview();
         }
     }
 

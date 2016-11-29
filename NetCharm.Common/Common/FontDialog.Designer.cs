@@ -184,6 +184,7 @@
             this.cbCharset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCharset.FormattingEnabled = true;
             this.cbCharset.Name = "cbCharset";
+            this.cbCharset.SelectedIndexChanged += new System.EventHandler(this.cbCharset_SelectedIndexChanged);
             // 
             // lblFamily
             // 

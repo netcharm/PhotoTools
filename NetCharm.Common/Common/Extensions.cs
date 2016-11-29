@@ -186,7 +186,7 @@ namespace ExtensionMethods
 
         #endregion
 
-        #region CultrueInfo Pre-Defined
+        #region CultrueInfo Routines & Pre-Defined
         private static string locale_en = "en-us";
         private static string locale_ui = CultureInfo.InstalledUICulture.Name.ToLower();
 
@@ -195,6 +195,24 @@ namespace ExtensionMethods
 
         private static XmlLanguage locale_enkey = XmlLanguage.GetLanguage( locale_en );
         private static XmlLanguage locale_uikey = XmlLanguage.GetLanguage( locale_ui );
+
+        public static string[] SystemLocales(this CultureInfo culture)
+        {
+            List<string> langs = new List<string>();
+            foreach ( CultureInfo ci in CultureInfo.GetCultures( CultureTypes.AllCultures ) )
+            {
+                string specName = "(none)";
+                try { specName = CultureInfo.CreateSpecificCulture( ci.Name ).Name; }
+                catch { }
+                //langs.Add( String.Format( "{0,-12}{1,-12}{2}", ci.Name, specName, ci.EnglishName ) );
+                langs.Add( string.Format( "{0}", ci.Name ) );
+            }
+
+            langs.Sort();  // sort by name
+
+            return langs.ToArray();
+        }
+
         #endregion
 
         #region Form I18N Extension
@@ -897,7 +915,8 @@ namespace ExtensionMethods
         /// <returns></returns>
         public static Bitmap ToBitmap( this string text, Media.Typeface fontface, float fontsize, Color fgColor )
         {
-            return ( ToBitmap( text, fontface, fontsize, fgColor, Color.Transparent ) );
+            var locale = CultureInfo.CurrentUICulture.IetfLanguageTag;
+            return ( ToBitmap( text, fontface, fontsize, locale, fgColor, Color.Transparent ) );
         }
 
         /// <summary>
@@ -909,7 +928,7 @@ namespace ExtensionMethods
         /// <param name="fgColor"></param>
         /// <param name="bgColor"></param>
         /// <returns></returns>
-        public static Bitmap ToBitmap( this string text, Media.Typeface fontface, float fontsize, Color fgColor, Color bgColor, bool underline = false, bool strikeout = false )
+        public static Bitmap ToBitmap( this string text, Media.Typeface fontface, float fontsize, string locale, Color fgColor, Color bgColor, bool underline = false, bool strikeout = false )
         {
             if ( !( fontface is Media.Typeface ) ) return ( null );
 
@@ -940,17 +959,34 @@ namespace ExtensionMethods
             #endregion
 
             #region Create FormattedText
-            var culture = CultureInfo.InstalledUICulture;
-            //if ( !fontface.FaceNames.ContainsKey( locale_uikey ) )
-            if ( !fontface.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
-                culture = new CultureInfo( "en-us" );
+            #region Get CultureInfo
+            //var culture = CultureInfo.InstalledUICulture;
+            var culture = CultureInfo.CurrentUICulture;
+            if ( string.IsNullOrEmpty( locale ) )
+            {
+                //if ( !fontface.FaceNames.ContainsKey( locale_uikey ) )
+                if ( !fontface.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
+                    culture = new CultureInfo( "en-us" );
+            }
+            else
+            {
+                try
+                {
+                    culture = new CultureInfo( locale );
+                }
+                catch ( CultureNotFoundException )
+                {
+                }
+            }
+            #endregion
             var flow = culture.TextInfo.IsRightToLeft ? System.Windows.FlowDirection.RightToLeft : System.Windows.FlowDirection.LeftToRight;
 
             Media.Brush foreground = new  Media.SolidColorBrush(fgColor.ToMediaColor());
 
             Media.FormattedText formattedText = new Media.FormattedText( text,
                 //CultureInfo.InvariantCulture,
-                CultureInfo.CurrentUICulture,
+                //CultureInfo.CurrentUICulture,
+                culture,
                 flow,
                 fontface, emSize, foreground);
             //new Media.NumberSubstitution(Media.NumberCultureSource.Text,
@@ -958,7 +994,6 @@ namespace ExtensionMethods
             //    Media.NumberSubstitutionMethod.AsCulture)
             //);
             formattedText.Trimming = System.Windows.TextTrimming.None;
-            //formattedText.TextAlignment = System.Windows.TextAlignment.Right;
             formattedText.TextAlignment = System.Windows.TextAlignment.Left;
             #endregion
 
@@ -1043,7 +1078,8 @@ namespace ExtensionMethods
         /// <returns></returns>
         public static Bitmap ToBitmap( this string text, string fontfamily, string fontstyle, float fontsize, Color fgColor )
         {
-            return ( ToBitmap( text, fontfamily, fontstyle, fontsize, fgColor, Color.Transparent ) );
+            var locale = CultureInfo.CurrentUICulture.IetfLanguageTag;
+            return ( ToBitmap( text, fontfamily, fontstyle, fontsize, locale, fgColor, Color.Transparent ) );
         }
 
         /// <summary>
@@ -1056,7 +1092,7 @@ namespace ExtensionMethods
         /// <param name="fgColor"></param>
         /// <param name="bgColor"></param>
         /// <returns></returns>
-        public static Bitmap ToBitmap( this string text, string fontfamily, string fontstyle, float fontsize, Color fgColor, Color bgColor )
+        public static Bitmap ToBitmap( this string text, string fontfamily, string fontstyle, float fontsize, string locale, Color fgColor, Color bgColor )
         {
             #region Set font style
             var styleFont = fontstyle.ToFontStyle();
@@ -1065,6 +1101,7 @@ namespace ExtensionMethods
             var emSize = fontsize * 96/72f;
 
             #region Draw Text to Bitmap
+            #region Detecting Is TTF Font of Not
             Font font = null; // new Font(fontfamily, emSize);
             try
             {
@@ -1074,6 +1111,7 @@ namespace ExtensionMethods
             {
 
             }
+            #endregion
             if ( font is Font && string.Equals( font.Name, fontfamily, StringComparison.CurrentCultureIgnoreCase ) )
             {
                 return ( ToBitmap( text, font, fgColor, bgColor ) );
@@ -1127,7 +1165,7 @@ namespace ExtensionMethods
                 }
                 #endregion
 
-                return ( text.ToBitmap( face, emSize, fgColor, bgColor ) );
+                return ( text.ToBitmap( face, emSize, locale, fgColor, bgColor ) );
             }
             #endregion
         }
