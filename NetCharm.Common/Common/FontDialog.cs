@@ -26,11 +26,26 @@ namespace NetCharm.Common
         }
 
         private Font _font = SystemFonts.DefaultFont;
-        public override Font Font
+        public Font SelectedFont
         {
             get
             {
-                var font = new Font(curFamilyName, FontSize, FontStyle);
+                try
+                {
+                    _font = new Font(curFamilyName, FontSize, FontStyle);
+                }
+                catch(Exception)
+                {
+                    //_font = SystemFonts.DefaultFont;
+                    try
+                    {
+                        _font = new Font( curFamilyName, FontSize, FontStyle.Italic );
+                    }
+                    catch ( Exception )
+                    {
+                        _font = new Font( curFamilyName, FontSize, FontStyle.Bold );
+                    }
+                }
                 return ( _font );
             }
             set
@@ -426,6 +441,9 @@ namespace NetCharm.Common
             LocaleTextList["ja"] = "日本語 亜あぁアァ Text";
             LocaleTextList["ja-jp"] = "日本語 亜あぁアァ Text";
 
+            LocaleTextList["ko"] = "한국어 한국어 ㅏㅓㅗㅜㅡ";
+            LocaleTextList["ko-kr"] = "한국어 한국어 ㅏㅓㅗㅜㅡ";
+
             #endregion
         }
 
@@ -559,8 +577,8 @@ namespace NetCharm.Common
 
             #region Selected default font 
             int idx = 0;
-            if ( string.IsNullOrEmpty( _familyName ) ) _familyName = Font.FontFamily.Name;
-            string ffn = UseFont ? Font.Name : _familyName;
+            if ( string.IsNullOrEmpty( _familyName ) ) _familyName = SelectedFont.FontFamily.Name;
+            string ffn = UseFont ? SelectedFont.Name : _familyName;
             var lvis = families.AsParallel().Where(o => { return ( string.Equals( o.Text, ffn, StringComparison.CurrentCultureIgnoreCase )); } );
             if ( lvis.Count() > 0 )
             {
@@ -721,6 +739,7 @@ namespace NetCharm.Common
                     var facename = f.Key.Replace( "250", "Thin" ).Replace( "350", "Regular" ).Replace("W3", "Light").Replace("W6","SemiBold");
                     var item = new ListViewItem(f.Key);
                     item.Text = string.Join( " ", facename.Split().Select( o => o._() ) );
+                    item.Text = string.IsNullOrEmpty( item.Text ) ? this._( "Regular" ) : item.Text;
                     item.Tag = facename;
                     lvStyle.Items.Add( item );
                 }

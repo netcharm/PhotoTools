@@ -18,6 +18,7 @@ namespace DialogTest
     public partial class MainForm : Form
     {
         private bool fontApplyTest;
+        private string SampleText = "简体中文\n繁體中文\n日本語のテキスト\n한국어 텍스트\nSample Text";
 
         public MainForm()
         {
@@ -88,7 +89,7 @@ namespace DialogTest
             fontApplyTest = true;
 
             var face = dlgFontEx.TypefaceName + (dlgFontEx.Underline? " Underline" : "") + (dlgFontEx.Strikeout? " Strikeout" : "");
-            var sample = "中文Text".ToBitmap( dlgFontEx.FamilyName, face, dlgFontEx.Size, dlgFontEx.Color);
+            var sample = SampleText.ToBitmap( dlgFontEx.FamilyName, face, dlgFontEx.Size, dlgFontEx.Color);
             //picBox.Image = Shadow( sample, Color.DarkGray, 5 );
             //picBox.Image = Blur( sample, 15 );
             picBox.Image = Outline( sample, Color.Black, 5, 1.5 );
@@ -101,7 +102,7 @@ namespace DialogTest
             NetCharm.Common.FontDialog dlgFont = new NetCharm.Common.FontDialog();
             dlgFont.Apply += new System.EventHandler( dlgFont_Apply );
             //dlgFont.Color = color;
-            dlgFont.Font = SystemFonts.DefaultFont;
+            dlgFont.SelectedFont = SystemFonts.DefaultFont;
             dlgFont.FontSize = 12;
             if ( dlgFont.ShowDialog() == DialogResult.OK )
             {
@@ -118,11 +119,11 @@ namespace DialogTest
         private void btnFontDialogEx_Click( object sender, EventArgs e )
         {
             dlgFontEx.Font = SystemFonts.DefaultFont;
-            dlgFontEx.Size = 24;
+            dlgFontEx.Size = 18;
             if ( dlgFontEx.ShowDialog() == DialogResult.OK )
             {
                 var face = dlgFontEx.TypefaceName + (dlgFontEx.Underline? " Underline" : "") + (dlgFontEx.Strikeout? " Strikeout" : "");
-                var sample = "中文Text".ToBitmap( dlgFontEx.FamilyName, face, dlgFontEx.Size, dlgFontEx.Color );
+                var sample = SampleText.ToBitmap( dlgFontEx.FamilyName, face, dlgFontEx.Size, dlgFontEx.Color );
                 //picBox.Image = Shadow( sample, Color.DarkGray, 5 );
                 picBox.Image = Outline( sample, Color.DarkGray, 5 );
             }

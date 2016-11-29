@@ -196,7 +196,7 @@ namespace NetCharm.Common.Controls
             }
             dialog.UseFont = UseFont;
             dialog.ShowApply = _apply;
-            dialog.Font = _font;
+            dialog.SelectedFont = _font;
             dialog.FontSize = (float)_size;
             return ( dialog.ShowDialog() );
         }

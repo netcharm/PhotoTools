@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Common.Controls\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-30 01:59+0800\n"
+"POT-Creation-Date: 2016-11-30 02:17+0800\n"
 "PO-Revision-Date: 2016-11-28 22:17+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -177,46 +177,58 @@ msgid "ExtraBlack"
 msgstr "超黑体"
 
 #: Common\Extensions.cs:553
+msgid "Extra Black"
+msgstr "超黑体"
+
+#: Common\Extensions.cs:554
+msgid "UltraLight"
+msgstr "特淡"
+
+#: Common\Extensions.cs:555
 msgid "Ultra Light"
 msgstr "特淡"
 
-#: Common\Extensions.cs:554
+#: Common\Extensions.cs:556
 msgid "Ultra"
 msgstr "特"
 
-#: Common\Extensions.cs:555
+#: Common\Extensions.cs:557
+msgid "Extra"
+msgstr "超"
+
+#: Common\Extensions.cs:558
 msgid "Roman"
 msgstr "罗马体"
 
-#: Common\Extensions.cs:556
+#: Common\Extensions.cs:559
 msgid "Normal"
 msgstr "常规"
 
-#: Common\Extensions.cs:557
+#: Common\Extensions.cs:560
 msgid "regular"
 msgstr "常规"
 
-#: Common\Extensions.cs:559
+#: Common\Extensions.cs:562
 msgid "250"
 msgstr "细体"
 
-#: Common\Extensions.cs:560
+#: Common\Extensions.cs:563
 msgid "350"
 msgstr "常规"
 
-#: Common\Extensions.cs:561
+#: Common\Extensions.cs:564
 msgid "275"
 msgstr "特淡"
 
-#: Common\Extensions.cs:562
+#: Common\Extensions.cs:565
 msgid "750"
 msgstr "黑体"
 
-#: Common\Extensions.cs:564
+#: Common\Extensions.cs:567
 msgid "W3"
 msgstr "淡"
 
-#: Common\Extensions.cs:565
+#: Common\Extensions.cs:568
 msgid "W6"
 msgstr "半粗体"
 

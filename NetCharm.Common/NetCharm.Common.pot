@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Common\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-30 01:59+0800\n"
-"PO-Revision-Date: 2016-11-30 01:59+0800\n"
+"POT-Creation-Date: 2016-11-30 02:17+0800\n"
+"PO-Revision-Date: 2016-11-30 02:17+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -177,45 +177,57 @@ msgid "ExtraBlack"
 msgstr ""
 
 #: Common\Extensions.cs:553
-msgid "Ultra Light"
+msgid "Extra Black"
 msgstr ""
 
 #: Common\Extensions.cs:554
-msgid "Ultra"
+msgid "UltraLight"
 msgstr ""
 
 #: Common\Extensions.cs:555
-msgid "Roman"
+msgid "Ultra Light"
 msgstr ""
 
 #: Common\Extensions.cs:556
-msgid "Normal"
+msgid "Ultra"
 msgstr ""
 
 #: Common\Extensions.cs:557
-msgid "regular"
+msgid "Extra"
+msgstr ""
+
+#: Common\Extensions.cs:558
+msgid "Roman"
 msgstr ""
 
 #: Common\Extensions.cs:559
-msgid "250"
+msgid "Normal"
 msgstr ""
 
 #: Common\Extensions.cs:560
-msgid "350"
-msgstr ""
-
-#: Common\Extensions.cs:561
-msgid "275"
+msgid "regular"
 msgstr ""
 
 #: Common\Extensions.cs:562
-msgid "750"
+msgid "250"
+msgstr ""
+
+#: Common\Extensions.cs:563
+msgid "350"
 msgstr ""
 
 #: Common\Extensions.cs:564
-msgid "W3"
+msgid "275"
 msgstr ""
 
 #: Common\Extensions.cs:565
+msgid "750"
+msgstr ""
+
+#: Common\Extensions.cs:567
+msgid "W3"
+msgstr ""
+
+#: Common\Extensions.cs:568
 msgid "W6"
 msgstr ""

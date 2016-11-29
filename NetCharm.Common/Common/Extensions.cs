@@ -550,8 +550,11 @@ namespace ExtensionMethods
             { T( "Extended" ), "Extended" },
             { T( "Heavy" ), "Heavy" },
             { T( "ExtraBlack" ), "Extra Black" },
+            { T( "Extra Black" ), "Extra Black" },
+            { T( "UltraLight" ), "Ultra Light" },
             { T( "Ultra Light" ), "Ultra Light" },
             { T( "Ultra" ), "Ultra" },
+            { T( "Extra" ), "Extra" },
             { T( "Roman" ), "Roman" },
             { T( "Normal" ), "Regular" },
             { T( "regular" ), "Regular" },
@@ -1154,7 +1157,14 @@ namespace ExtensionMethods
             }
             catch(Exception)
             {
-
+                //try
+                //{
+                //    font = new Font( fontfamily, emSize, FontStyle.Italic );
+                //}
+                //catch ( Exception )
+                //{
+                //    font = new Font( fontfamily, emSize, FontStyle.Bold );
+                //}
             }
             #endregion
             if ( font is Font && string.Equals( font.Name, fontfamily, StringComparison.CurrentCultureIgnoreCase ) )
