@@ -37,7 +37,14 @@
             this.picBox = new System.Windows.Forms.PictureBox();
             this.dlgColorEx = new NetCharm.Common.Controls.ColorDialogEx();
             this.dlgFontEx = new NetCharm.Common.Controls.FontDialogEx();
+            this.grpEffect = new System.Windows.Forms.GroupBox();
+            this.btnNone = new System.Windows.Forms.RadioButton();
+            this.btnGlow = new System.Windows.Forms.RadioButton();
+            this.btnOutline = new System.Windows.Forms.RadioButton();
+            this.btnShadow = new System.Windows.Forms.RadioButton();
+            this.btnBlur = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
+            this.grpEffect.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnFontDialog
@@ -133,11 +140,89 @@
             this.dlgFontEx.UseFont = true;
             this.dlgFontEx.Apply += new System.EventHandler(this.dlgFont_Apply);
             // 
+            // grpEffect
+            // 
+            this.grpEffect.Controls.Add(this.btnNone);
+            this.grpEffect.Controls.Add(this.btnGlow);
+            this.grpEffect.Controls.Add(this.btnOutline);
+            this.grpEffect.Controls.Add(this.btnShadow);
+            this.grpEffect.Controls.Add(this.btnBlur);
+            this.grpEffect.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.grpEffect.Location = new System.Drawing.Point(123, 12);
+            this.grpEffect.Name = "grpEffect";
+            this.grpEffect.Size = new System.Drawing.Size(138, 90);
+            this.grpEffect.TabIndex = 12;
+            this.grpEffect.TabStop = false;
+            this.grpEffect.Text = "Effect";
+            // 
+            // btnNone
+            // 
+            this.btnNone.AutoSize = true;
+            this.btnNone.Checked = true;
+            this.btnNone.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNone.Location = new System.Drawing.Point(12, 67);
+            this.btnNone.Name = "btnNone";
+            this.btnNone.Size = new System.Drawing.Size(46, 16);
+            this.btnNone.TabIndex = 4;
+            this.btnNone.TabStop = true;
+            this.btnNone.Text = "None";
+            this.btnNone.UseVisualStyleBackColor = true;
+            this.btnNone.Click += new System.EventHandler(this.btnEffect_Click);
+            // 
+            // btnGlow
+            // 
+            this.btnGlow.AutoSize = true;
+            this.btnGlow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGlow.Location = new System.Drawing.Point(12, 44);
+            this.btnGlow.Name = "btnGlow";
+            this.btnGlow.Size = new System.Drawing.Size(46, 16);
+            this.btnGlow.TabIndex = 3;
+            this.btnGlow.Text = "Glow";
+            this.btnGlow.UseVisualStyleBackColor = true;
+            this.btnGlow.Click += new System.EventHandler(this.btnEffect_Click);
+            // 
+            // btnOutline
+            // 
+            this.btnOutline.AutoSize = true;
+            this.btnOutline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOutline.Location = new System.Drawing.Point(67, 21);
+            this.btnOutline.Name = "btnOutline";
+            this.btnOutline.Size = new System.Drawing.Size(64, 16);
+            this.btnOutline.TabIndex = 2;
+            this.btnOutline.Text = "Outline";
+            this.btnOutline.UseVisualStyleBackColor = true;
+            this.btnOutline.Click += new System.EventHandler(this.btnEffect_Click);
+            // 
+            // btnShadow
+            // 
+            this.btnShadow.AutoSize = true;
+            this.btnShadow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnShadow.Location = new System.Drawing.Point(67, 44);
+            this.btnShadow.Name = "btnShadow";
+            this.btnShadow.Size = new System.Drawing.Size(58, 16);
+            this.btnShadow.TabIndex = 1;
+            this.btnShadow.Text = "Shadow";
+            this.btnShadow.UseVisualStyleBackColor = true;
+            this.btnShadow.Click += new System.EventHandler(this.btnEffect_Click);
+            // 
+            // btnBlur
+            // 
+            this.btnBlur.AutoSize = true;
+            this.btnBlur.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBlur.Location = new System.Drawing.Point(12, 21);
+            this.btnBlur.Name = "btnBlur";
+            this.btnBlur.Size = new System.Drawing.Size(46, 16);
+            this.btnBlur.TabIndex = 0;
+            this.btnBlur.Text = "Blur";
+            this.btnBlur.UseVisualStyleBackColor = true;
+            this.btnBlur.Click += new System.EventHandler(this.btnEffect_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(394, 375);
+            this.Controls.Add(this.grpEffect);
             this.Controls.Add(this.picBox);
             this.Controls.Add(this.btnColorDialogSystem);
             this.Controls.Add(this.btnFontDialogEx);
@@ -151,6 +236,8 @@
             this.Text = "Dialog Test";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
+            this.grpEffect.ResumeLayout(false);
+            this.grpEffect.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -166,6 +253,12 @@
         private System.Windows.Forms.Button btnColorDialogSystem;
         private NetCharm.Common.Controls.FontDialogEx dlgFontEx;
         private System.Windows.Forms.PictureBox picBox;
+        private System.Windows.Forms.GroupBox grpEffect;
+        private System.Windows.Forms.RadioButton btnGlow;
+        private System.Windows.Forms.RadioButton btnOutline;
+        private System.Windows.Forms.RadioButton btnShadow;
+        private System.Windows.Forms.RadioButton btnBlur;
+        private System.Windows.Forms.RadioButton btnNone;
     }
 }
 

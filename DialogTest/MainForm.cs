@@ -25,6 +25,13 @@ namespace DialogTest
             InitializeComponent();
         }
 
+        private void MainForm_Load( object sender, EventArgs e )
+        {
+            #region extracting icon from application to this form window
+            Icon = Icon.ExtractAssociatedIcon( Application.ExecutablePath );
+            #endregion
+        }
+
         private void btnColorDialogSystem_Click( object sender, EventArgs e )
         {
             ColorDialog dlgColor = new ColorDialog();
@@ -66,16 +73,20 @@ namespace DialogTest
 
         private void dlgColorEx_Apply( object sender, EventArgs e )
         {
-            MessageBox.Show( "Color Apply" );
+            picBox.BackColor = dlgColorEx.Color;
+            //dlgColorEx.
+            //MessageBox.Show( "Color Apply" );
         }
 
         private void btnColorDilogEx_Click( object sender, EventArgs e )
         {
-            //NetCharm.Common.Controls.ColorDialogEx dlgColorEx = new NetCharm.Common.Controls.ColorDialogEx();
-            if ( dlgColorEx.ShowDialog( Color.Blue ) == DialogResult.OK )
+            Color c = picBox.BackColor;
+            if ( dlgColorEx.ShowDialog( c ) == DialogResult.OK )
             {
                 var colors = dlgColorEx.CustomColors;
+                picBox.BackColor = dlgColorEx.Color;
             }
+            else picBox.BackColor = c;
         }
 
         private void btnFontDialogSystem_Click( object sender, EventArgs e )
@@ -90,9 +101,17 @@ namespace DialogTest
 
             var face = dlgFontEx.TypefaceName + (dlgFontEx.Underline? " Underline" : "") + (dlgFontEx.Strikeout? " Strikeout" : "");
             var sample = SampleText.ToBitmap( dlgFontEx.FamilyName, face, dlgFontEx.Size, dlgFontEx.Color);
-            //picBox.Image = Shadow( sample, Color.DarkGray, 5 );
-            //picBox.Image = Blur( sample, 15 );
-            picBox.Image = Outline( sample, Color.Black, 5, 1.5 );
+
+            if ( btnBlur.Checked )
+                picBox.Image = Blur( sample, 10 );
+            else if ( btnShadow.Checked )
+                picBox.Image = Shadow( sample, Color.DarkGray, 2 );
+            else if ( btnOutline.Checked )
+                picBox.Image = Outline( sample, Color.Black, 5, 1.5 );
+            //else if ( btnGlow.Checked ) 
+            //    picBox.Image = Glow( sample, Color.DarkGray, 5 );
+            else
+                picBox.Image = sample;
 
             fontApplyTest = false;
         }
@@ -124,13 +143,41 @@ namespace DialogTest
             {
                 var face = dlgFontEx.TypefaceName + (dlgFontEx.Underline? " Underline" : "") + (dlgFontEx.Strikeout? " Strikeout" : "");
                 var sample = SampleText.ToBitmap( dlgFontEx.FamilyName, face, dlgFontEx.Size, dlgFontEx.Color );
+
+                if ( btnBlur.Checked )
+                    picBox.Image = Blur( sample, 10 );
+                else if ( btnShadow.Checked )
+                    picBox.Image = Shadow( sample, Color.DarkGray, 2 );
+                else if ( btnOutline.Checked )
+                    picBox.Image = Outline( sample, Color.Black, 5, 1.5 );
+                //else if ( btnGlow.Checked ) 
+                //    picBox.Image = Glow( sample, Color.DarkGray, 5 );
+                else
+                    picBox.Image = sample;
                 //picBox.Image = Shadow( sample, Color.DarkGray, 5 );
-                picBox.Image = Outline( sample, Color.DarkGray, 5 );
+                //picBox.Image = Outline( sample, Color.DarkGray, 5 );
             }
             else
             {
                 //
             }
+        }
+
+        private void btnEffect_Click( object sender, EventArgs e )
+        {
+            var face = dlgFontEx.TypefaceName + (dlgFontEx.Underline? " Underline" : "") + (dlgFontEx.Strikeout? " Strikeout" : "");
+            var sample = SampleText.ToBitmap( dlgFontEx.FamilyName, face, dlgFontEx.Size, dlgFontEx.Color);
+
+            if ( btnBlur.Checked )
+                picBox.Image = Blur( sample, 10 );
+            else if ( btnShadow.Checked )
+                picBox.Image = Shadow( sample, Color.DarkGray, 2 );
+            else if ( btnOutline.Checked )
+                picBox.Image = Outline( sample, Color.Black, 5, 1.5 );
+            //else if ( btnGlow.Checked ) 
+            //    picBox.Image = Glow( sample, Color.DarkGray, 5 );
+            else
+                picBox.Image = sample;
         }
 
         public Bitmap Blur( Bitmap src, double radius = 10 )
@@ -557,12 +604,6 @@ namespace DialogTest
             return ( result );
         }
 
-        private void MainForm_Load( object sender, EventArgs e )
-        {
-            #region extracting icon from application to this form window
-            Icon = Icon.ExtractAssociatedIcon( Application.ExecutablePath );
-            #endregion
-        }
     }
 
     public class MyShaderEffect : Media.Effects.ShaderEffect

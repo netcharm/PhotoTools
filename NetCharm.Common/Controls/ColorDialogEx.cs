@@ -27,7 +27,11 @@ namespace NetCharm.Common.Controls
         private Color _color = default(Color);
         public Color Color
         {
-            get { return ( _color ); }
+            get
+            {
+                _color = dialog.Color;
+                return ( _color );
+            }
             set { _color = value; }
         }
 
