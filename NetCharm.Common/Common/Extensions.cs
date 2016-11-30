@@ -1219,13 +1219,30 @@ namespace ExtensionMethods
                 }
 
                 Media.FontFamily fallback = new Media.FontFamily(SystemFonts.DefaultFont.FontFamily.Name);
-                #endregion 
+                #endregion
+
+                #region Adjust fontstyle string
+                var fontstyles = new List<string>();
+                foreach (var s in fontstyle.Split())
+                {
+                    var st = s.Trim();
+                    if ( string.Equals( st, "Underline", StringComparison.CurrentCultureIgnoreCase ) ||
+                       string.Equals( st, "Strikeout", StringComparison.CurrentCultureIgnoreCase ) )
+                        continue;
+                    else if( string.Equals( st, "250", StringComparison.CurrentCultureIgnoreCase ) )
+                        fontstyles.Add( "Thin" );
+                    else if ( string.Equals( st, "350", StringComparison.CurrentCultureIgnoreCase ) )
+                        fontstyles.Add( "Regular" );
+                    else if ( string.Equals( st, "SemiBold", StringComparison.CurrentCultureIgnoreCase ) )
+                        fontstyles.Add( "W6" );
+                    else
+                        fontstyles.Add( st );
+                }
+                fontstyle = string.Join( " ", fontstyles );
+                #endregion
 
                 #region Get typeface from custom FamilyList or create default
                 Media.Typeface face = null;
-                fontstyle = fontstyle.Replace( "250", "Thin" ).Replace( "350", "Regular" );
-                fontstyle = fontstyle.Replace( "SemiBold", "W6" ).Trim();
-
                 if ( FamilyList.Count > 0 )
                 {
                     if ( FamilyList.ContainsKey( fontfamily ) )
