@@ -946,7 +946,8 @@ namespace ExtensionMethods
         static public Bitmap ToBitmap( this string text, Media.Typeface fontface, float fontsize, Color fgColor )
         {
             var locale = CultureInfo.CurrentUICulture.IetfLanguageTag;
-            return ( ToBitmap( text, fontface, fontsize, locale, TextAlignH.Left, fgColor, Color.Transparent ) );
+            var decoration = new System.Windows.TextDecorationCollection();
+            return ( ToBitmap( text, fontface, decoration, fontsize, locale, TextAlignH.Left, fgColor, Color.Transparent ) );
         }
 
         /// <summary>
@@ -958,7 +959,7 @@ namespace ExtensionMethods
         /// <param name="fgColor"></param>
         /// <param name="bgColor"></param>
         /// <returns></returns>
-        static public Bitmap ToBitmap( this string text, Media.Typeface fontface, float fontsize, string locale, TextAlignH align, Color fgColor, Color bgColor, bool underline = false, bool strikeout = false )
+        static public Bitmap ToBitmap( this string text, Media.Typeface fontface, System.Windows.TextDecorationCollection decoration, float fontsize, string locale, TextAlignH align, Color fgColor, Color bgColor )
         {
             if ( !( fontface is Media.Typeface ) ) return ( null );
 
@@ -979,10 +980,10 @@ namespace ExtensionMethods
             var fontStyle = System.Windows.FontStyles.Normal;
             var fontWeight = System.Windows.FontWeights.Normal;
             var textDecorations = new System.Windows.TextDecorationCollection();
-            if ( underline )
-                textDecorations.Add( System.Windows.TextDecorations.Underline );
-            if ( strikeout )
-                textDecorations.Add( System.Windows.TextDecorations.Strikethrough );
+            foreach (var d in decoration )
+            {
+                textDecorations.Add( d );
+            }
 
             fontStyle = fontface.Style;
             fontWeight = fontface.Weight;
@@ -1105,6 +1106,30 @@ namespace ExtensionMethods
         }
 
         /// <summary>
+        /// /
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="fontface"></param>
+        /// <param name="fontsize"></param>
+        /// <param name="locale"></param>
+        /// <param name="align"></param>
+        /// <param name="fgColor"></param>
+        /// <param name="bgColor"></param>
+        /// <param name="underline"></param>
+        /// <param name="strikeout"></param>
+        /// <returns></returns>
+        static public Bitmap ToBitmap( this string text, Media.Typeface fontface, float fontsize, string locale, TextAlignH align, Color fgColor, Color bgColor, bool underline = false, bool strikeout = false )
+        {
+            var decoration = new System.Windows.TextDecorationCollection();
+            if ( underline )
+                decoration.Add( System.Windows.TextDecorations.Underline );
+            if ( strikeout )
+                decoration.Add( System.Windows.TextDecorations.Strikethrough );
+            return ( ToBitmap( text, fontface, decoration, fontsize, locale, align, fgColor, bgColor ) );
+               
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="text"></param>
@@ -1179,11 +1204,19 @@ namespace ExtensionMethods
 
                 var style = styleFont.HasFlag( FontStyle.Italic ) ? System.Windows.FontStyles.Italic : System.Windows.FontStyles.Normal;
                 var weight = styleFont.HasFlag( FontStyle.Bold ) ? System.Windows.FontWeights.Bold : System.Windows.FontWeights.Normal;
+                var underline = false;
+                var strikeout = false;
                 var textDecorations = new System.Windows.TextDecorationCollection();
                 if ( styleFont.HasFlag( FontStyle.Strikeout ) )
+                {
                     textDecorations.Add( System.Windows.TextDecorations.Strikethrough );
+                    strikeout = true;
+                }
                 if ( styleFont.HasFlag( FontStyle.Underline ) )
+                {
                     textDecorations.Add( System.Windows.TextDecorations.Underline );
+                    underline = true;
+                }
 
                 Media.FontFamily fallback = new Media.FontFamily(SystemFonts.DefaultFont.FontFamily.Name);
                 #endregion 
@@ -1220,7 +1253,7 @@ namespace ExtensionMethods
                 }
                 #endregion
 
-                return ( text.ToBitmap( face, emSize, locale, align, fgColor, bgColor ) );
+                return ( text.ToBitmap( face, emSize, locale, align, fgColor, bgColor, underline, strikeout ) );
             }
             #endregion
         }
