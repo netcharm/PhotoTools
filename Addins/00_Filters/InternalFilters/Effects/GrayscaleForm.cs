@@ -35,7 +35,7 @@ namespace InternalFilters.Effects
                 pi.Value = grayscaleMode;
                 return ( pi );
             }
-            internal set { grayscaleMode = (GrayscaleMode) value.Value; }
+            internal set { grayscaleMode = (GrayscaleMode) Convert.ToInt32(value.Value); }
         }
         private ColorMatrix colorMatrix = null;
         public ParamItem ParamColorMatrix

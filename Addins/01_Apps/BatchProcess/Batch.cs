@@ -206,6 +206,7 @@ namespace BatchProcess
         public Dictionary<string, ParamItem> Params
         {
             get { return ( _params ); }
+            set { _params = value; }
         }
 
         /// <summary>

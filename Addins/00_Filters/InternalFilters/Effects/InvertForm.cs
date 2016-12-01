@@ -29,7 +29,7 @@ namespace InternalFilters.Effects
                 pi.Value = mode;
                 return ( pi );
             }
-            set { mode = (InvertMode) value.Value; }
+            set { mode = (InvertMode) Convert.ToInt32( value.Value ); }
         }
 
         public InvertForm()
@@ -52,19 +52,18 @@ namespace InternalFilters.Effects
             imgPreview.Image = addin.Apply( thumb );
         }
 
-        private void btnOriginal_Click( object sender, EventArgs e )
+        private void btnOriginal_MouseDown( object sender, MouseEventArgs e )
         {
-            if ( btnOriginal.Checked )
-            {
-                thumbBackup = imgPreview.Image;
-                imgPreview.Image = thumb;
-            }
-            else
-            {
-                if ( thumbBackup is Image )
-                    imgPreview.Image = thumbBackup;
-            }
+            thumbBackup = imgPreview.Image;
+            imgPreview.Image = thumb;
         }
+
+        private void btnOriginal_MouseUp( object sender, MouseEventArgs e )
+        {
+            if ( thumbBackup is Image )
+                imgPreview.Image = thumbBackup;
+        }
+
 
     }
 }

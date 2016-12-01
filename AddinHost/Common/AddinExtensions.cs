@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Web.Script.Serialization;
 using NetCharm.Image.Addins;
+using Newtonsoft.Json;
 
 namespace ExtensionMethods
 {
@@ -56,8 +57,9 @@ namespace ExtensionMethods
                 if ( File.Exists( configFile ) )
                 {
                     string json = File.ReadAllText( configFile );
-                    JavaScriptSerializer serializer  = new JavaScriptSerializer();
-                    config = (T) serializer.Deserialize( json, typeof( T ) );
+                    config = JsonConvert.DeserializeObject<T>( json );
+                    //JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                    //config = (T) serializer.Deserialize( json, typeof( T ) );
                 }
             }
             else
@@ -69,8 +71,9 @@ namespace ExtensionMethods
                 if ( File.Exists( configFile ) )
                 {
                     string json = File.ReadAllText( configFile );
-                    JavaScriptSerializer serializer  = new JavaScriptSerializer();
-                    config = (T) serializer.Deserialize( json, typeof( T ) );
+                    config = JsonConvert.DeserializeObject<T>( json );
+                    //JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                    //config = (T) serializer.Deserialize( json, typeof( T ) );
                 }
 
             }
@@ -93,8 +96,9 @@ namespace ExtensionMethods
                 string addinRoot = Path.GetDirectoryName( Path.GetFullPath( addin.Location ) );
                 string configFile = Path.Combine(addinRoot, jsonFile);
 
-                JavaScriptSerializer serializer  = new JavaScriptSerializer();
-                var json = serializer.Serialize(config);
+                //JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                //var json = serializer.Serialize(config);
+                var json = JsonConvert.SerializeObject( config, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore } );
                 File.WriteAllText( configFile, json );
             }
             else
@@ -104,8 +108,9 @@ namespace ExtensionMethods
                 string addinRoot = Path.GetDirectoryName( Path.GetFullPath( path ) );
                 string configFile = Path.Combine(addinRoot, jsonFile);
 
-                JavaScriptSerializer serializer  = new JavaScriptSerializer();
-                var json = serializer.Serialize(config);
+                //JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                //var json = serializer.Serialize(config);
+                var json = JsonConvert.SerializeObject( config, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore } );
                 File.WriteAllText( configFile, json );
             }
             return ( result );
@@ -123,8 +128,10 @@ namespace ExtensionMethods
             T config = default(T);
             if ( addin is IAddin )
             {
-                JavaScriptSerializer serializer  = new JavaScriptSerializer();
-                config = (T) serializer.Deserialize( jsonContent, typeof( T ) );
+                config = JsonConvert.DeserializeObject<T>( jsonContent );
+
+                //JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                //config = (T) serializer.Deserialize( jsonContent, typeof( T ) );
             }
             return ( config );
         }
@@ -141,10 +148,28 @@ namespace ExtensionMethods
             string result = string.Empty;
             if ( addin is IAddin )
             {
-                JavaScriptSerializer serializer  = new JavaScriptSerializer();
-                result = serializer.Serialize( config );
+                result = JsonConvert.SerializeObject( config, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore } );
+                //JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                //result = serializer.Serialize( config );
             }
             return ( result );
+        }
+
+        static public string ToJSON( this Dictionary<string, ParamItem> Params )
+        {
+            return ( JsonConvert.SerializeObject( Params, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore } ) );
+        }
+
+        static public string ToJSON( this ParamItem Param )
+        {
+            return ( JsonConvert.SerializeObject( Param, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore } ) );
+            //Dictionary<string, string> pi = new Dictionary<string, string>();
+            //JavaScriptSerializer serializer  = new JavaScriptSerializer();
+            //pi["Name"] = Param.Name;
+            //pi["DisplayName"] = Param.DisplayName;
+            //pi["Type"] = Param.Type.ToString();
+            //pi["Value"] = Param.Value.ToString();
+            //return ( serializer.Serialize( pi ) );
         }
 
         /// <summary>
@@ -154,17 +179,16 @@ namespace ExtensionMethods
         /// <param name="config"></param>
         /// <param name="jsonFile"></param>
         /// <returns></returns>
-        static public bool LoadJSON<T>( this T config, string jsonFile )
+        static public T LoadJSON<T>( this T config, string jsonFile )
         {
-            bool result = false;
+            T result = config;
             try
             {
                 if ( File.Exists( jsonFile ) )
                 {
                     string json = File.ReadAllText( jsonFile );
-                    JavaScriptSerializer serializer  = new JavaScriptSerializer();
-                    config = (T) serializer.Deserialize( json, typeof( T ) );
-                    result = true;
+                    config = JsonConvert.DeserializeObject<T>( json );
+                    result = config;
                 }
             }
             catch(Exception)
@@ -185,8 +209,9 @@ namespace ExtensionMethods
             bool result = false;
             try
             {
-                JavaScriptSerializer serializer  = new JavaScriptSerializer();
-                var json = serializer.Serialize(config);
+                //JavaScriptSerializer serializer  = new JavaScriptSerializer();
+                //var json = serializer.Serialize(config);
+                var json = JsonConvert.SerializeObject( config, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore } );
                 File.WriteAllText( jsonFile, json );
                 result = true;
             }

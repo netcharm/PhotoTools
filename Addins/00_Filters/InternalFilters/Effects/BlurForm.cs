@@ -29,7 +29,7 @@ namespace InternalFilters.Effects
                 pi.Value = blurMode;
                 return ( pi );
             }
-            set { blurMode = (BlurMode) value.Value; }
+            set { blurMode = (BlurMode) Convert.ToInt32(value.Value); }
         }
         private double gaussianSigma = 1.4;
         internal ParamItem ParamGaussianSigma
@@ -57,7 +57,7 @@ namespace InternalFilters.Effects
                 pi.Value = gaussianSize;
                 return ( pi );
             }
-            set { gaussianSize = (int) value.Value; }
+            set { gaussianSize = (int) Convert.ToInt32( value.Value ); }
         }
         private int gaussianThreshold = 0;
         internal ParamItem ParamGaussianThreshold
@@ -71,7 +71,7 @@ namespace InternalFilters.Effects
                 pi.Value = gaussianThreshold;
                 return ( pi );
             }
-            set { gaussianThreshold = (int) value.Value; }
+            set { gaussianThreshold = (int) Convert.ToInt32( value.Value ); }
         }
         private int boxSize = 3;
         internal ParamItem ParamBoxSize
@@ -85,7 +85,7 @@ namespace InternalFilters.Effects
                 pi.Value = boxSize;
                 return ( pi );
             }
-            set { boxSize = (int) value.Value; }
+            set { boxSize = (int) Convert.ToInt32( value.Value ); }
         }
         private float gdiRatio = 1.5f;
         internal ParamItem ParamGdiRatio
@@ -99,7 +99,7 @@ namespace InternalFilters.Effects
                 pi.Value = gdiRatio;
                 return ( pi );
             }
-            set { gdiRatio = (float) value.Value; }
+            set { gdiRatio = (float)(double) value.Value; }
         }
 
         public BlurForm()
@@ -145,18 +145,16 @@ namespace InternalFilters.Effects
             edGdiRatio.Value = Convert.ToDecimal( gdiRatio );
         }
 
-        private void btnOriginal_Click( object sender, EventArgs e )
+        private void btnOriginal_MouseDown( object sender, MouseEventArgs e )
         {
-            if(btnOriginal.Checked)
-            {
-                thumbBackup = imgPreview.Image;
-                imgPreview.Image = thumb;
-            }
-            else
-            {
-                if ( thumbBackup is Image )
-                    imgPreview.Image = thumbBackup;
-            }
+            thumbBackup = imgPreview.Image;
+            imgPreview.Image = thumb;
+        }
+
+        private void btnOriginal_MouseUp( object sender, MouseEventArgs e )
+        {
+            if ( thumbBackup is Image )
+                imgPreview.Image = thumbBackup;
         }
 
         private void btnMode_Click( object sender, EventArgs e )

@@ -120,14 +120,11 @@
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnOriginal.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnOriginal.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnOriginal.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
   </data>
@@ -167,7 +164,7 @@
     <value>btnOriginal</value>
   </data>
   <data name="&gt;&gt;btnOriginal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnOriginal.Parent" xml:space="preserve">
     <value>$this</value>
@@ -250,7 +247,7 @@
     <value>imgPreview</value>
   </data>
   <data name="&gt;&gt;imgPreview.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.8.29, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.ImageBox, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imgPreview.Parent" xml:space="preserve">
     <value>$this</value>
@@ -271,7 +268,7 @@
     <value>edHue</value>
   </data>
   <data name="&gt;&gt;edHue.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.Controls.SlideColorHue, NetCharm.Image.AddinHost, Version=1.0.8.29, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideColorHue, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;edHue.Parent" xml:space="preserve">
     <value>$this</value>

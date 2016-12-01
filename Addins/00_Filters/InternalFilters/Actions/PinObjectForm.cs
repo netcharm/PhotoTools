@@ -106,14 +106,22 @@ namespace InternalFilters.Actions
             option.Offset.X = (float) Convert.ToDouble( slideOffsetX.Value );
             option.Offset.Y = (float) Convert.ToDouble( slideOffsetY.Value );
 
-            foreach ( IAddin filter in addin.Filters )
+            option.Filters.Clear();
+            for ( var i = 0; i < lvFilters.Items.Count; i++ )
             {
-                int pIdx = effectParams.IndexOf( filter.Params );
-                if ( pIdx >= 0 && pIdx < effectParams.Count )
-                {
-                    option.FilterParams[filter] = effectParams[pIdx];
-                }
+                var filter = (IAddin)lvFilters.Items[i].Tag;
+                option.Filters[filter.Name] = filter.Params;
+                option.FilterParams[filter] = filter.Params;
             }
+
+            //foreach ( IAddin filter in addin.Filters )
+            //{
+            //    int pIdx = effectParams.IndexOf( filter.Params );
+            //    if ( pIdx >= 0 && pIdx < effectParams.Count )
+            //    {
+            //        option.FilterParams[filter] = effectParams[pIdx];
+            //    }
+            //}
 
             option.Text = edText.Text;
 
@@ -133,7 +141,7 @@ namespace InternalFilters.Actions
 
             if ( !fontApplyTest )
             {
-                addin.SaveJSON( $"latest_{addin.Name}.json", option );
+                //addin.SaveJSON( $"latest_{addin.Name}.json", option );
             }
         }
 
@@ -257,14 +265,44 @@ namespace InternalFilters.Actions
         {
             this.Tag = false;
 
-            PinOption kv = addin.LoadJSON<PinOption>($"latest_{addin.Name}.json");
+            //PinOption kv = addin.LoadJSON<PinOption>($"latest_{addin.Name}.json");
+            addin.LoadJSON<PinOption>( $"latest_{addin.Name}.json" );
+            PinOption kv = (PinOption)addin.Params["PinOption"].Value;
             LoadPicture( kv.PictureFile );
 
-            option.TextFont = kv.TextFont;
-            option.TextFace = kv.TextFace;
-            option.TextSize = kv.TextSize;
-            option.TextColor = kv.TextColor;
-            option.TextFontStyle = kv.TextFontStyle;
+            addin.Filters.Clear();
+            effectParams.Clear();
+            effects.Clear();
+            ilLarge.Images.Clear();
+            ilSmall.Images.Clear();
+            lvFilters.BeginUpdate();
+            foreach ( var ap in kv.Filters)
+            {
+                var an = ap.Key;
+                if( addin.Host.Addins.ContainsKey(an) )
+                {
+                    var filter = addin.Host.Addins[an];
+                    addin.Filters.Add( filter );
+
+                    ilLarge.Images.Add( filter.LargeIcon );
+                    ilSmall.Images.Add( filter.SmallIcon );
+                    effects.Add( new ListViewItem( filter.DisplayName ) );
+                    effects.Last().Selected = false;
+                    effects.Last().Tag = filter;
+                    effects.Last().ImageIndex = ilLarge.Images.Count;
+                    effects.Last().Checked = true;
+
+                    effectParams.Add( filter.Params as ParamList );
+                }
+            }
+            lvFilters.VirtualListSize = effects.Count;
+            lvFilters.EndUpdate();
+
+            //option.TextFont = kv.TextFont;
+            //option.TextFace = kv.TextFace;
+            //option.TextSize = kv.TextSize;
+            //option.TextColor = kv.TextColor;
+            //option.TextFontStyle = kv.TextFontStyle;
 
             edText.Text = kv.Text;
 

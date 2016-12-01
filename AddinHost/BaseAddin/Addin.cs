@@ -19,6 +19,7 @@ using NGettext.WinForm;
 
 namespace NetCharm.Image.Addins
 {
+    using Newtonsoft.Json;
     using ParamList = Dictionary<string, ParamItem>;
 
     /// <summary>
@@ -49,6 +50,7 @@ namespace NetCharm.Image.Addins
         /// 
         /// </summary>
         private Type _type = null;
+        [JsonIgnore]
         public Type Type
         {
             get { return _type; }
@@ -140,7 +142,7 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        Dictionary<string, ParamItem> Params { get; }
+        Dictionary<string, ParamItem> Params { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -409,7 +411,7 @@ namespace NetCharm.Image.Addins
         public Dictionary<string, ParamItem> Params
         {
             get { return ( _params ); }
-            protected internal set { _params = value; }
+            set { _params = value; }
         }
 
         /// <summary>

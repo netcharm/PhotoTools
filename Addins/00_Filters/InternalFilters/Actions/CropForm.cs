@@ -53,7 +53,7 @@ namespace InternalFilters
                 pi.Value = cropMode;
                 return ( pi );
             }
-            internal set { cropMode = (CropMode) value.Value; }
+            internal set { cropMode = (CropMode) Convert.ToInt32( value.Value ); }
         }
         public ParamItem ParamCropSide
         {

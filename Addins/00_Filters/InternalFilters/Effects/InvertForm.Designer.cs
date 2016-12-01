@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvertForm));
+            Cyotek.Windows.Forms.ZoomLevelCollection zoomLevelCollection1 = new Cyotek.Windows.Forms.ZoomLevelCollection();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnOriginal = new System.Windows.Forms.CheckBox();
+            this.btnOriginal = new System.Windows.Forms.Button();
             this.imgPreview = new NetCharm.Common.Controls.ImageBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -43,7 +44,8 @@
             this.btnOriginal.Name = "btnOriginal";
             this.toolTip.SetToolTip(this.btnOriginal, resources.GetString("btnOriginal.ToolTip"));
             this.btnOriginal.UseVisualStyleBackColor = true;
-            this.btnOriginal.Click += new System.EventHandler(this.btnOriginal_Click);
+            this.btnOriginal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnOriginal_MouseDown);
+            this.btnOriginal.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnOriginal_MouseUp);
             // 
             // imgPreview
             // 
@@ -55,6 +57,7 @@
             this.imgPreview.SelectionRegion = ((System.Drawing.RectangleF)(resources.GetObject("imgPreview.SelectionRegion")));
             this.imgPreview.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.imgPreview.Zoom = 100;
+            this.imgPreview.ZoomLevels = zoomLevelCollection1;
             // 
             // btnOk
             // 
@@ -97,6 +100,6 @@
         private NetCharm.Common.Controls.ImageBox imgPreview;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.CheckBox btnOriginal;
+        private System.Windows.Forms.Button btnOriginal;
     }
 }

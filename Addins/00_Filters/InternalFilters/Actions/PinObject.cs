@@ -76,6 +76,7 @@ namespace InternalFilters.Actions
         [NonSerialized]
         [ScriptIgnore]
         public Dictionary<IAddin, ParamList> FilterParams = new Dictionary<IAddin, ParamList>();
+        public Dictionary<string, ParamList> Filters = new Dictionary<string, ParamList>();
         public float Opacity = 100f;
         //public float GradientWidth = 0f;
         //public Color GradientColor1 = Color.DarkGray;
@@ -508,7 +509,10 @@ namespace InternalFilters.Actions
                 {
                     if(filter.Enabled)
                     {
-                        AddinUtils.SetParams( filter, option.FilterParams[filter] );
+                        if( option.FilterParams.ContainsKey(filter) )
+                        {
+                            AddinUtils.SetParams( filter, option.FilterParams[filter] );
+                        }
                         src = filter.Apply( src as Image ) as Bitmap;
                     }
                 }

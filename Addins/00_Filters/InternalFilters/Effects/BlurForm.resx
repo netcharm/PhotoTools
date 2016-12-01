@@ -124,9 +124,6 @@
   <data name="btnOriginal.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="btnOriginal.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnOriginal.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -167,7 +164,7 @@
     <value>btnOriginal</value>
   </data>
   <data name="&gt;&gt;btnOriginal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnOriginal.Parent" xml:space="preserve">
     <value>$this</value>
@@ -457,7 +454,7 @@
     <value>imgPreview</value>
   </data>
   <data name="&gt;&gt;imgPreview.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.ImageBox, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imgPreview.Parent" xml:space="preserve">
     <value>$this</value>
@@ -543,6 +540,24 @@
   <data name="&gt;&gt;grpMode.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="lblGaussianThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblGaussianThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 109</value>
+  </data>
+  <data name="lblGaussianThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="lblGaussianThreshold.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="lblGaussianThreshold.Text" xml:space="preserve">
+    <value>Threshold:</value>
+  </data>
+  <data name="lblGaussianThreshold.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="&gt;&gt;lblGaussianThreshold.Name" xml:space="preserve">
     <value>lblGaussianThreshold</value>
   </data>
@@ -555,6 +570,24 @@
   <data name="&gt;&gt;lblGaussianThreshold.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="lblGaussianSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblGaussianSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 62</value>
+  </data>
+  <data name="lblGaussianSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="lblGaussianSize.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lblGaussianSize.Text" xml:space="preserve">
+    <value>Size:</value>
+  </data>
+  <data name="lblGaussianSize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="&gt;&gt;lblGaussianSize.Name" xml:space="preserve">
     <value>lblGaussianSize</value>
   </data>
@@ -566,6 +599,24 @@
   </data>
   <data name="&gt;&gt;lblGaussianSize.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="lblGaussianSigma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblGaussianSigma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 15</value>
+  </data>
+  <data name="lblGaussianSigma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="lblGaussianSigma.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lblGaussianSigma.Text" xml:space="preserve">
+    <value>Sigma:</value>
+  </data>
+  <data name="lblGaussianSigma.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;lblGaussianSigma.Name" xml:space="preserve">
     <value>lblGaussianSigma</value>
@@ -671,96 +722,6 @@
   </data>
   <data name="&gt;&gt;layoutParams.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="lblGaussianThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblGaussianThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 109</value>
-  </data>
-  <data name="lblGaussianThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 20</value>
-  </data>
-  <data name="lblGaussianThreshold.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="lblGaussianThreshold.Text" xml:space="preserve">
-    <value>Threshold:</value>
-  </data>
-  <data name="lblGaussianThreshold.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianThreshold.Name" xml:space="preserve">
-    <value>lblGaussianThreshold</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianThreshold.Parent" xml:space="preserve">
-    <value>grpGaussianParams</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianThreshold.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblGaussianSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblGaussianSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 62</value>
-  </data>
-  <data name="lblGaussianSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 20</value>
-  </data>
-  <data name="lblGaussianSize.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="lblGaussianSize.Text" xml:space="preserve">
-    <value>Size:</value>
-  </data>
-  <data name="lblGaussianSize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSize.Name" xml:space="preserve">
-    <value>lblGaussianSize</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSize.Parent" xml:space="preserve">
-    <value>grpGaussianParams</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSize.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblGaussianSigma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblGaussianSigma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 15</value>
-  </data>
-  <data name="lblGaussianSigma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 20</value>
-  </data>
-  <data name="lblGaussianSigma.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="lblGaussianSigma.Text" xml:space="preserve">
-    <value>Sigma:</value>
-  </data>
-  <data name="lblGaussianSigma.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSigma.Name" xml:space="preserve">
-    <value>lblGaussianSigma</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSigma.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSigma.Parent" xml:space="preserve">
-    <value>grpGaussianParams</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSigma.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

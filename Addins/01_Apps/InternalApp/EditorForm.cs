@@ -25,13 +25,18 @@ namespace InternalFilters
         {
             get
             {
-                ImgDst = imgEditor.Image;
-                if ( propertyItems is PropertyItem[] )
+                if ( imgEditor.Image is Image )
                 {
-                    foreach ( var pi in propertyItems )
+                    if ( propertyItems is PropertyItem[] )
                     {
-                        ImgDst.SetPropertyItem( pi );
+                        ImgDst = new Bitmap( imgEditor.Image );
+                        foreach ( var pi in propertyItems )
+                        {
+                            ImgDst.SetPropertyItem( pi );
+                        }
                     }
+                    else
+                        ImgDst = imgEditor.Image;
                 }
                 return ( ImgDst );
             }

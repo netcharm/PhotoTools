@@ -38,7 +38,7 @@ namespace InternalFilters.Effects
                 pi.Value = mode;
                 return ( pi );
             }
-            set { mode = (HslFilterMode) value.Value; }
+            set { mode = (HslFilterMode) Convert.ToInt32( value.Value ); }
         }
         internal ParamItem ParamHue
         {
@@ -51,7 +51,7 @@ namespace InternalFilters.Effects
                 pi.Value = hslHue;
                 return ( pi );
             }
-            set { hslHue = (int) value.Value; }
+            set { hslHue = Convert.ToInt32( value.Value ); }
         }
         internal ParamItem ParamSaturation
         {
@@ -138,18 +138,16 @@ namespace InternalFilters.Effects
             //edLum.Color = edHue.ToRgb( hslSat, hslLum );
         }
 
-        private void btnOriginal_Click( object sender, EventArgs e )
+        private void btnOriginal_MouseDown( object sender, MouseEventArgs e )
         {
-            if ( btnOriginal.Checked )
-            {
-                thumbBackup = imgPreview.Image;
-                imgPreview.Image = thumb;
-            }
-            else
-            {
-                if ( thumbBackup is Image )
-                    imgPreview.Image = thumbBackup;
-            }
+            thumbBackup = imgPreview.Image;
+            imgPreview.Image = thumb;
+        }
+
+        private void btnOriginal_MouseUp( object sender, MouseEventArgs e )
+        {
+            if ( thumbBackup is Image )
+                imgPreview.Image = thumbBackup;
         }
 
         private void cbGrayMode_SelectedIndexChanged( object sender, EventArgs e )

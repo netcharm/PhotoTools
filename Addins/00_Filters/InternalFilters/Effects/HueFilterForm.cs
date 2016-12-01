@@ -29,7 +29,7 @@ namespace InternalFilters.Effects
                 pi.Value = mode;
                 return ( pi );
             }
-            set { mode = (HueFilterMode) value.Value; }
+            set { mode = (HueFilterMode) Convert.ToInt32( value.Value ); }
         }
         private int hueValue = 180;
         internal ParamItem ParamValue
@@ -43,7 +43,7 @@ namespace InternalFilters.Effects
                 pi.Value = hueValue;
                 return ( pi );
             }
-            set { hueValue = (int) value.Value; }
+            set { hueValue = Convert.ToInt32( value.Value ); }
         }
 
         public HueFilterForm()
@@ -76,18 +76,16 @@ namespace InternalFilters.Effects
             imgPreview.Image = addin.Apply( thumb );
         }
 
-        private void btnOriginal_Click( object sender, EventArgs e )
+        private void btnOriginal_MouseDown( object sender, MouseEventArgs e )
         {
-            if ( btnOriginal.Checked )
-            {
-                thumbBackup = imgPreview.Image;
-                imgPreview.Image = thumb;
-            }
-            else
-            {
-                if ( thumbBackup is Image )
-                    imgPreview.Image = thumbBackup;
-            }
+            thumbBackup = imgPreview.Image;
+            imgPreview.Image = thumb;
+        }
+
+        private void btnOriginal_MouseUp( object sender, MouseEventArgs e )
+        {
+            if ( thumbBackup is Image )
+                imgPreview.Image = thumbBackup;
         }
 
         private void edHue_ValueChanged( object sender, EventArgs e )

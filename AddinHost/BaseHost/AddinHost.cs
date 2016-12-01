@@ -117,6 +117,16 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
+        private Dictionary<string, IAddin> _loadedaddin = new Dictionary<string, IAddin>();
+        [Browsable( false )]
+        public Dictionary<string, IAddin> Addins
+        {
+            get { return _loadedaddin; }
+            set { _loadedaddin = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         private Dictionary<string, string> _notloadedaddin = new Dictionary<string, string>();
         [Browsable( false )]
         public Dictionary<string, string> NotLoadedAddin
@@ -362,6 +372,8 @@ namespace NetCharm.Image.Addins
 
             foreach ( IAddin addin in AddinManager.GetExtensionObjects<IAddin>( true ) )
             {
+                if ( !_loadedaddin.ContainsKey( addin.Name ) )
+                    _loadedaddin.Add( addin.Name, addin );
                 addin.Host = this;
                 switch ( addin.Type )
                 {

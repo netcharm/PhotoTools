@@ -124,9 +124,6 @@
   <data name="btnOriginal.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="btnOriginal.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnOriginal.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -170,7 +167,7 @@
     <value>btnOriginal</value>
   </data>
   <data name="&gt;&gt;btnOriginal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnOriginal.Parent" xml:space="preserve">
     <value>$this</value>
@@ -289,6 +286,33 @@
   <data name="&gt;&gt;edGdiRatio.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="edGdiAmount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 96</value>
+  </data>
+  <data name="edGdiAmount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 21</value>
+  </data>
+  <data name="edGdiAmount.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="edGdiAmount.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="edGdiAmount.ToolTip" xml:space="preserve">
+    <value>GdiPlus Sharpen Ratio</value>
+  </data>
+  <data name="&gt;&gt;edGdiAmount.Name" xml:space="preserve">
+    <value>edGdiAmount</value>
+  </data>
+  <data name="&gt;&gt;edGdiAmount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;edGdiAmount.Parent" xml:space="preserve">
+    <value>grpGdiParams</value>
+  </data>
+  <data name="&gt;&gt;edGdiAmount.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="imgPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -313,7 +337,7 @@
     <value>imgPreview</value>
   </data>
   <data name="&gt;&gt;imgPreview.Type" xml:space="preserve">
-    <value>NetCharm.Image.Addins.ImageBox, NetCharm.Image.AddinHost, Version=1.0.13.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.ImageBox, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imgPreview.Parent" xml:space="preserve">
     <value>$this</value>
@@ -374,66 +398,6 @@
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="&gt;&gt;btnModeGdi.Name" xml:space="preserve">
-    <value>btnModeGdi</value>
-  </data>
-  <data name="&gt;&gt;btnModeGdi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnModeGdi.Parent" xml:space="preserve">
-    <value>grpMode</value>
-  </data>
-  <data name="&gt;&gt;btnModeGdi.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnModeGaussian.Name" xml:space="preserve">
-    <value>btnModeGaussian</value>
-  </data>
-  <data name="&gt;&gt;btnModeGaussian.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnModeGaussian.Parent" xml:space="preserve">
-    <value>grpMode</value>
-  </data>
-  <data name="&gt;&gt;btnModeGaussian.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnModeNormal.Name" xml:space="preserve">
-    <value>btnModeNormal</value>
-  </data>
-  <data name="&gt;&gt;btnModeNormal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnModeNormal.Parent" xml:space="preserve">
-    <value>grpMode</value>
-  </data>
-  <data name="&gt;&gt;btnModeNormal.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="grpMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 13</value>
-  </data>
-  <data name="grpMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 107</value>
-  </data>
-  <data name="grpMode.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="grpMode.Text" xml:space="preserve">
-    <value>Sharpen Mode</value>
-  </data>
-  <data name="&gt;&gt;grpMode.Name" xml:space="preserve">
-    <value>grpMode</value>
-  </data>
-  <data name="&gt;&gt;grpMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpMode.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;grpMode.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="btnModeGdi.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -513,197 +477,29 @@
   <data name="&gt;&gt;btnModeNormal.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;lblGaussianThreshold.Name" xml:space="preserve">
-    <value>lblGaussianThreshold</value>
+  <data name="grpMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 13</value>
   </data>
-  <data name="&gt;&gt;lblGaussianThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="grpMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 107</value>
   </data>
-  <data name="&gt;&gt;lblGaussianThreshold.Parent" xml:space="preserve">
-    <value>grpGaussianParams</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianThreshold.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSize.Name" xml:space="preserve">
-    <value>lblGaussianSize</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSize.Parent" xml:space="preserve">
-    <value>grpGaussianParams</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSize.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSigma.Name" xml:space="preserve">
-    <value>lblGaussianSigma</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSigma.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSigma.Parent" xml:space="preserve">
-    <value>grpGaussianParams</value>
-  </data>
-  <data name="&gt;&gt;lblGaussianSigma.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="grpGaussianParams.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="grpGaussianParams.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 162</value>
-  </data>
-  <data name="grpGaussianParams.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="grpGaussianParams.Text" xml:space="preserve">
-    <value>Gaussian Params</value>
-  </data>
-  <data name="&gt;&gt;grpGaussianParams.Name" xml:space="preserve">
-    <value>grpGaussianParams</value>
-  </data>
-  <data name="&gt;&gt;grpGaussianParams.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpGaussianParams.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;grpGaussianParams.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 70</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 20</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Amount:</value>
-  </data>
-  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>grpGdiParams</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="edGdiAmount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 96</value>
-  </data>
-  <data name="edGdiAmount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 21</value>
-  </data>
-  <data name="edGdiAmount.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="edGdiAmount.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="edGdiAmount.ToolTip" xml:space="preserve">
-    <value>GdiPlus Sharpen Ratio</value>
-  </data>
-  <data name="&gt;&gt;edGdiAmount.Name" xml:space="preserve">
-    <value>edGdiAmount</value>
-  </data>
-  <data name="&gt;&gt;edGdiAmount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;edGdiAmount.Parent" xml:space="preserve">
-    <value>grpGdiParams</value>
-  </data>
-  <data name="&gt;&gt;edGdiAmount.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 17</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 20</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+  <data name="grpMode.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Ratio:</value>
+  <data name="grpMode.Text" xml:space="preserve">
+    <value>Sharpen Mode</value>
   </data>
-  <data name="label2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="&gt;&gt;grpMode.Name" xml:space="preserve">
+    <value>grpMode</value>
   </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>grpGdiParams</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="grpGdiParams.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 171</value>
-  </data>
-  <data name="grpGdiParams.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 130</value>
-  </data>
-  <data name="grpGdiParams.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="grpGdiParams.Text" xml:space="preserve">
-    <value>GDI Params</value>
-  </data>
-  <data name="&gt;&gt;grpGdiParams.Name" xml:space="preserve">
-    <value>grpGdiParams</value>
-  </data>
-  <data name="&gt;&gt;grpGdiParams.Type" xml:space="preserve">
+  <data name="&gt;&gt;grpMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;grpGdiParams.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;grpGdiParams.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 126</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 338</value>
-  </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;grpMode.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;grpMode.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="lblGaussianThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -794,6 +590,135 @@
   </data>
   <data name="&gt;&gt;lblGaussianSigma.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="grpGaussianParams.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="grpGaussianParams.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 162</value>
+  </data>
+  <data name="grpGaussianParams.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="grpGaussianParams.Text" xml:space="preserve">
+    <value>Gaussian Params</value>
+  </data>
+  <data name="&gt;&gt;grpGaussianParams.Name" xml:space="preserve">
+    <value>grpGaussianParams</value>
+  </data>
+  <data name="&gt;&gt;grpGaussianParams.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpGaussianParams.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;grpGaussianParams.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 70</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Amount:</value>
+  </data>
+  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>grpGdiParams</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 17</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Ratio:</value>
+  </data>
+  <data name="label2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>grpGdiParams</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grpGdiParams.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 171</value>
+  </data>
+  <data name="grpGdiParams.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 130</value>
+  </data>
+  <data name="grpGdiParams.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="grpGdiParams.Text" xml:space="preserve">
+    <value>GDI Params</value>
+  </data>
+  <data name="&gt;&gt;grpGdiParams.Name" xml:space="preserve">
+    <value>grpGdiParams</value>
+  </data>
+  <data name="&gt;&gt;grpGdiParams.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpGdiParams.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;grpGdiParams.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 126</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 338</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
