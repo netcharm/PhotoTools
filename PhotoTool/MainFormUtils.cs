@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ExtensionMethods;
 using NetCharm.Image.Addins;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -386,6 +387,8 @@ namespace PhotoTool
                 addins.CurrentApp = addins.Apps[an];
                 if ( addins.CurrentApp != null )
                 {
+                    var jsonFile = Path.Combine(Path.GetDirectoryName(addins.CurrentApp.Location), $"latest_{addins.CurrentApp.Name}.json");
+                    addins.CurrentApp.Params = addins.CurrentApp.Params.LoadJSON( jsonFile );
                     addins.CurrentApp.Show( this, false );
                     FixedMdiSize();
                 }
@@ -406,15 +409,18 @@ namespace PhotoTool
             string ans = ( sender as RibbonButton ).SelectedValue;
             if ( addins.CurrentApp != null && addins.Apps.ContainsKey( an ) )
             {
-                addins.CurrentFilter = addins.Apps[an];
-                if ( addins.CurrentFilter != null )
+                addins.CurrentApp = addins.Apps[an];
+                if ( addins.CurrentApp != null )
                 {
-                    addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
+                    var jsonFile = Path.Combine(Path.GetDirectoryName(addins.CurrentApp.Location), $"latest_{addins.CurrentApp.Name}.json");
+                    addins.CurrentApp.Params = addins.CurrentApp.Params.LoadJSON( jsonFile );
+                    addins.CurrentApp.ImageData = addins.CurrentApp.ImageData;
                     object data = null;
-                    addins.CurrentFilter.Command( AddinCommand.SubItems, out data, ans );
-                    if ( addins.CurrentFilter.Success )
+                    addins.CurrentApp.Command( AddinCommand.SubItems, out data, ans );
+                    if ( addins.CurrentApp.Success )
                     {
-                        addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                        addins.CurrentApp.ImageData = addins.CurrentApp.ImageData;
+                        addins.CurrentApp.SaveJSON( jsonFile, addins.CurrentApp.Params );
                     }
 
                     int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
@@ -436,11 +442,14 @@ namespace PhotoTool
                 addins.CurrentFilter = addins.Actions[an];
                 if ( addins.CurrentFilter != null )
                 {
+                    var jsonFile = Path.Combine(Path.GetDirectoryName(addins.CurrentFilter.Location), $"latest_{addins.CurrentFilter.Name}.json");
+                    addins.CurrentFilter.Params = addins.CurrentFilter.Params.LoadJSON( jsonFile );
                     addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
                     addins.CurrentFilter.Show( this, false );
                     if ( addins.CurrentFilter.Success )
                     {
                         addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                        addins.CurrentFilter.SaveJSON( jsonFile, addins.CurrentFilter.Params );
                     }
 
                     int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
@@ -463,12 +472,15 @@ namespace PhotoTool
                 addins.CurrentFilter = addins.Actions[an];
                 if ( addins.CurrentFilter != null )
                 {
+                    var jsonFile = Path.Combine(Path.GetDirectoryName(addins.CurrentFilter.Location), $"latest_{addins.CurrentFilter.Name}.json");
+                    addins.CurrentFilter.Params = addins.CurrentFilter.Params.LoadJSON( jsonFile );
                     addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
                     object data = null;
                     addins.CurrentFilter.Command( AddinCommand.SubItems, out data, ans );
                     if ( addins.CurrentFilter.Success )
                     {
                         addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                        addins.CurrentFilter.SaveJSON( jsonFile, addins.CurrentFilter.Params );
                     }
 
                     int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
@@ -490,11 +502,14 @@ namespace PhotoTool
                 addins.CurrentFilter = addins.Effects[an];
                 if ( addins.CurrentFilter != null )
                 {
+                    var jsonFile = Path.Combine(Path.GetDirectoryName(addins.CurrentFilter.Location), $"latest_{addins.CurrentFilter.Name}.json");
+                    addins.CurrentFilter.Params = addins.CurrentFilter.Params.LoadJSON( jsonFile );
                     addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
                     addins.CurrentFilter.Show( this, false );
                     if ( addins.CurrentFilter.Success )
                     {
                         addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                        addins.CurrentFilter.SaveJSON( jsonFile, addins.CurrentFilter.Params );
                     }
 
                     int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
@@ -517,12 +532,15 @@ namespace PhotoTool
                 addins.CurrentFilter = addins.Effects[an];
                 if ( addins.CurrentFilter != null )
                 {
+                    var jsonFile = Path.Combine(Path.GetDirectoryName(addins.CurrentFilter.Location), $"latest_{addins.CurrentFilter.Name}.json");
+                    addins.CurrentFilter.Params = addins.CurrentFilter.Params.LoadJSON( jsonFile );
                     addins.CurrentFilter.ImageData = addins.CurrentApp.ImageData;
                     object data = null;
                     addins.CurrentFilter.Command( AddinCommand.SubItems, out data, ans );
                     if ( addins.CurrentFilter.Success )
                     {
                         addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                        addins.CurrentFilter.SaveJSON( jsonFile, addins.CurrentFilter.Params );
                     }
 
                     int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);

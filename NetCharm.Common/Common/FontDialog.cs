@@ -896,12 +896,12 @@ namespace NetCharm.Common
         }
     }
 
-    internal class TypefaceInfo
-    {
-        internal string FamilyName;
-        internal string FaceName;
-        internal string AdjustFaceName;
-        internal string FaceNameLong;
-    }
+    //internal class TypefaceInfo
+    //{
+    //    internal string FamilyName;
+    //    internal string FaceName;
+    //    internal string AdjustFaceName;
+    //    internal string FaceNameLong;
+    //}
 
 }
