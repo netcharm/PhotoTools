@@ -22,7 +22,6 @@ namespace InternalFilters.Effects
         private float hslSat = 1.0f;
         private float hslLum = 0.5f;
         private float hslTol = 5.0f;
-        private bool Procesing = false;
         private bool ColorPicking = false;
         private bool ColorChanging = false;
         private bool PointInImage = false;

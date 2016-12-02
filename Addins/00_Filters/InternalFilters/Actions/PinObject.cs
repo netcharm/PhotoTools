@@ -249,7 +249,7 @@ namespace InternalFilters.Actions
         /// 
         /// </summary>
         /// <param name="parent"></param>
-        public override void Show( Form parent = null, bool setup = false )
+        public override DialogResult Show( Form parent = null, bool setup = false )
         {
             _success = false;
             //return;
@@ -260,7 +260,8 @@ namespace InternalFilters.Actions
                 //Translate( fm );
                 SetParams( fm, ImgSrc );
             }
-            if ( fm.ShowDialog() == DialogResult.OK )
+            var result = fm.ShowDialog();
+            if ( result == DialogResult.OK )
             {
                 _success = true;
                 GetParams( fm );
@@ -274,6 +275,7 @@ namespace InternalFilters.Actions
                 fm.Dispose();
                 fm = null;
             }
+            return ( result );
         }
 
         /// <summary>
@@ -511,7 +513,7 @@ namespace InternalFilters.Actions
                     {
                         if( option.FilterParams.ContainsKey(filter) )
                         {
-                            AddinUtils.SetParams( filter, option.FilterParams[filter] );
+                            filter.Params = option.FilterParams[filter];
                         }
                         src = filter.Apply( src as Image ) as Bitmap;
                     }

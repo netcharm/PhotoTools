@@ -146,12 +146,12 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        void Show();
+        DialogResult Show();
         /// <summary>
         /// 
         /// </summary>
         /// <param name="parent"></param>
-        void Show(Form parent, bool setup);
+        DialogResult Show(Form parent, bool setup);
         /// <summary>
         /// 
         /// </summary>
@@ -411,7 +411,25 @@ namespace NetCharm.Image.Addins
         public Dictionary<string, ParamItem> Params
         {
             get { return ( _params ); }
-            set { _params = value; }
+            set {
+                //_params = value;
+                _params.Clear();
+                foreach ( var item in value )
+                {
+                    _params.Add( item.Key, new ParamItem() );
+                    _params[item.Key].Name = item.Key;
+                    _params[item.Key].DisplayName = _( item.Key );
+
+                    if ( item.Value.Value is long )
+                        item.Value.Value = Convert.ToInt32( item.Value.Value );
+                    
+                    _params[item.Key].Value = item.Value.Value;
+                    if ( _params[item.Key].Value != null )
+                        _params[item.Key].Type = _params[item.Key].Value.GetType();
+                    else
+                        _params[item.Key].Type = typeof(object);
+                }
+            }
         }
 
         /// <summary>
@@ -490,8 +508,11 @@ namespace NetCharm.Image.Addins
                 Params.Add( item.Key, new ParamItem() );
                 Params[item.Key].Name = item.Key;
                 Params[item.Key].DisplayName = AddinUtils._( this, item.Key );
+                if(item.Value is long)
+                    Params[item.Key].Value = Convert.ToInt32(item.Value);
+                else
+                    Params[item.Key].Value = item.Value;
                 Params[item.Key].Type = item.Value.GetType();
-                Params[item.Key].Value = item.Value;
             }
         }
 
@@ -519,6 +540,27 @@ namespace NetCharm.Image.Addins
         /// 
         /// </summary>
         /// <param name="filter"></param>
+        /// <param name="paramList"></param>
+        protected internal virtual void SetParams( IAddin filter, ParamList paramList )
+        {
+            if ( filter is IAddin )
+            {
+                for ( int i = 0; i < paramList.Count; i++ )
+                {
+                    var pi = paramList.ElementAt(i);
+
+                    if ( pi.Value.Value is long )
+                        pi.Value.Value = Convert.ToInt32( pi.Value.Value );
+
+                    filter.Params[pi.Key] = pi.Value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filter"></param>
         /// <returns></returns>
         protected internal virtual ParamList GetParams( IAddin filter )
         {
@@ -531,33 +573,18 @@ namespace NetCharm.Image.Addins
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="filter"></param>
-        /// <param name="paramList"></param>
-        protected internal virtual void SetParams( IAddin filter, ParamList paramList )
-        {
-            if ( filter is IAddin )
-            {
-                for ( int i = 0; i < paramList.Count; i++ )
-                {
-                    var pi = paramList.ElementAt(i);
-                    filter.Params[pi.Key] = pi.Value;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual void Show()
+        public virtual DialogResult Show()
         {
             MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
+            return ( DialogResult.None );
         }
         /// <summary>
         /// 
         /// </summary>
-        public virtual void Show( Form parent = null, bool setup=false )
+        public virtual DialogResult Show( Form parent = null, bool setup=false )
         {
             MessageBox.Show( "Calling Show(parentForm) method", "Title", MessageBoxButtons.OK );
+            return ( DialogResult.None );
             //if ( fm == null )
             //{
             //    fm = new Form( this );

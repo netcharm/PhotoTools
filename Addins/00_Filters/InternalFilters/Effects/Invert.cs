@@ -126,7 +126,7 @@ namespace InternalFilters.Effects
         /// 
         /// </summary>
         /// <param name="parent"></param>
-        public override void Show( Form parent = null, bool setup = false )
+        public override DialogResult Show( Form parent = null, bool setup = false )
         {
             _success = false;
             if ( fm == null )
@@ -145,7 +145,8 @@ namespace InternalFilters.Effects
                 SetParams( fm, ImgSrc );
                 //Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.GetImageSelection, 0 ) );
             }
-            if ( fm.ShowDialog() == DialogResult.OK )
+            var result = fm.ShowDialog();
+            if ( result == DialogResult.OK )
             {
                 _success = true;
                 GetParams( fm );
@@ -160,6 +161,7 @@ namespace InternalFilters.Effects
                 fm.Dispose();
                 fm = null;
             }
+            return ( result );
         }
 
         /// <summary>

@@ -153,13 +153,12 @@ namespace InternalFilters.Effects
                 ( form as GrayscaleForm ).ParamColorMatrix = Params["ColorMatrix"];
             if ( Params.ContainsKey( "ColorMatrixFile" ) )
                 ( form as GrayscaleForm ).ParamColorMatrixFile = Params["ColorMatrixFile"];
-
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="parent"></param>
-        public override void Show( Form parent = null, bool setup = false )
+        public override DialogResult Show( Form parent = null, bool setup = false )
         {
             _success = false;
             if ( fm == null )
@@ -178,7 +177,8 @@ namespace InternalFilters.Effects
                 SetParams( fm, ImgSrc );
                 Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.GetImageSelection, 0 ) );
             }
-            if ( fm.ShowDialog() == DialogResult.OK )
+            var result = fm.ShowDialog();
+            if ( result == DialogResult.OK )
             {
                 Success = true;
                 GetParams( fm );
@@ -193,6 +193,7 @@ namespace InternalFilters.Effects
                 fm.Dispose();
                 fm = null;
             }
+            return ( result );
         }
         /// <summary>
         /// 
@@ -203,7 +204,7 @@ namespace InternalFilters.Effects
         {
             GrayscaleMode grayscaleMode = GrayscaleMode.BT709;
             if ( Params.ContainsKey( "GrayscaleMode" ) )
-                grayscaleMode = (GrayscaleMode) Params["GrayscaleMode"].Value;
+                grayscaleMode = (GrayscaleMode) Convert.ToInt32(Params["GrayscaleMode"].Value);
             ColorMatrix cm = null;
             if ( Params.ContainsKey( "ColorMatrix" ) )
                 cm = (ColorMatrix) Params["ColorMatrix"].Value;

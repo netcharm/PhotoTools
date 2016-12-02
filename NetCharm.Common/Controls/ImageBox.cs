@@ -20,7 +20,7 @@ namespace NetCharm.Common.Controls
         #region Private variables for ImageBox
         private CornerRegion selectionCorner;
         private RectangleF selection = new RectangleF();
-        private RectangleF selectionSrc = new RectangleF();
+        //private RectangleF selectionSrc = new RectangleF();
         private bool mSelection =false;
         private bool mMoveRegion = false;
         private bool mResizeRegion = false;
@@ -34,7 +34,7 @@ namespace NetCharm.Common.Controls
 
         //OpaqueMode opaqueMode = OpaqueMode.Alpha;
 
-        private CropMode cropMode = CropMode.AspectRatio;
+        //private CropMode cropMode = CropMode.AspectRatio;
         private float cropAspectFactor = 1f;
 
         #endregion

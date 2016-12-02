@@ -236,15 +236,15 @@ namespace InternalFilters
         /// <summary>
         /// 
         /// </summary>
-        public void Show()
+        public DialogResult Show()
         {
             //MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
-            Show( null );
+            return ( Show( null ) );
         }
         /// <summary>
         /// 
         /// </summary>
-        public void Show( Form parent = null, bool setup = false )
+        public DialogResult Show( Form parent = null, bool setup = false )
         {
             //EditorForm fm = new EditorForm(Host);
             if ( fm == null )
@@ -262,6 +262,7 @@ namespace InternalFilters
             {
                 fm.Activate();
             }
+            return ( DialogResult.OK );
         }
 
         /// <summary>

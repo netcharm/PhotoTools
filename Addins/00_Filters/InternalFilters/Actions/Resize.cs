@@ -318,14 +318,15 @@ namespace InternalFilters.Actions
         /// <summary>
         /// 
         /// </summary>
-        public void Show()
+        public DialogResult Show()
         {
-            MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
+            //MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
+            return ( Show( null ) );
         }
         /// <summary>
         /// 
         /// </summary>
-        public void Show( Form parent = null, bool setup = false )
+        public DialogResult Show( Form parent = null, bool setup = false )
         {
             if ( fm == null )
             {
@@ -353,7 +354,8 @@ namespace InternalFilters.Actions
                     SetParams( fm, ImgSrc );
                 }
             }
-            if ( fm.ShowDialog() == DialogResult.OK )
+            var result = fm.ShowDialog();
+            if ( result == DialogResult.OK )
             {
                 _success = true;
                 GetParams( fm );
@@ -367,6 +369,7 @@ namespace InternalFilters.Actions
                 fm.Dispose();
                 fm = null;
             }
+            return ( result );
         }
 
         /// <summary>

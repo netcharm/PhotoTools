@@ -106,7 +106,7 @@ namespace InternalFilters.Actions
         /// 
         /// </summary>
         /// <param name="parent"></param>
-        public override void Show( Form parent = null, bool setup = false )
+        public override DialogResult Show( Form parent = null, bool setup = false )
         {
             if ( fm == null )
             {
@@ -131,7 +131,8 @@ namespace InternalFilters.Actions
 
                 Translate( fm );
             }
-            if ( fm.ShowDialog() == DialogResult.OK )
+            var result = fm.ShowDialog();
+            if ( result == DialogResult.OK )
             {
                 _success = true;
 
@@ -151,6 +152,7 @@ namespace InternalFilters.Actions
                 fm.Dispose();
                 fm = null;
             }
+            return ( result );
         }
 
         /// <summary>

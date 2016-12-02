@@ -20,7 +20,7 @@ namespace NetCharm.Common.Controls
         private Rectangle thumbRectangle = new Rectangle();
         private int currentTickPosition = 0;
         private float tickSpace = 0;
-        private bool thumbClicked = false;
+        //private bool thumbClicked = false;
         private TrackBarThumbState thumbState = TrackBarThumbState.Normal;
 
         public SlideControl()

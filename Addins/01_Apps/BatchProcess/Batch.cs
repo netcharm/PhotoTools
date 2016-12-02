@@ -221,15 +221,15 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
-        public void Show()
+        public DialogResult Show()
         {
             //MessageBox.Show( "Calling Show() method", "Title", MessageBoxButtons.OK );
-            Show( ParentForm );
+            return ( Show( ParentForm ) );
         }
         /// <summary>
         /// 
         /// </summary>
-        public void Show( Form parent = null, bool setup = false )
+        public DialogResult Show( Form parent = null, bool setup = false )
         {
             ParentForm = parent;
             if ( fm == null )
@@ -247,6 +247,7 @@ namespace BatchProcess
             {
                 fm.Activate();
             }
+            return( DialogResult.OK );
         }
 
         /// <summary>
