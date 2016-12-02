@@ -84,8 +84,6 @@ namespace InternalFilters.Actions
             set { objectOnly = (bool) value.Value; }
         }
 
-        bool fontApplyTest = false;
-
         private List<ListViewItem> effects = new List<ListViewItem>();
         private List<ParamList> effectParams = new List<ParamList>();
 
@@ -120,19 +118,8 @@ namespace InternalFilters.Actions
             for ( var i = 0; i < lvFilters.Items.Count; i++ )
             {
                 var filter = (IAddin)lvFilters.Items[i].Tag;
-                option.Filters[filter.Name] = option.FilterParams[filter];
-                //option.Filters[filter.Name] = filter.Params;
-                //option.FilterParams[filter] = filter.Params;
+                option.Filters[filter.Name] = option.FilterParams[filter].Clone();
             }
-
-            //foreach ( IAddin filter in addin.Filters )
-            //{
-            //    int pIdx = effectParams.IndexOf( filter.Params );
-            //    if ( pIdx >= 0 && pIdx < effectParams.Count )
-            //    {
-            //        option.FilterParams[filter] = effectParams[pIdx];
-            //    }
-            //}
 
             option.Text = edText.Text;
 
@@ -149,11 +136,6 @@ namespace InternalFilters.Actions
                     break;
             }
             option.Mode = mode;
-
-            if ( !fontApplyTest )
-            {
-                //addin.SaveJSON( $"latest_{addin.Name}.json", option );
-            }
         }
 
         internal void Preview()
@@ -281,7 +263,6 @@ namespace InternalFilters.Actions
                 LoadPicture( option.PictureFile );
 
                 addin.Filters.Clear();
-                //effectParams.Clear();
                 effects.Clear();
                 ilLarge.Images.Clear();
                 ilSmall.Images.Clear();
@@ -294,7 +275,6 @@ namespace InternalFilters.Actions
                         var filter = addin.Host.Addins[an];
                         var param = ap.Value;
                         option.FilterParams[filter] = param;
-                        //filter.Params = param.Count > 0 ? param : filter.Params;
 
                         addin.Filters.Add( filter );
 
@@ -305,8 +285,6 @@ namespace InternalFilters.Actions
                         effects.Last().Tag = filter;
                         effects.Last().ImageIndex = ilLarge.Images.Count;
                         effects.Last().Checked = true;
-
-                        //effectParams.Add( param as ParamList );
                     }
                 }
                 lvFilters.VirtualListSize = effects.Count;
@@ -367,7 +345,6 @@ namespace InternalFilters.Actions
                 {
                     lvFilters.FocusedItem.Checked = filter.Enabled;
 
-                    //filter.ImageData = addin.ImageData;
                     switch(mode)
                     {
                         case PinObjectMode.Picture:
@@ -380,8 +357,6 @@ namespace InternalFilters.Actions
                             break;
                     }
                     filter.Params = option.FilterParams[filter];
-                    //filter.Show( this, true );
-                    //if(filter.Success)
                     if ( filter.Show( this, true ) == DialogResult.OK )
                     {
                         option.FilterParams[filter] = filter.Params.Clone();
@@ -434,8 +409,6 @@ namespace InternalFilters.Actions
             lvFilters.BeginUpdate();
             foreach ( IAddin filter in AddinUtils.ShowAddinsDialog())
             {
-                //filter.Enabled = true;
-
                 addin.Filters.Add( filter );
                 ilLarge.Images.Add( filter.LargeIcon );
                 ilSmall.Images.Add( filter.SmallIcon );
@@ -445,12 +418,10 @@ namespace InternalFilters.Actions
                 effects.Last().ImageIndex = ilLarge.Images.Count;
                 effects.Last().Checked = true;
 
-                //effectParams.Add( filter.Params as ParamList );
                 option.FilterParams[filter] = filter.Params;
             }
             lvFilters.VirtualListSize = effects.Count;
             lvFilters.EndUpdate();
-            //lvFilters.Update();
             Preview();
         }
 
@@ -472,13 +443,11 @@ namespace InternalFilters.Actions
                 ilLarge.Images.RemoveAt( item.ImageIndex );
                 ilSmall.Images.RemoveAt( item.ImageIndex );
                 effects.Remove( item );
-                //effectParams.Remove( filter.Params as ParamList );
                 option.FilterParams.Remove( filter );
             }
             lvFilters.SelectedIndices.Clear();
             lvFilters.VirtualListSize = effects.Count;
             lvFilters.EndUpdate();
-            //lvFilters.Update();
             Preview();
         }
 
@@ -585,8 +554,6 @@ namespace InternalFilters.Actions
             dlgFontEx.Color = option.TextColor.ToColor();
             if ( dlgFontEx.ShowDialog() == DialogResult.OK )
             {
-                fontApplyTest = false;
-
                 option.TextFont = dlgFontEx.FamilyName;
                 option.TextFace = dlgFontEx.TypefaceName;
                 option.TextSize = dlgFontEx.Size;
@@ -599,20 +566,15 @@ namespace InternalFilters.Actions
                 option = optionBackup;
                 Preview();
             }
-            fontApplyTest = false;
         }
 
         private void dlgFont_Apply( object sender, EventArgs e )
         {
-            fontApplyTest = true;
-
             option.TextFont = dlgFontEx.FamilyName;
             option.TextFace = dlgFontEx.TypefaceName;
             option.TextSize = dlgFontEx.Size;
             option.TextColor = dlgFontEx.Color.ToHtml();
             Preview();
-
-            fontApplyTest = false;
         }
 
         private void btnColorPicker_Click( object sender, EventArgs e )
@@ -637,15 +599,11 @@ namespace InternalFilters.Actions
 
         private void dlgColor_Apply( object sender, EventArgs e )
         {
-            fontApplyTest = true;
-
             string c = option.TextColor;
 
             option.TextColor = dlgColor.Color.ToHtml();
             Preview();
             option.TextColor = c;
-
-            fontApplyTest = false;
         }
 
         private void imgPicture_DoubleClick( object sender, EventArgs e )
