@@ -70,6 +70,7 @@
             this.tssLabelImageName = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssLabelImageSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssLabelImageZoom = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssLabelTimeCost = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssLabelImageInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
@@ -92,7 +93,6 @@
             this.cmdQSave = new System.Windows.Forms.RibbonButton();
             this.cmdQUndo = new System.Windows.Forms.RibbonButton();
             this.cmdQRedo = new System.Windows.Forms.RibbonButton();
-            this.tssLabelTimeCost = new System.Windows.Forms.ToolStripStatusLabel();
             this.status.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -356,6 +356,15 @@
             this.tssLabelImageZoom.Name = "tssLabelImageZoom";
             resources.ApplyResources(this.tssLabelImageZoom, "tssLabelImageZoom");
             // 
+            // tssLabelTimeCost
+            // 
+            this.tssLabelTimeCost.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tssLabelTimeCost.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tssLabelTimeCost.Name = "tssLabelTimeCost";
+            resources.ApplyResources(this.tssLabelTimeCost, "tssLabelTimeCost");
+            // 
             // tssLabelImageInfo
             // 
             this.tssLabelImageInfo.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
@@ -578,15 +587,6 @@
             this.cmdQRedo.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact;
             this.cmdQRedo.SmallImage = global::PhotoTool.Properties.Resources.Redo_16x;
             this.cmdQRedo.Click += new System.EventHandler(this.cmdEditRedo_Click);
-            // 
-            // tssLabelTimeCost
-            // 
-            this.tssLabelTimeCost.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.tssLabelTimeCost.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.tssLabelTimeCost.Name = "tssLabelTimeCost";
-            resources.ApplyResources(this.tssLabelTimeCost, "tssLabelTimeCost");
             // 
             // MainForm
             // 

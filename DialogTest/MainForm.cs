@@ -17,7 +17,6 @@ namespace DialogTest
 {
     public partial class MainForm : Form
     {
-        private bool fontApplyTest;
         private string SampleText = "简体中文\n繁體中文\n日本語のテキスト\n한국어 텍스트\nSample Text";
 
         public MainForm()
@@ -43,15 +42,7 @@ namespace DialogTest
 
         private void dlgColor_Apply( object sender, EventArgs e )
         {
-            fontApplyTest = true;
-
-            //string c = option.TextColor;
-
-            //option.TextColor = dlgColor.Color.ToHtml();
-            //Preview();
-            //option.TextColor = c;
-
-            fontApplyTest = false;
+            picBox.BackColor = dlgColorEx.Color;
         }
 
         private void btnColorDialog_Click( object sender, EventArgs e )
@@ -74,8 +65,6 @@ namespace DialogTest
         private void dlgColorEx_Apply( object sender, EventArgs e )
         {
             picBox.BackColor = dlgColorEx.Color;
-            //dlgColorEx.
-            //MessageBox.Show( "Color Apply" );
         }
 
         private void btnColorDilogEx_Click( object sender, EventArgs e )
@@ -97,8 +86,6 @@ namespace DialogTest
 
         private void dlgFont_Apply( object sender, EventArgs e )
         {
-            fontApplyTest = true;
-
             var face = dlgFontEx.TypefaceName + (dlgFontEx.Underline? " Underline" : "") + (dlgFontEx.Strikeout? " Strikeout" : "");
             var sample = SampleText.ToBitmap( dlgFontEx.FamilyName, face, dlgFontEx.Size, dlgFontEx.Color);
 
@@ -112,8 +99,6 @@ namespace DialogTest
             //    picBox.Image = Glow( sample, Color.DarkGray, 5 );
             else
                 picBox.Image = sample;
-
-            fontApplyTest = false;
         }
 
         private void btnFontDialog_Click( object sender, EventArgs e )

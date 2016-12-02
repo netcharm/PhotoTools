@@ -41,7 +41,7 @@ namespace InternalFilters.Actions
                 pi.Value = mode;
                 return ( pi );
             }
-            set { mode = (PinObjectMode) value.Value; }
+            set { mode = (PinObjectMode) Convert.ToInt32( value.Value ); }
         }
 
         private PinOption option = new PinOption();
@@ -56,7 +56,17 @@ namespace InternalFilters.Actions
                 pi.Value = option;
                 return ( pi );
             }
-            set { option = (PinOption) value.Value; }
+            set
+            {
+                //option = this.addin.FromJSON<PinOption>( value.Value.ToString() );
+                if ( value.Value is PinOption )
+                    option = (PinOption) value.Value;
+                else //if ( value.Value is JObject )
+                {
+                    var kv = option.FromJSON( value.Value );
+                    option = kv == null ? option : kv;
+                }
+            }
         }
 
         private bool objectOnly = false;
@@ -110,8 +120,9 @@ namespace InternalFilters.Actions
             for ( var i = 0; i < lvFilters.Items.Count; i++ )
             {
                 var filter = (IAddin)lvFilters.Items[i].Tag;
-                option.Filters[filter.Name] = filter.Params;
-                option.FilterParams[filter] = filter.Params;
+                option.Filters[filter.Name] = option.FilterParams[filter];
+                //option.Filters[filter.Name] = filter.Params;
+                //option.FilterParams[filter] = filter.Params;
             }
 
             //foreach ( IAddin filter in addin.Filters )
@@ -265,51 +276,48 @@ namespace InternalFilters.Actions
         {
             this.Tag = false;
 
-            //PinOption kv = addin.LoadJSON<PinOption>($"latest_{addin.Name}.json");
-            addin.LoadJSON<PinOption>( $"latest_{addin.Name}.json" );
-            PinOption kv = (PinOption)addin.Params["PinOption"].Value;
-            LoadPicture( kv.PictureFile );
-
-            addin.Filters.Clear();
-            effectParams.Clear();
-            effects.Clear();
-            ilLarge.Images.Clear();
-            ilSmall.Images.Clear();
-            lvFilters.BeginUpdate();
-            foreach ( var ap in kv.Filters)
+            if(option is PinOption)
             {
-                var an = ap.Key;
-                if( addin.Host.Addins.ContainsKey(an) )
+                LoadPicture( option.PictureFile );
+
+                addin.Filters.Clear();
+                //effectParams.Clear();
+                effects.Clear();
+                ilLarge.Images.Clear();
+                ilSmall.Images.Clear();
+                lvFilters.BeginUpdate();
+                foreach ( var ap in option.Filters )
                 {
-                    var filter = addin.Host.Addins[an];
-                    addin.Filters.Add( filter );
+                    var an = ap.Key;
+                    if ( addin.Host.Addins.ContainsKey( an ) )
+                    {
+                        var filter = addin.Host.Addins[an];
+                        var param = ap.Value;
+                        option.FilterParams[filter] = param;
+                        //filter.Params = param.Count > 0 ? param : filter.Params;
 
-                    ilLarge.Images.Add( filter.LargeIcon );
-                    ilSmall.Images.Add( filter.SmallIcon );
-                    effects.Add( new ListViewItem( filter.DisplayName ) );
-                    effects.Last().Selected = false;
-                    effects.Last().Tag = filter;
-                    effects.Last().ImageIndex = ilLarge.Images.Count;
-                    effects.Last().Checked = true;
+                        addin.Filters.Add( filter );
 
-                    effectParams.Add( filter.Params as ParamList );
+                        ilLarge.Images.Add( filter.LargeIcon );
+                        ilSmall.Images.Add( filter.SmallIcon );
+                        effects.Add( new ListViewItem( filter.DisplayName ) );
+                        effects.Last().Selected = false;
+                        effects.Last().Tag = filter;
+                        effects.Last().ImageIndex = ilLarge.Images.Count;
+                        effects.Last().Checked = true;
+
+                        //effectParams.Add( param as ParamList );
+                    }
                 }
+                lvFilters.VirtualListSize = effects.Count;
+                lvFilters.EndUpdate();
+
+                edText.Text = option.Text;
             }
-            lvFilters.VirtualListSize = effects.Count;
-            lvFilters.EndUpdate();
-
-            //option.TextFont = kv.TextFont;
-            //option.TextFace = kv.TextFace;
-            //option.TextSize = kv.TextSize;
-            //option.TextColor = kv.TextColor;
-            //option.TextFontStyle = kv.TextFontStyle;
-
-            edText.Text = kv.Text;
 
             slideOffsetX.Enabled = chkTile.Checked;
             slideOffsetY.Enabled = chkTile.Checked;
 
-            //thumb = AddinUtils.CreateThumb( addin.ImageData, imgPreview.Size );
             thumb = addin.ImageData;
             imgPreview.Image = thumb;            
             imgPreview.ZoomToFit();
@@ -371,12 +379,14 @@ namespace InternalFilters.Actions
                         case PinObjectMode.Tag:
                             break;
                     }
-                    //filter.ImageData = picObject;
-                    var pilist = effectParams[effectParams.IndexOf( filter.Params )];
-                    AddinUtils.SetParams( filter, pilist );
-                    filter.Show( this, true );
-                    effectParams[effectParams.IndexOf( filter.Params )] = filter.Params;
-                    Preview();
+                    filter.Params = option.FilterParams[filter];
+                    //filter.Show( this, true );
+                    //if(filter.Success)
+                    if ( filter.Show( this, true ) == DialogResult.OK )
+                    {
+                        option.FilterParams[filter] = filter.Params.Clone();
+                        Preview();
+                    }
                 }
             }
         }
@@ -435,7 +445,8 @@ namespace InternalFilters.Actions
                 effects.Last().ImageIndex = ilLarge.Images.Count;
                 effects.Last().Checked = true;
 
-                effectParams.Add( filter.Params as ParamList );
+                //effectParams.Add( filter.Params as ParamList );
+                option.FilterParams[filter] = filter.Params;
             }
             lvFilters.VirtualListSize = effects.Count;
             lvFilters.EndUpdate();
@@ -461,7 +472,8 @@ namespace InternalFilters.Actions
                 ilLarge.Images.RemoveAt( item.ImageIndex );
                 ilSmall.Images.RemoveAt( item.ImageIndex );
                 effects.Remove( item );
-                effectParams.Remove( filter.Params as ParamList );
+                //effectParams.Remove( filter.Params as ParamList );
+                option.FilterParams.Remove( filter );
             }
             lvFilters.SelectedIndices.Clear();
             lvFilters.VirtualListSize = effects.Count;
