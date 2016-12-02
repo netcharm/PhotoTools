@@ -41,10 +41,12 @@
             this.tsmiProcessSelected = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProcessAll = new System.Windows.Forms.ToolStripMenuItem();
             this.imgPreview = new Cyotek.Windows.Forms.ImageBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlSetting = new System.Windows.Forms.Panel();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.addinListView1 = new NetCharm.Image.Addins.Controls.AddinListView();
             this.cmsFileList.SuspendLayout();
+            this.pnlSetting.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvFiles
@@ -148,13 +150,14 @@
             this.imgPreview.TabIndex = 1;
             this.imgPreview.Text = "Preview";
             // 
-            // panel1
+            // pnlSetting
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(240, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(478, 236);
-            this.panel1.TabIndex = 2;
+            this.pnlSetting.Controls.Add(this.addinListView1);
+            this.pnlSetting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSetting.Location = new System.Drawing.Point(240, 0);
+            this.pnlSetting.Name = "pnlSetting";
+            this.pnlSetting.Size = new System.Drawing.Size(478, 236);
+            this.pnlSetting.TabIndex = 2;
             // 
             // dlgOpen
             // 
@@ -166,12 +169,22 @@
             this.dlgOpen.SupportMultiDottedExtensions = true;
             this.dlgOpen.Title = "Add Image(s)";
             // 
+            // addinListView1
+            // 
+            this.addinListView1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.addinListView1.Flow = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.addinListView1.Location = new System.Drawing.Point(0, 0);
+            this.addinListView1.MinimumSize = new System.Drawing.Size(210, 160);
+            this.addinListView1.Name = "addinListView1";
+            this.addinListView1.Size = new System.Drawing.Size(210, 236);
+            this.addinListView1.TabIndex = 0;
+            // 
             // BatchProcessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 564);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlSetting);
             this.Controls.Add(this.imgPreview);
             this.Controls.Add(this.lvFiles);
             this.Name = "BatchProcessForm";
@@ -179,6 +192,7 @@
             this.Text = "Batch Image Processing";
             this.Load += new System.EventHandler(this.BatchProcessForm_Load);
             this.cmsFileList.ResumeLayout(false);
+            this.pnlSetting.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -197,8 +211,9 @@
         private System.Windows.Forms.ToolStripSeparator tsmiSep01;
         private System.Windows.Forms.ToolStripMenuItem tsmiProcessSelected;
         private System.Windows.Forms.ToolStripMenuItem tsmiProcessAll;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlSetting;
         private System.Windows.Forms.OpenFileDialog dlgOpen;
         private System.Windows.Forms.ToolTip toolTip;
+        private NetCharm.Image.Addins.Controls.AddinListView addinListView1;
     }
 }

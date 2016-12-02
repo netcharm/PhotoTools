@@ -127,6 +127,9 @@
   <data name="ZoomOut_15x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ZoomOut_15x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Compare_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Compare_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="AddInHost_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AddIn_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -160,7 +163,16 @@
   <data name="eyedropper" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eyedropper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Compare_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Compare_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="effect_add_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\effect_add_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="effect_remove_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\effect_remove_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="effect_up_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\effect_up_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="effect_down_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\effect_down_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

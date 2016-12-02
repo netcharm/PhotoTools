@@ -85,7 +85,7 @@ namespace InternalFilters.Actions
         }
 
         private List<ListViewItem> effects = new List<ListViewItem>();
-        private List<ParamList> effectParams = new List<ParamList>();
+        //private List<ParamList> effectParams = new List<ParamList>();
 
         internal void LoadPicture(string picFile)
         {
@@ -440,8 +440,8 @@ namespace InternalFilters.Actions
 
                 IAddin filter = item.Tag as IAddin;
                 addin.Filters.Remove( filter );
-                ilLarge.Images.RemoveAt( item.ImageIndex );
-                ilSmall.Images.RemoveAt( item.ImageIndex );
+                //ilLarge.Images.RemoveAt( item.ImageIndex );
+                //ilSmall.Images.RemoveAt( item.ImageIndex );
                 effects.Remove( item );
                 option.FilterParams.Remove( filter );
             }

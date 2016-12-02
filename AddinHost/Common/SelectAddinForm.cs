@@ -119,7 +119,7 @@ namespace NetCharm.Image.Addins.Common
             AddinItems.Clear();
             foreach ( var addin in addinList )
             {
-                if ( string.Equals( Host.CurrentFilter.Name, addin.Value.Name, StringComparison.CurrentCultureIgnoreCase ) ) continue;
+                if ( Host.CurrentFilter is IAddin && string.Equals( Host.CurrentFilter.Name, addin.Value.Name, StringComparison.CurrentCultureIgnoreCase ) ) continue;
 
                 ilLarge.Images.Add( addin.Value.LargeIcon );
                 ilSmall.Images.Add( addin.Value.SmallIcon );

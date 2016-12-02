@@ -246,7 +246,6 @@ namespace InternalFilters
         /// </summary>
         public DialogResult Show( Form parent = null, bool setup = false )
         {
-            //EditorForm fm = new EditorForm(Host);
             if ( fm == null )
             {
                 fm = new EditorForm( Host, this );
@@ -254,13 +253,13 @@ namespace InternalFilters
                 fm.Text = DisplayName;
                 fm.MdiParent = parent;
                 fm.Size = parent.ClientSize;
-                //fm.FormBorderStyle = FormBorderStyle.None;
                 fm.WindowState = FormWindowState.Maximized;
                 fm.Show();
             }
             else
             {
                 fm.Activate();
+                fm.Show();
             }
             return ( DialogResult.OK );
         }
@@ -320,7 +319,7 @@ namespace InternalFilters
         /// <returns></returns>
         public Image Apply( Image image )
         {
-            MessageBox.Show( "Calling Apply() method", "Title", MessageBoxButtons.OK );
+            //MessageBox.Show( "Calling Apply() method", "Title", MessageBoxButtons.OK );
             return ( image );
             //throw new NotImplementedException();
         }

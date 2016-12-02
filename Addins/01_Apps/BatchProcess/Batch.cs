@@ -234,18 +234,17 @@ namespace BatchProcess
             ParentForm = parent;
             if ( fm == null )
             {
-                //fm = new BatchProcessForm( Host );
                 fm = new BatchProcessForm( this );
-                fm.Text = fv.ProductName;
+                fm.Text = DisplayName;
                 fm.MdiParent = parent;
                 fm.Size = parent.ClientSize;
-                //fm.FormBorderStyle = FormBorderStyle.None;
                 fm.WindowState = FormWindowState.Maximized;
                 fm.Show();
             }
             else
             {
                 fm.Activate();
+                fm.Show();
             }
             return( DialogResult.OK );
         }

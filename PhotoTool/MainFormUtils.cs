@@ -387,6 +387,11 @@ namespace PhotoTool
                 addins.CurrentApp = addins.Apps[an];
                 if ( addins.CurrentApp != null )
                 {
+                    foreach ( var f in this.MdiChildren )
+                    {
+                        f.Hide();
+                    }
+
                     var jsonFile = Path.Combine(Path.GetDirectoryName(addins.CurrentApp.Location), $"latest_{addins.CurrentApp.Name}.json");
                     addins.CurrentApp.Params = addins.CurrentApp.Params.LoadJSON( jsonFile );
                     addins.CurrentApp.Show( this, false );
@@ -455,6 +460,7 @@ namespace PhotoTool
                     int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
                     tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height} x {bits}";
                 }
+                addins.CurrentFilter = null;
             }
         }
 
@@ -486,6 +492,7 @@ namespace PhotoTool
                     int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
                     tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height} x {bits}";
                 }
+                addins.CurrentFilter = null;
             }
         }
 
@@ -515,6 +522,7 @@ namespace PhotoTool
                     int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
                     tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height} x {bits}";
                 }
+                addins.CurrentFilter = null;
             }
         }
 
@@ -546,6 +554,7 @@ namespace PhotoTool
                     int bits = AddinUtils.GetColorDeep(addins.CurrentApp.ImageData.PixelFormat);
                     tssLabelImageSize.Text = $"{addins.CurrentApp.ImageData.Width} x {addins.CurrentApp.ImageData.Height} x {bits}";
                 }
+                addins.CurrentFilter = null;
             }
         }
 

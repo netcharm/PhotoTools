@@ -133,6 +133,12 @@
     <Compile Include="Common\SelectAddinForm.Designer.cs">
       <DependentUpon>SelectAddinForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AddinListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AddinListView.Designer.cs">
+      <DependentUpon>AddinListView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -147,6 +153,9 @@
     <EmbeddedResource Include="Common\SelectAddinForm.resx">
       <DependentUpon>SelectAddinForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\AddinListView.resx">
+      <DependentUpon>AddinListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -165,6 +174,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddIn.ico" />
+    <None Include="Resources\effect_down_24x.png" />
+    <None Include="Resources\effect_up_24x.png" />
+    <None Include="Resources\effect_remove_24x.png" />
+    <None Include="Resources\effect_add_24x.png" />
     <None Include="Resources\Compare_16x.png" />
     <None Include="Resources\ZoomIn_16x.png" />
     <None Include="Resources\ZoomOut_16x.png" />

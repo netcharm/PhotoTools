@@ -259,7 +259,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnEffectDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 3</value>
+    <value>112, 3</value>
   </data>
   <data name="btnEffectDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 32</value>
@@ -292,7 +292,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnEffectUp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 3</value>
+    <value>76, 3</value>
   </data>
   <data name="btnEffectUp.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 32</value>
@@ -526,7 +526,7 @@
     <value>slideOffsetY</value>
   </data>
   <data name="&gt;&gt;slideOffsetY.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideOffsetY.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -550,7 +550,7 @@
     <value>slideOffsetX</value>
   </data>
   <data name="&gt;&gt;slideOffsetX.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideOffsetX.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -574,7 +574,7 @@
     <value>slideMarginY</value>
   </data>
   <data name="&gt;&gt;slideMarginY.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideMarginY.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -598,7 +598,7 @@
     <value>slideMarginX</value>
   </data>
   <data name="&gt;&gt;slideMarginX.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideMarginX.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -694,7 +694,7 @@
     <value>csSelect</value>
   </data>
   <data name="&gt;&gt;csSelect.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.CornerSide, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.CornerSide, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;csSelect.Parent" xml:space="preserve">
     <value>pnlPosMode</value>
@@ -742,7 +742,7 @@
     <value>slideBlend</value>
   </data>
   <data name="&gt;&gt;slideBlend.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideBlend.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -766,7 +766,7 @@
     <value>slideOpacity</value>
   </data>
   <data name="&gt;&gt;slideOpacity.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.SlideNumber, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;slideOpacity.Parent" xml:space="preserve">
     <value>grpCommonSetting</value>
@@ -841,7 +841,7 @@
     <value>212, 444</value>
   </data>
   <data name="pnlEffectTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 38</value>
+    <value>148, 38</value>
   </data>
   <data name="pnlEffectTools.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -1084,7 +1084,7 @@
     <value>imageActions</value>
   </data>
   <data name="&gt;&gt;imageActions.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.ImageActions, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.ImageActions, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imageActions.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1129,7 +1129,7 @@
     <value>dlgFontEx</value>
   </data>
   <data name="&gt;&gt;dlgFontEx.Type" xml:space="preserve">
-    <value>NetCharm.Common.Controls.FontDialogEx, NetCharm.Common.Controls, Version=1.0.1.1, Culture=neutral, PublicKeyToken=null</value>
+    <value>NetCharm.Common.Controls.FontDialogEx, NetCharm.Common, Version=1.0.3.20, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>PinObjectForm</value>

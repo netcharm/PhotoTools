@@ -222,7 +222,7 @@ namespace InternalFilters
             //this.MaximizeBox = false;
             //this.ControlBox = false;
             //this.WindowState = FormWindowState.Maximized;
-            this.FormBorderStyle = FormBorderStyle.None;
+            //this.FormBorderStyle = FormBorderStyle.None;
         }
 
         /// <summary>
