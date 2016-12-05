@@ -377,9 +377,9 @@ namespace InternalFilters.Actions
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public System.Drawing.Image Apply( System.Drawing.Image image )
+        public Image Apply( Image image )
         {
-            if ( image != null )
+            if ( image is Image )
             {
                 var w = Params.ContainsKey( "Width" ) && Params["Width"].Value is int ?  (int)Params["Width"].Value : image.Width;
                 var h = Params.ContainsKey( "Height" ) && Params["Height"].Value is int ?  (int)Params["Height"].Value : image.Height;
@@ -393,7 +393,7 @@ namespace InternalFilters.Actions
                 }
 
                 var method = Params.ContainsKey( "Method" ) && Params["Method"].Value is int ? (int) Params["Method"].Value : 0;
-                System.Drawing.Image dst = image;
+                Image dst = image;
                 if ( method == 0 )
                 {
                     ResizeBicubic filter = new ResizeBicubic(w, h);

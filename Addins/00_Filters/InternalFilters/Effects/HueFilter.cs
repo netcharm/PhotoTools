@@ -166,9 +166,12 @@ namespace InternalFilters.Effects
         /// <returns></returns>
         public override Image Apply( Image image )
         {
+            GetParams( fm );
+
+            if ( !( image is Image ) ) return ( image );
+
             Bitmap dst = AddinUtils.CloneImage(image) as Bitmap;
 
-            GetParams( fm );
             HueFilterMode HueFilterMode = (HueFilterMode) Params["HueFilterMode"].Value;
             int value = (int) Params["HueFilterValue"].Value;
             Accord.Imaging.Filters.HueModifier filter = new Accord.Imaging.Filters.HueModifier(value);

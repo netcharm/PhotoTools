@@ -202,6 +202,10 @@ namespace InternalFilters.Effects
         /// <returns></returns>
         public override Image Apply( Image image )
         {
+            GetParams( fm );
+
+            if ( !( image is Image ) ) return ( image );
+
             GrayscaleMode grayscaleMode = GrayscaleMode.BT709;
             if ( Params.ContainsKey( "GrayscaleMode" ) )
                 grayscaleMode = (GrayscaleMode) Convert.ToInt32(Params["GrayscaleMode"].Value);

@@ -43,7 +43,7 @@ namespace InternalFilters.Effects
                 pi.Value = gaussianSigma;
                 return ( pi );
             }
-            set { gaussianSigma = (double) value.Value; }
+            set { gaussianSigma = Convert.ToDouble( value.Value ); }
         }
         private int gaussianSize = 5;
         internal ParamItem ParamGaussianSize
@@ -85,7 +85,7 @@ namespace InternalFilters.Effects
                 pi.Value = gdiRatio;
                 return ( pi );
             }
-            set { gdiRatio = (float)(double) value.Value; }
+            set { gdiRatio = (float) Convert.ToDouble( value.Value ); }
         }
         private float gdiAmount = 50f;
         internal ParamItem ParamGdiAmount
@@ -99,7 +99,7 @@ namespace InternalFilters.Effects
                 pi.Value = gdiAmount;
                 return ( pi );
             }
-            set { gdiAmount = (float)(double) value.Value; }
+            set { gdiAmount = (float) Convert.ToDouble( value.Value ); }
         }
 
         public SharpenForm()

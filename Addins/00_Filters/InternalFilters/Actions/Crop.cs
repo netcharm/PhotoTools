@@ -156,6 +156,10 @@ namespace InternalFilters.Actions
 
         public override Image Apply( Image image )
         {
+            GetParams( fm );
+
+            if ( !( image is Image ) ) return ( image );
+
             Rectangle region = new Rectangle(0, 0, ImgSrc.Width, ImgSrc.Height);
 
             if ( Params.ContainsKey( "CropRegion" ) )

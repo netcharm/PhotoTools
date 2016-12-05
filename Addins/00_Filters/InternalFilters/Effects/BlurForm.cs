@@ -99,7 +99,7 @@ namespace InternalFilters.Effects
                 pi.Value = gdiRatio;
                 return ( pi );
             }
-            set { gdiRatio = (float)(double) value.Value; }
+            set { gdiRatio = (float) Convert.ToDouble( value.Value ); }
         }
 
         public BlurForm()

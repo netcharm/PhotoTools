@@ -181,9 +181,12 @@ namespace InternalFilters.Effects
         /// <returns></returns>
         public override Image Apply( Image image )
         {
+            GetParams( fm );
+
+            if ( !( image is Image ) ) return ( image );
+
             Bitmap dst = AddinUtils.CloneImage(image) as Bitmap;
 
-            GetParams( fm );
             HslFilterMode HslFilterMode = (HslFilterMode) Params["HslFilterMode"].Value;
             GrayscaleMode grayscaleMode = (GrayscaleMode)Params["GrayscaleMode"].Value;
             int hueValue = (int)Params["HslHue"].Value;

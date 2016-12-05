@@ -285,11 +285,14 @@ namespace InternalFilters.Actions
         /// <returns></returns>
         public override Image Apply( Image image )
         {
+            GetParams( fm );
+
+            if ( !( image is Image ) ) return ( image );
+
             var st = DateTime.Now.Ticks;
 
             Bitmap dst = AddinUtils.CloneImage(image) as Bitmap;
 
-            GetParams( fm );
             PinObjectMode PinObjectMode = (PinObjectMode) Params["PinObjectMode"].Value;
             bool objectOnly = (bool) Params["PinObjectOnly"].Value;
             PinOption option = (PinOption) Params["PinOption"].Value;

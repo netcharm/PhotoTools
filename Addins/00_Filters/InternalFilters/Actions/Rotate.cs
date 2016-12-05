@@ -162,7 +162,7 @@ namespace InternalFilters.Actions
         /// <returns></returns>
         public override Image Apply( Image image )
         {
-            if ( image != null )
+            if ( image is Image )
             {
                 if ( Params.Count == 0 ) InitParams();
 

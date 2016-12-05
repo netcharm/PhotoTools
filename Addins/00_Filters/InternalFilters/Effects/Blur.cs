@@ -192,9 +192,12 @@ namespace InternalFilters.Effects
         /// <returns></returns>
         public override Image Apply( Image image )
         {
+            GetParams( fm );
+
+            if ( !( image is Image ) ) return ( image );
+
             Bitmap dst = AddinUtils.CloneImage(image) as Bitmap;
 
-            GetParams( fm );
             BlurMode blurMode = (BlurMode) Params["BlurMode"].Value;
             double gaussianSigma = (double) Params["GaussianSigma"].Value;
             int gaussianSize = (int) Params["GaussianSize"].Value;
@@ -207,7 +210,8 @@ namespace InternalFilters.Effects
             {
                 case BlurMode.Normal:
                     filter = new Accord.Imaging.Filters.Blur();
-                    dst = ( filter as Accord.Imaging.Filters.Blur ).Apply( dst );
+                    if ( dst is Image )
+                        dst = ( filter as Accord.Imaging.Filters.Blur ).Apply( dst );
                     break;
                 case BlurMode.Gaussian:
                     filter = new Accord.Imaging.Filters.GaussianBlur();
@@ -222,7 +226,7 @@ namespace InternalFilters.Effects
                     break;
                 case BlurMode.GDI:
                     var effect = new BlurEffect(gdiRatio, true);
-                    dst.ApplyEffect( effect, new Rectangle(0, 0, dst.Width, dst.Height) );
+                    dst.ApplyEffect( effect, new Rectangle( 0, 0, dst.Width, dst.Height ) );
                     break;
             }
             AddinUtils.CloneExif( image, dst );

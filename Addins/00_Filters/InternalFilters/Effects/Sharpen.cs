@@ -191,9 +191,12 @@ namespace InternalFilters.Effects
         /// <returns></returns>
         public override Image Apply( Image image )
         {
+            GetParams( fm );
+
+            if ( !( image is Image ) ) return ( image );
+
             Bitmap dst = AddinUtils.CloneImage(image) as Bitmap;
 
-            GetParams( fm );
             SharpenMode sharpenMode = (SharpenMode) Params["SharpenMode"].Value;
             double gaussianSigma = (double) Params["GaussianSigma"].Value;
             int gaussianSize = (int) Params["GaussianSize"].Value;

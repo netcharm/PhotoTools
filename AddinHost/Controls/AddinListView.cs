@@ -159,7 +159,8 @@ namespace NetCharm.Image.Addins.Controls
                 {
                     lvFilters.FocusedItem.Checked = filter.Enabled;
 
-                    filter.Params = effectParams[filter];
+                    if( effectParams.ContainsKey( filter ) )
+                        filter.Params = effectParams[filter];
                     if ( filter.Show( this.FindForm(), true ) == DialogResult.OK )
                     {
                         effectParams[filter] = filter.Params.Clone();

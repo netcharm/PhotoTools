@@ -171,9 +171,12 @@ namespace InternalFilters.Effects
         /// <returns></returns>
         public override Image Apply( Image image )
         {
+            GetParams( fm );
+
+            if ( !( image is Image ) ) return ( image );
+
             Bitmap dst = AddinUtils.CloneImage(image) as Bitmap;
 
-            GetParams( fm );
             InvertMode InvertMode = (InvertMode) Params["InvertMode"].Value;
 
             Accord.Imaging.Filters.Invert filter = new Accord.Imaging.Filters.Invert();
