@@ -17,6 +17,12 @@ namespace BatchProcess
         private AddinHost Host = null;
         private IAddin addin;
 
+        public Image Image
+        {
+            get { return ( imgPreview.Image ); }
+            internal set { imgPreview.Image = value; }
+        }
+
         public BatchProcessForm()
         {
             InitializeComponent();
@@ -97,6 +103,7 @@ namespace BatchProcess
             if( imgPreview.Image != null) imgPreview.Image.Dispose();
 
             imgPreview.Image = new Bitmap( e.Item.SubItems[1].Text );
+            lvAddins.Image = imgPreview.Image;
         }
 
     }

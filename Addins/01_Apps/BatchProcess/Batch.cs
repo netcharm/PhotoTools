@@ -173,8 +173,16 @@ namespace BatchProcess
         /// </summary>
         public Image ImageData
         {
-            get { return ( img ); }
-            set { img = value; }
+            get
+            {
+                if ( fm is Form ) img = fm.Image;
+                return ( img );
+            }
+            set
+            {
+                img = value;
+                if ( fm is Form ) fm.Image = img;
+            }
         }
 
         /// <summary>

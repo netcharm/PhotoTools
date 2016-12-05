@@ -32,6 +32,13 @@ namespace NetCharm.Image.Addins.Controls
             }
         }
 
+        private System.Drawing.Image _image = null;
+        public System.Drawing.Image Image
+        {
+            get { return ( _image ); }
+            set { _image = value; }
+        }
+
         private List<ListViewItem> effects = new List<ListViewItem>();
         [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
         [Browsable(false)]
@@ -161,6 +168,7 @@ namespace NetCharm.Image.Addins.Controls
 
                     if( effectParams.ContainsKey( filter ) )
                         filter.Params = effectParams[filter];
+                    if ( _image is System.Drawing.Image ) filter.ImageData = _image;
                     if ( filter.Show( this.FindForm(), true ) == DialogResult.OK )
                     {
                         effectParams[filter] = filter.Params.Clone();

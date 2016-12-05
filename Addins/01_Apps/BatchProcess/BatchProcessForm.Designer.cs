@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BatchProcessForm));
             this.lvFiles = new System.Windows.Forms.ListView();
             this.lvColFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvColPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,9 +42,9 @@
             this.tsmiProcessAll = new System.Windows.Forms.ToolStripMenuItem();
             this.imgPreview = new Cyotek.Windows.Forms.ImageBox();
             this.pnlSetting = new System.Windows.Forms.Panel();
+            this.lvAddins = new NetCharm.Image.Addins.Controls.AddinListView();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.addinListView1 = new NetCharm.Image.Addins.Controls.AddinListView();
             this.cmsFileList.SuspendLayout();
             this.pnlSetting.SuspendLayout();
             this.SuspendLayout();
@@ -153,12 +152,24 @@
             // 
             // pnlSetting
             // 
-            this.pnlSetting.Controls.Add(this.addinListView1);
+            this.pnlSetting.Controls.Add(this.lvAddins);
             this.pnlSetting.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSetting.Location = new System.Drawing.Point(240, 0);
             this.pnlSetting.Name = "pnlSetting";
             this.pnlSetting.Size = new System.Drawing.Size(478, 236);
             this.pnlSetting.TabIndex = 2;
+            // 
+            // lvAddins
+            // 
+            this.lvAddins.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lvAddins.Flow = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.lvAddins.Image = null;
+            this.lvAddins.Location = new System.Drawing.Point(0, 0);
+            this.lvAddins.MinimumSize = new System.Drawing.Size(210, 160);
+            this.lvAddins.Name = "lvAddins";
+            this.lvAddins.ShowToolbar = true;
+            this.lvAddins.Size = new System.Drawing.Size(250, 236);
+            this.lvAddins.TabIndex = 0;
             // 
             // dlgOpen
             // 
@@ -169,16 +180,6 @@
             this.dlgOpen.ShowHelp = true;
             this.dlgOpen.SupportMultiDottedExtensions = true;
             this.dlgOpen.Title = "Add Image(s)";
-            // 
-            // addinListView1
-            // 
-            this.addinListView1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.addinListView1.Flow = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.addinListView1.Location = new System.Drawing.Point(0, 0);
-            this.addinListView1.MinimumSize = new System.Drawing.Size(210, 160);
-            this.addinListView1.Name = "addinListView1";
-            this.addinListView1.Size = new System.Drawing.Size(250, 236);
-            this.addinListView1.TabIndex = 0;
             // 
             // BatchProcessForm
             // 
@@ -215,6 +216,6 @@
         private System.Windows.Forms.Panel pnlSetting;
         private System.Windows.Forms.OpenFileDialog dlgOpen;
         private System.Windows.Forms.ToolTip toolTip;
-        private NetCharm.Image.Addins.Controls.AddinListView addinListView1;
+        private NetCharm.Image.Addins.Controls.AddinListView lvAddins;
     }
 }
