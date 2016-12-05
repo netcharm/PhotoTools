@@ -225,6 +225,7 @@ namespace PhotoTool
                 btnAddin.Text = I18N._( addin.DisplayName );
                 btnAddin.ToolTip = I18N._( addin.Description );
                 btnAddin.ToolTipTitle = I18N._( addin.Author );
+                btnAddin.TextAlignment = RibbonItem.RibbonItemTextAlignment.Center;
                 btnAddin.Value = addin.Name;
                 btnAddin.Click += AddinActionClick;
 
@@ -329,6 +330,7 @@ namespace PhotoTool
                 btnAddin.Text = I18N._( addin.DisplayName );
                 btnAddin.ToolTip = I18N._( addin.Description );
                 btnAddin.ToolTipTitle = I18N._( addin.Author );
+                btnAddin.TextAlignment = RibbonItem.RibbonItemTextAlignment.Center;
                 btnAddin.Value = addin.Name;
                 btnAddin.Click += AddinEffectClick;
 
@@ -395,7 +397,8 @@ namespace PhotoTool
                     var jsonFile = Path.Combine(Path.GetDirectoryName(addins.CurrentApp.Location), $"latest_{addins.CurrentApp.Name}.json");
                     addins.CurrentApp.Params = addins.CurrentApp.Params.LoadJSON( jsonFile );
                     addins.CurrentApp.Show( this, false );
-                    FixedMdiSize();
+                    PerformLayout();
+                    //FixedMdiSize();
                 }
             }
             cmdFileApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
@@ -445,7 +448,7 @@ namespace PhotoTool
             if ( addins.CurrentApp != null && addins.Actions.ContainsKey( an ) )
             {
                 addins.CurrentFilter = addins.Actions[an];
-                if ( addins.CurrentFilter != null )
+                if ( addins.CurrentFilter != null && addins.CurrentApp.ImageData is Image )
                 {
                     var jsonFile = Path.Combine(Path.GetDirectoryName(addins.CurrentFilter.Location), $"latest_{addins.CurrentFilter.Name}.json");
                     addins.CurrentFilter.Params = addins.CurrentFilter.Params.LoadJSON( jsonFile );
@@ -453,7 +456,8 @@ namespace PhotoTool
                     addins.CurrentFilter.Show( this, false );
                     if ( addins.CurrentFilter.Success )
                     {
-                        addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                        if ( addins.CurrentFilter.ImageData is Image )
+                            addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
                         addins.CurrentFilter.SaveJSON( jsonFile, addins.CurrentFilter.Params );
                     }
 
@@ -476,7 +480,7 @@ namespace PhotoTool
             if ( addins.CurrentApp != null && addins.Actions.ContainsKey( an ) )
             {
                 addins.CurrentFilter = addins.Actions[an];
-                if ( addins.CurrentFilter != null )
+                if ( addins.CurrentFilter != null && addins.CurrentApp.ImageData is Image )
                 {
                     var jsonFile = Path.Combine(Path.GetDirectoryName(addins.CurrentFilter.Location), $"latest_{addins.CurrentFilter.Name}.json");
                     addins.CurrentFilter.Params = addins.CurrentFilter.Params.LoadJSON( jsonFile );
@@ -485,7 +489,8 @@ namespace PhotoTool
                     addins.CurrentFilter.Command( AddinCommand.SubItems, out data, ans );
                     if ( addins.CurrentFilter.Success )
                     {
-                        addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                        if ( addins.CurrentFilter.ImageData is Image )
+                            addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
                         addins.CurrentFilter.SaveJSON( jsonFile, addins.CurrentFilter.Params );
                     }
 
@@ -507,7 +512,7 @@ namespace PhotoTool
             if ( addins.CurrentApp != null && addins.Effects.ContainsKey( an ) )
             {
                 addins.CurrentFilter = addins.Effects[an];
-                if ( addins.CurrentFilter != null )
+                if ( addins.CurrentFilter != null && addins.CurrentApp.ImageData is Image )
                 {
                     var jsonFile = Path.Combine(Path.GetDirectoryName(addins.CurrentFilter.Location), $"latest_{addins.CurrentFilter.Name}.json");
                     addins.CurrentFilter.Params = addins.CurrentFilter.Params.LoadJSON( jsonFile );
@@ -515,7 +520,8 @@ namespace PhotoTool
                     addins.CurrentFilter.Show( this, false );
                     if ( addins.CurrentFilter.Success )
                     {
-                        addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                        if ( addins.CurrentFilter.ImageData is Image )
+                            addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
                         addins.CurrentFilter.SaveJSON( jsonFile, addins.CurrentFilter.Params );
                     }
 
@@ -538,7 +544,7 @@ namespace PhotoTool
             if ( addins.CurrentApp != null && addins.Effects.ContainsKey( an ) )
             {
                 addins.CurrentFilter = addins.Effects[an];
-                if ( addins.CurrentFilter != null )
+                if ( addins.CurrentFilter != null && addins.CurrentApp.ImageData is Image )
                 {
                     var jsonFile = Path.Combine(Path.GetDirectoryName(addins.CurrentFilter.Location), $"latest_{addins.CurrentFilter.Name}.json");
                     addins.CurrentFilter.Params = addins.CurrentFilter.Params.LoadJSON( jsonFile );
@@ -547,7 +553,8 @@ namespace PhotoTool
                     addins.CurrentFilter.Command( AddinCommand.SubItems, out data, ans );
                     if ( addins.CurrentFilter.Success )
                     {
-                        addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
+                        if ( addins.CurrentFilter.ImageData is Image )
+                            addins.CurrentApp.ImageData = addins.CurrentFilter.ImageData;
                         addins.CurrentFilter.SaveJSON( jsonFile, addins.CurrentFilter.Params );
                     }
 

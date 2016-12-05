@@ -258,9 +258,11 @@ namespace ExtensionMethods
             if ( InDesignMode ) return ( t );
             string result = t;
 
+
             if ( !string.IsNullOrEmpty( t ) )
             {
-                string path = Assembly.GetExecutingAssembly().Location;
+                //string path = Assembly.GetExecutingAssembly().Location;
+                string path = Assembly.GetCallingAssembly().Location;
                 string domain = Path.GetFileNameWithoutExtension(path);
                 string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( path ) ), "locale" );
                 I18N i10n = new I18N( domain, addinRoot );
@@ -268,6 +270,15 @@ namespace ExtensionMethods
             }
             else
                 return ( t );
+
+            if ( string.Equals( result, t, StringComparison.CurrentCulture ) )
+            {
+                string path = Assembly.GetExecutingAssembly().Location;
+                string domain = Path.GetFileNameWithoutExtension(path);
+                string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( path ) ), "locale" );
+                I18N i10n = new I18N( domain, addinRoot );
+                result = I18N._( i10n.Catalog, t );
+            }
 
             if ( string.Equals( result, t, StringComparison.CurrentCulture ) )
             {
@@ -289,7 +300,8 @@ namespace ExtensionMethods
             if ( InDesignMode ) return;
             if ( form is Form )
             {
-                string path = Assembly.GetExecutingAssembly().Location;
+                //string path = Assembly.GetExecutingAssembly().Location;
+                string path = Assembly.GetCallingAssembly().Location;
                 string domain = Path.GetFileNameWithoutExtension(path);
                 string addinRoot = Path.Combine( Path.GetDirectoryName( Path.GetFullPath( path ) ), "locale" );
                 I18N i10n = new I18N( domain, addinRoot, form, tooltip, extra );

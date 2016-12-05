@@ -235,7 +235,7 @@ namespace BatchProcess
             if ( fm == null )
             {
                 fm = new BatchProcessForm( this );
-                fm.Text = DisplayName;
+                fm.Text = Description;
                 fm.MdiParent = parent;
                 fm.Size = parent.ClientSize;
                 fm.WindowState = FormWindowState.Maximized;
@@ -298,8 +298,21 @@ namespace BatchProcess
         public Image Apply( Image image )
         {
             MessageBox.Show( "Calling Apply() method", "Title", MessageBoxButtons.OK );
+
+
+
+
             return ( image );
             //throw new NotImplementedException();
+        }
+
+        public bool ApplyAll()
+        {
+            bool result = false;
+
+            MessageBox.Show( "Calling ApplyAll() method", "Title", MessageBoxButtons.OK );
+
+            return ( result );
         }
 
         /// <summary>
@@ -326,6 +339,12 @@ namespace BatchProcess
                 case AddinCommand.ZoomFit:
                     break;
                 case AddinCommand.Zoom100:
+                    break;
+                case AddinCommand.Apply:
+                    Apply(null);
+                    break;
+                case AddinCommand.ApplyAll:
+                    ApplyAll();
                     break;
                 default:
                     break;

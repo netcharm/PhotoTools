@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BatchProcess\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-21 19:32+0800\n"
+"POT-Creation-Date: 2016-12-03 01:10+0800\n"
 "PO-Revision-Date: 2016-10-14 22:58+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -20,39 +20,39 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: BatchProcessForm.Designer.cs:71
+#: BatchProcessForm.Designer.cs:74
 msgid "File"
 msgstr "文件"
 
-#: BatchProcessForm.Designer.cs:76
+#: BatchProcessForm.Designer.cs:79
 msgid "Full Path"
 msgstr "完整路径"
 
-#: BatchProcessForm.Designer.cs:96
+#: BatchProcessForm.Designer.cs:99
 msgid "Add Image"
 msgstr "加入图像文件"
 
-#: BatchProcessForm.Designer.cs:103
+#: BatchProcessForm.Designer.cs:106
 msgid "Remove Image"
 msgstr "移除图像文件"
 
-#: BatchProcessForm.Designer.cs:115
+#: BatchProcessForm.Designer.cs:118
 msgid "Clear"
 msgstr "清除文件列表内容"
 
-#: BatchProcessForm.Designer.cs:127
+#: BatchProcessForm.Designer.cs:130
 msgid "Process Selected"
 msgstr "处理选中图像文件"
 
-#: BatchProcessForm.Designer.cs:134
+#: BatchProcessForm.Designer.cs:137
 msgid "Process All"
 msgstr "处理全部图像文件"
 
-#: BatchProcessForm.Designer.cs:149
+#: BatchProcessForm.Designer.cs:152
 msgid "Preview"
 msgstr "预览"
 
-#: BatchProcessForm.Designer.cs:163
+#: BatchProcessForm.Designer.cs:167
 msgid ""
 "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All "
 "File(*.*)|*.*"
@@ -60,11 +60,11 @@ msgstr ""
 "图像文件(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|全部文"
 "件(*.*)|*.*"
 
-#: BatchProcessForm.Designer.cs:167
+#: BatchProcessForm.Designer.cs:171
 msgid "Add Image(s)"
 msgstr "加入图像文件"
 
-#: BatchProcessForm.Designer.cs:179
+#: BatchProcessForm.Designer.cs:193
 msgid "Batch Image Processing"
 msgstr "批量图像处理"
 

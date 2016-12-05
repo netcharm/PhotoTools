@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace NetCharm.Image.Addins.Controls
 {
+    //using System.Reflection;
     using ExtensionMethods;
     using ParamList = Dictionary<string, ParamItem>;
 
@@ -16,7 +17,24 @@ namespace NetCharm.Image.Addins.Controls
     {
         private Size toolbarSize = new Size(32, 32);
 
+        public bool ShowToolbar
+        {
+            get { return (flowEffectTool.Visible); }
+            set
+            {
+                flowEffectTool.Visible = value;
+                this.OnResize( EventArgs.Empty );
+                PerformLayout();
+
+                //typeof( Control ).GetMethod( "OnResize",
+                //    BindingFlags.Instance | BindingFlags.NonPublic )
+                //    .Invoke( lvFilters, new object[] { EventArgs.Empty } );
+            }
+        }
+
         private List<ListViewItem> effects = new List<ListViewItem>();
+        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
         public List<IAddin> Filters
         {
             get
@@ -46,13 +64,21 @@ namespace NetCharm.Image.Addins.Controls
 
         //private Dictionary<IAddin, ParamList> effectParams = new Dictionary<IAddin, ParamList>();
         private Dictionary<IAddin, Dictionary<string, ParamItem>> effectParams = new Dictionary<IAddin, Dictionary<string, ParamItem>>();
+        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
         public Dictionary<string, Dictionary<string, ParamItem>> FilterParams
         {
             get
             {
-                return ( (Dictionary<string, Dictionary<string, ParamItem>>) effectParams.Select(
-                    o => new { Key = o.Key.Name, Value = o.Value.Clone() } )
-                );
+                var result = new Dictionary<string, Dictionary<string, ParamItem>>();
+                foreach(var kv in effectParams)
+                {
+                    result[kv.Key.Name] = kv.Value.Clone();
+                }
+                return ( result );
+                //return ( (Dictionary<string, Dictionary<string, ParamItem>>) effectParams.Select(
+                //    o => new { Key = o.Key.Name, Value = o.Value.Clone() } )
+                //);
             }
             set
             {
@@ -261,20 +287,38 @@ namespace NetCharm.Image.Addins.Controls
             {
                 flowEffectTool.Width = this.ClientSize.Width - flowEffectTool.Margin.Left - flowEffectTool.Margin.Right;
                 flowEffectTool.Height = toolbarSize.Height;
-                lvFilters.Width = flowEffectTool.Width;
-                lvFilters.Height = this.ClientSize.Height - flowEffectTool.Height - 
-                    lvFilters.Margin.Top - lvFilters.Margin.Bottom -
-                    flowEffectTool.Margin.Top - flowEffectTool.Margin.Bottom;
+                lvFilters.Width = this.ClientSize.Width - lvFilters.Margin.Left - lvFilters.Margin.Right;
+                if(ShowToolbar)
+                {
+                    lvFilters.Height = this.ClientSize.Height - 
+                        lvFilters.Margin.Top - lvFilters.Margin.Bottom -
+                        flowEffectTool.Height -
+                        flowEffectTool.Margin.Top - flowEffectTool.Margin.Bottom;
+                }
+                else
+                {
+                    lvFilters.Height = this.ClientSize.Height -
+                        lvFilters.Margin.Top - lvFilters.Margin.Bottom;
+                }
                 this.MinimumSize = new Size( 160, 210 );
             }
             else
             {
                 flowEffectTool.Width = toolbarSize.Width;
                 flowEffectTool.Height = this.ClientSize.Height - flowEffectTool.Margin.Top - flowEffectTool.Margin.Bottom;
-                lvFilters.Width = this.ClientSize.Width - flowEffectTool.Width -
+                if ( ShowToolbar )
+                {
+                    lvFilters.Width = this.ClientSize.Width - 
                                   lvFilters.Margin.Left - lvFilters.Margin.Right -
+                                  flowEffectTool.Width -
                                   flowEffectTool.Margin.Left - flowEffectTool.Margin.Right;
-                lvFilters.Height = this.ClientSize.Height;
+                }
+                else
+                {
+                    lvFilters.Width = this.ClientSize.Width -
+                                  lvFilters.Margin.Left - lvFilters.Margin.Right;
+                }
+                lvFilters.Height = this.ClientSize.Height - lvFilters.Margin.Top - lvFilters.Margin.Bottom;
                 this.MinimumSize = new Size( 210, 160 );
             }
         }

@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: Actions\PinObject.cs:359 Actions\PinObject.cs:364 Actions\PinObject.cs:369
+#: Actions\PinObject.cs:362 Actions\PinObject.cs:367 Actions\PinObject.cs:372
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-30 02:17+0800\n"
-"PO-Revision-Date: 2016-11-30 02:17+0800\n"
+"POT-Creation-Date: 2016-12-06 01:23+0800\n"
+"PO-Revision-Date: 2016-12-06 01:23+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -22,19 +22,19 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 
 #: Actions\ResizeForm.resx:187 -> btnOk.Text.value
-#: Actions\PinObjectForm.resx:466 Effects\BlurForm.resx:481
-#: Effects\GrayscaleForm.resx:163 Effects\HslFilterForm.resx:139
-#: Effects\HueFilterForm.resx:191 Effects\InvertForm.resx:214
-#: Effects\SharpenForm.resx:337 Actions\RotateForm.resx:364
+#: Actions\PinObjectForm.resx:466 Effects\BlurForm.resx:478
+#: Effects\GrayscaleForm.resx:163 Effects\HslFilterForm.resx:212
+#: Effects\HueFilterForm.resx:188 Effects\InvertForm.resx:211
+#: Effects\SharpenForm.resx:361 Actions\RotateForm.resx:364
 #: Actions\CropForm.Designer.cs:308
 msgid "OK"
 msgstr ""
 
 #: Actions\ResizeForm.resx:211 -> btnCancel.Text.value
-#: Actions\PinObjectForm.resx:496 Effects\BlurForm.resx:508
-#: Effects\GrayscaleForm.resx:190 Effects\HslFilterForm.resx:166
-#: Effects\HueFilterForm.resx:218 Effects\InvertForm.resx:238
-#: Effects\SharpenForm.resx:364 Actions\RotateForm.resx:388
+#: Actions\PinObjectForm.resx:496 Effects\BlurForm.resx:505
+#: Effects\GrayscaleForm.resx:190 Effects\HslFilterForm.resx:239
+#: Effects\HueFilterForm.resx:215 Effects\InvertForm.resx:235
+#: Effects\SharpenForm.resx:388 Actions\RotateForm.resx:388
 #: Actions\CropForm.Designer.cs:298
 msgid "Cancel"
 msgstr ""
@@ -96,10 +96,10 @@ msgid "Random Put Object To Image"
 msgstr ""
 
 #: Actions\PinObjectForm.resx:436 -> btnOriginalPic.ToolTip.value
-#: Effects\BlurForm.resx:164 btnOriginal.ToolTip.value
-#: Effects\GrayscaleForm.resx:243 Effects\HslFilterForm.resx:236
-#: Effects\HueFilterForm.resx:164 Effects\InvertForm.resx:161
-#: Effects\SharpenForm.resx:167
+#: Effects\BlurForm.resx:161 btnOriginal.ToolTip.value
+#: Effects\GrayscaleForm.resx:243 Effects\HslFilterForm.resx:161
+#: Effects\HueFilterForm.resx:161 Effects\InvertForm.resx:158
+#: Effects\SharpenForm.resx:164
 msgid "View Original"
 msgstr ""
 
@@ -116,12 +116,12 @@ msgid "Common"
 msgstr ""
 
 #: Actions\PinObjectForm.resx:877 -> tabPagePicture.Text.value
-#: Actions\PinObject.cs:363 Actions\PinObject.cs:365
+#: Actions\PinObject.cs:366 Actions\PinObject.cs:368
 msgid "Picture"
 msgstr ""
 
 #: Actions\PinObjectForm.resx:955 -> tabPageText.Text.value
-#: Actions\PinObject.cs:358
+#: Actions\PinObject.cs:361
 msgid "Text"
 msgstr ""
 
@@ -129,96 +129,96 @@ msgstr ""
 msgid "SmartTag"
 msgstr ""
 
-#: Effects\BlurForm.resx:191 -> btnModeBox.Text.value
+#: Effects\BlurForm.resx:188 -> btnModeBox.Text.value
 msgid "Box"
 msgstr ""
 
-#: Effects\BlurForm.resx:194 -> btnModeBox.ToolTip.value
-#: Effects\BlurForm.resx:284 btnModeGdi.ToolTip.value
+#: Effects\BlurForm.resx:191 -> btnModeBox.ToolTip.value
+#: Effects\BlurForm.resx:281 btnModeGdi.ToolTip.value
 msgid "Fast Box Blur"
 msgstr ""
 
-#: Effects\BlurForm.resx:221 -> btnModeGaussian.Text.value
-#: Effects\SharpenForm.resx:478
+#: Effects\BlurForm.resx:218 -> btnModeGaussian.Text.value
+#: Effects\SharpenForm.resx:442
 msgid "Gaussian"
 msgstr ""
 
-#: Effects\BlurForm.resx:224 -> btnModeGaussian.ToolTip.value
+#: Effects\BlurForm.resx:221 -> btnModeGaussian.ToolTip.value
 msgid "Gaussian Blur"
 msgstr ""
 
-#: Effects\BlurForm.resx:251 -> btnModeNormal.Text.value
-#: Effects\SharpenForm.resx:502
+#: Effects\BlurForm.resx:248 -> btnModeNormal.Text.value
+#: Effects\SharpenForm.resx:466
 msgid "Normal"
 msgstr ""
 
-#: Effects\BlurForm.resx:254 -> btnModeNormal.ToolTip.value
+#: Effects\BlurForm.resx:251 -> btnModeNormal.ToolTip.value
 msgid "Normal Blur"
 msgstr ""
 
-#: Effects\BlurForm.resx:281 -> btnModeGdi.Text.value
-#: Effects\SharpenForm.resx:451
+#: Effects\BlurForm.resx:278 -> btnModeGdi.Text.value
+#: Effects\SharpenForm.resx:415
 msgid "GDI"
 msgstr ""
 
-#: Effects\BlurForm.resx:311 -> edGaussianThreshold.ToolTip.value
-#: Effects\SharpenForm.resx:194
+#: Effects\BlurForm.resx:308 -> edGaussianThreshold.ToolTip.value
+#: Effects\SharpenForm.resx:191
 msgid "Gaussian Threshold Value"
 msgstr ""
 
-#: Effects\BlurForm.resx:338 -> edGaussianSize.ToolTip.value
-#: Effects\SharpenForm.resx:221
+#: Effects\BlurForm.resx:335 -> edGaussianSize.ToolTip.value
+#: Effects\SharpenForm.resx:218
 msgid "Gaussian Kernel Size"
 msgstr ""
 
-#: Effects\BlurForm.resx:368 -> edGaussianSigma.ToolTip.value
-#: Effects\SharpenForm.resx:251
+#: Effects\BlurForm.resx:365 -> edGaussianSigma.ToolTip.value
+#: Effects\SharpenForm.resx:248
 msgid "Gaussian Sigma Value"
 msgstr ""
 
-#: Effects\BlurForm.resx:395 -> edBoxSize.ToolTip.value
+#: Effects\BlurForm.resx:392 -> edBoxSize.ToolTip.value
 msgid "Box Size"
 msgstr ""
 
-#: Effects\BlurForm.resx:422 -> edGdiRatio.ToolTip.value
+#: Effects\BlurForm.resx:419 -> edGdiRatio.ToolTip.value
 msgid "GdiPlus Blur Ratio"
 msgstr ""
 
-#: Effects\BlurForm.resx:532 -> grpMode.Text.value
+#: Effects\BlurForm.resx:529 -> grpMode.Text.value
 msgid "Blur Mode"
 msgstr ""
 
-#: Effects\BlurForm.resx:592 -> grpGaussianParams.Text.value
-#: Effects\SharpenForm.resx:562
-msgid "Gaussian Params"
-msgstr ""
-
-#: Effects\BlurForm.resx:616 -> grpBoxParams.Text.value
-msgid "Box Params"
-msgstr ""
-
-#: Effects\BlurForm.resx:640 -> grpGdiParams.Text.value
-#: Effects\SharpenForm.resx:673
-msgid "GDI Params"
-msgstr ""
-
-#: Effects\BlurForm.resx:688 -> lblGaussianThreshold.Text.value
-#: Effects\SharpenForm.resx:721
+#: Effects\BlurForm.resx:556 -> lblGaussianThreshold.Text.value
+#: Effects\SharpenForm.resx:517
 msgid "Threshold:"
 msgstr ""
 
-#: Effects\BlurForm.resx:718 -> lblGaussianSize.Text.value
-#: Effects\SharpenForm.resx:751
+#: Effects\BlurForm.resx:586 -> lblGaussianSize.Text.value
+#: Effects\SharpenForm.resx:547
 msgid "Size:"
 msgstr ""
 
-#: Effects\BlurForm.resx:748 -> lblGaussianSigma.Text.value
-#: Effects\SharpenForm.resx:781
+#: Effects\BlurForm.resx:616 -> lblGaussianSigma.Text.value
+#: Effects\SharpenForm.resx:577
 msgid "Sigma:"
 msgstr ""
 
+#: Effects\BlurForm.resx:643 -> grpGaussianParams.Text.value
+#: Effects\SharpenForm.resx:604
+msgid "Gaussian Params"
+msgstr ""
+
+#: Effects\BlurForm.resx:667 -> grpBoxParams.Text.value
+msgid "Box Params"
+msgstr ""
+
+#: Effects\BlurForm.resx:691 -> grpGdiParams.Text.value
+#: Effects\SharpenForm.resx:688
+msgid "GDI Params"
+msgstr ""
+
 #: Effects\GrayscaleForm.resx:135 -> cbGrayMode.ToolTip.value
-#: Effects\HslFilterForm.resx:260
+#: Effects\HslFilterForm.resx:185
 msgid "Grayscale Mode"
 msgstr ""
 
@@ -226,23 +226,23 @@ msgstr ""
 msgid "Grayscale"
 msgstr ""
 
-#: Effects\SharpenForm.resx:278 -> edGdiRatio.ToolTip.value
+#: Effects\SharpenForm.resx:275 -> edGdiRatio.ToolTip.value
 msgid "GdiPlus Sharpen Amount"
 msgstr ""
 
-#: Effects\SharpenForm.resx:424 -> grpMode.Text.value
-msgid "Sharpen Mode"
-msgstr ""
-
-#: Effects\SharpenForm.resx:589 -> label1.Text.value
-msgid "Amount:"
-msgstr ""
-
-#: Effects\SharpenForm.resx:619 -> edGdiAmount.ToolTip.value
+#: Effects\SharpenForm.resx:302 -> edGdiAmount.ToolTip.value
 msgid "GdiPlus Sharpen Ratio"
 msgstr ""
 
-#: Effects\SharpenForm.resx:646 -> label2.Text.value
+#: Effects\SharpenForm.resx:490 -> grpMode.Text.value
+msgid "Sharpen Mode"
+msgstr ""
+
+#: Effects\SharpenForm.resx:631 -> label1.Text.value
+msgid "Amount:"
+msgstr ""
+
+#: Effects\SharpenForm.resx:661 -> label2.Text.value
 msgid "Ratio:"
 msgstr ""
 
@@ -422,43 +422,43 @@ msgstr ""
 msgid "Crop"
 msgstr ""
 
-#: Effects\HslFilterForm.Designer.cs:90
+#: Effects\HslFilterForm.Designer.cs:92
 msgid "Tolerance"
 msgstr ""
 
-#: Effects\HslFilterForm.Designer.cs:119
+#: Effects\HslFilterForm.Designer.cs:121
 msgid "Luminance"
 msgstr ""
 
-#: Effects\HslFilterForm.Designer.cs:143
+#: Effects\HslFilterForm.Designer.cs:145
 msgid "Saturation"
 msgstr ""
 
-#: Effects\HslFilterForm.Designer.cs:167 Effects\HueFilterForm.Designer.cs:76
+#: Effects\HslFilterForm.Designer.cs:169 Effects\HueFilterForm.Designer.cs:79
 msgid "Hue"
 msgstr ""
 
-#: Actions\PinObject.cs:146
+#: Actions\PinObject.cs:147
 msgid "Pin"
 msgstr ""
 
-#: Actions\PinObject.cs:158
+#: Actions\PinObject.cs:159
 msgid "Decoration"
 msgstr ""
 
-#: Actions\PinObject.cs:165
+#: Actions\PinObject.cs:166
 msgid "Decoration Image"
 msgstr ""
 
-#: Actions\PinObject.cs:360
+#: Actions\PinObject.cs:363
 msgid "Simple Text"
 msgstr ""
 
-#: Actions\PinObject.cs:368
+#: Actions\PinObject.cs:371
 msgid "Smart Tag"
 msgstr ""
 
-#: Actions\PinObject.cs:370
+#: Actions\PinObject.cs:373
 msgid "Rich-Contents Text"
 msgstr ""
 

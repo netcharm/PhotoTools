@@ -119,6 +119,7 @@
             this.cmdFileOpen.Image = global::PhotoTool.Properties.Resources.Open_32x;
             this.cmdFileOpen.SmallImage = global::PhotoTool.Properties.Resources.Open_16x;
             resources.ApplyResources(this.cmdFileOpen, "cmdFileOpen");
+            this.cmdFileOpen.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
             this.cmdFileOpen.Click += new System.EventHandler(this.cmdFileOpen_Click);
             // 
             // cmdFileSave
@@ -133,12 +134,14 @@
             this.cmdFileApply.Image = global::PhotoTool.Properties.Resources.RunChecked_32x;
             this.cmdFileApply.SmallImage = global::PhotoTool.Properties.Resources.RunChecked_16x;
             resources.ApplyResources(this.cmdFileApply, "cmdFileApply");
+            this.cmdFileApply.Click += new System.EventHandler(this.cmdFileApply_Click);
             // 
             // cmdFileApplyAll
             // 
             this.cmdFileApplyAll.Image = global::PhotoTool.Properties.Resources.Run_32x;
             this.cmdFileApplyAll.SmallImage = global::PhotoTool.Properties.Resources.Run_16x;
             resources.ApplyResources(this.cmdFileApplyAll, "cmdFileApplyAll");
+            this.cmdFileApplyAll.Click += new System.EventHandler(this.cmdFileApplyAll_Click);
             // 
             // RibTabMainEdit
             // 
@@ -429,6 +432,7 @@
             this.ribbonMain.Tabs.Add(this.RibTabEffect);
             this.ribbonMain.Tabs.Add(this.RibTabSystem);
             this.ribbonMain.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
+            this.ribbonMain.TabSpacing = 8;
             this.ribbonMain.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
             // 
             // ribOrbMiOpen

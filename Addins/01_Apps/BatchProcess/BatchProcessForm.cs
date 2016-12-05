@@ -34,12 +34,12 @@ namespace BatchProcess
         {
             this.addin = addin;
             InitializeComponent();
-
-            AddinUtils.Translate( addin, this, toolTip, new object[] { cmsFileList, dlgOpen } );
         }
 
         private void BatchProcessForm_Load( object sender, EventArgs e )
         {
+            AddinUtils.Translate( addin, this, toolTip, new object[] { cmsFileList, dlgOpen } );
+
             //
             //this.MinimizeBox = false;
             //this.MaximizeBox = false;

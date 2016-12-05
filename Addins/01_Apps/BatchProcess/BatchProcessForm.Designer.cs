@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BatchProcessForm));
             this.lvFiles = new System.Windows.Forms.ListView();
             this.lvColFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvColPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -176,7 +177,7 @@
             this.addinListView1.Location = new System.Drawing.Point(0, 0);
             this.addinListView1.MinimumSize = new System.Drawing.Size(210, 160);
             this.addinListView1.Name = "addinListView1";
-            this.addinListView1.Size = new System.Drawing.Size(210, 236);
+            this.addinListView1.Size = new System.Drawing.Size(250, 236);
             this.addinListView1.TabIndex = 0;
             // 
             // BatchProcessForm

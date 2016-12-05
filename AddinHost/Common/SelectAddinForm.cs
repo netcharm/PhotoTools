@@ -100,11 +100,12 @@ namespace NetCharm.Image.Addins.Common
             Host = host;
             InitializeComponent();
             //AddinUtils.Translate( null, this );
-            this.Translate();
         }
 
         private void SelectAddinForm_Load( object sender, EventArgs e )
         {
+            this.Translate();
+
             lvAddins.Clear();
             lvAddins.Groups.Clear();
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DialogTest\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-29 01:18+0800\n"
+"POT-Creation-Date: 2016-12-03 01:10+0800\n"
 "PO-Revision-Date: 2016-11-24 17:27+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -20,30 +20,54 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: MainForm.Designer.cs:50
+#: MainForm.Designer.cs:57
 msgid "Font Dialog"
 msgstr ""
 
-#: MainForm.Designer.cs:60
+#: MainForm.Designer.cs:67
 msgid "Color Dialog"
 msgstr ""
 
-#: MainForm.Designer.cs:71
+#: MainForm.Designer.cs:78
 msgid "System Font Dialog"
 msgstr ""
 
-#: MainForm.Designer.cs:81
+#: MainForm.Designer.cs:88
 msgid "Color Dialog Ex"
 msgstr ""
 
-#: MainForm.Designer.cs:92
+#: MainForm.Designer.cs:99
 msgid "Font Dialog Ex"
 msgstr ""
 
-#: MainForm.Designer.cs:103
+#: MainForm.Designer.cs:110
 msgid "System Color Dialog"
 msgstr ""
 
-#: MainForm.Designer.cs:151
+#: MainForm.Designer.cs:156
+msgid "Effect"
+msgstr ""
+
+#: MainForm.Designer.cs:168
+msgid "None"
+msgstr ""
+
+#: MainForm.Designer.cs:180
+msgid "Glow"
+msgstr ""
+
+#: MainForm.Designer.cs:192
+msgid "Outline"
+msgstr ""
+
+#: MainForm.Designer.cs:204
+msgid "Shadow"
+msgstr ""
+
+#: MainForm.Designer.cs:216
+msgid "Blur"
+msgstr ""
+
+#: MainForm.Designer.cs:236
 msgid "Dialog Test"
 msgstr ""

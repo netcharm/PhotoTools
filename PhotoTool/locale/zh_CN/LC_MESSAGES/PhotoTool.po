@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PhotoTool\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-27 02:24+0800\n"
+"POT-Creation-Date: 2016-12-06 01:23+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -149,8 +149,8 @@ msgstr "适应窗口"
 msgid "Fit Current Window Viewer"
 msgstr "图像缩放适应当前窗口"
 
-#: MainForm.resx:290 -> cmdViewZoom100.Text.value MainForm.resx:368
-#: tssLabelImageSize.Text.value MainForm.resx:371
+#: MainForm.resx:290 -> cmdViewZoom100.Text.value MainForm.resx:393
+#: tssLabelImageSize.Text.value MainForm.resx:396
 #: tssLabelImageSize.ToolTipText.value
 msgid "Image Size"
 msgstr "图像大小"
@@ -222,37 +222,37 @@ msgstr "关于"
 msgid "Show About Info"
 msgstr "显示应用以及插件的相关信息"
 
-#: MainForm.resx:359 -> tssLabelImageName.Text.value
+#: MainForm.resx:366 -> status.Text.value
+msgid "OK"
+msgstr "确认"
+
+#: MainForm.resx:384 -> tssLabelImageName.Text.value
 msgid "Image File"
 msgstr "图像文件"
 
-#: MainForm.resx:362 -> tssLabelImageName.ToolTipText.value
+#: MainForm.resx:387 -> tssLabelImageName.ToolTipText.value
 msgid "Image File Name"
 msgstr "图像文件名"
 
-#: MainForm.resx:377 -> tssLabelImageZoom.Text.value
+#: MainForm.resx:402 -> tssLabelImageZoom.Text.value
 msgid "Zoom"
 msgstr "缩放"
 
-#: MainForm.resx:384 -> tssLabelImageZoom.ToolTipText.value
+#: MainForm.resx:409 -> tssLabelImageZoom.ToolTipText.value
 msgid "Image Zoom Level"
 msgstr "图像缩放比例"
 
-#: MainForm.resx:390 -> tssLabelTimeCost.Text.value
+#: MainForm.resx:415 -> tssLabelTimeCost.Text.value
 msgid "Time"
 msgstr "时间"
 
-#: MainForm.resx:393 -> tssLabelTimeCost.ToolTipText.value
+#: MainForm.resx:418 -> tssLabelTimeCost.ToolTipText.value
 msgid "Effect Cost Times"
 msgstr "滤镜消耗时间"
 
-#: MainForm.resx:399 -> tssLabelImageInfo.Text.value
+#: MainForm.resx:424 -> tssLabelImageInfo.Text.value
 msgid "Ready"
 msgstr "就绪"
-
-#: MainForm.resx:415 -> status.Text.value
-msgid "OK"
-msgstr "确认"
 
 #: MainForm.resx:436 -> dlgOpen.Filter.value
 msgid ""
@@ -325,15 +325,15 @@ msgstr ""
 msgid "Photo Tool"
 msgstr "图像工具"
 
-#: MainForm.Designer.cs:405
+#: MainForm.Designer.cs:417
 msgid "Recent"
 msgstr "最近打开的"
 
-#: MainForm.cs:164
+#: MainForm.cs:165
 msgid "NewFile"
 msgstr "新文件"
 
-#: MainFormUtils.cs:895 MainFormUtils.cs:896 MainFormUtils.cs:897
+#: MainFormUtils.cs:929 MainFormUtils.cs:930 MainFormUtils.cs:931
 msgid "None"
 msgstr "无"
 

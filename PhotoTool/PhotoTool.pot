@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PhotoTool\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-11-30 02:17+0800\n"
-"PO-Revision-Date: 2016-11-30 02:17+0800\n"
+"POT-Creation-Date: 2016-12-06 01:23+0800\n"
+"PO-Revision-Date: 2016-12-06 01:23+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -149,8 +149,8 @@ msgstr ""
 msgid "Fit Current Window Viewer"
 msgstr ""
 
-#: MainForm.resx:290 -> cmdViewZoom100.Text.value MainForm.resx:368
-#: tssLabelImageSize.Text.value MainForm.resx:371
+#: MainForm.resx:290 -> cmdViewZoom100.Text.value MainForm.resx:393
+#: tssLabelImageSize.Text.value MainForm.resx:396
 #: tssLabelImageSize.ToolTipText.value
 msgid "Image Size"
 msgstr ""
@@ -222,36 +222,36 @@ msgstr ""
 msgid "Show About Info"
 msgstr ""
 
-#: MainForm.resx:359 -> tssLabelImageName.Text.value
+#: MainForm.resx:366 -> status.Text.value
+msgid "OK"
+msgstr ""
+
+#: MainForm.resx:384 -> tssLabelImageName.Text.value
 msgid "Image File"
 msgstr ""
 
-#: MainForm.resx:362 -> tssLabelImageName.ToolTipText.value
+#: MainForm.resx:387 -> tssLabelImageName.ToolTipText.value
 msgid "Image File Name"
 msgstr ""
 
-#: MainForm.resx:377 -> tssLabelImageZoom.Text.value
+#: MainForm.resx:402 -> tssLabelImageZoom.Text.value
 msgid "Zoom"
 msgstr ""
 
-#: MainForm.resx:384 -> tssLabelImageZoom.ToolTipText.value
+#: MainForm.resx:409 -> tssLabelImageZoom.ToolTipText.value
 msgid "Image Zoom Level"
 msgstr ""
 
-#: MainForm.resx:390 -> tssLabelTimeCost.Text.value
+#: MainForm.resx:415 -> tssLabelTimeCost.Text.value
 msgid "Time"
 msgstr ""
 
-#: MainForm.resx:393 -> tssLabelTimeCost.ToolTipText.value
+#: MainForm.resx:418 -> tssLabelTimeCost.ToolTipText.value
 msgid "Effect Cost Times"
 msgstr ""
 
-#: MainForm.resx:399 -> tssLabelImageInfo.Text.value
+#: MainForm.resx:424 -> tssLabelImageInfo.Text.value
 msgid "Ready"
-msgstr ""
-
-#: MainForm.resx:415 -> status.Text.value
-msgid "OK"
 msgstr ""
 
 #: MainForm.resx:436 -> dlgOpen.Filter.value
@@ -315,14 +315,14 @@ msgstr ""
 msgid "Photo Tool"
 msgstr ""
 
-#: MainForm.Designer.cs:405
+#: MainForm.Designer.cs:417
 msgid "Recent"
 msgstr ""
 
-#: MainForm.cs:164
+#: MainForm.cs:165
 msgid "NewFile"
 msgstr ""
 
-#: MainFormUtils.cs:895 MainFormUtils.cs:896 MainFormUtils.cs:897
+#: MainFormUtils.cs:929 MainFormUtils.cs:930 MainFormUtils.cs:931
 msgid "None"
 msgstr ""
