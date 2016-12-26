@@ -197,6 +197,9 @@ namespace ExtensionMethods
         Center = 2
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     static public partial class NetCharmExtensions
     {
         #region GDI32 API function
@@ -380,7 +383,6 @@ namespace ExtensionMethods
         {
             return ( Color.FromArgb( color.A, color.R, color.G, color.B ) );
         }
-
         #endregion
 
         #region Font & Typeface Routines
@@ -1341,9 +1343,97 @@ namespace ExtensionMethods
             return ( tPath );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="base64"></param>
+        /// <returns></returns>
+        static public Bitmap Base64ToImage( this string base64 )
+        {
+            Bitmap img = null;
+            if ( !string.IsNullOrEmpty( base64 ) )
+            {
+                try
+                {
+                    byte[] arr = Convert.FromBase64String(base64);
+                    using ( MemoryStream ms = new MemoryStream( arr ) )
+                    {
+                        img = new Bitmap( ms );
+
+                    }
+                }
+                catch ( Exception )
+                {
+
+                }
+            }
+            return ( img );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        static public string ImageToBase64(Image img)
+        {
+            string base64 = string.Empty;
+            if ( img is Image )
+            {
+                try
+                {
+                    using ( MemoryStream ms = new MemoryStream() )
+                    {
+                        img.Save( ms, ImageFormat.Png );
+
+                        byte[] arr = ms.ToArray();
+                        base64 = Convert.ToBase64String( arr, Base64FormattingOptions.InsertLineBreaks );
+                    }
+                }
+                catch ( Exception )
+                {
+
+                }
+            }
+            return ( base64 );
+        }
         #endregion
 
         #region Image Basic Routine
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imageSize"></param>
+        /// <param name="patternSize"></param>
+        /// <returns></returns>
+        static public Bitmap MakePatternImage( Size imageSize, int patternSize = 8, Color? fgColor = null, Color? bgColor = null )
+        {
+            Bitmap pat = new Bitmap(patternSize*2, patternSize*2, PixelFormat.Format32bppArgb);
+            using ( var g = Graphics.FromImage( pat ) )
+            {
+                g.SmoothingMode = SmoothingMode.HighQuality;
+
+                SolidBrush bb = new SolidBrush( fgColor ?? Color.Silver);
+                SolidBrush wb = new SolidBrush( bgColor ?? Color.White);
+
+                g.FillRectangle( bb, 0, 0, patternSize, patternSize );
+                g.FillRectangle( bb, patternSize, patternSize, patternSize, patternSize );
+
+                g.FillRectangle( wb, 0, patternSize, patternSize, patternSize );
+                g.FillRectangle( wb, patternSize, 0, patternSize, patternSize );
+            }
+
+            Bitmap bg = new Bitmap(imageSize.Width, imageSize.Height, PixelFormat.Format32bppArgb);
+            using ( var g = Graphics.FromImage( bg ) )
+            {
+                g.SmoothingMode = SmoothingMode.HighQuality;
+
+                TextureBrush pb = new TextureBrush(pat);
+                g.FillRectangle( pb, 0, 0, imageSize.Width, imageSize.Height );
+            }
+            return ( bg );
+        }
+
         /// <summary>
         /// 
         /// </summary>
