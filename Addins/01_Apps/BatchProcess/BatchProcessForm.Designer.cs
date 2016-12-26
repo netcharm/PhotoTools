@@ -42,9 +42,9 @@
             this.tsmiProcessAll = new System.Windows.Forms.ToolStripMenuItem();
             this.imgPreview = new Cyotek.Windows.Forms.ImageBox();
             this.pnlSetting = new System.Windows.Forms.Panel();
-            this.lvAddins = new NetCharm.Image.Addins.Controls.AddinListView();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.lvAddins = new NetCharm.Image.Addins.Controls.AddinListView();
             this.cmsFileList.SuspendLayout();
             this.pnlSetting.SuspendLayout();
             this.SuspendLayout();
@@ -159,6 +159,16 @@
             this.pnlSetting.Size = new System.Drawing.Size(478, 236);
             this.pnlSetting.TabIndex = 2;
             // 
+            // dlgOpen
+            // 
+            this.dlgOpen.DefaultExt = "jpg";
+            this.dlgOpen.Filter = "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All File(" +
+    "*.*)|*.*";
+            this.dlgOpen.Multiselect = true;
+            this.dlgOpen.ShowHelp = true;
+            this.dlgOpen.SupportMultiDottedExtensions = true;
+            this.dlgOpen.Title = "Add Image(s)";
+            // 
             // lvAddins
             // 
             this.lvAddins.Dock = System.Windows.Forms.DockStyle.Left;
@@ -170,16 +180,7 @@
             this.lvAddins.ShowToolbar = true;
             this.lvAddins.Size = new System.Drawing.Size(250, 236);
             this.lvAddins.TabIndex = 0;
-            // 
-            // dlgOpen
-            // 
-            this.dlgOpen.DefaultExt = "jpg";
-            this.dlgOpen.Filter = "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All File(" +
-    "*.*)|*.*";
-            this.dlgOpen.Multiselect = true;
-            this.dlgOpen.ShowHelp = true;
-            this.dlgOpen.SupportMultiDottedExtensions = true;
-            this.dlgOpen.Title = "Add Image(s)";
+            this.lvAddins.ValueChanged += new System.EventHandler(this.lvAddins_ValueChanged);
             // 
             // BatchProcessForm
             // 

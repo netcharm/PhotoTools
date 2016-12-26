@@ -10,9 +10,17 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
+using NetCharm.Image;
 
 namespace BatchProcess
 {
+    [Serializable]
+    public class BatchOption
+    {
+        public SaveOption SaveOption = new SaveOption();
+        public Dictionary<string, Dictionary<string, ParamItem>> FilterParams = new Dictionary<string, Dictionary<string, ParamItem>>();
+    }
+
     [Extension]
     [Serializable]
     public class Batch : IAddin
@@ -20,9 +28,11 @@ namespace BatchProcess
         private FileVersionInfo fv = null;
         private BatchProcessForm fm = null;
         private Image img = null;
+        private SaveOption option = new SaveOption();
 
         protected internal Form ParentForm = null;
 
+        #region Properties Override
         /// <summary>
         /// 
         /// </summary>
@@ -175,13 +185,13 @@ namespace BatchProcess
         {
             get
             {
-                if ( fm is Form ) img = fm.Image;
+                if ( fm is Form ) img = fm.ImageData;
                 return ( img );
             }
             set
             {
                 img = value;
-                if ( fm is Form ) fm.Image = img;
+                if ( fm is Form ) fm.ImageData = img;
             }
         }
 
@@ -225,7 +235,9 @@ namespace BatchProcess
         {
             get { return ( _success ); }
         }
+        #endregion
 
+        #region Methods Override
         /// <summary>
         /// 
         /// </summary>
@@ -301,25 +313,73 @@ namespace BatchProcess
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="image"></param>
+        /// <param name="src"></param>
         /// <returns></returns>
-        public Image Apply( Image image )
+        public Image Apply( Image src )
         {
+            var st = DateTime.Now.Ticks;
+            MessageBox.Show( "Calling Apply() method", "Title", MessageBoxButtons.OK );
+            //options = 
+
+            #region Apply Filters
+            foreach ( IAddin filter in Filters )
+            {
+                if ( filter.Enabled )
+                {
+                    //if ( options.FilterParams.ContainsKey( filter ) )
+                    //{
+                    //    filter.Params = options.FilterParams[filter];
+                    //}
+                    src = filter.Apply( src as Image ) as Bitmap;
+                }
+            }
+            #endregion
+
+            float tc = new TimeSpan( DateTime.Now.Ticks - st ).Seconds + new TimeSpan( DateTime.Now.Ticks - st ).Milliseconds / 1000f;
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.ApplyTiming, tc ) );
+            return ( src );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public bool Apply( string file )
+        {
+            bool result = false;
+            var st = DateTime.Now.Ticks;
             MessageBox.Show( "Calling Apply() method", "Title", MessageBoxButtons.OK );
 
+            var src = AddinUtils.LoadImage(file);
+            var dst = Apply(src);
 
+            //var dstFile = file.Re
+            //AddinUtils.SaveImage( dstFile, dst, option );
 
-
-            return ( image );
+            float tc = new TimeSpan( DateTime.Now.Ticks - st ).Seconds + new TimeSpan( DateTime.Now.Ticks - st ).Milliseconds / 1000f;
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.ApplyTiming, tc ) );
+            return ( result );
             //throw new NotImplementedException();
         }
 
-        public bool ApplyAll()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="files"></param>
+        /// <returns></returns>
+        public bool ApplyAll(string[] files)
         {
             bool result = false;
+            var st = DateTime.Now.Ticks;
 
             MessageBox.Show( "Calling ApplyAll() method", "Title", MessageBoxButtons.OK );
-
+            foreach(var f in files)
+            {
+                Apply( f );
+            }
+            float tc = new TimeSpan( DateTime.Now.Ticks - st ).Seconds + new TimeSpan( DateTime.Now.Ticks - st ).Milliseconds / 1000f;
+            Host.OnCommandPropertiesChange( new CommandPropertiesChangeEventArgs( AddinCommand.ApplyTiming, tc ) );
             return ( result );
         }
 
@@ -341,23 +401,85 @@ namespace BatchProcess
                         Open( cmdArgs[0] as string[] );
                     break;
                 case AddinCommand.ZoomIn:
-                    break;
                 case AddinCommand.ZoomOut:
-                    break;
+                case AddinCommand.ZoomRegion:
                 case AddinCommand.ZoomFit:
-                    break;
                 case AddinCommand.Zoom100:
+                case AddinCommand.ZoomLevel:
+                    if ( fm is BatchProcessForm )
+                        result = fm.Zoom( cmd );
+                    break;
+                case AddinCommand.GetImageSize:
+                    if ( fm is BatchProcessForm && fm.ImageData is Image )
+                        result = new Size( fm.ImageData.Width, fm.ImageData.Height );
+                    break;
+                case AddinCommand.GetImageColors:
+                    if ( fm is BatchProcessForm && fm.ImageData is Image )
+                        result = fm.ImageData.PixelFormat;
                     break;
                 case AddinCommand.Apply:
-                    Apply(null);
+                    if ( fm is BatchProcessForm )
+                        Apply( fm.SelectedFile );
                     break;
                 case AddinCommand.ApplyAll:
-                    ApplyAll();
+                    if( fm is BatchProcessForm )
+                        ApplyAll( fm.SelectedFiles );
                     break;
                 default:
                     break;
             }
             return ( true );
+        }
+        #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void InitParams()
+        {
+            Dictionary<string, object> kv = new Dictionary<string, object>();
+            kv.Add( "BatchOption", new BatchOption() );
+
+            Params.Clear();
+            foreach ( var item in kv )
+            {
+                Params.Add( item.Key, new ParamItem() );
+                Params[item.Key].Name = item.Key;
+                Params[item.Key].DisplayName = AddinUtils._( this, item.Key );
+                Params[item.Key].Type = item.Value.GetType();
+                Params[item.Key].Value = item.Value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
+        protected void GetParams( Form form )
+        {
+            if ( Params.Count == 0 ) InitParams();
+
+            if ( form is Form && !form.IsDisposed )
+            {
+                var cfm = (form as BatchProcessForm);
+                //Params["BatchOption"] = cfm.ParamOption;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="img"></param>
+        protected void SetParams( Form form, System.Drawing.Image img = null )
+        {
+            if ( Params.Count == 0 ) InitParams();
+
+            if ( form is Form && !form.IsDisposed )
+            {
+                var cfm = (form as BatchProcessForm);
+                //cfm.ParamOption = Params["BatchOption"];
+            }
         }
     }
 }
