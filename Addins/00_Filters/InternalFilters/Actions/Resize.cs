@@ -309,10 +309,13 @@ namespace InternalFilters.Actions
         /// <param name="form"></param>
         private void GetParams( ResizeForm form )
         {
-            Params["Width"] = form.ParamWidth;
-            Params["Height"] = form.ParamHeight;
-            Params["Aspect"] = form.ParamAspect;
-            Params["Method"] = form.ParamMethod;
+            if ( form is Form )
+            {
+                Params["Width"] = form.ParamWidth;
+                Params["Height"] = form.ParamHeight;
+                Params["Aspect"] = form.ParamAspect;
+                Params["Method"] = form.ParamMethod;
+            }
         }
 
         /// <summary>

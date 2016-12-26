@@ -66,6 +66,29 @@ namespace InternalFilters.Actions
 
         #endregion
 
+        #region Method override
+        /// <summary>
+        /// 
+        /// </summary>
+        private void InitParams()
+        {
+            Dictionary<string, object> kv = new Dictionary<string, object>();
+            kv.Add( "CropMode", CropMode.Transparency );
+            kv.Add( "CropSide", SideType.None );
+            kv.Add( "CropAspect", "1 x 1" );
+            kv.Add( "CropRegion", new Rectangle( 0, 0, 0, 0 ) );
+
+            Params.Clear();
+            foreach ( var item in kv )
+            {
+                Params.Add( item.Key, new ParamItem() );
+                Params[item.Key].Name = item.Key;
+                Params[item.Key].DisplayName = AddinUtils._( this, item.Key );
+                Params[item.Key].Type = item.Value.GetType();
+                Params[item.Key].Value = item.Value;
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -82,31 +105,37 @@ namespace InternalFilters.Actions
             if ( Params.ContainsKey( "CropRegion" ) )
                 ( form as CropForm ).ParamCropRegion = Params["CropRegion"];
         }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="form"></param>
         protected override void GetParams( Form form )
         {
-            if ( Params.ContainsKey( "CropMode" ) )
-                Params["CropMode"] = ( form as CropForm ).ParamCropMode;
-            else
-                Params.Add( "CropMode", ( form as CropForm ).ParamCropMode );
+            if ( Params.Count == 0 ) InitParams();
 
-            if ( Params.ContainsKey( "CropSide" ) )
-                Params["CropSide"] = ( form as CropForm ).ParamCropSide;
-            else
-                Params.Add( "CropSide", ( form as CropForm ).ParamCropSide );
+            if ( form is Form && !form.IsDisposed )
+            {
+                if ( Params.ContainsKey( "CropMode" ) )
+                    Params["CropMode"] = ( form as CropForm ).ParamCropMode;
+                else
+                    Params.Add( "CropMode", ( form as CropForm ).ParamCropMode );
 
-            if ( Params.ContainsKey( "CropAspect" ) )
-                Params["CropAspect"] = ( form as CropForm ).ParamCropAspect;
-            else
-                Params.Add( "CropAspect", ( form as CropForm ).ParamCropAspect );
+                if ( Params.ContainsKey( "CropSide" ) )
+                    Params["CropSide"] = ( form as CropForm ).ParamCropSide;
+                else
+                    Params.Add( "CropSide", ( form as CropForm ).ParamCropSide );
 
-            if ( Params.ContainsKey( "CropRegion" ) )
-                Params["CropRegion"] = ( form as CropForm ).ParamCropRegion;
-            else
-                Params.Add( "CropRegion", ( form as CropForm ).ParamCropRegion );
+                if ( Params.ContainsKey( "CropAspect" ) )
+                    Params["CropAspect"] = ( form as CropForm ).ParamCropAspect;
+                else
+                    Params.Add( "CropAspect", ( form as CropForm ).ParamCropAspect );
+
+                if ( Params.ContainsKey( "CropRegion" ) )
+                    Params["CropRegion"] = ( form as CropForm ).ParamCropRegion;
+                else
+                    Params.Add( "CropRegion", ( form as CropForm ).ParamCropRegion );
+            }
         }
 
         /// <summary>
@@ -219,5 +248,6 @@ namespace InternalFilters.Actions
             }
             return ( true );
         }
+        #endregion
     }
 }

@@ -133,13 +133,40 @@ namespace InternalFilters.Effects
         /// <summary>
         /// 
         /// </summary>
+        private void InitParams()
+        {
+            Dictionary<string, object> kv = new Dictionary<string, object>();
+            kv.Add( "GrayscaleMode", GrayscaleMode.BT709 );
+            kv.Add( "ColorMatrix", null );
+            kv.Add( "ColorMatrixFile", "" );
+
+            Params.Clear();
+            foreach ( var item in kv )
+            {
+                Params.Add( item.Key, new ParamItem() );
+                Params[item.Key].Name = item.Key;
+                Params[item.Key].DisplayName = AddinUtils._( this, item.Key );
+                Params[item.Key].Type = item.Value.GetType();
+                Params[item.Key].Value = item.Value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="form"></param>
         protected override void GetParams( Form form )
         {
-            Params["GrayscaleMode"] = ( form as GrayscaleForm ).ParamGrayscaleMode;
-            Params["ColorMatrix"] = ( form as GrayscaleForm ).ParamColorMatrix;
-            Params["ColorMatrixFile"] = ( form as GrayscaleForm ).ParamColorMatrixFile;
+            if ( Params.Count == 0 ) InitParams();
+
+            if ( form is Form && !form.IsDisposed )
+            {
+                Params["GrayscaleMode"] = ( form as GrayscaleForm ).ParamGrayscaleMode;
+                Params["ColorMatrix"] = ( form as GrayscaleForm ).ParamColorMatrix;
+                Params["ColorMatrixFile"] = ( form as GrayscaleForm ).ParamColorMatrixFile;
+            }
         }
+
         /// <summary>
         /// 
         /// </summary>

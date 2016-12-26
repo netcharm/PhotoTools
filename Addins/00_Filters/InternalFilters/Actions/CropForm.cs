@@ -254,7 +254,7 @@ namespace InternalFilters
                     if ( sender == btnModeTrans )
                     {
                         opaqueMode = ContentMaskMode.Alpha;
-                        cropMode = CropMode.Opaque;
+                        cropMode = CropMode.Transparency;
                     }
                     else if ( sender == btnModeTopLeft )
                     {

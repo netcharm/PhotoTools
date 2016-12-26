@@ -15,6 +15,8 @@ namespace NetCharm.Image.Addins.Controls
 
     public partial class AddinListView : UserControl
     {
+        public event EventHandler ValueChanged;
+
         private Size toolbarSize = new Size(32, 32);
 
         public bool ShowToolbar
@@ -172,6 +174,7 @@ namespace NetCharm.Image.Addins.Controls
                     if ( filter.Show( this.FindForm(), true ) == DialogResult.OK )
                     {
                         effectParams[filter] = filter.Params.Clone();
+                        this.ValueChanged?.Invoke( this, e );
                     }
                 }
             }
@@ -189,6 +192,7 @@ namespace NetCharm.Image.Addins.Controls
                     if ( ( lvi.Tag as IAddin ) is IAddin )
                     {
                         ( lvi.Tag as IAddin ).Enabled = lvi.Checked;
+                        this.ValueChanged?.Invoke( this, e );
                     }
                     lv.Invalidate( lvi.Bounds );
                 }
@@ -207,6 +211,7 @@ namespace NetCharm.Image.Addins.Controls
                     if ( ( lvi.Tag as IAddin ) is IAddin )
                     {
                         ( lvi.Tag as IAddin ).Enabled = lvi.Checked;
+                        this.ValueChanged?.Invoke( this, e );
                     }
                     lv.Invalidate( lvi.Bounds );
                 }
@@ -228,6 +233,7 @@ namespace NetCharm.Image.Addins.Controls
             }
             lvFilters.VirtualListSize = effects.Count;
             lvFilters.EndUpdate();
+            this.ValueChanged?.Invoke( this, e );
         }
 
         private void btnEffectRemove_Click( object sender, EventArgs e )
@@ -252,6 +258,7 @@ namespace NetCharm.Image.Addins.Controls
             lvFilters.SelectedIndices.Clear();
             lvFilters.VirtualListSize = effects.Count;
             lvFilters.EndUpdate();
+            this.ValueChanged?.Invoke( this, e );
         }
 
         private void btnEffectUp_Click( object sender, EventArgs e )
@@ -267,6 +274,7 @@ namespace NetCharm.Image.Addins.Controls
                 lvFilters.Items[i].Selected = false;
             }
             lvFilters.EndUpdate();
+            this.ValueChanged?.Invoke( this, e );
         }
 
         private void btnEffectDown_Click( object sender, EventArgs e )
@@ -288,6 +296,7 @@ namespace NetCharm.Image.Addins.Controls
                 lvFilters.Items[i].Selected = false;
             }
             lvFilters.EndUpdate();
+            this.ValueChanged?.Invoke( this, e );
         }
 
         private void AddinListView_Resize( object sender, EventArgs e )
