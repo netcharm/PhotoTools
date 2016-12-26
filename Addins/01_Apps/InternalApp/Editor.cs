@@ -287,6 +287,8 @@ namespace InternalFilters
                         fm.ClearHistory();
                         ImageData = Image.FromStream( fs );
                         //propertyItems = ImageData.PropertyItems;
+                        fm.Text = $"{DisplayName} - {Path.GetFileName( filename )}";
+                        lastImageFileName = filename;
                     }
                 }
                 if ( Host.CurrentApp != this )
@@ -294,7 +296,6 @@ namespace InternalFilters
                     Host.CurrentApp = this;
                     Host.CurrentApp.Show( ParentForm, false );
                 }
-                lastImageFileName = filename;
             }
         }
         /// <summary>

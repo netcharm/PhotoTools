@@ -934,7 +934,8 @@ namespace PhotoTool
             cmdFileApplyAll.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
             cmdFileSepApply.Visible = addins.CurrentApp is IAddin ? addins.CurrentApp.SupportMultiFile : false;
 
-            FixedMdiSize();
+            PerformLayout();
+            //FixedMdiSize();
         }
 
         #endregion Command Line Arguments Routines

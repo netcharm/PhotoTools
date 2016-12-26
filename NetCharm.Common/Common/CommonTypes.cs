@@ -24,7 +24,7 @@ namespace NetCharm.Common
     public enum CropMode
     {
         Selection = 0,
-        Opaque = 1,
+        Transparency = 1,
         TopLeft = 2,
         BottomRight = 3,
         AspectRatio = 4
