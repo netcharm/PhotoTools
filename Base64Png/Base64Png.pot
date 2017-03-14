@@ -6,7 +6,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: DialogTest\n"
+"Project-Id-Version: Base64Png\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
 "POT-Creation-Date: 2017-03-14 12:38+0800\n"
 "PO-Revision-Date: 2017-03-14 12:38+0800\n"
@@ -20,54 +20,42 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: MainForm.Designer.cs:57
-msgid "Font Dialog"
+#: MainForm.resx:139 -> picPreview.ToolTip.value
+msgid "Double-Click to Load Image"
 msgstr ""
 
-#: MainForm.Designer.cs:67
-msgid "Color Dialog"
+#: MainForm.resx:193 -> btnDecode.Text.value
+msgid "Decode"
 msgstr ""
 
-#: MainForm.Designer.cs:78
-msgid "System Font Dialog"
+#: MainForm.resx:196 -> btnDecode.ToolTip.value
+msgid "Decoding Base64 to Image"
 msgstr ""
 
-#: MainForm.Designer.cs:88
-msgid "Color Dialog Ex"
+#: MainForm.resx:223 -> btnEncode.Text.value
+msgid "Encode"
 msgstr ""
 
-#: MainForm.Designer.cs:99
-msgid "Font Dialog Ex"
+#: MainForm.resx:226 -> btnEncode.ToolTip.value
+msgid "Encoding Image to Base64"
 msgstr ""
 
-#: MainForm.Designer.cs:110
-msgid "System Color Dialog"
+#: MainForm.resx:253 -> btnPaste.Text.value
+msgid "Paste"
 msgstr ""
 
-#: MainForm.Designer.cs:156
-msgid "Effect"
+#: MainForm.resx:256 -> btnPaste.ToolTip.value
+msgid "Paste Image/Base64 from Clipboard"
 msgstr ""
 
-#: MainForm.Designer.cs:168
-msgid "None"
+#: MainForm.resx:283 -> btnCopy.Text.value
+msgid "Copy"
 msgstr ""
 
-#: MainForm.Designer.cs:180
-msgid "Glow"
+#: MainForm.resx:286 -> btnCopy.ToolTip.value
+msgid "Copy Base64 to Clipboard"
 msgstr ""
 
-#: MainForm.Designer.cs:192
-msgid "Outline"
-msgstr ""
-
-#: MainForm.Designer.cs:204
-msgid "Shadow"
-msgstr ""
-
-#: MainForm.Designer.cs:216
-msgid "Blur"
-msgstr ""
-
-#: MainForm.Designer.cs:236
-msgid "Dialog Test"
+#: MainForm.resx:310 -> $this.Text.value
+msgid "Base64 & PNG Utility"
 msgstr ""

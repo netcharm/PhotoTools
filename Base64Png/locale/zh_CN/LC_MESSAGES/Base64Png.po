@@ -1,0 +1,61 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Base64Png\n"
+"Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
+"POT-Creation-Date: 2017-03-14 12:33+0800\n"
+"PO-Revision-Date: 2017-03-14 12:33+0800\n"
+"Last-Translator: netcharm <netcharm@163.com>\n"
+"Language-Team: netcharm <netcharm@163.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: China\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+
+#: MainForm.resx:139 -> picPreview.ToolTip.value
+msgid "Double-Click to Load Image"
+msgstr ""
+
+#: MainForm.resx:193 -> btnDecode.Text.value
+msgid "Decode"
+msgstr ""
+
+#: MainForm.resx:196 -> btnDecode.ToolTip.value
+msgid "Decoding Base64 to Image"
+msgstr ""
+
+#: MainForm.resx:223 -> btnEncode.Text.value
+msgid "Encode"
+msgstr ""
+
+#: MainForm.resx:226 -> btnEncode.ToolTip.value
+msgid "Encoding Image to Base64"
+msgstr ""
+
+#: MainForm.resx:253 -> btnPaste.Text.value
+msgid "Paste"
+msgstr ""
+
+#: MainForm.resx:256 -> btnPaste.ToolTip.value
+msgid "Paste Image/Base64 from Clipboard"
+msgstr ""
+
+#: MainForm.resx:283 -> btnCopy.Text.value
+msgid "Copy"
+msgstr ""
+
+#: MainForm.resx:286 -> btnCopy.ToolTip.value
+msgid "Copy Base64 to Clipboard"
+msgstr ""
+
+#: MainForm.resx:310 -> $this.Text.value
+msgid "Base64 & PNG Utility"
+msgstr ""

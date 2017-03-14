@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Common.Controls\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-12-03 01:10+0800\n"
+"POT-Creation-Date: 2017-03-14 12:38+0800\n"
 "PO-Revision-Date: 2016-11-28 22:17+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -116,119 +116,167 @@ msgstr "参数名"
 msgid "%"
 msgstr ""
 
-#: Common\Extensions.cs:537
+#: Common\ColorDialog.cs:109 Common\ColorDialog.cs:193
+#: Common\ColorDialog.cs:198
+msgid "Load Palette"
+msgstr "载入调色盘文件"
+
+#: Common\ColorDialog.cs:117
+msgid "Open Palette File"
+msgstr "打开调色盘文件"
+
+#: Common\ColorDialog.cs:133
+msgid "Serializer does not support reading palettes."
+msgstr "序列化工具不支持读入此调色盘文件"
+
+#: Common\ColorDialog.cs:193
+msgid ""
+"Sorry, unable to open palette, the file format is not supported or is not "
+"recognized."
+msgstr "抱歉, 不能打开调色盘文件, 调色盘文件格式不支持或不可识别."
+
+#: Common\ColorDialog.cs:198
+#, csharp-format
+msgid "Sorry, unable to open palette. {0}"
+msgstr "抱歉, 不能打开调色盘文件. {0}"
+
+#: Common\ColorDialog.cs:204 Common\ColorDialog.cs:236
+#: Common\ColorDialog.cs:241
+msgid "Save Palette"
+msgstr "保存调色盘文件"
+
+#: Common\ColorDialog.cs:212
+msgid "Save Palette File As"
+msgstr "另存调色盘文件为"
+
+#: Common\ColorDialog.cs:224
+msgid "Serializer does not support writing palettes."
+msgstr "序列化工具不支持写入此调色盘文件"
+
+#: Common\ColorDialog.cs:236
+#, csharp-format
+msgid "Sorry, unable to save palette. {0}"
+msgstr "抱歉, 不能保存调色盘数据到文件. {0}"
+
+#: Common\ColorDialog.cs:241
+msgid ""
+"Sorry, unable to save palette, the file format is not supported or is not "
+"recognized."
+msgstr "抱歉, 不能保存调色盘文件, 调色盘文件格式不支持或不可识别."
+
+#: Common\Extensions.cs:551
 msgid "Thin"
 msgstr "细体"
 
-#: Common\Extensions.cs:538
+#: Common\Extensions.cs:552
 msgid "Light"
 msgstr "淡"
 
-#: Common\Extensions.cs:539 Common\FontDialog.cs:742
+#: Common\Extensions.cs:553 Common\FontDialog.cs:742
 msgid "Regular"
 msgstr "常规"
 
-#: Common\Extensions.cs:540
+#: Common\Extensions.cs:554
 msgid "Medium"
 msgstr "中等"
 
-#: Common\Extensions.cs:541
+#: Common\Extensions.cs:555
 msgid "Bold"
 msgstr "粗体"
 
-#: Common\Extensions.cs:542
+#: Common\Extensions.cs:556
 msgid "Black"
 msgstr "黑体"
 
-#: Common\Extensions.cs:543
+#: Common\Extensions.cs:557
 msgid "Oblique"
 msgstr "倾斜"
 
-#: Common\Extensions.cs:544
+#: Common\Extensions.cs:558
 msgid "Italic"
 msgstr "斜体"
 
-#: Common\Extensions.cs:546
+#: Common\Extensions.cs:560
 msgid "SemiBold"
 msgstr "半粗体"
 
-#: Common\Extensions.cs:547
+#: Common\Extensions.cs:561
 msgid "SemiCondensed"
 msgstr "半紧缩"
 
-#: Common\Extensions.cs:548
+#: Common\Extensions.cs:562
 msgid "Condensed"
 msgstr "紧缩"
 
-#: Common\Extensions.cs:549
+#: Common\Extensions.cs:563
 msgid "Expanded"
 msgstr "展开"
 
-#: Common\Extensions.cs:550
+#: Common\Extensions.cs:564
 msgid "Extended"
 msgstr "展开"
 
-#: Common\Extensions.cs:551
+#: Common\Extensions.cs:565
 msgid "Heavy"
 msgstr "重黑"
 
-#: Common\Extensions.cs:552
+#: Common\Extensions.cs:566
 msgid "ExtraBlack"
 msgstr "超黑体"
 
-#: Common\Extensions.cs:553
+#: Common\Extensions.cs:567
 msgid "Extra Black"
 msgstr "超黑体"
 
-#: Common\Extensions.cs:554
+#: Common\Extensions.cs:568
 msgid "UltraLight"
 msgstr "特淡"
 
-#: Common\Extensions.cs:555
+#: Common\Extensions.cs:569
 msgid "Ultra Light"
 msgstr "特淡"
 
-#: Common\Extensions.cs:556
+#: Common\Extensions.cs:570
 msgid "Ultra"
 msgstr "特"
 
-#: Common\Extensions.cs:557
+#: Common\Extensions.cs:571
 msgid "Extra"
 msgstr "超"
 
-#: Common\Extensions.cs:558
+#: Common\Extensions.cs:572
 msgid "Roman"
 msgstr "罗马体"
 
-#: Common\Extensions.cs:559
+#: Common\Extensions.cs:573
 msgid "Normal"
 msgstr "常规"
 
-#: Common\Extensions.cs:560
+#: Common\Extensions.cs:574
 msgid "regular"
 msgstr "常规"
 
-#: Common\Extensions.cs:562
+#: Common\Extensions.cs:576
 msgid "250"
 msgstr "细体"
 
-#: Common\Extensions.cs:563
+#: Common\Extensions.cs:577
 msgid "350"
 msgstr "常规"
 
-#: Common\Extensions.cs:564
+#: Common\Extensions.cs:578
 msgid "275"
 msgstr "特淡"
 
-#: Common\Extensions.cs:565
+#: Common\Extensions.cs:579
 msgid "750"
 msgstr "黑体"
 
-#: Common\Extensions.cs:567
+#: Common\Extensions.cs:581
 msgid "W3"
 msgstr "淡"
 
-#: Common\Extensions.cs:568
+#: Common\Extensions.cs:582
 msgid "W6"
 msgstr "半粗体"
 

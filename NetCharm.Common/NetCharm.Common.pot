@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Common\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-12-06 01:23+0800\n"
-"PO-Revision-Date: 2016-12-06 01:23+0800\n"
+"POT-Creation-Date: 2017-03-14 12:38+0800\n"
+"PO-Revision-Date: 2017-03-14 12:38+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -116,118 +116,162 @@ msgstr ""
 msgid "%"
 msgstr ""
 
-#: Common\Extensions.cs:537
-msgid "Thin"
+#: Common\ColorDialog.cs:109 Common\ColorDialog.cs:193
+#: Common\ColorDialog.cs:198
+msgid "Load Palette"
 msgstr ""
 
-#: Common\Extensions.cs:538
-msgid "Light"
+#: Common\ColorDialog.cs:117
+msgid "Open Palette File"
 msgstr ""
 
-#: Common\Extensions.cs:539 Common\FontDialog.cs:742
-msgid "Regular"
+#: Common\ColorDialog.cs:133
+msgid "Serializer does not support reading palettes."
 msgstr ""
 
-#: Common\Extensions.cs:540
-msgid "Medium"
+#: Common\ColorDialog.cs:193
+msgid "Sorry, unable to open palette, the file format is not supported or is not recognized."
 msgstr ""
 
-#: Common\Extensions.cs:541
-msgid "Bold"
+#: Common\ColorDialog.cs:198
+#, csharp-format
+msgid "Sorry, unable to open palette. {0}"
 msgstr ""
 
-#: Common\Extensions.cs:542
-msgid "Black"
+#: Common\ColorDialog.cs:204 Common\ColorDialog.cs:236
+#: Common\ColorDialog.cs:241
+msgid "Save Palette"
 msgstr ""
 
-#: Common\Extensions.cs:543
-msgid "Oblique"
+#: Common\ColorDialog.cs:212
+msgid "Save Palette File As"
 msgstr ""
 
-#: Common\Extensions.cs:544
-msgid "Italic"
+#: Common\ColorDialog.cs:224
+msgid "Serializer does not support writing palettes."
 msgstr ""
 
-#: Common\Extensions.cs:546
-msgid "SemiBold"
+#: Common\ColorDialog.cs:236
+#, csharp-format
+msgid "Sorry, unable to save palette. {0}"
 msgstr ""
 
-#: Common\Extensions.cs:547
-msgid "SemiCondensed"
-msgstr ""
-
-#: Common\Extensions.cs:548
-msgid "Condensed"
-msgstr ""
-
-#: Common\Extensions.cs:549
-msgid "Expanded"
-msgstr ""
-
-#: Common\Extensions.cs:550
-msgid "Extended"
+#: Common\ColorDialog.cs:241
+msgid "Sorry, unable to save palette, the file format is not supported or is not recognized."
 msgstr ""
 
 #: Common\Extensions.cs:551
-msgid "Heavy"
+msgid "Thin"
 msgstr ""
 
 #: Common\Extensions.cs:552
-msgid "ExtraBlack"
+msgid "Light"
 msgstr ""
 
-#: Common\Extensions.cs:553
-msgid "Extra Black"
+#: Common\Extensions.cs:553 Common\FontDialog.cs:742
+msgid "Regular"
 msgstr ""
 
 #: Common\Extensions.cs:554
-msgid "UltraLight"
+msgid "Medium"
 msgstr ""
 
 #: Common\Extensions.cs:555
-msgid "Ultra Light"
+msgid "Bold"
 msgstr ""
 
 #: Common\Extensions.cs:556
-msgid "Ultra"
+msgid "Black"
 msgstr ""
 
 #: Common\Extensions.cs:557
-msgid "Extra"
+msgid "Oblique"
 msgstr ""
 
 #: Common\Extensions.cs:558
-msgid "Roman"
-msgstr ""
-
-#: Common\Extensions.cs:559
-msgid "Normal"
+msgid "Italic"
 msgstr ""
 
 #: Common\Extensions.cs:560
-msgid "regular"
+msgid "SemiBold"
+msgstr ""
+
+#: Common\Extensions.cs:561
+msgid "SemiCondensed"
 msgstr ""
 
 #: Common\Extensions.cs:562
-msgid "250"
+msgid "Condensed"
 msgstr ""
 
 #: Common\Extensions.cs:563
-msgid "350"
+msgid "Expanded"
 msgstr ""
 
 #: Common\Extensions.cs:564
-msgid "275"
+msgid "Extended"
 msgstr ""
 
 #: Common\Extensions.cs:565
-msgid "750"
+msgid "Heavy"
+msgstr ""
+
+#: Common\Extensions.cs:566
+msgid "ExtraBlack"
 msgstr ""
 
 #: Common\Extensions.cs:567
-msgid "W3"
+msgid "Extra Black"
 msgstr ""
 
 #: Common\Extensions.cs:568
+msgid "UltraLight"
+msgstr ""
+
+#: Common\Extensions.cs:569
+msgid "Ultra Light"
+msgstr ""
+
+#: Common\Extensions.cs:570
+msgid "Ultra"
+msgstr ""
+
+#: Common\Extensions.cs:571
+msgid "Extra"
+msgstr ""
+
+#: Common\Extensions.cs:572
+msgid "Roman"
+msgstr ""
+
+#: Common\Extensions.cs:573
+msgid "Normal"
+msgstr ""
+
+#: Common\Extensions.cs:574
+msgid "regular"
+msgstr ""
+
+#: Common\Extensions.cs:576
+msgid "250"
+msgstr ""
+
+#: Common\Extensions.cs:577
+msgid "350"
+msgstr ""
+
+#: Common\Extensions.cs:578
+msgid "275"
+msgstr ""
+
+#: Common\Extensions.cs:579
+msgid "750"
+msgstr ""
+
+#: Common\Extensions.cs:581
+msgid "W3"
+msgstr ""
+
+#: Common\Extensions.cs:582
 msgid "W6"
 msgstr ""

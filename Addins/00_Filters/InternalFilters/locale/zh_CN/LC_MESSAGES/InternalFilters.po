@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: Actions\PinObject.cs:362 Actions\PinObject.cs:367 Actions\PinObject.cs:372
+#: Actions\PinObject.cs:365 Actions\PinObject.cs:370 Actions\PinObject.cs:375
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: InternalFilters\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-12-03 01:10+0800\n"
+"POT-Creation-Date: 2017-03-14 12:33+0800\n"
 "PO-Revision-Date: 2016-10-13 14:52+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -116,12 +116,12 @@ msgid "Common"
 msgstr "公共"
 
 #: Actions\PinObjectForm.resx:877 -> tabPagePicture.Text.value
-#: Actions\PinObject.cs:366 Actions\PinObject.cs:368
+#: Actions\PinObject.cs:369 Actions\PinObject.cs:371
 msgid "Picture"
 msgstr "图像"
 
 #: Actions\PinObjectForm.resx:955 -> tabPageText.Text.value
-#: Actions\PinObject.cs:361
+#: Actions\PinObject.cs:364
 msgid "Text"
 msgstr "文本"
 
@@ -450,15 +450,15 @@ msgstr "装饰"
 msgid "Decoration Image"
 msgstr "装饰图像"
 
-#: Actions\PinObject.cs:363
+#: Actions\PinObject.cs:366
 msgid "Simple Text"
 msgstr "简单文本"
 
-#: Actions\PinObject.cs:371
+#: Actions\PinObject.cs:374
 msgid "Smart Tag"
 msgstr "场景标签"
 
-#: Actions\PinObject.cs:373
+#: Actions\PinObject.cs:376
 msgid "Rich-Contents Text"
 msgstr "丰富内容文本"
 

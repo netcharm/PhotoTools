@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BatchProcess\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
-"POT-Creation-Date: 2016-12-03 01:10+0800\n"
+"POT-Creation-Date: 2017-03-14 12:33+0800\n"
 "PO-Revision-Date: 2016-10-14 22:58+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
@@ -20,39 +20,39 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: BatchProcessForm.Designer.cs:74
+#: BatchProcessForm.Designer.cs:73
 msgid "File"
 msgstr "文件"
 
-#: BatchProcessForm.Designer.cs:79
+#: BatchProcessForm.Designer.cs:78
 msgid "Full Path"
 msgstr "完整路径"
 
-#: BatchProcessForm.Designer.cs:99
+#: BatchProcessForm.Designer.cs:98
 msgid "Add Image"
 msgstr "加入图像文件"
 
-#: BatchProcessForm.Designer.cs:106
+#: BatchProcessForm.Designer.cs:105
 msgid "Remove Image"
 msgstr "移除图像文件"
 
-#: BatchProcessForm.Designer.cs:118
+#: BatchProcessForm.Designer.cs:117
 msgid "Clear"
 msgstr "清除文件列表内容"
 
-#: BatchProcessForm.Designer.cs:130
+#: BatchProcessForm.Designer.cs:129
 msgid "Process Selected"
 msgstr "处理选中图像文件"
 
-#: BatchProcessForm.Designer.cs:137
+#: BatchProcessForm.Designer.cs:136
 msgid "Process All"
 msgstr "处理全部图像文件"
 
-#: BatchProcessForm.Designer.cs:152
+#: BatchProcessForm.Designer.cs:151
 msgid "Preview"
 msgstr "预览"
 
-#: BatchProcessForm.Designer.cs:167
+#: BatchProcessForm.Designer.cs:166
 msgid ""
 "Image File(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|All "
 "File(*.*)|*.*"
@@ -60,22 +60,22 @@ msgstr ""
 "图像文件(*.jpg;*.bmp;*.png;*.tif;*.gif)|*.jpg;*.bmp;*.png;*.tif;*.gif|全部文"
 "件(*.*)|*.*"
 
-#: BatchProcessForm.Designer.cs:171
+#: BatchProcessForm.Designer.cs:170
 msgid "Add Image(s)"
 msgstr "加入图像文件"
 
-#: BatchProcessForm.Designer.cs:193
+#: BatchProcessForm.Designer.cs:195
 msgid "Batch Image Processing"
 msgstr "批量图像处理"
 
-#: Batch.cs:121
+#: Batch.cs:131
 msgid "Batch"
 msgstr "批量"
 
-#: Batch.cs:137
+#: Batch.cs:147
 msgid "Application"
 msgstr "应用模块"
 
-#: Batch.cs:146
+#: Batch.cs:156
 msgid "Batch Image Process"
 msgstr "批量图像处理"
