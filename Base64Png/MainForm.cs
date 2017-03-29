@@ -65,7 +65,8 @@ namespace Base64Png
             {
                 try
                 {
-                    byte[] arr = Convert.FromBase64String(base64);
+                    string bs = Regex.Replace(base64, @"data:image/.*?;base64,", "", RegexOptions.IgnoreCase);
+                    byte[] arr = Convert.FromBase64String(bs.Trim());
                     using ( MemoryStream ms = new MemoryStream( arr ) )
                     {
                         img = Image.FromStream( ms );
@@ -85,7 +86,7 @@ namespace Base64Png
         /// </summary>
         /// <param name="png"></param>
         /// <returns></returns>
-        internal string ImageToBase64(Image img)
+        internal string ImageToBase64(Image img, bool prefix = false )
         {
             string base64 = string.Empty;
             if ( img is Image )
@@ -94,10 +95,15 @@ namespace Base64Png
                 {
                     using ( MemoryStream ms = new MemoryStream() )
                     {
-                        img.Save( ms, ImageFormat.Png );
+                        //img.Save( ms, ImageFormat.Png );
+                        img.Save( ms, img.RawFormat);
 
                         byte[] arr = ms.ToArray();
                         base64 = Convert.ToBase64String( arr, Base64FormattingOptions.InsertLineBreaks );
+                        if ( prefix )
+                        {
+                            base64 = $"data:{img.RawFormat.GetMimeType()};base64,{base64}";
+                        }
                     }
                 }
                 catch ( Exception )
@@ -162,10 +168,13 @@ namespace Base64Png
         /// </summary>
         private void AdjustSizeMode()
         {
-            if ( picPreview.Image.Width > picPreview.ClientSize.Width || picPreview.Image.Height > picPreview.ClientSize.Height )
-                picPreview.SizeMode = PictureBoxSizeMode.Zoom;
-            else
-                picPreview.SizeMode = PictureBoxSizeMode.CenterImage;
+            if ( picPreview.Image is Image)
+            {
+                if ( picPreview.Image.Width > picPreview.ClientSize.Width || picPreview.Image.Height > picPreview.ClientSize.Height )
+                    picPreview.SizeMode = PictureBoxSizeMode.Zoom;
+                else
+                    picPreview.SizeMode = PictureBoxSizeMode.CenterImage;
+            }
         }
 
         public MainForm()
@@ -282,7 +291,7 @@ namespace Base64Png
 
         private void btnEncode_Click( object sender, EventArgs e )
         {
-            edBase64.Text = ImageToBase64( picPreview.Image );
+            edBase64.Text = ImageToBase64( picPreview.Image, chkEncPrefix.Checked );
         }
 
         private void btnPaste_Click( object sender, EventArgs e )
@@ -330,4 +339,14 @@ namespace Base64Png
         }
 
     }
+
+    static class Exts
+    {
+        public static string GetMimeType( this ImageFormat imageFormat )
+        {
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+            return codecs.First( codec => codec.FormatID == imageFormat.Guid ).MimeType;
+        }
+    }
+
 }

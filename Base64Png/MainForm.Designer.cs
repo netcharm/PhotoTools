@@ -37,6 +37,7 @@
             this.btnPaste = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.chkEncPrefix = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,11 +93,18 @@
             // 
             this.toolTip.ShowAlways = true;
             // 
+            // chkEncPrefix
+            // 
+            resources.ApplyResources(this.chkEncPrefix, "chkEncPrefix");
+            this.chkEncPrefix.Name = "chkEncPrefix";
+            this.chkEncPrefix.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkEncPrefix);
             this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.btnEncode);
@@ -125,6 +133,7 @@
         private System.Windows.Forms.Button btnPaste;
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.CheckBox chkEncPrefix;
     }
 }
 
