@@ -38,7 +38,13 @@
             this.btnCopy = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.chkEncPrefix = new System.Windows.Forms.CheckBox();
+            this.grpType = new System.Windows.Forms.GroupBox();
+            this.radioFormatGIF = new System.Windows.Forms.RadioButton();
+            this.radioFormatBMP = new System.Windows.Forms.RadioButton();
+            this.radioFormatJPG = new System.Windows.Forms.RadioButton();
+            this.radioFormatPNG = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
+            this.grpType.SuspendLayout();
             this.SuspendLayout();
             // 
             // picPreview
@@ -99,11 +105,51 @@
             this.chkEncPrefix.Name = "chkEncPrefix";
             this.chkEncPrefix.UseVisualStyleBackColor = true;
             // 
+            // grpType
+            // 
+            this.grpType.Controls.Add(this.radioFormatGIF);
+            this.grpType.Controls.Add(this.radioFormatBMP);
+            this.grpType.Controls.Add(this.radioFormatJPG);
+            this.grpType.Controls.Add(this.radioFormatPNG);
+            resources.ApplyResources(this.grpType, "grpType");
+            this.grpType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grpType.Name = "grpType";
+            this.grpType.TabStop = false;
+            // 
+            // radioFormatGIF
+            // 
+            resources.ApplyResources(this.radioFormatGIF, "radioFormatGIF");
+            this.radioFormatGIF.Name = "radioFormatGIF";
+            this.radioFormatGIF.TabStop = true;
+            this.radioFormatGIF.UseVisualStyleBackColor = true;
+            // 
+            // radioFormatBMP
+            // 
+            resources.ApplyResources(this.radioFormatBMP, "radioFormatBMP");
+            this.radioFormatBMP.Name = "radioFormatBMP";
+            this.radioFormatBMP.TabStop = true;
+            this.radioFormatBMP.UseVisualStyleBackColor = true;
+            // 
+            // radioFormatJPG
+            // 
+            resources.ApplyResources(this.radioFormatJPG, "radioFormatJPG");
+            this.radioFormatJPG.Name = "radioFormatJPG";
+            this.radioFormatJPG.TabStop = true;
+            this.radioFormatJPG.UseVisualStyleBackColor = true;
+            // 
+            // radioFormatPNG
+            // 
+            resources.ApplyResources(this.radioFormatPNG, "radioFormatPNG");
+            this.radioFormatPNG.Name = "radioFormatPNG";
+            this.radioFormatPNG.TabStop = true;
+            this.radioFormatPNG.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grpType);
             this.Controls.Add(this.chkEncPrefix);
             this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.btnCopy);
@@ -119,6 +165,8 @@
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).EndInit();
+            this.grpType.ResumeLayout(false);
+            this.grpType.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +182,11 @@
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.CheckBox chkEncPrefix;
+        private System.Windows.Forms.GroupBox grpType;
+        private System.Windows.Forms.RadioButton radioFormatGIF;
+        private System.Windows.Forms.RadioButton radioFormatBMP;
+        private System.Windows.Forms.RadioButton radioFormatJPG;
+        private System.Windows.Forms.RadioButton radioFormatPNG;
     }
 }
 

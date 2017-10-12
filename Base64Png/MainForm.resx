@@ -148,7 +148,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;picPreview.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="edBase64.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 270</value>
@@ -178,7 +178,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;edBase64.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnDecode.Location" type="System.Drawing.Point, System.Drawing">
     <value>270, 8</value>
@@ -205,7 +205,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnDecode.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="btnEncode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -235,7 +235,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnEncode.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnPaste.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -265,7 +265,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnPaste.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnCopy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -295,13 +295,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCopy.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="chkEncPrefix.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
   <data name="chkEncPrefix.Location" type="System.Drawing.Point, System.Drawing">
-    <value>270, 67</value>
+    <value>270, 64</value>
   </data>
   <data name="chkEncPrefix.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 0, 0</value>
@@ -328,6 +328,162 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkEncPrefix.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="radioFormatGIF.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioFormatGIF.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="radioFormatGIF.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioFormatGIF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 90</value>
+  </data>
+  <data name="radioFormatGIF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 16</value>
+  </data>
+  <data name="radioFormatGIF.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="radioFormatGIF.Text" xml:space="preserve">
+    <value>GIF</value>
+  </data>
+  <data name="&gt;&gt;radioFormatGIF.Name" xml:space="preserve">
+    <value>radioFormatGIF</value>
+  </data>
+  <data name="&gt;&gt;radioFormatGIF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioFormatGIF.Parent" xml:space="preserve">
+    <value>grpType</value>
+  </data>
+  <data name="&gt;&gt;radioFormatGIF.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioFormatBMP.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioFormatBMP.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="radioFormatBMP.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioFormatBMP.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 66</value>
+  </data>
+  <data name="radioFormatBMP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 16</value>
+  </data>
+  <data name="radioFormatBMP.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioFormatBMP.Text" xml:space="preserve">
+    <value>BMP</value>
+  </data>
+  <data name="&gt;&gt;radioFormatBMP.Name" xml:space="preserve">
+    <value>radioFormatBMP</value>
+  </data>
+  <data name="&gt;&gt;radioFormatBMP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioFormatBMP.Parent" xml:space="preserve">
+    <value>grpType</value>
+  </data>
+  <data name="&gt;&gt;radioFormatBMP.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="radioFormatJPG.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioFormatJPG.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="radioFormatJPG.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioFormatJPG.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 42</value>
+  </data>
+  <data name="radioFormatJPG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 16</value>
+  </data>
+  <data name="radioFormatJPG.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioFormatJPG.Text" xml:space="preserve">
+    <value>JPG</value>
+  </data>
+  <data name="&gt;&gt;radioFormatJPG.Name" xml:space="preserve">
+    <value>radioFormatJPG</value>
+  </data>
+  <data name="&gt;&gt;radioFormatJPG.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioFormatJPG.Parent" xml:space="preserve">
+    <value>grpType</value>
+  </data>
+  <data name="&gt;&gt;radioFormatJPG.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radioFormatPNG.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioFormatPNG.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="radioFormatPNG.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 18</value>
+  </data>
+  <data name="radioFormatPNG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 16</value>
+  </data>
+  <data name="radioFormatPNG.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioFormatPNG.Text" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="&gt;&gt;radioFormatPNG.Name" xml:space="preserve">
+    <value>radioFormatPNG</value>
+  </data>
+  <data name="&gt;&gt;radioFormatPNG.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioFormatPNG.Parent" xml:space="preserve">
+    <value>grpType</value>
+  </data>
+  <data name="&gt;&gt;radioFormatPNG.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="grpType.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="grpType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>270, 90</value>
+  </data>
+  <data name="grpType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 114</value>
+  </data>
+  <data name="grpType.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="grpType.Text" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="&gt;&gt;grpType.Name" xml:space="preserve">
+    <value>grpType</value>
+  </data>
+  <data name="&gt;&gt;grpType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpType.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpType.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

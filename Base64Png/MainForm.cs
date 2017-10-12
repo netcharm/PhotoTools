@@ -86,7 +86,7 @@ namespace Base64Png
         /// </summary>
         /// <param name="png"></param>
         /// <returns></returns>
-        internal string ImageToBase64(Image img, bool prefix = false )
+        internal string ImageToBase64(Image img, bool prefix = false)
         {
             string base64 = string.Empty;
             if ( img is Image )
@@ -95,14 +95,22 @@ namespace Base64Png
                 {
                     using ( MemoryStream ms = new MemoryStream() )
                     {
-                        //img.Save( ms, ImageFormat.Png );
-                        img.Save( ms, img.RawFormat);
+                        string mime = img.RawFormat.GetMimeType();
+                        if ( string.IsNullOrEmpty(mime) )
+                        {
+                            mime = ImageFormat.Png.GetMimeType();
+                            img.Save( ms, ImageFormat.Png );
+                        }
+                        else
+                        {
+                            img.Save( ms, img.RawFormat );
+                        }
 
                         byte[] arr = ms.ToArray();
                         base64 = Convert.ToBase64String( arr, Base64FormattingOptions.InsertLineBreaks );
                         if ( prefix )
                         {
-                            base64 = $"data:{img.RawFormat.GetMimeType()};base64,{base64}";
+                            base64 = $"data:{mime};base64,{base64}";
                         }
                     }
                 }
@@ -345,7 +353,14 @@ namespace Base64Png
         public static string GetMimeType( this ImageFormat imageFormat )
         {
             ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
-            return codecs.First( codec => codec.FormatID == imageFormat.Guid ).MimeType;
+            try
+            {
+                return codecs.First( codec => codec.FormatID == imageFormat.Guid ).MimeType;
+            }
+            catch(Exception)
+            {
+                return ( string.Empty );
+            }
         }
     }
 
