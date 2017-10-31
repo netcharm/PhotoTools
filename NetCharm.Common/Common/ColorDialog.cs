@@ -344,10 +344,7 @@ namespace NetCharm.Common
                 }
                 else if ( string.Equals( tsmi.Name, "tsmiColorValueName", StringComparison.CurrentCultureIgnoreCase ) )
                 {
-                    if ( colorManager.Color.IsNamedColor )
-                        color = colorManager.Color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.NAME );
-                    else
-                        color = colorManager.Color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.ARGB );
+                    color = colorManager.Color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.NAME );
                 }
                 Clipboard.SetText( color );
             }

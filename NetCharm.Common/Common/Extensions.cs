@@ -360,6 +360,12 @@ namespace ExtensionMethods
             string html = sharp ? "#":string.Empty;
             switch ( order )
             {
+                case HtmlColorOrder.NAME:
+                    if ( color.IsNamedColor )
+                        html = string.Format( $"{color.Name}" );
+                    else
+                        html = color.ToHtml( sharp, HtmlColorOrder.RGB );
+                    break;
                 case HtmlColorOrder.RGB:
                     html = string.Format( $"{html}" + "{0:X2}{1:X2}{2:X2}", color.R, color.G, color.B );
                     break;
@@ -389,7 +395,10 @@ namespace ExtensionMethods
             switch ( order )
             {
                 case HtmlColorOrder.NAME:
-                    html = string.Format( $"{color.Name}" );
+                    if ( color.IsNamedColor )
+                        html = string.Format( $"{color.Name}" );
+                    else
+                        html = color.ToCSS( value, HtmlColorOrder.RGBA );
                     break;
                 case HtmlColorOrder.RGB:
                     if(value)
