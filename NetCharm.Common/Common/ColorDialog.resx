@@ -117,7 +117,118 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="cmCopyColorValue.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>250, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tsmiColorValueHexRGB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueHexRGB.Text" xml:space="preserve">
+    <value>HEX RGB</value>
+  </data>
+  <data name="tsmiColorValueHexBGR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueHexBGR.Text" xml:space="preserve">
+    <value>HEX BGR</value>
+  </data>
+  <data name="tsmiColorValueHexARGB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueHexARGB.Text" xml:space="preserve">
+    <value>HEX ARGB</value>
+  </data>
+  <data name="tsmiColorValueHexABGR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueHexABGR.Text" xml:space="preserve">
+    <value>HEX ABGR</value>
+  </data>
+  <data name="tsmiColorValueHexRGBA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueHexRGBA.Text" xml:space="preserve">
+    <value>HEX RGBA</value>
+  </data>
+  <data name="tsmiColorValueHexBGRA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueHexBGRA.Text" xml:space="preserve">
+    <value>HEX BGRA</value>
+  </data>
+  <data name="tsmiColorValueHexSharp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueHexSharp.Text" xml:space="preserve">
+    <value>HEX With #</value>
+  </data>
+  <data name="tsmiColorValueSep0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 6</value>
+  </data>
+  <data name="tsmiColorValueCssRGB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueCssRGB.Text" xml:space="preserve">
+    <value>CSS RGB</value>
+  </data>
+  <data name="tsmiColorValueCssRGBA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueCssRGBA.Text" xml:space="preserve">
+    <value>CSS RGBA</value>
+  </data>
+  <data name="tsmiColorValueCssHSL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueCssHSL.Text" xml:space="preserve">
+    <value>CSS HSL</value>
+  </data>
+  <data name="tsmiColorValueCssHSLA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueCssHSLA.Text" xml:space="preserve">
+    <value>CSS HSLA</value>
+  </data>
+  <data name="tsmiColorValueCssPercent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueCssPercent.Text" xml:space="preserve">
+    <value>CSS Using %</value>
+  </data>
+  <data name="tsmiColorValueSep1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 6</value>
+  </data>
+  <data name="tsmiColorValueColorRGB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueColorRGB.Text" xml:space="preserve">
+    <value>COLORRGB</value>
+  </data>
+  <data name="tsmiColorValueColorBGR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueColorBGR.Text" xml:space="preserve">
+    <value>COLORBGR</value>
+  </data>
+  <data name="tsmiColorValueSep2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 6</value>
+  </data>
+  <data name="tsmiColorValueName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiColorValueName.Text" xml:space="preserve">
+    <value>Color Name</value>
+  </data>
+  <data name="cmCopyColorValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 374</value>
+  </data>
+  <data name="&gt;&gt;cmCopyColorValue.Name" xml:space="preserve">
+    <value>cmCopyColorValue</value>
+  </data>
+  <data name="&gt;&gt;cmCopyColorValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="colorWheel.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 13</value>
   </data>
@@ -138,7 +249,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorWheel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <metadata name="colorManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -162,7 +273,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorEditor.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="colorGrid.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -205,7 +316,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorGrid.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="lightnessColorSlider.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 13</value>
@@ -226,7 +337,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lightnessColorSlider.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="screenColorPicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -247,7 +358,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;screenColorPicker.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="btnApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -277,7 +388,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnApply.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -307,7 +418,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btnOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -337,7 +448,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOk.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="colorPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -361,7 +472,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnPalette.Location" type="System.Drawing.Point, System.Drawing">
     <value>467, 101</value>
@@ -385,7 +496,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnPalette.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -407,6 +518,114 @@
   </data>
   <data name="&gt;&gt;colorManager.Type" xml:space="preserve">
     <value>Cyotek.Windows.Forms.ColorEditorManager, Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexRGB.Name" xml:space="preserve">
+    <value>tsmiColorValueHexRGB</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexRGB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexBGR.Name" xml:space="preserve">
+    <value>tsmiColorValueHexBGR</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexBGR.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexARGB.Name" xml:space="preserve">
+    <value>tsmiColorValueHexARGB</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexARGB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexABGR.Name" xml:space="preserve">
+    <value>tsmiColorValueHexABGR</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexABGR.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexRGBA.Name" xml:space="preserve">
+    <value>tsmiColorValueHexRGBA</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexRGBA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexBGRA.Name" xml:space="preserve">
+    <value>tsmiColorValueHexBGRA</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexBGRA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexSharp.Name" xml:space="preserve">
+    <value>tsmiColorValueHexSharp</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueHexSharp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueSep0.Name" xml:space="preserve">
+    <value>tsmiColorValueSep0</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueSep0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssRGB.Name" xml:space="preserve">
+    <value>tsmiColorValueCssRGB</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssRGB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssRGBA.Name" xml:space="preserve">
+    <value>tsmiColorValueCssRGBA</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssRGBA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueSep1.Name" xml:space="preserve">
+    <value>tsmiColorValueSep1</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueSep1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueColorRGB.Name" xml:space="preserve">
+    <value>tsmiColorValueColorRGB</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueColorRGB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueColorBGR.Name" xml:space="preserve">
+    <value>tsmiColorValueColorBGR</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueColorBGR.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueSep2.Name" xml:space="preserve">
+    <value>tsmiColorValueSep2</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueSep2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueName.Name" xml:space="preserve">
+    <value>tsmiColorValueName</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssHSL.Name" xml:space="preserve">
+    <value>tsmiColorValueCssHSL</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssHSL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssHSLA.Name" xml:space="preserve">
+    <value>tsmiColorValueCssHSLA</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssHSLA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssPercent.Name" xml:space="preserve">
+    <value>tsmiColorValueCssPercent</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssPercent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ColorDialog</value>

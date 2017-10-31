@@ -218,7 +218,7 @@ namespace ExtensionMethods
         private static XmlLanguage locale_enkey = XmlLanguage.GetLanguage( locale_en );
         private static XmlLanguage locale_uikey = XmlLanguage.GetLanguage( locale_ui );
 
-        static public string[] SystemLocales(this CultureInfo culture)
+        static public string[] SystemLocales( this CultureInfo culture )
         {
             List<string> langs = new List<string>();
             foreach ( CultureInfo ci in CultureInfo.GetCultures( CultureTypes.AllCultures ) )
@@ -324,14 +324,92 @@ namespace ExtensionMethods
         #endregion
 
         #region Color Extension Methods
+        public enum HtmlColorOrder
+        {
+            NAME = 0,
+            RGB = 1,
+            BGR = 2,
+            RGBA = 3,
+            BGRA = 4,
+            ARGB = 5,
+            ABGR = 6,
+            HSL = 7,
+            HSLA = 8,
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="color"></param>
-        /// <returns></returns>
+        /// <returns></returns>        
         static public string ToHtml( this Color color )
         {
             string html = string.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", color.A, color.R, color.G, color.B);
+            return ( html );
+        }
+
+        static public string ToHtml( this Color color, bool sharp = true )
+        {
+            string html = sharp ? "#":string.Empty;
+            html = string.Format( $"{html}{0:X2}{1:X2}{2:X2}{3:X2}", color.A, color.R, color.G, color.B );
+            return ( html );
+        }
+
+        static public string ToHtml( this Color color, bool sharp = true, HtmlColorOrder order = default( HtmlColorOrder ) )
+        {
+            string html = sharp ? "#":string.Empty;
+            switch ( order )
+            {
+                case HtmlColorOrder.RGB:
+                    html = string.Format( $"{html}" + "{0:X2}{1:X2}{2:X2}", color.R, color.G, color.B );
+                    break;
+                case HtmlColorOrder.BGR:
+                    html = string.Format( $"{html}" + "{0:X2}{1:X2}{2:X2}", color.B, color.G, color.R );
+                    break;
+                case HtmlColorOrder.RGBA:
+                    html = string.Format( $"{html}" + "{0:X2}{1:X2}{2:X2}{3:X2}", color.R, color.G, color.B, color.A );
+                    break;
+                case HtmlColorOrder.BGRA:
+                    html = string.Format( $"{html}" + "{0:X2}{1:X2}{2:X2}{3:X2}", color.B, color.G, color.R, color.A );
+                    break;
+                case HtmlColorOrder.ARGB:
+                    html = string.Format( $"{html}" + "{0:X2}{1:X2}{2:X2}{3:X2}", color.A, color.R, color.G, color.B );
+                    break;
+                case HtmlColorOrder.ABGR:
+                    html = string.Format( $"{html}" + "{0:X2}{1:X2}{2:X2}{3:X2}", color.A, color.B, color.G, color.R );
+                    break;
+            }
+            return ( html );
+        }
+
+        static public string ToCSS( this Color color, bool value = true, HtmlColorOrder order = default( HtmlColorOrder ) )
+        {
+            string html = string.Empty;
+            double factor = 255f;
+            switch ( order )
+            {
+                case HtmlColorOrder.NAME:
+                    html = string.Format( $"{color.Name}" );
+                    break;
+                case HtmlColorOrder.RGB:
+                    if(value)
+                        html = string.Format( "rgb( {0}, {1}, {2} )", color.R, color.G, color.B );
+                    else
+                        html = string.Format( "rgb( {0:0%}, {1:0%}, {2:0%} )", color.R / factor, color.G / factor, color.B / factor );
+                    break;
+                case HtmlColorOrder.RGBA:
+                    if ( value )
+                        html = string.Format( "rgba( {0}, {1}, {2}, {3} )", color.R, color.G, color.B, color.A );
+                    else
+                        html = string.Format( "rgba( {0:0%}, {1:0%}, {2:0%}, {3:F2} )", color.R / factor, color.G / factor, color.B / factor, color.A / factor );
+                    break;
+                case HtmlColorOrder.HSL:
+                    html = string.Format( "hsl( {0:F0}, {1:0%}, {2:0%} )", color.GetHue(), color.GetSaturation(), color.GetBrightness() );
+                    break;
+                case HtmlColorOrder.HSLA:
+                    html = string.Format( "hsla( {0:F0}, {1:0%}, {2:0%}, {3:F2} )", color.GetHue(), color.GetSaturation(), color.GetBrightness(), color.A / factor );
+                    break;
+            }
             return ( html );
         }
 
@@ -413,7 +491,7 @@ namespace ExtensionMethods
                 try
                 {
                     var facelist = new Dictionary<string, Media.Typeface>();
-                    if ( FamilyList.ContainsKey( f_key ))
+                    if ( FamilyList.ContainsKey( f_key ) )
                         facelist = FamilyList[f_key];
 
                     if ( f.FaceNames.ContainsKey( locale_key ) )
@@ -588,7 +666,7 @@ namespace ExtensionMethods
         /// </summary>
         /// <param name="facenames"></param>
         /// <returns></returns>
-        static public Dictionary<string, string> FaceNameList(this Dictionary<string, string> facenames )
+        static public Dictionary<string, string> FaceNameList( this Dictionary<string, string> facenames )
         {
             return ( FontStyleList );
         }
@@ -929,7 +1007,7 @@ namespace ExtensionMethods
                 var tPath = new GraphicsPath();
                 tPath.StartFigure();
                 tPath.AddString( text, font.FontFamily, (int) font.Style, emSize,
-                                 new PointF( 0, size.Height /4.0f ),
+                                 new PointF( 0, size.Height / 4.0f ),
                                  tFormat );
                 tPath.CloseFigure();
                 //g.DrawPath( new Pen( color, 1f ), tPath );
@@ -994,7 +1072,7 @@ namespace ExtensionMethods
             var fontStyle = System.Windows.FontStyles.Normal;
             var fontWeight = System.Windows.FontWeights.Normal;
             var textDecorations = new System.Windows.TextDecorationCollection();
-            foreach (var d in decoration )
+            foreach ( var d in decoration )
             {
                 textDecorations.Add( d );
             }
@@ -1049,7 +1127,7 @@ namespace ExtensionMethods
             #endregion
 
             #region Set FormattedText Alignment
-            if ( align == TextAlignH.Left)
+            if ( align == TextAlignH.Left )
                 formattedText.TextAlignment = System.Windows.TextAlignment.Left;
             else if ( align == TextAlignH.Center )
                 formattedText.TextAlignment = System.Windows.TextAlignment.Center;
@@ -1140,7 +1218,7 @@ namespace ExtensionMethods
             if ( strikeout )
                 decoration.Add( System.Windows.TextDecorations.Strikethrough );
             return ( ToBitmap( text, fontface, decoration, fontsize, locale, align, fgColor, bgColor ) );
-               
+
         }
 
         /// <summary>
@@ -1176,9 +1254,9 @@ namespace ExtensionMethods
 
             #region Get Text Align
             var align = TextAlignH.Left;
-            foreach(var s in fontstyle.Split())
+            foreach ( var s in fontstyle.Split() )
             {
-                if(string.Equals(s.Trim(), "Center", StringComparison.CurrentCultureIgnoreCase))
+                if ( string.Equals( s.Trim(), "Center", StringComparison.CurrentCultureIgnoreCase ) )
                     align = TextAlignH.Center;
                 else if ( string.Equals( s.Trim(), "Right", StringComparison.CurrentCultureIgnoreCase ) )
                     align = TextAlignH.Right;
@@ -1194,7 +1272,7 @@ namespace ExtensionMethods
             {
                 font = new Font( fontfamily, emSize, styleFont );
             }
-            catch(Exception)
+            catch ( Exception )
             {
                 //try
                 //{
@@ -1237,13 +1315,13 @@ namespace ExtensionMethods
 
                 #region Adjust fontstyle string
                 var fontstyles = new List<string>();
-                foreach (var s in fontstyle.Split())
+                foreach ( var s in fontstyle.Split() )
                 {
                     var st = s.Trim();
                     if ( string.Equals( st, "Underline", StringComparison.CurrentCultureIgnoreCase ) ||
                        string.Equals( st, "Strikeout", StringComparison.CurrentCultureIgnoreCase ) )
                         continue;
-                    else if( string.Equals( st, "250", StringComparison.CurrentCultureIgnoreCase ) )
+                    else if ( string.Equals( st, "250", StringComparison.CurrentCultureIgnoreCase ) )
                         fontstyles.Add( "Thin" );
                     else if ( string.Equals( st, "350", StringComparison.CurrentCultureIgnoreCase ) )
                         fontstyles.Add( "Regular" );
@@ -1375,7 +1453,7 @@ namespace ExtensionMethods
         /// </summary>
         /// <param name="img"></param>
         /// <returns></returns>
-        static public string ImageToBase64(Image img)
+        static public string ImageToBase64( Image img )
         {
             string base64 = string.Empty;
             if ( img is Image )
@@ -1818,7 +1896,7 @@ namespace ExtensionMethods
         /// <param name="src"></param>
         /// <param name="srcRect"></param>
         /// <returns></returns>
-        static public Image Crop(this Image src, Rectangle srcRect)
+        static public Image Crop( this Image src, Rectangle srcRect )
         {
             var result = new Bitmap( srcRect.Width, srcRect.Height, src.PixelFormat );
             using ( var g = Graphics.FromImage( result ) )
@@ -1834,7 +1912,7 @@ namespace ExtensionMethods
         /// <param name="src"></param>
         /// <param name="newSize"></param>
         /// <returns></returns>
-        static public Image Resize(this Image src, Size newSize)
+        static public Image Resize( this Image src, Size newSize )
         {
             var result = new Bitmap( newSize.Width, newSize.Height, src.PixelFormat );
             using ( var g = Graphics.FromImage( result ) )
@@ -1891,7 +1969,7 @@ namespace ExtensionMethods
         /// <param name="opacity"></param>
         /// <param name="angle"></param>
         /// <returns></returns>
-        static public Bitmap Shadow(this Bitmap src, Color color, int width, double opacity = 0.6f, double angle = 315 )
+        static public Bitmap Shadow( this Bitmap src, Color color, int width, double opacity = 0.6f, double angle = 315 )
         {
             Bitmap result = new Bitmap(src);
             #region Get DPI 
@@ -1973,7 +2051,7 @@ namespace ExtensionMethods
         /// <param name="src"></param>
         /// <param name="radius"></param>
         /// <returns></returns>
-        static public Bitmap Blur( this Bitmap src, double radius=20 )
+        static public Bitmap Blur( this Bitmap src, double radius = 20 )
         {
             Bitmap result = new Bitmap(src);
             #region Get DPI 

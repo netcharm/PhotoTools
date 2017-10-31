@@ -42,11 +42,32 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.colorPanel = new System.Windows.Forms.Panel();
             this.btnPalette = new System.Windows.Forms.Button();
+            this.cmCopyColorValue = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiColorValueHexRGB = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueHexBGR = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueHexARGB = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueHexABGR = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueHexRGBA = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueHexBGRA = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueHexSharp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueSep0 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiColorValueCssRGB = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueCssRGBA = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueSep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiColorValueColorRGB = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueColorBGR = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueSep2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiColorValueName = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueCssHSL = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueCssHSLA = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorValueCssPercent = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmCopyColorValue.SuspendLayout();
             this.SuspendLayout();
             // 
             // colorWheel
             // 
             this.colorWheel.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorWheel.ContextMenuStrip = this.cmCopyColorValue;
             resources.ApplyResources(this.colorWheel, "colorWheel");
             this.colorWheel.Name = "colorWheel";
             // 
@@ -61,6 +82,7 @@
             // 
             // colorEditor
             // 
+            this.colorEditor.ContextMenuStrip = this.cmCopyColorValue;
             resources.ApplyResources(this.colorEditor, "colorEditor");
             this.colorEditor.Name = "colorEditor";
             this.colorEditor.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -119,6 +141,7 @@
             // colorPanel
             // 
             resources.ApplyResources(this.colorPanel, "colorPanel");
+            this.colorPanel.ContextMenuStrip = this.cmCopyColorValue;
             this.colorPanel.Name = "colorPanel";
             // 
             // btnPalette
@@ -127,6 +150,142 @@
             this.btnPalette.Name = "btnPalette";
             this.btnPalette.UseVisualStyleBackColor = true;
             this.btnPalette.Click += new System.EventHandler(this.btnPalette_Click);
+            // 
+            // cmCopyColorValue
+            // 
+            this.cmCopyColorValue.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiColorValueHexRGB,
+            this.tsmiColorValueHexBGR,
+            this.tsmiColorValueHexARGB,
+            this.tsmiColorValueHexABGR,
+            this.tsmiColorValueHexRGBA,
+            this.tsmiColorValueHexBGRA,
+            this.tsmiColorValueHexSharp,
+            this.tsmiColorValueSep0,
+            this.tsmiColorValueCssRGB,
+            this.tsmiColorValueCssRGBA,
+            this.tsmiColorValueCssHSL,
+            this.tsmiColorValueCssHSLA,
+            this.tsmiColorValueCssPercent,
+            this.tsmiColorValueSep1,
+            this.tsmiColorValueColorRGB,
+            this.tsmiColorValueColorBGR,
+            this.tsmiColorValueSep2,
+            this.tsmiColorValueName});
+            this.cmCopyColorValue.Name = "cmCopyColorValue";
+            resources.ApplyResources(this.cmCopyColorValue, "cmCopyColorValue");
+            // 
+            // tsmiColorValueHexRGB
+            // 
+            this.tsmiColorValueHexRGB.Name = "tsmiColorValueHexRGB";
+            resources.ApplyResources(this.tsmiColorValueHexRGB, "tsmiColorValueHexRGB");
+            this.tsmiColorValueHexRGB.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueHexBGR
+            // 
+            this.tsmiColorValueHexBGR.Name = "tsmiColorValueHexBGR";
+            resources.ApplyResources(this.tsmiColorValueHexBGR, "tsmiColorValueHexBGR");
+            this.tsmiColorValueHexBGR.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueHexARGB
+            // 
+            this.tsmiColorValueHexARGB.Name = "tsmiColorValueHexARGB";
+            resources.ApplyResources(this.tsmiColorValueHexARGB, "tsmiColorValueHexARGB");
+            this.tsmiColorValueHexARGB.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueHexABGR
+            // 
+            this.tsmiColorValueHexABGR.Name = "tsmiColorValueHexABGR";
+            resources.ApplyResources(this.tsmiColorValueHexABGR, "tsmiColorValueHexABGR");
+            this.tsmiColorValueHexABGR.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueHexRGBA
+            // 
+            this.tsmiColorValueHexRGBA.Name = "tsmiColorValueHexRGBA";
+            resources.ApplyResources(this.tsmiColorValueHexRGBA, "tsmiColorValueHexRGBA");
+            this.tsmiColorValueHexRGBA.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueHexBGRA
+            // 
+            this.tsmiColorValueHexBGRA.Name = "tsmiColorValueHexBGRA";
+            resources.ApplyResources(this.tsmiColorValueHexBGRA, "tsmiColorValueHexBGRA");
+            this.tsmiColorValueHexBGRA.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueHexSharp
+            // 
+            this.tsmiColorValueHexSharp.Checked = true;
+            this.tsmiColorValueHexSharp.CheckOnClick = true;
+            this.tsmiColorValueHexSharp.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiColorValueHexSharp.Name = "tsmiColorValueHexSharp";
+            resources.ApplyResources(this.tsmiColorValueHexSharp, "tsmiColorValueHexSharp");
+            // 
+            // tsmiColorValueSep0
+            // 
+            this.tsmiColorValueSep0.Name = "tsmiColorValueSep0";
+            resources.ApplyResources(this.tsmiColorValueSep0, "tsmiColorValueSep0");
+            this.tsmiColorValueSep0.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueCssRGB
+            // 
+            this.tsmiColorValueCssRGB.Name = "tsmiColorValueCssRGB";
+            resources.ApplyResources(this.tsmiColorValueCssRGB, "tsmiColorValueCssRGB");
+            this.tsmiColorValueCssRGB.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueCssRGBA
+            // 
+            this.tsmiColorValueCssRGBA.Name = "tsmiColorValueCssRGBA";
+            resources.ApplyResources(this.tsmiColorValueCssRGBA, "tsmiColorValueCssRGBA");
+            this.tsmiColorValueCssRGBA.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueSep1
+            // 
+            this.tsmiColorValueSep1.Name = "tsmiColorValueSep1";
+            resources.ApplyResources(this.tsmiColorValueSep1, "tsmiColorValueSep1");
+            this.tsmiColorValueSep1.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueColorRGB
+            // 
+            this.tsmiColorValueColorRGB.Name = "tsmiColorValueColorRGB";
+            resources.ApplyResources(this.tsmiColorValueColorRGB, "tsmiColorValueColorRGB");
+            this.tsmiColorValueColorRGB.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueColorBGR
+            // 
+            this.tsmiColorValueColorBGR.Name = "tsmiColorValueColorBGR";
+            resources.ApplyResources(this.tsmiColorValueColorBGR, "tsmiColorValueColorBGR");
+            this.tsmiColorValueColorBGR.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueSep2
+            // 
+            this.tsmiColorValueSep2.Name = "tsmiColorValueSep2";
+            resources.ApplyResources(this.tsmiColorValueSep2, "tsmiColorValueSep2");
+            this.tsmiColorValueSep2.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueName
+            // 
+            this.tsmiColorValueName.Name = "tsmiColorValueName";
+            resources.ApplyResources(this.tsmiColorValueName, "tsmiColorValueName");
+            this.tsmiColorValueName.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueCssHSL
+            // 
+            this.tsmiColorValueCssHSL.Name = "tsmiColorValueCssHSL";
+            resources.ApplyResources(this.tsmiColorValueCssHSL, "tsmiColorValueCssHSL");
+            this.tsmiColorValueCssHSL.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueCssHSLA
+            // 
+            this.tsmiColorValueCssHSLA.Name = "tsmiColorValueCssHSLA";
+            resources.ApplyResources(this.tsmiColorValueCssHSLA, "tsmiColorValueCssHSLA");
+            this.tsmiColorValueCssHSLA.Click += new System.EventHandler(this.tsmiColorValueCopy_Click);
+            // 
+            // tsmiColorValueCssPercent
+            // 
+            this.tsmiColorValueCssPercent.Checked = true;
+            this.tsmiColorValueCssPercent.CheckOnClick = true;
+            this.tsmiColorValueCssPercent.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiColorValueCssPercent.Name = "tsmiColorValueCssPercent";
+            resources.ApplyResources(this.tsmiColorValueCssPercent, "tsmiColorValueCssPercent");
             // 
             // ColorDialog
             // 
@@ -151,6 +310,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.ColorDialog_Load);
+            this.cmCopyColorValue.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -169,5 +329,24 @@
         private System.Windows.Forms.Panel colorPanel;
         private System.Windows.Forms.ContextMenuStrip cmPalette;
         private System.Windows.Forms.Button btnPalette;
+        private System.Windows.Forms.ContextMenuStrip cmCopyColorValue;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueHexRGB;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueHexBGR;
+        private System.Windows.Forms.ToolStripSeparator tsmiColorValueSep0;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueCssRGB;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueCssRGBA;
+        private System.Windows.Forms.ToolStripSeparator tsmiColorValueSep1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueColorRGB;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueColorBGR;
+        private System.Windows.Forms.ToolStripSeparator tsmiColorValueSep2;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueName;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueHexRGBA;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueHexBGRA;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueHexARGB;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueHexABGR;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueHexSharp;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueCssHSL;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueCssHSLA;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColorValueCssPercent;
     }
 }
