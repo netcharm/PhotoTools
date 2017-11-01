@@ -408,7 +408,7 @@ namespace ExtensionMethods
                     break;
                 case HtmlColorOrder.RGBA:
                     if ( value )
-                        html = string.Format( "rgba( {0}, {1}, {2}, {3} )", color.R, color.G, color.B, color.A );
+                        html = string.Format( "rgba( {0}, {1}, {2}, {3:F2} )", color.R, color.G, color.B, color.A / factor );
                     else
                         html = string.Format( "rgba( {0:0%}, {1:0%}, {2:0%}, {3:F2} )", color.R / factor, color.G / factor, color.B / factor, color.A / factor );
                     break;

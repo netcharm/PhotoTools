@@ -513,12 +513,6 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Color Picker</value>
   </data>
-  <data name="&gt;&gt;colorManager.Name" xml:space="preserve">
-    <value>colorManager</value>
-  </data>
-  <data name="&gt;&gt;colorManager.Type" xml:space="preserve">
-    <value>Cyotek.Windows.Forms.ColorEditorManager, Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
-  </data>
   <data name="&gt;&gt;tsmiColorValueHexRGB.Name" xml:space="preserve">
     <value>tsmiColorValueHexRGB</value>
   </data>
@@ -579,6 +573,24 @@
   <data name="&gt;&gt;tsmiColorValueCssRGBA.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;tsmiColorValueCssHSL.Name" xml:space="preserve">
+    <value>tsmiColorValueCssHSL</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssHSL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssHSLA.Name" xml:space="preserve">
+    <value>tsmiColorValueCssHSLA</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssHSLA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssPercent.Name" xml:space="preserve">
+    <value>tsmiColorValueCssPercent</value>
+  </data>
+  <data name="&gt;&gt;tsmiColorValueCssPercent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tsmiColorValueSep1.Name" xml:space="preserve">
     <value>tsmiColorValueSep1</value>
   </data>
@@ -609,23 +621,11 @@
   <data name="&gt;&gt;tsmiColorValueName.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tsmiColorValueCssHSL.Name" xml:space="preserve">
-    <value>tsmiColorValueCssHSL</value>
+  <data name="&gt;&gt;colorManager.Name" xml:space="preserve">
+    <value>colorManager</value>
   </data>
-  <data name="&gt;&gt;tsmiColorValueCssHSL.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsmiColorValueCssHSLA.Name" xml:space="preserve">
-    <value>tsmiColorValueCssHSLA</value>
-  </data>
-  <data name="&gt;&gt;tsmiColorValueCssHSLA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsmiColorValueCssPercent.Name" xml:space="preserve">
-    <value>tsmiColorValueCssPercent</value>
-  </data>
-  <data name="&gt;&gt;tsmiColorValueCssPercent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colorManager.Type" xml:space="preserve">
+    <value>Cyotek.Windows.Forms.ColorEditorManager, Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ColorDialog</value>

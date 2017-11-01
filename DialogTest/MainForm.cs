@@ -107,7 +107,7 @@ namespace DialogTest
             dlgFont.Apply += new System.EventHandler( dlgFont_Apply );
             //dlgFont.Color = color;
             dlgFont.SelectedFont = SystemFonts.DefaultFont;
-            dlgFont.FontSize = 12;
+            dlgFont.FontSize = 14f;
             if ( dlgFont.ShowDialog() == DialogResult.OK )
             {
                 //
@@ -123,7 +123,7 @@ namespace DialogTest
         private void btnFontDialogEx_Click( object sender, EventArgs e )
         {
             dlgFontEx.Font = SystemFonts.DefaultFont;
-            dlgFontEx.Size = 18;
+            dlgFontEx.Size = 14f;
             if ( dlgFontEx.ShowDialog() == DialogResult.OK )
             {
                 var face = dlgFontEx.TypefaceName + (dlgFontEx.Underline? " Underline" : "") + (dlgFontEx.Strikeout? " Strikeout" : "");

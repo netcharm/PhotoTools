@@ -37,6 +37,75 @@ namespace NetCharm.Common
             }
         }
 
+        private void applyColorValueContextMenu( Color color=default(Color) )
+        {
+            string colorValue = string.Empty;
+            bool sharp = tsmiColorValueHexSharp.Checked;
+            bool value = !tsmiColorValueCssPercent.Checked;
+            foreach ( var item in cmCopyColorValue.Items )
+            {
+                if ( item.GetType() == typeof( ToolStripSeparator ) ) continue;
+                if ( item == tsmiColorValueHexSharp ) continue;
+                if ( item == tsmiColorValueCssPercent ) continue;
+
+                var tsmi = item as ToolStripMenuItem;
+
+                if ( string.Equals( tsmi.Name, "tsmiColorValueHexRGB", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.RGB );
+                }
+                else if ( string.Equals( tsmi.Name, "tsmiColorValueHexBGR", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.BGR );
+                }
+                else if ( string.Equals( tsmi.Name, "tsmiColorValueHexRGBA", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.RGBA );
+                }
+                else if ( string.Equals( tsmi.Name, "tsmiColorValueHexBGRA", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.BGRA );
+                }
+                else if ( string.Equals( tsmi.Name, "tsmiColorValueHexARGB", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.ARGB );
+                }
+                else if ( string.Equals( tsmi.Name, "tsmiColorValueHexABGR", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.ABGR );
+                }
+                else if ( string.Equals( tsmi.Name, "tsmiColorValueCssRGB", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = color.ToCSS( value, NetCharmExtensions.HtmlColorOrder.RGB );
+                }
+                else if ( string.Equals( tsmi.Name, "tsmiColorValueCssRGBA", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = color.ToCSS( value, NetCharmExtensions.HtmlColorOrder.RGBA );
+                }
+                else if ( string.Equals( tsmi.Name, "tsmiColorValueCssHSL", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = color.ToCSS( sharp, NetCharmExtensions.HtmlColorOrder.HSL );
+                }
+                else if ( string.Equals( tsmi.Name, "tsmiColorValueCssHSLA", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = color.ToCSS( sharp, NetCharmExtensions.HtmlColorOrder.HSLA );
+                }
+                else if ( string.Equals( tsmi.Name, "tsmiColorValueColorRGB", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = $"COLOR{color.ToHtml( false, NetCharmExtensions.HtmlColorOrder.RGB )}";
+                }
+                else if ( string.Equals( tsmi.Name, "tsmiColorValueColorBGR", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = $"COLOR{color.ToHtml( false, NetCharmExtensions.HtmlColorOrder.BGR )}";
+                }
+                else if ( string.Equals( tsmi.Name, "tsmiColorValueName", StringComparison.CurrentCultureIgnoreCase ) )
+                {
+                    colorValue = color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.NAME );
+                }
+                tsmi.Text = colorValue;
+            }
+        }
+
         public bool ShowApply
         {
             get { return ( btnApply.Visible ); }
@@ -272,6 +341,8 @@ namespace NetCharm.Common
         private void colorEditorManager_ColorChanged( object sender, EventArgs e )
         {
             colorPanel.BackColor = colorManager.Color;
+
+            applyColorValueContextMenu( colorManager.Color );
         }
 
         private void btnPalette_Click( object sender, EventArgs e )
@@ -290,63 +361,20 @@ namespace NetCharm.Common
         {
             try
             {
-                string color = string.Empty;
-                bool sharp = tsmiColorValueHexSharp.Checked;
-                bool value = !tsmiColorValueCssPercent.Checked;
+                if ( sender.GetType() == typeof( ToolStripSeparator ) ) return;
+                if ( sender == tsmiColorValueHexSharp )
+                {
+                    applyColorValueContextMenu( colorManager.Color );
+                    return;
+                }
+                if ( sender == tsmiColorValueCssPercent )
+                {
+                    applyColorValueContextMenu( colorManager.Color );
+                    return;
+                }
+
                 var tsmi = sender as ToolStripMenuItem;
-                if(string.Equals(tsmi.Name, "tsmiColorValueHexRGB", StringComparison.CurrentCultureIgnoreCase))
-                {
-                    color = colorManager.Color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.RGB );
-                }
-                else if( string.Equals( tsmi.Name, "tsmiColorValueHexBGR", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    color = colorManager.Color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.BGR );
-                }
-                else if ( string.Equals( tsmi.Name, "tsmiColorValueHexRGBA", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    color = colorManager.Color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.RGBA );
-                }
-                else if ( string.Equals( tsmi.Name, "tsmiColorValueHexBGRA", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    color = colorManager.Color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.BGRA );
-                }
-                else if ( string.Equals( tsmi.Name, "tsmiColorValueHexARGB", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    color = colorManager.Color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.ARGB );
-                }
-                else if ( string.Equals( tsmi.Name, "tsmiColorValueHexABGR", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    color = colorManager.Color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.ABGR );
-                }
-                else if ( string.Equals( tsmi.Name, "tsmiColorValueCssRGB", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    color = colorManager.Color.ToCSS( value, NetCharmExtensions.HtmlColorOrder.RGB );
-                }
-                else if ( string.Equals( tsmi.Name, "tsmiColorValueCssRGBA", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    color = colorManager.Color.ToCSS( value, NetCharmExtensions.HtmlColorOrder.RGBA );
-                }
-                else if ( string.Equals( tsmi.Name, "tsmiColorValueCssHSL", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    color = colorManager.Color.ToCSS( sharp, NetCharmExtensions.HtmlColorOrder.HSL );
-                }
-                else if ( string.Equals( tsmi.Name, "tsmiColorValueCssHSLA", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    color = colorManager.Color.ToCSS( sharp, NetCharmExtensions.HtmlColorOrder.HSLA );
-                }
-                else if ( string.Equals( tsmi.Name, "tsmiColorValueColorRGB", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    color = $"COLOR{colorManager.Color.ToHtml( false, NetCharmExtensions.HtmlColorOrder.RGB )}";
-                }
-                else if ( string.Equals( tsmi.Name, "tsmiColorValueColorBGR", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    color = $"COLOR{colorManager.Color.ToHtml( false, NetCharmExtensions.HtmlColorOrder.BGR )}";
-                }
-                else if ( string.Equals( tsmi.Name, "tsmiColorValueName", StringComparison.CurrentCultureIgnoreCase ) )
-                {
-                    color = colorManager.Color.ToHtml( sharp, NetCharmExtensions.HtmlColorOrder.NAME );
-                }
-                Clipboard.SetText( color );
+                Clipboard.SetText( tsmi.Text );
             }
             catch (Exception) { }
         }

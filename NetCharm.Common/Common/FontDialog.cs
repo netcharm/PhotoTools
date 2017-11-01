@@ -155,7 +155,7 @@ namespace NetCharm.Common
             }
         }
 
-        private double _fontsize = 12;
+        private double _fontsize = 12f;
         public float FontSize
         {
             get
@@ -587,7 +587,8 @@ namespace NetCharm.Common
                 lvFamily.Select();
                 lvFamily.EnsureVisible( idx );
                 lvFamily.FocusedItem = lvFamily.FindItemWithText( ffn, false, idx );
-                lvFamily.FocusedItem.Selected = true;
+                if( lvFamily.FocusedItem != null )
+                    lvFamily.FocusedItem.Selected = true;
             }
             #endregion
 
@@ -689,8 +690,8 @@ namespace NetCharm.Common
                         //var face = family.Last().Key;
                         //var face = family.Reverse().First().Key;
                         var face = family.First().Key;
-                        sample = e.Item.Text.ToBitmap( familyName, face, 12, fgColor );
-                        //sample = e.Item.Text.ToBitmap( family.Source, face, 12, fgColor );
+                        sample = e.Item.Text.ToBitmap( familyName, face, 12f, fgColor );
+                        //sample = e.Item.Text.ToBitmap( family.Source, face, 12f, fgColor );
 
                         familiySamples[familyName] = sample;
                     }
