@@ -59,5 +59,15 @@ namespace DialogTest.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Icon ColorDialog {
+            get {
+                object obj = ResourceManager.GetObject("ColorDialog", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
