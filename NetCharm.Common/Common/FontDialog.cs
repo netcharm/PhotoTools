@@ -669,7 +669,6 @@ namespace NetCharm.Common
         {
             try
             {
-
                 if ( e.ItemIndex >= 0 && e.ItemIndex < lvFamily.VirtualListSize )
                 {
                     var familyItem = families[e.ItemIndex];
@@ -708,7 +707,6 @@ namespace NetCharm.Common
         {
             if ( e.ItemIndex >= 0 && e.ItemIndex < lvFamily.VirtualListSize )
             {
-                System.Drawing.FontFamily family = System.Drawing.FontFamily.Families[e.ItemIndex];
                 e.Item = families[e.ItemIndex];
             }
         }
