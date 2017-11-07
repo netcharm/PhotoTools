@@ -533,6 +533,16 @@ namespace NetCharm.Common
                 var item = new ListViewItem(familyName);
                 item.Text = familyName;
                 //item.Tag = ff;
+                if( !FamilyList.ContainsKey( familyName ) )
+                {
+                    var tl = new Dictionary<string, Media.Typeface>();
+                    foreach(var t in ff.FamilyTypefaces )
+                    {
+                        Media.Typeface tf = new Media.Typeface( ff, t.Style, t.Weight, t.Stretch );
+                        tl[t.AdjustedFaceNames[locale_key]] = tf;
+                    }
+                    FamilyList[familyName] = tl;
+                }
                 item.Tag = FamilyList[familyName];
                 families.Add( item );
             }

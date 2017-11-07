@@ -492,35 +492,44 @@ namespace ExtensionMethods
             #region Fetch All Typefaces
             if ( FamilyList.Count > 0 ) return ( FamilyList );
 
-            foreach ( var f in Media.Fonts.SystemTypefaces )
+            ICollection<Media.FontFamily> families = null;
+            ICollection<Media.Typeface> typeface = null;
+
+            families = Media.Fonts.SystemFontFamilies;
+            try
             {
-                var f_key = f.FontFamily.FamilyNames.ContainsKey(locale_enkey) ? f.FontFamily.FamilyNames[locale_enkey] : f.FontFamily.FamilyNames.First().Value;
-                var locale_key = f.FontFamily.FamilyNames.ContainsKey(locale_enkey) ? locale_enkey : f.FontFamily.FamilyNames.Keys.First();
-
-                try
+                foreach( var f in Media.Fonts.SystemTypefaces )
                 {
-                    var facelist = new Dictionary<string, Media.Typeface>();
-                    if ( FamilyList.ContainsKey( f_key ) )
-                        facelist = FamilyList[f_key];
+                    var f_key = f.FontFamily.FamilyNames.ContainsKey( locale_enkey ) ? f.FontFamily.FamilyNames[locale_enkey] : f.FontFamily.FamilyNames.First().Value;
+                    var locale_key = f.FontFamily.FamilyNames.ContainsKey( locale_enkey ) ? locale_enkey : f.FontFamily.FamilyNames.Keys.First();
 
-                    if ( f.FaceNames.ContainsKey( locale_key ) )
-                        facelist[f.FaceNames[locale_key].Replace( f_key, "" ).Trim()] = f;
-
-                    if ( f.FaceNames.ContainsKey( locale_uikey ) )
-                        facelist[f.FaceNames[locale_uikey].Replace( f_key, "" ).Trim()] = f;
-
-                    FamilyList[f_key] = facelist;
-                    if ( f.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
+                    try
                     {
-                        var familyname = f.FontFamily.FamilyNames[locale_uikey];
-                        FamilyList[familyname] = facelist;
+                        var facelist = new Dictionary<string, Media.Typeface>();
+                        if( FamilyList.ContainsKey( f_key ) )
+                            facelist = FamilyList[f_key];
+
+                        if( f.FaceNames.ContainsKey( locale_key ) )
+                            facelist[f.FaceNames[locale_key].Replace( f_key, "" ).Trim()] = f;
+
+                        if( f.FaceNames.ContainsKey( locale_uikey ) )
+                            facelist[f.FaceNames[locale_uikey].Replace( f_key, "" ).Trim()] = f;
+
+                        FamilyList[f_key] = facelist;
+                        if( f.FontFamily.FamilyNames.ContainsKey( locale_uikey ) )
+                        {
+                            var familyname = f.FontFamily.FamilyNames[locale_uikey];
+                            FamilyList[familyname] = facelist;
+                        }
+                    }
+                    catch( Exception )
+                    {
+                        FamilyList[f_key] = null;
                     }
                 }
-                catch ( Exception )
-                {
-                    FamilyList[f_key] = null;
-                }
+
             }
+            catch( Exception ) { }
             #endregion
 
             #region Save Typeface list to Text file
