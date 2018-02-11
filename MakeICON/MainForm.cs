@@ -26,7 +26,7 @@ namespace MakeICON
                     dst.Save( msr, ImageFormat.Icon );
                 }
 
-                new Bitmap()
+                //new Bitmap()
                 //result.
             }
 

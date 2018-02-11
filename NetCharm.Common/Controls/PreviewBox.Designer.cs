@@ -78,7 +78,7 @@
         }
 
         #endregion
-        private Cyotek.Windows.Forms.ImageBox Preview;
+        public Cyotek.Windows.Forms.ImageBox Preview;
         private System.Windows.Forms.TableLayoutPanel layout;
         private NetCharm.Common.Controls.ImageActions imageActions;
     }

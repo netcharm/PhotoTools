@@ -64,7 +64,7 @@ namespace NetCharm.Common.Controls
             }
         }
 
-        private ZoomLevelCollection zoomlevels = new ZoomLevelCollection();
+        private ZoomLevelCollection zoomlevels = ZoomLevelCollection.Default;
         public ZoomLevelCollection ZoomLevels
         {
             get
@@ -117,7 +117,7 @@ namespace NetCharm.Common.Controls
                 if ( this.ZoomChanged is EventHandler )
                     imgbox.ZoomChanged += new System.EventHandler( this.ZoomChanged );
                 if ( this.ZoomLevelsChanged is EventHandler )
-                    imgbox.ZoomLevelsChanged += new System.EventHandler( this.ZoomLevelsChanged );
+                    imgbox.ZoomLevelsChanged += new System.EventHandler( this.ZoomLevelsChanged );                
             }
         }
 
