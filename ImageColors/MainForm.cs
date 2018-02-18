@@ -18,24 +18,6 @@ namespace ImageColors
         Dictionary<string, Color> colors = new Dictionary<string, Color>();
         Dictionary<string, int> colorcount = new Dictionary<string, int>();
 
-        int CompareByColor(Color c1, Color c2)
-        {
-            return String.Compare(c1.ToHtml(), c2.ToHtml());
-        }
-
-        List<Color> FilterColors(int amount)
-        {
-            List<Color> filted = new List<Color>();
-
-            foreach (var kv in colors)
-            {
-                if (colorcount[kv.Key] < amount) continue;
-                filted.Add(kv.Value);
-                //colorGrid.AddCustomColor(kv.Value);
-            }
-            filted.Sort(CompareByColor);
-            return (filted);
-        }
         /// <summary>
         /// Get the Filter string for all supported image types.
         /// This can be used directly to the FileDialog class Filter Property.
@@ -67,6 +49,25 @@ namespace ImageColors
                 sb.AppendFormat("|{0}|{1}", image.Key, image.Value);
             }
             return sb.ToString();
+        }
+
+        int CompareByColor(Color c1, Color c2)
+        {
+            return String.Compare(c1.ToHtml(), c2.ToHtml());
+        }
+
+        List<Color> FilterColors(int amount)
+        {
+            List<Color> filted = new List<Color>();
+
+            foreach (var kv in colors)
+            {
+                if (colorcount[kv.Key] < amount) continue;
+                filted.Add(kv.Value);
+                //colorGrid.AddCustomColor(kv.Value);
+            }
+            filted.Sort(CompareByColor);
+            return (filted);
         }
 
         public void CalcImageColor(Bitmap bitmap)
@@ -121,15 +122,24 @@ namespace ImageColors
                 imageBox.ZoomToFit();
                 imageActions.Zoom = imageBox.Zoom;
                 bgWorker.RunWorkerAsync();
+                colorGrid.ShowCustomColors = false;
             }
         }
 
         private void colorAmount_ValueChanged(object sender, EventArgs e)
         {
+            if (bgWorkerFilter.IsBusy) return;
+
             int amount = Convert.ToInt32(colorAmount.Value);
             List<Color> usagecolors = FilterColors(amount);
+            lblColors.Text = $"{usagecolors.Count}/{colors.Count}";
+
+            int vh = (int)((usagecolors.Count / 20.0 + 1) * (colorGrid.CellSize.Height + colorGrid.Spacing.Height));
+            pnlColors.AutoScrollMinSize = new Size(pnlColors.AutoScrollMinSize.Width, vh);
+            pnlColors.Refresh();
+
             colorGrid.Colors.Clear();
-            colorGrid.Colors.AddRange(usagecolors);
+            bgWorkerFilter.RunWorkerAsync(usagecolors);
         }
 
         private void colorPicker_ColorChanged(object sender, EventArgs e)
@@ -196,11 +206,40 @@ namespace ImageColors
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             pbar.Value = 100;
-            int amount = Convert.ToInt32(colorAmount.Value);
-            List<Color> usagecolors = FilterColors(amount);
-            colorGrid.Colors.Clear();
-            colorGrid.Colors.AddRange(usagecolors);
-            colorGrid.ShowCustomColors = false;
+            List<int> cc = colorcount.Values.ToList();
+            //cc = cc.Union(cc).ToList();
+            cc.Sort();
+            cc.Reverse();
+            colorAmount.Value = cc.Take(400).Last();
+        }
+
+        private void bgWorkerFilter_DoWork(object sender, DoWorkEventArgs e)
+        {
+            pbar.Minimum = 0;
+            pbar.Maximum = 100;
+            pbar.Style = ProgressBarStyle.Blocks;
+
+            List<Color> usagecolors = (List<Color>)e.Argument;
+
+            for (int i = 0; i < usagecolors.Count; i+=100)
+            {
+                bgWorkerFilter.ReportProgress(i, usagecolors);
+            }
+        }
+
+        private void bgWorkerFilter_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            List<Color> usagecolors = (List<Color>)e.UserState;
+            int pv = (int)(100.0 * e.ProgressPercentage / usagecolors.Count);
+            if (0 <= pv && pv <= 100) pbar.Value = pv;
+
+            colorGrid.Colors.AddRange(usagecolors.Skip(e.ProgressPercentage).Take(100));
+            colorGrid.Refresh();
+        }
+
+        private void bgWorkerFilter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            pbar.Value = 100;
         }
     }
 }

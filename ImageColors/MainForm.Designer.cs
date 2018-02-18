@@ -45,6 +45,8 @@
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.pnlColors = new System.Windows.Forms.Panel();
             this.colorGrid = new Cyotek.Windows.Forms.ColorGrid();
+            this.bgWorkerFilter = new System.ComponentModel.BackgroundWorker();
+            this.lblColors = new System.Windows.Forms.Label();
             this.cmSave.SuspendLayout();
             this.pnlPreview.SuspendLayout();
             this.pnlTools.SuspendLayout();
@@ -114,6 +116,7 @@
             // 
             // pnlTools
             // 
+            this.pnlTools.Controls.Add(this.lblColors);
             this.pnlTools.Controls.Add(this.pbar);
             this.pnlTools.Controls.Add(this.colorPicker);
             this.pnlTools.Controls.Add(this.colorAmount);
@@ -127,7 +130,7 @@
             // 
             // pbar
             // 
-            this.pbar.Location = new System.Drawing.Point(4, 16);
+            this.pbar.Location = new System.Drawing.Point(4, 22);
             this.pbar.Name = "pbar";
             this.pbar.Size = new System.Drawing.Size(74, 10);
             this.pbar.TabIndex = 9;
@@ -183,7 +186,7 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(3, 32);
+            this.btnLoad.Location = new System.Drawing.Point(3, 36);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(75, 23);
             this.btnLoad.TabIndex = 6;
@@ -225,6 +228,23 @@
             this.colorGrid.Size = new System.Drawing.Size(467, 30);
             this.colorGrid.TabIndex = 2;
             // 
+            // bgWorkerFilter
+            // 
+            this.bgWorkerFilter.WorkerReportsProgress = true;
+            this.bgWorkerFilter.WorkerSupportsCancellation = true;
+            this.bgWorkerFilter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerFilter_DoWork);
+            this.bgWorkerFilter.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerFilter_ProgressChanged);
+            this.bgWorkerFilter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerFilter_RunWorkerCompleted);
+            // 
+            // lblColors
+            // 
+            this.lblColors.Location = new System.Drawing.Point(4, 5);
+            this.lblColors.Name = "lblColors";
+            this.lblColors.Size = new System.Drawing.Size(74, 13);
+            this.lblColors.TabIndex = 10;
+            this.lblColors.Text = "0/0";
+            this.lblColors.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -261,6 +281,8 @@
         private System.Windows.Forms.ProgressBar pbar;
         private System.Windows.Forms.Panel pnlColors;
         private Cyotek.Windows.Forms.ColorGrid colorGrid;
+        private System.ComponentModel.BackgroundWorker bgWorkerFilter;
+        private System.Windows.Forms.Label lblColors;
     }
 }
 
