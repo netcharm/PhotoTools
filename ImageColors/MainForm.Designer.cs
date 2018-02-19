@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Cyotek.Windows.Forms.ZoomLevelCollection zoomLevelCollection2 = new Cyotek.Windows.Forms.ZoomLevelCollection();
+            Cyotek.Windows.Forms.ZoomLevelCollection zoomLevelCollection1 = new Cyotek.Windows.Forms.ZoomLevelCollection();
             this.cmSave = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmSaveToCSS = new System.Windows.Forms.ToolStripMenuItem();
             this.cmSaveToPal = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,15 +38,15 @@
             this.pnlPreview = new System.Windows.Forms.Panel();
             this.imageBox = new Cyotek.Windows.Forms.ImageBox();
             this.pnlTools = new System.Windows.Forms.Panel();
+            this.lblColors = new System.Windows.Forms.Label();
             this.pbar = new System.Windows.Forms.ProgressBar();
-            this.colorAmount = new NetCharm.Common.Controls.SlideNumber();
-            this.imageActions = new NetCharm.Common.Controls.ImageActions();
             this.btnLoad = new System.Windows.Forms.Button();
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.pnlColors = new System.Windows.Forms.Panel();
             this.colorGrid = new Cyotek.Windows.Forms.ColorGrid();
             this.bgWorkerFilter = new System.ComponentModel.BackgroundWorker();
-            this.lblColors = new System.Windows.Forms.Label();
+            this.colorAmount = new NetCharm.Common.Controls.SlideNumber();
+            this.imageActions = new NetCharm.Common.Controls.ImageActions();
             this.cmSave.SuspendLayout();
             this.pnlPreview.SuspendLayout();
             this.pnlTools.SuspendLayout();
@@ -128,65 +128,25 @@
             this.pnlTools.Size = new System.Drawing.Size(445, 67);
             this.pnlTools.TabIndex = 0;
             // 
+            // lblColors
+            // 
+            this.lblColors.Location = new System.Drawing.Point(4, 6);
+            this.lblColors.Name = "lblColors";
+            this.lblColors.Size = new System.Drawing.Size(74, 13);
+            this.lblColors.TabIndex = 10;
+            this.lblColors.Text = "0/0";
+            this.lblColors.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // pbar
             // 
-            this.pbar.Location = new System.Drawing.Point(4, 22);
+            this.pbar.Location = new System.Drawing.Point(4, 26);
             this.pbar.Name = "pbar";
             this.pbar.Size = new System.Drawing.Size(74, 10);
             this.pbar.TabIndex = 9;
             // 
-            // colorAmount
-            // 
-            this.colorAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorAmount.Caption = "Amount";
-            this.colorAmount.DecimalPlaces = 0;
-            this.colorAmount.Location = new System.Drawing.Point(154, 6);
-            this.colorAmount.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.colorAmount.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.colorAmount.Name = "colorAmount";
-            this.colorAmount.Size = new System.Drawing.Size(142, 54);
-            this.colorAmount.Step = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.colorAmount.TabIndex = 8;
-            this.colorAmount.Unit = "";
-            this.colorAmount.Value = new decimal(new int[] {
-            1553873815,
-            40745,
-            0,
-            720896});
-            this.colorAmount.ValueChanged += new System.EventHandler(this.colorAmount_ValueChanged);
-            // 
-            // imageActions
-            // 
-            this.imageActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.imageActions.BackColor = System.Drawing.SystemColors.Control;
-            this.imageActions.ImageBox = null;
-            this.imageActions.Location = new System.Drawing.Point(302, 6);
-            this.imageActions.MaximumSize = new System.Drawing.Size(156, 24);
-            this.imageActions.MinimumSize = new System.Drawing.Size(138, 24);
-            this.imageActions.Name = "imageActions";
-            this.imageActions.Size = new System.Drawing.Size(138, 24);
-            this.imageActions.Source = null;
-            this.imageActions.TabIndex = 7;
-            this.imageActions.Zoom = 100;
-            this.imageActions.ZoomLevels = zoomLevelCollection2;
-            // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(3, 36);
+            this.btnLoad.Location = new System.Drawing.Point(3, 41);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(75, 23);
             this.btnLoad.TabIndex = 6;
@@ -224,6 +184,7 @@
             this.colorGrid.Location = new System.Drawing.Point(0, 0);
             this.colorGrid.Name = "colorGrid";
             this.colorGrid.Palette = Cyotek.Windows.Forms.ColorPalette.None;
+            this.colorGrid.SelectedCellStyle = Cyotek.Windows.Forms.ColorGridSelectedCellStyle.Standard;
             this.colorGrid.ShowCustomColors = false;
             this.colorGrid.Size = new System.Drawing.Size(467, 30);
             this.colorGrid.TabIndex = 2;
@@ -236,14 +197,54 @@
             this.bgWorkerFilter.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerFilter_ProgressChanged);
             this.bgWorkerFilter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerFilter_RunWorkerCompleted);
             // 
-            // lblColors
+            // colorAmount
             // 
-            this.lblColors.Location = new System.Drawing.Point(4, 5);
-            this.lblColors.Name = "lblColors";
-            this.lblColors.Size = new System.Drawing.Size(74, 13);
-            this.lblColors.TabIndex = 10;
-            this.lblColors.Text = "0/0";
-            this.lblColors.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.colorAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorAmount.Caption = "Amount";
+            this.colorAmount.DecimalPlaces = 0;
+            this.colorAmount.Location = new System.Drawing.Point(154, 6);
+            this.colorAmount.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.colorAmount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.colorAmount.Name = "colorAmount";
+            this.colorAmount.Size = new System.Drawing.Size(142, 58);
+            this.colorAmount.Step = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.colorAmount.TabIndex = 8;
+            this.colorAmount.Unit = "";
+            this.colorAmount.Value = new decimal(new int[] {
+            1553873815,
+            40745,
+            0,
+            720896});
+            this.colorAmount.ValueChanged += new System.EventHandler(this.colorAmount_ValueChanged);
+            // 
+            // imageActions
+            // 
+            this.imageActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.imageActions.BackColor = System.Drawing.SystemColors.Control;
+            this.imageActions.ImageBox = null;
+            this.imageActions.Location = new System.Drawing.Point(302, 6);
+            this.imageActions.MaximumSize = new System.Drawing.Size(156, 24);
+            this.imageActions.MinimumSize = new System.Drawing.Size(138, 24);
+            this.imageActions.Name = "imageActions";
+            this.imageActions.Size = new System.Drawing.Size(138, 24);
+            this.imageActions.Source = null;
+            this.imageActions.TabIndex = 7;
+            this.imageActions.Zoom = 100;
+            this.imageActions.ZoomLevels = zoomLevelCollection1;
             // 
             // MainForm
             // 
@@ -252,6 +253,7 @@
             this.ClientSize = new System.Drawing.Size(944, 529);
             this.Controls.Add(this.pnlColors);
             this.Controls.Add(this.pnlPreview);
+            this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(900, 400);
             this.Name = "MainForm";
             this.Text = "Image Colors";

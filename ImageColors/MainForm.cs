@@ -136,7 +136,8 @@ namespace ImageColors
 
             int vh = (int)((usagecolors.Count / 20.0 + 1) * (colorGrid.CellSize.Height + colorGrid.Spacing.Height));
             pnlColors.AutoScrollMinSize = new Size(pnlColors.AutoScrollMinSize.Width, vh);
-            pnlColors.Refresh();
+            pnlColors.Update();
+            //pnlColors.Refresh();
 
             colorGrid.Colors.Clear();
             bgWorkerFilter.RunWorkerAsync(usagecolors);
@@ -234,7 +235,8 @@ namespace ImageColors
             if (0 <= pv && pv <= 100) pbar.Value = pv;
 
             colorGrid.Colors.AddRange(usagecolors.Skip(e.ProgressPercentage).Take(100));
-            colorGrid.Refresh();
+            colorGrid.Update();
+            //colorGrid.Refresh();
         }
 
         private void bgWorkerFilter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
