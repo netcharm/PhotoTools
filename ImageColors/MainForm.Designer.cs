@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Cyotek.Windows.Forms.ZoomLevelCollection zoomLevelCollection1 = new Cyotek.Windows.Forms.ZoomLevelCollection();
+            Cyotek.Windows.Forms.ZoomLevelCollection zoomLevelCollection2 = new Cyotek.Windows.Forms.ZoomLevelCollection();
             this.cmSave = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmSaveToCSS = new System.Windows.Forms.ToolStripMenuItem();
             this.cmSaveToPal = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,13 +42,14 @@
             this.chkIgnoreCornerColor = new System.Windows.Forms.CheckBox();
             this.lblColors = new System.Windows.Forms.Label();
             this.pbar = new System.Windows.Forms.ProgressBar();
-            this.colorAmount = new NetCharm.Common.Controls.SlideNumber();
-            this.imageActions = new NetCharm.Common.Controls.ImageActions();
             this.btnLoad = new System.Windows.Forms.Button();
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.pnlColors = new System.Windows.Forms.Panel();
             this.colorGrid = new Cyotek.Windows.Forms.ColorGrid();
             this.bgWorkerFilter = new System.ComponentModel.BackgroundWorker();
+            this.colorAmount = new NetCharm.Common.Controls.SlideNumber();
+            this.imageActions = new NetCharm.Common.Controls.ImageActions();
+            this.cmSaveToUIC = new System.Windows.Forms.ToolStripMenuItem();
             this.cmSave.SuspendLayout();
             this.pnlPreview.SuspendLayout();
             this.pnlTools.SuspendLayout();
@@ -58,10 +59,11 @@
             // cmSave
             // 
             this.cmSave.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmSaveToPal,
             this.cmSaveToCSS,
-            this.cmSaveToPal});
+            this.cmSaveToUIC});
             this.cmSave.Name = "cmSave";
-            this.cmSave.Size = new System.Drawing.Size(165, 48);
+            this.cmSave.Size = new System.Drawing.Size(165, 92);
             // 
             // cmSaveToCSS
             // 
@@ -92,8 +94,6 @@
             this.colorPicker.Size = new System.Drawing.Size(138, 28);
             this.colorPicker.Text = "Color Picker";
             this.colorPicker.ColorChanged += new System.EventHandler(this.colorPicker_ColorChanged);
-            this.colorPicker.MouseCaptureChanged += new System.EventHandler(this.colorPicker_MouseCaptureChanged);
-            this.colorPicker.MouseUp += new System.Windows.Forms.MouseEventHandler(this.colorPicker_MouseUp);
             // 
             // pnlPreview
             // 
@@ -176,55 +176,6 @@
             this.pbar.Size = new System.Drawing.Size(74, 10);
             this.pbar.TabIndex = 9;
             // 
-            // colorAmount
-            // 
-            this.colorAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorAmount.Caption = "Amount";
-            this.colorAmount.DecimalPlaces = 0;
-            this.colorAmount.Location = new System.Drawing.Point(154, 6);
-            this.colorAmount.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.colorAmount.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.colorAmount.Name = "colorAmount";
-            this.colorAmount.Size = new System.Drawing.Size(142, 58);
-            this.colorAmount.Step = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.colorAmount.TabIndex = 8;
-            this.colorAmount.Unit = "";
-            this.colorAmount.Value = new decimal(new int[] {
-            1553873815,
-            40745,
-            0,
-            720896});
-            this.colorAmount.ValueChanged += new System.EventHandler(this.colorAmount_ValueChanged);
-            // 
-            // imageActions
-            // 
-            this.imageActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.imageActions.BackColor = System.Drawing.SystemColors.Control;
-            this.imageActions.ImageBox = null;
-            this.imageActions.Location = new System.Drawing.Point(302, 6);
-            this.imageActions.MaximumSize = new System.Drawing.Size(156, 24);
-            this.imageActions.MinimumSize = new System.Drawing.Size(138, 24);
-            this.imageActions.Name = "imageActions";
-            this.imageActions.Size = new System.Drawing.Size(138, 24);
-            this.imageActions.Source = null;
-            this.imageActions.TabIndex = 7;
-            this.imageActions.Zoom = 100;
-            this.imageActions.ZoomLevels = zoomLevelCollection1;
-            // 
             // btnLoad
             // 
             this.btnLoad.Location = new System.Drawing.Point(3, 41);
@@ -278,6 +229,62 @@
             this.bgWorkerFilter.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerFilter_ProgressChanged);
             this.bgWorkerFilter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerFilter_RunWorkerCompleted);
             // 
+            // colorAmount
+            // 
+            this.colorAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorAmount.Caption = "Amount";
+            this.colorAmount.DecimalPlaces = 0;
+            this.colorAmount.Location = new System.Drawing.Point(154, 6);
+            this.colorAmount.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.colorAmount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.colorAmount.Name = "colorAmount";
+            this.colorAmount.Size = new System.Drawing.Size(142, 58);
+            this.colorAmount.Step = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.colorAmount.TabIndex = 8;
+            this.colorAmount.Unit = "";
+            this.colorAmount.Value = new decimal(new int[] {
+            1553873815,
+            40745,
+            0,
+            720896});
+            this.colorAmount.ValueChanged += new System.EventHandler(this.colorAmount_ValueChanged);
+            // 
+            // imageActions
+            // 
+            this.imageActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.imageActions.BackColor = System.Drawing.SystemColors.Control;
+            this.imageActions.ImageBox = null;
+            this.imageActions.Location = new System.Drawing.Point(302, 6);
+            this.imageActions.MaximumSize = new System.Drawing.Size(156, 24);
+            this.imageActions.MinimumSize = new System.Drawing.Size(138, 24);
+            this.imageActions.Name = "imageActions";
+            this.imageActions.Size = new System.Drawing.Size(138, 24);
+            this.imageActions.Source = null;
+            this.imageActions.TabIndex = 7;
+            this.imageActions.Zoom = 100;
+            this.imageActions.ZoomLevels = zoomLevelCollection2;
+            // 
+            // cmSaveToUIC
+            // 
+            this.cmSaveToUIC.Name = "cmSaveToUIC";
+            this.cmSaveToUIC.Size = new System.Drawing.Size(164, 22);
+            this.cmSaveToUIC.Text = "Save As UIC";
+            this.cmSaveToUIC.Click += new System.EventHandler(this.cmSaveToUIC_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -322,6 +329,7 @@
         private System.Windows.Forms.Label lblColors;
         private System.Windows.Forms.CheckBox chkIgnoreCornerColor;
         private System.Windows.Forms.CheckBox chkSortColor;
+        private System.Windows.Forms.ToolStripMenuItem cmSaveToUIC;
     }
 }
 

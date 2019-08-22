@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorDialog));
             this.colorWheel = new Cyotek.Windows.Forms.ColorWheel();
-            this.cmCopyColorValue = new System.Windows.Forms.ContextMenuStrip();
+            this.cmCopyColorValue = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiColorValueHexRGB = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiColorValueHexBGR = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiColorValueHexARGB = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,9 +52,9 @@
             this.tsmiColorValueName = new System.Windows.Forms.ToolStripMenuItem();
             this.colorManager = new Cyotek.Windows.Forms.ColorEditorManager();
             this.colorEditor = new Cyotek.Windows.Forms.ColorEditor();
-            this.cmPalette = new System.Windows.Forms.ContextMenuStrip();
             this.lightnessColorSlider = new Cyotek.Windows.Forms.LightnessColorSlider();
             this.screenColorPicker = new Cyotek.Windows.Forms.ScreenColorPicker();
+            this.cmPalette = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
@@ -225,12 +226,6 @@
             this.colorEditor.Name = "colorEditor";
             this.colorEditor.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // cmPalette
-            // 
-            this.cmPalette.Name = "cmPalette";
-            resources.ApplyResources(this.cmPalette, "cmPalette");
-            this.cmPalette.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cmPalette_ItemClicked);
-            // 
             // lightnessColorSlider
             // 
             resources.ApplyResources(this.lightnessColorSlider, "lightnessColorSlider");
@@ -245,6 +240,12 @@
             this.screenColorPicker.Name = "screenColorPicker";
             this.screenColorPicker.ShowTextWithSnapshot = true;
             this.screenColorPicker.MouseCaptureChanged += new System.EventHandler(this.screenColorPicker_MouseCaptureChanged);
+            // 
+            // cmPalette
+            // 
+            this.cmPalette.Name = "cmPalette";
+            resources.ApplyResources(this.cmPalette, "cmPalette");
+            this.cmPalette.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cmPalette_ItemClicked);
             // 
             // btnApply
             // 

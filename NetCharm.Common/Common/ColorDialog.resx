@@ -121,37 +121,6 @@
     <value>250, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="cmCopyColorValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 352</value>
-  </data>
-  <data name="&gt;&gt;cmCopyColorValue.Name" xml:space="preserve">
-    <value>cmCopyColorValue</value>
-  </data>
-  <data name="&gt;&gt;cmCopyColorValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="colorWheel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 13</value>
-  </data>
-  <data name="colorWheel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 160</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="colorWheel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;colorWheel.Name" xml:space="preserve">
-    <value>colorWheel</value>
-  </data>
-  <data name="&gt;&gt;colorWheel.Type" xml:space="preserve">
-    <value>Cyotek.Windows.Forms.ColorWheel, Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
-  </data>
-  <data name="&gt;&gt;colorWheel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;colorWheel.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
   <data name="tsmiColorValueHexRGB.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 22</value>
   </data>
@@ -250,6 +219,37 @@
   </data>
   <data name="tsmiColorValueName.Text" xml:space="preserve">
     <value>Color Name</value>
+  </data>
+  <data name="cmCopyColorValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 352</value>
+  </data>
+  <data name="&gt;&gt;cmCopyColorValue.Name" xml:space="preserve">
+    <value>cmCopyColorValue</value>
+  </data>
+  <data name="&gt;&gt;cmCopyColorValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colorWheel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 13</value>
+  </data>
+  <data name="colorWheel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 160</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="colorWheel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;colorWheel.Name" xml:space="preserve">
+    <value>colorWheel</value>
+  </data>
+  <data name="&gt;&gt;colorWheel.Type" xml:space="preserve">
+    <value>Cyotek.Windows.Forms.ColorWheel, Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
+  </data>
+  <data name="&gt;&gt;colorWheel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;colorWheel.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <metadata name="colorManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -520,7 +520,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panelColorGrid.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

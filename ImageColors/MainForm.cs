@@ -77,6 +77,7 @@ namespace ImageColors
         List<Color> FilterColors(int amount)
         {
             List<Color> filted = new List<Color>();
+            List<int> filtedcount = new List<int>();
 
             foreach (var kv in colors)
             {
@@ -84,8 +85,15 @@ namespace ImageColors
                 filted.Add(kv.Value);
                 //colorGrid.AddCustomColor(kv.Value);
             }
-            if(chkSortColor.Checked)
+            if (chkSortColor.Checked)
+            {
                 filted.Sort(CompareByColorCount);
+                filted.Reverse();
+            }
+            foreach(var c in filted)
+            {
+                filtedcount.Add(colorcount[c.ToHtml().ToUpper()]);
+            }
             return (filted);
         }
 
@@ -106,10 +114,11 @@ namespace ImageColors
                     for (int x = 0; x < lockbmp.Width; x++)
                     {
                         var p = lockbmp.GetPixel(x, y);
-                        if (icc)
-                        {
-                            if (p.R == cc.R && p.G == cc.G && p.B == cc.B) continue;
-                        }
+                        if (icc && p.R == cc.R && p.G == cc.G && p.B == cc.B) continue;
+
+                        if (bitmap.PixelFormat == PixelFormat.Format32bppRgb)
+                            p = Color.FromArgb(255, p);
+
                         string cn = p.ToHtml().ToUpper();
                         colors[cn] = p;
                         if (colorcount.ContainsKey(cn))
@@ -126,10 +135,11 @@ namespace ImageColors
 
         public void UpdateColorGrid()
         {
+            if (bgWorker.IsBusy) return;
             if (bgWorkerFilter.IsBusy) return;
 
             int amount = Convert.ToInt32(colorAmount.Value);
-            List<Color> usagecolors = FilterColors(amount);
+            List<Color> usagecolors = FilterColors(amount).Take(2000).ToList();
             lblColors.Text = $"{usagecolors.Count}/{colors.Count}";
 
             int vh = (int)((usagecolors.Count / 20.0 + 1) * (colorGrid.CellSize.Height + colorGrid.Spacing.Height));
@@ -303,6 +313,21 @@ namespace ImageColors
             SaveColorGrid();
         }
 
+        private void cmSaveToUIC_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "UIC File|*.uic";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                List<string> ls = new List<string>();
+                foreach (var c in colorGrid.Colors)
+                {
+                    ls.Add($"{{\"A\":{c.A},\"R\":{c.R},\"G\":{c.G},\"B\":{c.B}}}");
+                }
+                File.WriteAllText(dialog.FileName, $"[{string.Join(",", ls)}]");
+            }
+        }
+
         private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             pbar.Minimum = 0;
@@ -327,8 +352,8 @@ namespace ImageColors
             //cc = cc.Union(cc).ToList();
             cc.Sort();
             cc.Reverse();
-            colorAmount.Value = cc.Take(400).Last();
             colorAmount.Step = Math.Ceiling((decimal)(cc.Take(10).Last()) / 10);
+            colorAmount.Value = cc.Take(400).Last();
         }
 
         private void bgWorkerFilter_DoWork(object sender, DoWorkEventArgs e)
@@ -361,14 +386,6 @@ namespace ImageColors
             pbar.Value = 100;
         }
 
-        private void colorPicker_MouseUp(object sender, MouseEventArgs e)
-        {
 
-        }
-
-        private void colorPicker_MouseCaptureChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
