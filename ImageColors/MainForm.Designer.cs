@@ -38,15 +38,17 @@
             this.pnlPreview = new System.Windows.Forms.Panel();
             this.imageBox = new Cyotek.Windows.Forms.ImageBox();
             this.pnlTools = new System.Windows.Forms.Panel();
+            this.chkSortColor = new System.Windows.Forms.CheckBox();
+            this.chkIgnoreCornerColor = new System.Windows.Forms.CheckBox();
             this.lblColors = new System.Windows.Forms.Label();
             this.pbar = new System.Windows.Forms.ProgressBar();
+            this.colorAmount = new NetCharm.Common.Controls.SlideNumber();
+            this.imageActions = new NetCharm.Common.Controls.ImageActions();
             this.btnLoad = new System.Windows.Forms.Button();
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.pnlColors = new System.Windows.Forms.Panel();
             this.colorGrid = new Cyotek.Windows.Forms.ColorGrid();
             this.bgWorkerFilter = new System.ComponentModel.BackgroundWorker();
-            this.colorAmount = new NetCharm.Common.Controls.SlideNumber();
-            this.imageActions = new NetCharm.Common.Controls.ImageActions();
             this.cmSave.SuspendLayout();
             this.pnlPreview.SuspendLayout();
             this.pnlTools.SuspendLayout();
@@ -86,9 +88,12 @@
             this.colorPicker.Color = System.Drawing.Color.Empty;
             this.colorPicker.Location = new System.Drawing.Point(302, 36);
             this.colorPicker.Name = "colorPicker";
+            this.colorPicker.ShowTextWithSnapshot = true;
             this.colorPicker.Size = new System.Drawing.Size(138, 28);
             this.colorPicker.Text = "Color Picker";
             this.colorPicker.ColorChanged += new System.EventHandler(this.colorPicker_ColorChanged);
+            this.colorPicker.MouseCaptureChanged += new System.EventHandler(this.colorPicker_MouseCaptureChanged);
+            this.colorPicker.MouseUp += new System.Windows.Forms.MouseEventHandler(this.colorPicker_MouseUp);
             // 
             // pnlPreview
             // 
@@ -116,6 +121,8 @@
             // 
             // pnlTools
             // 
+            this.pnlTools.Controls.Add(this.chkSortColor);
+            this.pnlTools.Controls.Add(this.chkIgnoreCornerColor);
             this.pnlTools.Controls.Add(this.lblColors);
             this.pnlTools.Controls.Add(this.pbar);
             this.pnlTools.Controls.Add(this.colorPicker);
@@ -127,6 +134,31 @@
             this.pnlTools.Name = "pnlTools";
             this.pnlTools.Size = new System.Drawing.Size(445, 67);
             this.pnlTools.TabIndex = 0;
+            // 
+            // chkSortColor
+            // 
+            this.chkSortColor.AutoSize = true;
+            this.chkSortColor.Location = new System.Drawing.Point(85, 19);
+            this.chkSortColor.Name = "chkSortColor";
+            this.chkSortColor.Size = new System.Drawing.Size(48, 16);
+            this.chkSortColor.TabIndex = 12;
+            this.chkSortColor.Text = "Sort";
+            this.chkSortColor.UseVisualStyleBackColor = true;
+            this.chkSortColor.CheckStateChanged += new System.EventHandler(this.chkSortColor_CheckStateChanged);
+            // 
+            // chkIgnoreCornerColor
+            // 
+            this.chkIgnoreCornerColor.CheckAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.chkIgnoreCornerColor.Checked = true;
+            this.chkIgnoreCornerColor.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkIgnoreCornerColor.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkIgnoreCornerColor.Location = new System.Drawing.Point(85, 36);
+            this.chkIgnoreCornerColor.Name = "chkIgnoreCornerColor";
+            this.chkIgnoreCornerColor.Size = new System.Drawing.Size(63, 28);
+            this.chkIgnoreCornerColor.TabIndex = 11;
+            this.chkIgnoreCornerColor.Text = "Ignore Corner";
+            this.chkIgnoreCornerColor.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.chkIgnoreCornerColor.UseVisualStyleBackColor = true;
             // 
             // lblColors
             // 
@@ -143,6 +175,55 @@
             this.pbar.Name = "pbar";
             this.pbar.Size = new System.Drawing.Size(74, 10);
             this.pbar.TabIndex = 9;
+            // 
+            // colorAmount
+            // 
+            this.colorAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorAmount.Caption = "Amount";
+            this.colorAmount.DecimalPlaces = 0;
+            this.colorAmount.Location = new System.Drawing.Point(154, 6);
+            this.colorAmount.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.colorAmount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.colorAmount.Name = "colorAmount";
+            this.colorAmount.Size = new System.Drawing.Size(142, 58);
+            this.colorAmount.Step = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.colorAmount.TabIndex = 8;
+            this.colorAmount.Unit = "";
+            this.colorAmount.Value = new decimal(new int[] {
+            1553873815,
+            40745,
+            0,
+            720896});
+            this.colorAmount.ValueChanged += new System.EventHandler(this.colorAmount_ValueChanged);
+            // 
+            // imageActions
+            // 
+            this.imageActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.imageActions.BackColor = System.Drawing.SystemColors.Control;
+            this.imageActions.ImageBox = null;
+            this.imageActions.Location = new System.Drawing.Point(302, 6);
+            this.imageActions.MaximumSize = new System.Drawing.Size(156, 24);
+            this.imageActions.MinimumSize = new System.Drawing.Size(138, 24);
+            this.imageActions.Name = "imageActions";
+            this.imageActions.Size = new System.Drawing.Size(138, 24);
+            this.imageActions.Source = null;
+            this.imageActions.TabIndex = 7;
+            this.imageActions.Zoom = 100;
+            this.imageActions.ZoomLevels = zoomLevelCollection1;
             // 
             // btnLoad
             // 
@@ -197,55 +278,6 @@
             this.bgWorkerFilter.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerFilter_ProgressChanged);
             this.bgWorkerFilter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerFilter_RunWorkerCompleted);
             // 
-            // colorAmount
-            // 
-            this.colorAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorAmount.Caption = "Amount";
-            this.colorAmount.DecimalPlaces = 0;
-            this.colorAmount.Location = new System.Drawing.Point(154, 6);
-            this.colorAmount.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.colorAmount.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.colorAmount.Name = "colorAmount";
-            this.colorAmount.Size = new System.Drawing.Size(142, 58);
-            this.colorAmount.Step = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.colorAmount.TabIndex = 8;
-            this.colorAmount.Unit = "";
-            this.colorAmount.Value = new decimal(new int[] {
-            1553873815,
-            40745,
-            0,
-            720896});
-            this.colorAmount.ValueChanged += new System.EventHandler(this.colorAmount_ValueChanged);
-            // 
-            // imageActions
-            // 
-            this.imageActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.imageActions.BackColor = System.Drawing.SystemColors.Control;
-            this.imageActions.ImageBox = null;
-            this.imageActions.Location = new System.Drawing.Point(302, 6);
-            this.imageActions.MaximumSize = new System.Drawing.Size(156, 24);
-            this.imageActions.MinimumSize = new System.Drawing.Size(138, 24);
-            this.imageActions.Name = "imageActions";
-            this.imageActions.Size = new System.Drawing.Size(138, 24);
-            this.imageActions.Source = null;
-            this.imageActions.TabIndex = 7;
-            this.imageActions.Zoom = 100;
-            this.imageActions.ZoomLevels = zoomLevelCollection1;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -254,13 +286,16 @@
             this.Controls.Add(this.pnlColors);
             this.Controls.Add(this.pnlPreview);
             this.DoubleBuffered = true;
+            this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(900, 400);
             this.Name = "MainForm";
             this.Text = "Image Colors";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             this.cmSave.ResumeLayout(false);
             this.pnlPreview.ResumeLayout(false);
             this.pnlTools.ResumeLayout(false);
+            this.pnlTools.PerformLayout();
             this.pnlColors.ResumeLayout(false);
             this.pnlColors.PerformLayout();
             this.ResumeLayout(false);
@@ -285,6 +320,8 @@
         private Cyotek.Windows.Forms.ColorGrid colorGrid;
         private System.ComponentModel.BackgroundWorker bgWorkerFilter;
         private System.Windows.Forms.Label lblColors;
+        private System.Windows.Forms.CheckBox chkIgnoreCornerColor;
+        private System.Windows.Forms.CheckBox chkSortColor;
     }
 }
 
