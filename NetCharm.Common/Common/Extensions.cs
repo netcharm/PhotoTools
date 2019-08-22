@@ -493,7 +493,7 @@ namespace ExtensionMethods
             if ( FamilyList.Count > 0 ) return ( FamilyList );
 
             ICollection<Media.FontFamily> families = null;
-            ICollection<Media.Typeface> typeface = null;
+            //ICollection<Media.Typeface> typeface = null;
 
             families = Media.Fonts.SystemFontFamilies;
             try

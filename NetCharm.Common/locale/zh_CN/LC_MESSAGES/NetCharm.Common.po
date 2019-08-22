@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: NetCharm.Common.Controls\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
 "POT-Creation-Date: 2017-03-14 12:38+0800\n"
-"PO-Revision-Date: 2019-08-22 14:32+0800\n"
+"PO-Revision-Date: 2019-08-22 16:10+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -161,10 +161,17 @@ msgstr "抱歉, 不能打开调色盘文件. {0}"
 msgid "Save Palette"
 msgstr "保存调色盘文件"
 
-#: Common\ColorDialog.cs:173
-#: Common\ColorDialog.cs:321
+#: Common\ColorDialog.cs:169
+#: Common\ColorDialog.cs:324
+#: Common\ColorDialog.cs:356
+#: Common\ColorDialog.cs:361
+msgid "Save Custom Palette"
+msgstr "保存自定义颜色"
+
+#: Common\ColorDialog.cs:172
+#: Common\ColorDialog.cs:367
 msgid "Reset Custom Palette"
-msgstr "清除自定义调色盘"
+msgstr "清除自定义颜色"
 
 #: Common\ColorDialog.cs:212
 msgid "Save Palette File As"

@@ -117,7 +117,7 @@ namespace NetCharm.Common
             InitializeComponent();
             colorGrid.CustomColors.Clear();
             colorGrid.AutoAddColors = false;
-            //this.DesignMode
+            //panelColorGrid.VerticalScroll
         }
 
         public ColorDialog( Color color )
@@ -166,13 +166,16 @@ namespace NetCharm.Common
                 var mi_Save = new ToolStripMenuItem( this._("Save Palette") );
                 mi_Save.Tag = false;
                 cmPalette.Items.Add( mi_Save );
+                var mi_CustomSave = new ToolStripMenuItem( this._("Save Custom Palette") );
+                mi_CustomSave.Tag = false;
+                cmPalette.Items.Add(mi_CustomSave);
+                var mi_CustomReset = new ToolStripMenuItem( this._("Reset Custom Palette") );
+                mi_CustomReset.Tag = false;
+                cmPalette.Items.Add(mi_CustomReset);
                 var mi_sep1 = new ToolStripSeparator();
                 mi_sep1.Tag = false;
                 mi_sep1.Visible = false;
                 cmPalette.Items.Add( mi_sep1 );
-                var mi_Reset = new ToolStripMenuItem( this._("Reset Custom Palette") );
-                mi_Reset.Tag = false;
-                cmPalette.Items.Add(mi_Reset);
             }
         }
 
@@ -215,16 +218,16 @@ namespace NetCharm.Common
                                     if (palette != null)
                                     {
                                         // we can only display 96 colors in the color grid due to it's size, so if there's more, bin them
-                                        while (palette.Count > 96)
-                                        {
-                                            palette.RemoveAt(palette.Count - 1);
-                                        }
+                                        //while (palette.Count > 96)
+                                        //{
+                                        //    palette.RemoveAt(palette.Count - 1);
+                                        //}
 
                                         // or if we have less, fill in the blanks
-                                        while (palette.Count < 96)
-                                        {
-                                            palette.Add(Color.White);
-                                        }
+                                        //while (palette.Count < 96)
+                                        //{
+                                        //    palette.Add(Color.White);
+                                        //}
 
                                         colorGrid.Colors = palette;
 
@@ -313,6 +316,50 @@ namespace NetCharm.Common
                             else
                             {
                                 MessageBox.Show(this._("Sorry, unable to save palette, the file format is not supported or is not recognized."), this._("Save Palette"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                        }
+                    }
+                    #endregion
+                }
+                else if (e.ClickedItem.Text.StartsWith(this._("Save Custom Palette")))
+                {
+                    cmPalette.Close();
+                    #region Save Custom Palette
+                    using (FileDialog dialog = new SaveFileDialog
+                    {
+                        Filter = PaletteSerializer.DefaultSaveFilter,
+                        DefaultExt = "pal",
+                        Title = this._("Save Palette File As")
+                    })
+                    {
+                        if (dialog.ShowDialog(this) == DialogResult.OK)
+                        {
+                            IPaletteSerializer serializer;
+
+                            serializer = PaletteSerializer.AllSerializers.Where(s => s.CanWrite).ElementAt(dialog.FilterIndex - 1);
+                            if (serializer != null)
+                            {
+                                if (!serializer.CanWrite)
+                                {
+                                    throw new InvalidOperationException(this._("Serializer does not support writing palettes."));
+                                }
+
+                                try
+                                {
+                                    using (FileStream file = File.OpenWrite(dialog.FileName))
+                                    {
+                                        var custom = new ColorCollection(colorGrid.CustomColors.Skip(1));
+                                        serializer.Serialize(file, custom);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(string.Format(this._("Sorry, unable to save palette. {0}"), ex.GetBaseException().Message), this._("Save Custom Palette"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show(this._("Sorry, unable to save palette, the file format is not supported or is not recognized."), this._("Save Custom Palette"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
                     }

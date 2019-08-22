@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorDialog));
             this.colorWheel = new Cyotek.Windows.Forms.ColorWheel();
-            this.cmCopyColorValue = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmCopyColorValue = new System.Windows.Forms.ContextMenuStrip();
             this.tsmiColorValueHexRGB = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiColorValueHexBGR = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiColorValueHexARGB = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,8 +51,7 @@
             this.tsmiColorValueName = new System.Windows.Forms.ToolStripMenuItem();
             this.colorManager = new Cyotek.Windows.Forms.ColorEditorManager();
             this.colorEditor = new Cyotek.Windows.Forms.ColorEditor();
-            this.colorGrid = new Cyotek.Windows.Forms.ColorGrid();
-            this.cmPalette = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmPalette = new System.Windows.Forms.ContextMenuStrip();
             this.lightnessColorSlider = new Cyotek.Windows.Forms.LightnessColorSlider();
             this.screenColorPicker = new Cyotek.Windows.Forms.ScreenColorPicker();
             this.btnApply = new System.Windows.Forms.Button();
@@ -61,7 +59,10 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.colorPanel = new System.Windows.Forms.Panel();
             this.btnPalette = new System.Windows.Forms.Button();
+            this.panelColorGrid = new System.Windows.Forms.Panel();
+            this.colorGrid = new Cyotek.Windows.Forms.ColorGrid();
             this.cmCopyColorValue.SuspendLayout();
+            this.panelColorGrid.SuspendLayout();
             this.SuspendLayout();
             // 
             // colorWheel
@@ -212,7 +213,6 @@
             // colorManager
             // 
             this.colorManager.ColorEditor = this.colorEditor;
-            this.colorManager.ColorGrid = this.colorGrid;
             this.colorManager.ColorWheel = this.colorWheel;
             this.colorManager.LightnessColorSlider = this.lightnessColorSlider;
             this.colorManager.ScreenColorPicker = this.screenColorPicker;
@@ -224,16 +224,6 @@
             resources.ApplyResources(this.colorEditor, "colorEditor");
             this.colorEditor.Name = "colorEditor";
             this.colorEditor.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // colorGrid
-            // 
-            resources.ApplyResources(this.colorGrid, "colorGrid");
-            this.colorGrid.CellBorderStyle = Cyotek.Windows.Forms.ColorCellBorderStyle.None;
-            this.colorGrid.CellSize = new System.Drawing.Size(10, 11);
-            this.colorGrid.ContextMenuStrip = this.cmPalette;
-            this.colorGrid.EditMode = Cyotek.Windows.Forms.ColorEditingMode.None;
-            this.colorGrid.Name = "colorGrid";
-            this.colorGrid.Palette = Cyotek.Windows.Forms.ColorPalette.Paint;
             // 
             // cmPalette
             // 
@@ -291,16 +281,32 @@
             this.btnPalette.UseVisualStyleBackColor = true;
             this.btnPalette.Click += new System.EventHandler(this.btnPalette_Click);
             // 
+            // panelColorGrid
+            // 
+            resources.ApplyResources(this.panelColorGrid, "panelColorGrid");
+            this.panelColorGrid.Controls.Add(this.colorGrid);
+            this.panelColorGrid.Name = "panelColorGrid";
+            // 
+            // colorGrid
+            // 
+            this.colorGrid.CellBorderStyle = Cyotek.Windows.Forms.ColorCellBorderStyle.None;
+            this.colorGrid.CellSize = new System.Drawing.Size(11, 11);
+            this.colorGrid.ContextMenuStrip = this.cmPalette;
+            resources.ApplyResources(this.colorGrid, "colorGrid");
+            this.colorGrid.EditMode = Cyotek.Windows.Forms.ColorEditingMode.None;
+            this.colorGrid.Name = "colorGrid";
+            this.colorGrid.Palette = Cyotek.Windows.Forms.ColorPalette.Paint;
+            // 
             // ColorDialog
             // 
             this.AcceptButton = this.btnOk;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.panelColorGrid);
             this.Controls.Add(this.btnPalette);
             this.Controls.Add(this.colorPanel);
             this.Controls.Add(this.lightnessColorSlider);
-            this.Controls.Add(this.colorGrid);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
@@ -315,6 +321,8 @@
             this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.ColorDialog_Load);
             this.cmCopyColorValue.ResumeLayout(false);
+            this.panelColorGrid.ResumeLayout(false);
+            this.panelColorGrid.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -328,7 +336,6 @@
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOk;
-        private Cyotek.Windows.Forms.ColorGrid colorGrid;
         private Cyotek.Windows.Forms.LightnessColorSlider lightnessColorSlider;
         private System.Windows.Forms.Panel colorPanel;
         private System.Windows.Forms.ContextMenuStrip cmPalette;
@@ -352,5 +359,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiColorValueCssHSL;
         private System.Windows.Forms.ToolStripMenuItem tsmiColorValueCssHSLA;
         private System.Windows.Forms.ToolStripMenuItem tsmiColorValueCssPercent;
+        private System.Windows.Forms.Panel panelColorGrid;
+        private Cyotek.Windows.Forms.ColorGrid colorGrid;
     }
 }

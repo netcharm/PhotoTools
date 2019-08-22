@@ -275,49 +275,6 @@
   <data name="&gt;&gt;colorEditor.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="colorGrid.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <metadata name="cmPalette.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>143, 17</value>
-  </metadata>
-  <data name="cmPalette.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 4</value>
-  </data>
-  <data name="&gt;&gt;cmPalette.Name" xml:space="preserve">
-    <value>cmPalette</value>
-  </data>
-  <data name="&gt;&gt;cmPalette.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="colorGrid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 13</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="colorGrid.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorGrid.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 160</value>
-  </data>
-  <data name="colorGrid.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;colorGrid.Name" xml:space="preserve">
-    <value>colorGrid</value>
-  </data>
-  <data name="&gt;&gt;colorGrid.Type" xml:space="preserve">
-    <value>Cyotek.Windows.Forms.ColorGrid, Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
-  </data>
-  <data name="&gt;&gt;colorGrid.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;colorGrid.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="lightnessColorSlider.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 13</value>
   </data>
@@ -337,8 +294,9 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lightnessColorSlider.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="screenColorPicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -359,6 +317,18 @@
   </data>
   <data name="&gt;&gt;screenColorPicker.ZOrder" xml:space="preserve">
     <value>9</value>
+  </data>
+  <metadata name="cmPalette.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>143, 17</value>
+  </metadata>
+  <data name="cmPalette.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 4</value>
+  </data>
+  <data name="&gt;&gt;cmPalette.Name" xml:space="preserve">
+    <value>cmPalette</value>
+  </data>
+  <data name="&gt;&gt;cmPalette.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="btnApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -472,7 +442,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorPanel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnPalette.Location" type="System.Drawing.Point, System.Drawing">
     <value>467, 101</value>
@@ -496,7 +466,61 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnPalette.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panelColorGrid.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorGrid.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="colorGrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="colorGrid.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorGrid.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorGrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 117</value>
+  </data>
+  <data name="colorGrid.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;colorGrid.Name" xml:space="preserve">
+    <value>colorGrid</value>
+  </data>
+  <data name="&gt;&gt;colorGrid.Type" xml:space="preserve">
+    <value>Cyotek.Windows.Forms.ColorGrid, Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221</value>
+  </data>
+  <data name="&gt;&gt;colorGrid.Parent" xml:space="preserve">
+    <value>panelColorGrid</value>
+  </data>
+  <data name="&gt;&gt;colorGrid.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelColorGrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 13</value>
+  </data>
+  <data name="panelColorGrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 159</value>
+  </data>
+  <data name="panelColorGrid.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;panelColorGrid.Name" xml:space="preserve">
+    <value>panelColorGrid</value>
+  </data>
+  <data name="&gt;&gt;panelColorGrid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelColorGrid.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelColorGrid.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
