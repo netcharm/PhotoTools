@@ -254,6 +254,7 @@
             this.screenColorPicker.Image = global::NetCharm.Common.Properties.Resources.eyedropper;
             this.screenColorPicker.Name = "screenColorPicker";
             this.screenColorPicker.ShowTextWithSnapshot = true;
+            this.screenColorPicker.MouseCaptureChanged += new System.EventHandler(this.screenColorPicker_MouseCaptureChanged);
             // 
             // btnApply
             // 
@@ -281,6 +282,7 @@
             resources.ApplyResources(this.colorPanel, "colorPanel");
             this.colorPanel.ContextMenuStrip = this.cmCopyColorValue;
             this.colorPanel.Name = "colorPanel";
+            this.colorPanel.DoubleClick += new System.EventHandler(this.colorPanel_DoubleClick);
             // 
             // btnPalette
             // 

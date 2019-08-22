@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: NetCharm.Common.Controls\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
 "POT-Creation-Date: 2017-03-14 12:38+0800\n"
-"PO-Revision-Date: 2016-11-28 22:17+0800\n"
+"PO-Revision-Date: 2019-08-22 14:32+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,57 +19,70 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: Common\ColorDialog.resx:268 -> btnApply.Text.value
+#: Common\ColorDialog.resx:268
+#: -> btnApply.Text.value
 #: Common\FontDialog.resx:655
 msgid "Apply"
 msgstr "应用"
 
-#: Common\ColorDialog.resx:298 -> btnCancel.Text.value
+#: Common\ColorDialog.resx:298
+#: -> btnCancel.Text.value
 #: Common\FontDialog.resx:628
 msgid "Cancel"
 msgstr "取消"
 
-#: Common\ColorDialog.resx:328 -> btnOk.Text.value Common\FontDialog.resx:601
+#: Common\ColorDialog.resx:328
+#: -> btnOk.Text.value Common\FontDialog.resx:601
 msgid "OK"
 msgstr "确认"
 
-#: Common\ColorDialog.resx:376 -> btnPalette.Text.value
+#: Common\ColorDialog.resx:376
+#: -> btnPalette.Text.value
 msgid "Palette"
 msgstr "色盘"
 
-#: Common\ColorDialog.resx:403 -> $this.Text.value
+#: Common\ColorDialog.resx:403
+#: -> $this.Text.value
 msgid "Color Picker"
 msgstr "色彩选择"
 
-#: Common\FontDialog.resx:325 -> chkEffectUnderline.Text.value
+#: Common\FontDialog.resx:325
+#: -> chkEffectUnderline.Text.value
 msgid "Underline"
 msgstr "下划线"
 
-#: Common\FontDialog.resx:349 -> chkEffectStrikeout.Text.value
+#: Common\FontDialog.resx:349
+#: -> chkEffectStrikeout.Text.value
 msgid "Strikeout"
 msgstr "删除线"
 
-#: Common\FontDialog.resx:376 -> grpEffect.Text.value
+#: Common\FontDialog.resx:376
+#: -> grpEffect.Text.value
 msgid "Effect"
 msgstr "效果"
 
-#: Common\FontDialog.resx:433 -> grpSample.Text.value
+#: Common\FontDialog.resx:433
+#: -> grpSample.Text.value
 msgid "Sample"
 msgstr "示例"
 
-#: Common\FontDialog.resx:484 -> lblFamily.Text.value
+#: Common\FontDialog.resx:484
+#: -> lblFamily.Text.value
 msgid "Font Family"
 msgstr "字体名称"
 
-#: Common\FontDialog.resx:514 -> lblFace.Text.value
+#: Common\FontDialog.resx:514
+#: -> lblFace.Text.value
 msgid "Font Face"
 msgstr "字体形状"
 
-#: Common\FontDialog.resx:544 -> lblSize.Text.value
+#: Common\FontDialog.resx:544
+#: -> lblSize.Text.value
 msgid "Font Size"
 msgstr "字体大小"
 
-#: Common\FontDialog.resx:682 -> $this.Text.value
+#: Common\FontDialog.resx:682
+#: -> $this.Text.value
 msgid "Font"
 msgstr "字体"
 
@@ -96,7 +108,8 @@ msgstr "色度"
 
 #: Controls\SlideColorHue.Designer.cs:134
 #: Controls\SlideColorLum.Designer.cs:141
-#: Controls\SlideColorSat.Designer.cs:140 Controls\SlideNumber.Designer.cs:139
+#: Controls\SlideColorSat.Designer.cs:140
+#: Controls\SlideNumber.Designer.cs:139
 msgid ":"
 msgstr ""
 
@@ -116,12 +129,15 @@ msgstr "参数名"
 msgid "%"
 msgstr ""
 
-#: Common\ColorDialog.cs:109 Common\ColorDialog.cs:193
-#: Common\ColorDialog.cs:198
+#: Common\ColorDialog.cs:163
+#: Common\ColorDialog.cs:183
+#: Common\ColorDialog.cs:267
+#: Common\ColorDialog.cs:272
 msgid "Load Palette"
 msgstr "载入调色盘文件"
 
 #: Common\ColorDialog.cs:117
+#: Common\ColorDialog.cs:173
 msgid "Open Palette File"
 msgstr "打开调色盘文件"
 
@@ -130,9 +146,7 @@ msgid "Serializer does not support reading palettes."
 msgstr "序列化工具不支持读入此调色盘文件"
 
 #: Common\ColorDialog.cs:193
-msgid ""
-"Sorry, unable to open palette, the file format is not supported or is not "
-"recognized."
+msgid "Sorry, unable to open palette, the file format is not supported or is not recognized."
 msgstr "抱歉, 不能打开调色盘文件, 调色盘文件格式不支持或不可识别."
 
 #: Common\ColorDialog.cs:198
@@ -140,10 +154,17 @@ msgstr "抱歉, 不能打开调色盘文件, 调色盘文件格式不支持或�
 msgid "Sorry, unable to open palette. {0}"
 msgstr "抱歉, 不能打开调色盘文件. {0}"
 
-#: Common\ColorDialog.cs:204 Common\ColorDialog.cs:236
-#: Common\ColorDialog.cs:241
+#: Common\ColorDialog.cs:166
+#: Common\ColorDialog.cs:278
+#: Common\ColorDialog.cs:310
+#: Common\ColorDialog.cs:315
 msgid "Save Palette"
 msgstr "保存调色盘文件"
+
+#: Common\ColorDialog.cs:173
+#: Common\ColorDialog.cs:321
+msgid "Reset Custom Palette"
+msgstr "清除自定义调色盘"
 
 #: Common\ColorDialog.cs:212
 msgid "Save Palette File As"
@@ -159,9 +180,7 @@ msgid "Sorry, unable to save palette. {0}"
 msgstr "抱歉, 不能保存调色盘数据到文件. {0}"
 
 #: Common\ColorDialog.cs:241
-msgid ""
-"Sorry, unable to save palette, the file format is not supported or is not "
-"recognized."
+msgid "Sorry, unable to save palette, the file format is not supported or is not recognized."
 msgstr "抱歉, 不能保存调色盘文件, 调色盘文件格式不支持或不可识别."
 
 #: Common\Extensions.cs:551
@@ -172,7 +191,8 @@ msgstr "细体"
 msgid "Light"
 msgstr "淡"
 
-#: Common\Extensions.cs:553 Common\FontDialog.cs:742
+#: Common\Extensions.cs:553
+#: Common\FontDialog.cs:742
 msgid "Regular"
 msgstr "常规"
 
@@ -282,3 +302,4 @@ msgstr "半粗体"
 
 #~ msgid "Culture Text"
 #~ msgstr "中文文本示例"
+

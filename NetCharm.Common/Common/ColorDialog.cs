@@ -116,6 +116,7 @@ namespace NetCharm.Common
         {
             InitializeComponent();
             colorGrid.CustomColors.Clear();
+            colorGrid.AutoAddColors = false;
             //this.DesignMode
         }
 
@@ -123,6 +124,7 @@ namespace NetCharm.Common
         {
             InitializeComponent();
             colorGrid.CustomColors.Clear();
+            colorGrid.AutoAddColors = false;
 
             Color = color;
         }
@@ -168,6 +170,9 @@ namespace NetCharm.Common
                 mi_sep1.Tag = false;
                 mi_sep1.Visible = false;
                 cmPalette.Items.Add( mi_sep1 );
+                var mi_Reset = new ToolStripMenuItem( this._("Reset Custom Palette") );
+                mi_Reset.Tag = false;
+                cmPalette.Items.Add(mi_Reset);
             }
         }
 
@@ -175,50 +180,50 @@ namespace NetCharm.Common
         {
             if ( e.ClickedItem is ToolStripMenuItem )
             {
-                if ( e.ClickedItem.Text.StartsWith( this._( "Load Palette" ) ) )
+                if (e.ClickedItem.Text.StartsWith(this._("Load Palette")))
                 {
                     cmPalette.Close();
                     #region Load Palette
-                    using ( FileDialog dialog = new OpenFileDialog
+                    using (FileDialog dialog = new OpenFileDialog
                     {
                         Filter = PaletteSerializer.DefaultOpenFilter,
                         DefaultExt = "pal",
-                        Title = this._( "Open Palette File" )
-                    } )
+                        Title = this._("Open Palette File")
+                    })
                     {
-                        if ( dialog.ShowDialog( this ) == DialogResult.OK )
+                        if (dialog.ShowDialog(this) == DialogResult.OK)
                         {
                             try
                             {
                                 IPaletteSerializer serializer;
 
-                                serializer = PaletteSerializer.GetSerializer( dialog.FileName );
-                                if ( serializer != null )
+                                serializer = PaletteSerializer.GetSerializer(dialog.FileName);
+                                if (serializer != null)
                                 {
                                     ColorCollection palette;
 
-                                    if ( !serializer.CanRead )
+                                    if (!serializer.CanRead)
                                     {
-                                        throw new InvalidOperationException( this._( "Serializer does not support reading palettes." ) );
+                                        throw new InvalidOperationException(this._("Serializer does not support reading palettes."));
                                     }
 
-                                    using ( FileStream file = File.OpenRead( dialog.FileName ) )
+                                    using (FileStream file = File.OpenRead(dialog.FileName))
                                     {
-                                        palette = serializer.Deserialize( file );
+                                        palette = serializer.Deserialize(file);
                                     }
 
-                                    if ( palette != null )
+                                    if (palette != null)
                                     {
                                         // we can only display 96 colors in the color grid due to it's size, so if there's more, bin them
-                                        while ( palette.Count > 96 )
+                                        while (palette.Count > 96)
                                         {
-                                            palette.RemoveAt( palette.Count - 1 );
+                                            palette.RemoveAt(palette.Count - 1);
                                         }
 
                                         // or if we have less, fill in the blanks
-                                        while ( palette.Count < 96 )
+                                        while (palette.Count < 96)
                                         {
-                                            palette.Add( Color.White );
+                                            palette.Add(Color.White);
                                         }
 
                                         colorGrid.Colors = palette;
@@ -228,112 +233,118 @@ namespace NetCharm.Common
 
                                         var pal_name = Path.GetFileNameWithoutExtension( dialog.FileName );
                                         bool exists = false;
-                                        foreach ( var item in cmPalette.Items )
+                                        foreach (var item in cmPalette.Items)
                                         {
                                             //if ( item.GetType() == typeof( ToolStripSeparator ) ) continue;
-                                            if ( item.GetType() == typeof( ToolStripSeparator ) )
-                                                ( item as ToolStripSeparator ).Visible = true;
-                                            else if ( item.GetType() == typeof( ToolStripMenuItem ) )
+                                            if (item.GetType() == typeof(ToolStripSeparator))
+                                                (item as ToolStripSeparator).Visible = true;
+                                            else if (item.GetType() == typeof(ToolStripMenuItem))
                                             {
-                                                if ( ( item as ToolStripMenuItem ).Text.Equals( pal_name, StringComparison.CurrentCultureIgnoreCase ) )
+                                                if ((item as ToolStripMenuItem).Text.Equals(pal_name, StringComparison.CurrentCultureIgnoreCase))
                                                 {
                                                     exists = true;
-                                                    ( item as ToolStripMenuItem ).Checked = true;
+                                                    (item as ToolStripMenuItem).Checked = true;
                                                 }
                                                 else
                                                 {
-                                                    ( item as ToolStripMenuItem ).Checked = false;
+                                                    (item as ToolStripMenuItem).Checked = false;
                                                 }
                                             }
                                         }
-                                        if ( !exists )
+                                        if (!exists)
                                         {
                                             var mi_pal = new ToolStripMenuItem( pal_name );
                                             mi_pal.Tag = true;
                                             mi_pal.CheckOnClick = true;
                                             mi_pal.Checked = true;
-                                            cmPalette.Items.Add( mi_pal );
-                                            CustomPalette.Add( pal_name, palette );
+                                            cmPalette.Items.Add(mi_pal);
+                                            CustomPalette.Add(pal_name, palette);
                                         }
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show( this._( "Sorry, unable to open palette, the file format is not supported or is not recognized." ), this._( "Load Palette" ), MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
+                                    MessageBox.Show(this._("Sorry, unable to open palette, the file format is not supported or is not recognized."), this._("Load Palette"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 }
                             }
-                            catch ( Exception ex )
+                            catch (Exception ex)
                             {
-                                MessageBox.Show( string.Format( this._( "Sorry, unable to open palette. {0}" ), ex.GetBaseException().Message ), this._( "Load Palette" ), MessageBoxButtons.OK, MessageBoxIcon.Error );
+                                MessageBox.Show(string.Format(this._("Sorry, unable to open palette. {0}"), ex.GetBaseException().Message), this._("Load Palette"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
                     #endregion
                 }
-                else if ( e.ClickedItem.Text.StartsWith( this._( "Save Palette" ) ) )
+                else if (e.ClickedItem.Text.StartsWith(this._("Save Palette")))
                 {
                     cmPalette.Close();
                     #region Save Palette
-                    using ( FileDialog dialog = new SaveFileDialog
+                    using (FileDialog dialog = new SaveFileDialog
                     {
                         Filter = PaletteSerializer.DefaultSaveFilter,
                         DefaultExt = "pal",
-                        Title = this._( "Save Palette File As" )
-                    } )
+                        Title = this._("Save Palette File As")
+                    })
                     {
-                        if ( dialog.ShowDialog( this ) == DialogResult.OK )
+                        if (dialog.ShowDialog(this) == DialogResult.OK)
                         {
                             IPaletteSerializer serializer;
 
-                            serializer = PaletteSerializer.AllSerializers.Where( s => s.CanWrite ).ElementAt( dialog.FilterIndex - 1 );
-                            if ( serializer != null )
+                            serializer = PaletteSerializer.AllSerializers.Where(s => s.CanWrite).ElementAt(dialog.FilterIndex - 1);
+                            if (serializer != null)
                             {
-                                if ( !serializer.CanWrite )
+                                if (!serializer.CanWrite)
                                 {
-                                    throw new InvalidOperationException( this._( "Serializer does not support writing palettes." ) );
+                                    throw new InvalidOperationException(this._("Serializer does not support writing palettes."));
                                 }
 
                                 try
                                 {
-                                    using ( FileStream file = File.OpenWrite( dialog.FileName ) )
+                                    using (FileStream file = File.OpenWrite(dialog.FileName))
                                     {
-                                        serializer.Serialize( file, colorGrid.Colors );
+                                        serializer.Serialize(file, colorGrid.Colors);
                                     }
                                 }
-                                catch ( Exception ex )
+                                catch (Exception ex)
                                 {
-                                    MessageBox.Show( string.Format( this._( "Sorry, unable to save palette. {0}" ), ex.GetBaseException().Message ), this._( "Save Palette" ), MessageBoxButtons.OK, MessageBoxIcon.Error );
+                                    MessageBox.Show(string.Format(this._("Sorry, unable to save palette. {0}"), ex.GetBaseException().Message), this._("Save Palette"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                             else
                             {
-                                MessageBox.Show( this._( "Sorry, unable to save palette, the file format is not supported or is not recognized." ), this._( "Save Palette" ), MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
+                                MessageBox.Show(this._("Sorry, unable to save palette, the file format is not supported or is not recognized."), this._("Save Palette"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
                     }
                     #endregion
                 }
-                else if ( e.ClickedItem.Text.StartsWith( "-" ) )
+                else if (e.ClickedItem.Text.StartsWith(this._("Reset Custom Palette")))
+                {
+                    cmPalette.Close();
+                    colorGrid.CustomColors.Clear();
+                    colorGrid.CustomColors.Add(this.Color);
+                }
+                else if (e.ClickedItem.Text.StartsWith("-"))
                 {
                     return;
                 }
                 else
                 {
-                    foreach ( var item in cmPalette.Items )
+                    foreach (var item in cmPalette.Items)
                     {
-                        if ( item.GetType() == typeof( ToolStripSeparator ) ) continue;
-                        if ( item != e.ClickedItem ) ( item as ToolStripMenuItem ).Checked = false;
+                        if (item.GetType() == typeof(ToolStripSeparator)) continue;
+                        if (item != e.ClickedItem) (item as ToolStripMenuItem).Checked = false;
                     }
-                    if ( (bool) e.ClickedItem.Tag )
+                    if ((bool)e.ClickedItem.Tag)
                     {
                         var pal_name = e.ClickedItem.Text;
-                        if ( CustomPalette.ContainsKey( pal_name ) )
+                        if (CustomPalette.ContainsKey(pal_name))
                         {
                             colorGrid.Colors = CustomPalette[pal_name];
                         }
                     }
                     else
-                        colorGrid.Palette = (ColorPalette) Enum.Parse( typeof( ColorPalette ), e.ClickedItem.Text );
+                        colorGrid.Palette = (ColorPalette)Enum.Parse(typeof(ColorPalette), e.ClickedItem.Text);
                 }
             }
         }
@@ -377,6 +388,16 @@ namespace NetCharm.Common
                 Clipboard.SetText( tsmi.Text );
             }
             catch (Exception) { }
+        }
+
+        private void screenColorPicker_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            colorGrid.CustomColors.Add(screenColorPicker.Color);
+        }
+
+        private void colorPanel_DoubleClick(object sender, EventArgs e)
+        {
+            colorGrid.CustomColors.Add(screenColorPicker.Color);
         }
     }
 }

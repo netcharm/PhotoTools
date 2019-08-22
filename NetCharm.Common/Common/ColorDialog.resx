@@ -121,107 +121,8 @@
     <value>250, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tsmiColorValueHexRGB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueHexRGB.Text" xml:space="preserve">
-    <value>HEX RGB</value>
-  </data>
-  <data name="tsmiColorValueHexBGR.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueHexBGR.Text" xml:space="preserve">
-    <value>HEX BGR</value>
-  </data>
-  <data name="tsmiColorValueHexARGB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueHexARGB.Text" xml:space="preserve">
-    <value>HEX ARGB</value>
-  </data>
-  <data name="tsmiColorValueHexABGR.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueHexABGR.Text" xml:space="preserve">
-    <value>HEX ABGR</value>
-  </data>
-  <data name="tsmiColorValueHexRGBA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueHexRGBA.Text" xml:space="preserve">
-    <value>HEX RGBA</value>
-  </data>
-  <data name="tsmiColorValueHexBGRA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueHexBGRA.Text" xml:space="preserve">
-    <value>HEX BGRA</value>
-  </data>
-  <data name="tsmiColorValueHexSharp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueHexSharp.Text" xml:space="preserve">
-    <value>HEX With #</value>
-  </data>
-  <data name="tsmiColorValueSep0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
-  </data>
-  <data name="tsmiColorValueCssRGB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueCssRGB.Text" xml:space="preserve">
-    <value>CSS RGB</value>
-  </data>
-  <data name="tsmiColorValueCssRGBA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueCssRGBA.Text" xml:space="preserve">
-    <value>CSS RGBA</value>
-  </data>
-  <data name="tsmiColorValueCssHSL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueCssHSL.Text" xml:space="preserve">
-    <value>CSS HSL</value>
-  </data>
-  <data name="tsmiColorValueCssHSLA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueCssHSLA.Text" xml:space="preserve">
-    <value>CSS HSLA</value>
-  </data>
-  <data name="tsmiColorValueCssPercent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueCssPercent.Text" xml:space="preserve">
-    <value>CSS Using %</value>
-  </data>
-  <data name="tsmiColorValueSep1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
-  </data>
-  <data name="tsmiColorValueColorRGB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueColorRGB.Text" xml:space="preserve">
-    <value>COLORRGB</value>
-  </data>
-  <data name="tsmiColorValueColorBGR.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueColorBGR.Text" xml:space="preserve">
-    <value>COLORBGR</value>
-  </data>
-  <data name="tsmiColorValueSep2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
-  </data>
-  <data name="tsmiColorValueName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiColorValueName.Text" xml:space="preserve">
-    <value>Color Name</value>
-  </data>
   <data name="cmCopyColorValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 374</value>
+    <value>151, 352</value>
   </data>
   <data name="&gt;&gt;cmCopyColorValue.Name" xml:space="preserve">
     <value>cmCopyColorValue</value>
@@ -250,6 +151,105 @@
   </data>
   <data name="&gt;&gt;colorWheel.ZOrder" xml:space="preserve">
     <value>11</value>
+  </data>
+  <data name="tsmiColorValueHexRGB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueHexRGB.Text" xml:space="preserve">
+    <value>HEX RGB</value>
+  </data>
+  <data name="tsmiColorValueHexBGR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueHexBGR.Text" xml:space="preserve">
+    <value>HEX BGR</value>
+  </data>
+  <data name="tsmiColorValueHexARGB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueHexARGB.Text" xml:space="preserve">
+    <value>HEX ARGB</value>
+  </data>
+  <data name="tsmiColorValueHexABGR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueHexABGR.Text" xml:space="preserve">
+    <value>HEX ABGR</value>
+  </data>
+  <data name="tsmiColorValueHexRGBA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueHexRGBA.Text" xml:space="preserve">
+    <value>HEX RGBA</value>
+  </data>
+  <data name="tsmiColorValueHexBGRA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueHexBGRA.Text" xml:space="preserve">
+    <value>HEX BGRA</value>
+  </data>
+  <data name="tsmiColorValueHexSharp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueHexSharp.Text" xml:space="preserve">
+    <value>HEX With #</value>
+  </data>
+  <data name="tsmiColorValueSep0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 6</value>
+  </data>
+  <data name="tsmiColorValueCssRGB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueCssRGB.Text" xml:space="preserve">
+    <value>CSS RGB</value>
+  </data>
+  <data name="tsmiColorValueCssRGBA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueCssRGBA.Text" xml:space="preserve">
+    <value>CSS RGBA</value>
+  </data>
+  <data name="tsmiColorValueCssHSL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueCssHSL.Text" xml:space="preserve">
+    <value>CSS HSL</value>
+  </data>
+  <data name="tsmiColorValueCssHSLA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueCssHSLA.Text" xml:space="preserve">
+    <value>CSS HSLA</value>
+  </data>
+  <data name="tsmiColorValueCssPercent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueCssPercent.Text" xml:space="preserve">
+    <value>CSS Using %</value>
+  </data>
+  <data name="tsmiColorValueSep1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 6</value>
+  </data>
+  <data name="tsmiColorValueColorRGB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueColorRGB.Text" xml:space="preserve">
+    <value>COLORRGB</value>
+  </data>
+  <data name="tsmiColorValueColorBGR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueColorBGR.Text" xml:space="preserve">
+    <value>COLORBGR</value>
+  </data>
+  <data name="tsmiColorValueSep2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 6</value>
+  </data>
+  <data name="tsmiColorValueName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="tsmiColorValueName.Text" xml:space="preserve">
+    <value>Color Name</value>
   </data>
   <metadata name="colorManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
