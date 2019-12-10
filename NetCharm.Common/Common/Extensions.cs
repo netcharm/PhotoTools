@@ -14,6 +14,7 @@ using System.Windows.Markup;
 using NetCharm.Common;
 using NGettext.WinForm;
 using Media = System.Windows.Media;
+using ExtensionMethods;
 
 namespace ExtensionMethods
 {
@@ -980,69 +981,79 @@ namespace ExtensionMethods
         /// <returns></returns>
         static public Bitmap ToBitmap( this string text, Font font, Color fgColor, Color bgColor )
         {
-            #region Text Style Setting
-            StringFormat tFormat = new StringFormat(StringFormatFlags.DisplayFormatControl | StringFormatFlags.MeasureTrailingSpaces);
-            #endregion
+            Bitmap result = null;
 
-            #region Measure String Size
-            SizeF sizeF = new Size();
-            using ( var g = Graphics.FromImage( new Bitmap( 10, 10, PixelFormat.Format32bppArgb ) ) )
+            try
             {
-                g.CompositingMode = CompositingMode.SourceOver;
-                g.CompositingQuality = CompositingQuality.HighQuality;
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.TextContrast = 2;
-                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+                #region Text Style Setting
+                StringFormat tFormat = new StringFormat(StringFormatFlags.DisplayFormatControl | StringFormatFlags.MeasureTrailingSpaces);
+                #endregion
 
-                sizeF = g.MeasureString( text, font, new PointF( 0, 0 ), tFormat );
+                #region Measure String Size
+                SizeF sizeF = new Size();
+                using (var g = Graphics.FromImage(new Bitmap(10, 10, PixelFormat.Format32bppArgb)))
+                {
+                    g.CompositingMode = CompositingMode.SourceOver;
+                    g.CompositingQuality = CompositingQuality.HighQuality;
+                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    g.SmoothingMode = SmoothingMode.AntiAlias;
+                    g.TextContrast = 2;
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                    sizeF = g.MeasureString(text, font, new PointF(0, 0), tFormat);
+                }
+                sizeF.Width *= 1.05f;
+                #endregion
+
+                #region Make Text Picture
+                Size size = sizeF.ToSize();
+                size.Height *= 2;
+                Bitmap textImg = new Bitmap(size.Width, size.Height, PixelFormat.Format32bppArgb);
+                using (var g = Graphics.FromImage(textImg))
+                {
+                    g.CompositingMode = CompositingMode.SourceOver;
+                    g.CompositingQuality = CompositingQuality.HighQuality;
+                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    g.SmoothingMode = SmoothingMode.AntiAlias;
+                    g.TextContrast = 2;
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                    // Here only for test. The output image is pool outline.
+                    //g.DrawString( text, font, new SolidBrush( color ), 0, 0, tFormat );
+
+                    g.FillRectangle(new SolidBrush(bgColor), new RectangleF(0, 0, size.Width, size.Height));
+
+                    // calc right emsize for given fontsize in current canvas dpi
+                    float emSize = g.DpiY * font.Size / 72f;
+                    var tPath = new GraphicsPath();
+                    tPath.StartFigure();
+                    tPath.AddString(text, font.FontFamily, (int)font.Style, emSize,
+                                     new PointF(0, size.Height / 4.0f),
+                                     tFormat);
+                    tPath.CloseFigure();
+                    //g.DrawPath( new Pen( color, 1f ), tPath );
+                    g.FillPath(new SolidBrush(fgColor), tPath);
+                }
+                #endregion
+
+                #region Crop Transparent Area
+                var dstRect = textImg.ContentBound();
+                var dst =  new Bitmap(dstRect.Width, dstRect.Height, textImg.PixelFormat);
+                using (var g = Graphics.FromImage(dst))
+                {
+                    g.DrawImage(textImg, 0, 0, dstRect, GraphicsUnit.Pixel);
+                }
+                result = dst;
             }
-            sizeF.Width *= 1.05f;
-            #endregion
-
-            #region Make Text Picture
-            Size size = sizeF.ToSize();
-            size.Height *= 2;
-            Bitmap textImg = new Bitmap(size.Width, size.Height, PixelFormat.Format32bppArgb);
-            using ( var g = Graphics.FromImage( textImg ) )
+            catch (Exception)
             {
-                g.CompositingMode = CompositingMode.SourceOver;
-                g.CompositingQuality = CompositingQuality.HighQuality;
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.TextContrast = 2;
-                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-                // Here only for test. The output image is pool outline.
-                //g.DrawString( text, font, new SolidBrush( color ), 0, 0, tFormat );
-
-                g.FillRectangle( new SolidBrush( bgColor ), new RectangleF( 0, 0, size.Width, size.Height ) );
-
-                // calc right emsize for given fontsize in current canvas dpi
-                float emSize = g.DpiY * font.Size / 72f;
-                var tPath = new GraphicsPath();
-                tPath.StartFigure();
-                tPath.AddString( text, font.FontFamily, (int) font.Style, emSize,
-                                 new PointF( 0, size.Height / 4.0f ),
-                                 tFormat );
-                tPath.CloseFigure();
-                //g.DrawPath( new Pen( color, 1f ), tPath );
-                g.FillPath( new SolidBrush( fgColor ), tPath );
             }
             #endregion
 
-            #region Crop Transparent Area
-            var dstRect = textImg.ContentBound();
-            var dst =  new Bitmap(dstRect.Width, dstRect.Height, textImg.PixelFormat);
-            using ( var g = Graphics.FromImage( dst ) )
-            {
-                g.DrawImage( textImg, 0, 0, dstRect, GraphicsUnit.Pixel );
-            }
-            #endregion
-
-            return ( dst );
+            return (result);
         }
 
         /// <summary>
@@ -1283,6 +1294,8 @@ namespace ExtensionMethods
 
             var emSize = fontsize * 96/72f;
 
+            Bitmap result = null;
+
             #region Draw Text to Bitmap
             #region Detecting Is TTF Font of Not
             Font font = null; // new Font(fontfamily, emSize);
@@ -1302,29 +1315,28 @@ namespace ExtensionMethods
                 //}
             }
             #endregion
-            if ( font is Font && string.Equals( font.Name, fontfamily, StringComparison.CurrentCultureIgnoreCase ) )
+            if (font is Font && string.Equals(font.Name, fontfamily, StringComparison.CurrentCultureIgnoreCase))
             {
-                return ( ToBitmap( text, font, fgColor, bgColor ) );
+                result = ToBitmap(text, font, fgColor, bgColor);
             }
-            else
+            if(result == null)
             {
                 #region Get Font family info
                 var family = new Media.FontFamily(fontfamily);
-                var familytypeface = family.FamilyTypefaces[0];
 
                 var style = styleFont.HasFlag( FontStyle.Italic ) ? System.Windows.FontStyles.Italic : System.Windows.FontStyles.Normal;
                 var weight = styleFont.HasFlag( FontStyle.Bold ) ? System.Windows.FontWeights.Bold : System.Windows.FontWeights.Normal;
                 var underline = false;
                 var strikeout = false;
                 var textDecorations = new System.Windows.TextDecorationCollection();
-                if ( styleFont.HasFlag( FontStyle.Strikeout ) )
+                if (styleFont.HasFlag(FontStyle.Strikeout))
                 {
-                    textDecorations.Add( System.Windows.TextDecorations.Strikethrough );
+                    textDecorations.Add(System.Windows.TextDecorations.Strikethrough);
                     strikeout = true;
                 }
-                if ( styleFont.HasFlag( FontStyle.Underline ) )
+                if (styleFont.HasFlag(FontStyle.Underline))
                 {
-                    textDecorations.Add( System.Windows.TextDecorations.Underline );
+                    textDecorations.Add(System.Windows.TextDecorations.Underline);
                     underline = true;
                 }
 
@@ -1333,56 +1345,66 @@ namespace ExtensionMethods
 
                 #region Adjust fontstyle string
                 var fontstyles = new List<string>();
-                foreach ( var s in fontstyle.Split() )
+                foreach (var s in fontstyle.Split())
                 {
                     var st = s.Trim();
-                    if ( string.Equals( st, "Underline", StringComparison.CurrentCultureIgnoreCase ) ||
-                       string.Equals( st, "Strikeout", StringComparison.CurrentCultureIgnoreCase ) )
+                    if (string.Equals(st, "Underline", StringComparison.CurrentCultureIgnoreCase) ||
+                       string.Equals(st, "Strikeout", StringComparison.CurrentCultureIgnoreCase))
                         continue;
-                    else if ( string.Equals( st, "250", StringComparison.CurrentCultureIgnoreCase ) )
-                        fontstyles.Add( "Thin" );
-                    else if ( string.Equals( st, "350", StringComparison.CurrentCultureIgnoreCase ) )
-                        fontstyles.Add( "Regular" );
-                    else if ( string.Equals( st, "SemiBold", StringComparison.CurrentCultureIgnoreCase ) )
-                        fontstyles.Add( "W6" );
+                    else if (string.Equals(st, "250", StringComparison.CurrentCultureIgnoreCase))
+                        fontstyles.Add("Thin");
+                    else if (string.Equals(st, "350", StringComparison.CurrentCultureIgnoreCase))
+                        fontstyles.Add("Regular");
+                    else if (string.Equals(st, "SemiBold", StringComparison.CurrentCultureIgnoreCase))
+                        fontstyles.Add("W6");
                     else
-                        fontstyles.Add( st );
+                        fontstyles.Add(st);
                 }
-                fontstyle = string.Join( " ", fontstyles );
+                fontstyle = string.Join(" ", fontstyles);
                 #endregion
 
                 #region Get typeface from custom FamilyList or create default
                 Media.Typeface face = null;
-                if ( FamilyList.Count > 0 )
+                if (FamilyList.Count > 0)
                 {
-                    if ( FamilyList.ContainsKey( fontfamily ) )
-                        if ( FamilyList[fontfamily].ContainsKey( fontstyle ) )
+                    if (FamilyList.ContainsKey(fontfamily))
+                        if (FamilyList[fontfamily].ContainsKey(fontstyle))
                             face = FamilyList[fontfamily][fontstyle];
                 }
 
-                if ( face == null )
+                if (face == null)
                 {
                     #region Create default typeface with family name
                     var locale_key = family.FamilyNames.ContainsKey(locale_enkey) ? locale_enkey : family.FamilyNames.First().Key;
                     var key = $"{fontfamily}*{fontstyle}";
                     var key0 = $"{family.FamilyNames[locale_key]}*{fontstyle}";
-                    if ( TypefaceList.ContainsKey( key ) )
-                        face = TypefaceList[key];
-                    else if ( TypefaceList.ContainsKey( key0 ) )
+                    if (TypefaceList.ContainsKey(key0))
                         face = TypefaceList[key0];
+                    else if (TypefaceList.ContainsKey(key))
+                        face = TypefaceList[key];
                     else
                     {
-                        face = new Media.Typeface( family, style, weight, familytypeface.Stretch, fallback );
+                        try
+                        {
+                            var familytypeface = family.FamilyTypefaces[0];
+                            face = new Media.Typeface(family, style, weight, familytypeface.Stretch, fallback);
+                        }
+                        catch (Exception)
+                        {
+                            face = new Media.Typeface(family.FamilyNames.First().Value);
+                        }
                         TypefaceList[key0] = face;
                         TypefaceList[key] = face;
                     }
                     #endregion
                 }
                 #endregion
-
-                return ( text.ToBitmap( face, emSize, locale, align, fgColor, bgColor, underline, strikeout ) );
+                result = text.ToBitmap(face, emSize, locale, align, fgColor, bgColor, underline, strikeout);
             }
             #endregion
+            if(result == null)
+                result = new Bitmap((int)Math.Ceiling(fontsize), (int)Math.Ceiling(fontsize), PixelFormat.Format32bppArgb);
+            return (result);
         }
 
         /// <summary>
