@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: NetCharm.Common.Controls\n"
 "Report-Msgid-Bugs-To: netcharm <netcharm@163.com>\n"
 "POT-Creation-Date: 2017-03-14 12:38+0800\n"
-"PO-Revision-Date: 2019-08-22 16:10+0800\n"
+"PO-Revision-Date: 2019-12-10 22:12+0800\n"
 "Last-Translator: netcharm <netcharm@163.com>\n"
 "Language-Team: netcharm <netcharm@163.com>\n"
 "MIME-Version: 1.0\n"
@@ -190,122 +190,441 @@ msgstr "抱歉, 不能保存调色盘数据到文件. {0}"
 msgid "Sorry, unable to save palette, the file format is not supported or is not recognized."
 msgstr "抱歉, 不能保存调色盘文件, 调色盘文件格式不支持或不可识别."
 
-#: Common\Extensions.cs:551
-msgid "Thin"
-msgstr "细体"
-
-#: Common\Extensions.cs:552
-msgid "Light"
-msgstr "淡"
-
-#: Common\Extensions.cs:553
-#: Common\FontDialog.cs:742
-msgid "Regular"
-msgstr "常规"
-
-#: Common\Extensions.cs:554
-msgid "Medium"
-msgstr "中等"
-
-#: Common\Extensions.cs:555
-msgid "Bold"
-msgstr "粗体"
-
-#: Common\Extensions.cs:556
-msgid "Black"
-msgstr "黑体"
-
-#: Common\Extensions.cs:557
-msgid "Oblique"
-msgstr "倾斜"
-
-#: Common\Extensions.cs:558
-msgid "Italic"
-msgstr "斜体"
-
-#: Common\Extensions.cs:560
-msgid "SemiBold"
-msgstr "半粗体"
-
-#: Common\Extensions.cs:561
-msgid "SemiCondensed"
-msgstr "半紧缩"
-
-#: Common\Extensions.cs:562
-msgid "Condensed"
-msgstr "紧缩"
-
-#: Common\Extensions.cs:563
-msgid "Expanded"
-msgstr "展开"
-
-#: Common\Extensions.cs:564
-msgid "Extended"
-msgstr "展开"
-
-#: Common\Extensions.cs:565
-msgid "Heavy"
-msgstr "重黑"
-
-#: Common\Extensions.cs:566
-msgid "ExtraBlack"
-msgstr "超黑体"
-
-#: Common\Extensions.cs:567
-msgid "Extra Black"
-msgstr "超黑体"
-
-#: Common\Extensions.cs:568
-msgid "UltraLight"
-msgstr "特淡"
-
-#: Common\Extensions.cs:569
-msgid "Ultra Light"
-msgstr "特淡"
-
-#: Common\Extensions.cs:570
 msgid "Ultra"
 msgstr "特"
 
-#: Common\Extensions.cs:571
-msgid "Extra"
-msgstr "超"
+msgid "Ext"
+msgstr "极"
 
-#: Common\Extensions.cs:572
+msgid "Extra"
+msgstr "极"
+
+msgid "Demi"
+msgstr "半"
+
+msgid "Cond"
+msgstr "窄"
+
+msgid "Compressed"
+msgstr "窄"
+
 msgid "Roman"
 msgstr "罗马体"
 
-#: Common\Extensions.cs:573
+msgid "Book"
+msgstr "中等"
+
+msgid "Narrow"
+msgstr "中等"
+
+msgid "Display"
+msgstr "中等"
+
 msgid "Normal"
+msgstr "标准"
+
+msgid "Regular"
 msgstr "常规"
 
-#: Common\Extensions.cs:574
-msgid "regular"
-msgstr "常规"
+msgid "Oblique"
+msgstr "倾斜"
 
-#: Common\Extensions.cs:576
+msgid "Italic"
+msgstr "斜体"
+
+msgid "Black"
+msgstr "粗体"
+
 msgid "250"
+msgstr "特细"
+
+msgid "275"
 msgstr "细体"
 
-#: Common\Extensions.cs:577
 msgid "350"
 msgstr "常规"
 
-#: Common\Extensions.cs:578
-msgid "275"
-msgstr "特淡"
-
-#: Common\Extensions.cs:579
 msgid "750"
-msgstr "黑体"
+msgstr "粗体"
 
-#: Common\Extensions.cs:581
+msgid "W1"
+msgstr "特细"
+
+msgid "W2"
+msgstr "极细"
+
 msgid "W3"
-msgstr "淡"
+msgstr "细体"
 
-#: Common\Extensions.cs:582
+msgid "W4"
+msgstr "半细"
+
+msgid "W5"
+msgstr "中等"
+
 msgid "W6"
-msgstr "半粗体"
+msgstr "半粗"
+
+msgid "W7"
+msgstr "粗体"
+
+msgid "W8"
+msgstr "极粗"
+
+msgid "W9"
+msgstr "特粗"
+
+# Condensed
+msgid "Condensed"
+msgstr "窄体"
+
+msgid "SemiCondensed"
+msgstr "半窄"
+
+msgid "Semicondensed"
+msgstr "半窄"
+
+msgid "Semi Condensed"
+msgstr "半窄"
+
+msgid "Semi condensed"
+msgstr "半窄"
+
+msgid "Semi-Condensed"
+msgstr "半窄"
+
+msgid "Semi-condensed"
+msgstr "半窄"
+
+msgid "ExtraCondensed"
+msgstr "极窄"
+
+msgid "Extracondensed"
+msgstr "极窄"
+
+msgid "Extra Condensed"
+msgstr "极窄"
+
+msgid "Extra condensed"
+msgstr "极窄"
+
+msgid "Extra-Condensed"
+msgstr "极窄"
+
+msgid "Extra-condensed"
+msgstr "极窄"
+
+msgid "UltraCondensed"
+msgstr "特窄"
+
+msgid "Ultracondensed"
+msgstr "特窄"
+
+msgid "Ultra Condensed"
+msgstr "特窄"
+
+msgid "Ultra condensed"
+msgstr "特窄"
+
+msgid "Ultra-Condensed"
+msgstr "特窄"
+
+msgid "Ultra-condensed"
+msgstr "特窄"
+
+# Expanded
+msgid "Expanded"
+msgstr "宽体"
+
+msgid "SemiExpanded"
+msgstr "半宽"
+
+msgid "Semiexpanded"
+msgstr "半宽"
+
+msgid "Semi Expanded"
+msgstr "半宽"
+
+msgid "Semi expanded"
+msgstr "半宽"
+
+msgid "Semi-Expanded"
+msgstr "半宽"
+
+msgid "Semi-expanded"
+msgstr "半宽"
+
+msgid "ExtraExpanded"
+msgstr "极宽"
+
+msgid "Extraexpanded"
+msgstr "极宽"
+
+msgid "Extra Expanded"
+msgstr "极宽"
+
+msgid "Extra expanded"
+msgstr "极宽"
+
+msgid "Extra-Expanded"
+msgstr "极宽"
+
+msgid "Extra-expanded"
+msgstr "极宽"
+
+msgid "UltraExpanded"
+msgstr "特宽"
+
+msgid "Ultraexpanded"
+msgstr "特宽"
+
+msgid "Ultra Expanded"
+msgstr "特宽"
+
+msgid "Ultra expanded"
+msgstr "特宽"
+
+msgid "Ultra-Expanded"
+msgstr "特宽"
+
+msgid "Ultra-expanded"
+msgstr "特宽"
+
+# Extended
+msgid "Extended"
+msgstr "加宽"
+
+msgid "SemiExtended"
+msgstr "半加宽"
+
+msgid "Semiextended"
+msgstr "半加宽"
+
+msgid "Semi Extended"
+msgstr "半加宽"
+
+msgid "Semi extended"
+msgstr "半加宽"
+
+msgid "Semi-Extended"
+msgstr "半加宽"
+
+msgid "Semi-extended"
+msgstr "半加宽"
+
+msgid "ExtraExtended"
+msgstr "极加宽"
+
+msgid "Extraextended"
+msgstr "极加宽"
+
+msgid "Extra Extended"
+msgstr "极加宽"
+
+msgid "Extra extended"
+msgstr "极加宽"
+
+msgid "Extra-Extended"
+msgstr "极加宽"
+
+msgid "Extra-extended"
+msgstr "极加宽"
+
+msgid "UltraExtended"
+msgstr "特加宽"
+
+msgid "Ultraextended"
+msgstr "特加宽"
+
+msgid "Ultra Extended"
+msgstr "特加宽"
+
+msgid "Ultra extended"
+msgstr "特加宽"
+
+msgid "Ultra-Extended"
+msgstr "特加宽"
+
+msgid "Ultra-extended"
+msgstr "特加宽"
+
+# Light
+msgid "UltraLight"
+msgstr "特细"
+
+msgid "Ultralight"
+msgstr "特细"
+
+msgid "Ultra Light"
+msgstr "特细"
+
+msgid "Ultra light"
+msgstr "特细"
+
+msgid "Ultra-Light"
+msgstr "特细"
+
+msgid "Ultra-light"
+msgstr "特细"
+
+msgid "ExtraLight"
+msgstr "极细"
+
+msgid "Extralight"
+msgstr "极细"
+
+msgid "Extra Light"
+msgstr "极细"
+
+msgid "Extra light"
+msgstr "极细"
+
+msgid "Extra-Light"
+msgstr "极细"
+
+msgid "Extra-light"
+msgstr "极细"
+
+msgid "Thin"
+msgstr "极细"
+
+msgid "Light"
+msgstr "细体"
+
+msgid "SemiLight"
+msgstr "半细"
+
+msgid "Semilight"
+msgstr "半细"
+
+msgid "Semi Light"
+msgstr "半细"
+
+msgid "Semi light"
+msgstr "半细"
+
+msgid "Semi-Light"
+msgstr "半细"
+
+msgid "Semi-light"
+msgstr "半细"
+
+msgid "DemiLight"
+msgstr "半细"
+
+msgid "Demilight"
+msgstr "半细"
+
+msgid "Demi Light"
+msgstr "半细"
+
+msgid "Demi light"
+msgstr "半细"
+
+msgid "Demi-Light"
+msgstr "半细"
+
+msgid "Demi-light"
+msgstr "半细"
+
+msgid "Medium"
+msgstr "中等"
+
+msgid "SemiBold"
+msgstr "半粗"
+
+msgid "Semibold"
+msgstr "半粗"
+
+msgid "Semi Bold"
+msgstr "半粗"
+
+msgid "Semi bold"
+msgstr "半粗"
+
+msgid "Semi-Bold"
+msgstr "半粗"
+
+msgid "Semi-bold"
+msgstr "半粗"
+
+msgid "DemiBold"
+msgstr "半粗"
+
+msgid "Demibold"
+msgstr "半粗"
+
+msgid "Demi Bold"
+msgstr "半粗"
+
+msgid "Demi bold"
+msgstr "半粗"
+
+msgid "Demi-Bold"
+msgstr "半粗"
+
+msgid "Demi-bold"
+msgstr "半粗"
+
+msgid "Bold"
+msgstr "粗体"
+
+msgid "Heavy"
+msgstr "极粗"
+
+msgid "ExtraBlack"
+msgstr "极粗"
+
+msgid "Extrablack"
+msgstr "极粗"
+
+msgid "Extra Black"
+msgstr "极粗"
+
+msgid "Extra black"
+msgstr "极粗"
+
+msgid "Extra-Black"
+msgstr "极粗"
+
+msgid "Extra-black"
+msgstr "极粗"
+
+msgid "ExtraBold"
+msgstr "极粗"
+
+msgid "Extrabold"
+msgstr "极粗"
+
+msgid "Extra Bold"
+msgstr "极粗"
+
+msgid "Extra bold"
+msgstr "极粗"
+
+msgid "Extra-Bold"
+msgstr "极粗"
+
+msgid "Extra-bold"
+msgstr "极粗"
+
+msgid "UltraBlack"
+msgstr "特粗"
+
+msgid "Ultrablack"
+msgstr "特粗"
+
+msgid "Ultra Black"
+msgstr "特粗"
+
+msgid "Ultra black"
+msgstr "特粗"
+
+msgid "Ultra-Black"
+msgstr "特粗"
+
+msgid "Ultra-black"
+msgstr "特粗"
 
 #~ msgid "Culture Text"
 #~ msgstr "中文文本示例"

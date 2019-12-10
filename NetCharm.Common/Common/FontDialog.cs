@@ -12,6 +12,7 @@ using System.Windows.Markup;
 using ExtensionMethods;
 
 using Media = System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace NetCharm.Common
 {
@@ -745,10 +746,11 @@ namespace NetCharm.Common
                 //foreach ( var typeface in ff.FamilyTypefaces )
                 foreach ( var f in ff)//.Reverse() )
                 {
-                    var facename = f.Key.Replace( "250", "Thin" ).Replace( "350", "Regular" ).Replace("W3", "Light").Replace("W6","SemiBold");
+                    var facename = f.Key;//.Replace( "250", "Thin" ).Replace( "350", "Regular" ).Replace("W3", "Light").Replace("W6","SemiBold");
                     var item = new ListViewItem(f.Key);
                     item.Text = string.Join( " ", facename.Split().Select( o => o._() ) );
-                    item.Text = string.IsNullOrEmpty( item.Text ) ? this._( "Regular" ) : item.Text;
+                    item.Text = string.IsNullOrEmpty( item.Text ) ? this._( "Regular" ) : this._(item.Text);
+                    item.Text = Regex.Replace(item.Text, @"(特|极|半|窄) (.)(体)", "$1$2", RegexOptions.IgnoreCase);
                     item.Tag = facename;
                     lvStyle.Items.Add( item );
                 }
